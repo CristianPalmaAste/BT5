@@ -1,0 +1,21 @@
+CREATE FUNCTION
+ f_valor_linea_det_vta 
+-----------------------
+                     0
+(1 fila)
+
+ f_valor_linea_det_vta 
+-----------------------
+                     0
+(1 fila)
+
+ f_valor_linea_det_vta 
+-----------------------
+                     0
+(1 fila)
+
+ f_valor_linea_det_vta 
+-----------------------
+                     0
+(1 fila)
+

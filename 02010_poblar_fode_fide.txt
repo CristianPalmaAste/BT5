@@ -1,0 +1,6 @@
+CREATE FUNCTION
+ f_poblar_fode_fide 
+--------------------
+ S
+(1 fila)
+

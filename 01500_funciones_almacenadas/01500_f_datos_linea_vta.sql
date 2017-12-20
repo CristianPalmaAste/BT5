@@ -119,7 +119,6 @@ return(0);
 end;
 $$ LANGUAGE plpgsql;
 
-
 select 'precio venta prod 1: ' || f_datos_linea_vta(1   , null, 0, 0  , 1);
 select 'exento prod 1: '       || f_datos_linea_vta(1   , null, 5, 100, 2);
 select 'afecto prod 1: '       || f_datos_linea_vta(1   , null, 5, 100, 3);

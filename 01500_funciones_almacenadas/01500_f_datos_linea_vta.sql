@@ -1,16 +1,17 @@
-create or replace function f_valor_linea_det_vta (numeric
-                                                 ,numeric
-                                                 ,numeric
-                                                 ,numeric
-                                                 ,numeric
-                                                 ) returns numeric as
+create or replace function f_datos_linea_vta (numeric
+                                             ,numeric
+                                             ,numeric
+                                             ,numeric
+                                             ,numeric
+                                             ) returns numeric as
 $$
 declare
-  Pidpais          numeric := $1;
-  Pidprod          numeric := $2;
-  Pidserv          numeric := $3;
-  Pcantidad        numeric := $4;
-  Pmonto_dscto     numeric := $5;
+  Pidprod          numeric := $1;
+  Pidserv          numeric := $2;
+  Pcantidad        numeric := $3;
+  Pmonto_dscto     numeric := $4;
+  Pdato_deseado    numeric := $5;
+  Vidpais          numeric;
   Vtotal_linea     numeric;
   aux              numeric;
   Vvalorunitario   numeric;
@@ -35,11 +36,22 @@ declare
     and    impu.idpais      = Pidpais
     ;
 begin
-  /* esta función debe ser invocada con Pidpais, (Pidprod o Pidserv), solo uno de los 2, y con Pcantidad y Pmonto_dscto (el cual puede ser 0) */
-  if Pidpais is null or (Pidprod is null and Pidserv is null) or Pcantidad is null or Pmonto_dscto is null then
+  /*
+    Esta función debe ser invocada con (Pidprod o Pidserv), solo uno de los 2, y con Pcantidad y Pmonto_dscto (el cual puede ser 0)
+    Además, un parámetro extra que indica qué dato es el que se desea obtener, a saber:
+
+    1: precio de venta (del producto o servicio)
+    2: total exento
+    3: total afecto
+    4: impuestos
+  */
+  if (Pidprod is null and Pidserv is null) or Pcantidad is null or Pmonto_dscto is null or Pdato_deseado is null then
     return(0);
   end if;
   if Pidprod is not null and Pidserv is not null then
+    return(0);
+  end if;
+  if Pdato_deseado not in (1, 2, 3, 4) then
     return(0);
   end if;
   if Pidprod is not null then
@@ -58,6 +70,9 @@ begin
     from   productos
     where  id = Pidprod
     ;
+    if Pdato_deseado = 1 then
+      return(Vvalorunitario);
+    end if;
     select estaexento
     into   Vestaexento
     from   tipos_productos

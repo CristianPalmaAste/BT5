@@ -7,12 +7,14 @@ declare
   Vcorrelativo              numeric;
   Vidprod                   numeric;
   Vidserv                   numeric;
-  Vcantidad                 numeric;
   Vpreciounitario           numeric;
+  Vcantidad                 numeric;
   Vporcentajedescuento      numeric;
   Vmontodescuento           numeric;
+  Vexento                   numeric;
+  Vafecto                   numeric;
   Vimpuestos                numeric;
-  Vsubtotal                 numeric;
+  Vtotallinea               numeric;
   Vidusuacrearegistro       numeric;
   Viddenv                   numeric;
   C_decv cursor for
@@ -20,12 +22,14 @@ declare
           ,correlativo
           ,idprod
           ,idserv
-          ,cantidad
           ,preciounitario
+          ,cantidad
           ,porcentajedescuento
           ,montodescuento
+          ,exento
+          ,afecto
           ,impuestos
-          ,subtotal
+          ,totallinea
           ,idusuacrearegistro
     from   detalles_cotizs_vtas
     where  idcove = new.id
@@ -54,10 +58,11 @@ begin
                              ,idline                   -- numeric(20,0)       null
                              ,idceco                   -- numeric(20,0)       null
                              ,idtare                   -- numeric(20,0)       null
-                             ,subtotal                 -- numeric(20,0)   not null
-                             ,porcentajedescuento      -- numeric(20,2)   not null
-                             ,montodescuento           -- numeric(20,2)   not null
-                             ,valorimpuestos           -- numeric(20,0)   not null
+                             ,exento                   -- numeric(20,0)   not null
+                             ,afecto                   -- numeric(20,0)   not null
+                             ,impuestos                -- numeric(20,0)   not null
+                             ,porcentajedescuento      -- numeric(20,5)   not null
+                             ,montodescuento           -- numeric(20,0)   not null
                              ,total                    -- numeric(20,0)   not null
                              ,idesnv                   -- numeric(20,0)   not null
                              ,idusuacrearegistro       -- numeric(20,0)   not null
@@ -78,10 +83,11 @@ begin
            ,new.idline                    -- idline                   numeric(20,0)       null
            ,new.idceco                    -- idceco                   numeric(20,0)       null
            ,new.idtare                    -- idtare                   numeric(20,0)       null
-           ,new.subtotal                  -- subtotal                 numeric(20,0)   not null
-           ,new.porcentajedescuento       -- porcentajedescuento      numeric(20,2)   not null
-           ,new.montodescuento            -- montodescuento           numeric(20,2)   not null
-           ,new.valorimpuestos            -- valorimpuestos           numeric(20,0)   not null
+           ,new.exento                    -- exento                   numeric(20,0)   not null
+           ,new.afecto                    -- afecto                   numeric(20,0)   not null
+           ,new.impuestos                 -- impuestos                numeric(20,0)   not null
+           ,new.porcentajedescuento       -- porcentajedescuento      numeric(20,5)   not null
+           ,new.montodescuento            -- montodescuento           numeric(20,0)   not null
            ,new.total                     -- total                    numeric(20,0)   not null
            ,1                             -- idesnv                   numeric(20,0)   not null
            ,new.idusuacrearegistro        -- idusuacrearegistro       numeric(20,0)   not null
@@ -98,12 +104,14 @@ begin
                        ,Vcorrelativo
                        ,Vidprod
                        ,Vidserv
-                       ,Vcantidad
                        ,Vpreciounitario
+                       ,Vcantidad
                        ,Vporcentajedescuento
                        ,Vmontodescuento
+                       ,Vexento
+                       ,Vafecto
                        ,Vimpuestos
-                       ,Vsubtotal
+                       ,Vtotallinea
                        ,Vidusuacrearegistro
                        ;
       exit when not found;
@@ -115,12 +123,14 @@ begin
                                       ,correlativo              -- numeric(20,0)   not null
                                       ,idprod                   -- numeric(20,0)       null
                                       ,idserv                   -- numeric(20,0)       null
-                                      ,cantidad                 -- numeric(20,2)   not null
                                       ,preciounitario           -- numeric(20,0)   not null
-                                      ,porcentajedescuento      -- numeric(20,2)   not null
-                                      ,montodescuento           -- numeric(20,2)   not null
+                                      ,cantidad                 -- numeric(20,2)   not null
+                                      ,porcentajedescuento      -- numeric(20,5)   not null
+                                      ,montodescuento           -- numeric(20,0)   not null
+                                      ,exento                   -- numeric(20,0)   not null
+                                      ,afecto                   -- numeric(20,0)   not null
                                       ,impuestos                -- numeric(20,2)   not null
-                                      ,subtotal                 -- numeric(20,2)   not null
+                                      ,totallinea               -- numeric(20,2)   not null
                                       ,idusuacrearegistro       -- numeric(20,0)   not null
                                       ,fechacrearegistro        -- timestamp       not null
                                       ,idusuamodifregistro      -- numeric(20,0)       null
@@ -133,12 +143,14 @@ begin
              ,Vcorrelativo                         -- correlativo              numeric(20,0)   not null
              ,Vidprod                              -- idprod                   numeric(20,0)       null
              ,Vidserv                              -- idserv                   numeric(20,0)       null
-             ,Vcantidad                            -- cantidad                 numeric(20,2)   not null
              ,Vpreciounitario                      -- preciounitario           numeric(20,0)   not null
-             ,Vporcentajedescuento                 -- porcentajedescuento      numeric(20,2)   not null
-             ,Vmontodescuento                      -- montodescuento           numeric(20,2)   not null
-             ,Vimpuestos                           -- impuestos                numeric(20,2)   not null
-             ,Vsubtotal                            -- subtotal                 numeric(20,2)   not null
+             ,Vcantidad                            -- cantidad                 numeric(20,2)   not null
+             ,Vporcentajedescuento                 -- porcentajedescuento      numeric(20,5)   not null
+             ,Vmontodescuento                      -- montodescuento           numeric(20,0)   not null
+             ,Vexento                              -- exento                   numeric(20,0)   not null
+             ,Vafecto                              -- afecto                   numeric(20,0)   not null
+             ,VVimpuestos                          -- impuestos                numeric(20,2)   not null
+             ,Vtotallinea                          -- totallinea               numeric(20,2)   not null
              ,Vidusuacrearegistro                  -- idusuacrearegistro       numeric(20,0)   not null
              ,current_timestamp                    -- fechacrearegistro        timestamp       not null
              ,null                                 -- idusuamodifregistro      numeric(20,0)       null

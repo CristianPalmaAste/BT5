@@ -75,8 +75,8 @@ psql -d $DBNAME -U $USUARIO_DB < 01300_f_validar_nove_ins.sql > 01310_f_validar_
 echo "  01400_f_validar_dove_ins"
 psql -d $DBNAME -U $USUARIO_DB < 01400_f_validar_dove_ins.sql > 01410_f_validar_dove_ins.txt
 
-echo "  01500_f_valor_linea_det_vta"
-psql -d $DBNAME -U $USUARIO_DB < 01500_f_valor_linea_det_vta.sql > 01510_f_valor_linea_det_vta.txt
+echo "  01500_f_datos_linea_vta"
+psql -d $DBNAME -U $USUARIO_DB < 01500_f_datos_linea_vta.sql > 01510_f_datos_linea_vta.txt
 
 cd ..
 

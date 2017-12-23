@@ -15,12 +15,13 @@ declare
   aux              numeric;
   Vvalorunitario   numeric;
   Vidtipr          numeric;
+  Vidtise          numeric;
   Vestaexento      char(1);
   Vsub_total       numeric;
   Vvalor_impuesto  numeric;
   Veste_impuesto   numeric;
   Vimpuestos       numeric;
-  C_impuestos cursor for
+  C_impuestos_prod cursor for
     select valor
     from   impuestos
     where  idpais      = Vidpais
@@ -34,6 +35,13 @@ declare
     and    tipi.idtipr      = Vidtipr
     and    impu.obligatorio = 'N'
     and    impu.idpais      = Vidpais
+    ;
+  C_impuestos_serv cursor for
+    select valor
+    from   impuestos
+    where  idpais      = Vidpais
+    and    obligatorio = 'S'
+    and    Vestaexento = 'N'
     ;
 begin
   /*
@@ -104,19 +112,16 @@ begin
     ;
     Vsub_total := Pcantidad*Vvalorunitario - Pmonto_dscto;
     Vimpuestos := 0;
-    open C_impuestos;
+    open C_impuestos_prod;
     loop
-      fetch C_impuestos into Vvalor_impuesto;
+      fetch C_impuestos_prod into Vvalor_impuesto;
       exit when not found;
       Veste_impuesto := round((Vsub_total * Vvalor_impuesto) / 100);
       Vimpuestos     := Vimpuestos + Veste_impuesto;
     end loop;
-    close C_impuestos;
+    close C_impuestos_prod;
     return(Vimpuestos);
   else /* servicio */
-return(0);
-
-
     select count(*)
     into   aux
     from   servicios
@@ -126,19 +131,55 @@ return(0);
       return(0);
     end if;
     select valorunitario
-          ,idtipr
+          ,idtise
     into   Vvalorunitario
-          ,Vidtipr
+          ,Vidtise
     from   servicios
     where  id = Pidserv
     ;
     if Pdato_deseado = 1 then
       return(Vvalorunitario);
     end if;
-
-
-
-
+    select estaexento
+    into   Vestaexento
+    from   tipos_servicios
+    where  id = Vidtise
+    ;
+    if Pdato_deseado in (2, 3) then
+      if Vestaexento = 'S' then
+        if Pdato_deseado = 2 then
+          return(Pcantidad*Vvalorunitario - Pmonto_dscto);
+        else
+          return(0);
+        end if;
+      else
+        if Pdato_deseado = 2 then
+          return(0);
+        else
+          return(Pcantidad*Vvalorunitario - Pmonto_dscto);
+        end if;
+      end if;
+    end if;
+    select grem.idpais
+    into   Vidpais
+    from   grupos_empresariales grem
+          ,empresas             empr
+          ,servicios            serv
+    where  grem.id = empr.idgrem
+    and    empr.id = serv.idempr
+    and    serv.id = Pidserv
+    ;
+    Vsub_total := Pcantidad*Vvalorunitario - Pmonto_dscto;
+    Vimpuestos := 0;
+    open C_impuestos_serv;
+    loop
+      fetch C_impuestos_serv into Vvalor_impuesto;
+      exit when not found;
+      Veste_impuesto := round((Vsub_total * Vvalor_impuesto) / 100);
+      Vimpuestos     := Vimpuestos + Veste_impuesto;
+    end loop;
+    close C_impuestos_serv;
+    return(Vimpuestos);
   end if;
 end;
 $$ LANGUAGE plpgsql;
@@ -151,4 +192,9 @@ select 'impuestos prod 1: '    || f_datos_linea_vta(1   , null, 5, 100, 4);
 select f_datos_linea_vta(16  , null, 1, 100, 1);
 select f_datos_linea_vta(17  , null, 1, 100, 1);
 select f_datos_linea_vta(null, 1   , 5, 100, 1);
+
+select 'precio venta serv 1: ' || f_datos_linea_vta(null, 5, 0, 0  , 1);
+select 'exento serv 1: '       || f_datos_linea_vta(null, 5, 5, 100, 2);
+select 'afecto serv 1: '       || f_datos_linea_vta(null, 5, 5, 100, 3);
+select 'impuestos serv 1: '    || f_datos_linea_vta(null, 5, 5, 100, 4);
 

@@ -3,16 +3,16 @@ DROP VIEW
 CREATE VIEW
  id | idgrem | holding |   rut    | dv | primernombre  | segundonombre | apellidopaterno | apellidomaterno |            email             |  fechanac  | idesci | estadocivil | idsexo |   sexo    | idpais | nacionalidad 
 ----+--------+---------+----------+----+---------------+---------------+-----------------+-----------------+------------------------------+------------+--------+-------------+--------+-----------+--------+--------------
+  1 |      1 | BT5     | 1        | 9  | ADMINISTRADOR |               | SISTEMA         | AS              |                              |            |        |             |        |           |        | 
+  2 |      1 | BT5     | 2        | 7  | ROLANDO       |               | SILVA           | -               |                              |            |      2 | CASADO      |      1 | MASCULINO |      1 | CHILENA
+  3 |      1 | BT5     | 3        | 5  | SERGIO        |               | AGUIRRE         | -               | sergio.aguirre@bt5.cl        |            |      1 | SOLTERO     |      1 | MASCULINO |      1 | CHILENA
   4 |      1 | BT5     | 4        | 3  | JUAN          | JOSE          | MONSALVE        | -               | juan.jose.monsalve@bt5.cl    |            |        |             |      1 | MASCULINO |      1 | CHILENA
   5 |      1 | BT5     | 5        | 1  | JUAN          | ANDRES        | BORZONE         | -               |                              |            |        |             |      1 | MASCULINO |      1 | CHILENA
-  2 |      1 | BT5     | 2        | 7  | ROLANDO       |               | SILVA           | -               |                              |            |      2 | CASADO      |      1 | MASCULINO |      1 | CHILENA
+  6 |      1 | BT5     | 6        | K  | RODRIGO       |               | CIFUENTES       | -               | rodrigo.cifuentes@bt5.cl     |            |      1 | SOLTERO     |      1 | MASCULINO |      1 | CHILENA
   7 |      1 | BT5     | 7695503  | 4  | ROBERTO       | DANIEL        | QUEZADA         | ASTE            | roberto.quezada@bt5.cl       |            |      2 | CASADO      |      1 | MASCULINO |      1 | CHILENA
   8 |      1 | BT5     | 8965445  | 9  | OSCIEL        | SEGUNDO       | SOLAR           | MALDONADO       | solar2design@gmail.com       |            |      2 | CASADO      |      1 | MASCULINO |      1 | CHILENA
-  3 |      1 | BT5     | 3        | 5  | SERGIO        |               | AGUIRRE         | -               | sergio.aguirre@bt5.cl        |            |      1 | SOLTERO     |      1 | MASCULINO |      1 | CHILENA
-  6 |      1 | BT5     | 6        | K  | RODRIGO       |               | CIFUENTES       | -               | rodrigo.cifuentes@bt5.cl     |            |      1 | SOLTERO     |      1 | MASCULINO |      1 | CHILENA
   9 |      1 | BT5     | 13254825 | 0  | NILTON        | PATRICIO      | SALAZAR         | GONZALEZ        | nilton.salazar@gmail.com     |            |      1 | SOLTERO     |      1 | MASCULINO |      1 | CHILENA
  10 |      1 | BT5     | 10917721 | 0  | G. CRISTIAN   |               | PALMA           | ASTE            | gerardo.palma.aste@gmail.com | 1968-11-12 |      1 | SOLTERO     |      1 | MASCULINO |      1 | CHILENA
-  1 |      1 | BT5     | 1        | 9  | ADMINISTRADOR |               | SISTEMA         | AS              |                              |            |        |             |        |           |        | 
 (10 filas)
 
 DROP VIEW

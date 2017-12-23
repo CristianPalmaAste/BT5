@@ -6,7 +6,7 @@ SET
 
                 ?column?                
 ----------------------------------------
- create sequence empr_seq start with 10
+ create sequence empr_seq start with 12
 (1 fila)
 
                 ?column?                
@@ -41,27 +41,27 @@ SET
 
                 ?column?                
 ----------------------------------------
- create sequence gere_seq start with 36
+ create sequence gere_seq start with 46
 (1 fila)
 
                 ?column?                
 ----------------------------------------
- create sequence proy_seq start with 43
+ create sequence proy_seq start with 55
 (1 fila)
 
                 ?column?                
 ----------------------------------------
- create sequence line_seq start with 50
+ create sequence line_seq start with 64
 (1 fila)
 
                 ?column?                
 ----------------------------------------
- create sequence ceco_seq start with 36
+ create sequence ceco_seq start with 46
 (1 fila)
 
                 ?column?                
 ----------------------------------------
- create sequence tare_seq start with 29
+ create sequence tare_seq start with 37
 (1 fila)
 
                 ?column?                
@@ -101,12 +101,12 @@ SET
 
                  ?column?                 
 ------------------------------------------
- create sequence uspe_seq start with 1023
+ create sequence uspe_seq start with 1062
 (1 fila)
 
                 ?column?                 
 -----------------------------------------
- create sequence pepr_seq start with 203
+ create sequence pepr_seq start with 215
 (1 fila)
 
                 ?column?                 
@@ -266,7 +266,7 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence clie_seq start with 1
+ create sequence clie_seq start with 2
 (1 fila)
 
                ?column?                
@@ -291,12 +291,12 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence cove_seq start with 1
+ create sequence cove_seq start with 2
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence decv_seq start with 1
+ create sequence decv_seq start with 3
 (1 fila)
 
                 ?column?                

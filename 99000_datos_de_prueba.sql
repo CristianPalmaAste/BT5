@@ -1,4 +1,4 @@
---set client_min_messages to warning;
+set client_min_messages to warning;
 
 create or replace function tmp_datos_de_prueba () returns varchar(100) as
 $$
@@ -84,7 +84,6 @@ begin
     insert into tareas values (nextval('tare_seq'), Vidempr, 'TAREA SECUNDARIA', 1, current_timestamp, null, null, null, null);
     insert into tareas values (nextval('tare_seq'), Vidempr, 'OTRA TAREA'      , 1, current_timestamp, null, null, null, null);
     insert into tareas values (nextval('tare_seq'), Vidempr, 'ULTIMA TAREA'    , 1, current_timestamp, null, null, null, null);
-    /*
     select nextval('uspe_seq') into Viduspe;
     insert into usuarios_perfiles values (Viduspe, Vidusua, 12, null, Vidempr, 1, 1, current_timestamp, null, null, null, null);
     select nextval('empr_seq') into Vidempr;
@@ -149,34 +148,30 @@ begin
     insert into tareas values (nextval('tare_seq'), Vidempr, 'ULTIMA TAREA'    , 1, current_timestamp, null, null, null, null);
     select nextval('uspe_seq') into Viduspe;
     insert into usuarios_perfiles values (Viduspe, Vidusua, 17, null, Vidempr, 1, 1, current_timestamp, null, null, null, null);
-    */
-    --
-    /*
     select nextval('pepr_seq') into Vidpepr;
-    insert into perfiles_programas values (Vidpepr, 8 , 1, 1, current_timestamp, null, null, null, null);
+    insert into perfiles_programas values (Vidpepr, 8 , 1000, 1, current_timestamp, null, null, null, null);
     select nextval('pepr_seq') into Vidpepr;
-    insert into perfiles_programas values (Vidpepr, 8 , 2, 1, current_timestamp, null, null, null, null);
+    insert into perfiles_programas values (Vidpepr, 8 , 1010, 1, current_timestamp, null, null, null, null);
     select nextval('pepr_seq') into Vidpepr;
-    insert into perfiles_programas values (Vidpepr, 8 , 3, 1, current_timestamp, null, null, null, null);
+    insert into perfiles_programas values (Vidpepr, 8 , 1020, 1, current_timestamp, null, null, null, null);
     select nextval('pepr_seq') into Vidpepr;
-    insert into perfiles_programas values (Vidpepr, 12, 1, 1, current_timestamp, null, null, null, null);
+    insert into perfiles_programas values (Vidpepr, 12, 1000, 1, current_timestamp, null, null, null, null);
     select nextval('pepr_seq') into Vidpepr;
-    insert into perfiles_programas values (Vidpepr, 12, 2, 1, current_timestamp, null, null, null, null);
+    insert into perfiles_programas values (Vidpepr, 12, 1010, 1, current_timestamp, null, null, null, null);
     select nextval('pepr_seq') into Vidpepr;
-    insert into perfiles_programas values (Vidpepr, 12, 3, 1, current_timestamp, null, null, null, null);
+    insert into perfiles_programas values (Vidpepr, 12, 1020, 1, current_timestamp, null, null, null, null);
     select nextval('pepr_seq') into Vidpepr;
-    insert into perfiles_programas values (Vidpepr, 15, 1, 1, current_timestamp, null, null, null, null);
+    insert into perfiles_programas values (Vidpepr, 15, 1000, 1, current_timestamp, null, null, null, null);
     select nextval('pepr_seq') into Vidpepr;
-    insert into perfiles_programas values (Vidpepr, 15, 2, 1, current_timestamp, null, null, null, null);
+    insert into perfiles_programas values (Vidpepr, 15, 1010, 1, current_timestamp, null, null, null, null);
     select nextval('pepr_seq') into Vidpepr;
-    insert into perfiles_programas values (Vidpepr, 15, 3, 1, current_timestamp, null, null, null, null);
+    insert into perfiles_programas values (Vidpepr, 15, 1020, 1, current_timestamp, null, null, null, null);
     select nextval('pepr_seq') into Vidpepr;
-    insert into perfiles_programas values (Vidpepr, 17, 1, 1, current_timestamp, null, null, null, null);
+    insert into perfiles_programas values (Vidpepr, 17, 1000, 1, current_timestamp, null, null, null, null);
     select nextval('pepr_seq') into Vidpepr;
-    insert into perfiles_programas values (Vidpepr, 17, 2, 1, current_timestamp, null, null, null, null);
+    insert into perfiles_programas values (Vidpepr, 17, 1010, 1, current_timestamp, null, null, null, null);
     select nextval('pepr_seq') into Vidpepr;
-    insert into perfiles_programas values (Vidpepr, 17, 3, 1, current_timestamp, null, null, null, null);
-    */
+    insert into perfiles_programas values (Vidpepr, 17, 1020, 1, current_timestamp, null, null, null, null);
 
   select nextval('grem_seq') into Vidgrem;
   insert into grupos_empresariales values (Vidgrem, 'CRUZ VERDE'        , 'CV'  , 'hold_cruz_verde.jpg'      , 1, 1, 1, current_timestamp, null, null, null, null);
@@ -492,8 +487,6 @@ select tmp_usuario_acc_total()
 drop function tmp_usuario_acc_total()
 ;
 
-\q
-
 -- Lo sgte. le crea muchos perfiles a OS, NS y CP (adm. del sistema y en holding FCV)
 
 delete from usuarios_perfiles
@@ -576,11 +569,12 @@ begin
                                          ,null                       -- idline                   numeric(20,0)       null
                                          ,null                       -- idceco                   numeric(20,0)       null
                                          ,null                       -- idtare                   numeric(20,0)       null
-                                         ,1000                       -- subtotal                 numeric(20,0)   not null
+                                         ,0                          -- exento                   numeric(20,0)   not null
+                                         ,3000                       -- afecto                   numeric(20,0)   not null
+                                         ,570                        -- impuestos                numeric(20,0)   not null
                                          ,0                          -- porcentajedescuento      numeric(20,2)   not null
                                          ,0                          -- montodescuento           numeric(20,2)   not null
-                                         ,190                        -- valorimpuestos           numeric(20,0)   not null
-                                         ,1190                       -- total                    numeric(20,0)   not null
+                                         ,3570                       -- total                    numeric(20,0)   not null
                                          ,5                          -- diasvalidez              numeric(20,0)   not null
                                          ,1                          -- idescv                   numeric(20,0)   not null
                                          ,1                          -- idusuacrearegistro       numeric(20,0)   not null
@@ -596,12 +590,14 @@ begin
                                           ,1                                         -- correlativo              numeric(20,0)   not null
                                           ,1                                         -- idprod                   numeric(20,0)       null
                                           ,null                                      -- idserv                   numeric(20,0)       null
+                                          ,500                                       -- preciounitario           numeric(20,0)   not null
                                           ,2                                         -- cantidad                 numeric(20,2)   not null
-                                          ,200                                       -- preciounitario           numeric(20,0)   not null
                                           ,0                                         -- porcentajedescuento      numeric(20,2)   not null
                                           ,0                                         -- montodescuento           numeric(20,2)   not null
-                                          ,76                                        -- impuestos                numeric(20,2)   not null
-                                          ,476                                       -- subtotal                 numeric(20,2)   not null
+                                          ,0                                         -- exento                   numeric(20,0)   not null
+                                          ,1000                                      -- afecto                   numeric(20,0)   not null
+                                          ,190                                       -- impuestos                numeric(20,2)   not null
+                                          ,1190                                      -- totallinea               numeric(20,2)   not null
                                           ,1                                         -- idusuacrearegistro       numeric(20,0)   not null
                                           ,current_timestamp                         -- fechacrearegistro        timestamp       not null
                                           ,null                                      -- idusuamodifregistro      numeric(20,0)       null
@@ -615,12 +611,14 @@ begin
                                           ,2                                         -- correlativo              numeric(20,0)   not null
                                           ,2                                         -- idprod                   numeric(20,0)       null
                                           ,null                                      -- idserv                   numeric(20,0)       null
-                                          ,4                                         -- cantidad                 numeric(20,2)   not null
-                                          ,150                                       -- preciounitario           numeric(20,0)   not null
+                                          ,100                                       -- preciounitario           numeric(20,0)   not null
+                                          ,20                                        -- cantidad                 numeric(20,2)   not null
                                           ,0                                         -- porcentajedescuento      numeric(20,2)   not null
                                           ,0                                         -- montodescuento           numeric(20,2)   not null
-                                          ,114                                       -- impuestos                numeric(20,2)   not null
-                                          ,714                                       -- subtotal                 numeric(20,2)   not null
+                                          ,0                                         -- exento                   numeric(20,0)   not null
+                                          ,2000                                      -- afecto                   numeric(20,0)   not null
+                                          ,380                                       -- impuestos                numeric(20,2)   not null
+                                          ,2380                                      -- totallinea               numeric(20,2)   not null
                                           ,1                                         -- idusuacrearegistro       numeric(20,0)   not null
                                           ,current_timestamp                         -- fechacrearegistro        timestamp       not null
                                           ,null                                      -- idusuamodifregistro      numeric(20,0)       null
@@ -639,6 +637,7 @@ select tmp_datos_de_prueba_vtas()
 drop function tmp_datos_de_prueba_vtas()
 ;
 
+/*
 update cotizaciones_ventas
 set    idescv = 2
 ;
@@ -654,5 +653,6 @@ set    idesnv = 2
 update notas_ventas
 set    idesnv = 3
 ;
+*/
 
 \q

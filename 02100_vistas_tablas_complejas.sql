@@ -63,6 +63,7 @@ from             documentos_legales         dole
        left join empresas                   empr on dole.idempr = empr.id
        left join tipos_documentos_legales   tidl on dole.idtidl = tidl.id
        left join estados_documentos_legales esdl on dole.idesdl = esdl.id
+where  empr.idusuaborraregistro is null
 ;
 
 select *
@@ -86,6 +87,7 @@ select grem.id               id
 from             grupos_empresariales grem
        left join paises               pais on grem.idpais = pais.id
        left join estados_grem         esge on grem.idesge = esge.id
+where  grem.idusuaborraregistro is null
 ;
 
 select *
@@ -117,6 +119,8 @@ from             empresas                empr
        left join paises                  pais on empr.idpais = pais.id
        left join rubros                  rubr on empr.idrubr = rubr.id
        left join estados_registros       esre on empr.idesre = esre.id
+where  empr.idusuaborraregistro is null
+and    grem.idusuaborraregistro is null
 ;
 
 select *
@@ -146,6 +150,10 @@ from                   usuarios_perfiles    uspe
        left outer join grupos_empresariales grem on uspe.idgrem = grem.id
        left outer join empresas             empr on uspe.idempr = empr.id
        left       join estados_registros    esre on uspe.idesre = esre.id
+where  uspe.idusuaborraregistro is null
+and    usua.idusuaborraregistro is null
+and    grem.idusuaborraregistro is null
+and    empr.idusuaborraregistro is null
 ;
 
 select *
@@ -166,6 +174,7 @@ select pepr.id               id
 from             perfiles_programas pepr
        left join perfiles           perf on pepr.idperf = perf.id
        left join programas          prog on pepr.idprog = prog.id
+where  pepr.idusuaborraregistro is null
 ;
 
 select *
@@ -219,6 +228,8 @@ from                   clientes             clie
        left outer join grupos_empresariales grem on clie.idgrem = grem.id
        left outer join paises               pais on clie.idpais = pais.id
        left outer join tipos_clientes       ticl on clie.idticl = ticl.id
+where  clie.idusuaborraregistro is null
+and    grem.idusuaborraregistro is null
 ;
 
 select *

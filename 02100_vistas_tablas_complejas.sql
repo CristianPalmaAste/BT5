@@ -260,6 +260,8 @@ from                   productos                  prod
        left outer join tipos_productos            tipr on prod.idtipr = tipr.id
        left outer join unidades_medidas_productos unmp on prod.idunmp = unmp.id
        left outer join origenes_productos         orpr on prod.idorpr = orpr.id
+where  prod.idusuaborraregistro is null
+and    empr.idusuaborraregistro is null
 ;
 
 select *
@@ -290,6 +292,8 @@ from                   servicios                  serv
        left outer join tipos_servicios            tise on serv.idtise = tise.id
        left outer join unidades_medidas_servicios unms on serv.idunms = unms.id
        left outer join monedas                    mone on serv.idmone = mone.id
+where  serv.idusuaborraregistro is null
+and    empr.idusuaborraregistro is null
 ;
 
 select *

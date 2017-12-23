@@ -457,10 +457,12 @@ begin
   insert into productos values (16, 1, 15, 9, 1, 'LIBRO DE RECETAS MASTER CHEF'     , 5000, 1, current_timestamp, null, null, null, null);
   insert into productos values (17, 1, 5 , 9, 1, 'PISCO CAPEL 35°'                  , 3000, 1, current_timestamp, null, null, null, null);
 
-  insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'CONSULTOR JUNIOR'   , 0.5  , 501, 1, current_timestamp, null, null, null, null);
-  insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'CONSULTOR SENIOR'   , 1    , 501, 1, current_timestamp, null, null, null, null);
-  insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'JEFE DE PROYECTO'   , 1.5  , 501, 1, current_timestamp, null, null, null, null);
-  insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'GERENTE DE PROYECTO', 3    , 501, 1, current_timestamp, null, null, null, null);
+  insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'CONSULTOR JUNIOR'    , 0.5   , 501, 1, current_timestamp, null, null, null, null);
+  insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'CONSULTOR SENIOR'    , 1     , 501, 1, current_timestamp, null, null, null, null);
+  insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'JEFE DE PROYECTO'    , 1.5   , 501, 1, current_timestamp, null, null, null, null);
+  insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'GERENTE DE PROYECTO' , 3     , 501, 1, current_timestamp, null, null, null, null);
+  insert into servicios values (nextval('serv_seq'), 1 , 2 , 1, 'ASEO'                , 5000  , 1  , 1, current_timestamp, null, null, null, null);
+  insert into servicios values (nextval('serv_seq'), 1 , 2 , 1, 'GUARDIA DE SEGURIDAD', 10000 , 1  , 1, current_timestamp, null, null, null, null);
 
   -- petición JJM: usuario con perfil de "legales"
   select nextval('pers_seq') into Vidpers;

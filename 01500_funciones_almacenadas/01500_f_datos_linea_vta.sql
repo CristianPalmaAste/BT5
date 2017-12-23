@@ -113,8 +113,32 @@ begin
     end loop;
     close C_impuestos;
     return(Vimpuestos);
-  else
+  else /* servicio */
 return(0);
+
+
+    select count(*)
+    into   aux
+    from   servicios
+    where  id = Pidserv
+    ;
+    if aux = 0 then
+      return(0);
+    end if;
+    select valorunitario
+          ,idtipr
+    into   Vvalorunitario
+          ,Vidtipr
+    from   servicios
+    where  id = Pidserv
+    ;
+    if Pdato_deseado = 1 then
+      return(Vvalorunitario);
+    end if;
+
+
+
+
   end if;
 end;
 $$ LANGUAGE plpgsql;

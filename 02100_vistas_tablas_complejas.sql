@@ -28,6 +28,8 @@ from                   personas             pers
        left outer join estados_civiles      esci on pers.idesci = esci.id
        left outer join sexos                sexo on pers.idsexo = sexo.id
        left outer join paises               pais on pers.idpais = pais.id
+where  pers.idusuaborraregistro is null
+and    grem.idusuaborraregistro is null
 ;
 
 select *

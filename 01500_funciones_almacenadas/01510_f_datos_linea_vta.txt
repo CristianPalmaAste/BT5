@@ -34,3 +34,23 @@ CREATE FUNCTION
                  0
 (1 fila)
 
+        ?column?        
+------------------------
+ precio venta serv 1: 0
+(1 fila)
+
+     ?column?     
+------------------
+ exento serv 1: 0
+(1 fila)
+
+     ?column?     
+------------------
+ afecto serv 1: 0
+(1 fila)
+
+      ?column?       
+---------------------
+ impuestos serv 1: 0
+(1 fila)
+

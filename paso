@@ -106,7 +106,7 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence pepr_seq start with 202
+ create sequence pepr_seq start with 203
 (1 fila)
 
                 ?column?                 
@@ -306,7 +306,7 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence serv_seq start with 5
+ create sequence serv_seq start with 7
 (1 fila)
 
                ?column?                

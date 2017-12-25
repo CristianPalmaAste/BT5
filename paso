@@ -106,7 +106,7 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence pepr_seq start with 215
+ create sequence pepr_seq start with 220
 (1 fila)
 
                 ?column?                 

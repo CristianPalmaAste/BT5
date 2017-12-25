@@ -149,7 +149,7 @@ begin
              ,Vmontodescuento                      -- montodescuento           numeric(20,0)   not null
              ,Vexento                              -- exento                   numeric(20,0)   not null
              ,Vafecto                              -- afecto                   numeric(20,0)   not null
-             ,VVimpuestos                          -- impuestos                numeric(20,2)   not null
+             ,Vimpuestos                           -- impuestos                numeric(20,2)   not null
              ,Vtotallinea                          -- totallinea               numeric(20,2)   not null
              ,Vidusuacrearegistro                  -- idusuacrearegistro       numeric(20,0)   not null
              ,current_timestamp                    -- fechacrearegistro        timestamp       not null

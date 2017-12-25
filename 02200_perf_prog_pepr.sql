@@ -56,6 +56,11 @@ insert into programas values ( 2170,  2000, 'Mant. tipos servicios'             
 insert into programas values ( 2180,  2000, 'Mant. unidades territoriales 1'       , 'unidades-territoriales-1'        , 'Mantención unidades territoriales 1'       , 18);
 insert into programas values ( 2190,  2000, 'Mant. unidades territoriales 2'       , 'unidades-territoriales-2'        , 'Mantención unidades territoriales 2'       , 19);
 insert into programas values ( 2200,  2000, 'Mant. unidades territoriales 3'       , 'unidades-territoriales-3'        , 'Mantención unidades territoriales 3'       , 20);
+insert into programas values ( 2210,  2000, 'Mant. estados ventas'                 , 'estados-ventas'                  , 'Mantención estados ventas'                 , 21);
+insert into programas values ( 2220,  2000, 'Mant. origenes productos'             , 'origenes-productos'              , 'Mantención origenes productos'             , 22);
+insert into programas values ( 2230,  2000, 'Mant. tipos doctos. ventas'           , 'tipos-doctos-ventas'             , 'Mantención tipos doctos. ventas'           , 23);
+insert into programas values ( 2240,  2000, 'Mant. unidades medidas productos'     , 'unidades-medidas-productos'      , 'Mantención unidades medidas productos'     , 24);
+insert into programas values ( 2250,  2000, 'Mant. unidades medidas servicios'     , 'unidades-medidas-servicios'      , 'Mantención unidades medidas servicios'     , 25);
 insert into programas values ( 3000, null , 'Adm. holding'                         , null                              , 'Administracion holding'                    , 3 );
 insert into programas values ( 3010,  3000, 'Mantención empresas'                  , 'empresas'                        , 'Mantención empresas'                       , 1 );
 insert into programas values ( 3020,  3000, 'Mantención personas'                  , 'personas'                        , 'Mantención personas'                       , 2 );

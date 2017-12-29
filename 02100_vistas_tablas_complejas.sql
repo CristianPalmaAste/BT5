@@ -300,6 +300,56 @@ select *
 from   servv
 ;
 
+/*************************************************************************************************************************/
+
+drop view if exists covev
+;
+
+create or replace view covev as
+select cove.id                                                                                                                     id
+      ,cove.idempr                                                                                                                 idempr
+      ,empr.nombrefantasia                                                                                                         empresa
+      ,cove.numero                                                                                                                 numero_cotiz
+      ,cove.idclie                                                                                                                 idclie
+      ,coalesce(Clie.nombrefantasia,' ') || ' ' || coalesce(clie.primernombre,' ') || ' ' || coalesce(clie.apellidopaterno,' ')    cliente
+      ,cove.descripcioncotizacion                                                                                                  desc_cotiz
+      ,cove.idgere                                                                                                                 idgere
+      ,gere.nombre                                                                                                                 gerencia
+      ,cove.idproy                                                                                                                 idproy
+      ,proy.nombre                                                                                                                 proyecto
+      ,cove.idline                                                                                                                 idline
+      ,line.nombre                                                                                                                 linea_negocio
+      ,cove.idceco                                                                                                                 idceco
+      ,ceco.nombre                                                                                                                 centro_costo
+      ,cove.idtare                                                                                                                 idtare
+      ,tare.nombre                                                                                                                 tarea
+      ,cove.exento                                                                                                                 exento
+      ,cove.afecto                                                                                                                 afecto
+      ,cove.impuestos                                                                                                              impuestos
+      ,cove.porcentajedescuento                                                                                                    porcentajedescuento
+      ,cove.montodescuento                                                                                                         montodescuento
+      ,cove.total                                                                                                                  total
+      ,cove.diasvalidez                                                                                                            diasvalidez
+      ,cove.idescv                                                                                                                 idescv
+      ,escv.descripcion                                                                                                            estado_cotiz
+from                   cotizaciones_ventas        cove
+       left outer join empresas                   empr on cove.idempr = empr.id
+       left outer join clientes                   clie on cove.idclie = clie.id
+       left outer join gerencias                  gere on cove.idgere = gere.id
+       left outer join proyectos                  proy on cove.idproy = proy.id
+       left outer join lineas_negocios            line on cove.idline = line.id
+       left outer join centros_costos             ceco on cove.idceco = ceco.id
+       left outer join tareas                     tare on cove.idtare = tare.id
+       left outer join estados_cotizaciones_vtas  escv on cove.idescv = escv.id
+where  cove.idusuaborraregistro is null
+;
+
+select *
+from   covev
+;
+
+/*************************************************************************************************************************/
+
 \q
 
 
@@ -332,7 +382,6 @@ dovev
 dedvv
 novev
 denvv
-covev
 decvv
 prodv
 servv

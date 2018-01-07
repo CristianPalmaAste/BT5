@@ -1,4 +1,4 @@
-create or replace function f_validar_dove() returns trigger as
+create or replace function f_validar_vent() returns trigger as
 $body$
 declare
   aux      numeric;

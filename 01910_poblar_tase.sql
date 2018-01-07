@@ -52,7 +52,7 @@ insert into tablas_secuencias values ('tipos_productos_impuestos'    , 'tipi_seq
 insert into tablas_secuencias values ('tipos_doctos_ventas'          , 'tidv_seq');
 insert into tablas_secuencias values ('tipos_servicios'              , 'tise_seq');
 insert into tablas_secuencias values ('clientes'                     , 'clie_seq');
-insert into tablas_secuencias values ('documentos_ventas'            , 'dove_seq');
+insert into tablas_secuencias values ('ventas'                       , 'vent_seq');
 insert into tablas_secuencias values ('detalles_doctos_vtas'         , 'dedv_seq');
 insert into tablas_secuencias values ('notas_ventas'                 , 'nove_seq');
 insert into tablas_secuencias values ('detalles_notas_vtas'          , 'denv_seq');

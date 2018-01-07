@@ -1,4 +1,4 @@
-create or replace function f_validar_dove_ins() returns trigger as
+create or replace function f_validar_vent_ins() returns trigger as
 $body$
 declare
   Vmensaje varchar(1000);

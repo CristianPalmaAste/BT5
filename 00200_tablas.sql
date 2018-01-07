@@ -904,10 +904,10 @@ create table formas_pagos_ventas (
 )
 ;
 
-alter table formas_pagos_ventas add constraint fopv_pk primary key (id)
+alter table formas_pagos_ventas add constraint fpve_pk primary key (id)
 ;
 
-alter table formas_pagos_ventas add constraint fopv_uk_01 unique (idvent, idtifp)
+alter table formas_pagos_ventas add constraint fpve_uk_01 unique (idvent, idtifp)
 ;
 
 /*************************************************************************************************************************/

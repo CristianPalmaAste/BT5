@@ -57,14 +57,14 @@ psql -d $DBNAME -U $USUARIO_DB < 00700_f_validar_cove.sql > 00710_f_validar_cove
 echo "  00800_f_validar_nove"
 psql -d $DBNAME -U $USUARIO_DB < 00800_f_validar_nove.sql > 00810_f_validar_nove.txt
 
-echo "  00900_f_validar_dove"
-psql -d $DBNAME -U $USUARIO_DB < 00900_f_validar_dove.sql > 00910_f_validar_dove.txt
+echo "  00900_f_validar_vent"
+psql -d $DBNAME -U $USUARIO_DB < 00900_f_validar_vent.sql > 00910_f_validar_vent.txt
 
 echo "  01000_f_copiar_cove_a_nove"
 psql -d $DBNAME -U $USUARIO_DB < 01000_f_copiar_cove_a_nove.sql > 01010_f_copiar_cove_a_nove.txt
 
-#echo "  01100_f_copiar_nove_a_dove"
-#psql -d $DBNAME -U $USUARIO_DB < 01100_f_copiar_nove_a_dove.sql > 01110_f_copiar_nove_a_dove.txt
+#echo "  01100_f_copiar_nove_a_vent"
+#psql -d $DBNAME -U $USUARIO_DB < 01100_f_copiar_nove_a_vent.sql > 01110_f_copiar_nove_a_vent.txt
 
 echo "  01200_f_validar_cove_ins"
 psql -d $DBNAME -U $USUARIO_DB < 01200_f_validar_cove_ins.sql > 01210_f_validar_cove_ins.txt
@@ -72,8 +72,8 @@ psql -d $DBNAME -U $USUARIO_DB < 01200_f_validar_cove_ins.sql > 01210_f_validar_
 echo "  01300_f_validar_nove_ins"
 psql -d $DBNAME -U $USUARIO_DB < 01300_f_validar_nove_ins.sql > 01310_f_validar_nove_ins.txt
 
-echo "  01400_f_validar_dove_ins"
-psql -d $DBNAME -U $USUARIO_DB < 01400_f_validar_dove_ins.sql > 01410_f_validar_dove_ins.txt
+echo "  01400_f_validar_vent_ins"
+psql -d $DBNAME -U $USUARIO_DB < 01400_f_validar_vent_ins.sql > 01410_f_validar_vent_ins.txt
 
 echo "  01500_f_datos_linea_vta"
 psql -d $DBNAME -U $USUARIO_DB < 01500_f_datos_linea_vta.sql > 01510_f_datos_linea_vta.txt
@@ -96,8 +96,8 @@ psql -d $DBNAME -U $USUARIO_DB < 00300_trg_before_upd_cove.sql > 00310_trg_befor
 echo "  00400_trg_before_upd_nove"
 psql -d $DBNAME -U $USUARIO_DB < 00400_trg_before_upd_nove.sql > 00410_trg_before_upd_nove.txt
 
-echo "  00500_trg_before_upd_dove"
-psql -d $DBNAME -U $USUARIO_DB < 00500_trg_before_upd_dove.sql > 00510_trg_before_upd_dove.txt
+echo "  00500_trg_before_upd_vent"
+psql -d $DBNAME -U $USUARIO_DB < 00500_trg_before_upd_vent.sql > 00510_trg_before_upd_vent.txt
 
 echo "  00600_trg_after_upd_cove"
 psql -d $DBNAME -U $USUARIO_DB < 00600_trg_after_upd_cove.sql > 00610_trg_after_upd_cove.txt
@@ -111,8 +111,8 @@ psql -d $DBNAME -U $USUARIO_DB < 00800_trg_before_ins_cove.sql > 00810_trg_befor
 echo "  00900_trg_before_ins_nove"
 psql -d $DBNAME -U $USUARIO_DB < 00900_trg_before_ins_nove.sql > 00910_trg_before_ins_nove.txt
 
-echo "  01000_trg_before_ins_dove"
-psql -d $DBNAME -U $USUARIO_DB < 01000_trg_before_ins_dove.sql > 01010_trg_before_ins_dove.txt
+echo "  01000_trg_before_ins_vent"
+psql -d $DBNAME -U $USUARIO_DB < 01000_trg_before_ins_vent.sql > 01010_trg_before_ins_vent.txt
 
 cd ..
 

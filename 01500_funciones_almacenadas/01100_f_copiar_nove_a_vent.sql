@@ -3,7 +3,6 @@ $body$
 declare
   Vidvent                   numeric;
   Vnumero                   numeric;
-  Vid                       numeric;
   Vcorrelativo              numeric;
   Vidprod                   numeric;
   Vidserv                   numeric;
@@ -20,9 +19,11 @@ declare
   Vexento                   numeric;
   Vafecto                   numeric;
   Vtotallinea               numeric;
+  Vidnove                   numeric;
+  Vidtifp                   numeric;
+  Vmonto                    numeric;
   C_denv cursor for
-    select id
-          ,correlativo
+    select correlativo
           ,idprod
           ,idserv
           ,preciounitario
@@ -37,8 +38,14 @@ declare
     from   detalles_notas_vtas
     where  idnove = new.id
     ;
+  C_fpnv cursor for
+    select idtifp
+          ,monto
+          ,idusuacrearegistro
+    from   formas_pagos_notas_ventas
+    where  idnove = new.id
+    ;
 begin
-insert into cpalma values (1, 'm1');
   if old.idesnv = 2 and new.idesnv = 3 then
     select idpais
     into   Vidpais
@@ -116,8 +123,7 @@ insert into cpalma values (1, 'm1');
     ;
     open C_denv;
     loop
-      fetch C_denv into Vid
-                       ,Vcorrelativo
+      fetch C_denv into Vcorrelativo
                        ,Vidprod
                        ,Vidserv
                        ,Vpreciounitario
@@ -177,6 +183,70 @@ insert into cpalma values (1, 'm1');
       ;
     end loop;
     close C_denv;
+
+
+
+
+
+
+    open C_fpnv;
+    loop
+      fetch C_fpnv into Vidtifp
+                       ,Vmonto
+                       ,Vidusuacrearegistro
+                       ;
+      exit when not found;
+      select nextval('fpve_seq')
+      into   Vidfpve
+      ;
+      insert into formas_pagos_ventas (id                       -- numeric(20,0)   not null
+                                       ,idvent                   -- numeric(20,0)   not null
+                                       ,correlativo              -- numeric(20,0)   not null
+                                       ,idprod                   -- numeric(20,0)       null
+                                       ,idserv                   -- numeric(20,0)       null
+                                       ,preciounitario           -- numeric(20,0)   not null
+                                       ,cantidad                 -- numeric(20,2)   not null
+                                       ,porcentajedescuento      -- numeric(20,2)   not null
+                                       ,montodescuento           -- numeric(20,2)   not null
+                                       ,exento                   -- numeric(20,2)   not null
+                                       ,afecto                   -- numeric(20,2)   not null
+                                       ,impuestos                -- numeric(20,2)   not null
+                                       ,totallinea               -- numeric(20,2)   not null
+                                       ,idusuacrearegistro       -- numeric(20,0)   not null
+                                       ,fechacrearegistro        -- timestamp       not null
+                                       ,idusuamodifregistro      -- numeric(20,0)       null
+                                       ,fechamodifregistro       -- timestamp           null
+                                       ,idusuaborraregistro      -- numeric(20,0)       null
+                                       ,fechaborraregistro       -- timestamp           null
+                                       )
+      values (Viddedv                              -- id                       numeric(20,0)   not null
+             ,Vidvent                              -- idvent                   numeric(20,0)   not null
+             ,Vcorrelativo                         -- correlativo              numeric(20,0)   not null
+             ,Vidprod                              -- idprod                   numeric(20,0)       null
+             ,Vidserv                              -- idserv                   numeric(20,0)       null
+             ,Vpreciounitario                      -- preciounitario           numeric(20,0)   not null
+             ,Vcantidad                            -- cantidad                 numeric(20,2)   not null
+             ,Vporcentajedescuento                 -- porcentajedescuento      numeric(20,2)   not null
+             ,Vmontodescuento                      -- montodescuento           numeric(20,2)   not null
+             ,Vexento                              -- impuestos                numeric(20,2)   not null
+             ,Vafecto                              -- impuestos                numeric(20,2)   not null
+             ,Vimpuestos                           -- impuestos                numeric(20,2)   not null
+             ,Vtotallinea                          -- subtotal                 numeric(20,2)   not null
+             ,Vidusuacrearegistro                  -- idusuacrearegistro       numeric(20,0)   not null
+             ,current_timestamp                    -- fechacrearegistro        timestamp       not null
+             ,null                                 -- idusuamodifregistro      numeric(20,0)       null
+             ,null                                 -- fechamodifregistro       timestamp           null
+             ,null                                 -- idusuaborraregistro      numeric(20,0)       null
+             ,null                                 -- fechaborraregistro       timestamp           null
+             )
+      ;
+    end loop;
+    close C_fpnv;
+
+
+
+
+
   end if;
   return new;
 end;

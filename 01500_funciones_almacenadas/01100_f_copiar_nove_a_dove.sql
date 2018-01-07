@@ -1,7 +1,7 @@
-create or replace function f_copiar_nove_a_dove() returns trigger as
+create or replace function f_copiar_nove_a_vent() returns trigger as
 $body$
 declare
-  Viddove                   numeric;
+  Vidvent                   numeric;
   Vnumero                   numeric;
   Vid                       numeric;
   Vcorrelativo              numeric;
@@ -17,22 +17,28 @@ declare
   Viddedv                   numeric;
   Vidtidv                   numeric;
   Vidpais                   numeric;
+  Vexento                   numeric;
+  Vafecto                   numeric;
+  Vtotallinea               numeric;
   C_denv cursor for
     select id
           ,correlativo
           ,idprod
           ,idserv
-          ,cantidad
           ,preciounitario
+          ,cantidad
           ,porcentajedescuento
           ,montodescuento
+          ,exento
+          ,afecto
           ,impuestos
-          ,subtotal
+          ,totallinea
           ,idusuacrearegistro
     from   detalles_notas_vtas
     where  idnove = new.id
     ;
 begin
+insert into cpalma values (1, 'm1');
   if old.idesnv = 2 and new.idesnv = 3 then
     select idpais
     into   Vidpais
@@ -45,7 +51,7 @@ begin
     where  idpais = Vidpais
     ;
     select nextval('nove_seq')
-    into   Viddove
+    into   Vidvent
     ;
     select max(numero)
     into   Vnumero
@@ -55,33 +61,33 @@ begin
     if Vnumero is null then
       Vnumero := 1;
     end if;
-    insert into documentos_ventas (id                       -- numeric(20,0)   not null
-                                  ,idempr                   -- numeric(20,0)   not null
-                                  ,idnove                   -- numeric(20,0)       null
-                                  ,idtidv                   -- numeric(20,0)   not null
-                                  ,numero                   -- numeric(20,0)   not null
-                                  ,idclie                   -- numeric(20,0)   not null
-                                  ,descripciondoctoventa    -- varchar(1000)   not null
-                                  ,idgere                   -- numeric(20,0)       null
-                                  ,idproy                   -- numeric(20,0)       null
-                                  ,idline                   -- numeric(20,0)       null
-                                  ,idceco                   -- numeric(20,0)       null
-                                  ,idtare                   -- numeric(20,0)       null
-                                  ,exento                   -- numeric(20,0)   not null
-                                  ,afecto                   -- numeric(20,0)   not null
-                                  ,impuestos                -- numeric(20,0)   not null
-                                  ,porcentajedescuento      -- numeric(20,2)   not null
-                                  ,montodescuento           -- numeric(20,2)   not null
-                                  ,total                    -- numeric(20,0)   not null
-                                  ,idesve                   -- numeric(20,0)   not null
-                                  ,idusuacrearegistro       -- numeric(20,0)   not null
-                                  ,fechacrearegistro        -- timestamp       not null
-                                  ,idusuamodifregistro      -- numeric(20,0)       null
-                                  ,fechamodifregistro       -- timestamp           null
-                                  ,idusuaborraregistro      -- numeric(20,0)       null
-                                  ,fechaborraregistro       -- timestamp           null
-                                  )
-    values (Viddove                       -- id                       numeric(20,0)   not null
+    insert into ventas (id                       -- numeric(20,0)   not null
+                       ,idempr                   -- numeric(20,0)   not null
+                       ,idnove                   -- numeric(20,0)       null
+                       ,idtidv                   -- numeric(20,0)   not null
+                       ,numero                   -- numeric(20,0)   not null
+                       ,idclie                   -- numeric(20,0)   not null
+                       ,descripciondoctoventa    -- varchar(1000)   not null
+                       ,idgere                   -- numeric(20,0)       null
+                       ,idproy                   -- numeric(20,0)       null
+                       ,idline                   -- numeric(20,0)       null
+                       ,idceco                   -- numeric(20,0)       null
+                       ,idtare                   -- numeric(20,0)       null
+                       ,exento                   -- numeric(20,0)   not null
+                       ,afecto                   -- numeric(20,0)   not null
+                       ,impuestos                -- numeric(20,0)   not null
+                       ,porcentajedescuento      -- numeric(20,2)   not null
+                       ,montodescuento           -- numeric(20,2)   not null
+                       ,total                    -- numeric(20,0)   not null
+                       ,idesve                   -- numeric(20,0)   not null
+                       ,idusuacrearegistro       -- numeric(20,0)   not null
+                       ,fechacrearegistro        -- timestamp       not null
+                       ,idusuamodifregistro      -- numeric(20,0)       null
+                       ,fechamodifregistro       -- timestamp           null
+                       ,idusuaborraregistro      -- numeric(20,0)       null
+                       ,fechaborraregistro       -- timestamp           null
+                       )
+    values (Vidvent                       -- id                       numeric(20,0)   not null
            ,new.idempr                    -- idempr                   numeric(20,0)   not null
            ,new.id                        -- idnove                   numeric(20,0)       null
            ,Vidtidv                       -- idtidv                   numeric(20,0)   not null
@@ -96,8 +102,8 @@ begin
            ,new.exento                    -- exento                   numeric(20,0)   not null
            ,new.afecto                    -- afecto                   numeric(20,0)   not null
            ,new.impuestos                 -- impuestos                numeric(20,0)   not null
+           ,new.porcentajedescuento       -- porcentajedescuento      numeric(20,2)   not null
            ,new.montodescuento            -- montodescuento           numeric(20,2)   not null
-           ,new.valorimpuestos            -- valorimpuestos           numeric(20,0)   not null
            ,new.total                     -- total                    numeric(20,0)   not null
            ,1                             -- idesve                   numeric(20,0)   not null
            ,new.idusuacrearegistro        -- idusuacrearegistro       numeric(20,0)   not null
@@ -129,7 +135,7 @@ begin
       into   Viddedv
       ;
       insert into detalles_doctos_vtas (id                       -- numeric(20,0)   not null
-                                       ,iddove                   -- numeric(20,0)   not null
+                                       ,idvent                   -- numeric(20,0)   not null
                                        ,correlativo              -- numeric(20,0)   not null
                                        ,idprod                   -- numeric(20,0)       null
                                        ,idserv                   -- numeric(20,0)       null
@@ -149,7 +155,7 @@ begin
                                        ,fechaborraregistro       -- timestamp           null
                                        )
       values (Viddedv                              -- id                       numeric(20,0)   not null
-             ,Viddove                              -- iddove                   numeric(20,0)   not null
+             ,Vidvent                              -- idvent                   numeric(20,0)   not null
              ,Vcorrelativo                         -- correlativo              numeric(20,0)   not null
              ,Vidprod                              -- idprod                   numeric(20,0)       null
              ,Vidserv                              -- idserv                   numeric(20,0)       null

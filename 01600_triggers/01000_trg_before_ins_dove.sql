@@ -1,6 +1,6 @@
-create trigger trg_before_ins_dove before insert on documentos_ventas
+create trigger trg_before_ins_vent before insert on ventas
 for each row
-execute procedure f_validar_dove_ins()
+execute procedure f_validar_vent_ins()
 ;
 
 \q

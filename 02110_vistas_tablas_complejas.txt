@@ -30,9 +30,9 @@ CREATE VIEW
 
 DROP VIEW
 CREATE VIEW
- id | idgrem |              holding               | idpais | pais  | idrubr |    rubro    | idesre | estadoregistro | identificador1 | identificador2 |            razonsocial             | nombrefantasia |  icono  
-----+--------+------------------------------------+--------+-------+--------+-------------+--------+----------------+----------------+----------------+------------------------------------+----------------+---------
-  1 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING |      1 | CHILE |      1 | CONSULTORÍA |      1 | ACTIVO         | 1              | 9              | BUSINESS & TECHNOLOGY 5 CONSULTING | BT5            | bt5.jpg
+ id | idgrem |              holding               | idpais | pais  | idrubr | rubro | idesre | estadoregistro | identificador1 | identificador2 |            razonsocial             | nombrefantasia |  icono  
+----+--------+------------------------------------+--------+-------+--------+-------+--------+----------------+----------------+----------------+------------------------------------+----------------+---------
+  1 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING |      1 | CHILE |      1 | OTRO  |      1 | ACTIVO         | 1              | 9              | BUSINESS & TECHNOLOGY 5 CONSULTING | BT5            | bt5.jpg
 (1 fila)
 
 DROP VIEW
@@ -71,5 +71,11 @@ DROP VIEW
 CREATE VIEW
  id | idempr | empresa | idtise | tipo_servicio | idunms | unidad_medida_servicio | alias_unidad_medida_servicio | nombre | valorunitario | idmone | moneda | alias_moneda 
 ----+--------+---------+--------+---------------+--------+------------------------+------------------------------+--------+---------------+--------+--------+--------------
+(0 filas)
+
+DROP VIEW
+CREATE VIEW
+ id | idempr | empresa | numero_cotiz | idclie | cliente | desc_cotiz | idgere | gerencia | idproy | proyecto | idline | linea_negocio | idceco | centro_costo | idtare | tarea | exento | afecto | impuestos | porcentajedescuento | montodescuento | total | diasvalidez | idescv | estado_cotiz 
+----+--------+---------+--------------+--------+---------+------------+--------+----------+--------+----------+--------+---------------+--------+--------------+--------+-------+--------+--------+-----------+---------------------+----------------+-------+-------------+--------+--------------
 (0 filas)
 

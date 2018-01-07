@@ -11,6 +11,8 @@ select null               id_holding
       ,perf.id            id_perfil
       ,perf.descripcion   perfil
       ,usua.username      username
+      ,usua.id            idusua
+      ,pers.id            idpers
 from   personas          pers
       ,usuarios          usua
       ,usuarios_perfiles uspe
@@ -32,6 +34,8 @@ select to_char(grem.id,'9999999999')
       ,perf.id
       ,perf.descripcion
       ,usua.username
+      ,usua.id
+      ,pers.id
 from   personas             pers
       ,usuarios             usua
       ,usuarios_perfiles    uspe
@@ -56,6 +60,8 @@ select to_char(grem.id,'9999999999')
       ,perf.id
       ,perf.descripcion
       ,usua.username
+      ,usua.id
+      ,pers.id
 from   personas             pers
       ,usuarios             usua
       ,usuarios_perfiles    uspe
@@ -76,6 +82,10 @@ and    uspe.idusuaborraregistro is null
 and    empr.idesre              = 1
 and    grem.idesge              = 1
 order  by 2,4,6
+;
+
+select *
+from   perfilamientov
 ;
 
 \q

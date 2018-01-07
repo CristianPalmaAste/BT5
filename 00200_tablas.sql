@@ -868,6 +868,50 @@ alter table tipos_formas_pagos add constraint tifp_uk_01 unique (descripcion)
 
 /*************************************************************************************************************************/
 
+create table formas_pagos_notas_ventas (
+   id                       numeric(20,0)   not null
+  ,idnove                   numeric(20,0)   not null
+  ,idtifp                   numeric(20,0)   not null
+  ,monto                    numeric(20,0)   not null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table formas_pagos_notas_ventas add constraint fpnv_pk primary key (id)
+;
+
+alter table formas_pagos_notas_ventas add constraint fpnv_uk_01 unique (idnove, idtifp)
+;
+
+/*************************************************************************************************************************/
+
+create table formas_pagos_ventas (
+   id                       numeric(20,0)   not null
+  ,idvent                   numeric(20,0)   not null
+  ,idtifp                   numeric(20,0)   not null
+  ,monto                    numeric(20,0)   not null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table formas_pagos_ventas add constraint fopv_pk primary key (id)
+;
+
+alter table formas_pagos_ventas add constraint fopv_uk_01 unique (idvent, idtifp)
+;
+
+/*************************************************************************************************************************/
+
 create table unidades_territoriales_1 (
    id                       numeric(20,0)   not null
   ,idpais                   numeric(20,0)   not null
@@ -1172,7 +1216,7 @@ alter table clientes add constraint clie_chk_01 check (
 
 /*************************************************************************************************************************/
 
-create table documentos_ventas (
+create table ventas (
    id                       numeric(20,0)   not null
   ,idempr                   numeric(20,0)   not null
   ,idnove                   numeric(20,0)       null
@@ -1201,20 +1245,20 @@ create table documentos_ventas (
 )
 ;
 
-alter table documentos_ventas add constraint dove_pk primary key (id)
+alter table ventas add constraint vent_pk primary key (id)
 ;
 
-alter table documentos_ventas add constraint dove_uk_01 unique (idempr, idtidv, numero)
+alter table ventas add constraint vent_uk_01 unique (idempr, idtidv, numero)
 ;
 
-alter table documentos_ventas add constraint dove_uk_02 unique (idempr, idnove, idtidv)
+alter table ventas add constraint vent_uk_02 unique (idempr, idnove, idtidv)
 ;
 
 /*************************************************************************************************************************/
 
 create table detalles_doctos_vtas (
    id                       numeric(20,0)   not null
-  ,iddove                   numeric(20,0)   not null
+  ,idvent                   numeric(20,0)   not null
   ,correlativo              numeric(20,0)   not null
   ,idprod                   numeric(20,0)       null
   ,idserv                   numeric(20,0)       null
@@ -1238,10 +1282,10 @@ create table detalles_doctos_vtas (
 alter table detalles_doctos_vtas add constraint dedv_pk primary key (id)
 ;
 
-alter table detalles_doctos_vtas add constraint dedv_uk_01 unique (iddove, correlativo)
+alter table detalles_doctos_vtas add constraint dedv_uk_01 unique (idvent, correlativo)
 ;
 
-alter table detalles_doctos_vtas add constraint dedv_uk_02 unique (iddove, idprod, idserv)
+alter table detalles_doctos_vtas add constraint dedv_uk_02 unique (idvent, idprod, idserv)
 ;
 
 alter table detalles_doctos_vtas add constraint dedv_chk_01 check (
@@ -1672,21 +1716,21 @@ alter table detalles_cotizs_vtas       add constraint decv_fk3_usua foreign key 
 
 alter table tipos_doctos_ventas        add constraint tidv_fk_pais  foreign key (idpais)                references paises                        (id);
 
-alter table documentos_ventas          add constraint dove_fk_empr  foreign key (idempr)                references empresas                      (id);
-alter table documentos_ventas          add constraint dove_fk_nove  foreign key (idnove)                references notas_ventas                  (id);
-alter table documentos_ventas          add constraint dove_fk_tidv  foreign key (idtidv)                references tipos_doctos_ventas           (id);
-alter table documentos_ventas          add constraint dove_fk_clie  foreign key (idclie)                references clientes                      (id);
-alter table documentos_ventas          add constraint dove_fk_gere  foreign key (idgere)                references gerencias                     (id);
-alter table documentos_ventas          add constraint dove_fk_proy  foreign key (idproy)                references proyectos                     (id);
-alter table documentos_ventas          add constraint dove_fk_line  foreign key (idline)                references lineas_negocios               (id);
-alter table documentos_ventas          add constraint dove_fk_ceco  foreign key (idceco)                references centros_costos                (id);
-alter table documentos_ventas          add constraint dove_fk_tare  foreign key (idtare)                references tareas                        (id);
-alter table documentos_ventas          add constraint dove_fk_esve  foreign key (idesve)                references estados_ventas                (id);
-alter table documentos_ventas          add constraint dove_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table documentos_ventas          add constraint dove_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table documentos_ventas          add constraint dove_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table ventas                     add constraint vent_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table ventas                     add constraint vent_fk_nove  foreign key (idnove)                references notas_ventas                  (id);
+alter table ventas                     add constraint vent_fk_tidv  foreign key (idtidv)                references tipos_doctos_ventas           (id);
+alter table ventas                     add constraint vent_fk_clie  foreign key (idclie)                references clientes                      (id);
+alter table ventas                     add constraint vent_fk_gere  foreign key (idgere)                references gerencias                     (id);
+alter table ventas                     add constraint vent_fk_proy  foreign key (idproy)                references proyectos                     (id);
+alter table ventas                     add constraint vent_fk_line  foreign key (idline)                references lineas_negocios               (id);
+alter table ventas                     add constraint vent_fk_ceco  foreign key (idceco)                references centros_costos                (id);
+alter table ventas                     add constraint vent_fk_tare  foreign key (idtare)                references tareas                        (id);
+alter table ventas                     add constraint vent_fk_esve  foreign key (idesve)                references estados_ventas                (id);
+alter table ventas                     add constraint vent_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table ventas                     add constraint vent_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table ventas                     add constraint vent_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table detalles_doctos_vtas       add constraint dedv_fk_dove  foreign key (iddove)                references documentos_ventas             (id);
+alter table detalles_doctos_vtas       add constraint dedv_fk_vent  foreign key (idvent)                references ventas                        (id);
 alter table detalles_doctos_vtas       add constraint dedv_fk_prod  foreign key (idprod)                references productos                     (id);
 alter table detalles_doctos_vtas       add constraint dedv_fk_serv  foreign key (idserv)                references servicios                     (id);
 alter table detalles_doctos_vtas       add constraint dedv_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
@@ -1712,6 +1756,18 @@ alter table detalles_notas_vtas        add constraint denv_fk_serv  foreign key 
 alter table detalles_notas_vtas        add constraint denv_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
 alter table detalles_notas_vtas        add constraint denv_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
 alter table detalles_notas_vtas        add constraint denv_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+
+alter table formas_pagos_notas_ventas  add constraint fpnv_fk_nove  foreign key (idnove)                references notas_ventas                  (id);
+alter table formas_pagos_notas_ventas  add constraint fpnv_fk_tifp  foreign key (idtifp)                references tipos_formas_pagos            (id);
+alter table formas_pagos_notas_ventas  add constraint fpnv_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table formas_pagos_notas_ventas  add constraint fpnv_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table formas_pagos_notas_ventas  add constraint fpnv_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+
+alter table formas_pagos_ventas        add constraint fpve_fk_vent  foreign key (idvent)                references ventas                        (id);
+alter table formas_pagos_ventas        add constraint fpve_fk_tifp  foreign key (idtifp)                references tipos_formas_pagos            (id);
+alter table formas_pagos_ventas        add constraint fpve_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table formas_pagos_ventas        add constraint fpve_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table formas_pagos_ventas        add constraint fpve_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
 alter table productos                  add constraint prod_fk_empr  foreign key (idempr)                references empresas                      (id);
 alter table productos                  add constraint prod_fk_tipr  foreign key (idtipr)                references tipos_productos               (id);

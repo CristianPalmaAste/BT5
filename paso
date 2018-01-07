@@ -21,7 +21,7 @@ SET
 
                 ?column?                
 ----------------------------------------
- create sequence rubr_seq start with 34
+ create sequence rubr_seq start with 38
 (1 fila)
 
                ?column?                
@@ -76,7 +76,7 @@ SET
 
                  ?column?                 
 ------------------------------------------
- create sequence perf_seq start with 2025
+ create sequence perf_seq start with 2024
 (1 fila)
 
                ?column?                
@@ -106,7 +106,7 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence pepr_seq start with 220
+ create sequence pepr_seq start with 219
 (1 fila)
 
                 ?column?                 
@@ -182,6 +182,16 @@ SET
                ?column?                
 ---------------------------------------
  create sequence tifp_seq start with 7
+(1 fila)
+
+               ?column?                
+---------------------------------------
+ create sequence fpnv_seq start with 1
+(1 fila)
+
+               ?column?                
+---------------------------------------
+ create sequence fopv_seq start with 1
 (1 fila)
 
                 ?column?                
@@ -271,7 +281,7 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence dove_seq start with 1
+ create sequence vent_seq start with 1
 (1 fila)
 
                ?column?                

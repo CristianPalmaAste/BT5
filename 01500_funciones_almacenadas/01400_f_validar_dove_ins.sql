@@ -3,7 +3,7 @@ $body$
 declare
   Vmensaje varchar(1000);
 begin
-  if new.idesdv != 1 then
+  if new.idesve != 1 then
     Vmensaje := 'Un nuevo documento de venta solo puede tener estado 1';
     raise exception 'Estado para nuevo documento de venta inválido'
     using hint = Vmensaje;

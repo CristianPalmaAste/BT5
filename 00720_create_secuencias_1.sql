@@ -38,7 +38,7 @@ select 'create sequence posh_seq start with ' || (case when MAX(ID) is null then
 select 'create sequence epos_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from estados_pagos_ords_servs_hono;
 select 'create sequence tifp_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_formas_pagos;
 select 'create sequence fpnv_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from formas_pagos_notas_ventas;
-select 'create sequence fopv_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from formas_pagos_ventas;
+select 'create sequence fpve_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from formas_pagos_ventas;
 select 'create sequence unt1_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from unidades_territoriales_1;
 select 'create sequence unt2_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from unidades_territoriales_2;
 select 'create sequence unt3_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from unidades_territoriales_3;
@@ -57,7 +57,7 @@ select 'create sequence tidv_seq start with ' || (case when MAX(ID) is null then
 select 'create sequence tise_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_servicios;
 select 'create sequence clie_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from clientes;
 select 'create sequence vent_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from ventas;
-select 'create sequence dedv_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from detalles_doctos_vtas;
+select 'create sequence deve_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from detalles_ventas;
 select 'create sequence nove_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from notas_ventas;
 select 'create sequence denv_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from detalles_notas_vtas;
 select 'create sequence cove_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from cotizaciones_ventas;

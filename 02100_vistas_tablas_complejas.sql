@@ -379,7 +379,7 @@ poshv
 tipiv
 cliev
 ventv
-dedvv
+devev
 novev
 denvv
 decvv

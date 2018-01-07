@@ -1223,7 +1223,7 @@ create table ventas (
   ,idtidv                   numeric(20,0)   not null
   ,numero                   numeric(20,0)   not null
   ,idclie                   numeric(20,0)   not null
-  ,descripciondoctoventa    varchar(1000)   not null
+  ,descripcionventa         varchar(1000)   not null
   ,idgere                   numeric(20,0)       null
   ,idproy                   numeric(20,0)       null
   ,idline                   numeric(20,0)       null
@@ -1256,7 +1256,7 @@ alter table ventas add constraint vent_uk_02 unique (idempr, idnove, idtidv)
 
 /*************************************************************************************************************************/
 
-create table detalles_doctos_vtas (
+create table detalles_ventas (
    id                       numeric(20,0)   not null
   ,idvent                   numeric(20,0)   not null
   ,correlativo              numeric(20,0)   not null
@@ -1279,20 +1279,20 @@ create table detalles_doctos_vtas (
 )
 ;
 
-alter table detalles_doctos_vtas add constraint dedv_pk primary key (id)
+alter table detalles_ventas add constraint deve_pk primary key (id)
 ;
 
-alter table detalles_doctos_vtas add constraint dedv_uk_01 unique (idvent, correlativo)
+alter table detalles_ventas add constraint deve_uk_01 unique (idvent, correlativo)
 ;
 
-alter table detalles_doctos_vtas add constraint dedv_uk_02 unique (idvent, idprod, idserv)
+alter table detalles_ventas add constraint deve_uk_02 unique (idvent, idprod, idserv)
 ;
 
-alter table detalles_doctos_vtas add constraint dedv_chk_01 check (
-                                                                   (idprod is not null and idserv is     null)
-                                                                   or
-                                                                   (idprod is     null and idserv is not null)
-                                                                  )
+alter table detalles_ventas add constraint deve_chk_01 check (
+                                                              (idprod is not null and idserv is     null)
+                                                              or
+                                                              (idprod is     null and idserv is not null)
+                                                             )
 ;
 
 /*************************************************************************************************************************/
@@ -1730,12 +1730,12 @@ alter table ventas                     add constraint vent_fk1_usua foreign key 
 alter table ventas                     add constraint vent_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
 alter table ventas                     add constraint vent_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table detalles_doctos_vtas       add constraint dedv_fk_vent  foreign key (idvent)                references ventas                        (id);
-alter table detalles_doctos_vtas       add constraint dedv_fk_prod  foreign key (idprod)                references productos                     (id);
-alter table detalles_doctos_vtas       add constraint dedv_fk_serv  foreign key (idserv)                references servicios                     (id);
-alter table detalles_doctos_vtas       add constraint dedv_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table detalles_doctos_vtas       add constraint dedv_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table detalles_doctos_vtas       add constraint dedv_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table detalles_ventas            add constraint deve_fk_vent  foreign key (idvent)                references ventas                        (id);
+alter table detalles_ventas            add constraint deve_fk_prod  foreign key (idprod)                references productos                     (id);
+alter table detalles_ventas            add constraint deve_fk_serv  foreign key (idserv)                references servicios                     (id);
+alter table detalles_ventas            add constraint deve_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table detalles_ventas            add constraint deve_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table detalles_ventas            add constraint deve_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
 alter table notas_ventas               add constraint nove_fk_empr  foreign key (idempr)                references empresas                      (id);
 alter table notas_ventas               add constraint nove_fk_cove  foreign key (idcove)                references cotizaciones_ventas           (id);

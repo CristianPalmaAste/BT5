@@ -13,13 +13,14 @@ declare
   Vimpuestos                numeric;
   Vsubtotal                 numeric;
   Vidusuacrearegistro       numeric;
-  Viddedv                   numeric;
+  Viddeve                   numeric;
   Vidtidv                   numeric;
   Vidpais                   numeric;
   Vexento                   numeric;
   Vafecto                   numeric;
   Vtotallinea               numeric;
   Vidnove                   numeric;
+  Vidfpve                   numeric;
   Vidtifp                   numeric;
   Vmonto                    numeric;
   C_denv cursor for
@@ -57,13 +58,14 @@ begin
     from   tipos_doctos_ventas
     where  idpais = Vidpais
     ;
-    select nextval('nove_seq')
+    select nextval('vent_seq')
     into   Vidvent
     ;
     select max(numero)
     into   Vnumero
-    from   notas_ventas
+    from   ventas
     where  idempr = new.idempr
+    and    idtidv = Vidtidv
     ;
     if Vnumero is null then
       Vnumero := 1;
@@ -74,7 +76,7 @@ begin
                        ,idtidv                   -- numeric(20,0)   not null
                        ,numero                   -- numeric(20,0)   not null
                        ,idclie                   -- numeric(20,0)   not null
-                       ,descripciondoctoventa    -- varchar(1000)   not null
+                       ,descripcionventa         -- varchar(1000)   not null
                        ,idgere                   -- numeric(20,0)       null
                        ,idproy                   -- numeric(20,0)       null
                        ,idline                   -- numeric(20,0)       null
@@ -100,7 +102,7 @@ begin
            ,Vidtidv                       -- idtidv                   numeric(20,0)   not null
            ,Vnumero                       -- numero                   numeric(20,0)   not null
            ,new.idclie                    -- idclie                   numeric(20,0)   not null
-           ,new.descripcionnotaventa      -- descripciondoctoventa    varchar(1000)   not null
+           ,new.descripcionnotaventa      -- descripcionventa         varchar(1000)   not null
            ,new.idgere                    -- idgere                   numeric(20,0)       null
            ,new.idproy                    -- idproy                   numeric(20,0)       null
            ,new.idline                    -- idline                   numeric(20,0)       null
@@ -137,30 +139,30 @@ begin
                        ,Vidusuacrearegistro
                        ;
       exit when not found;
-      select nextval('dedv_seq')
-      into   Viddedv
+      select nextval('deve_seq')
+      into   Viddeve
       ;
-      insert into detalles_doctos_vtas (id                       -- numeric(20,0)   not null
-                                       ,idvent                   -- numeric(20,0)   not null
-                                       ,correlativo              -- numeric(20,0)   not null
-                                       ,idprod                   -- numeric(20,0)       null
-                                       ,idserv                   -- numeric(20,0)       null
-                                       ,preciounitario           -- numeric(20,0)   not null
-                                       ,cantidad                 -- numeric(20,2)   not null
-                                       ,porcentajedescuento      -- numeric(20,2)   not null
-                                       ,montodescuento           -- numeric(20,2)   not null
-                                       ,exento                   -- numeric(20,2)   not null
-                                       ,afecto                   -- numeric(20,2)   not null
-                                       ,impuestos                -- numeric(20,2)   not null
-                                       ,totallinea               -- numeric(20,2)   not null
-                                       ,idusuacrearegistro       -- numeric(20,0)   not null
-                                       ,fechacrearegistro        -- timestamp       not null
-                                       ,idusuamodifregistro      -- numeric(20,0)       null
-                                       ,fechamodifregistro       -- timestamp           null
-                                       ,idusuaborraregistro      -- numeric(20,0)       null
-                                       ,fechaborraregistro       -- timestamp           null
-                                       )
-      values (Viddedv                              -- id                       numeric(20,0)   not null
+      insert into detalles_ventas (id                       -- numeric(20,0)   not null
+                                  ,idvent                   -- numeric(20,0)   not null
+                                  ,correlativo              -- numeric(20,0)   not null
+                                  ,idprod                   -- numeric(20,0)       null
+                                  ,idserv                   -- numeric(20,0)       null
+                                  ,preciounitario           -- numeric(20,0)   not null
+                                  ,cantidad                 -- numeric(20,2)   not null
+                                  ,porcentajedescuento      -- numeric(20,2)   not null
+                                  ,montodescuento           -- numeric(20,2)   not null
+                                  ,exento                   -- numeric(20,2)   not null
+                                  ,afecto                   -- numeric(20,2)   not null
+                                  ,impuestos                -- numeric(20,2)   not null
+                                  ,totallinea               -- numeric(20,2)   not null
+                                  ,idusuacrearegistro       -- numeric(20,0)   not null
+                                  ,fechacrearegistro        -- timestamp       not null
+                                  ,idusuamodifregistro      -- numeric(20,0)       null
+                                  ,fechamodifregistro       -- timestamp           null
+                                  ,idusuaborraregistro      -- numeric(20,0)       null
+                                  ,fechaborraregistro       -- timestamp           null
+                                  )
+      values (Viddeve                              -- id                       numeric(20,0)   not null
              ,Vidvent                              -- idvent                   numeric(20,0)   not null
              ,Vcorrelativo                         -- correlativo              numeric(20,0)   not null
              ,Vidprod                              -- idprod                   numeric(20,0)       null
@@ -169,10 +171,10 @@ begin
              ,Vcantidad                            -- cantidad                 numeric(20,2)   not null
              ,Vporcentajedescuento                 -- porcentajedescuento      numeric(20,2)   not null
              ,Vmontodescuento                      -- montodescuento           numeric(20,2)   not null
-             ,Vexento                              -- impuestos                numeric(20,2)   not null
-             ,Vafecto                              -- impuestos                numeric(20,2)   not null
+             ,Vexento                              -- exento                   numeric(20,2)   not null
+             ,Vafecto                              -- afecto                   numeric(20,2)   not null
              ,Vimpuestos                           -- impuestos                numeric(20,2)   not null
-             ,Vtotallinea                          -- subtotal                 numeric(20,2)   not null
+             ,Vtotallinea                          -- totallinea               numeric(20,2)   not null
              ,Vidusuacrearegistro                  -- idusuacrearegistro       numeric(20,0)   not null
              ,current_timestamp                    -- fechacrearegistro        timestamp       not null
              ,null                                 -- idusuamodifregistro      numeric(20,0)       null
@@ -183,12 +185,6 @@ begin
       ;
     end loop;
     close C_denv;
-
-
-
-
-
-
     open C_fpnv;
     loop
       fetch C_fpnv into Vidtifp
@@ -200,38 +196,20 @@ begin
       into   Vidfpve
       ;
       insert into formas_pagos_ventas (id                       -- numeric(20,0)   not null
-                                       ,idvent                   -- numeric(20,0)   not null
-                                       ,correlativo              -- numeric(20,0)   not null
-                                       ,idprod                   -- numeric(20,0)       null
-                                       ,idserv                   -- numeric(20,0)       null
-                                       ,preciounitario           -- numeric(20,0)   not null
-                                       ,cantidad                 -- numeric(20,2)   not null
-                                       ,porcentajedescuento      -- numeric(20,2)   not null
-                                       ,montodescuento           -- numeric(20,2)   not null
-                                       ,exento                   -- numeric(20,2)   not null
-                                       ,afecto                   -- numeric(20,2)   not null
-                                       ,impuestos                -- numeric(20,2)   not null
-                                       ,totallinea               -- numeric(20,2)   not null
-                                       ,idusuacrearegistro       -- numeric(20,0)   not null
-                                       ,fechacrearegistro        -- timestamp       not null
-                                       ,idusuamodifregistro      -- numeric(20,0)       null
-                                       ,fechamodifregistro       -- timestamp           null
-                                       ,idusuaborraregistro      -- numeric(20,0)       null
-                                       ,fechaborraregistro       -- timestamp           null
-                                       )
-      values (Viddedv                              -- id                       numeric(20,0)   not null
+                                      ,idvent                   -- numeric(20,0)   not null
+                                      ,idtifp                   -- numeric(20,0)   not null
+                                      ,monto                    -- numeric(20,0)       null
+                                      ,idusuacrearegistro       -- numeric(20,0)   not null
+                                      ,fechacrearegistro        -- timestamp       not null
+                                      ,idusuamodifregistro      -- numeric(20,0)       null
+                                      ,fechamodifregistro       -- timestamp           null
+                                      ,idusuaborraregistro      -- numeric(20,0)       null
+                                      ,fechaborraregistro       -- timestamp           null
+                                      )
+      values (Vidfpve                              -- id                       numeric(20,0)   not null
              ,Vidvent                              -- idvent                   numeric(20,0)   not null
-             ,Vcorrelativo                         -- correlativo              numeric(20,0)   not null
-             ,Vidprod                              -- idprod                   numeric(20,0)       null
-             ,Vidserv                              -- idserv                   numeric(20,0)       null
-             ,Vpreciounitario                      -- preciounitario           numeric(20,0)   not null
-             ,Vcantidad                            -- cantidad                 numeric(20,2)   not null
-             ,Vporcentajedescuento                 -- porcentajedescuento      numeric(20,2)   not null
-             ,Vmontodescuento                      -- montodescuento           numeric(20,2)   not null
-             ,Vexento                              -- impuestos                numeric(20,2)   not null
-             ,Vafecto                              -- impuestos                numeric(20,2)   not null
-             ,Vimpuestos                           -- impuestos                numeric(20,2)   not null
-             ,Vtotallinea                          -- subtotal                 numeric(20,2)   not null
+             ,Vidtifp                              -- idtifp                   numeric(20,0)   not null
+             ,Vmonto                               -- monto                    numeric(20,0)       null
              ,Vidusuacrearegistro                  -- idusuacrearegistro       numeric(20,0)   not null
              ,current_timestamp                    -- fechacrearegistro        timestamp       not null
              ,null                                 -- idusuamodifregistro      numeric(20,0)       null
@@ -242,11 +220,6 @@ begin
       ;
     end loop;
     close C_fpnv;
-
-
-
-
-
   end if;
   return new;
 end;

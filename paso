@@ -191,7 +191,7 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence fopv_seq start with 1
+ create sequence fpve_seq start with 1
 (1 fila)
 
                 ?column?                
@@ -286,7 +286,7 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence dedv_seq start with 1
+ create sequence deve_seq start with 1
 (1 fila)
 
                ?column?                

@@ -49,9 +49,10 @@ insert into estados_civiles values (4, 'E', 'SEPARADO');
 insert into sexos values (1, 'M', 'MASCULINO');
 insert into sexos values (2, 'F', 'FEMENINO' );
 
-insert into tipos_doctos_ventas values (1, 1, 'FACTURA ELECTRÓNICA'         , 'FAEA', 33);
-insert into tipos_doctos_ventas values (2, 1, 'NOTA DE CRÉDITO ELECTRÓNICA' , 'NCEL', 61);
-insert into tipos_doctos_ventas values (3, 1, 'GUÍA DE DESPACHO ELECTRÓNICA', 'GDEL', 52);
+insert into tipos_doctos_ventas values (1, 1, 'NO DEFINIDO'                 , 'NODE',  0);
+insert into tipos_doctos_ventas values (2, 1, 'FACTURA ELECTRÓNICA'         , 'FAEA', 33);
+insert into tipos_doctos_ventas values (3, 1, 'NOTA DE CRÉDITO ELECTRÓNICA' , 'NCEL', 61);
+insert into tipos_doctos_ventas values (4, 1, 'GUÍA DE DESPACHO ELECTRÓNICA', 'GDEL', 52);
 
 insert into grupos_empresariales values (1, 'BUSINESS & TECHNOLOGY 5 CONSULTING', 'BT5', 'bt5.jpg', 1, 1, 1, current_timestamp, null, null, null, null);
 
@@ -642,10 +643,10 @@ insert into estados_cotizaciones_vtas values (2, 'CERRADA' );
 insert into estados_cotizaciones_vtas values (3, 'ACEPTADA');
 insert into estados_cotizaciones_vtas values (4, 'CADUCADA');
 
-insert into estados_notas_vtas values (1, 'CREADA'   );
-insert into estados_notas_vtas values (2, 'EMITIDA'  );
-insert into estados_notas_vtas values (3, 'FACTURADA');
-insert into estados_notas_vtas values (4, 'CADUCADA' );
+insert into estados_notas_vtas values (1, 'CREADA'  );
+insert into estados_notas_vtas values (2, 'CERRADA' );
+insert into estados_notas_vtas values (3, 'EMITIDA' );
+insert into estados_notas_vtas values (4, 'CADUCADA');
 
 insert into estados_ventas values (1, 'CREADA' );
 insert into estados_ventas values (2, 'CERRADA');

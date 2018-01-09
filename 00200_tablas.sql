@@ -1224,6 +1224,7 @@ create table ventas (
   ,numero                   numeric(20,0)   not null
   ,idclie                   numeric(20,0)   not null
   ,descripcionventa         varchar(1000)   not null
+  ,fechaventa               timestamp       not null
   ,idgere                   numeric(20,0)       null
   ,idproy                   numeric(20,0)       null
   ,idline                   numeric(20,0)       null
@@ -1304,6 +1305,7 @@ create table notas_ventas (
   ,numero                   numeric(20,0)   not null
   ,idclie                   numeric(20,0)   not null
   ,descripcionnotaventa     varchar(1000)   not null
+  ,fechanotaventa           timestamp       not null
   ,idgere                   numeric(20,0)       null
   ,idproy                   numeric(20,0)       null
   ,idline                   numeric(20,0)       null
@@ -1383,6 +1385,7 @@ create table cotizaciones_ventas (
   ,numero                   numeric(20,0)   not null
   ,idclie                   numeric(20,0)   not null
   ,descripcioncotizacion    varchar(1000)   not null
+  ,fechacotizacion          timestamp       not null
   ,idgere                   numeric(20,0)       null
   ,idproy                   numeric(20,0)       null
   ,idline                   numeric(20,0)       null
@@ -1462,6 +1465,7 @@ create table productos (
   ,idorpr                   numeric(20,0)   not null
   ,nombre                   varchar(1000)   not null
   ,valorunitario            numeric(20,0)   not null
+  ,stock                    numeric(20,2)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
   ,idusuamodifregistro      numeric(20,0)       null

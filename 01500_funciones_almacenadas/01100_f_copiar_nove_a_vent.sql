@@ -53,10 +53,11 @@ begin
     from   empresas
     where  id = new.idempr
     ;
-    select min(id)
+    select id
     into   Vidtidv
     from   tipos_doctos_ventas
-    where  idpais = Vidpais
+    where  idpais      = Vidpais
+    and    descripcion = 'NO DEFINIDO'
     ;
     select nextval('vent_seq')
     into   Vidvent
@@ -69,6 +70,8 @@ begin
     ;
     if Vnumero is null then
       Vnumero := 1;
+    else
+      Vnumero := Vnumero + 1;
     end if;
     insert into ventas (id                       -- numeric(20,0)   not null
                        ,idempr                   -- numeric(20,0)   not null
@@ -77,6 +80,7 @@ begin
                        ,numero                   -- numeric(20,0)   not null
                        ,idclie                   -- numeric(20,0)   not null
                        ,descripcionventa         -- varchar(1000)   not null
+                       ,fechaventa               -- timestamp       not null
                        ,idgere                   -- numeric(20,0)       null
                        ,idproy                   -- numeric(20,0)       null
                        ,idline                   -- numeric(20,0)       null
@@ -103,6 +107,7 @@ begin
            ,Vnumero                       -- numero                   numeric(20,0)   not null
            ,new.idclie                    -- idclie                   numeric(20,0)   not null
            ,new.descripcionnotaventa      -- descripcionventa         varchar(1000)   not null
+           ,current_timestamp             -- fechaventa               timestamp       not null
            ,new.idgere                    -- idgere                   numeric(20,0)       null
            ,new.idproy                    -- idproy                   numeric(20,0)       null
            ,new.idline                    -- idline                   numeric(20,0)       null

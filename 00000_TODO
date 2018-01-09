@@ -78,6 +78,9 @@ psql -d $DBNAME -U $USUARIO_DB < 01400_f_validar_vent_ins.sql > 01410_f_validar_
 echo "  01500_f_datos_linea_vta"
 psql -d $DBNAME -U $USUARIO_DB < 01500_f_datos_linea_vta.sql > 01510_f_datos_linea_vta.txt
 
+echo "  01600_f_stock_producto"
+psql -d $DBNAME -U $USUARIO_DB < 01600_f_stock_producto.sql > 01610_f_stock_producto.txt
+
 cd ..
 
 cd 01600_triggers

@@ -53,6 +53,7 @@ begin
                              ,numero                   -- numeric(20,0)   not null
                              ,idclie                   -- numeric(20,0)   not null
                              ,descripcionnotaventa     -- varchar(1000)   not null
+                             ,fechanotaventa           -- timestamp       not null
                              ,idgere                   -- numeric(20,0)       null
                              ,idproy                   -- numeric(20,0)       null
                              ,idline                   -- numeric(20,0)       null
@@ -78,6 +79,7 @@ begin
            ,Vnumero                       -- numero                   numeric(20,0)   not null
            ,new.idclie                    -- idclie                   numeric(20,0)   not null
            ,new.descripcioncotizacion     -- descripcionnotaventa     varchar(1000)   not null
+           ,current_timestamp             -- fechanotaventa           timestamp       not null
            ,new.idgere                    -- idgere                   numeric(20,0)       null
            ,new.idproy                    -- idproy                   numeric(20,0)       null
            ,new.idline                    -- idline                   numeric(20,0)       null

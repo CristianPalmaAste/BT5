@@ -311,7 +311,7 @@ select cove.id                                                                  
       ,empr.nombrefantasia                                                                                                         empresa
       ,cove.numero                                                                                                                 numero_cotiz
       ,cove.idclie                                                                                                                 idclie
-      ,coalesce(Clie.nombrefantasia,' ') || ' ' || coalesce(clie.primernombre,' ') || ' ' || coalesce(clie.apellidopaterno,' ')    cliente
+      ,coalesce(clie.nombrefantasia,' ') || ' ' || coalesce(clie.primernombre,' ') || ' ' || coalesce(clie.apellidopaterno,' ')    cliente
       ,cove.descripcioncotizacion                                                                                                  desc_cotiz
       ,cove.idgere                                                                                                                 idgere
       ,gere.nombre                                                                                                                 gerencia
@@ -350,6 +350,111 @@ from   covev
 
 /*************************************************************************************************************************/
 
+drop view if exists novev
+;
+
+create or replace view novev as
+select nove.id                                                                                                                     id
+      ,nove.idempr                                                                                                                 idempr
+      ,empr.nombrefantasia                                                                                                         empresa
+      ,nove.idcove                                                                                                                 idcove
+      ,cove.numero                                                                                                                 numero_cotizacion
+      ,nove.numero                                                                                                                 numero_nota_venta
+      ,nove.idclie                                                                                                                 idclie
+      ,coalesce(clie.nombrefantasia,' ') || ' ' || coalesce(clie.primernombre,' ') || ' ' || coalesce(clie.apellidopaterno,' ')    cliente
+      ,nove.descripcionnotaventa                                                                                                   descripcion_nota_venta
+      ,nove.fechanotaventa                                                                                                         fecha_nota_venta
+      ,nove.idgere                                                                                                                 idgere
+      ,gere.nombre                                                                                                                 gerencia
+      ,nove.idproy                                                                                                                 idproy
+      ,proy.nombre                                                                                                                 proyecto
+      ,nove.idline                                                                                                                 idline
+      ,line.nombre                                                                                                                 linea_negocio
+      ,nove.idceco                                                                                                                 idceco
+      ,ceco.nombre                                                                                                                 centro_costo
+      ,nove.idtare                                                                                                                 idtare
+      ,tare.nombre                                                                                                                 tarea
+      ,nove.exento                                                                                                                 exento
+      ,nove.afecto                                                                                                                 afecto
+      ,nove.impuestos                                                                                                              impuestos
+      ,nove.porcentajedescuento                                                                                                    porc_descto
+      ,nove.montodescuento                                                                                                         monto_descto
+      ,nove.total                                                                                                                  total
+      ,nove.idesnv                                                                                                                 idesnv
+      ,esnv.descripcion                                                                                                            estado_nota_venta
+from                   notas_ventas            nove
+       left outer join empresas                empr on nove.idempr = empr.id
+       left outer join cotizaciones_ventas     cove on nove.idcove = cove.id
+       left outer join clientes                clie on nove.idclie = clie.id
+       left outer join gerencias               gere on nove.idgere = gere.id
+       left outer join proyectos               proy on nove.idproy = proy.id
+       left outer join lineas_negocios         line on nove.idline = line.id
+       left outer join centros_costos          ceco on nove.idceco = ceco.id
+       left outer join tareas                  tare on nove.idtare = tare.id
+       left outer join estados_notas_vtas      esnv on nove.idesnv = esnv.id
+where  nove.idusuaborraregistro is null
+;
+
+select *
+from   novev
+;
+
+/*************************************************************************************************************************/
+
+drop view if exists ventv
+;
+
+create or replace view ventv as
+select vent.id                                                                                                                     id
+      ,vent.idempr                                                                                                                 idempr
+      ,empr.nombrefantasia                                                                                                         empresa
+      ,vent.idnove                                                                                                                 idnove
+      ,nove.numero                                                                                                                 numero_nota_venta
+      ,vent.idtidv                                                                                                                 idtidv
+      ,tidv.descripcion                                                                                                            tipo_docto_venta
+      ,vent.numero                                                                                                                 folio_docto_venta
+      ,vent.idclie                                                                                                                 idclie
+      ,coalesce(clie.nombrefantasia,' ') || ' ' || coalesce(clie.primernombre,' ') || ' ' || coalesce(clie.apellidopaterno,' ')    cliente
+      ,vent.descripcionventa                                                                                                       descripcion_venta
+      ,vent.fechaventa                                                                                                             fecha_venta
+      ,vent.idgere                                                                                                                 idgere
+      ,gere.nombre                                                                                                                 gerencia
+      ,vent.idproy                                                                                                                 idproy
+      ,proy.nombre                                                                                                                 proyecto
+      ,vent.idline                                                                                                                 idline
+      ,line.nombre                                                                                                                 linea_negocio
+      ,vent.idceco                                                                                                                 idceco
+      ,ceco.nombre                                                                                                                 centro_costo
+      ,vent.idtare                                                                                                                 idtare
+      ,tare.nombre                                                                                                                 tarea
+      ,vent.exento                                                                                                                 exento
+      ,vent.afecto                                                                                                                 afecto
+      ,vent.impuestos                                                                                                              impuestos
+      ,vent.porcentajedescuento                                                                                                    porc_descto
+      ,vent.montodescuento                                                                                                         monto_descto
+      ,vent.total                                                                                                                  total
+      ,vent.idesve                                                                                                                 idesve
+      ,esve.descripcion                                                                                                            estado_venta
+from                   ventas                  vent
+       left outer join empresas                empr on vent.idempr = empr.id
+       left outer join notas_ventas            nove on vent.idnove = nove.id
+       left outer join tipos_doctos_ventas     tidv on vent.idtidv = tidv.id
+       left outer join clientes                clie on vent.idclie = clie.id
+       left outer join gerencias               gere on vent.idgere = gere.id
+       left outer join proyectos               proy on vent.idproy = proy.id
+       left outer join lineas_negocios         line on vent.idline = line.id
+       left outer join centros_costos          ceco on vent.idceco = ceco.id
+       left outer join tareas                  tare on vent.idtare = tare.id
+       left outer join estados_ventas          esve on vent.idesve = esve.id
+where  vent.idusuaborraregistro is null
+;
+
+select *
+from   ventv
+;
+
+/*************************************************************************************************************************/
+
 \q
 
 
@@ -366,6 +471,7 @@ create or replace view XXXXv as
 select XXXX.id               id
 from                   YYYYY                   XXXX
        left outer join ZZZZZ                   zzzz on XXXX.idzzzz = zzzz.id
+where  xxxx.idusuaborraregistro is null
 ;
 
 select *
@@ -378,9 +484,7 @@ orshv
 poshv
 tipiv
 cliev
-ventv
 devev
-novev
 denvv
 decvv
 prodv

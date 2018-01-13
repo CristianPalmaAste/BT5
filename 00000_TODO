@@ -81,6 +81,9 @@ psql -d $DBNAME -U $USUARIO_DB < 01500_f_datos_linea_vta.sql > 01510_f_datos_lin
 echo "  01600_f_stock_producto"
 psql -d $DBNAME -U $USUARIO_DB < 01600_f_stock_producto.sql > 01610_f_stock_producto.txt
 
+echo "  01700_f_completar_rubro_empresa"
+psql -d $DBNAME -U $USUARIO_DB < 01700_f_completar_rubro_empresa.sql > 01710_f_completar_rubro_empresa.txt
+
 cd ..
 
 cd 01600_triggers
@@ -116,6 +119,9 @@ psql -d $DBNAME -U $USUARIO_DB < 00900_trg_before_ins_nove.sql > 00910_trg_befor
 
 echo "  01000_trg_before_ins_vent"
 psql -d $DBNAME -U $USUARIO_DB < 01000_trg_before_ins_vent.sql > 01010_trg_before_ins_vent.txt
+
+echo "  01100_trg_before_ins_empr"
+psql -d $DBNAME -U $USUARIO_DB < 01100_trg_before_ins_empr.sql > 01110_trg_before_ins_empr.txt
 
 cd ..
 

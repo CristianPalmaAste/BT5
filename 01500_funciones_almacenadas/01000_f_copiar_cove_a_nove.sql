@@ -46,6 +46,8 @@ begin
     ;
     if Vnumero is null then
       Vnumero := 1;
+    else
+      Vnumero := Vnumero + 1;
     end if;
     insert into notas_ventas (id                       -- numeric(20,0)   not null
                              ,idempr                   -- numeric(20,0)   not null

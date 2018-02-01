@@ -79,3 +79,15 @@ CREATE VIEW
 ----+--------+---------+--------------+--------+---------+------------+--------+----------+--------+----------+--------+---------------+--------+--------------+--------+-------+--------+--------+-----------+---------------------+----------------+-------+-------------+--------+--------------
 (0 filas)
 
+DROP VIEW
+CREATE VIEW
+ id | idempr | empresa | idcove | numero_cotizacion | numero_nota_venta | idclie | cliente | descripcion_nota_venta | fecha_nota_venta | idgere | gerencia | idproy | proyecto | idline | linea_negocio | idceco | centro_costo | idtare | tarea | exento | afecto | impuestos | porc_descto | monto_descto | total | idesnv | estado_nota_venta 
+----+--------+---------+--------+-------------------+-------------------+--------+---------+------------------------+------------------+--------+----------+--------+----------+--------+---------------+--------+--------------+--------+-------+--------+--------+-----------+-------------+--------------+-------+--------+-------------------
+(0 filas)
+
+DROP VIEW
+CREATE VIEW
+ id | idempr | empresa | idnove | numero_nota_venta | idtidv | tipo_docto_venta | folio_docto_venta | idclie | cliente | descripcion_venta | fecha_venta | idgere | gerencia | idproy | proyecto | idline | linea_negocio | idceco | centro_costo | idtare | tarea | exento | afecto | impuestos | porc_descto | monto_descto | total | idesve | estado_venta 
+----+--------+---------+--------+-------------------+--------+------------------+-------------------+--------+---------+-------------------+-------------+--------+----------+--------+----------+--------+---------------+--------+--------------+--------+-------+--------+--------+-----------+-------------+--------------+-------+--------+--------------
+(0 filas)
+

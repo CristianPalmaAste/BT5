@@ -1464,8 +1464,6 @@ create table productos (
   ,idunmp                   numeric(20,0)   not null
   ,idorpr                   numeric(20,0)   not null
   ,nombre                   varchar(1000)   not null
-  ,valorunitario            numeric(20,0)   not null
-  ,stock                    numeric(20,2)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
   ,idusuamodifregistro      numeric(20,0)       null
@@ -1549,7 +1547,136 @@ alter table valores_dominios add constraint vado_uk_01 unique (iddomi, descripci
 
 /*************************************************************************************************************************/
 
+
+
+
+/*************************************************************************************************************************/
+
+create table bodegas (
+   id                       numeric(20,0)   not null
+  ,idempr                   numeric(20,0)   not null
+  ,nombre                   varchar(1000)   not null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table bodegas add constraint bode_pk primary key (id)
+;
+
+alter table bodegas add constraint bode_uk_01 unique (idempr, nombre)
+;
+
+/*************************************************************************************************************************/
+
+create table bodegas_productos (
+   id                       numeric(20,0)   not null
+  ,idbode                   numeric(20,0)   not null
+  ,idprod                   numeric(20,0)   not null
+  ,stock                    numeric(20,2)   not null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table bodegas_productos add constraint bopr_pk primary key (id)
+;
+
+alter table bodegas_productos add constraint bopr_uk_01 unique (idbode, idprod)
+;
+
+/*************************************************************************************************************************/
+
+create table listas_precios (
+   id                       numeric(20,0)   not null
+  ,idempr                   numeric(20,0)   not null
+  ,correlativo              numeric(20,0)   not null
+  ,fechainicio              date            not null
+  ,fechafin                 date                null
+  ,observaciones            varchar(1000)   not null
+  ,idesre                   numeric(20,0)   not null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table listas_precios add constraint lipr_pk primary key (id)
+;
+
+alter table listas_precios add constraint lipr_uk_01 unique (idempr, correlativo)
+;
+
+alter table listas_precios add constraint lipr_chk_01 check ((idesre = 1 and fechafin is     null)
+                                                             or
+                                                             (idesre = 2 and fechafin is not null)
+                                                            )
+;
+
+/*************************************************************************************************************************/
+
+create table detalles_listas_precios (
+   id                       numeric(20,0)   not null
+  ,idlipr                   numeric(20,0)   not null
+  ,idprod                   numeric(20,0)   not null
+  ,valorunitario            numeric(20,0)   not null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table detalles_listas_precios add constraint delp_pk primary key (id)
+;
+
+alter table detalles_listas_precios add constraint delp_uk_01 unique (idlipr, idprod)
+;
+
+/*************************************************************************************************************************/
+
+
+
+
+
+
 -- Sección foreign keys
+
+alter table detalles_listas_precios    add constraint delp_fk_lipr  foreign key (idlipr)                references listas_precios                (id);
+alter table detalles_listas_precios    add constraint delp_fk_prod  foreign key (idprod)                references productos                     (id);
+alter table detalles_listas_precios    add constraint delp_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table detalles_listas_precios    add constraint delp_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table detalles_listas_precios    add constraint delp_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+
+alter table listas_precios             add constraint lipr_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table listas_precios             add constraint lipr_fk_esre  foreign key (idesre)                references estados_registros             (id);
+alter table listas_precios             add constraint lipr_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table listas_precios             add constraint lipr_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table listas_precios             add constraint lipr_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+
+alter table bodegas                    add constraint bode_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table bodegas                    add constraint bode_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table bodegas                    add constraint bode_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table bodegas                    add constraint bode_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+
+alter table bodegas_productos          add constraint bopr_fk_empr  foreign key (idbode)                references bodegas                       (id);
+alter table bodegas_productos          add constraint bopr_fk_empr  foreign key (idprod)                references productos                     (id);
+alter table bodegas_productos          add constraint bopr_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table bodegas_productos          add constraint bopr_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table bodegas_productos          add constraint bopr_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
 alter table solicitudes_servs_hono     add constraint sosh_fk_empr  foreign key (idempr)                references empresas                      (id);
 alter table solicitudes_servs_hono     add constraint sosh_fk_pers  foreign key (idpers)                references personas                      (id);

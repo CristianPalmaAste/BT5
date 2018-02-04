@@ -1547,11 +1547,6 @@ alter table valores_dominios add constraint vado_uk_01 unique (iddomi, descripci
 
 /*************************************************************************************************************************/
 
-
-
-
-/*************************************************************************************************************************/
-
 create table bodegas (
    id                       numeric(20,0)   not null
   ,idempr                   numeric(20,0)   not null
@@ -1648,12 +1643,74 @@ alter table detalles_listas_precios add constraint delp_uk_01 unique (idlipr, id
 
 /*************************************************************************************************************************/
 
+create table familias_productos (
+   id                       numeric(20,0)   not null
+  ,idempr                   numeric(20,0)   not null
+  ,cod_familia              varchar(2)      not null
+  ,descripcion              varchar(100)    not null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table familias_productos add constraint fapr_pk primary key (id)
+;
+
+alter table familias_productos add constraint fapr_uk_01 unique (idempr, cod_familia)
+;
+
+alter table familias_productos add constraint fapr_uk_02 unique (idempr, descripcion)
+;
+
+/*************************************************************************************************************************/
+
+create table sub_familias_productos (
+   id                       numeric(20,0)   not null
+  ,idfapr                   numeric(20,0)   not null
+  ,cod_sub_familia          varchar(2)      not null
+  ,descripcion              varchar(100)    not null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table sub_familias_productos add constraint sfpr_pk primary key (id)
+;
+
+alter table sub_familias_productos add constraint sfpr_uk_01 unique (idfapr, cod_sub_familia)
+;
+
+alter table sub_familias_productos add constraint sfpr_uk_02 unique (idfapr, descripcion)
+;
+
+/*************************************************************************************************************************/
+
+
+
 
 
 
 
 
 -- Sección foreign keys
+
+alter table sub_familias_productos     add constraint sfpr_fk_fapr  foreign key (idfapr)                references familias_productos            (id);
+alter table sub_familias_productos     add constraint sfpr_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table sub_familias_productos     add constraint sfpr_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table sub_familias_productos     add constraint sfpr_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+
+alter table familias_productos         add constraint fapr_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table familias_productos         add constraint fapr_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table familias_productos         add constraint fapr_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table familias_productos         add constraint fapr_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
 alter table detalles_listas_precios    add constraint delp_fk_lipr  foreign key (idlipr)                references listas_precios                (id);
 alter table detalles_listas_precios    add constraint delp_fk_prod  foreign key (idprod)                references productos                     (id);

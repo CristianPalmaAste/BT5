@@ -1265,8 +1265,10 @@ create table detalles_ventas (
   ,idserv                   numeric(20,0)       null
   ,preciounitario           numeric(20,0)   not null
   ,cantidad                 numeric(20,2)   not null
-  ,porcentajedescuento      numeric(20,5)   not null
-  ,montodescuento           numeric(20,0)   not null
+  ,porcentajedescuento1     numeric(20,5)   not null
+  ,montodescuento1          numeric(20,0)   not null
+  ,porcentajedescuento2     numeric(20,5)   not null
+  ,montodescuento2          numeric(20,0)   not null
   ,exento                   numeric(20,0)   not null
   ,afecto                   numeric(20,0)   not null
   ,impuestos                numeric(20,2)   not null
@@ -1346,8 +1348,10 @@ create table detalles_notas_vtas (
   ,idserv                   numeric(20,0)       null
   ,preciounitario           numeric(20,0)   not null
   ,cantidad                 numeric(20,2)   not null
-  ,porcentajedescuento      numeric(20,5)   not null
-  ,montodescuento           numeric(20,0)   not null
+  ,porcentajedescuento1     numeric(20,5)   not null
+  ,montodescuento1          numeric(20,0)   not null
+  ,porcentajedescuento2     numeric(20,5)   not null
+  ,montodescuento2          numeric(20,0)   not null
   ,exento                   numeric(20,2)   not null
   ,afecto                   numeric(20,2)   not null
   ,impuestos                numeric(20,2)   not null
@@ -1424,8 +1428,10 @@ create table detalles_cotizs_vtas (
   ,idserv                   numeric(20,0)       null
   ,preciounitario           numeric(20,0)   not null
   ,cantidad                 numeric(20,2)   not null
-  ,porcentajedescuento      numeric(20,5)   not null
-  ,montodescuento           numeric(20,0)   not null
+  ,porcentajedescuento1     numeric(20,5)   not null
+  ,montodescuento1          numeric(20,0)   not null
+  ,porcentajedescuento2     numeric(20,5)   not null
+  ,montodescuento2          numeric(20,0)   not null
   ,exento                   numeric(20,0)   not null
   ,afecto                   numeric(20,0)   not null
   ,impuestos                numeric(20,2)   not null
@@ -1460,10 +1466,17 @@ alter table detalles_cotizs_vtas add constraint decv_chk_01 check (
 create table productos (
    id                       numeric(20,0)   not null
   ,idempr                   numeric(20,0)   not null
+  ,idsfpr                   numeric(20,0)   not null
   ,idtipr                   numeric(20,0)   not null
   ,idunmp                   numeric(20,0)   not null
   ,idorpr                   numeric(20,0)   not null
   ,nombre                   varchar(1000)   not null
+  ,correlativoflia          numeric(4,0)    not null
+  ,sku                      varchar(1000)       null
+  ,ean13                    varchar(1000)       null
+  ,qr                       varchar(1000)       null
+  ,pesounitariokg           numeric(20,2)   not null
+  ,idesre                   numeric(20,0)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
   ,idusuamodifregistro      numeric(20,0)       null
@@ -1477,6 +1490,9 @@ alter table productos add constraint prod_pk primary key (id)
 ;
 
 alter table productos add constraint prod_uk_01 unique (idempr, nombre)
+;
+
+alter table productos add constraint prod_uk_02 unique (idempr, idsfpr, correlativoflia)
 ;
 
 /*************************************************************************************************************************/
@@ -1958,9 +1974,11 @@ alter table formas_pagos_ventas        add constraint fpve_fk2_usua foreign key 
 alter table formas_pagos_ventas        add constraint fpve_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
 alter table productos                  add constraint prod_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table productos                  add constraint prod_fk_sfpr  foreign key (idsfpr)                references sub_familias_productos        (id);
 alter table productos                  add constraint prod_fk_tipr  foreign key (idtipr)                references tipos_productos               (id);
 alter table productos                  add constraint prod_fk_unmp  foreign key (idunmp)                references unidades_medidas_productos    (id);
 alter table productos                  add constraint prod_fk_orpr  foreign key (idorpr)                references origenes_productos            (id);
+alter table productos                  add constraint prod_fk_esre  foreign key (idesre)                references estados_registros             (id);
 alter table productos                  add constraint prod_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
 alter table productos                  add constraint prod_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
 alter table productos                  add constraint prod_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);

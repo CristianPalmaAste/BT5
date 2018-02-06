@@ -100,9 +100,9 @@ insert into programas values ( 8030,  8000, 'Compras 3'                         
 insert into programas values ( 8040,  8000, 'Compras 4'                            , 'principales/en-construccion'     , 'Compras 4'                                 , 4 );
 insert into programas values ( 8050,  8000, 'Compras 5'                            , 'principales/en-construccion'     , 'Compras 5'                                 , 5 );
 insert into programas values ( 9000, null , 'Ventas'                               , null                              , 'Ventas'                                    , 9 );
-insert into programas values ( 9010,  9000, 'Ventas 1'                             , 'principales/en-construccion'     , 'Ventas 1'                                  , 1 );
-insert into programas values ( 9020,  9000, 'Ventas 2'                             , 'principales/en-construccion'     , 'Ventas 2'                                  , 2 );
-insert into programas values ( 9030,  9000, 'Ventas 3'                             , 'principales/en-construccion'     , 'Ventas 3'                                  , 3 );
+insert into programas values ( 9010,  9000, 'Cotizaciones ventas'                  , 'CotizacionesVentas'              , 'Cotizaciones ventas'                       , 1 );
+insert into programas values ( 9020,  9000, 'Notas ventas'                         , 'NotasVentas'                     , 'Notas ventas'                              , 2 );
+insert into programas values ( 9030,  9000, 'Ventas'                               , 'Ventas'                          , 'Ventas'                                    , 3 );
 insert into programas values ( 9040,  9000, 'Ventas 4'                             , 'principales/en-construccion'     , 'Ventas 4'                                  , 4 );
 insert into programas values ( 9050,  9000, 'Ventas 5'                             , 'principales/en-construccion'     , 'Ventas 5'                                  , 5 );
 insert into programas values (10000, null , 'Contabilidad'                         , null                              , 'Contabilidad'                              , 10);

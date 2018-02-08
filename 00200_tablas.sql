@@ -1635,6 +1635,9 @@ alter table listas_precios add constraint lipr_chk_01 check ((idesre = 1 and fec
                                                             )
 ;
 
+create unique index lipr_idx_01 on listas_precios (idempr, idesre) where (idesre = 1)
+;
+
 /*************************************************************************************************************************/
 
 create table detalles_listas_precios (
@@ -1709,6 +1712,113 @@ alter table sub_familias_productos add constraint sfpr_uk_02 unique (idfapr, des
 
 /*************************************************************************************************************************/
 
+create table tipos_movimientos_bodegas (
+   id                       numeric(20,0)   not null
+  ,descripcion              varchar(100)    not null
+  ,signo                    numeric(1,0)    not null
+)
+;
+
+alter table tipos_movimientos_bodegas add constraint timb_pk primary key (id)
+;
+
+alter table tipos_movimientos_bodegas add constraint timb_uk_01 unique (descripcion)
+;
+
+alter table tipos_movimientos_bodegas add constraint timb_chk_01 check (signo in (1, -1))
+;
+
+/*************************************************************************************************************************/
+
+create table movimientos_bodegas (
+   id                       numeric(20,0)   not null
+  ,idbode                   numeric(20,0)   not null
+  ,correlativo              numeric(20,0)   not null
+  ,fechamovto               date            not null
+  ,descripcion              varchar(100)    not null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table movimientos_bodegas add constraint mobo_pk primary key (id)
+;
+
+alter table movimientos_bodegas add constraint mobo_uk_01 unique (idbode, correlativo)
+;
+
+/*************************************************************************************************************************/
+
+create table detalles_movtos_bodegas (
+   id                       numeric(20,0)   not null
+  ,idmobo                   numeric(20,0)   not null
+  ,correlativo              numeric(20,0)   not null
+  ,idtimb                   numeric(20,0)   not null
+  ,idprod                   numeric(20,0)   not null
+  ,cantidad                 numeric(20,0)   not null
+  ,idunmp                   numeric(20,0)   not null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table detalles_movtos_bodegas add constraint demb_pk primary key (id)
+;
+
+alter table detalles_movtos_bodegas add constraint demb_uk_01 unique (idmobo, correlativo)
+;
+
+alter table detalles_movtos_bodegas add constraint demb_uk_02 unique (idmobo, idprod)
+;
+
+/*************************************************************************************************************************/
+
+create table descuentos (
+   id                       numeric(20,0)   not null
+  ,idfapr                   numeric(20,0)       null
+  ,idsfpr                   numeric(20,0)       null
+  ,idprod                   numeric(20,0)       null
+  ,porcentajedescuento      numeric(20,5)       null
+  ,montodescuento           numeric(20,0)       null
+  ,idesre                   numeric(20,0)   not null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table descuentos add constraint desc_pk primary key (id)
+;
+
+alter table descuentos add constraint desc_uk_01 unique (idfapr, idsfpr, idprod)
+;
+
+alter table descuentos add constraint desc_chk_01 check (   (idfapr is not null and idfapr is     null and idfapr is     null)
+                                                         or
+                                                            (idfapr is     null and idfapr is not null and idfapr is     null)
+                                                         or
+                                                            (idfapr is     null and idfapr is     null and idfapr is not null)
+                                                        )
+;
+
+alter table descuentos add constraint desc_chk_02 check (   (porcentajedescuento is not null and montodescuento is     null)
+                                                         or
+                                                            (porcentajedescuento is     null and montodescuento is not null)
+                                                        )
+;
+
+/*************************************************************************************************************************/
 
 
 
@@ -1717,6 +1827,19 @@ alter table sub_familias_productos add constraint sfpr_uk_02 unique (idfapr, des
 
 
 -- Sección foreign keys
+
+alter table movimientos_bodegas        add constraint mobo_fk_bode  foreign key (idbode)                references bodegas                       (id);
+alter table movimientos_bodegas        add constraint mobo_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table movimientos_bodegas        add constraint mobo_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table movimientos_bodegas        add constraint mobo_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+
+alter table detalles_movtos_bodegas    add constraint demb_fk_mobo  foreign key (idmobo)                references movimientos_bodegas           (id);
+alter table detalles_movtos_bodegas    add constraint demb_fk_timb  foreign key (idtimb)                references tipos_movimientos_bodegas     (id);
+alter table detalles_movtos_bodegas    add constraint demb_fk_prod  foreign key (idprod)                references productos                     (id);
+alter table detalles_movtos_bodegas    add constraint demb_fk_unmp  foreign key (idunmp)                references unidades_medidas_productos    (id);
+alter table detalles_movtos_bodegas    add constraint demb_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table detalles_movtos_bodegas    add constraint demb_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table detalles_movtos_bodegas    add constraint demb_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
 alter table sub_familias_productos     add constraint sfpr_fk_fapr  foreign key (idfapr)                references familias_productos            (id);
 alter table sub_familias_productos     add constraint sfpr_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);

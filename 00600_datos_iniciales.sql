@@ -638,6 +638,12 @@ insert into tipos_clientes values (2, 'EMPRESA'        );
 insert into tipos_cotizaciones_vtas values (1, 'PRESUPUESTO');
 insert into tipos_cotizaciones_vtas values (2, 'PROSPECTO'  );
 
+insert into tipos_movimientos_bodegas values (1, 'SALIDA POR VENTA'                  , -1);
+insert into tipos_movimientos_bodegas values (2, 'ENTRADA POR ADQUISICIÓN'           ,  1);
+insert into tipos_movimientos_bodegas values (3, 'SALIDA POR TRASPASO ENTRE BODEGAS' , -1);
+insert into tipos_movimientos_bodegas values (4, 'ENTRADA POR TRASPASO ENTRE BODEGAS',  1);
+insert into tipos_movimientos_bodegas values (5, 'ENTRADA POR DEVOLUCIÓN'            ,  1);
+
 insert into estados_cotizaciones_vtas values (1, 'CREADA'  );
 insert into estados_cotizaciones_vtas values (2, 'CERRADA' );
 insert into estados_cotizaciones_vtas values (3, 'ACEPTADA');

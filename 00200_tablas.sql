@@ -1734,6 +1734,7 @@ create table movimientos_bodegas (
    id                       numeric(20,0)   not null
   ,idbode                   numeric(20,0)   not null
   ,correlativo              numeric(20,0)   not null
+  ,idtimb                   numeric(20,0)   not null
   ,fechamovto               date            not null
   ,descripcion              varchar(100)    not null
   ,idusuacrearegistro       numeric(20,0)   not null
@@ -1757,7 +1758,6 @@ create table detalles_movtos_bodegas (
    id                       numeric(20,0)   not null
   ,idmobo                   numeric(20,0)   not null
   ,correlativo              numeric(20,0)   not null
-  ,idtimb                   numeric(20,0)   not null
   ,idprod                   numeric(20,0)   not null
   ,cantidad                 numeric(20,0)   not null
   ,idunmp                   numeric(20,0)   not null
@@ -1820,21 +1820,44 @@ alter table descuentos add constraint desc_chk_02 check (   (porcentajedescuento
 
 /*************************************************************************************************************************/
 
+-- en esta tabla se registra cada vez que se fija un precio nuevo a un producto; es decir, en insert y en update, se
+-- registra el new.precio
 
+create table bitacoras_cambios_precios (
+   id                       numeric(20,0)   not null
+  ,idprod                   numeric(20,0)   not null
+  ,preciounitario           numeric(20,0)   not null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+)
+;
 
+alter table bitacoras_cambios_precios add constraint bicp_pk primary key (id)
+;
 
-
+/*************************************************************************************************************************/
 
 
 -- Sección foreign keys
 
+alter table bitacoras_cambios_precios  add constraint bicp_fk_prod  foreign key (idprod)                references productos                     (id);
+alter table bitacoras_cambios_precios  add constraint bicp_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+
+alter table descuentos                 add constraint desc_fk_fapr  foreign key (idfapr)                references familias_productos            (id);
+alter table descuentos                 add constraint desc_fk_sfpr  foreign key (idsfpr)                references sub_familias_productos        (id);
+alter table descuentos                 add constraint desc_fk_prod  foreign key (idprod)                references productos                     (id);
+alter table descuentos                 add constraint desc_fk_esre  foreign key (idesre)                references estados_registros             (id);
+alter table descuentos                 add constraint desc_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table descuentos                 add constraint desc_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table descuentos                 add constraint desc_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+
 alter table movimientos_bodegas        add constraint mobo_fk_bode  foreign key (idbode)                references bodegas                       (id);
+alter table movimientos_bodegas        add constraint mobo_fk_timb  foreign key (idtimb)                references tipos_movimientos_bodegas     (id);
 alter table movimientos_bodegas        add constraint mobo_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
 alter table movimientos_bodegas        add constraint mobo_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
 alter table movimientos_bodegas        add constraint mobo_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
 alter table detalles_movtos_bodegas    add constraint demb_fk_mobo  foreign key (idmobo)                references movimientos_bodegas           (id);
-alter table detalles_movtos_bodegas    add constraint demb_fk_timb  foreign key (idtimb)                references tipos_movimientos_bodegas     (id);
 alter table detalles_movtos_bodegas    add constraint demb_fk_prod  foreign key (idprod)                references productos                     (id);
 alter table detalles_movtos_bodegas    add constraint demb_fk_unmp  foreign key (idunmp)                references unidades_medidas_productos    (id);
 alter table detalles_movtos_bodegas    add constraint demb_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);

@@ -675,4 +675,14 @@ insert into detalles_listas_precios values (32, 2, 15, 5300, 1, current_timestam
 insert into detalles_listas_precios values (33, 2, 16, 3100, 1, current_timestamp, null, null, null, null);
 insert into detalles_listas_precios values (34, 2, 17, 4100, 1, current_timestamp, null, null, null, null);
 
+-- descuentos
+
+insert into descuentos values (1, 1   , null, null, 5   , null, 1, 1, current_timestamp, null, null, null, null);
+insert into descuentos values (2, null, 1   , null, 10  , null, 1, 1, current_timestamp, null, null, null, null);
+insert into descuentos values (3, null, null, 1   , 15  , null, 1, 1, current_timestamp, null, null, null, null);
+insert into descuentos values (4, null, null, 2   , 20  , null, 1, 1, current_timestamp, null, null, null, null);
+insert into descuentos values (5, null, null, 3   , null, 100 , 1, 1, current_timestamp, null, null, null, null);
+insert into descuentos values (6, null, null, 4   , null, 200 , 1, 1, current_timestamp, null, null, null, null);
+insert into descuentos values (7, null, null, 5   , null, 300 , 1, 1, current_timestamp, null, null, null, null);
+
 \q

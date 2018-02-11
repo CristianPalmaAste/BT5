@@ -1806,11 +1806,11 @@ alter table descuentos add constraint desu_pk primary key (id)
 alter table descuentos add constraint desu_uk_01 unique (idfapr, idsfpr, idprod)
 ;
 
-alter table descuentos add constraint desu_chk_01 check (   (idfapr is not null and idfapr is     null and idfapr is     null)
+alter table descuentos add constraint desu_chk_01 check (   (idfapr is not null and idsfpr is     null and idprod is     null)
                                                          or
-                                                            (idfapr is     null and idfapr is not null and idfapr is     null)
+                                                            (idfapr is     null and idsfpr is not null and idprod is     null)
                                                          or
-                                                            (idfapr is     null and idfapr is     null and idfapr is not null)
+                                                            (idfapr is     null and idsfpr is     null and idprod is not null)
                                                         )
 ;
 

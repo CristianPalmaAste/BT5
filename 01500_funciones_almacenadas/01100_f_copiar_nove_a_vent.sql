@@ -8,8 +8,10 @@ declare
   Vidserv                   numeric;
   Vcantidad                 numeric;
   Vpreciounitario           numeric;
-  Vporcentajedescuento      numeric;
-  Vmontodescuento           numeric;
+  Vporcentajedescuento1     numeric;
+  Vmontodescuento1          numeric;
+  Vporcentajedescuento2     numeric;
+  Vmontodescuento2          numeric;
   Vimpuestos                numeric;
   Vsubtotal                 numeric;
   Vidusuacrearegistro       numeric;
@@ -29,8 +31,10 @@ declare
           ,idserv
           ,preciounitario
           ,cantidad
-          ,porcentajedescuento
-          ,montodescuento
+          ,porcentajedescuento1
+          ,montodescuento1
+          ,porcentajedescuento2
+          ,montodescuento2
           ,exento
           ,afecto
           ,impuestos
@@ -135,8 +139,10 @@ begin
                        ,Vidserv
                        ,Vpreciounitario
                        ,Vcantidad
-                       ,Vporcentajedescuento
-                       ,Vmontodescuento
+                       ,Vporcentajedescuento1
+                       ,Vmontodescuento1
+                       ,Vporcentajedescuento2
+                       ,Vmontodescuento2
                        ,Vexento
                        ,Vafecto
                        ,Vimpuestos
@@ -154,8 +160,10 @@ begin
                                   ,idserv                   -- numeric(20,0)       null
                                   ,preciounitario           -- numeric(20,0)   not null
                                   ,cantidad                 -- numeric(20,2)   not null
-                                  ,porcentajedescuento      -- numeric(20,2)   not null
-                                  ,montodescuento           -- numeric(20,2)   not null
+                                  ,porcentajedescuento1     -- numeric(20,2)   not null
+                                  ,montodescuento1          -- numeric(20,2)   not null
+                                  ,porcentajedescuento2     -- numeric(20,2)   not null
+                                  ,montodescuento2          -- numeric(20,2)   not null
                                   ,exento                   -- numeric(20,2)   not null
                                   ,afecto                   -- numeric(20,2)   not null
                                   ,impuestos                -- numeric(20,2)   not null
@@ -174,8 +182,10 @@ begin
              ,Vidserv                              -- idserv                   numeric(20,0)       null
              ,Vpreciounitario                      -- preciounitario           numeric(20,0)   not null
              ,Vcantidad                            -- cantidad                 numeric(20,2)   not null
-             ,Vporcentajedescuento                 -- porcentajedescuento      numeric(20,2)   not null
-             ,Vmontodescuento                      -- montodescuento           numeric(20,2)   not null
+             ,Vporcentajedescuento1                -- porcentajedescuento1     numeric(20,2)   not null
+             ,Vmontodescuento1                     -- montodescuento1          numeric(20,2)   not null
+             ,Vporcentajedescuento2                -- porcentajedescuento2     numeric(20,2)   not null
+             ,Vmontodescuento2                     -- montodescuento2          numeric(20,2)   not null
              ,Vexento                              -- exento                   numeric(20,2)   not null
              ,Vafecto                              -- afecto                   numeric(20,2)   not null
              ,Vimpuestos                           -- impuestos                numeric(20,2)   not null

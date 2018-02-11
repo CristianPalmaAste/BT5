@@ -619,7 +619,6 @@ select tmp_datos_de_prueba_vtas()
 drop function tmp_datos_de_prueba_vtas()
 ;
 
-/*
 update cotizaciones_ventas
 set    idescv = 2
 ;
@@ -635,6 +634,45 @@ set    idesnv = 2
 update notas_ventas
 set    idesnv = 3
 ;
-*/
+
+-- listas precios
+
+insert into listas_precios values (1, 1, 1, '01-01-2017', '31-12-2017', 'LISTA PRECIOS 2017', 2, 1, current_timestamp, 1   , current_timestamp, null, null);
+insert into listas_precios values (2, 1, 2, '01-01-2018', null        , 'LISTA PRECIOS 2018', 1, 1, current_timestamp, null, null             , null, null);
+
+insert into detalles_listas_precios values ( 1, 1,  1, 1000, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values ( 2, 1,  2, 1100, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values ( 3, 1,  3, 1200, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values ( 4, 1,  4, 1300, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values ( 5, 1,  5, 1000, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values ( 6, 1,  6, 1100, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values ( 7, 1,  7, 1200, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values ( 8, 1,  8, 1300, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values ( 9, 1,  9, 1000, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values (10, 1, 10, 1100, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values (11, 1, 11, 1200, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values (12, 1, 12, 1300, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values (13, 1, 13, 5000, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values (14, 1, 14, 5100, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values (15, 1, 15, 5200, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values (16, 1, 16, 3000, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values (17, 1, 17, 4000, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values (18, 2,  1, 1100, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values (19, 2,  2, 1200, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values (20, 2,  3, 1300, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values (21, 2,  4, 1400, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values (22, 2,  5, 1100, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values (23, 2,  6, 1200, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values (24, 2,  7, 1300, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values (25, 2,  8, 1400, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values (26, 2,  9, 1100, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values (27, 2, 10, 1200, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values (28, 2, 11, 1300, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values (29, 2, 12, 1400, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values (30, 2, 13, 5100, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values (31, 2, 14, 5200, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values (32, 2, 15, 5300, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values (33, 2, 16, 3100, 1, current_timestamp, null, null, null, null);
+insert into detalles_listas_precios values (34, 2, 17, 4100, 1, current_timestamp, null, null, null, null);
 
 \q

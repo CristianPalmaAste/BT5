@@ -13,6 +13,8 @@ declare
   Vvalorunitario             numeric;
   Vporcentajedescuento       numeric;
   Vmontodescuento            numeric;
+  Vidfapr                    numeric;
+  Vidsfpr                    numeric;
 begin
   /*
 
@@ -80,6 +82,7 @@ begin
           ,Vmontodescuento
     from   descuentos
     where  idprod = Pidprod
+    and    idesre = 1
     ;
     if Vporcentajedescuento is not null or Vmontodescuento is not null then
       if Vporcentajedescuento is not null then
@@ -97,7 +100,7 @@ begin
       end if;
     else
       select sfpr.idfapr
-            ,sfpr.idsfpr
+            ,sfpr.id
       into   Vidfapr
             ,Vidsfpr
       from   productos              prod
@@ -105,34 +108,59 @@ begin
       where  prod.idsfpr = sfpr.id
       and    prod.id     = Pidprod
       ;
-
-
-return('');
+      select porcentajedescuento
+            ,montodescuento
+      into   Vporcentajedescuento
+            ,Vmontodescuento
+      from   descuentos
+      where  idsfpr = Vidsfpr
+      and    idesre = 1
+      ;
+      if Vporcentajedescuento is not null or Vmontodescuento is not null then
+        if Vporcentajedescuento is not null then
+          if Pdato_deseado = 7 then
+            return(Vporcentajedescuento);
+          else
+            return('P');
+          end if;
+        else
+          if Pdato_deseado = 7 then
+            return(Vmontodescuento);
+          else
+            return('M');
+          end if;
+        end if;
+      else
+        select porcentajedescuento
+              ,montodescuento
+        into   Vporcentajedescuento
+              ,Vmontodescuento
+        from   descuentos
+        where  idfapr = Vidfapr
+        and    idesre = 1
+        ;
+        if Vporcentajedescuento is not null or Vmontodescuento is not null then
+          if Vporcentajedescuento is not null then
+            if Pdato_deseado = 7 then
+              return(Vporcentajedescuento);
+            else
+              return('P');
+            end if;
+          else
+            if Pdato_deseado = 7 then
+              return(Vmontodescuento);
+            else
+              return('M');
+            end if;
+          end if;
+        else
+          return('');
+        end if;
+      end if;
     end if;
   else
     return('-----');
   end if;
 end;
 $$ LANGUAGE plpgsql;
-
-select 'descuento       : ' || f_datos_producto(1 , 7);
-select 'tipo descuento  : ' || f_datos_producto(1 , 8);
-select 'descuento       : ' || f_datos_producto(3 , 7);
-select 'tipo descuento  : ' || f_datos_producto(3 , 8);
-select 'descuento       : ' || f_datos_producto(5 , 7);
-select 'tipo descuento  : ' || f_datos_producto(5 , 8);
-select 'descuento       : ' || f_datos_producto(7 , 7);
-select 'tipo descuento  : ' || f_datos_producto(7 , 8);
-select 'descuento       : ' || f_datos_producto(9 , 7);
-select 'tipo descuento  : ' || f_datos_producto(9 , 8);
-select 'descuento       : ' || f_datos_producto(11, 7);
-select 'tipo descuento  : ' || f_datos_producto(11, 8);
-select 'descuento       : ' || f_datos_producto(13, 7);
-select 'tipo descuento  : ' || f_datos_producto(13, 8);
-select 'descuento       : ' || f_datos_producto(15, 7);
-select 'tipo descuento  : ' || f_datos_producto(15, 8);
-select 'descuento       : ' || f_datos_producto(17, 7);
-select 'tipo descuento  : ' || f_datos_producto(17, 8);
-select 'descuento       : ' || f_datos_producto(19, 7);
-select 'tipo descuento  : ' || f_datos_producto(19, 8);
 

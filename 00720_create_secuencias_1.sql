@@ -66,6 +66,17 @@ select 'create sequence prod_seq start with ' || (case when MAX(ID) is null then
 select 'create sequence serv_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from servicios;
 select 'create sequence domi_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from dominios;
 select 'create sequence vado_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from valores_dominios;
+select 'create sequence bode_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from bodegas;
+select 'create sequence bopr_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from bodegas_productos;
+select 'create sequence lipr_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from listas_precios;
+select 'create sequence delp_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from detalles_listas_precios;
+select 'create sequence fapr_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from familias_productos;
+select 'create sequence sfpr_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from sub_familias_productos;
+select 'create sequence timb_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_movimientos_bodegas;
+select 'create sequence mobo_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from movimientos_bodegas;
+select 'create sequence demb_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from detalles_movtos_bodegas;
+select 'create sequence desu_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from descuentos;
+select 'create sequence bicp_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from bitacoras_cambios_precios;
 
 
 \q

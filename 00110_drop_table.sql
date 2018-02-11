@@ -66,6 +66,17 @@ drop table if exists productos                      cascade;
 drop table if exists servicios                      cascade;
 drop table if exists dominios                       cascade;
 drop table if exists valores_dominios               cascade;
+drop table if exists bodegas                        cascade;
+drop table if exists bodegas_productos              cascade;
+drop table if exists listas_precios                 cascade;
+drop table if exists detalles_listas_precios        cascade;
+drop table if exists familias_productos             cascade;
+drop table if exists sub_familias_productos         cascade;
+drop table if exists tipos_movimientos_bodegas      cascade;
+drop table if exists movimientos_bodegas            cascade;
+drop table if exists detalles_movtos_bodegas        cascade;
+drop table if exists descuentos                     cascade;
+drop table if exists bitacoras_cambios_precios      cascade;
 
 
 \q

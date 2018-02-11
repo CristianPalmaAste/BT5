@@ -66,6 +66,17 @@ create or replace view prod as select * from productos;
 create or replace view serv as select * from servicios;
 create or replace view domi as select * from dominios;
 create or replace view vado as select * from valores_dominios;
+create or replace view bode as select * from bodegas;
+create or replace view bopr as select * from bodegas_productos;
+create or replace view lipr as select * from listas_precios;
+create or replace view delp as select * from detalles_listas_precios;
+create or replace view fapr as select * from familias_productos;
+create or replace view sfpr as select * from sub_familias_productos;
+create or replace view timb as select * from tipos_movimientos_bodegas;
+create or replace view mobo as select * from movimientos_bodegas;
+create or replace view demb as select * from detalles_movtos_bodegas;
+create or replace view desu as select * from descuentos;
+create or replace view bicp as select * from bitacoras_cambios_precios;
 
 
 \q

@@ -1781,6 +1781,8 @@ alter table detalles_movtos_bodegas add constraint demb_uk_02 unique (idmobo, id
 
 /*************************************************************************************************************************/
 
+-- el alias de descuentos es desu y no desc porque desc es palabra reservada
+
 create table descuentos (
    id                       numeric(20,0)   not null
   ,idfapr                   numeric(20,0)       null
@@ -1798,13 +1800,13 @@ create table descuentos (
 )
 ;
 
-alter table descuentos add constraint desc_pk primary key (id)
+alter table descuentos add constraint desu_pk primary key (id)
 ;
 
-alter table descuentos add constraint desc_uk_01 unique (idfapr, idsfpr, idprod)
+alter table descuentos add constraint desu_uk_01 unique (idfapr, idsfpr, idprod)
 ;
 
-alter table descuentos add constraint desc_chk_01 check (   (idfapr is not null and idfapr is     null and idfapr is     null)
+alter table descuentos add constraint desu_chk_01 check (   (idfapr is not null and idfapr is     null and idfapr is     null)
                                                          or
                                                             (idfapr is     null and idfapr is not null and idfapr is     null)
                                                          or
@@ -1812,7 +1814,7 @@ alter table descuentos add constraint desc_chk_01 check (   (idfapr is not null 
                                                         )
 ;
 
-alter table descuentos add constraint desc_chk_02 check (   (porcentajedescuento is not null and montodescuento is     null)
+alter table descuentos add constraint desu_chk_02 check (   (porcentajedescuento is not null and montodescuento is     null)
                                                          or
                                                             (porcentajedescuento is     null and montodescuento is not null)
                                                         )
@@ -1843,13 +1845,13 @@ alter table bitacoras_cambios_precios add constraint bicp_pk primary key (id)
 alter table bitacoras_cambios_precios  add constraint bicp_fk_prod  foreign key (idprod)                references productos                     (id);
 alter table bitacoras_cambios_precios  add constraint bicp_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
 
-alter table descuentos                 add constraint desc_fk_fapr  foreign key (idfapr)                references familias_productos            (id);
-alter table descuentos                 add constraint desc_fk_sfpr  foreign key (idsfpr)                references sub_familias_productos        (id);
-alter table descuentos                 add constraint desc_fk_prod  foreign key (idprod)                references productos                     (id);
-alter table descuentos                 add constraint desc_fk_esre  foreign key (idesre)                references estados_registros             (id);
-alter table descuentos                 add constraint desc_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table descuentos                 add constraint desc_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table descuentos                 add constraint desc_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table descuentos                 add constraint desu_fk_fapr  foreign key (idfapr)                references familias_productos            (id);
+alter table descuentos                 add constraint desu_fk_sfpr  foreign key (idsfpr)                references sub_familias_productos        (id);
+alter table descuentos                 add constraint desu_fk_prod  foreign key (idprod)                references productos                     (id);
+alter table descuentos                 add constraint desu_fk_esre  foreign key (idesre)                references estados_registros             (id);
+alter table descuentos                 add constraint desu_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table descuentos                 add constraint desu_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table descuentos                 add constraint desu_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
 alter table movimientos_bodegas        add constraint mobo_fk_bode  foreign key (idbode)                references bodegas                       (id);
 alter table movimientos_bodegas        add constraint mobo_fk_timb  foreign key (idtimb)                references tipos_movimientos_bodegas     (id);
@@ -1891,8 +1893,8 @@ alter table bodegas                    add constraint bode_fk1_usua foreign key 
 alter table bodegas                    add constraint bode_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
 alter table bodegas                    add constraint bode_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table bodegas_productos          add constraint bopr_fk_empr  foreign key (idbode)                references bodegas                       (id);
-alter table bodegas_productos          add constraint bopr_fk_empr  foreign key (idprod)                references productos                     (id);
+alter table bodegas_productos          add constraint bopr_fk_bode  foreign key (idbode)                references bodegas                       (id);
+alter table bodegas_productos          add constraint bopr_fk_prod  foreign key (idprod)                references productos                     (id);
 alter table bodegas_productos          add constraint bopr_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
 alter table bodegas_productos          add constraint bopr_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
 alter table bodegas_productos          add constraint bopr_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);

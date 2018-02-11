@@ -63,8 +63,8 @@ CREATE VIEW
 
 DROP VIEW
 CREATE VIEW
- id | idempr | empresa | idtipr | tipo_producto | idunmp | unidad_de_medida | alias_unidad_de_medida | idorpr | origen | alias_origen | nombre | valorunitario 
-----+--------+---------+--------+---------------+--------+------------------+------------------------+--------+--------+--------------+--------+---------------
+ id | idempr | empresa | idsfpr | sub_familia | nombre_sub_familia | idfapr | familia | nombre_familia | idtipr | tipo_producto | idunmp | unidad_de_medida | alias_unidad_de_medida | idorpr | origen | alias_origen | nombre 
+----+--------+---------+--------+-------------+--------------------+--------+---------+----------------+--------+---------------+--------+------------------+------------------------+--------+--------+--------------+--------
 (0 filas)
 
 DROP VIEW

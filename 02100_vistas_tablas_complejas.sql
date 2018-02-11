@@ -245,6 +245,12 @@ create or replace view prodv as
 select prod.id                        id
       ,prod.idempr                    idempr
       ,empr.nombrefantasia            empresa
+      ,prod.idsfpr                    idsfpr
+      ,sfpr.cod_sub_familia           sub_familia
+      ,sfpr.descripcion               nombre_sub_familia
+      ,sfpr.idfapr                    idfapr
+      ,fapr.cod_familia               familia
+      ,fapr.descripcion               nombre_familia
       ,prod.idtipr                    idtipr
       ,tipr.descripcion               tipo_producto
       ,prod.idunmp                    idunmp
@@ -254,9 +260,10 @@ select prod.id                        id
       ,orpr.descripcion               origen
       ,orpr.descripcioncorta          alias_origen
       ,prod.nombre                    nombre
-      ,prod.valorunitario             valorunitario
 from                   productos                  prod
        left outer join empresas                   empr on prod.idempr = empr.id
+       left outer join sub_familias_productos     sfpr on prod.idsfpr = sfpr.id
+       left outer join familias_productos         fapr on sfpr.idfapr = fapr.id
        left outer join tipos_productos            tipr on prod.idtipr = tipr.id
        left outer join unidades_medidas_productos unmp on prod.idunmp = unmp.id
        left outer join origenes_productos         orpr on prod.idorpr = orpr.id
@@ -487,6 +494,5 @@ cliev
 devev
 denvv
 decvv
-prodv
 servv
 

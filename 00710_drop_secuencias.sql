@@ -66,6 +66,17 @@ drop sequence if exists prod_seq;
 drop sequence if exists serv_seq;
 drop sequence if exists domi_seq;
 drop sequence if exists vado_seq;
+drop sequence if exists bode_seq;
+drop sequence if exists bopr_seq;
+drop sequence if exists lipr_seq;
+drop sequence if exists delp_seq;
+drop sequence if exists fapr_seq;
+drop sequence if exists sfpr_seq;
+drop sequence if exists timb_seq;
+drop sequence if exists mobo_seq;
+drop sequence if exists demb_seq;
+drop sequence if exists desu_seq;
+drop sequence if exists bicp_seq;
 
 
 \q

@@ -1,15 +1,22 @@
 create or replace function f_stock_producto (numeric
                                             ,numeric
+                                            ,numeric
                                             ) returns numeric as
 $$
 declare
   Pidprod          numeric := $1;
   Pdato_deseado    numeric := $2;
+  Pidbode          numeric := $3;
   aux              numeric;
   Vstock           numeric;
   Vreservado_nove  numeric;
   Vreservado_vent  numeric;
 begin
+
+
+return(10);
+
+
   /*
      Esta función retorna el stock de un producto, siendo el stock el
 

@@ -87,6 +87,9 @@ psql -d $DBNAME -U $USUARIO_DB < 01700_f_completar_rubro_empresa.sql > 01710_f_c
 echo "  01800_f_crear_datos_empresa"
 psql -d $DBNAME -U $USUARIO_DB < 01800_f_crear_datos_empresa.sql > 01810_f_crear_datos_empresa.txt
 
+echo "  01900_f_datos_producto"
+psql -d $DBNAME -U $USUARIO_DB < 01900_f_datos_producto.sql > 01910_f_datos_producto.txt
+
 cd ..
 
 cd 01600_triggers

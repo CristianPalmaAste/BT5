@@ -411,23 +411,23 @@ begin
   insert into documentos_legales values (23, 1, 3, 'ses_dir.txt'        , 'ses_dir.txt'        , 1, cast(current_timestamp as date) - cast('5 days' as interval), 'ANTONIETA MENDOZA E.'        , '200', 'JULIA PINTO A.'  , '--'               , cast(current_timestamp as date) + cast('15 days' as interval), 'GERARDO.PALMA.ASTE@GMAIL.COM', 'N', 1, current_timestamp, null, null, null, null, null);
   insert into documentos_legales values (24, 1, 4, 'cont_arr.txt'       , 'cont_arr.txt'       , 1, cast(current_timestamp as date) - cast('6 days' as interval), 'ANTONIETA MENDOZA ESCALA'    , '300', 'JULIA PINTO A.'  , '--'               , cast(current_timestamp as date) + cast('16 days' as interval), 'GERARDO.PALMA.ASTE@GMAIL.COM', 'N', 1, current_timestamp, null, null, null, null, null);
 
-  insert into productos values (1 , 1, 4 , 9, 1, 'COCA COLA RETORNABLE 1 LT'        , 800 , 100, 1, current_timestamp, null, null, null, null);
-  insert into productos values (2 , 1, 4 , 9, 1, 'COCA COLA RETORNABLE 2 LT'        , 1100, 100, 1, current_timestamp, null, null, null, null);
-  insert into productos values (3 , 1, 4 , 9, 1, 'COCA COLA RETORNABLE 2.5 LT'      , 1200, 100, 1, current_timestamp, null, null, null, null);
-  insert into productos values (4 , 1, 4 , 9, 1, 'COCA COLA RETORNABLE 3 LT'        , 1300, 100, 1, current_timestamp, null, null, null, null);
-  insert into productos values (5 , 1, 4 , 9, 1, 'COCA COLA LIGHT RETORNABLE 1 LT'  , 750 , 100, 1, current_timestamp, null, null, null, null);
-  insert into productos values (6 , 1, 4 , 9, 1, 'COCA COLA LIGHT RETORNABLE 2 LT'  , 1050, 100, 1, current_timestamp, null, null, null, null);
-  insert into productos values (7 , 1, 4 , 9, 1, 'COCA COLA LIGHT RETORNABLE 2.5 LT', 1150, 100, 1, current_timestamp, null, null, null, null);
-  insert into productos values (8 , 1, 4 , 9, 1, 'COCA COLA LIGHT RETORNABLE 3 LT'  , 1250, 100, 1, current_timestamp, null, null, null, null);
-  insert into productos values (9 , 1, 4 , 9, 1, 'COCA COLA ZERO RETORNABLE 1 LT'   , 750 , 100, 1, current_timestamp, null, null, null, null);
-  insert into productos values (10, 1, 4 , 9, 1, 'COCA COLA ZERO RETORNABLE 2 LT'   , 1050, 100, 1, current_timestamp, null, null, null, null);
-  insert into productos values (11, 1, 4 , 9, 1, 'COCA COLA ZERO RETORNABLE 2.5 LT' , 1150, 100, 1, current_timestamp, null, null, null, null);
-  insert into productos values (12, 1, 4 , 9, 1, 'COCA COLA ZERO RETORNABLE 3 LT'   , 1250, 100, 1, current_timestamp, null, null, null, null);
-  insert into productos values (13, 1, 14, 3, 1, 'JAMÓN DE CERDO PF'                , 5000, 100, 1, current_timestamp, null, null, null, null);
-  insert into productos values (14, 1, 14, 3, 1, 'JAMÓN DE CERDO AHUMADO PF'        , 5500, 100, 1, current_timestamp, null, null, null, null);
-  insert into productos values (15, 1, 14, 3, 1, 'JAMÓN DE CERDO ACARAMELADO PF'    , 6000, 100, 1, current_timestamp, null, null, null, null);
-  insert into productos values (16, 1, 15, 9, 1, 'LIBRO DE RECETAS MASTER CHEF'     , 5000, 100, 1, current_timestamp, null, null, null, null);
-  insert into productos values (17, 1, 5 , 9, 1, 'PISCO CAPEL 35°'                  , 3000, 100, 1, current_timestamp, null, null, null, null);
+  insert into productos values (1 , 1, 1, 4 , 9, 1, 'COCA COLA RETORNABLE 1 LT'        , '0001', 'a', 'a', 'a', 1, 1, 1, current_timestamp, null, null, null, null);
+  insert into productos values (2 , 1, 1, 4 , 9, 1, 'COCA COLA RETORNABLE 2 LT'        , '0002', 'a', 'a', 'a', 1, 1, 1, current_timestamp, null, null, null, null);
+  insert into productos values (3 , 1, 1, 4 , 9, 1, 'COCA COLA RETORNABLE 2.5 LT'      , '0003', 'a', 'a', 'a', 1, 1, 1, current_timestamp, null, null, null, null);
+  insert into productos values (4 , 1, 1, 4 , 9, 1, 'COCA COLA RETORNABLE 3 LT'        , '0004', 'a', 'a', 'a', 1, 1, 1, current_timestamp, null, null, null, null);
+  insert into productos values (5 , 1, 1, 4 , 9, 1, 'COCA COLA LIGHT RETORNABLE 1 LT'  , '0005', 'a', 'a', 'a', 1, 1, 1, current_timestamp, null, null, null, null);
+  insert into productos values (6 , 1, 1, 4 , 9, 1, 'COCA COLA LIGHT RETORNABLE 2 LT'  , '0006', 'a', 'a', 'a', 1, 1, 1, current_timestamp, null, null, null, null);
+  insert into productos values (7 , 1, 1, 4 , 9, 1, 'COCA COLA LIGHT RETORNABLE 2.5 LT', '0007', 'a', 'a', 'a', 1, 1, 1, current_timestamp, null, null, null, null);
+  insert into productos values (8 , 1, 1, 4 , 9, 1, 'COCA COLA LIGHT RETORNABLE 3 LT'  , '0008', 'a', 'a', 'a', 1, 1, 1, current_timestamp, null, null, null, null);
+  insert into productos values (9 , 1, 1, 4 , 9, 1, 'COCA COLA ZERO RETORNABLE 1 LT'   , '0009', 'a', 'a', 'a', 1, 1, 1, current_timestamp, null, null, null, null);
+  insert into productos values (10, 1, 1, 4 , 9, 1, 'COCA COLA ZERO RETORNABLE 2 LT'   , '0010', 'a', 'a', 'a', 1, 1, 1, current_timestamp, null, null, null, null);
+  insert into productos values (11, 1, 1, 4 , 9, 1, 'COCA COLA ZERO RETORNABLE 2.5 LT' , '0011', 'a', 'a', 'a', 1, 1, 1, current_timestamp, null, null, null, null);
+  insert into productos values (12, 1, 1, 4 , 9, 1, 'COCA COLA ZERO RETORNABLE 3 LT'   , '0012', 'a', 'a', 'a', 1, 1, 1, current_timestamp, null, null, null, null);
+  insert into productos values (13, 1, 1, 14, 3, 1, 'JAMÓN DE CERDO PF'                , '0013', 'a', 'a', 'a', 1, 1, 1, current_timestamp, null, null, null, null);
+  insert into productos values (14, 1, 1, 14, 3, 1, 'JAMÓN DE CERDO AHUMADO PF'        , '0014', 'a', 'a', 'a', 1, 1, 1, current_timestamp, null, null, null, null);
+  insert into productos values (15, 1, 1, 14, 3, 1, 'JAMÓN DE CERDO ACARAMELADO PF'    , '0015', 'a', 'a', 'a', 1, 1, 1, current_timestamp, null, null, null, null);
+  insert into productos values (16, 1, 1, 15, 9, 1, 'LIBRO DE RECETAS MASTER CHEF'     , '0016', 'a', 'a', 'a', 1, 1, 1, current_timestamp, null, null, null, null);
+  insert into productos values (17, 1, 1, 5 , 9, 1, 'PISCO CAPEL 35°'                  , '0017', 'a', 'a', 'a', 1, 1, 1, current_timestamp, null, null, null, null);
 
   insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'CONSULTOR JUNIOR'    , 0.5   , 501, 1, current_timestamp, null, null, null, null);
   insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'CONSULTOR SENIOR'    , 1     , 501, 1, current_timestamp, null, null, null, null);
@@ -570,8 +570,10 @@ begin
                                           ,null                                      -- idserv                   numeric(20,0)       null
                                           ,500                                       -- preciounitario           numeric(20,0)   not null
                                           ,2                                         -- cantidad                 numeric(20,2)   not null
-                                          ,0                                         -- porcentajedescuento      numeric(20,2)   not null
-                                          ,0                                         -- montodescuento           numeric(20,2)   not null
+                                          ,0                                         -- porcentajedescuento1     numeric(20,2)   not null
+                                          ,0                                         -- montodescuento1          numeric(20,2)   not null
+                                          ,0                                         -- porcentajedescuento2     numeric(20,2)   not null
+                                          ,0                                         -- montodescuento2          numeric(20,2)   not null
                                           ,0                                         -- exento                   numeric(20,0)   not null
                                           ,1000                                      -- afecto                   numeric(20,0)   not null
                                           ,190                                       -- impuestos                numeric(20,2)   not null
@@ -591,8 +593,10 @@ begin
                                           ,null                                      -- idserv                   numeric(20,0)       null
                                           ,100                                       -- preciounitario           numeric(20,0)   not null
                                           ,20                                        -- cantidad                 numeric(20,2)   not null
-                                          ,0                                         -- porcentajedescuento      numeric(20,2)   not null
-                                          ,0                                         -- montodescuento           numeric(20,2)   not null
+                                          ,0                                         -- porcentajedescuento1     numeric(20,2)   not null
+                                          ,0                                         -- montodescuento1          numeric(20,2)   not null
+                                          ,0                                         -- porcentajedescuento2     numeric(20,2)   not null
+                                          ,0                                         -- montodescuento2          numeric(20,2)   not null
                                           ,0                                         -- exento                   numeric(20,0)   not null
                                           ,2000                                      -- afecto                   numeric(20,0)   not null
                                           ,380                                       -- impuestos                numeric(20,2)   not null

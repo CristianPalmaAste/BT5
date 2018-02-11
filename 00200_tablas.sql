@@ -1471,7 +1471,7 @@ create table productos (
   ,idunmp                   numeric(20,0)   not null
   ,idorpr                   numeric(20,0)   not null
   ,nombre                   varchar(1000)   not null
-  ,correlativoflia          numeric(4,0)    not null
+  ,correlativoflia          varchar(4)      not null
   ,sku                      varchar(1000)       null
   ,ean13                    varchar(1000)       null
   ,qr                       varchar(1000)       null

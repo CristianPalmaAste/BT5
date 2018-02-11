@@ -126,6 +126,9 @@ psql -d $DBNAME -U $USUARIO_DB < 01000_trg_before_ins_vent.sql > 01010_trg_befor
 echo "  01100_trg_before_ins_empr"
 psql -d $DBNAME -U $USUARIO_DB < 01100_trg_before_ins_empr.sql > 01110_trg_before_ins_empr.txt
 
+echo "  01200_trg_after_ins_empr"
+psql -d $DBNAME -U $USUARIO_DB < 01200_trg_after_ins_empr.sql > 01210_trg_after_ins_empr.txt
+
 cd ..
 
 echo "Poblando datos iniciales"

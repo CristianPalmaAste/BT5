@@ -10,6 +10,9 @@ declare
   Vunidad_medida_producto    varchar(1000);
   Vorigen_producto           varchar(1000);
   Vnombre_producto           varchar(1000);
+  Vvalorunitario             numeric;
+  Vporcentajedescuento       numeric;
+  Vmontodescuento            numeric;
 begin
   /*
 
@@ -61,21 +64,75 @@ begin
       return(Vnombre_producto);
     end if;
   elsif Pdato_deseado = 6 then
+    select delp.valorunitario
+    into   Vvalorunitario
+    from   listas_precios          lipr
+          ,detalles_listas_precios delp
+    where  lipr.id     = delp.idlipr
+    and    lipr.idesre = 1
+    and    delp.idprod = Pidprod
+    ;
+    return(Vvalorunitario);
   elsif Pdato_deseado between 7 and 8 then
-return('-----');
+    select porcentajedescuento
+          ,montodescuento
+    into   Vporcentajedescuento
+          ,Vmontodescuento
+    from   descuentos
+    where  idprod = Pidprod
+    ;
+    if Vporcentajedescuento is not null or Vmontodescuento is not null then
+      if Vporcentajedescuento is not null then
+        if Pdato_deseado = 7 then
+          return(Vporcentajedescuento);
+        else
+          return('P');
+        end if;
+      else
+        if Pdato_deseado = 7 then
+          return(Vmontodescuento);
+        else
+          return('M');
+        end if;
+      end if;
+    else
+      select sfpr.idfapr
+            ,sfpr.idsfpr
+      into   Vidfapr
+            ,Vidsfpr
+      from   productos              prod
+            ,sub_familias_productos sfpr
+      where  prod.idsfpr = sfpr.id
+      and    prod.id     = Pidprod
+      ;
+
+
+return('');
+    end if;
   else
     return('-----');
   end if;
 end;
 $$ LANGUAGE plpgsql;
 
-select 'familia         : ' || f_datos_producto(1  , 1);
-select 'sub familia     : ' || f_datos_producto(1  , 2);
-select 'unidad de medida: ' || f_datos_producto(1  , 3);
-select 'origen          : ' || f_datos_producto(1  , 4);
-select 'nombre          : ' || f_datos_producto(1  , 5);
-select 'precio          : ' || f_datos_producto(1  , 6);
-select 'descuento       : ' || f_datos_producto(1  , 7);
-select 'tipo descuento  : ' || f_datos_producto(1  , 8);
-select 'otro dato       : ' || f_datos_producto(1  , 9);
+select 'descuento       : ' || f_datos_producto(1 , 7);
+select 'tipo descuento  : ' || f_datos_producto(1 , 8);
+select 'descuento       : ' || f_datos_producto(3 , 7);
+select 'tipo descuento  : ' || f_datos_producto(3 , 8);
+select 'descuento       : ' || f_datos_producto(5 , 7);
+select 'tipo descuento  : ' || f_datos_producto(5 , 8);
+select 'descuento       : ' || f_datos_producto(7 , 7);
+select 'tipo descuento  : ' || f_datos_producto(7 , 8);
+select 'descuento       : ' || f_datos_producto(9 , 7);
+select 'tipo descuento  : ' || f_datos_producto(9 , 8);
+select 'descuento       : ' || f_datos_producto(11, 7);
+select 'tipo descuento  : ' || f_datos_producto(11, 8);
+select 'descuento       : ' || f_datos_producto(13, 7);
+select 'tipo descuento  : ' || f_datos_producto(13, 8);
+select 'descuento       : ' || f_datos_producto(15, 7);
+select 'tipo descuento  : ' || f_datos_producto(15, 8);
+select 'descuento       : ' || f_datos_producto(17, 7);
+select 'tipo descuento  : ' || f_datos_producto(17, 8);
+select 'descuento       : ' || f_datos_producto(19, 7);
+select 'tipo descuento  : ' || f_datos_producto(19, 8);
 

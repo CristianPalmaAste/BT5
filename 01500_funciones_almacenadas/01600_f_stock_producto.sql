@@ -5,8 +5,8 @@ create or replace function f_stock_producto (numeric
 $$
 declare
   Pidprod          numeric := $1;
-  Pdato_deseado    numeric := $2;
   Pidbode          numeric := $3;
+  Pdato_deseado    numeric := $2;
   aux              numeric;
   Vstock           numeric;
   Vreservado_nove  numeric;
@@ -37,6 +37,11 @@ return(10);
        1) disponible físicamente                       : 100
        2) disponible para venta                        : 95
        3) reservado (por una nota de venta o una venta): 5
+
+     Nota: más adelante habrá que incluir solicitudes de traspaso entre bodegas, esto es, si hay una solicitud de
+           traspaso entre bodegas creada o cerrada, entonces los prpductos involucrados en esa solicitud están
+           "reservados". Se deberían sumar al caso c) antes señalado
+
   */
   if Pidprod is null or Pdato_deseado is null then
     return(0);

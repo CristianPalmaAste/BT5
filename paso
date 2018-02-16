@@ -91,7 +91,7 @@ SET
 
                  ?column?                  
 -------------------------------------------
- create sequence prog_seq start with 11001
+ create sequence prog_seq start with 99001
 (1 fila)
 
                 ?column?                
@@ -106,7 +106,7 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence pepr_seq start with 219
+ create sequence pepr_seq start with 229
 (1 fila)
 
                 ?column?                 

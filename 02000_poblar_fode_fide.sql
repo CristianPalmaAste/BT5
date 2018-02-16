@@ -19,6 +19,7 @@ declare
     where  table_schema = 'public'
     and    table_type   = 'BASE TABLE'
     and    table_name   not in ('tablas_secuencias', 'field_defs', 'form_defs')
+and table_name in ('listas_precios', 'detalles_listas_precios', 'familias_productos', 'sub_familias_productos', 'descuentos', 'bodegas', 'bodegas_productos')
     order  by 1
     ;
   C_columnas cursor for
@@ -38,8 +39,8 @@ declare
     order  by 1
     ;
 begin
-  delete from field_defs;
-  delete from form_defs;
+--  delete from field_defs;
+--  delete from form_defs;
   open C_tablas;
   loop
     fetch C_tablas into Vtablename

@@ -334,19 +334,19 @@ SET
  create sequence bode_seq start with 12
 (1 fila)
 
-               ?column?                
----------------------------------------
- create sequence bopr_seq start with 1
+                ?column?                
+----------------------------------------
+ create sequence bopr_seq start with 18
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence lipr_seq start with 1
+ create sequence lipr_seq start with 3
 (1 fila)
 
-               ?column?                
----------------------------------------
- create sequence delp_seq start with 1
+                ?column?                
+----------------------------------------
+ create sequence delp_seq start with 35
 (1 fila)
 
                 ?column?                
@@ -376,7 +376,7 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence desu_seq start with 1
+ create sequence desu_seq start with 8
 (1 fila)
 
                ?column?                

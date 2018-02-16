@@ -62,3 +62,11 @@ insert into tablas_secuencias values ('productos'                    , 'prod_seq
 insert into tablas_secuencias values ('servicios'                    , 'serv_seq');
 insert into tablas_secuencias values ('dominios'                     , 'domi_seq');
 insert into tablas_secuencias values ('valores_dominios'             , 'vado_seq');
+insert into tablas_secuencias values ('listas_precios'               , 'lipr_seq');
+insert into tablas_secuencias values ('detalles_listas_precios'      , 'delp_seq');
+insert into tablas_secuencias values ('familias_productos'           , 'fapr_seq');
+insert into tablas_secuencias values ('sub_familias_productos'       , 'sfpr_seq');
+insert into tablas_secuencias values ('descuentos'                   , 'desu_seq');
+insert into tablas_secuencias values ('bodegas'                      , 'bode_seq');
+insert into tablas_secuencias values ('bodegas_productos'            , 'bopr_seq');
+

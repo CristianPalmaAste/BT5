@@ -260,6 +260,13 @@ select prod.id                        id
       ,orpr.descripcion               origen
       ,orpr.descripcioncorta          alias_origen
       ,prod.nombre                    nombre
+      ,prod.correlativoflia           correlativoflia
+      ,prod.sku                       sku
+      ,prod.ean13                     ean13
+      ,prod.qr                        qr
+      ,prod.pesounitariokg            pesounitariokg
+      ,prod.idesre                    idesre
+      ,esre.descripcion               estado_regsitro
 from                   productos                  prod
        left outer join empresas                   empr on prod.idempr = empr.id
        left outer join sub_familias_productos     sfpr on prod.idsfpr = sfpr.id
@@ -267,6 +274,7 @@ from                   productos                  prod
        left outer join tipos_productos            tipr on prod.idtipr = tipr.id
        left outer join unidades_medidas_productos unmp on prod.idunmp = unmp.id
        left outer join origenes_productos         orpr on prod.idorpr = orpr.id
+       left outer join estados_registros          esre on prod.idesre = esre.id
 where  prod.idusuaborraregistro is null
 and    empr.idusuaborraregistro is null
 ;
@@ -462,8 +470,73 @@ from   ventv
 
 /*************************************************************************************************************************/
 
+drop view if exists faprv
+;
+
+create or replace view faprv as
+select fapr.id               id
+      ,fapr.idempr           idempr
+      ,empr.nombrefantasia   empresa
+      ,fapr.cod_familia      cod_familia
+      ,fapr.descripcion      descripcion
+from                   familias_productos         fapr
+       left outer join empresas                   empr on fapr.idempr = empr.id
+where  fapr.idusuaborraregistro is null
+;
+
+select *
+from   faprv
+;
+
+/*************************************************************************************************************************/
+
+drop view if exists sfprv
+;
+
+create or replace view sfprv as
+select sfpr.id                       id
+      ,sfpr.idfapr                   idfapr
+      ,fapr.cod_familia              cod_familia
+      ,fapr.descripcion              familia
+      ,sfpr.cod_sub_familia          cod_sub_familia
+      ,sfpr.descripcion              sub_familia
+      ,fapr.idempr                   idempr
+      ,empr.nombrefantasia           empresa
+from                   sub_familias_productos         sfpr
+       left outer join familias_productos             fapr on sfpr.idfapr = fapr.id
+       left outer join empresas                       empr on fapr.idempr = empr.id
+where  sfpr.idusuaborraregistro is null
+;
+
+select *
+from   sfprv
+;
+
+/*************************************************************************************************************************/
+
+drop view if exists bodev
+;
+
+create or replace view bodev as
+select bode.id                  id
+      ,bode.idempr              idempr
+      ,empr.nombrefantasia      empresa
+      ,bode.nombre              bodega
+from                   bodegas                   bode
+       left outer join empresas                  empr on bode.idempr = empr.id
+where  bode.idusuaborraregistro is null
+;
+
+select *
+from   bodev
+;
+
 \q
 
+boprv
+liprv
+delpv
+desuv
 
 
 

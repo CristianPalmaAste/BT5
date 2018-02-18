@@ -63,8 +63,8 @@ CREATE VIEW
 
 DROP VIEW
 CREATE VIEW
- id | idempr | empresa | idsfpr | sub_familia | nombre_sub_familia | idfapr | familia | nombre_familia | idtipr | tipo_producto | idunmp | unidad_de_medida | alias_unidad_de_medida | idorpr | origen | alias_origen | nombre 
-----+--------+---------+--------+-------------+--------------------+--------+---------+----------------+--------+---------------+--------+------------------+------------------------+--------+--------+--------------+--------
+ id | idempr | empresa | idsfpr | sub_familia | nombre_sub_familia | idfapr | familia | nombre_familia | idtipr | tipo_producto | idunmp | unidad_de_medida | alias_unidad_de_medida | idorpr | origen | alias_origen | nombre | correlativoflia | sku | ean13 | qr | pesounitariokg | idesre | estado_regsitro 
+----+--------+---------+--------+-------------+--------------------+--------+---------+----------------+--------+---------------+--------+------------------+------------------------+--------+--------+--------------+--------+-----------------+-----+-------+----+----------------+--------+-----------------
 (0 filas)
 
 DROP VIEW
@@ -89,5 +89,50 @@ DROP VIEW
 CREATE VIEW
  id | idempr | empresa | idnove | numero_nota_venta | idtidv | tipo_docto_venta | folio_docto_venta | idclie | cliente | descripcion_venta | fecha_venta | idgere | gerencia | idproy | proyecto | idline | linea_negocio | idceco | centro_costo | idtare | tarea | exento | afecto | impuestos | porc_descto | monto_descto | total | idesve | estado_venta 
 ----+--------+---------+--------+-------------------+--------+------------------+-------------------+--------+---------+-------------------+-------------+--------+----------+--------+----------+--------+---------------+--------+--------------+--------+-------+--------+--------+-----------+-------------+--------------+-------+--------+--------------
+(0 filas)
+
+DROP VIEW
+CREATE VIEW
+ id | idempr | empresa | cod_familia |   descripcion    
+----+--------+---------+-------------+------------------
+  1 |      1 | BT5     | 01          | FAMILIA GENÉRICA
+(1 fila)
+
+DROP VIEW
+CREATE VIEW
+ id | idfapr | cod_familia |     familia      | cod_sub_familia |     sub_familia      | idempr | empresa 
+----+--------+-------------+------------------+-----------------+----------------------+--------+---------
+  1 |      1 | 01          | FAMILIA GENÉRICA | 01              | SUB FAMILIA GENÉRICA |      1 | BT5
+(1 fila)
+
+DROP VIEW
+CREATE VIEW
+ id | idempr | empresa |     bodega     
+----+--------+---------+----------------
+  1 |      1 | BT5     | BODEGA CENTRAL
+(1 fila)
+
+DROP VIEW
+CREATE VIEW
+ id | idempr | empresa | idbode | bodega | idprod | producto | stock | idunmp | unidad_medida 
+----+--------+---------+--------+--------+--------+----------+-------+--------+---------------
+(0 filas)
+
+DROP VIEW
+CREATE VIEW
+ id | idempr | empresa | correlativo | fechainicio | fechafin | observaciones | idesre | estado_regsitro 
+----+--------+---------+-------------+-------------+----------+---------------+--------+-----------------
+(0 filas)
+
+DROP VIEW
+CREATE VIEW
+ id | idlipr | lista_precio | idempr | empresa | idprod | producto | valorunitario 
+----+--------+--------------+--------+---------+--------+----------+---------------
+(0 filas)
+
+DROP VIEW
+CREATE VIEW
+ id | idfapr | cod_familia | familia | idsfpr | cod_sub_familia | sub_familia | idprod | producto | porcentajedescuento | montodescuento | idesre | estado_regsitro 
+----+--------+-------------+---------+--------+-----------------+-------------+--------+----------+---------------------+----------------+--------+-----------------
 (0 filas)
 

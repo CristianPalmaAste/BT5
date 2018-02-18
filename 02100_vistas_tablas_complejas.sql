@@ -559,12 +559,91 @@ select *
 from   boprv
 ;
 
-\q
+/*************************************************************************************************************************/
 
-boprv
-liprv
-delpv
-desuv
+drop view if exists liprv
+;
+
+create or replace view liprv as
+select lipr.id               id
+      ,lipr.idempr           idempr
+      ,empr.nombrefantasia   empresa
+      ,lipr.correlativo      correlativo
+      ,lipr.fechainicio      fechainicio
+      ,lipr.fechafin         fechafin
+      ,lipr.observaciones    observaciones
+      ,lipr.idesre           idesre
+      ,esre.descripcion      estado_regsitro
+from                   listas_precios          lipr
+       left outer join empresas                empr on lipr.idempr = empr.id
+       left outer join estados_registros       esre on lipr.idesre = esre.id
+where  lipr.idusuaborraregistro is null
+;
+
+select *
+from   liprv
+;
+
+/*************************************************************************************************************************/
+
+drop view if exists delpv
+;
+
+create or replace view delpv as
+select delp.id                                           id
+      ,delp.idlipr                                       idlipr
+      ,lipr.correlativo || ' - ' || lipr.observaciones   lista_precio
+      ,lipr.idempr                                       idempr
+      ,empr.nombrefantasia                               empresa
+      ,delp.idprod                                       idprod
+      ,prod.nombre                                       producto
+      ,delp.valorunitario                                valorunitario
+from                   detalles_listas_precios delp
+       left outer join listas_precios          lipr on delp.idlipr = lipr.id
+       left outer join empresas                empr on lipr.idempr = empr.id
+       left outer join productos               prod on delp.idprod = prod.id
+where  delp.idusuaborraregistro is null
+;
+
+select *
+from   delpv
+;
+
+/*************************************************************************************************************************/
+
+drop view if exists desuv
+;
+
+create or replace view desuv as
+select desu.id                                            id
+      ,desu.idfapr                                        idfapr
+      ,fapr.cod_familia                                   cod_familia
+      ,fapr.descripcion                                   familia
+      ,desu.idsfpr                                        idsfpr
+      ,fapr2.cod_familia || sfpr.cod_sub_familia          cod_sub_familia
+      ,fapr2.descripcion || ' - ' || sfpr.descripcion     sub_familia
+      ,desu.idprod                                        idprod
+      ,prod.nombre                                        producto
+      ,desu.porcentajedescuento                           porcentajedescuento
+      ,desu.montodescuento                                montodescuento
+      ,desu.idesre                                        idesre
+      ,esre.descripcion                                   estado_regsitro
+from                   descuentos              desu
+       left outer join familias_productos      fapr  on desu.idfapr = fapr.id
+       left outer join sub_familias_productos  sfpr  on desu.idsfpr = sfpr.id
+       left outer join familias_productos      fapr2 on sfpr.idfapr = fapr2.id
+       left outer join empresas                empr  on fapr.idempr = empr.id
+       left outer join productos               prod  on desu.idprod = prod.id
+       left outer join estados_registros       esre  on desu.idesre = esre.id
+where  desu.idusuaborraregistro is null
+;
+
+select *
+from   desuv
+order  by 1
+;
+
+\q
 
 
 
@@ -584,16 +663,14 @@ where  xxxx.idusuaborraregistro is null
 
 select *
 from   XXXXv
+order  by 1
 ;
 
 soshv
 idsov
 orshv
 poshv
-tipiv
-cliev
 devev
 denvv
 decvv
-servv
 

@@ -531,6 +531,34 @@ select *
 from   bodev
 ;
 
+/*************************************************************************************************************************/
+
+drop view if exists boprv
+;
+
+create or replace view boprv as
+select bopr.id               id
+      ,bode.idempr           idempr
+      ,empr.nombrefantasia   empresa
+      ,bopr.idbode           idbode
+      ,bode.nombre           bodega
+      ,bopr.idprod           idprod
+      ,prod.nombre           producto
+      ,bopr.stock            stock
+      ,prod.idunmp           idunmp
+      ,unmp.descripcioncorta unidad_medida
+from                   bodegas_productos          bopr
+       left outer join bodegas                    bode on bopr.idbode = bode.id
+       left outer join empresas                   empr on bode.idempr = empr.id
+       left outer join productos                  prod on bopr.idprod = prod.id
+       left outer join unidades_medidas_productos unmp on prod.idunmp = unmp.id
+where  bopr.idusuaborraregistro is null
+;
+
+select *
+from   boprv
+;
+
 \q
 
 boprv

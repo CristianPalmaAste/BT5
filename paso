@@ -281,12 +281,12 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence vent_seq start with 1
+ create sequence vent_seq start with 2
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence deve_seq start with 1
+ create sequence deve_seq start with 3
 (1 fila)
 
                ?column?                

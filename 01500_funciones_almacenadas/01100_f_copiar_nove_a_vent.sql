@@ -79,6 +79,7 @@ begin
     end if;
     insert into ventas (id                       -- numeric(20,0)   not null
                        ,idempr                   -- numeric(20,0)   not null
+                       ,idbode                   -- numeric(20,0)   not null
                        ,idnove                   -- numeric(20,0)       null
                        ,idtidv                   -- numeric(20,0)   not null
                        ,numero                   -- numeric(20,0)   not null
@@ -106,6 +107,7 @@ begin
                        )
     values (Vidvent                       -- id                       numeric(20,0)   not null
            ,new.idempr                    -- idempr                   numeric(20,0)   not null
+           ,new.idbode                    -- idbode                   numeric(20,0)   not null
            ,new.id                        -- idnove                   numeric(20,0)       null
            ,Vidtidv                       -- idtidv                   numeric(20,0)   not null
            ,Vnumero                       -- numero                   numeric(20,0)   not null

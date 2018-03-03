@@ -66,8 +66,8 @@ begin
       return(Vnombre_producto);
     end if;
   elsif Pdato_deseado = 6 then
-    select delp.valorunitario
-    into   Vvalorunitario
+    select delp.preciounitario
+    into   Vpreciounitario
     from   listas_precios          lipr
           ,detalles_listas_precios delp
     where  lipr.id     = delp.idlipr

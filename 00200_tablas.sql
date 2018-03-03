@@ -1219,6 +1219,7 @@ alter table clientes add constraint clie_chk_01 check (
 create table ventas (
    id                       numeric(20,0)   not null
   ,idempr                   numeric(20,0)   not null
+  ,idbode                   numeric(20,0)   not null
   ,idnove                   numeric(20,0)       null
   ,idtidv                   numeric(20,0)   not null
   ,numero                   numeric(20,0)   not null
@@ -1303,6 +1304,7 @@ alter table detalles_ventas add constraint deve_chk_01 check (
 create table notas_ventas (
    id                       numeric(20,0)   not null
   ,idempr                   numeric(20,0)   not null
+  ,idbode                   numeric(20,0)   not null
   ,idcove                   numeric(20,0)       null
   ,numero                   numeric(20,0)   not null
   ,idclie                   numeric(20,0)   not null
@@ -1503,7 +1505,7 @@ create table servicios (
   ,idtise                   numeric(20,0)   not null
   ,idunms                   numeric(20,0)   not null
   ,nombre                   varchar(1000)   not null
-  ,valorunitario            numeric(20,2)   not null
+  ,preciounitario           numeric(20,2)   not null
   ,idmone                   numeric(20,0)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
@@ -1644,7 +1646,7 @@ create table detalles_listas_precios (
    id                       numeric(20,0)   not null
   ,idlipr                   numeric(20,0)   not null
   ,idprod                   numeric(20,0)   not null
-  ,valorunitario            numeric(20,0)   not null
+  ,preciounitario           numeric(20,0)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
   ,idusuamodifregistro      numeric(20,0)       null
@@ -2069,6 +2071,7 @@ alter table detalles_cotizs_vtas       add constraint decv_fk3_usua foreign key 
 alter table tipos_doctos_ventas        add constraint tidv_fk_pais  foreign key (idpais)                references paises                        (id);
 
 alter table ventas                     add constraint vent_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table ventas                     add constraint vent_fk_bode  foreign key (idbode)                references bodegas                       (id);
 alter table ventas                     add constraint vent_fk_nove  foreign key (idnove)                references notas_ventas                  (id);
 alter table ventas                     add constraint vent_fk_tidv  foreign key (idtidv)                references tipos_doctos_ventas           (id);
 alter table ventas                     add constraint vent_fk_clie  foreign key (idclie)                references clientes                      (id);
@@ -2090,6 +2093,7 @@ alter table detalles_ventas            add constraint deve_fk2_usua foreign key 
 alter table detalles_ventas            add constraint deve_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
 alter table notas_ventas               add constraint nove_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table notas_ventas               add constraint nove_fk_bode  foreign key (idbode)                references bodegas                       (id);
 alter table notas_ventas               add constraint nove_fk_cove  foreign key (idcove)                references cotizaciones_ventas           (id);
 alter table notas_ventas               add constraint nove_fk_clie  foreign key (idclie)                references clientes                      (id);
 alter table notas_ventas               add constraint nove_fk_gere  foreign key (idgere)                references gerencias                     (id);

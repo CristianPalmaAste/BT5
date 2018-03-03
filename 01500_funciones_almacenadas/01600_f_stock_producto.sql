@@ -5,18 +5,13 @@ create or replace function f_stock_producto (numeric
 $$
 declare
   Pidprod          numeric := $1;
-  Pidbode          numeric := $3;
-  Pdato_deseado    numeric := $2;
+  Pidbode          numeric := $2;
+  Pdato_deseado    numeric := $3;
   aux              numeric;
   Vstock           numeric;
   Vreservado_nove  numeric;
   Vreservado_vent  numeric;
 begin
-
-
-return(10);
-
-
   /*
      Esta función retorna el stock de un producto, siendo el stock el
 
@@ -59,8 +54,9 @@ return(10);
   end if;
   select stock
   into   Vstock
-  from   productos
-  where  id = Pidprod
+  from   bodegas_productos
+  where  idbode = Pidbode
+  and    idprod = Pidprod
   ;
   if Pdato_deseado = 1 then
     return(Vstock);
@@ -71,6 +67,7 @@ return(10);
         ,detalles_notas_vtas denv
   where  nove.id     = denv.idnove
   and    nove.idesnv in (1, 2)
+  and    nove.idbode = Pidbode
   and    denv.idprod = Pidprod
   ;
   if Vreservado_nove is null then
@@ -82,6 +79,7 @@ return(10);
         ,detalles_ventas deve
   where  vent.id     = deve.idvent
   and    vent.idesve = 1
+  and    vent.idbode = Pidbode
   and    deve.idprod = Pidprod
   ;
   if Vreservado_vent is null then
@@ -95,7 +93,6 @@ return(10);
 end;
 $$ LANGUAGE plpgsql;
 
-select 'stock físico prod 1               : ' || f_stock_producto(1, 1);
-select 'stock disponible para venta prod 1: ' || f_stock_producto(1, 2);
-select 'stock reservado prod 1            : ' || f_stock_producto(1, 3);
-
+select 'stock físico prod 1               : ' || f_stock_producto(1, 1, 1);
+select 'stock disponible para venta prod 1: ' || f_stock_producto(1, 1, 2);
+select 'stock reservado prod 1            : ' || f_stock_producto(1, 1, 3);

@@ -260,7 +260,7 @@ select prod.id                        id
       ,orpr.descripcion               origen
       ,orpr.descripcioncorta          alias_origen
       ,prod.nombre                    nombre
-      ,prod.correlativoflia           correlativoflia
+      ,prod.correlativoflia           producto
       ,prod.sku                       sku
       ,prod.ean13                     ean13
       ,prod.qr                        qr

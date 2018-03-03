@@ -2,6 +2,7 @@ create or replace function f_copiar_cove_a_nove() returns trigger as
 $body$
 declare
   Vidnove                   numeric;
+  Vidbode                   numeric;
   Vnumero                   numeric;
   Vid                       numeric;
   Vcorrelativo              numeric;
@@ -53,8 +54,14 @@ begin
     else
       Vnumero := Vnumero + 1;
     end if;
+    select min(id)
+    into   Vidbode
+    from   bodegas
+    where  idempr = new.idempr
+    ;
     insert into notas_ventas (id                       -- numeric(20,0)   not null
                              ,idempr                   -- numeric(20,0)   not null
+                             ,idbode                   -- numeric(20,0)   not null
                              ,idcove                   -- numeric(20,0)       null
                              ,numero                   -- numeric(20,0)   not null
                              ,idclie                   -- numeric(20,0)   not null
@@ -81,6 +88,7 @@ begin
                              )
     values (Vidnove                       -- id                       numeric(20,0)   not null
            ,new.idempr                    -- idempr                   numeric(20,0)   not null
+           ,Vidbode                       -- idbode                   numeric(20,0)   not null
            ,new.id                        -- idcove                   numeric(20,0)       null
            ,Vnumero                       -- numero                   numeric(20,0)   not null
            ,new.idclie                    -- idclie                   numeric(20,0)   not null

@@ -10,7 +10,7 @@ declare
   Vunidad_medida_producto    varchar(1000);
   Vorigen_producto           varchar(1000);
   Vnombre_producto           varchar(1000);
-  Vvalorunitario             numeric;
+  Vpreciounitario            numeric;
   Vporcentajedescuento       numeric;
   Vmontodescuento            numeric;
   Vidfapr                    numeric;
@@ -74,7 +74,7 @@ begin
     and    lipr.idesre = 1
     and    delp.idprod = Pidprod
     ;
-    return(Vvalorunitario);
+    return(Vpreciounitario);
   elsif Pdato_deseado between 7 and 8 then
     select porcentajedescuento
           ,montodescuento

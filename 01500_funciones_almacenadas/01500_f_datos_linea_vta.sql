@@ -13,7 +13,7 @@ declare
   Pdato_deseado    numeric := $5;
   Vidpais          numeric;
   aux              numeric;
-  Vvalorunitario   numeric;
+  Vpreciounitario  numeric;
   Vidtipr          numeric;
   Vidtise          numeric;
   Vestaexento      char(1);
@@ -71,15 +71,15 @@ begin
     if aux = 0 then
       return(0);
     end if;
-    select valorunitario
+    select preciounitario
           ,idtipr
-    into   Vvalorunitario
+    into   Vpreciounitario
           ,Vidtipr
     from   productos
     where  id = Pidprod
     ;
     if Pdato_deseado = 1 then
-      return(Vvalorunitario);
+      return(Vpreciounitario);
     end if;
     select estaexento
     into   Vestaexento
@@ -89,7 +89,7 @@ begin
     if Pdato_deseado in (2, 3) then
       if Vestaexento = 'S' then
         if Pdato_deseado = 2 then
-          return(Pcantidad*Vvalorunitario - Pmonto_dscto);
+          return(Pcantidad*Vpreciounitario - Pmonto_dscto);
         else
           return(0);
         end if;
@@ -97,7 +97,7 @@ begin
         if Pdato_deseado = 2 then
           return(0);
         else
-          return(Pcantidad*Vvalorunitario - Pmonto_dscto);
+          return(Pcantidad*Vpreciounitario - Pmonto_dscto);
         end if;
       end if;
     end if;
@@ -110,7 +110,7 @@ begin
     and    empr.id = prod.idempr
     and    prod.id = Pidprod
     ;
-    Vsub_total := Pcantidad*Vvalorunitario - Pmonto_dscto;
+    Vsub_total := Pcantidad*Vpreciounitario - Pmonto_dscto;
     Vimpuestos := 0;
     open C_impuestos_prod;
     loop
@@ -130,15 +130,15 @@ begin
     if aux = 0 then
       return(0);
     end if;
-    select valorunitario
+    select preciounitario
           ,idtise
-    into   Vvalorunitario
+    into   Vpreciounitario
           ,Vidtise
     from   servicios
     where  id = Pidserv
     ;
     if Pdato_deseado = 1 then
-      return(Vvalorunitario);
+      return(Vpreciounitario);
     end if;
     select estaexento
     into   Vestaexento
@@ -148,7 +148,7 @@ begin
     if Pdato_deseado in (2, 3) then
       if Vestaexento = 'S' then
         if Pdato_deseado = 2 then
-          return(Pcantidad*Vvalorunitario - Pmonto_dscto);
+          return(Pcantidad*Vpreciounitario - Pmonto_dscto);
         else
           return(0);
         end if;
@@ -156,7 +156,7 @@ begin
         if Pdato_deseado = 2 then
           return(0);
         else
-          return(Pcantidad*Vvalorunitario - Pmonto_dscto);
+          return(Pcantidad*Vpreciounitario - Pmonto_dscto);
         end if;
       end if;
     end if;
@@ -169,7 +169,7 @@ begin
     and    empr.id = serv.idempr
     and    serv.id = Pidserv
     ;
-    Vsub_total := Pcantidad*Vvalorunitario - Pmonto_dscto;
+    Vsub_total := Pcantidad*Vpreciounitario - Pmonto_dscto;
     Vimpuestos := 0;
     open C_impuestos_serv;
     loop

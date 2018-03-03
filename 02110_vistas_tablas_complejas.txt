@@ -69,8 +69,8 @@ CREATE VIEW
 
 DROP VIEW
 CREATE VIEW
- id | idempr | empresa | idtise | tipo_servicio | idunms | unidad_medida_servicio | alias_unidad_medida_servicio | nombre | valorunitario | idmone | moneda | alias_moneda 
-----+--------+---------+--------+---------------+--------+------------------------+------------------------------+--------+---------------+--------+--------+--------------
+ id | idempr | empresa | idtise | tipo_servicio | idunms | unidad_medida_servicio | alias_unidad_medida_servicio | nombre | preciounitario | idmone | moneda | alias_moneda 
+----+--------+---------+--------+---------------+--------+------------------------+------------------------------+--------+----------------+--------+--------+--------------
 (0 filas)
 
 DROP VIEW
@@ -126,8 +126,8 @@ CREATE VIEW
 
 DROP VIEW
 CREATE VIEW
- id | idlipr | lista_precio | idempr | empresa | idprod | producto | valorunitario 
-----+--------+--------------+--------+---------+--------+----------+---------------
+ id | idlipr | lista_precio | idempr | empresa | idprod | producto | preciounitario 
+----+--------+--------------+--------+---------+--------+----------+----------------
 (0 filas)
 
 DROP VIEW

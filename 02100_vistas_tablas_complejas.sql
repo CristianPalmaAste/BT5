@@ -298,7 +298,7 @@ select serv.id                id
       ,unms.descripcion       unidad_medida_servicio
       ,unms.descripcioncorta  alias_unidad_medida_servicio
       ,serv.nombre            nombre
-      ,serv.valorunitario     valorunitario
+      ,serv.preciounitario    preciounitario
       ,serv.idmone            idmone
       ,mone.nombre            moneda
       ,mone.nombrecorto       alias_moneda
@@ -597,7 +597,7 @@ select delp.id                                           id
       ,empr.nombrefantasia                               empresa
       ,delp.idprod                                       idprod
       ,prod.nombre                                       producto
-      ,delp.valorunitario                                valorunitario
+      ,delp.preciounitario                               preciounitario
 from                   detalles_listas_precios delp
        left outer join listas_precios          lipr on delp.idlipr = lipr.id
        left outer join empresas                empr on lipr.idempr = empr.id

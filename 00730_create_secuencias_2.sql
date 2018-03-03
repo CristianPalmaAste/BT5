@@ -54,8 +54,8 @@ create sequence tipi_seq start with 3;
 create sequence tidv_seq start with 5;
 create sequence tise_seq start with 3;
 create sequence clie_seq start with 2;
-create sequence vent_seq start with 2;
-create sequence deve_seq start with 3;
+create sequence vent_seq start with 1;
+create sequence deve_seq start with 1;
 create sequence nove_seq start with 2;
 create sequence denv_seq start with 3;
 create sequence cove_seq start with 2;
@@ -74,6 +74,6 @@ create sequence timb_seq start with 6;
 create sequence mobo_seq start with 1;
 create sequence demb_seq start with 1;
 create sequence desu_seq start with 8;
-create sequence bicp_seq start with 1;
+create sequence bicp_seq start with 35;
 
 \q

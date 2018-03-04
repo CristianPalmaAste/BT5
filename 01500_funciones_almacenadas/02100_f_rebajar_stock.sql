@@ -1,6 +1,11 @@
 create or replace function f_registrar_precio_bitacora() returns trigger as
 $body$
 declare
+  Vidmobo        numeric;
+  Vcorrelativo   numeric;
+  Vidprod        numeric;
+  Vcantidad      numeric;
+  Vidunmp        numeric;
   C_detalle_venta cursor for
     select correlativo
           ,idprod
@@ -15,6 +20,16 @@ begin
     select nextval('mobo_seq')
     into   Vidmobo
     ;
+    select max(correlativo)
+    into   Vcorrelativo
+    from   movimientos_bodegas
+    where  idbode = new.idbode
+    ;
+    if Vcorrelativo is null then
+      Vcorrelativo := 1;
+    else
+      Vcorrelativo := Vcorrelativo + 1;
+    end if;
     insert into movimientos_bodegas (id                       -- numeric(20,0)   not null
                                     ,idbode                   -- numeric(20,0)   not null
                                     ,correlativo              -- numeric(20,0)   not null
@@ -30,7 +45,7 @@ begin
                                     )
     values(Vidmobo_seq              -- id                       numeric(20,0)   not null
           ,new.idbode               -- idbode                   numeric(20,0)   not null
-          ,                         -- correlativo              numeric(20,0)   not null
+          ,Vcorrelativo             -- correlativo              numeric(20,0)   not null
           ,1                        -- idtimb                   numeric(20,0)   not null
           ,current_date             -- fechamovto               date            not null
           ,'VENTA'                  -- descripcion              varchar(100)    not null
@@ -44,23 +59,24 @@ begin
     ;
     open C_detalle_venta;
     loop
-      fetch C_decv into Vcorrelativo
-                       ,Vidprod
-                       ,Vcantidad
-                       ,Vidunmp
-                       ;
-      insert into detalles_movtos_bodegas (id                       numeric(20,0)   not null
-                                          ,idmobo                   numeric(20,0)   not null
-                                          ,correlativo              numeric(20,0)   not null
-                                          ,idprod                   numeric(20,0)   not null
-                                          ,cantidad                 numeric(20,0)   not null
-                                          ,idunmp                   numeric(20,0)   not null
-                                          ,idusuacrearegistro       numeric(20,0)   not null
-                                          ,fechacrearegistro        timestamp       not null
-                                          ,idusuamodifregistro      numeric(20,0)       null
-                                          ,fechamodifregistro       timestamp           null
-                                          ,idusuaborraregistro      numeric(20,0)       null
-                                          ,fechaborraregistro       timestamp           null
+      fetch C_detalle_venta into Vcorrelativo
+                                ,Vidprod
+                                ,Vcantidad
+                                ,Vidunmp
+                                ;
+      exit when not found;
+      insert into detalles_movtos_bodegas (id                       -- numeric(20,0)   not null
+                                          ,idmobo                   -- numeric(20,0)   not null
+                                          ,correlativo              -- numeric(20,0)   not null
+                                          ,idprod                   -- numeric(20,0)   not null
+                                          ,cantidad                 -- numeric(20,0)   not null
+                                          ,idunmp                   -- numeric(20,0)   not null
+                                          ,idusuacrearegistro       -- numeric(20,0)   not null
+                                          ,fechacrearegistro        -- timestamp       not null
+                                          ,idusuamodifregistro      -- numeric(20,0)       null
+                                          ,fechamodifregistro       -- timestamp           null
+                                          ,idusuaborraregistro      -- numeric(20,0)       null
+                                          ,fechaborraregistro       -- timestamp           null
                                           )
       values(nextval('demb_seq')      -- id                       numeric(20,0)   not null
             ,Vidmobo                  -- idmobo                   numeric(20,0)   not null
@@ -77,11 +93,12 @@ begin
             )
       ;
       update bodegas_productos
-      set    stock  = stock - XXXXX
-      where  idbode = 
-      and    idprod = 
+      set    stock  = stock - Vcantidad
+      where  idbode = new.idbode
+      and    idprod = Vidprod
       ;
     end loop;
+    close C_detalle_venta;
   end if;
 
   return new;

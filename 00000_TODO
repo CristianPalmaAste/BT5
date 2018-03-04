@@ -93,8 +93,8 @@ psql -d $DBNAME -U $USUARIO_DB < 01900_f_datos_producto.sql > 01910_f_datos_prod
 echo "  02000_f_registrar_precio_bitacora"
 psql -d $DBNAME -U $USUARIO_DB < 02000_f_registrar_precio_bitacora.sql > 02010_f_registrar_precio_bitacora.txt
 
-#echo "  02100_f_rebajar_stock"
-#psql -d $DBNAME -U $USUARIO_DB < 02100_f_rebajar_stock.sql > 02110_f_rebajar_stock.txt
+echo "  02100_f_rebajar_stock"
+psql -d $DBNAME -U $USUARIO_DB < 02100_f_rebajar_stock.sql > 02110_f_rebajar_stock.txt
 
 cd ..
 
@@ -141,8 +141,8 @@ psql -d $DBNAME -U $USUARIO_DB < 01200_trg_after_ins_empr.sql > 01210_trg_after_
 echo "  01300_trg_after_ins_upd_delp"
 psql -d $DBNAME -U $USUARIO_DB < 01300_trg_after_ins_upd_delp.sql > 01310_trg_after_ins_upd_delp.txt
 
-#echo "  01400_trg_after_upd_vent"
-#psql -d $DBNAME -U $USUARIO_DB < 01400_trg_after_upd_vent.sql > 01410_trg_after_upd_vent.txt
+echo "  01400_trg_after_upd_vent"
+psql -d $DBNAME -U $USUARIO_DB < 01400_trg_after_upd_vent.sql > 01410_trg_after_upd_vent.txt
 
 cd ..
 

@@ -1,20 +1,19 @@
 create or replace function f_rebajar_stock() returns trigger as
 $body$
 declare
-  Vidmobo        numeric;
-  Vcorrelativo   numeric;
-  Vidprod        numeric;
-  Vcantidad      numeric;
-  Vidunmp        numeric;
+  Vidmobo        numeric(20,0);
+  Vcorrelativo   numeric(20,0);
+  Vidprod        numeric(20,0);
+  Vcantidad      numeric(20,5);
+  Vidunmp        numeric(20,0);
   C_detalle_venta cursor for
     select correlativo
           ,idprod
           ,cantidad
-          ,f_datos_producto(idprod, 3)
-  from     detalles_ventas
-  where    idvent = new.id
-  and      idserv is null
-  ;
+    from   detalles_ventas
+    where  idvent = new.id
+    and    idserv is null
+    ;
 begin
   if old.idesve = 1 and new.idesve = 2 then
     select nextval('mobo_seq')
@@ -62,9 +61,13 @@ begin
       fetch C_detalle_venta into Vcorrelativo
                                 ,Vidprod
                                 ,Vcantidad
-                                ,Vidunmp
                                 ;
       exit when not found;
+      select idunmp
+      into   Vidunmp
+      from   productos
+      where  id = Vidprod
+      ;
       insert into detalles_movtos_bodegas (id                       -- numeric(20,0)   not null
                                           ,idmobo                   -- numeric(20,0)   not null
                                           ,correlativo              -- numeric(20,0)   not null

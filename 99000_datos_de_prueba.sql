@@ -656,7 +656,9 @@ set    idesnv = 3
 ;
 
 update ventas
-set    idesve = 2
+set    idesve              = 2
+      ,idusuamodifregistro = 10
+      ,fechamodifregistro  = current_timestamp
 ;
 
 -- listas precios

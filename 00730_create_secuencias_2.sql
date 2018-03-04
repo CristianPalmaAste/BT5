@@ -71,8 +71,8 @@ create sequence delp_seq start with 35;
 create sequence fapr_seq start with 12;
 create sequence sfpr_seq start with 12;
 create sequence timb_seq start with 6;
-create sequence mobo_seq start with 1;
-create sequence demb_seq start with 1;
+create sequence mobo_seq start with 2;
+create sequence demb_seq start with 3;
 create sequence desu_seq start with 8;
 create sequence bicp_seq start with 35;
 

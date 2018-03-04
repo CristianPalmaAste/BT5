@@ -1,4 +1,4 @@
-create or replace function f_registrar_precio_bitacora() returns trigger as
+create or replace function f_rebajar_stock() returns trigger as
 $body$
 declare
   Vidmobo        numeric;
@@ -43,7 +43,7 @@ begin
                                     ,idusuaborraregistro      -- numeric(20,0)       null
                                     ,fechaborraregistro       -- timestamp           null
                                     )
-    values(Vidmobo_seq              -- id                       numeric(20,0)   not null
+    values(Vidmobo                  -- id                       numeric(20,0)   not null
           ,new.idbode               -- idbode                   numeric(20,0)   not null
           ,Vcorrelativo             -- correlativo              numeric(20,0)   not null
           ,1                        -- idtimb                   numeric(20,0)   not null

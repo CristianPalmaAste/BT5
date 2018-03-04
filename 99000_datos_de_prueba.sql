@@ -619,6 +619,26 @@ select tmp_datos_de_prueba_vtas()
 drop function tmp_datos_de_prueba_vtas()
 ;
 
+-- bodegas_productos
+
+insert into bodegas_productos values ( 1, 1,  1, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values ( 2, 1,  2, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values ( 3, 1,  3, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values ( 4, 1,  4, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values ( 5, 1,  5, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values ( 6, 1,  6, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values ( 7, 1,  7, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values ( 8, 1,  8, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values ( 9, 1,  9, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (10, 1, 10, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (11, 1, 11, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (12, 1, 12, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (13, 1, 13, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (14, 1, 14, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (15, 1, 15, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (16, 1, 16, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (17, 1, 17, 100, 1, current_timestamp, null, null, null, null);
+
 update cotizaciones_ventas
 set    idescv = 2
 ;
@@ -633,6 +653,10 @@ set    idesnv = 2
 
 update notas_ventas
 set    idesnv = 3
+;
+
+update ventas
+set    idesve = 2
 ;
 
 -- listas precios
@@ -684,25 +708,5 @@ insert into descuentos values (4, null, null, 2   , 20  , null, 1, 1, current_ti
 insert into descuentos values (5, null, null, 3   , null, 100 , 1, 1, current_timestamp, null, null, null, null);
 insert into descuentos values (6, null, null, 4   , null, 200 , 1, 1, current_timestamp, null, null, null, null);
 insert into descuentos values (7, null, null, 5   , null, 300 , 1, 1, current_timestamp, null, null, null, null);
-
--- bodegas_productos
-
-insert into bodegas_productos values ( 1, 1,  1, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values ( 2, 1,  2, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values ( 3, 1,  3, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values ( 4, 1,  4, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values ( 5, 1,  5, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values ( 6, 1,  6, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values ( 7, 1,  7, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values ( 8, 1,  8, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values ( 9, 1,  9, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values (10, 1, 10, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values (11, 1, 11, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values (12, 1, 12, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values (13, 1, 13, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values (14, 1, 14, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values (15, 1, 15, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values (16, 1, 16, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values (17, 1, 17, 100, 1, current_timestamp, null, null, null, null);
 
 \q

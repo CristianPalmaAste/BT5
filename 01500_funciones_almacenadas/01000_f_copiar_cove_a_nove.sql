@@ -16,7 +16,8 @@ declare
   Vmontodescuento2          numeric;
   Vexento                   numeric;
   Vafecto                   numeric;
-  Vimpuestos                numeric;
+  Vimpuestosobligats        numeric;
+  Vimpuestosespecifs        numeric;
   Vtotallinea               numeric;
   Vidusuacrearegistro       numeric;
   Viddenv                   numeric;
@@ -33,7 +34,8 @@ declare
           ,montodescuento2
           ,exento
           ,afecto
-          ,impuestos
+          ,impuestosobligats
+          ,impuestosespecifs
           ,totallinea
           ,idusuacrearegistro
     from   detalles_cotizs_vtas
@@ -74,7 +76,8 @@ begin
                              ,idtare                   -- numeric(20,0)       null
                              ,exento                   -- numeric(20,0)   not null
                              ,afecto                   -- numeric(20,0)   not null
-                             ,impuestos                -- numeric(20,0)   not null
+                             ,impuestosobligats        -- numeric(20,0)   not null
+                             ,impuestosespecifs        -- numeric(20,0)   not null
                              ,porcentajedescuento      -- numeric(20,5)   not null
                              ,montodescuento           -- numeric(20,0)   not null
                              ,total                    -- numeric(20,0)   not null
@@ -101,7 +104,8 @@ begin
            ,new.idtare                    -- idtare                   numeric(20,0)       null
            ,new.exento                    -- exento                   numeric(20,0)   not null
            ,new.afecto                    -- afecto                   numeric(20,0)   not null
-           ,new.impuestos                 -- impuestos                numeric(20,0)   not null
+           ,new.impuestosobligats         -- impuestosobligats        numeric(20,0)   not null
+           ,new.impuestosespecifs         -- impuestosespecifs        numeric(20,0)   not null
            ,new.porcentajedescuento       -- porcentajedescuento      numeric(20,5)   not null
            ,new.montodescuento            -- montodescuento           numeric(20,0)   not null
            ,new.total                     -- total                    numeric(20,0)   not null
@@ -128,7 +132,8 @@ begin
                        ,Vmontodescuento2
                        ,Vexento
                        ,Vafecto
-                       ,Vimpuestos
+                       ,Vimpuestosobligats
+                       ,Vimpuestosespecifs
                        ,Vtotallinea
                        ,Vidusuacrearegistro
                        ;
@@ -149,7 +154,8 @@ begin
                                       ,montodescuento2          -- numeric(20,0)   not null
                                       ,exento                   -- numeric(20,0)   not null
                                       ,afecto                   -- numeric(20,0)   not null
-                                      ,impuestos                -- numeric(20,2)   not null
+                                      ,impuestosobligats        -- numeric(20,2)   not null
+                                      ,impuestosespecifs        -- numeric(20,2)   not null
                                       ,totallinea               -- numeric(20,2)   not null
                                       ,idusuacrearegistro       -- numeric(20,0)   not null
                                       ,fechacrearegistro        -- timestamp       not null
@@ -171,7 +177,8 @@ begin
              ,Vmontodescuento2                     -- montodescuento2          numeric(20,0)   not null
              ,Vexento                              -- exento                   numeric(20,0)   not null
              ,Vafecto                              -- afecto                   numeric(20,0)   not null
-             ,Vimpuestos                           -- impuestos                numeric(20,2)   not null
+             ,Vimpuestosobligats                   -- impuestosobligats        numeric(20,2)   not null
+             ,Vimpuestosespecifs                   -- impuestosespecifs        numeric(20,2)   not null
              ,Vtotallinea                          -- totallinea               numeric(20,2)   not null
              ,Vidusuacrearegistro                  -- idusuacrearegistro       numeric(20,0)   not null
              ,current_timestamp                    -- fechacrearegistro        timestamp       not null

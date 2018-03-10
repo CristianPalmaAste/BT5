@@ -1233,7 +1233,8 @@ create table ventas (
   ,idtare                   numeric(20,0)       null
   ,exento                   numeric(20,0)   not null
   ,afecto                   numeric(20,0)   not null
-  ,impuestos                numeric(20,0)   not null
+  ,impuestosobligats        numeric(20,0)   not null
+  ,impuestosespecifs        numeric(20,0)   not null
   ,porcentajedescuento      numeric(20,5)   not null
   ,montodescuento           numeric(20,0)   not null
   ,total                    numeric(20,0)   not null
@@ -1272,7 +1273,8 @@ create table detalles_ventas (
   ,montodescuento2          numeric(20,0)   not null
   ,exento                   numeric(20,0)   not null
   ,afecto                   numeric(20,0)   not null
-  ,impuestos                numeric(20,2)   not null
+  ,impuestosobligats        numeric(20,0)   not null
+  ,impuestosespecifs        numeric(20,0)   not null
   ,totallinea               numeric(20,2)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
@@ -1317,7 +1319,8 @@ create table notas_ventas (
   ,idtare                   numeric(20,0)       null
   ,exento                   numeric(20,0)   not null
   ,afecto                   numeric(20,0)   not null
-  ,impuestos                numeric(20,0)   not null
+  ,impuestosobligats        numeric(20,0)   not null
+  ,impuestosespecifs        numeric(20,0)   not null
   ,porcentajedescuento      numeric(20,5)   not null
   ,montodescuento           numeric(20,0)   not null
   ,total                    numeric(20,0)   not null
@@ -1356,7 +1359,8 @@ create table detalles_notas_vtas (
   ,montodescuento2          numeric(20,0)   not null
   ,exento                   numeric(20,2)   not null
   ,afecto                   numeric(20,2)   not null
-  ,impuestos                numeric(20,2)   not null
+  ,impuestosobligats        numeric(20,0)   not null
+  ,impuestosespecifs        numeric(20,0)   not null
   ,totallinea               numeric(20,2)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
@@ -1399,7 +1403,8 @@ create table cotizaciones_ventas (
   ,idtare                   numeric(20,0)       null
   ,exento                   numeric(20,0)   not null
   ,afecto                   numeric(20,0)   not null
-  ,impuestos                numeric(20,0)   not null
+  ,impuestosobligats        numeric(20,0)   not null
+  ,impuestosespecifs        numeric(20,0)   not null
   ,porcentajedescuento      numeric(20,5)   not null
   ,montodescuento           numeric(20,0)   not null
   ,total                    numeric(20,0)   not null
@@ -1436,7 +1441,8 @@ create table detalles_cotizs_vtas (
   ,montodescuento2          numeric(20,0)   not null
   ,exento                   numeric(20,0)   not null
   ,afecto                   numeric(20,0)   not null
-  ,impuestos                numeric(20,2)   not null
+  ,impuestosobligats        numeric(20,0)   not null
+  ,impuestosespecifs        numeric(20,0)   not null
   ,totallinea               numeric(20,2)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null

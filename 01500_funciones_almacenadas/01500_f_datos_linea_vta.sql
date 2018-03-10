@@ -21,13 +21,14 @@ declare
   Vvalor_impuesto  numeric;
   Veste_impuesto   numeric;
   Vimpuestos       numeric;
-  C_impuestos_prod cursor for
+  C_impuestos_obligat_prod cursor for
     select valor
     from   impuestos
     where  idpais      = Vidpais
     and    obligatorio = 'S'
     and    Vestaexento = 'N'
-    union
+    ;
+  C_impuestos_especif_prod cursor for
     select impu.valor
     from   tipos_productos_impuestos tipi
           ,impuestos                 impu
@@ -59,7 +60,7 @@ begin
   if Pidprod is not null and Pidserv is not null then
     return(0);
   end if;
-  if Pdato_deseado not in (1, 2, 3, 4) then
+  if Pdato_deseado not in (1, 2, 3, 4, 5) then
     return(0);
   end if;
   if Pidprod is not null then
@@ -71,13 +72,22 @@ begin
     if aux = 0 then
       return(0);
     end if;
-    select preciounitario
-          ,idtipr
-    into   Vpreciounitario
-          ,Vidtipr
+    select idtipr
+    into   Vidtipr
     from   productos
     where  id = Pidprod
     ;
+    select delp.preciounitario
+    into   Vpreciounitario
+    from   detalles_listas_precios delp
+          ,listas_precios          lipr
+    where  delp.idlipr = lipr.id
+    and    delp.idprod = Pidprod
+    and    lipr.idesre = 1
+    ;
+    if Vpreciounitario is null then
+      Vpreciounitario := 0;
+    end if;
     if Pdato_deseado = 1 then
       return(Vpreciounitario);
     end if;
@@ -112,15 +122,27 @@ begin
     ;
     Vsub_total := Pcantidad*Vpreciounitario - Pmonto_dscto;
     Vimpuestos := 0;
-    open C_impuestos_prod;
-    loop
-      fetch C_impuestos_prod into Vvalor_impuesto;
-      exit when not found;
-      Veste_impuesto := round((Vsub_total * Vvalor_impuesto) / 100);
-      Vimpuestos     := Vimpuestos + Veste_impuesto;
-    end loop;
-    close C_impuestos_prod;
-    return(Vimpuestos);
+    if Pdato_deseado = 4 then
+      open C_impuestos_obligat_prod;
+      loop
+        fetch C_impuestos_obligat_prod into Vvalor_impuesto;
+        exit when not found;
+        Veste_impuesto := round((Vsub_total * Vvalor_impuesto) / 100);
+        Vimpuestos     := Vimpuestos + Veste_impuesto;
+      end loop;
+      close C_impuestos_obligat_prod;
+      return(Vimpuestos);
+    else /* Pdato_deseado = 5 */
+      open C_impuestos_especif_prod;
+      loop
+        fetch C_impuestos_especif_prod into Vvalor_impuesto;
+        exit when not found;
+        Veste_impuesto := round((Vsub_total * Vvalor_impuesto) / 100);
+        Vimpuestos     := Vimpuestos + Veste_impuesto;
+      end loop;
+      close C_impuestos_especif_prod;
+      return(Vimpuestos);
+    end if;
   else /* servicio */
     select count(*)
     into   aux
@@ -160,34 +182,38 @@ begin
         end if;
       end if;
     end if;
-    select grem.idpais
-    into   Vidpais
-    from   grupos_empresariales grem
-          ,empresas             empr
-          ,servicios            serv
-    where  grem.id = empr.idgrem
-    and    empr.id = serv.idempr
-    and    serv.id = Pidserv
-    ;
-    Vsub_total := Pcantidad*Vpreciounitario - Pmonto_dscto;
-    Vimpuestos := 0;
-    open C_impuestos_serv;
-    loop
-      fetch C_impuestos_serv into Vvalor_impuesto;
-      exit when not found;
-      Veste_impuesto := round((Vsub_total * Vvalor_impuesto) / 100);
-      Vimpuestos     := Vimpuestos + Veste_impuesto;
-    end loop;
-    close C_impuestos_serv;
-    return(Vimpuestos);
+    if Pdato_deseado = 4 then
+      select grem.idpais
+      into   Vidpais
+      from   grupos_empresariales grem
+            ,empresas             empr
+            ,servicios            serv
+      where  grem.id = empr.idgrem
+      and    empr.id = serv.idempr
+      and    serv.id = Pidserv
+      ;
+      Vsub_total := Pcantidad*Vpreciounitario - Pmonto_dscto;
+      Vimpuestos := 0;
+      open C_impuestos_serv;
+      loop
+        fetch C_impuestos_serv into Vvalor_impuesto;
+        exit when not found;
+        Veste_impuesto := round((Vsub_total * Vvalor_impuesto) / 100);
+        Vimpuestos     := Vimpuestos + Veste_impuesto;
+      end loop;
+      close C_impuestos_serv;
+      return(Vimpuestos);
+    end if;
   end if;
+  return(0);
 end;
 $$ LANGUAGE plpgsql;
 
-select 'precio venta prod 1: ' || f_datos_linea_vta(1   , null, 0, 0  , 1);
-select 'exento prod 1: '       || f_datos_linea_vta(1   , null, 5, 100, 2);
-select 'afecto prod 1: '       || f_datos_linea_vta(1   , null, 5, 100, 3);
-select 'impuestos prod 1: '    || f_datos_linea_vta(1   , null, 5, 100, 4);
+select 'precio venta prod 17: '      || f_datos_linea_vta(17  , null, 0, 0  , 1);
+select 'exento prod 17: '            || f_datos_linea_vta(17  , null, 5, 100, 2);
+select 'afecto prod 17: '            || f_datos_linea_vta(17  , null, 5, 100, 3);
+select 'impuestos obligat prod 17: ' || f_datos_linea_vta(17  , null, 5, 100, 4);
+select 'impuestos especif prod 17: ' || f_datos_linea_vta(17  , null, 5, 100, 5);
 
 select f_datos_linea_vta(16  , null, 1, 100, 1);
 select f_datos_linea_vta(17  , null, 1, 100, 1);

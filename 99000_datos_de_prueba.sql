@@ -549,7 +549,8 @@ begin
                                          ,null                       -- idtare                   numeric(20,0)       null
                                          ,0                          -- exento                   numeric(20,0)   not null
                                          ,3000                       -- afecto                   numeric(20,0)   not null
-                                         ,570                        -- impuestos                numeric(20,0)   not null
+                                         ,570                        -- impuestosobligats        numeric(20,0)   not null
+                                         ,0                          -- impuestosespecifs        numeric(20,0)   not null
                                          ,0                          -- porcentajedescuento      numeric(20,2)   not null
                                          ,0                          -- montodescuento           numeric(20,2)   not null
                                          ,3570                       -- total                    numeric(20,0)   not null
@@ -576,7 +577,8 @@ begin
                                           ,0                                         -- montodescuento2          numeric(20,2)   not null
                                           ,0                                         -- exento                   numeric(20,0)   not null
                                           ,1000                                      -- afecto                   numeric(20,0)   not null
-                                          ,190                                       -- impuestos                numeric(20,2)   not null
+                                          ,190                                       -- impuestosobligats        numeric(20,2)   not null
+                                          ,0                                         -- impuestosespecifs        numeric(20,2)   not null
                                           ,1190                                      -- totallinea               numeric(20,2)   not null
                                           ,1                                         -- idusuacrearegistro       numeric(20,0)   not null
                                           ,current_timestamp                         -- fechacrearegistro        timestamp       not null
@@ -599,7 +601,8 @@ begin
                                           ,0                                         -- montodescuento2          numeric(20,2)   not null
                                           ,0                                         -- exento                   numeric(20,0)   not null
                                           ,2000                                      -- afecto                   numeric(20,0)   not null
-                                          ,380                                       -- impuestos                numeric(20,2)   not null
+                                          ,380                                       -- impuestosobligats        numeric(20,2)   not null
+                                          ,0                                         -- impuestosespecifs        numeric(20,2)   not null
                                           ,2380                                      -- totallinea               numeric(20,2)   not null
                                           ,1                                         -- idusuacrearegistro       numeric(20,0)   not null
                                           ,current_timestamp                         -- fechacrearegistro        timestamp       not null

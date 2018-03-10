@@ -340,7 +340,8 @@ select cove.id                                                                  
       ,tare.nombre                                                                                                                 tarea
       ,cove.exento                                                                                                                 exento
       ,cove.afecto                                                                                                                 afecto
-      ,cove.impuestos                                                                                                              impuestos
+      ,cove.impuestosobligats                                                                                                      impuestosobligats
+      ,cove.impuestosespecifs                                                                                                      impuestosespecifs
       ,cove.porcentajedescuento                                                                                                    porcentajedescuento
       ,cove.montodescuento                                                                                                         montodescuento
       ,cove.total                                                                                                                  total
@@ -391,7 +392,8 @@ select nove.id                                                                  
       ,tare.nombre                                                                                                                 tarea
       ,nove.exento                                                                                                                 exento
       ,nove.afecto                                                                                                                 afecto
-      ,nove.impuestos                                                                                                              impuestos
+      ,nove.impuestosobligats                                                                                                      impuestosobligats
+      ,nove.impuestosespecifs                                                                                                      impuestosespecifs
       ,nove.porcentajedescuento                                                                                                    porc_descto
       ,nove.montodescuento                                                                                                         monto_descto
       ,nove.total                                                                                                                  total
@@ -444,7 +446,8 @@ select vent.id                                                                  
       ,tare.nombre                                                                                                                 tarea
       ,vent.exento                                                                                                                 exento
       ,vent.afecto                                                                                                                 afecto
-      ,vent.impuestos                                                                                                              impuestos
+      ,vent.impuestosobligats                                                                                                      impuestosobligats
+      ,vent.impuestosespecifs                                                                                                      impuestosespecifs
       ,vent.porcentajedescuento                                                                                                    porc_descto
       ,vent.montodescuento                                                                                                         monto_descto
       ,vent.total                                                                                                                  total
@@ -670,7 +673,4 @@ soshv
 idsov
 orshv
 poshv
-devev
-denvv
-decvv
 

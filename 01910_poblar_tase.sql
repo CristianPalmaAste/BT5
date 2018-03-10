@@ -69,4 +69,13 @@ insert into tablas_secuencias values ('sub_familias_productos'       , 'sfpr_seq
 insert into tablas_secuencias values ('descuentos'                   , 'desu_seq');
 insert into tablas_secuencias values ('bodegas'                      , 'bode_seq');
 insert into tablas_secuencias values ('bodegas_productos'            , 'bopr_seq');
+insert into tablas_secuencias values ('listas_precios'               , 'lipr_seq');
+insert into tablas_secuencias values ('detalles_listas_precios'      , 'delp_seq');
+insert into tablas_secuencias values ('familias_productos'           , 'fapr_seq');
+insert into tablas_secuencias values ('sub_familias_productos'       , 'sfpr_seq');
+insert into tablas_secuencias values ('tipos_movimientos_bodegas'    , 'timb_seq');
+insert into tablas_secuencias values ('movimientos_bodegas'          , 'mobo_seq');
+insert into tablas_secuencias values ('detalles_movtos_bodegas'      , 'demb_seq');
+insert into tablas_secuencias values ('descuentos'                   , 'desu_seq');
+insert into tablas_secuencias values ('bitacoras_cambios_precios'    , 'bicp_seq');
 

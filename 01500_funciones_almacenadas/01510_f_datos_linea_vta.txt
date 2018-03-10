@@ -1,22 +1,27 @@
 CREATE FUNCTION
-        ?column?        
-------------------------
- precio venta prod 1: 0
+        ?column?         
+-------------------------
+ precio venta prod 17: 0
 (1 fila)
 
-     ?column?     
-------------------
- exento prod 1: 0
+     ?column?      
+-------------------
+ exento prod 17: 0
 (1 fila)
 
-     ?column?     
-------------------
- afecto prod 1: 0
+     ?column?      
+-------------------
+ afecto prod 17: 0
 (1 fila)
 
-      ?column?       
----------------------
- impuestos prod 1: 0
+           ?column?           
+------------------------------
+ impuestos obligat prod 17: 0
+(1 fila)
+
+           ?column?           
+------------------------------
+ impuestos especif prod 17: 0
 (1 fila)
 
  f_datos_linea_vta 

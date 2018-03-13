@@ -714,4 +714,8 @@ insert into descuentos values (5, null, null, 3   , null, 100 , 1, 1, current_ti
 insert into descuentos values (6, null, null, 4   , null, 200 , 1, 1, current_timestamp, null, null, null, null);
 insert into descuentos values (7, null, null, 5   , null, 300 , 1, 1, current_timestamp, null, null, null, null);
 
+insert into impuestos values (4, 1, 'IMPUESTO FICTICIO A LOS LIBROS (PRUEBA)', 'IFL' , 'N', 5);
+
+insert into tipos_productos_impuestos values (nextval('tipi_seq'), 15, 4);
+
 \q

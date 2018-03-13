@@ -52,7 +52,8 @@ begin
     1: precio de venta (del producto o servicio)
     2: total exento
     3: total afecto
-    4: impuestos
+    4: impuestos obligatorios
+    5: impuestos específicos
   */
   if (Pidprod is null and Pidserv is null) or Pcantidad is null or Pmonto_dscto is null or Pdato_deseado is null then
     return(0);
@@ -209,11 +210,13 @@ begin
 end;
 $$ LANGUAGE plpgsql;
 
-select 'precio venta prod 17: '      || f_datos_linea_vta(17  , null, 0, 0  , 1);
-select 'exento prod 17: '            || f_datos_linea_vta(17  , null, 5, 100, 2);
-select 'afecto prod 17: '            || f_datos_linea_vta(17  , null, 5, 100, 3);
-select 'impuestos obligat prod 17: ' || f_datos_linea_vta(17  , null, 5, 100, 4);
-select 'impuestos especif prod 17: ' || f_datos_linea_vta(17  , null, 5, 100, 5);
+select 'precio vta prod 16    : ' || f_datos_linea_vta(16, null, 0, 0  , 1);
+select 'exento prod 16        : ' || f_datos_linea_vta(16, null, 5, 100, 2);
+select 'afecto prod 16        : ' || f_datos_linea_vta(16, null, 5, 100, 3);
+select 'imptos oblig prod 16  : ' || f_datos_linea_vta(16, null, 5, 100, 4);
+select 'imptos especif prod 16: ' || f_datos_linea_vta(16, null, 5, 100, 5);
+
+\q
 
 select f_datos_linea_vta(16  , null, 1, 100, 1);
 select f_datos_linea_vta(17  , null, 1, 100, 1);

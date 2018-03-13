@@ -106,7 +106,7 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence pepr_seq start with 236
+ create sequence pepr_seq start with 247
 (1 fila)
 
                 ?column?                 
@@ -256,12 +256,12 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence impu_seq start with 4
+ create sequence impu_seq start with 5
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence tipi_seq start with 3
+ create sequence tipi_seq start with 4
 (1 fila)
 
                ?column?                

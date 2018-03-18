@@ -14,6 +14,11 @@ SET
  create sequence para_seq start with 21
 (1 fila)
 
+                ?column?                
+----------------------------------------
+ create sequence paem_seq start with 12
+(1 fila)
+
                ?column?                
 ---------------------------------------
  create sequence esge_seq start with 4

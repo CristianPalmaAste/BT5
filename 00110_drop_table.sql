@@ -3,6 +3,7 @@ set client_min_messages to warning;
 drop table if exists grupos_empresariales           cascade;
 drop table if exists empresas                       cascade;
 drop table if exists parametros                     cascade;
+drop table if exists parametros_empresas            cascade;
 drop table if exists estados_grem                   cascade;
 drop table if exists rubros                         cascade;
 drop table if exists estados_registros              cascade;

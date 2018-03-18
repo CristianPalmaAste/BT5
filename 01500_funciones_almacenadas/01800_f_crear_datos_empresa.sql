@@ -3,6 +3,8 @@ $body$
 declare
   Vidfapr int;
 begin
+  insert into parametros_empresas values (nextval('paem_seq'), new.id, 'MAXDSCTOPERM', 'MÁXIMO DESCUENTO PERMITIDO (%)', 'MÁXIMO DESCUENTO PERMITIDO (EXPRESADO EN PORCENTAJE) EN UNA VENTA DE ESTA EMPRESA', '10' , 1, current_timestamp, null, null, null, null);
+
   insert into bodegas values (nextval('bode_seq'), new.id, 'BODEGA CENTRAL', 1, current_timestamp, null, null, null, null);
 
   select nextval('fapr_seq')

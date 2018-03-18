@@ -3,6 +3,7 @@ set client_min_messages to warning;
 create or replace view grem as select * from grupos_empresariales;
 create or replace view empr as select * from empresas;
 create or replace view para as select * from parametros;
+create or replace view paem as select * from parametros_empresas;
 create or replace view esge as select * from estados_grem;
 create or replace view rubr as select * from rubros;
 create or replace view esre as select * from estados_registros;

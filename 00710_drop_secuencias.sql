@@ -3,6 +3,7 @@ set client_min_messages to warning;
 drop sequence if exists grem_seq;
 drop sequence if exists empr_seq;
 drop sequence if exists para_seq;
+drop sequence if exists paem_seq;
 drop sequence if exists esge_seq;
 drop sequence if exists rubr_seq;
 drop sequence if exists esre_seq;

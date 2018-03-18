@@ -91,6 +91,33 @@ alter table parametros add constraint para_uk_02 unique (idgrem, nombrelargo)
 
 /*************************************************************************************************************************/
 
+create table parametros_empresas (
+   id                       numeric(20,0)   not null
+  ,idempr                   numeric(20,0)   not null
+  ,nombrecorto              varchar(50)     not null
+  ,nombrelargo              varchar(500)    not null
+  ,descripcion              varchar(1000)   not null
+  ,valor                    varchar(500)    not null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table parametros_empresas add constraint paem_pk primary key (id)
+;
+
+alter table parametros_empresas add constraint paem_uk_01 unique (idempr, nombrecorto)
+;
+
+alter table parametros_empresas add constraint paem_uk_02 unique (idempr, nombrelargo)
+;
+
+/*************************************************************************************************************************/
+
 create table estados_grem (
    id                          numeric(20,0)     not null
   ,descripcion                 varchar(100)    not null
@@ -2002,6 +2029,11 @@ alter table parametros                 add constraint para_fk_grem  foreign key 
 alter table parametros                 add constraint para_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
 alter table parametros                 add constraint para_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
 alter table parametros                 add constraint para_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+
+alter table parametros_empresas        add constraint paem_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table parametros_empresas        add constraint paem_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table parametros_empresas        add constraint paem_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table parametros_empresas        add constraint paem_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
 alter table personas                   add constraint pers_fk_grem  foreign key (idgrem)                references grupos_empresariales          (id);
 alter table personas                   add constraint pers_fk_esci  foreign key (idesci)                references estados_civiles               (id);

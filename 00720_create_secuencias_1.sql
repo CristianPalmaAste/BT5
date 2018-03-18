@@ -3,6 +3,7 @@ set client_min_messages to warning;
 select 'create sequence grem_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from grupos_empresariales;
 select 'create sequence empr_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from empresas;
 select 'create sequence para_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from parametros;
+select 'create sequence paem_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from parametros_empresas;
 select 'create sequence esge_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from estados_grem;
 select 'create sequence rubr_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from rubros;
 select 'create sequence esre_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from estados_registros;

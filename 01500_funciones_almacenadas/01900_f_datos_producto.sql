@@ -12,7 +12,6 @@ declare
   Vnombre_producto           varchar(1000);
   Vpreciounitario            numeric;
   Vporcentajedescuento       numeric;
-  Vmontodescuento            numeric;
   Vidfapr                    numeric;
   Vidsfpr                    numeric;
 begin
@@ -29,9 +28,11 @@ begin
        5    nombre
        6    precio
        7    descuento
-       8    tipo descuento: P=porcentaje; M=monto
 
   */
+  if Pdato_deseado not between 1 and 7 then
+    return(null);
+  end if;
   if    Pdato_deseado between 1 and 5 then
     select fapr.cod_familia
           ,sfpr.cod_sub_familia
@@ -77,27 +78,13 @@ begin
     return(Vpreciounitario);
   elsif Pdato_deseado between 7 and 8 then
     select porcentajedescuento
-          ,montodescuento
     into   Vporcentajedescuento
-          ,Vmontodescuento
     from   descuentos
     where  idprod = Pidprod
     and    idesre = 1
     ;
-    if Vporcentajedescuento is not null or Vmontodescuento is not null then
-      if Vporcentajedescuento is not null then
-        if Pdato_deseado = 7 then
-          return(Vporcentajedescuento);
-        else
-          return('P');
-        end if;
-      else
-        if Pdato_deseado = 7 then
-          return(Vmontodescuento);
-        else
-          return('M');
-        end if;
-      end if;
+    if Vporcentajedescuento is not null then
+      return(Vporcentajedescuento);
     else
       select sfpr.idfapr
             ,sfpr.id
@@ -109,52 +96,24 @@ begin
       and    prod.id     = Pidprod
       ;
       select porcentajedescuento
-            ,montodescuento
       into   Vporcentajedescuento
-            ,Vmontodescuento
       from   descuentos
       where  idsfpr = Vidsfpr
       and    idesre = 1
       ;
-      if Vporcentajedescuento is not null or Vmontodescuento is not null then
-        if Vporcentajedescuento is not null then
-          if Pdato_deseado = 7 then
-            return(Vporcentajedescuento);
-          else
-            return('P');
-          end if;
-        else
-          if Pdato_deseado = 7 then
-            return(Vmontodescuento);
-          else
-            return('M');
-          end if;
-        end if;
+      if Vporcentajedescuento is not null then
+        return(Vporcentajedescuento);
       else
         select porcentajedescuento
-              ,montodescuento
         into   Vporcentajedescuento
-              ,Vmontodescuento
         from   descuentos
         where  idfapr = Vidfapr
         and    idesre = 1
         ;
-        if Vporcentajedescuento is not null or Vmontodescuento is not null then
-          if Vporcentajedescuento is not null then
-            if Pdato_deseado = 7 then
-              return(Vporcentajedescuento);
-            else
-              return('P');
-            end if;
-          else
-            if Pdato_deseado = 7 then
-              return(Vmontodescuento);
-            else
-              return('M');
-            end if;
-          end if;
+        if Vporcentajedescuento is not null then
+          return(Vporcentajedescuento);
         else
-          return('');
+          return(0);
         end if;
       end if;
     end if;
@@ -163,4 +122,14 @@ begin
   end if;
 end;
 $$ LANGUAGE plpgsql;
+
+select f_datos_producto(1,0);
+select f_datos_producto(1,1);
+select f_datos_producto(1,2);
+select f_datos_producto(1,3);
+select f_datos_producto(1,4);
+select f_datos_producto(1,5);
+select f_datos_producto(1,6);
+select f_datos_producto(1,7);
+select f_datos_producto(1,8);
 

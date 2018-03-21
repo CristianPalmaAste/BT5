@@ -101,6 +101,7 @@ begin
                        ,montodescuento           -- numeric(20,2)   not null
                        ,total                    -- numeric(20,0)   not null
                        ,idesve                   -- numeric(20,0)   not null
+                       ,idusuavendedor           -- numeric(20,0)   not null
                        ,idusuacrearegistro       -- numeric(20,0)   not null
                        ,fechacrearegistro        -- timestamp       not null
                        ,idusuamodifregistro      -- numeric(20,0)       null
@@ -130,6 +131,7 @@ begin
            ,new.montodescuento            -- montodescuento           numeric(20,2)   not null
            ,new.total                     -- total                    numeric(20,0)   not null
            ,1                             -- idesve                   numeric(20,0)   not null
+           ,new.idusuavendedor            -- idusuavendedor           numeric(20,0)   not null
            ,new.idusuacrearegistro        -- idusuacrearegistro       numeric(20,0)   not null
            ,current_timestamp             -- fechacrearegistro        timestamp       not null
            ,null                          -- idusuamodifregistro      numeric(20,0)       null

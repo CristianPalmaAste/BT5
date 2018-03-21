@@ -132,7 +132,7 @@ CREATE VIEW
 
 DROP VIEW
 CREATE VIEW
- id | idfapr | cod_familia | familia | idsfpr | cod_sub_familia | sub_familia | idprod | producto | porcentajedescuento | montodescuento | idesre | estado_regsitro 
-----+--------+-------------+---------+--------+-----------------+-------------+--------+----------+---------------------+----------------+--------+-----------------
+ id | idfapr | cod_familia | familia | idsfpr | cod_sub_familia | sub_familia | idprod | producto | porcentajedescuento | idesre | estado_regsitro 
+----+--------+-------------+---------+--------+-----------------+-------------+--------+----------+---------------------+--------+-----------------
 (0 filas)
 

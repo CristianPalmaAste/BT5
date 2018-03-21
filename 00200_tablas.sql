@@ -1266,6 +1266,7 @@ create table ventas (
   ,montodescuento           numeric(20,0)   not null
   ,total                    numeric(20,0)   not null
   ,idesve                   numeric(20,0)   not null
+  ,idusuavendedor           numeric(20,0)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
   ,idusuamodifregistro      numeric(20,0)       null
@@ -1352,6 +1353,7 @@ create table notas_ventas (
   ,montodescuento           numeric(20,0)   not null
   ,total                    numeric(20,0)   not null
   ,idesnv                   numeric(20,0)   not null
+  ,idusuavendedor           numeric(20,0)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
   ,idusuamodifregistro      numeric(20,0)       null
@@ -1437,6 +1439,7 @@ create table cotizaciones_ventas (
   ,total                    numeric(20,0)   not null
   ,diasvalidez              numeric(20,0)   not null
   ,idescv                   numeric(20,0)   not null
+  ,idusuavendedor           numeric(20,0)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
   ,idusuamodifregistro      numeric(20,0)       null

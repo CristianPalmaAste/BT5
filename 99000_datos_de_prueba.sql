@@ -556,6 +556,7 @@ begin
                                          ,3570                       -- total                    numeric(20,0)   not null
                                          ,5                          -- diasvalidez              numeric(20,0)   not null
                                          ,1                          -- idescv                   numeric(20,0)   not null
+                                         ,3                          -- idusuavendedor           numeric(20,0)   not null
                                          ,1                          -- idusuacrearegistro       numeric(20,0)   not null
                                          ,current_timestamp          -- fechacrearegistro        timestamp       not null
                                          ,null                       -- idusuamodifregistro      numeric(20,0)       null
@@ -571,10 +572,8 @@ begin
                                           ,null                                      -- idserv                   numeric(20,0)       null
                                           ,500                                       -- preciounitario           numeric(20,0)   not null
                                           ,2                                         -- cantidad                 numeric(20,2)   not null
-                                          ,0                                         -- porcentajedescuento1     numeric(20,2)   not null
-                                          ,0                                         -- montodescuento1          numeric(20,2)   not null
-                                          ,0                                         -- porcentajedescuento2     numeric(20,2)   not null
-                                          ,0                                         -- montodescuento2          numeric(20,2)   not null
+                                          ,0                                         -- porcentajedescuento      numeric(20,2)   not null
+                                          ,0                                         -- montodescuento           numeric(20,2)   not null
                                           ,0                                         -- exento                   numeric(20,0)   not null
                                           ,1000                                      -- afecto                   numeric(20,0)   not null
                                           ,190                                       -- impuestosobligats        numeric(20,2)   not null
@@ -595,10 +594,8 @@ begin
                                           ,null                                      -- idserv                   numeric(20,0)       null
                                           ,100                                       -- preciounitario           numeric(20,0)   not null
                                           ,20                                        -- cantidad                 numeric(20,2)   not null
-                                          ,0                                         -- porcentajedescuento1     numeric(20,2)   not null
-                                          ,0                                         -- montodescuento1          numeric(20,2)   not null
-                                          ,0                                         -- porcentajedescuento2     numeric(20,2)   not null
-                                          ,0                                         -- montodescuento2          numeric(20,2)   not null
+                                          ,0                                         -- porcentajedescuento      numeric(20,2)   not null
+                                          ,0                                         -- montodescuento           numeric(20,2)   not null
                                           ,0                                         -- exento                   numeric(20,0)   not null
                                           ,2000                                      -- afecto                   numeric(20,0)   not null
                                           ,380                                       -- impuestosobligats        numeric(20,2)   not null
@@ -706,13 +703,13 @@ insert into detalles_listas_precios values (34, 2, 17, 4100, 1, current_timestam
 
 -- descuentos
 
-insert into descuentos values (1, 1   , null, null, 5   , null, 1, 1, current_timestamp, null, null, null, null);
-insert into descuentos values (2, null, 1   , null, 10  , null, 1, 1, current_timestamp, null, null, null, null);
-insert into descuentos values (3, null, null, 1   , 15  , null, 1, 1, current_timestamp, null, null, null, null);
-insert into descuentos values (4, null, null, 2   , 20  , null, 1, 1, current_timestamp, null, null, null, null);
-insert into descuentos values (5, null, null, 3   , null, 100 , 1, 1, current_timestamp, null, null, null, null);
-insert into descuentos values (6, null, null, 4   , null, 200 , 1, 1, current_timestamp, null, null, null, null);
-insert into descuentos values (7, null, null, 5   , null, 300 , 1, 1, current_timestamp, null, null, null, null);
+insert into descuentos values (1, 1   , null, null, 5  , 1, 1, current_timestamp, null, null, null, null);
+insert into descuentos values (2, null, 1   , null, 10 , 1, 1, current_timestamp, null, null, null, null);
+insert into descuentos values (3, null, null, 1   , 15 , 1, 1, current_timestamp, null, null, null, null);
+insert into descuentos values (4, null, null, 2   , 20 , 1, 1, current_timestamp, null, null, null, null);
+insert into descuentos values (5, null, null, 3   , 10 , 1, 1, current_timestamp, null, null, null, null);
+insert into descuentos values (6, null, null, 4   , 15 , 1, 1, current_timestamp, null, null, null, null);
+insert into descuentos values (7, null, null, 5   , 5  , 1, 1, current_timestamp, null, null, null, null);
 
 insert into impuestos values (4, 1, 'IMPUESTO FICTICIO A LOS LIBROS (PRUEBA)', 'IFL' , 'N', 5);
 

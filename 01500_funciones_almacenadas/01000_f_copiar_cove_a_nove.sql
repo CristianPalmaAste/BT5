@@ -10,10 +10,8 @@ declare
   Vidserv                   numeric;
   Vpreciounitario           numeric;
   Vcantidad                 numeric;
-  Vporcentajedescuento1     numeric;
-  Vmontodescuento1          numeric;
-  Vporcentajedescuento2     numeric;
-  Vmontodescuento2          numeric;
+  Vporcentajedescuento      numeric;
+  Vmontodescuento           numeric;
   Vexento                   numeric;
   Vafecto                   numeric;
   Vimpuestosobligats        numeric;
@@ -28,10 +26,8 @@ declare
           ,idserv
           ,preciounitario
           ,cantidad
-          ,porcentajedescuento1
-          ,montodescuento1
-          ,porcentajedescuento2
-          ,montodescuento2
+          ,porcentajedescuento
+          ,montodescuento
           ,exento
           ,afecto
           ,impuestosobligats
@@ -82,6 +78,7 @@ begin
                              ,montodescuento           -- numeric(20,0)   not null
                              ,total                    -- numeric(20,0)   not null
                              ,idesnv                   -- numeric(20,0)   not null
+                             ,idusuavendedor           -- numeric(20,0)   not null
                              ,idusuacrearegistro       -- numeric(20,0)   not null
                              ,fechacrearegistro        -- timestamp       not null
                              ,idusuamodifregistro      -- numeric(20,0)       null
@@ -110,6 +107,7 @@ begin
            ,new.montodescuento            -- montodescuento           numeric(20,0)   not null
            ,new.total                     -- total                    numeric(20,0)   not null
            ,1                             -- idesnv                   numeric(20,0)   not null
+           ,new.idusuavendedor            -- idusuavendedor           numeric(20,0)   not null
            ,new.idusuacrearegistro        -- idusuacrearegistro       numeric(20,0)   not null
            ,current_timestamp             -- fechacrearegistro        timestamp       not null
            ,null                          -- idusuamodifregistro      numeric(20,0)       null
@@ -126,10 +124,8 @@ begin
                        ,Vidserv
                        ,Vpreciounitario
                        ,Vcantidad
-                       ,Vporcentajedescuento1
-                       ,Vmontodescuento1
-                       ,Vporcentajedescuento2
-                       ,Vmontodescuento2
+                       ,Vporcentajedescuento
+                       ,Vmontodescuento
                        ,Vexento
                        ,Vafecto
                        ,Vimpuestosobligats
@@ -171,10 +167,10 @@ begin
              ,Vidserv                              -- idserv                   numeric(20,0)       null
              ,Vpreciounitario                      -- preciounitario           numeric(20,0)   not null
              ,Vcantidad                            -- cantidad                 numeric(20,2)   not null
-             ,Vporcentajedescuento1                -- porcentajedescuento1     numeric(20,5)   not null
-             ,Vmontodescuento1                     -- montodescuento1          numeric(20,0)   not null
-             ,Vporcentajedescuento2                -- porcentajedescuento2     numeric(20,5)   not null
-             ,Vmontodescuento2                     -- montodescuento2          numeric(20,0)   not null
+             ,Vporcentajedescuento                 -- porcentajedescuento1     numeric(20,5)   not null
+             ,Vmontodescuento                      -- montodescuento1          numeric(20,0)   not null
+             ,0                                    -- porcentajedescuento2     numeric(20,5)   not null
+             ,0                                    -- montodescuento2          numeric(20,0)   not null
              ,Vexento                              -- exento                   numeric(20,0)   not null
              ,Vafecto                              -- afecto                   numeric(20,0)   not null
              ,Vimpuestosobligats                   -- impuestosobligats        numeric(20,2)   not null

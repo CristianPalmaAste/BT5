@@ -628,7 +628,6 @@ select desu.id                                            id
       ,desu.idprod                                        idprod
       ,prod.nombre                                        producto
       ,desu.porcentajedescuento                           porcentajedescuento
-      ,desu.montodescuento                                montodescuento
       ,desu.idesre                                        idesre
       ,esre.descripcion                                   estado_regsitro
 from                   descuentos              desu

@@ -1462,10 +1462,8 @@ create table detalles_cotizs_vtas (
   ,idserv                   numeric(20,0)       null
   ,preciounitario           numeric(20,0)   not null
   ,cantidad                 numeric(20,2)   not null
-  ,porcentajedescuento1     numeric(20,5)   not null
-  ,montodescuento1          numeric(20,0)   not null
-  ,porcentajedescuento2     numeric(20,5)   not null
-  ,montodescuento2          numeric(20,0)   not null
+  ,porcentajedescuento      numeric(20,5)   not null
+  ,montodescuento           numeric(20,0)   not null
   ,exento                   numeric(20,0)   not null
   ,afecto                   numeric(20,0)   not null
   ,impuestosobligats        numeric(20,0)   not null
@@ -1823,8 +1821,7 @@ create table descuentos (
   ,idfapr                   numeric(20,0)       null
   ,idsfpr                   numeric(20,0)       null
   ,idprod                   numeric(20,0)       null
-  ,porcentajedescuento      numeric(20,5)       null
-  ,montodescuento           numeric(20,0)       null
+  ,porcentajedescuento      numeric(20,5)   not null
   ,idesre                   numeric(20,0)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
@@ -1846,12 +1843,6 @@ alter table descuentos add constraint desu_chk_01 check (   (idfapr is not null 
                                                             (idfapr is     null and idsfpr is not null and idprod is     null)
                                                          or
                                                             (idfapr is     null and idsfpr is     null and idprod is not null)
-                                                        )
-;
-
-alter table descuentos add constraint desu_chk_02 check (   (porcentajedescuento is not null and montodescuento is     null)
-                                                         or
-                                                            (porcentajedescuento is     null and montodescuento is not null)
                                                         )
 ;
 

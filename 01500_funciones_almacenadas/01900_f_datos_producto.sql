@@ -27,7 +27,7 @@ begin
        4    origen
        5    nombre
        6    precio
-       7    descuento
+       7    descuento (expresado como %)
 
   */
   if Pdato_deseado not between 1 and 7 then
@@ -76,7 +76,7 @@ begin
     and    delp.idprod = Pidprod
     ;
     return(Vpreciounitario);
-  elsif Pdato_deseado between 7 and 8 then
+  elsif Pdato_deseado = 7 then
     select porcentajedescuento
     into   Vporcentajedescuento
     from   descuentos

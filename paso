@@ -381,11 +381,16 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence ereq_seq start with 1
+ create sequence ereq_seq start with 5
 (1 fila)
 
                ?column?                
 ---------------------------------------
  create sequence requ_seq start with 1
+(1 fila)
+
+               ?column?                
+---------------------------------------
+ create sequence dere_seq start with 1
 (1 fila)
 

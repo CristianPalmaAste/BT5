@@ -1896,6 +1896,42 @@ alter table requisiciones add constraint requ_uk_01 unique (idempr, correlativo)
 
 /*************************************************************************************************************************/
 
+create table detalles_requisiciones (
+   id                       numeric(20,0)   not null
+  ,idrequ                   numeric(20,0)   not null
+  ,correlativo              numeric(20,0)   not null
+  ,idprod                   numeric(20,0)       null
+  ,idunmp                   numeric(20,0)       null
+  ,idserv                   numeric(20,0)       null
+  ,idunms                   numeric(20,0)       null
+  ,otroinsumo               varchar(1000)       null
+  ,cantidad                 numeric(20,0)   not null
+)
+;
+
+alter table detalles_requisiciones add constraint dere_pk primary key (id)
+;
+
+alter table detalles_requisiciones add constraint dere_uk_01 unique (idrequ, correlativo)
+;
+
+alter table detalles_requisiciones add constraint dere_chk_01 check (
+                                                                     (idprod is not null and idserv is     null and otroinsumo is     null)
+                                                                     or
+                                                                     (idprod is     null and idserv is not null and otroinsumo is     null)
+                                                                     or
+                                                                     (idprod is     null and idserv is     null and otroinsumo is not null)
+                                                                    )
+;
+
+alter table detalles_requisiciones add constraint dere_chk_02 check (
+                                                                     (idprod is not null and idunmp is not null)
+                                                                     or
+                                                                     (idserv is not null and idunms is not null)
+                                                                    )
+;
+
+/*************************************************************************************************************************/
 
 
 
@@ -2217,5 +2253,16 @@ alter table valores_dominios           add constraint vado_fk_domi  foreign key 
 alter table valores_dominios           add constraint vado_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
 alter table valores_dominios           add constraint vado_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
 alter table valores_dominios           add constraint vado_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+
+alter table requisiciones              add constraint requ_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table requisiciones              add constraint requ_fk_gere  foreign key (idgere)                references gerencias                     (id);
+alter table requisiciones              add constraint requ_fk_proy  foreign key (idproy)                references proyectos                     (id);
+alter table requisiciones              add constraint requ_fk_line  foreign key (idline)                references lineas_negocios               (id);
+alter table requisiciones              add constraint requ_fk_ceco  foreign key (idceco)                references centros_costos                (id);
+alter table requisiciones              add constraint requ_fk_tare  foreign key (idtare)                references tareas                        (id);
+alter table requisiciones              add constraint requ_fk_ereq  foreign key (idereq)                references estados_requisiciones         (id);
+alter table requisiciones              add constraint requ_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table requisiciones              add constraint requ_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table requisiciones              add constraint requ_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
 \q

@@ -78,6 +78,7 @@ drop sequence if exists desu_seq;
 drop sequence if exists bicp_seq;
 drop sequence if exists ereq_seq;
 drop sequence if exists requ_seq;
+drop sequence if exists dere_seq;
 
 
 \q

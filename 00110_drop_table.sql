@@ -78,6 +78,7 @@ drop table if exists descuentos                     cascade;
 drop table if exists bitacoras_cambios_precios      cascade;
 drop table if exists estados_requisiciones          cascade;
 drop table if exists requisiciones                  cascade;
+drop table if exists detalles_requisiciones         cascade;
 
 
 \q

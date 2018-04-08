@@ -706,4 +706,9 @@ insert into tipos_formas_pagos values (4, 'CHEQUE'         );
 insert into tipos_formas_pagos values (5, 'LETRA'          );
 insert into tipos_formas_pagos values (6, 'VALE VISTA'     );
 
+insert into estados_requisiciones values (1, 'CREADA'                                                 );
+insert into estados_requisiciones values (2, 'CERRADA, TRASPASADA A SUPERIOR JERáRQUICO'              );
+insert into estados_requisiciones values (3, 'AUTORIZADA, TRASPASADA A DEPARTAMENTO COMPRAS'          );
+insert into estados_requisiciones values (4, 'ACEPTADA POR DEPARTAMENTO COMPRAS, CREA ORDEN DE COMPRA');
+
 \q

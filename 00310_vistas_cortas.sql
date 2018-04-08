@@ -78,6 +78,7 @@ create or replace view desu as select * from descuentos;
 create or replace view bicp as select * from bitacoras_cambios_precios;
 create or replace view ereq as select * from estados_requisiciones;
 create or replace view requ as select * from requisiciones;
+create or replace view dere as select * from detalles_requisiciones;
 
 
 \q

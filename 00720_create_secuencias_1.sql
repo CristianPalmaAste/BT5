@@ -78,6 +78,7 @@ select 'create sequence desu_seq start with ' || (case when MAX(ID) is null then
 select 'create sequence bicp_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from bitacoras_cambios_precios;
 select 'create sequence ereq_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from estados_requisiciones;
 select 'create sequence requ_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from requisiciones;
+select 'create sequence dere_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from detalles_requisiciones;
 
 
 \q

@@ -74,7 +74,8 @@ create sequence mobo_seq start with 2;
 create sequence demb_seq start with 3;
 create sequence desu_seq start with 8;
 create sequence bicp_seq start with 35;
-create sequence ereq_seq start with 1;
+create sequence ereq_seq start with 5;
 create sequence requ_seq start with 1;
+create sequence dere_seq start with 1;
 
 \q

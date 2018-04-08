@@ -40,9 +40,7 @@ drop sequence if exists epos_seq;
 drop sequence if exists tifp_seq;
 drop sequence if exists fpnv_seq;
 drop sequence if exists fpve_seq;
-drop sequence if exists unt1_seq;
-drop sequence if exists unt2_seq;
-drop sequence if exists unt3_seq;
+drop sequence if exists unte_seq;
 drop sequence if exists ticl_seq;
 drop sequence if exists ticv_seq;
 drop sequence if exists escv_seq;
@@ -78,6 +76,8 @@ drop sequence if exists mobo_seq;
 drop sequence if exists demb_seq;
 drop sequence if exists desu_seq;
 drop sequence if exists bicp_seq;
+drop sequence if exists ereq_seq;
+drop sequence if exists requ_seq;
 
 
 \q

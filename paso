@@ -199,19 +199,9 @@ SET
  create sequence fpve_seq start with 1
 (1 fila)
 
-                ?column?                
-----------------------------------------
- create sequence unt1_seq start with 17
-(1 fila)
-
-                ?column?                
-----------------------------------------
- create sequence unt2_seq start with 57
-(1 fila)
-
                 ?column?                 
 -----------------------------------------
- create sequence unt3_seq start with 368
+ create sequence unte_seq start with 419
 (1 fila)
 
                ?column?                
@@ -387,5 +377,15 @@ SET
                 ?column?                
 ----------------------------------------
  create sequence bicp_seq start with 35
+(1 fila)
+
+               ?column?                
+---------------------------------------
+ create sequence ereq_seq start with 1
+(1 fila)
+
+               ?column?                
+---------------------------------------
+ create sequence requ_seq start with 1
 (1 fila)
 

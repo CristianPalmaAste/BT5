@@ -939,47 +939,25 @@ alter table formas_pagos_ventas add constraint fpve_uk_01 unique (idvent, idtifp
 
 /*************************************************************************************************************************/
 
-create table unidades_territoriales_1 (
+create table unidades_territoriales (
    id                       numeric(20,0)   not null
   ,idpais                   numeric(20,0)   not null
+  ,idunte                   numeric(20,0)       null
   ,nombre                   varchar(100)    not null
+  ,orden                    numeric(20,0)       null
 )
 ;
 
-alter table unidades_territoriales_1 add constraint unt1_pk primary key (id)
+-- el campo orden se puede usar -en el caso de Chile- para ordenar las regiones por numero o por ubicacion geografica;
+-- las provincias y comunas se debieran ordenar por nombre
+
+alter table unidades_territoriales add constraint unte_pk primary key (id)
 ;
 
-alter table unidades_territoriales_1 add constraint unt1_uk_01 unique (idpais, nombre)
+alter table unidades_territoriales add constraint unte_uk_01 unique (idpais, idunte, nombre)
 ;
 
-/*************************************************************************************************************************/
-
-create table unidades_territoriales_2 (
-   id                       numeric(20,0)   not null
-  ,idunt1                   numeric(20,0)   not null
-  ,nombre                   varchar(100)    not null
-)
-;
-
-alter table unidades_territoriales_2 add constraint unt2_pk primary key (id)
-;
-
-alter table unidades_territoriales_2 add constraint unt2_uk_01 unique (idunt1, nombre)
-;
-
-/*************************************************************************************************************************/
-
-create table unidades_territoriales_3 (
-   id                       numeric(20,0)   not null
-  ,idunt2                   numeric(20,0)   not null
-  ,nombre                   varchar(100)    not null
-)
-;
-
-alter table unidades_territoriales_3 add constraint unt3_pk primary key (id)
-;
-
-alter table unidades_territoriales_3 add constraint unt3_uk_01 unique (idunt2, nombre)
+alter table unidades_territoriales add constraint unte_uk_02 unique (idunte, orden)
 ;
 
 /*************************************************************************************************************************/
@@ -1869,6 +1847,63 @@ alter table bitacoras_cambios_precios add constraint bicp_pk primary key (id)
 /*************************************************************************************************************************/
 
 
+
+
+
+
+
+/*************************************************************************************************************************/
+
+create table estados_requisiciones (
+   id                          numeric(20,0)   not null
+  ,descripcion                 varchar(100)    not null
+)
+;
+
+alter table estados_requisiciones add constraint ereq_pk primary key (id)
+;
+
+alter table estados_requisiciones add constraint ereq_uk_01 unique (descripcion)
+;
+
+/*************************************************************************************************************************/
+
+create table requisiciones (
+   id                       numeric(20,0)   not null
+  ,idempr                   numeric(20,0)       null
+  ,correlativo              numeric(20,0)   not null
+  ,idusuasolicitareq        numeric(20,0)   not null
+  ,idgere                   numeric(20,0)       null
+  ,idproy                   numeric(20,0)       null
+  ,idline                   numeric(20,0)       null
+  ,idceco                   numeric(20,0)       null
+  ,idtare                   numeric(20,0)       null
+  ,idereq                   numeric(20,0)       null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table requisiciones add constraint requ_pk primary key (id)
+;
+
+alter table requisiciones add constraint requ_uk_01 unique (idempr, correlativo)
+;
+
+/*************************************************************************************************************************/
+
+
+
+
+
+
+
+
+
 -- Sección foreign keys
 
 alter table bitacoras_cambios_precios  add constraint bicp_fk_prod  foreign key (idprod)                references productos                     (id);
@@ -2065,9 +2100,8 @@ alter table centros_costos             add constraint ceco_fk_empr  foreign key 
 
 alter table tareas                     add constraint tare_fk_empr  foreign key (idempr)                references empresas                      (id);
 
-alter table unidades_territoriales_1   add constraint unt1_fk_pais  foreign key (idpais)                references paises                        (id);
-alter table unidades_territoriales_2   add constraint unt2_fk_unt1  foreign key (idunt1)                references unidades_territoriales_1      (id);
-alter table unidades_territoriales_3   add constraint unt3_fk_unt2  foreign key (idunt2)                references unidades_territoriales_2      (id);
+alter table unidades_territoriales     add constraint unte_fk_pais  foreign key (idpais)                references paises                        (id);
+alter table unidades_territoriales     add constraint unte_fk_unte  foreign key (idunte)                references unidades_territoriales        (id);
 
 alter table impuestos                  add constraint impu_fk_pais  foreign key (idpais)                references paises                        (id);
 

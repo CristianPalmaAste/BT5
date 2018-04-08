@@ -40,9 +40,7 @@ create or replace view epos as select * from estados_pagos_ords_servs_hono;
 create or replace view tifp as select * from tipos_formas_pagos;
 create or replace view fpnv as select * from formas_pagos_notas_ventas;
 create or replace view fpve as select * from formas_pagos_ventas;
-create or replace view unt1 as select * from unidades_territoriales_1;
-create or replace view unt2 as select * from unidades_territoriales_2;
-create or replace view unt3 as select * from unidades_territoriales_3;
+create or replace view unte as select * from unidades_territoriales;
 create or replace view ticl as select * from tipos_clientes;
 create or replace view ticv as select * from tipos_cotizaciones_vtas;
 create or replace view escv as select * from estados_cotizaciones_vtas;
@@ -78,6 +76,8 @@ create or replace view mobo as select * from movimientos_bodegas;
 create or replace view demb as select * from detalles_movtos_bodegas;
 create or replace view desu as select * from descuentos;
 create or replace view bicp as select * from bitacoras_cambios_precios;
+create or replace view ereq as select * from estados_requisiciones;
+create or replace view requ as select * from requisiciones;
 
 
 \q

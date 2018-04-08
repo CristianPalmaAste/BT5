@@ -40,9 +40,7 @@ drop table if exists estados_pagos_ords_servs_hono  cascade;
 drop table if exists tipos_formas_pagos             cascade;
 drop table if exists formas_pagos_notas_ventas      cascade;
 drop table if exists formas_pagos_ventas            cascade;
-drop table if exists unidades_territoriales_1       cascade;
-drop table if exists unidades_territoriales_2       cascade;
-drop table if exists unidades_territoriales_3       cascade;
+drop table if exists unidades_territoriales         cascade;
 drop table if exists tipos_clientes                 cascade;
 drop table if exists tipos_cotizaciones_vtas        cascade;
 drop table if exists estados_cotizaciones_vtas      cascade;
@@ -78,6 +76,8 @@ drop table if exists movimientos_bodegas            cascade;
 drop table if exists detalles_movtos_bodegas        cascade;
 drop table if exists descuentos                     cascade;
 drop table if exists bitacoras_cambios_precios      cascade;
+drop table if exists estados_requisiciones          cascade;
+drop table if exists requisiciones                  cascade;
 
 
 \q

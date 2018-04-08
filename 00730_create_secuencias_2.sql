@@ -38,9 +38,7 @@ create sequence epos_seq start with 3;
 create sequence tifp_seq start with 7;
 create sequence fpnv_seq start with 1;
 create sequence fpve_seq start with 1;
-create sequence unt1_seq start with 17;
-create sequence unt2_seq start with 57;
-create sequence unt3_seq start with 368;
+create sequence unte_seq start with 419;
 create sequence ticl_seq start with 3;
 create sequence ticv_seq start with 3;
 create sequence escv_seq start with 5;
@@ -76,5 +74,7 @@ create sequence mobo_seq start with 2;
 create sequence demb_seq start with 3;
 create sequence desu_seq start with 8;
 create sequence bicp_seq start with 35;
+create sequence ereq_seq start with 1;
+create sequence requ_seq start with 1;
 
 \q

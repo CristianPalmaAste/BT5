@@ -40,9 +40,7 @@ select 'create sequence epos_seq start with ' || (case when MAX(ID) is null then
 select 'create sequence tifp_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_formas_pagos;
 select 'create sequence fpnv_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from formas_pagos_notas_ventas;
 select 'create sequence fpve_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from formas_pagos_ventas;
-select 'create sequence unt1_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from unidades_territoriales_1;
-select 'create sequence unt2_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from unidades_territoriales_2;
-select 'create sequence unt3_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from unidades_territoriales_3;
+select 'create sequence unte_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from unidades_territoriales;
 select 'create sequence ticl_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_clientes;
 select 'create sequence ticv_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_cotizaciones_vtas;
 select 'create sequence escv_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from estados_cotizaciones_vtas;
@@ -78,6 +76,8 @@ select 'create sequence mobo_seq start with ' || (case when MAX(ID) is null then
 select 'create sequence demb_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from detalles_movtos_bodegas;
 select 'create sequence desu_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from descuentos;
 select 'create sequence bicp_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from bitacoras_cambios_precios;
+select 'create sequence ereq_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from estados_requisiciones;
+select 'create sequence requ_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from requisiciones;
 
 
 \q

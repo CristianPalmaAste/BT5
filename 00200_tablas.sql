@@ -1868,9 +1868,25 @@ alter table estados_requisiciones add constraint ereq_uk_01 unique (descripcion)
 
 /*************************************************************************************************************************/
 
+create table tipos_requisiciones (
+   id                          numeric(20,0)   not null
+  ,descripcion                 varchar(100)    not null
+  ,nrocotizacsminimo           numeric(20,0)   not null
+)
+;
+
+alter table tipos_requisiciones add constraint tire_pk primary key (id)
+;
+
+alter table tipos_requisiciones add constraint tire_uk_01 unique (descripcion)
+;
+
+/*************************************************************************************************************************/
+
 create table requisiciones (
    id                       numeric(20,0)   not null
   ,idempr                   numeric(20,0)       null
+  ,idtire                   numeric(20,0)       null
   ,correlativo              numeric(20,0)   not null
   ,idusuasolicitareq        numeric(20,0)   not null
   ,idgere                   numeric(20,0)       null
@@ -1933,6 +1949,27 @@ alter table detalles_requisiciones add constraint dere_chk_02 check (
 
 /*************************************************************************************************************************/
 
+create table autorizadores_requisiciones (
+   id                       numeric(20,0)   not null
+  ,idempr                   numeric(20,0)   not null
+  ,idperfautorizador        numeric(20,0)   not null
+  ,idperfautorizado         numeric(20,0)   not null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table autorizadores_requisiciones add constraint aure_pk primary key (id)
+;
+
+alter table autorizadores_requisiciones add constraint aure_uk_01 unique (idempr, idperfautorizador, idperfautorizado)
+;
+
+/*************************************************************************************************************************/
 
 
 
@@ -1942,327 +1979,345 @@ alter table detalles_requisiciones add constraint dere_chk_02 check (
 
 -- Sección foreign keys
 
-alter table bitacoras_cambios_precios  add constraint bicp_fk_prod  foreign key (idprod)                references productos                     (id);
-alter table bitacoras_cambios_precios  add constraint bicp_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table autorizadores_requisiciones  add constraint aure_fk1_perf foreign key (idperfautorizador)     references perfiles                      (id);
+alter table autorizadores_requisiciones  add constraint aure_fk2_perf foreign key (idperfautorizado)      references perfiles                      (id);
+alter table autorizadores_requisiciones  add constraint aure_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table autorizadores_requisiciones  add constraint aure_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table autorizadores_requisiciones  add constraint aure_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table descuentos                 add constraint desu_fk_fapr  foreign key (idfapr)                references familias_productos            (id);
-alter table descuentos                 add constraint desu_fk_sfpr  foreign key (idsfpr)                references sub_familias_productos        (id);
-alter table descuentos                 add constraint desu_fk_prod  foreign key (idprod)                references productos                     (id);
-alter table descuentos                 add constraint desu_fk_esre  foreign key (idesre)                references estados_registros             (id);
-alter table descuentos                 add constraint desu_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table descuentos                 add constraint desu_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table descuentos                 add constraint desu_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table requisiciones                add constraint requ_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table requisiciones                add constraint requ_fk_tire  foreign key (idtire)                references tipos_requisiciones           (id);
+alter table requisiciones                add constraint requ_fk4_usua foreign key (idusuasolicitareq)     references usuarios                      (id);
+alter table requisiciones                add constraint requ_fk_gere  foreign key (idgere)                references gerencias                     (id);
+alter table requisiciones                add constraint requ_fk_proy  foreign key (idproy)                references proyectos                     (id);
+alter table requisiciones                add constraint requ_fk_line  foreign key (idline)                references lineas_negocios               (id);
+alter table requisiciones                add constraint requ_fk_ceco  foreign key (idceco)                references centros_costos                (id);
+alter table requisiciones                add constraint requ_fk_tare  foreign key (idtare)                references tareas                        (id);
+alter table requisiciones                add constraint requ_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table requisiciones                add constraint requ_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table requisiciones                add constraint requ_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table movimientos_bodegas        add constraint mobo_fk_bode  foreign key (idbode)                references bodegas                       (id);
-alter table movimientos_bodegas        add constraint mobo_fk_timb  foreign key (idtimb)                references tipos_movimientos_bodegas     (id);
-alter table movimientos_bodegas        add constraint mobo_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table movimientos_bodegas        add constraint mobo_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table movimientos_bodegas        add constraint mobo_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table bitacoras_cambios_precios    add constraint bicp_fk_prod  foreign key (idprod)                references productos                     (id);
+alter table bitacoras_cambios_precios    add constraint bicp_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
 
-alter table detalles_movtos_bodegas    add constraint demb_fk_mobo  foreign key (idmobo)                references movimientos_bodegas           (id);
-alter table detalles_movtos_bodegas    add constraint demb_fk_prod  foreign key (idprod)                references productos                     (id);
-alter table detalles_movtos_bodegas    add constraint demb_fk_unmp  foreign key (idunmp)                references unidades_medidas_productos    (id);
-alter table detalles_movtos_bodegas    add constraint demb_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table detalles_movtos_bodegas    add constraint demb_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table detalles_movtos_bodegas    add constraint demb_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table descuentos                   add constraint desu_fk_fapr  foreign key (idfapr)                references familias_productos            (id);
+alter table descuentos                   add constraint desu_fk_sfpr  foreign key (idsfpr)                references sub_familias_productos        (id);
+alter table descuentos                   add constraint desu_fk_prod  foreign key (idprod)                references productos                     (id);
+alter table descuentos                   add constraint desu_fk_esre  foreign key (idesre)                references estados_registros             (id);
+alter table descuentos                   add constraint desu_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table descuentos                   add constraint desu_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table descuentos                   add constraint desu_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table sub_familias_productos     add constraint sfpr_fk_fapr  foreign key (idfapr)                references familias_productos            (id);
-alter table sub_familias_productos     add constraint sfpr_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table sub_familias_productos     add constraint sfpr_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table sub_familias_productos     add constraint sfpr_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table movimientos_bodegas          add constraint mobo_fk_bode  foreign key (idbode)                references bodegas                       (id);
+alter table movimientos_bodegas          add constraint mobo_fk_timb  foreign key (idtimb)                references tipos_movimientos_bodegas     (id);
+alter table movimientos_bodegas          add constraint mobo_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table movimientos_bodegas          add constraint mobo_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table movimientos_bodegas          add constraint mobo_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table familias_productos         add constraint fapr_fk_empr  foreign key (idempr)                references empresas                      (id);
-alter table familias_productos         add constraint fapr_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table familias_productos         add constraint fapr_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table familias_productos         add constraint fapr_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table detalles_movtos_bodegas      add constraint demb_fk_mobo  foreign key (idmobo)                references movimientos_bodegas           (id);
+alter table detalles_movtos_bodegas      add constraint demb_fk_prod  foreign key (idprod)                references productos                     (id);
+alter table detalles_movtos_bodegas      add constraint demb_fk_unmp  foreign key (idunmp)                references unidades_medidas_productos    (id);
+alter table detalles_movtos_bodegas      add constraint demb_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table detalles_movtos_bodegas      add constraint demb_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table detalles_movtos_bodegas      add constraint demb_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table detalles_listas_precios    add constraint delp_fk_lipr  foreign key (idlipr)                references listas_precios                (id);
-alter table detalles_listas_precios    add constraint delp_fk_prod  foreign key (idprod)                references productos                     (id);
-alter table detalles_listas_precios    add constraint delp_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table detalles_listas_precios    add constraint delp_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table detalles_listas_precios    add constraint delp_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table sub_familias_productos       add constraint sfpr_fk_fapr  foreign key (idfapr)                references familias_productos            (id);
+alter table sub_familias_productos       add constraint sfpr_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table sub_familias_productos       add constraint sfpr_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table sub_familias_productos       add constraint sfpr_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table listas_precios             add constraint lipr_fk_empr  foreign key (idempr)                references empresas                      (id);
-alter table listas_precios             add constraint lipr_fk_esre  foreign key (idesre)                references estados_registros             (id);
-alter table listas_precios             add constraint lipr_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table listas_precios             add constraint lipr_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table listas_precios             add constraint lipr_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table familias_productos           add constraint fapr_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table familias_productos           add constraint fapr_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table familias_productos           add constraint fapr_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table familias_productos           add constraint fapr_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table bodegas                    add constraint bode_fk_empr  foreign key (idempr)                references empresas                      (id);
-alter table bodegas                    add constraint bode_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table bodegas                    add constraint bode_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table bodegas                    add constraint bode_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table detalles_listas_precios      add constraint delp_fk_lipr  foreign key (idlipr)                references listas_precios                (id);
+alter table detalles_listas_precios      add constraint delp_fk_prod  foreign key (idprod)                references productos                     (id);
+alter table detalles_listas_precios      add constraint delp_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table detalles_listas_precios      add constraint delp_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table detalles_listas_precios      add constraint delp_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table bodegas_productos          add constraint bopr_fk_bode  foreign key (idbode)                references bodegas                       (id);
-alter table bodegas_productos          add constraint bopr_fk_prod  foreign key (idprod)                references productos                     (id);
-alter table bodegas_productos          add constraint bopr_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table bodegas_productos          add constraint bopr_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table bodegas_productos          add constraint bopr_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table listas_precios               add constraint lipr_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table listas_precios               add constraint lipr_fk_esre  foreign key (idesre)                references estados_registros             (id);
+alter table listas_precios               add constraint lipr_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table listas_precios               add constraint lipr_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table listas_precios               add constraint lipr_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table solicitudes_servs_hono     add constraint sosh_fk_empr  foreign key (idempr)                references empresas                      (id);
-alter table solicitudes_servs_hono     add constraint sosh_fk_pers  foreign key (idpers)                references personas                      (id);
-alter table solicitudes_servs_hono     add constraint sosh_fk_gere  foreign key (idgere)                references gerencias                     (id);
-alter table solicitudes_servs_hono     add constraint sosh_fk_proy  foreign key (idproy)                references proyectos                     (id);
-alter table solicitudes_servs_hono     add constraint sosh_fk_line  foreign key (idline)                references lineas_negocios               (id);
-alter table solicitudes_servs_hono     add constraint sosh_fk_ceco  foreign key (idceco)                references centros_costos                (id);
-alter table solicitudes_servs_hono     add constraint sosh_fk_tare  foreign key (idtare)                references tareas                        (id);
-alter table solicitudes_servs_hono     add constraint sosh_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table solicitudes_servs_hono     add constraint sosh_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table solicitudes_servs_hono     add constraint sosh_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table bodegas                      add constraint bode_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table bodegas                      add constraint bode_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table bodegas                      add constraint bode_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table bodegas                      add constraint bode_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table cotizaciones_servs_hono    add constraint cosh_fk_sosh  foreign key (idsosh)                references solicitudes_servs_hono        (id);
-alter table cotizaciones_servs_hono    add constraint cosh_fk_pers  foreign key (idpers)                references personas                      (id);
-alter table cotizaciones_servs_hono    add constraint cosh_fk_ecsh  foreign key (idecsh)                references estados_cotizacs_servs_hono   (id);
-alter table cotizaciones_servs_hono    add constraint cosh_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table cotizaciones_servs_hono    add constraint cosh_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table cotizaciones_servs_hono    add constraint cosh_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table bodegas_productos            add constraint bopr_fk_bode  foreign key (idbode)                references bodegas                       (id);
+alter table bodegas_productos            add constraint bopr_fk_prod  foreign key (idprod)                references productos                     (id);
+alter table bodegas_productos            add constraint bopr_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table bodegas_productos            add constraint bopr_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table bodegas_productos            add constraint bopr_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table doctos_cotizacs_servs_hono add constraint dcsh_fk_cosh  foreign key (idcosh)                references cotizaciones_servs_hono       (id);
-alter table doctos_cotizacs_servs_hono add constraint dcsh_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table doctos_cotizacs_servs_hono add constraint dcsh_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table doctos_cotizacs_servs_hono add constraint dcsh_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table solicitudes_servs_hono       add constraint sosh_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table solicitudes_servs_hono       add constraint sosh_fk_pers  foreign key (idpers)                references personas                      (id);
+alter table solicitudes_servs_hono       add constraint sosh_fk_gere  foreign key (idgere)                references gerencias                     (id);
+alter table solicitudes_servs_hono       add constraint sosh_fk_proy  foreign key (idproy)                references proyectos                     (id);
+alter table solicitudes_servs_hono       add constraint sosh_fk_line  foreign key (idline)                references lineas_negocios               (id);
+alter table solicitudes_servs_hono       add constraint sosh_fk_ceco  foreign key (idceco)                references centros_costos                (id);
+alter table solicitudes_servs_hono       add constraint sosh_fk_tare  foreign key (idtare)                references tareas                        (id);
+alter table solicitudes_servs_hono       add constraint sosh_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table solicitudes_servs_hono       add constraint sosh_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table solicitudes_servs_hono       add constraint sosh_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table ordenes_servicios_hono     add constraint orsh_fk_empr  foreign key (idempr)                references empresas                      (id);
-alter table ordenes_servicios_hono     add constraint orsh_fk_sosh  foreign key (idsosh)                references solicitudes_servs_hono        (id);
-alter table ordenes_servicios_hono     add constraint orsh_fk_pers  foreign key (idpers)                references personas                      (id);
-alter table ordenes_servicios_hono     add constraint orsh_fk_eosh  foreign key (ideosh)                references estados_ordenes_servs_hono    (id);
-alter table ordenes_servicios_hono     add constraint orsh_fk_gere  foreign key (idgere)                references gerencias                     (id);
-alter table ordenes_servicios_hono     add constraint orsh_fk_proy  foreign key (idproy)                references proyectos                     (id);
-alter table ordenes_servicios_hono     add constraint orsh_fk_line  foreign key (idline)                references lineas_negocios               (id);
-alter table ordenes_servicios_hono     add constraint orsh_fk_ceco  foreign key (idceco)                references centros_costos                (id);
-alter table ordenes_servicios_hono     add constraint orsh_fk_tare  foreign key (idtare)                references tareas                        (id);
-alter table ordenes_servicios_hono     add constraint orsh_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table ordenes_servicios_hono     add constraint orsh_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table ordenes_servicios_hono     add constraint orsh_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table cotizaciones_servs_hono      add constraint cosh_fk_sosh  foreign key (idsosh)                references solicitudes_servs_hono        (id);
+alter table cotizaciones_servs_hono      add constraint cosh_fk_pers  foreign key (idpers)                references personas                      (id);
+alter table cotizaciones_servs_hono      add constraint cosh_fk_ecsh  foreign key (idecsh)                references estados_cotizacs_servs_hono   (id);
+alter table cotizaciones_servs_hono      add constraint cosh_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table cotizaciones_servs_hono      add constraint cosh_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table cotizaciones_servs_hono      add constraint cosh_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table doctos_ordenes_servs_hono  add constraint dosh_fk_orsh  foreign key (idorsh)                references ordenes_servicios_hono        (id);
-alter table doctos_ordenes_servs_hono  add constraint dosh_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table doctos_ordenes_servs_hono  add constraint dosh_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table doctos_ordenes_servs_hono  add constraint dosh_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table doctos_cotizacs_servs_hono   add constraint dcsh_fk_cosh  foreign key (idcosh)                references cotizaciones_servs_hono       (id);
+alter table doctos_cotizacs_servs_hono   add constraint dcsh_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table doctos_cotizacs_servs_hono   add constraint dcsh_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table doctos_cotizacs_servs_hono   add constraint dcsh_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table pagos_ordenes_servs_hono   add constraint posh_fk_orsh  foreign key (idorsh)                references ordenes_servicios_hono        (id);
-alter table pagos_ordenes_servs_hono   add constraint posh_fk_tifp  foreign key (idtifp)                references tipos_formas_pagos            (id);
-alter table pagos_ordenes_servs_hono   add constraint posh_fk_epos  foreign key (idepos)                references estados_pagos_ords_servs_hono (id);
-alter table pagos_ordenes_servs_hono   add constraint posh_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table pagos_ordenes_servs_hono   add constraint posh_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table pagos_ordenes_servs_hono   add constraint posh_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table ordenes_servicios_hono       add constraint orsh_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table ordenes_servicios_hono       add constraint orsh_fk_sosh  foreign key (idsosh)                references solicitudes_servs_hono        (id);
+alter table ordenes_servicios_hono       add constraint orsh_fk_pers  foreign key (idpers)                references personas                      (id);
+alter table ordenes_servicios_hono       add constraint orsh_fk_eosh  foreign key (ideosh)                references estados_ordenes_servs_hono    (id);
+alter table ordenes_servicios_hono       add constraint orsh_fk_gere  foreign key (idgere)                references gerencias                     (id);
+alter table ordenes_servicios_hono       add constraint orsh_fk_proy  foreign key (idproy)                references proyectos                     (id);
+alter table ordenes_servicios_hono       add constraint orsh_fk_line  foreign key (idline)                references lineas_negocios               (id);
+alter table ordenes_servicios_hono       add constraint orsh_fk_ceco  foreign key (idceco)                references centros_costos                (id);
+alter table ordenes_servicios_hono       add constraint orsh_fk_tare  foreign key (idtare)                references tareas                        (id);
+alter table ordenes_servicios_hono       add constraint orsh_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table ordenes_servicios_hono       add constraint orsh_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table ordenes_servicios_hono       add constraint orsh_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table documentos_legales         add constraint dole_fk_empr  foreign key (idempr)                references empresas                      (id);
-alter table documentos_legales         add constraint dole_fk_tidl  foreign key (idtidl)                references tipos_documentos_legales      (id);
-alter table documentos_legales         add constraint dole_fk_esdl  foreign key (idesdl)                references estados_documentos_legales    (id);
-alter table documentos_legales         add constraint dole_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table documentos_legales         add constraint dole_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table documentos_legales         add constraint dole_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table doctos_ordenes_servs_hono    add constraint dosh_fk_orsh  foreign key (idorsh)                references ordenes_servicios_hono        (id);
+alter table doctos_ordenes_servs_hono    add constraint dosh_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table doctos_ordenes_servs_hono    add constraint dosh_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table doctos_ordenes_servs_hono    add constraint dosh_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table estados_documentos_legales add constraint esdl_fk_grem  foreign key (idgrem)                references grupos_empresariales          (id);
-alter table estados_documentos_legales add constraint esdl_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table estados_documentos_legales add constraint esdl_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table estados_documentos_legales add constraint esdl_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table pagos_ordenes_servs_hono     add constraint posh_fk_orsh  foreign key (idorsh)                references ordenes_servicios_hono        (id);
+alter table pagos_ordenes_servs_hono     add constraint posh_fk_tifp  foreign key (idtifp)                references tipos_formas_pagos            (id);
+alter table pagos_ordenes_servs_hono     add constraint posh_fk_epos  foreign key (idepos)                references estados_pagos_ords_servs_hono (id);
+alter table pagos_ordenes_servs_hono     add constraint posh_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table pagos_ordenes_servs_hono     add constraint posh_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table pagos_ordenes_servs_hono     add constraint posh_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table tipos_documentos_legales   add constraint tidl_fk_grem  foreign key (idgrem)                references grupos_empresariales          (id);
-alter table tipos_documentos_legales   add constraint tidl_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table tipos_documentos_legales   add constraint tidl_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table tipos_documentos_legales   add constraint tidl_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table documentos_legales           add constraint dole_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table documentos_legales           add constraint dole_fk_tidl  foreign key (idtidl)                references tipos_documentos_legales      (id);
+alter table documentos_legales           add constraint dole_fk_esdl  foreign key (idesdl)                references estados_documentos_legales    (id);
+alter table documentos_legales           add constraint dole_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table documentos_legales           add constraint dole_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table documentos_legales           add constraint dole_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table planes_cuentas             add constraint plcu_fk_grem  foreign key (idgrem)                references grupos_empresariales          (id);
-alter table planes_cuentas             add constraint plcu_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table planes_cuentas             add constraint plcu_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table planes_cuentas             add constraint plcu_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table estados_documentos_legales   add constraint esdl_fk_grem  foreign key (idgrem)                references grupos_empresariales          (id);
+alter table estados_documentos_legales   add constraint esdl_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table estados_documentos_legales   add constraint esdl_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table estados_documentos_legales   add constraint esdl_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table perfiles_programas         add constraint pepr_fk_perf  foreign key (idperf)                references perfiles                      (id);
-alter table perfiles_programas         add constraint pepr_fk_prog  foreign key (idprog)                references programas                     (id);
+alter table tipos_documentos_legales     add constraint tidl_fk_grem  foreign key (idgrem)                references grupos_empresariales          (id);
+alter table tipos_documentos_legales     add constraint tidl_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table tipos_documentos_legales     add constraint tidl_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table tipos_documentos_legales     add constraint tidl_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table paises                     add constraint pais_fk_mone  foreign key (idmone)                references monedas                       (id);
+alter table planes_cuentas               add constraint plcu_fk_grem  foreign key (idgrem)                references grupos_empresariales          (id);
+alter table planes_cuentas               add constraint plcu_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table planes_cuentas               add constraint plcu_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table planes_cuentas               add constraint plcu_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table grupos_empresariales       add constraint grem_fk_pais  foreign key (idpais)                references paises                        (id);
-alter table grupos_empresariales       add constraint grem_fk_esge  foreign key (idesge)                references estados_grem                  (id);
-alter table grupos_empresariales       add constraint grem_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table grupos_empresariales       add constraint grem_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table grupos_empresariales       add constraint grem_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table perfiles_programas           add constraint pepr_fk_perf  foreign key (idperf)                references perfiles                      (id);
+alter table perfiles_programas           add constraint pepr_fk_prog  foreign key (idprog)                references programas                     (id);
 
-alter table rubros                     add constraint rubr_fk_grem  foreign key (idgrem)                references grupos_empresariales          (id);
+alter table paises                       add constraint pais_fk_mone  foreign key (idmone)                references monedas                       (id);
 
-alter table empresas                   add constraint empr_fk_grem  foreign key (idgrem)                references grupos_empresariales          (id);
-alter table empresas                   add constraint empr_fk_pais  foreign key (idpais)                references paises                        (id);
-alter table empresas                   add constraint empr_fk_rubr  foreign key (idrubr)                references rubros                        (id);
-alter table empresas                   add constraint empr_fk_esre  foreign key (idesre)                references estados_registros             (id);
-alter table empresas                   add constraint empr_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table empresas                   add constraint empr_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table empresas                   add constraint empr_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table grupos_empresariales         add constraint grem_fk_pais  foreign key (idpais)                references paises                        (id);
+alter table grupos_empresariales         add constraint grem_fk_esge  foreign key (idesge)                references estados_grem                  (id);
+alter table grupos_empresariales         add constraint grem_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table grupos_empresariales         add constraint grem_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table grupos_empresariales         add constraint grem_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table parametros                 add constraint para_fk_grem  foreign key (idgrem)                references grupos_empresariales          (id);
-alter table parametros                 add constraint para_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table parametros                 add constraint para_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table parametros                 add constraint para_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table rubros                       add constraint rubr_fk_grem  foreign key (idgrem)                references grupos_empresariales          (id);
 
-alter table parametros_empresas        add constraint paem_fk_empr  foreign key (idempr)                references empresas                      (id);
-alter table parametros_empresas        add constraint paem_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table parametros_empresas        add constraint paem_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table parametros_empresas        add constraint paem_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table empresas                     add constraint empr_fk_grem  foreign key (idgrem)                references grupos_empresariales          (id);
+alter table empresas                     add constraint empr_fk_pais  foreign key (idpais)                references paises                        (id);
+alter table empresas                     add constraint empr_fk_rubr  foreign key (idrubr)                references rubros                        (id);
+alter table empresas                     add constraint empr_fk_esre  foreign key (idesre)                references estados_registros             (id);
+alter table empresas                     add constraint empr_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table empresas                     add constraint empr_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table empresas                     add constraint empr_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table personas                   add constraint pers_fk_grem  foreign key (idgrem)                references grupos_empresariales          (id);
-alter table personas                   add constraint pers_fk_esci  foreign key (idesci)                references estados_civiles               (id);
-alter table personas                   add constraint pers_fk_sexo  foreign key (idsexo)                references sexos                         (id);
-alter table personas                   add constraint pers_fk_pais  foreign key (idpais)                references paises                        (id);
-alter table personas                   add constraint pers_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table personas                   add constraint pers_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table personas                   add constraint pers_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table parametros                   add constraint para_fk_grem  foreign key (idgrem)                references grupos_empresariales          (id);
+alter table parametros                   add constraint para_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table parametros                   add constraint para_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table parametros                   add constraint para_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table programas                  add constraint prog_fk_prog  foreign key (idprogpadre)           references programas                     (id);
+alter table parametros_empresas          add constraint paem_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table parametros_empresas          add constraint paem_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table parametros_empresas          add constraint paem_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table parametros_empresas          add constraint paem_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table usuarios                   add constraint usua_fk_esre  foreign key (idesre)                references estados_registros             (id);
-alter table usuarios                   add constraint usua_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table usuarios                   add constraint usua_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table usuarios                   add constraint usua_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table personas                     add constraint pers_fk_grem  foreign key (idgrem)                references grupos_empresariales          (id);
+alter table personas                     add constraint pers_fk_esci  foreign key (idesci)                references estados_civiles               (id);
+alter table personas                     add constraint pers_fk_sexo  foreign key (idsexo)                references sexos                         (id);
+alter table personas                     add constraint pers_fk_pais  foreign key (idpais)                references paises                        (id);
+alter table personas                     add constraint pers_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table personas                     add constraint pers_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table personas                     add constraint pers_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table usuarios_perfiles          add constraint uspe_fk_usua  foreign key (idusua)                references usuarios                      (id);
-alter table usuarios_perfiles          add constraint uspe_fk_perf  foreign key (idperf)                references perfiles                      (id);
-alter table usuarios_perfiles          add constraint uspe_fk_grem  foreign key (idgrem)                references grupos_empresariales          (id);
-alter table usuarios_perfiles          add constraint uspe_fk_empr  foreign key (idempr)                references empresas                      (id);
-alter table usuarios_perfiles          add constraint uspe_fk_esre  foreign key (idesre)                references estados_registros             (id);
-alter table usuarios_perfiles          add constraint uspe_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table usuarios_perfiles          add constraint uspe_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table usuarios_perfiles          add constraint uspe_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table programas                    add constraint prog_fk_prog  foreign key (idprogpadre)           references programas                     (id);
 
-alter table valores_paises             add constraint vapa_fk_pais  foreign key (idpais)                references paises                        (id);
+alter table usuarios                     add constraint usua_fk_esre  foreign key (idesre)                references estados_registros             (id);
+alter table usuarios                     add constraint usua_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table usuarios                     add constraint usua_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table usuarios                     add constraint usua_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table gerencias                  add constraint gere_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table usuarios_perfiles            add constraint uspe_fk_usua  foreign key (idusua)                references usuarios                      (id);
+alter table usuarios_perfiles            add constraint uspe_fk_perf  foreign key (idperf)                references perfiles                      (id);
+alter table usuarios_perfiles            add constraint uspe_fk_grem  foreign key (idgrem)                references grupos_empresariales          (id);
+alter table usuarios_perfiles            add constraint uspe_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table usuarios_perfiles            add constraint uspe_fk_esre  foreign key (idesre)                references estados_registros             (id);
+alter table usuarios_perfiles            add constraint uspe_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table usuarios_perfiles            add constraint uspe_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table usuarios_perfiles            add constraint uspe_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table proyectos                  add constraint proy_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table valores_paises               add constraint vapa_fk_pais  foreign key (idpais)                references paises                        (id);
 
-alter table lineas_negocios            add constraint line_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table gerencias                    add constraint gere_fk_empr  foreign key (idempr)                references empresas                      (id);
 
-alter table centros_costos             add constraint ceco_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table proyectos                    add constraint proy_fk_empr  foreign key (idempr)                references empresas                      (id);
 
-alter table tareas                     add constraint tare_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table lineas_negocios              add constraint line_fk_empr  foreign key (idempr)                references empresas                      (id);
 
-alter table unidades_territoriales     add constraint unte_fk_pais  foreign key (idpais)                references paises                        (id);
-alter table unidades_territoriales     add constraint unte_fk_unte  foreign key (idunte)                references unidades_territoriales        (id);
+alter table centros_costos               add constraint ceco_fk_empr  foreign key (idempr)                references empresas                      (id);
 
-alter table impuestos                  add constraint impu_fk_pais  foreign key (idpais)                references paises                        (id);
+alter table tareas                       add constraint tare_fk_empr  foreign key (idempr)                references empresas                      (id);
 
-alter table tipos_productos_impuestos  add constraint tipi_fk_tipr  foreign key (idtipr)                references tipos_productos               (id);
-alter table tipos_productos_impuestos  add constraint tipi_fk_impu  foreign key (idimpu)                references impuestos                     (id);
+alter table unidades_territoriales       add constraint unte_fk_pais  foreign key (idpais)                references paises                        (id);
+alter table unidades_territoriales       add constraint unte_fk_unte  foreign key (idunte)                references unidades_territoriales        (id);
 
-alter table clientes                   add constraint clie_fk_grem  foreign key (idgrem)                references grupos_empresariales          (id);
-alter table clientes                   add constraint clie_fk_pais  foreign key (idpais)                references paises                        (id);
-alter table clientes                   add constraint clie_fk_ticl  foreign key (idticl)                references tipos_clientes                (id);
-alter table clientes                   add constraint clie_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table clientes                   add constraint clie_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table clientes                   add constraint clie_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table impuestos                    add constraint impu_fk_pais  foreign key (idpais)                references paises                        (id);
 
-alter table cotizaciones_ventas        add constraint cove_fk_empr  foreign key (idempr)                references empresas                      (id);
-alter table cotizaciones_ventas        add constraint cove_fk_clie  foreign key (idclie)                references clientes                      (id);
-alter table cotizaciones_ventas        add constraint cove_fk_gere  foreign key (idgere)                references gerencias                     (id);
-alter table cotizaciones_ventas        add constraint cove_fk_proy  foreign key (idproy)                references proyectos                     (id);
-alter table cotizaciones_ventas        add constraint cove_fk_line  foreign key (idline)                references lineas_negocios               (id);
-alter table cotizaciones_ventas        add constraint cove_fk_ceco  foreign key (idceco)                references centros_costos                (id);
-alter table cotizaciones_ventas        add constraint cove_fk_tare  foreign key (idtare)                references tareas                        (id);
-alter table cotizaciones_ventas        add constraint cove_fk_escv  foreign key (idescv)                references estados_cotizaciones_vtas     (id);
-alter table cotizaciones_ventas        add constraint cove_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table cotizaciones_ventas        add constraint cove_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table cotizaciones_ventas        add constraint cove_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table tipos_productos_impuestos    add constraint tipi_fk_tipr  foreign key (idtipr)                references tipos_productos               (id);
+alter table tipos_productos_impuestos    add constraint tipi_fk_impu  foreign key (idimpu)                references impuestos                     (id);
 
-alter table detalles_cotizs_vtas       add constraint decv_fk_cove  foreign key (idcove)                references cotizaciones_ventas           (id);
-alter table detalles_cotizs_vtas       add constraint decv_fk_prod  foreign key (idprod)                references productos                     (id);
-alter table detalles_cotizs_vtas       add constraint decv_fk_serv  foreign key (idserv)                references servicios                     (id);
-alter table detalles_cotizs_vtas       add constraint decv_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table detalles_cotizs_vtas       add constraint decv_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table detalles_cotizs_vtas       add constraint decv_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table clientes                     add constraint clie_fk_grem  foreign key (idgrem)                references grupos_empresariales          (id);
+alter table clientes                     add constraint clie_fk_pais  foreign key (idpais)                references paises                        (id);
+alter table clientes                     add constraint clie_fk_ticl  foreign key (idticl)                references tipos_clientes                (id);
+alter table clientes                     add constraint clie_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table clientes                     add constraint clie_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table clientes                     add constraint clie_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table tipos_doctos_ventas        add constraint tidv_fk_pais  foreign key (idpais)                references paises                        (id);
+alter table cotizaciones_ventas          add constraint cove_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table cotizaciones_ventas          add constraint cove_fk_clie  foreign key (idclie)                references clientes                      (id);
+alter table cotizaciones_ventas          add constraint cove_fk_gere  foreign key (idgere)                references gerencias                     (id);
+alter table cotizaciones_ventas          add constraint cove_fk_proy  foreign key (idproy)                references proyectos                     (id);
+alter table cotizaciones_ventas          add constraint cove_fk_line  foreign key (idline)                references lineas_negocios               (id);
+alter table cotizaciones_ventas          add constraint cove_fk_ceco  foreign key (idceco)                references centros_costos                (id);
+alter table cotizaciones_ventas          add constraint cove_fk_tare  foreign key (idtare)                references tareas                        (id);
+alter table cotizaciones_ventas          add constraint cove_fk_escv  foreign key (idescv)                references estados_cotizaciones_vtas     (id);
+alter table cotizaciones_ventas          add constraint cove_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table cotizaciones_ventas          add constraint cove_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table cotizaciones_ventas          add constraint cove_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table ventas                     add constraint vent_fk_empr  foreign key (idempr)                references empresas                      (id);
-alter table ventas                     add constraint vent_fk_bode  foreign key (idbode)                references bodegas                       (id);
-alter table ventas                     add constraint vent_fk_nove  foreign key (idnove)                references notas_ventas                  (id);
-alter table ventas                     add constraint vent_fk_tidv  foreign key (idtidv)                references tipos_doctos_ventas           (id);
-alter table ventas                     add constraint vent_fk_clie  foreign key (idclie)                references clientes                      (id);
-alter table ventas                     add constraint vent_fk_gere  foreign key (idgere)                references gerencias                     (id);
-alter table ventas                     add constraint vent_fk_proy  foreign key (idproy)                references proyectos                     (id);
-alter table ventas                     add constraint vent_fk_line  foreign key (idline)                references lineas_negocios               (id);
-alter table ventas                     add constraint vent_fk_ceco  foreign key (idceco)                references centros_costos                (id);
-alter table ventas                     add constraint vent_fk_tare  foreign key (idtare)                references tareas                        (id);
-alter table ventas                     add constraint vent_fk_esve  foreign key (idesve)                references estados_ventas                (id);
-alter table ventas                     add constraint vent_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table ventas                     add constraint vent_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table ventas                     add constraint vent_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table detalles_cotizs_vtas         add constraint decv_fk_cove  foreign key (idcove)                references cotizaciones_ventas           (id);
+alter table detalles_cotizs_vtas         add constraint decv_fk_prod  foreign key (idprod)                references productos                     (id);
+alter table detalles_cotizs_vtas         add constraint decv_fk_serv  foreign key (idserv)                references servicios                     (id);
+alter table detalles_cotizs_vtas         add constraint decv_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table detalles_cotizs_vtas         add constraint decv_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table detalles_cotizs_vtas         add constraint decv_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table detalles_ventas            add constraint deve_fk_vent  foreign key (idvent)                references ventas                        (id);
-alter table detalles_ventas            add constraint deve_fk_prod  foreign key (idprod)                references productos                     (id);
-alter table detalles_ventas            add constraint deve_fk_serv  foreign key (idserv)                references servicios                     (id);
-alter table detalles_ventas            add constraint deve_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table detalles_ventas            add constraint deve_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table detalles_ventas            add constraint deve_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table tipos_doctos_ventas          add constraint tidv_fk_pais  foreign key (idpais)                references paises                        (id);
 
-alter table notas_ventas               add constraint nove_fk_empr  foreign key (idempr)                references empresas                      (id);
-alter table notas_ventas               add constraint nove_fk_bode  foreign key (idbode)                references bodegas                       (id);
-alter table notas_ventas               add constraint nove_fk_cove  foreign key (idcove)                references cotizaciones_ventas           (id);
-alter table notas_ventas               add constraint nove_fk_clie  foreign key (idclie)                references clientes                      (id);
-alter table notas_ventas               add constraint nove_fk_gere  foreign key (idgere)                references gerencias                     (id);
-alter table notas_ventas               add constraint nove_fk_proy  foreign key (idproy)                references proyectos                     (id);
-alter table notas_ventas               add constraint nove_fk_line  foreign key (idline)                references lineas_negocios               (id);
-alter table notas_ventas               add constraint nove_fk_ceco  foreign key (idceco)                references centros_costos                (id);
-alter table notas_ventas               add constraint nove_fk_tare  foreign key (idtare)                references tareas                        (id);
-alter table notas_ventas               add constraint nove_fk_esnv  foreign key (idesnv)                references estados_notas_vtas            (id);
-alter table notas_ventas               add constraint nove_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table notas_ventas               add constraint nove_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table notas_ventas               add constraint nove_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table ventas                       add constraint vent_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table ventas                       add constraint vent_fk_bode  foreign key (idbode)                references bodegas                       (id);
+alter table ventas                       add constraint vent_fk_nove  foreign key (idnove)                references notas_ventas                  (id);
+alter table ventas                       add constraint vent_fk_tidv  foreign key (idtidv)                references tipos_doctos_ventas           (id);
+alter table ventas                       add constraint vent_fk_clie  foreign key (idclie)                references clientes                      (id);
+alter table ventas                       add constraint vent_fk_gere  foreign key (idgere)                references gerencias                     (id);
+alter table ventas                       add constraint vent_fk_proy  foreign key (idproy)                references proyectos                     (id);
+alter table ventas                       add constraint vent_fk_line  foreign key (idline)                references lineas_negocios               (id);
+alter table ventas                       add constraint vent_fk_ceco  foreign key (idceco)                references centros_costos                (id);
+alter table ventas                       add constraint vent_fk_tare  foreign key (idtare)                references tareas                        (id);
+alter table ventas                       add constraint vent_fk_esve  foreign key (idesve)                references estados_ventas                (id);
+alter table ventas                       add constraint vent_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table ventas                       add constraint vent_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table ventas                       add constraint vent_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table detalles_notas_vtas        add constraint denv_fk_nove  foreign key (idnove)                references notas_ventas                  (id);
-alter table detalles_notas_vtas        add constraint denv_fk_prod  foreign key (idprod)                references productos                     (id);
-alter table detalles_notas_vtas        add constraint denv_fk_serv  foreign key (idserv)                references servicios                     (id);
-alter table detalles_notas_vtas        add constraint denv_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table detalles_notas_vtas        add constraint denv_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table detalles_notas_vtas        add constraint denv_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table detalles_ventas              add constraint deve_fk_vent  foreign key (idvent)                references ventas                        (id);
+alter table detalles_ventas              add constraint deve_fk_prod  foreign key (idprod)                references productos                     (id);
+alter table detalles_ventas              add constraint deve_fk_serv  foreign key (idserv)                references servicios                     (id);
+alter table detalles_ventas              add constraint deve_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table detalles_ventas              add constraint deve_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table detalles_ventas              add constraint deve_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table formas_pagos_notas_ventas  add constraint fpnv_fk_nove  foreign key (idnove)                references notas_ventas                  (id);
-alter table formas_pagos_notas_ventas  add constraint fpnv_fk_tifp  foreign key (idtifp)                references tipos_formas_pagos            (id);
-alter table formas_pagos_notas_ventas  add constraint fpnv_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table formas_pagos_notas_ventas  add constraint fpnv_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table formas_pagos_notas_ventas  add constraint fpnv_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table notas_ventas                 add constraint nove_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table notas_ventas                 add constraint nove_fk_bode  foreign key (idbode)                references bodegas                       (id);
+alter table notas_ventas                 add constraint nove_fk_cove  foreign key (idcove)                references cotizaciones_ventas           (id);
+alter table notas_ventas                 add constraint nove_fk_clie  foreign key (idclie)                references clientes                      (id);
+alter table notas_ventas                 add constraint nove_fk_gere  foreign key (idgere)                references gerencias                     (id);
+alter table notas_ventas                 add constraint nove_fk_proy  foreign key (idproy)                references proyectos                     (id);
+alter table notas_ventas                 add constraint nove_fk_line  foreign key (idline)                references lineas_negocios               (id);
+alter table notas_ventas                 add constraint nove_fk_ceco  foreign key (idceco)                references centros_costos                (id);
+alter table notas_ventas                 add constraint nove_fk_tare  foreign key (idtare)                references tareas                        (id);
+alter table notas_ventas                 add constraint nove_fk_esnv  foreign key (idesnv)                references estados_notas_vtas            (id);
+alter table notas_ventas                 add constraint nove_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table notas_ventas                 add constraint nove_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table notas_ventas                 add constraint nove_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table formas_pagos_ventas        add constraint fpve_fk_vent  foreign key (idvent)                references ventas                        (id);
-alter table formas_pagos_ventas        add constraint fpve_fk_tifp  foreign key (idtifp)                references tipos_formas_pagos            (id);
-alter table formas_pagos_ventas        add constraint fpve_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table formas_pagos_ventas        add constraint fpve_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table formas_pagos_ventas        add constraint fpve_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table detalles_notas_vtas          add constraint denv_fk_nove  foreign key (idnove)                references notas_ventas                  (id);
+alter table detalles_notas_vtas          add constraint denv_fk_prod  foreign key (idprod)                references productos                     (id);
+alter table detalles_notas_vtas          add constraint denv_fk_serv  foreign key (idserv)                references servicios                     (id);
+alter table detalles_notas_vtas          add constraint denv_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table detalles_notas_vtas          add constraint denv_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table detalles_notas_vtas          add constraint denv_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table productos                  add constraint prod_fk_empr  foreign key (idempr)                references empresas                      (id);
-alter table productos                  add constraint prod_fk_sfpr  foreign key (idsfpr)                references sub_familias_productos        (id);
-alter table productos                  add constraint prod_fk_tipr  foreign key (idtipr)                references tipos_productos               (id);
-alter table productos                  add constraint prod_fk_unmp  foreign key (idunmp)                references unidades_medidas_productos    (id);
-alter table productos                  add constraint prod_fk_orpr  foreign key (idorpr)                references origenes_productos            (id);
-alter table productos                  add constraint prod_fk_esre  foreign key (idesre)                references estados_registros             (id);
-alter table productos                  add constraint prod_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table productos                  add constraint prod_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table productos                  add constraint prod_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table formas_pagos_notas_ventas    add constraint fpnv_fk_nove  foreign key (idnove)                references notas_ventas                  (id);
+alter table formas_pagos_notas_ventas    add constraint fpnv_fk_tifp  foreign key (idtifp)                references tipos_formas_pagos            (id);
+alter table formas_pagos_notas_ventas    add constraint fpnv_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table formas_pagos_notas_ventas    add constraint fpnv_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table formas_pagos_notas_ventas    add constraint fpnv_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table servicios                  add constraint serv_fk_empr  foreign key (idempr)                references empresas                      (id);
-alter table servicios                  add constraint serv_fk_tise  foreign key (idtise)                references tipos_servicios               (id);
-alter table servicios                  add constraint serv_fk_unms  foreign key (idunms)                references unidades_medidas_servicios    (id);
-alter table servicios                  add constraint serv_fk_mone  foreign key (idmone)                references monedas                       (id);
-alter table servicios                  add constraint serv_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table servicios                  add constraint serv_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table servicios                  add constraint serv_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table formas_pagos_ventas          add constraint fpve_fk_vent  foreign key (idvent)                references ventas                        (id);
+alter table formas_pagos_ventas          add constraint fpve_fk_tifp  foreign key (idtifp)                references tipos_formas_pagos            (id);
+alter table formas_pagos_ventas          add constraint fpve_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table formas_pagos_ventas          add constraint fpve_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table formas_pagos_ventas          add constraint fpve_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table dominios                   add constraint domi_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table dominios                   add constraint domi_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table dominios                   add constraint domi_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table productos                    add constraint prod_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table productos                    add constraint prod_fk_sfpr  foreign key (idsfpr)                references sub_familias_productos        (id);
+alter table productos                    add constraint prod_fk_tipr  foreign key (idtipr)                references tipos_productos               (id);
+alter table productos                    add constraint prod_fk_unmp  foreign key (idunmp)                references unidades_medidas_productos    (id);
+alter table productos                    add constraint prod_fk_orpr  foreign key (idorpr)                references origenes_productos            (id);
+alter table productos                    add constraint prod_fk_esre  foreign key (idesre)                references estados_registros             (id);
+alter table productos                    add constraint prod_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table productos                    add constraint prod_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table productos                    add constraint prod_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table valores_dominios           add constraint vado_fk_domi  foreign key (iddomi)                references dominios                      (id);
-alter table valores_dominios           add constraint vado_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table valores_dominios           add constraint vado_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table valores_dominios           add constraint vado_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table servicios                    add constraint serv_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table servicios                    add constraint serv_fk_tise  foreign key (idtise)                references tipos_servicios               (id);
+alter table servicios                    add constraint serv_fk_unms  foreign key (idunms)                references unidades_medidas_servicios    (id);
+alter table servicios                    add constraint serv_fk_mone  foreign key (idmone)                references monedas                       (id);
+alter table servicios                    add constraint serv_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table servicios                    add constraint serv_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table servicios                    add constraint serv_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
-alter table requisiciones              add constraint requ_fk_empr  foreign key (idempr)                references empresas                      (id);
-alter table requisiciones              add constraint requ_fk_gere  foreign key (idgere)                references gerencias                     (id);
-alter table requisiciones              add constraint requ_fk_proy  foreign key (idproy)                references proyectos                     (id);
-alter table requisiciones              add constraint requ_fk_line  foreign key (idline)                references lineas_negocios               (id);
-alter table requisiciones              add constraint requ_fk_ceco  foreign key (idceco)                references centros_costos                (id);
-alter table requisiciones              add constraint requ_fk_tare  foreign key (idtare)                references tareas                        (id);
-alter table requisiciones              add constraint requ_fk_ereq  foreign key (idereq)                references estados_requisiciones         (id);
-alter table requisiciones              add constraint requ_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table requisiciones              add constraint requ_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table requisiciones              add constraint requ_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+alter table dominios                     add constraint domi_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table dominios                     add constraint domi_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table dominios                     add constraint domi_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+
+alter table valores_dominios             add constraint vado_fk_domi  foreign key (iddomi)                references dominios                      (id);
+alter table valores_dominios             add constraint vado_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table valores_dominios             add constraint vado_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table valores_dominios             add constraint vado_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+
+alter table requisiciones                add constraint requ_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table requisiciones                add constraint requ_fk_gere  foreign key (idgere)                references gerencias                     (id);
+alter table requisiciones                add constraint requ_fk_proy  foreign key (idproy)                references proyectos                     (id);
+alter table requisiciones                add constraint requ_fk_line  foreign key (idline)                references lineas_negocios               (id);
+alter table requisiciones                add constraint requ_fk_ceco  foreign key (idceco)                references centros_costos                (id);
+alter table requisiciones                add constraint requ_fk_tare  foreign key (idtare)                references tareas                        (id);
+alter table requisiciones                add constraint requ_fk_ereq  foreign key (idereq)                references estados_requisiciones         (id);
+alter table requisiciones                add constraint requ_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table requisiciones                add constraint requ_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table requisiciones                add constraint requ_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
 \q

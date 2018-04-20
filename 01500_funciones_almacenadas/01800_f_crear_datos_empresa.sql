@@ -15,6 +15,8 @@ begin
 
   insert into sub_familias_productos values (nextval('sfpr_seq'), Vidfapr, '01', 'SUB FAMILIA GENÉRICA', 1, current_timestamp, null, null, null, null);
 
+  insert into autorizadores_requisiciones values (nextval('sfpr_seq'), Vidfapr, '01', 'SUB FAMILIA GENÉRICA', 1, current_timestamp, null, null, null, null);
+
   return new;
 end;
 $body$ LANGUAGE plpgsql;

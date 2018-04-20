@@ -711,4 +711,8 @@ insert into estados_requisiciones values (2, 'CERRADA, TRASPASADA A SUPERIOR JER
 insert into estados_requisiciones values (3, 'AUTORIZADA, TRASPASADA A DEPARTAMENTO COMPRAS'          );
 insert into estados_requisiciones values (4, 'ACEPTADA POR DEPARTAMENTO COMPRAS, CREA ORDEN DE COMPRA');
 
+insert into tipos_requisiciones values (1, 'URGENTE'   , 1);
+insert into tipos_requisiciones values (2, 'NORMAL'    , 3);
+insert into tipos_requisiciones values (3, 'LICITACIÓN', 5);
+
 \q

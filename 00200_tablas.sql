@@ -1846,14 +1846,6 @@ alter table bitacoras_cambios_precios add constraint bicp_pk primary key (id)
 
 /*************************************************************************************************************************/
 
-
-
-
-
-
-
-/*************************************************************************************************************************/
-
 create table estados_requisiciones (
    id                          numeric(20,0)   not null
   ,descripcion                 varchar(100)    not null
@@ -1971,6 +1963,32 @@ alter table autorizadores_requisiciones add constraint aure_uk_01 unique (idempr
 
 /*************************************************************************************************************************/
 
+create table historiales_requisiciones (
+   id                       numeric(20,0)   not null
+  ,idrequ                   numeric(20,0)   not null
+  ,idereq                   numeric(20,0)   not null
+  ,razonrechazo             varchar(500)        null /* este campo solo se debe poblar cuando se produzca un rechazo, ya
+                                                        sea del superior jerárquico o bien del jefe de compras */
+  ,fechacrearegistro        timestamp       not null
+)
+;
+
+alter table historiales_requisiciones add constraint hire_pk primary key (id)
+;
+
+alter table historiales_requisiciones add constraint hire_chk_01 check (
+                                                                        (idereq     in (3,5) and razonrechazo is not null)
+                                                                        or
+                                                                        (idereq not in (3,5) and razonrechazo is     null)
+                                                                       )
+;
+
+/*************************************************************************************************************************/
+
+
+
+
+
 
 
 
@@ -1978,6 +1996,9 @@ alter table autorizadores_requisiciones add constraint aure_uk_01 unique (idempr
 
 
 -- Sección foreign keys
+
+alter table historiales_requisiciones    add constraint hire_fk_requ  foreign key (idrequ)                references requisiciones                 (id);
+alter table historiales_requisiciones    add constraint hire_fk_ereq  foreign key (idereq)                references estados_requisiciones         (id);
 
 alter table autorizadores_requisiciones  add constraint aure_fk1_perf foreign key (idperfautorizador)     references perfiles                      (id);
 alter table autorizadores_requisiciones  add constraint aure_fk2_perf foreign key (idperfautorizado)      references perfiles                      (id);
@@ -1993,9 +2014,16 @@ alter table requisiciones                add constraint requ_fk_proy  foreign ke
 alter table requisiciones                add constraint requ_fk_line  foreign key (idline)                references lineas_negocios               (id);
 alter table requisiciones                add constraint requ_fk_ceco  foreign key (idceco)                references centros_costos                (id);
 alter table requisiciones                add constraint requ_fk_tare  foreign key (idtare)                references tareas                        (id);
+alter table requisiciones                add constraint requ_fk_ereq  foreign key (idereq)                references estados_requisiciones         (id);
 alter table requisiciones                add constraint requ_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
 alter table requisiciones                add constraint requ_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
 alter table requisiciones                add constraint requ_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
+
+alter table detalles_requisiciones       add constraint dere_fk_requ  foreign key (idrequ)                references requisiciones                 (id);
+alter table detalles_requisiciones       add constraint dere_fk_prod  foreign key (idprod)                references productos                     (id);
+alter table detalles_requisiciones       add constraint dere_fk_unmp  foreign key (idunmp)                references unidades_medidas_productos    (id);
+alter table detalles_requisiciones       add constraint dere_fk_serv  foreign key (idserv)                references servicios                     (id);
+alter table detalles_requisiciones       add constraint dere_fk_unms  foreign key (idunms)                references unidades_medidas_servicios    (id);
 
 alter table bitacoras_cambios_precios    add constraint bicp_fk_prod  foreign key (idprod)                references productos                     (id);
 alter table bitacoras_cambios_precios    add constraint bicp_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
@@ -2308,16 +2336,5 @@ alter table valores_dominios             add constraint vado_fk_domi  foreign ke
 alter table valores_dominios             add constraint vado_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
 alter table valores_dominios             add constraint vado_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
 alter table valores_dominios             add constraint vado_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
-
-alter table requisiciones                add constraint requ_fk_empr  foreign key (idempr)                references empresas                      (id);
-alter table requisiciones                add constraint requ_fk_gere  foreign key (idgere)                references gerencias                     (id);
-alter table requisiciones                add constraint requ_fk_proy  foreign key (idproy)                references proyectos                     (id);
-alter table requisiciones                add constraint requ_fk_line  foreign key (idline)                references lineas_negocios               (id);
-alter table requisiciones                add constraint requ_fk_ceco  foreign key (idceco)                references centros_costos                (id);
-alter table requisiciones                add constraint requ_fk_tare  foreign key (idtare)                references tareas                        (id);
-alter table requisiciones                add constraint requ_fk_ereq  foreign key (idereq)                references estados_requisiciones         (id);
-alter table requisiciones                add constraint requ_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
-alter table requisiciones                add constraint requ_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
-alter table requisiciones                add constraint requ_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
 \q

@@ -706,10 +706,12 @@ insert into tipos_formas_pagos values (4, 'CHEQUE'         );
 insert into tipos_formas_pagos values (5, 'LETRA'          );
 insert into tipos_formas_pagos values (6, 'VALE VISTA'     );
 
-insert into estados_requisiciones values (1, 'CREADA'                                                 );
-insert into estados_requisiciones values (2, 'CERRADA, TRASPASADA A SUPERIOR JERáRQUICO'              );
-insert into estados_requisiciones values (3, 'AUTORIZADA, TRASPASADA A DEPARTAMENTO COMPRAS'          );
-insert into estados_requisiciones values (4, 'ACEPTADA POR DEPARTAMENTO COMPRAS, CREA ORDEN DE COMPRA');
+insert into estados_requisiciones values (1, 'CREADA'                                                                                             );
+insert into estados_requisiciones values (2, 'CERRADA, TRASPASADA A SUPERIOR JERÁRQUICO'                                                          );
+insert into estados_requisiciones values (3, 'RECHAZADA POR SUPERIOR JERÁRQUICO, DEVUELTA A CREADOR DE LA REQUISICIÓN'                            );
+insert into estados_requisiciones values (4, 'AUTORIZADA POR SUPERIOR JERÁRQUICO, TRASPASADA A DEPARTAMENTO DE COMPRAS'                           );
+insert into estados_requisiciones values (5, 'RECHAZADA POR DEPARTAMENTO DE COMPRAS, DEVUELTA A SUPERIOR JERÁRQUICO DEL CREADOR DE LA REQUISICIÓN');
+insert into estados_requisiciones values (6, 'ACEPTADA POR DEPARTAMENTO COMPRAS, CREA ORDEN DE COMPRA'                                            );
 
 insert into tipos_requisiciones values (1, 'URGENTE'   , 1);
 insert into tipos_requisiciones values (2, 'NORMAL'    , 3);

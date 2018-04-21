@@ -2084,6 +2084,7 @@ create table cotizaciones_compras (
   ,idrequ                   numeric(20,0)       null
   ,idorco                   numeric(20,0)       null
   ,idprov                   numeric(20,0)   not null
+  ,observaciones            varchar(1000)       null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
   ,idusuamodifregistro      numeric(20,0)       null
@@ -2100,10 +2101,26 @@ alter table cotizaciones_compras add constraint coco_uk_01 unique (idrequ, idorc
 ;
 
 alter table cotizaciones_compras add constraint coco_chk_01 check (
-                                                                       (idprod is not null and idunmp is not null)
-                                                                       or
-                                                                       (idserv is not null and idunms is not null)
-                                                                      )
+                                                                   (idrequ is     null and idorco is not null)
+                                                                   or
+                                                                   (idrequ is not null and idorco is     null)
+                                                                  )
+;
+
+/*************************************************************************************************************************/
+
+create table detalles_cotizaciones_compras (
+   id                       numeric(20,0)   not null
+  ,idcoco                   numeric(20,0)       null
+  ,nombreoriginal           varchar(500)    not null
+  ,nombresistema            varchar(100)    not null
+)
+;
+
+alter table detalles_cotizaciones_compras add constraint decc_pk primary key (id)
+;
+
+alter table detalles_cotizaciones_compras add constraint decc_uk_01 unique (idcoco, nombresistema)
 ;
 
 /*************************************************************************************************************************/

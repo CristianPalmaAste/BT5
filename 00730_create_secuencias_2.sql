@@ -84,5 +84,9 @@ create sequence esoc_seq start with 5;
 create sequence edoc_seq start with 4;
 create sequence orco_seq start with 1;
 create sequence deoc_seq start with 1;
+create sequence coco_seq start with 1;
+create sequence decc_seq start with 1;
+create sequence prov_seq start with 1;
+create sequence tipp_seq start with 1;
 
 \q

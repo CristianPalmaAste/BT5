@@ -86,6 +86,10 @@ drop table if exists estados_ordenes_compras        cascade;
 drop table if exists estados_detalles_ordenes_compras cascade;
 drop table if exists ordenes_compras                cascade;
 drop table if exists detalles_ordenes_compras       cascade;
+drop table if exists cotizaciones_compras           cascade;
+drop table if exists detalles_cotizaciones_compras  cascade;
+drop table if exists proveedores                    cascade;
+drop table if exists tipos_proveedores              cascade;
 
 
 \q

@@ -86,6 +86,10 @@ drop sequence if exists esoc_seq;
 drop sequence if exists edoc_seq;
 drop sequence if exists orco_seq;
 drop sequence if exists deoc_seq;
+drop sequence if exists coco_seq;
+drop sequence if exists decc_seq;
+drop sequence if exists prov_seq;
+drop sequence if exists tipp_seq;
 
 
 \q

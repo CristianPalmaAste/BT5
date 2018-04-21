@@ -86,6 +86,10 @@ create or replace view esoc as select * from estados_ordenes_compras;
 create or replace view edoc as select * from estados_detalles_ordenes_compras;
 create or replace view orco as select * from ordenes_compras;
 create or replace view deoc as select * from detalles_ordenes_compras;
+create or replace view coco as select * from cotizaciones_compras;
+create or replace view decc as select * from detalles_cotizaciones_compras;
+create or replace view prov as select * from proveedores;
+create or replace view tipp as select * from tipos_proveedores;
 
 
 \q

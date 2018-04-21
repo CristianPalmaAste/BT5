@@ -86,6 +86,10 @@ select 'create sequence esoc_seq start with ' || (case when MAX(ID) is null then
 select 'create sequence edoc_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from estados_detalles_ordenes_compras;
 select 'create sequence orco_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from ordenes_compras;
 select 'create sequence deoc_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from detalles_ordenes_compras;
+select 'create sequence coco_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from cotizaciones_compras;
+select 'create sequence decc_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from detalles_cotizaciones_compras;
+select 'create sequence prov_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from proveedores;
+select 'create sequence tipp_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_proveedores;
 
 
 \q

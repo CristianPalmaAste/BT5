@@ -429,3 +429,23 @@ SET
  create sequence deoc_seq start with 1
 (1 fila)
 
+               ?column?                
+---------------------------------------
+ create sequence coco_seq start with 1
+(1 fila)
+
+               ?column?                
+---------------------------------------
+ create sequence decc_seq start with 1
+(1 fila)
+
+               ?column?                
+---------------------------------------
+ create sequence prov_seq start with 1
+(1 fila)
+
+               ?column?                
+---------------------------------------
+ create sequence tipp_seq start with 1
+(1 fila)
+

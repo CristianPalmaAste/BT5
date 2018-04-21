@@ -82,6 +82,10 @@ create or replace view requ as select * from requisiciones;
 create or replace view dere as select * from detalles_requisiciones;
 create or replace view aure as select * from autorizadores_requisiciones;
 create or replace view hire as select * from historiales_requisiciones;
+create or replace view esoc as select * from estados_ordenes_compras;
+create or replace view edoc as select * from estados_detalles_ordenes_compras;
+create or replace view orco as select * from ordenes_compras;
+create or replace view deoc as select * from detalles_ordenes_compras;
 
 
 \q

@@ -82,6 +82,10 @@ drop sequence if exists requ_seq;
 drop sequence if exists dere_seq;
 drop sequence if exists aure_seq;
 drop sequence if exists hire_seq;
+drop sequence if exists esoc_seq;
+drop sequence if exists edoc_seq;
+drop sequence if exists orco_seq;
+drop sequence if exists deoc_seq;
 
 
 \q

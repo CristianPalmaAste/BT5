@@ -82,6 +82,10 @@ drop table if exists requisiciones                  cascade;
 drop table if exists detalles_requisiciones         cascade;
 drop table if exists autorizadores_requisiciones    cascade;
 drop table if exists historiales_requisiciones      cascade;
+drop table if exists estados_ordenes_compras        cascade;
+drop table if exists estados_detalles_ordenes_compras cascade;
+drop table if exists ordenes_compras                cascade;
+drop table if exists detalles_ordenes_compras       cascade;
 
 
 \q

@@ -30,9 +30,10 @@ CREATE VIEW
 
 DROP VIEW
 CREATE VIEW
- id | idgrem | holding | idpais | pais | idrubr | rubro | idesre | estadoregistro | identificador1 | identificador2 | razonsocial | nombrefantasia | icono 
-----+--------+---------+--------+------+--------+-------+--------+----------------+----------------+----------------+-------------+----------------+-------
-(0 filas)
+ id | idgrem |              holding               | idpais | pais  | idrubr | rubro | idesre | estadoregistro | identificador1 | identificador2 |            razonsocial             | nombrefantasia |  icono  
+----+--------+------------------------------------+--------+-------+--------+-------+--------+----------------+----------------+----------------+------------------------------------+----------------+---------
+  1 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING |      1 | CHILE |      1 | OTRO  |      1 | ACTIVO         | 1              | 9              | BUSINESS & TECHNOLOGY 5 CONSULTING | BT5            | bt5.jpg
+(1 fila)
 
 DROP VIEW
 CREATE VIEW
@@ -92,21 +93,24 @@ CREATE VIEW
 
 DROP VIEW
 CREATE VIEW
- id | idempr | empresa | cod_familia | descripcion 
-----+--------+---------+-------------+-------------
-(0 filas)
+ id | idempr | empresa | cod_familia |   descripcion    
+----+--------+---------+-------------+------------------
+  1 |      1 | BT5     | 01          | FAMILIA GENÉRICA
+(1 fila)
 
 DROP VIEW
 CREATE VIEW
- id | idfapr | cod_familia | familia | cod_sub_familia | sub_familia | idempr | empresa 
-----+--------+-------------+---------+-----------------+-------------+--------+---------
-(0 filas)
+ id | idfapr | cod_familia |     familia      | cod_sub_familia |     sub_familia      | idempr | empresa 
+----+--------+-------------+------------------+-----------------+----------------------+--------+---------
+  1 |      1 | 01          | FAMILIA GENÉRICA | 01              | SUB FAMILIA GENÉRICA |      1 | BT5
+(1 fila)
 
 DROP VIEW
 CREATE VIEW
- id | idempr | empresa | bodega 
-----+--------+---------+--------
-(0 filas)
+ id | idempr | empresa |     bodega     
+----+--------+---------+----------------
+  1 |      1 | BT5     | BODEGA CENTRAL
+(1 fila)
 
 DROP VIEW
 CREATE VIEW

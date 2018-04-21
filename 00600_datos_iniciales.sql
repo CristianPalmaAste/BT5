@@ -91,6 +91,8 @@ insert into usuarios values (8 , 'OSOLARM'    , '12345', 8 , 1, 1, current_times
 insert into usuarios values (9 , 'NSALAZARG'  , '12345', 9 , 1, 1, current_timestamp, null, null, null, null);
 insert into usuarios values (10, 'CPALMAA'    , '12345', 10, 1, 1, current_timestamp, null, null, null, null);
 
+alter table autorizadores_requisiciones drop constraint aure_fk1_perf;
+alter table autorizadores_requisiciones drop constraint aure_fk2_perf;
 insert into empresas values (1 , 1, 1, 1, 1, '1', '9', 'BUSINESS & TECHNOLOGY 5 CONSULTING', 'BT5', 'bt5.jpg', 1, current_timestamp, null, null, null, null, null);
 
 insert into valores_paises values (nextval('vapa_seq'), 1 , 'IDENTP1', 'ETIQUETA IDENTIFICADOR 1 TABLA PERSONAS', 'ETIQUETA IDENTIFICADOR 1 TABLA PERSONAS'                , 'RUT'       ,  1, current_timestamp, null, null, null, null);

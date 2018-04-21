@@ -82,6 +82,10 @@ select 'create sequence requ_seq start with ' || (case when MAX(ID) is null then
 select 'create sequence dere_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from detalles_requisiciones;
 select 'create sequence aure_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from autorizadores_requisiciones;
 select 'create sequence hire_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from historiales_requisiciones;
+select 'create sequence esoc_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from estados_ordenes_compras;
+select 'create sequence edoc_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from estados_detalles_ordenes_compras;
+select 'create sequence orco_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from ordenes_compras;
+select 'create sequence deoc_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from detalles_ordenes_compras;
 
 
 \q

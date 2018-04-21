@@ -6,7 +6,7 @@ SET
 
                 ?column?                
 ----------------------------------------
- create sequence empr_seq start with 12
+ create sequence empr_seq start with 11
 (1 fila)
 
                 ?column?                
@@ -16,7 +16,7 @@ SET
 
                 ?column?                
 ----------------------------------------
- create sequence paem_seq start with 12
+ create sequence paem_seq start with 11
 (1 fila)
 
                ?column?                
@@ -326,7 +326,7 @@ SET
 
                 ?column?                
 ----------------------------------------
- create sequence bode_seq start with 12
+ create sequence bode_seq start with 11
 (1 fila)
 
                 ?column?                
@@ -346,12 +346,12 @@ SET
 
                 ?column?                
 ----------------------------------------
- create sequence fapr_seq start with 12
+ create sequence fapr_seq start with 11
 (1 fila)
 
                 ?column?                
 ----------------------------------------
- create sequence sfpr_seq start with 12
+ create sequence sfpr_seq start with 11
 (1 fila)
 
                ?column?                
@@ -381,7 +381,12 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence ereq_seq start with 5
+ create sequence ereq_seq start with 7
+(1 fila)
+
+               ?column?                
+---------------------------------------
+ create sequence tire_seq start with 4
 (1 fila)
 
                ?column?                
@@ -392,5 +397,15 @@ SET
                ?column?                
 ---------------------------------------
  create sequence dere_seq start with 1
+(1 fila)
+
+                ?column?                 
+-----------------------------------------
+ create sequence aure_seq start with 161
+(1 fila)
+
+               ?column?                
+---------------------------------------
+ create sequence hire_seq start with 1
 (1 fila)
 

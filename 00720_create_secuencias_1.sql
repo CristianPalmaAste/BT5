@@ -77,8 +77,11 @@ select 'create sequence demb_seq start with ' || (case when MAX(ID) is null then
 select 'create sequence desu_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from descuentos;
 select 'create sequence bicp_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from bitacoras_cambios_precios;
 select 'create sequence ereq_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from estados_requisiciones;
+select 'create sequence tire_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_requisiciones;
 select 'create sequence requ_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from requisiciones;
 select 'create sequence dere_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from detalles_requisiciones;
+select 'create sequence aure_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from autorizadores_requisiciones;
+select 'create sequence hire_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from historiales_requisiciones;
 
 
 \q

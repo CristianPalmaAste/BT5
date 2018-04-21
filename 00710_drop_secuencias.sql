@@ -77,8 +77,11 @@ drop sequence if exists demb_seq;
 drop sequence if exists desu_seq;
 drop sequence if exists bicp_seq;
 drop sequence if exists ereq_seq;
+drop sequence if exists tire_seq;
 drop sequence if exists requ_seq;
 drop sequence if exists dere_seq;
+drop sequence if exists aure_seq;
+drop sequence if exists hire_seq;
 
 
 \q

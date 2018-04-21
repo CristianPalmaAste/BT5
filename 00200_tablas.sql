@@ -1877,8 +1877,8 @@ alter table tipos_requisiciones add constraint tire_uk_01 unique (descripcion)
 
 create table requisiciones (
    id                       numeric(20,0)   not null
-  ,idempr                   numeric(20,0)       null
-  ,idtire                   numeric(20,0)       null
+  ,idempr                   numeric(20,0)   not null
+  ,idtire                   numeric(20,0)   not null
   ,correlativo              numeric(20,0)   not null
   ,idusuasolicitareq        numeric(20,0)   not null
   ,idgere                   numeric(20,0)       null
@@ -1977,10 +1977,91 @@ alter table historiales_requisiciones add constraint hire_pk primary key (id)
 ;
 
 alter table historiales_requisiciones add constraint hire_chk_01 check (
-                                                                        (idereq     in (3,5) and razonrechazo is not null)
+                                                                        (idereq     in (3,6) and razonrechazo is not null)
                                                                         or
-                                                                        (idereq not in (3,5) and razonrechazo is     null)
+                                                                        (idereq not in (3,6) and razonrechazo is     null)
                                                                        )
+;
+
+/*************************************************************************************************************************/
+
+create table estados_ordenes_compras (
+   id                          numeric(20,0)   not null
+  ,descripcion                 varchar(100)    not null
+)
+;
+
+alter table estados_ordenes_compras add constraint esoc_pk primary key (id)
+;
+
+alter table estados_ordenes_compras add constraint esoc_uk_01 unique (descripcion)
+;
+
+/*************************************************************************************************************************/
+
+create table ordenes_compras (
+   id                       numeric(20,0)   not null
+  ,idempr                   numeric(20,0)   not null
+  ,idrequ                   numeric(20,0)       null
+  ,correlativo              numeric(20,0)   not null
+  ,idempr                   numeric(20,0)   not null
+  ,idgere                   numeric(20,0)       null
+  ,idproy                   numeric(20,0)       null
+  ,idline                   numeric(20,0)       null
+  ,idceco                   numeric(20,0)       null
+  ,idtare                   numeric(20,0)       null
+  ,idesoc                   numeric(20,0)       null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table ordenes_compras add constraint orco_pk primary key (id)
+;
+
+alter table ordenes_compras add constraint orco_uk_01 unique (idempr, correlativo)
+;
+
+/*************************************************************************************************************************/
+
+create table detalles_ordenes_compras (
+   id                       numeric(20,0)   not null
+  ,idorco                   numeric(20,0)   not null
+  ,correlativo              numeric(20,0)   not null
+  ,idedoc                   numeric(20,0)   not null
+  ,idprod                   numeric(20,0)       null
+  ,idunmp                   numeric(20,0)       null
+  ,idserv                   numeric(20,0)       null
+  ,idunms                   numeric(20,0)       null
+  ,otroinsumo               varchar(1000)       null
+  ,cantidad                 numeric(20,0)   not null
+)
+;
+
+alter table detalles_ordenes_compras add constraint deoc_pk primary key (id)
+;
+
+alter table detalles_ordenes_compras add constraint deoc_uk_01 unique (idorco, correlativo)
+;
+
+alter table detalles_ordenes_compras add constraint deoc_chk_01 check (
+                                                                       (idprod is not null and idserv is     null and otroinsumo is     null)
+                                                                       or
+                                                                       (idprod is     null and idserv is not null and otroinsumo is     null)
+                                                                       or
+                                                                       (idprod is     null and idserv is     null and otroinsumo is not null)
+                                                                      )
+;
+
+alter table detalles_ordenes_compras add constraint deoc_chk_02 check (
+                                                                     (idprod is not null and idunmp is not null)
+                                                                     or
+                                                                     (idserv is not null and idunms is not null)
+                                                                    )
 ;
 
 /*************************************************************************************************************************/
@@ -1993,9 +2074,19 @@ alter table historiales_requisiciones add constraint hire_chk_01 check (
 
 
 
-
-
 -- Sección foreign keys
+
+alter table ordenes_compras              add constraint orco_fk_empr  foreign key (idempr)                references empresas                      (id);
+alter table ordenes_compras              add constraint orco_fk_requ  foreign key (idrequ)                references requisiciones                 (id);
+alter table ordenes_compras              add constraint orco_fk_gere  foreign key (idgere)                references gerencias                     (id);
+alter table ordenes_compras              add constraint orco_fk_proy  foreign key (idproy)                references proyectos                     (id);
+alter table ordenes_compras              add constraint orco_fk_line  foreign key (idline)                references lineas_negocios               (id);
+alter table ordenes_compras              add constraint orco_fk_ceco  foreign key (idceco)                references centros_costos                (id);
+alter table ordenes_compras              add constraint orco_fk_tare  foreign key (idtare)                references tareas                        (id);
+alter table ordenes_compras              add constraint orco_fk_esoc  foreign key (idesoc)                references estados_ordenes_compras       (id);
+alter table ordenes_compras              add constraint orco_fk1_usua foreign key (idusuacrearegistro)    references usuarios                      (id);
+alter table ordenes_compras              add constraint orco_fk2_usua foreign key (idusuamodifregistro)   references usuarios                      (id);
+alter table ordenes_compras              add constraint orco_fk3_usua foreign key (idusuaborraregistro)   references usuarios                      (id);
 
 alter table historiales_requisiciones    add constraint hire_fk_requ  foreign key (idrequ)                references requisiciones                 (id);
 alter table historiales_requisiciones    add constraint hire_fk_ereq  foreign key (idereq)                references estados_requisiciones         (id);

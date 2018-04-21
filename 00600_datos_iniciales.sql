@@ -707,14 +707,24 @@ insert into tipos_formas_pagos values (5, 'LETRA'          );
 insert into tipos_formas_pagos values (6, 'VALE VISTA'     );
 
 insert into estados_requisiciones values (1, 'CREADA'                                                                                             );
-insert into estados_requisiciones values (2, 'CERRADA, TRASPASADA A SUPERIOR JERÁRQUICO'                                                          );
+insert into estados_requisiciones values (2, 'CERRADA, TRASPASADA A SUPERIOR JERÁRQUICO (ENVIADA A AUTORIZAR)'                                    );
 insert into estados_requisiciones values (3, 'RECHAZADA POR SUPERIOR JERÁRQUICO, DEVUELTA A CREADOR DE LA REQUISICIÓN'                            );
 insert into estados_requisiciones values (4, 'AUTORIZADA POR SUPERIOR JERÁRQUICO, TRASPASADA A DEPARTAMENTO DE COMPRAS'                           );
-insert into estados_requisiciones values (5, 'RECHAZADA POR DEPARTAMENTO DE COMPRAS, DEVUELTA A SUPERIOR JERÁRQUICO DEL CREADOR DE LA REQUISICIÓN');
-insert into estados_requisiciones values (6, 'ACEPTADA POR DEPARTAMENTO COMPRAS, CREA ORDEN DE COMPRA'                                            );
+insert into estados_requisiciones values (5, 'REQUISICION RECIBIDA POR DEPARTAMENTO DE COMPRAS'                                                   );
+insert into estados_requisiciones values (6, 'RECHAZADA POR DEPARTAMENTO DE COMPRAS, DEVUELTA A SUPERIOR JERÁRQUICO DEL CREADOR DE LA REQUISICIÓN');
+insert into estados_requisiciones values (7, 'ACEPTADA POR DEPARTAMENTO COMPRAS, ORDEN DE COMPRA CREADA'                                          );
 
 insert into tipos_requisiciones values (1, 'URGENTE'   , 1);
 insert into tipos_requisiciones values (2, 'NORMAL'    , 3);
 insert into tipos_requisiciones values (3, 'LICITACIÓN', 5);
+
+insert into estados_ordenes_compras values (1, 'CREADA'                       );
+insert into estados_ordenes_compras values (2, 'CERRADA'                      );
+insert into estados_ordenes_compras values (3, 'EMITIDA (ENVIADA A PROVEEDOR)');
+insert into estados_ordenes_compras values (4, 'FINIQUITADA'                  );
+
+insert into estados_detalles_ordenes_compras values (1, 'NO SATISFECHA'          );
+insert into estados_detalles_ordenes_compras values (2, 'PARCIALMENTE SATISFECHA');
+insert into estados_detalles_ordenes_compras values (3, 'SATISFECHA'             );
 
 \q

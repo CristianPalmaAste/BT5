@@ -77,8 +77,11 @@ create or replace view demb as select * from detalles_movtos_bodegas;
 create or replace view desu as select * from descuentos;
 create or replace view bicp as select * from bitacoras_cambios_precios;
 create or replace view ereq as select * from estados_requisiciones;
+create or replace view tire as select * from tipos_requisiciones;
 create or replace view requ as select * from requisiciones;
 create or replace view dere as select * from detalles_requisiciones;
+create or replace view aure as select * from autorizadores_requisiciones;
+create or replace view hire as select * from historiales_requisiciones;
 
 
 \q

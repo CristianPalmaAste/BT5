@@ -1,21 +1,16 @@
-/estados-cotizaciones-vtas                    Estados de Cotizaciones Ventas
-/estados-notas-vtas                           Estados de Notas de Ventas        
-/estados-ventas                               Estados de Ventas
-/impuestos (campo país no se muestra)         Impuestos
-/origenes-productos                           Orígenes de Productos
-/tipos-formas-pagos                           Tipos Formas de Pago
-/tipos-clientes                               Tipos de Clientes
-/tipos-cotizaciones-vtas                      Tipos Cotizaciones Ventas
-/tipos-productos                              Tipos de Productos   
-/tipos-doctos-ventas                          Tipos de Documentos de Ventas
-/tipos-servicios                              Tipos de Servicios
-/unidades-medidas-productos                   Unidades de Medida de los Productos
-/unidades-medidas-servicios                   Unidades de Medida de los Servicios
-/tipos-productos-impuestos                    Impuestos por Tipo de Producto
-/unidades-territoriales-1                     Regiones
-/unidades-territoriales-2                     Provincias
-/unidades-territoriales-3                     Comunas
-/clientes                                     Clientes
-/productos                                    Productos
-/servicios                                    Servicios
-
+insert into tablas_secuencias values ('estados_requisiciones'           , '
+insert into tablas_secuencias values ('tipos_requisiciones''            , '
+insert into tablas_secuencias values ('requisiciones'                   , '
+insert into tablas_secuencias values ('detalles_requisiciones'          , '
+insert into tablas_secuencias values ('autorizadores_requisiciones'     , '
+insert into tablas_secuencias values ('historiales_requisiciones'       , '
+insert into tablas_secuencias values ('estados_ordenes_compras'         , '
+insert into tablas_secuencias values ('estados_detalles_ordenes_compras', '
+insert into tablas_secuencias values ('ordenes_compras'                 , '
+insert into tablas_secuencias values ('detalles_ordenes_compras'        , '
+insert into tablas_secuencias values ('cotizaciones_compras'            , '
+insert into tablas_secuencias values ('detalles_cotizaciones_compras'   , '
+insert into tablas_secuencias values ('proveedores'                     , '
+insert into tablas_secuencias values ('tipos_proveedores'               , '
+insert into tablas_secuencias values ('recepciones_compras'             , '
+insert into tablas_secuencias values ('detalles_recepciones_compras'    , '

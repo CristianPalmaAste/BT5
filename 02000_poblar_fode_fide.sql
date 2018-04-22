@@ -19,7 +19,10 @@ declare
     where  table_schema = 'public'
     and    table_type   = 'BASE TABLE'
     and    table_name   not in ('tablas_secuencias', 'field_defs', 'form_defs')
-and table_name in ('tipos_movimientos_bodegas', 'movimientos_bodegas', 'detalles_movtos_bodegas', 'descuentos', 'bitacoras_cambios_precios')
+and table_name in ('estados_requisiciones' ,'tipos_requisiciones' ,'requisiciones' ,'detalles_requisiciones'
+,'autorizadores_requisiciones' ,'historiales_requisiciones' ,'estados_ordenes_compras' ,'estados_detalles_ordenes_compras'
+,'ordenes_compras' ,'detalles_ordenes_compras' ,'cotizaciones_compras' ,'detalles_cotizaciones_compras' ,'proveedores'
+,'tipos_proveedores' ,'recepciones_compras' ,'detalles_recepciones_compras')
     order  by 1
     ;
   C_columnas cursor for

@@ -715,4 +715,42 @@ insert into impuestos values (4, 1, 'IMPUESTO FICTICIO A LOS LIBROS (PRUEBA)', '
 
 insert into tipos_productos_impuestos values (nextval('tipi_seq'), 15, 4);
 
+insert into proveedores values (1 , 1, 1, 21878885, '8', 2, 'COMERCIAL NAPM EIRL' , 'NAPM'  , null      , null              , null   , null      , 1, current_timestamp, null, null, null, null);
+insert into proveedores values (2 , 1, 1, 13047104, '8', 1, null                  , null    , 'ALVARO'  , 'VÍCTOR ALEJANDRO', 'PALMA', 'ASTE'    , 1, current_timestamp, null, null, null, null);
+insert into proveedores values (3 , 1, 1, 91144000, '8', 2, 'EMBOTELLADORA ANDINA', 'ANDINA', null      , null              , null   , null      , 1, current_timestamp, null, null, null, null);
+insert into proveedores values (4 , 1, 1,  4709176, '4', 1, null                  , null    , 'VICTORIA', 'ELIANA'          , 'ASTE' , 'MARTÍNEZ', 1, current_timestamp, null, null, null, null);
+insert into proveedores values (5 , 2, 1, 13047104, '8', 1, null                  , null    , 'ALVARO'  , 'VÍCTOR ALEJANDRO', 'PALMA', 'ASTE'    , 1, current_timestamp, null, null, null, null);
+insert into proveedores values (6 , 2, 1, 91144000, '8', 2, 'EMBOTELLADORA ANDINA', 'ANDINA', null      , null              , null   , null      , 1, current_timestamp, null, null, null, null);
+insert into proveedores values (7 , 2, 1,  4709176, '4', 1, null                  , null    , 'VICTORIA', 'ELIANA'          , 'ASTE' , 'MARTÍNEZ', 1, current_timestamp, null, null, null, null);
+insert into proveedores values (8 , 3, 1, 21878885, '8', 2, 'COMERCIAL NAPM EIRL' , 'NAPM'  , null      , null              , null   , null      , 1, current_timestamp, null, null, null, null);
+insert into proveedores values (9 , 3, 1, 91144000, '8', 2, 'EMBOTELLADORA ANDINA', 'ANDINA', null      , null              , null   , null      , 1, current_timestamp, null, null, null, null);
+insert into proveedores values (10, 3, 1,  4709176, '4', 1, null                  , null    , 'VICTORIA', 'ELIANA'          , 'ASTE' , 'MARTÍNEZ', 1, current_timestamp, null, null, null, null);
+insert into proveedores values (11, 4, 1, 21878885, '8', 2, 'COMERCIAL NAPM EIRL' , 'NAPM'  , null      , null              , null   , null      , 1, current_timestamp, null, null, null, null);
+insert into proveedores values (12, 4, 1, 91144000, '8', 2, 'EMBOTELLADORA ANDINA', 'ANDINA', null      , null              , null   , null      , 1, current_timestamp, null, null, null, null);
+
+insert into requisiciones values (1, 1, 1, 1, 3, null, null, null, null, null, 5, 1, current_timestamp, null, null, null, null);
+
+insert into detalles_requisiciones values (1, 1, 1, 1 , 9, null, null, null, 10);
+insert into detalles_requisiciones values (2, 1, 2, 2 , 9, null, null, null, 20);
+insert into detalles_requisiciones values (3, 1, 3, 3 , 9, null, null, null, 30);
+
+insert into historiales_requisiciones values (1 , 1, 1, 3, null                        , current_timestamp);
+insert into historiales_requisiciones values (2 , 1, 2, 3, null                        , current_timestamp);
+insert into historiales_requisiciones values (3 , 1, 3, 4, 'FALTA INFORMACIÓN'         , current_timestamp);
+insert into historiales_requisiciones values (4 , 1, 2, 3, null                        , current_timestamp);
+insert into historiales_requisiciones values (5 , 1, 3, 4, 'SIGUE FALTANDO INFORMACIÓN', current_timestamp);
+insert into historiales_requisiciones values (6 , 1, 2, 3, null                        , current_timestamp);
+insert into historiales_requisiciones values (7 , 1, 3, 4, 'TODAVÍA ESTÁ INCOMPLETA'   , current_timestamp);
+insert into historiales_requisiciones values (8 , 1, 2, 3, null                        , current_timestamp);
+insert into historiales_requisiciones values (9 , 1, 4, 4, null                        , current_timestamp);
+insert into historiales_requisiciones values (10, 1, 5, 6, null                        , current_timestamp);
+
+insert into requisiciones values (2, 1, 2, 2, 3, null, null, null, null, null, 1, 1, current_timestamp, null, null, null, null);
+
+insert into detalles_requisiciones values (4, 2, 1, 13, 3, null, null, null, 5 );
+insert into detalles_requisiciones values (5, 2, 2, 14, 3, null, null, null, 5 );
+insert into detalles_requisiciones values (6, 2, 3, 15, 3, null, null, null, 10);
+
+insert into historiales_requisiciones values (11, 2, 1, 3, null                        , current_timestamp);
+
 \q

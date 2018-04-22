@@ -90,6 +90,8 @@ drop table if exists cotizaciones_compras           cascade;
 drop table if exists detalles_cotizaciones_compras  cascade;
 drop table if exists proveedores                    cascade;
 drop table if exists tipos_proveedores              cascade;
+drop table if exists recepciones_compras            cascade;
+drop table if exists detalles_recepciones_compras   cascade;
 
 
 \q

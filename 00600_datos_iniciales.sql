@@ -729,4 +729,7 @@ insert into estados_detalles_ordenes_compras values (1, 'NO SATISFECHA'         
 insert into estados_detalles_ordenes_compras values (2, 'PARCIALMENTE SATISFECHA');
 insert into estados_detalles_ordenes_compras values (3, 'SATISFECHA'             );
 
+insert into tipos_proveedores values (1, 'PERSONA NATURAL');
+insert into tipos_proveedores values (2, 'EMPRESA'        );
+
 \q

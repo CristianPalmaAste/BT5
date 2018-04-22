@@ -90,6 +90,8 @@ select 'create sequence coco_seq start with ' || (case when MAX(ID) is null then
 select 'create sequence decc_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from detalles_cotizaciones_compras;
 select 'create sequence prov_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from proveedores;
 select 'create sequence tipp_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_proveedores;
+select 'create sequence reco_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from recepciones_compras;
+select 'create sequence derc_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from detalles_recepciones_compras;
 
 
 \q

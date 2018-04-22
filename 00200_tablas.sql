@@ -1967,6 +1967,7 @@ create table historiales_requisiciones (
    id                       numeric(20,0)   not null
   ,idrequ                   numeric(20,0)   not null
   ,idereq                   numeric(20,0)   not null
+  ,idusuacambiaestado       numeric(20,0)   not null
   ,razonrechazo             varchar(500)        null /* este campo solo se debe poblar cuando se produzca un rechazo, ya
                                                         sea del superior jerárquico o bien del jefe de compras */
   ,fechacrearegistro        timestamp       not null
@@ -2292,6 +2293,7 @@ alter table ordenes_compras               add constraint orco_fk3_usua foreign k
 
 alter table historiales_requisiciones     add constraint hire_fk_requ  foreign key (idrequ)                references requisiciones                    (id);
 alter table historiales_requisiciones     add constraint hire_fk_ereq  foreign key (idereq)                references estados_requisiciones            (id);
+alter table historiales_requisiciones     add constraint hire_fk_usua  foreign key (idusuacambiaestado)    references usuarios                         (id);
 
 alter table autorizadores_requisiciones   add constraint aure_fk1_perf foreign key (idperfautorizador)     references perfiles                         (id);
 alter table autorizadores_requisiciones   add constraint aure_fk2_perf foreign key (idperfautorizado)      references perfiles                         (id);

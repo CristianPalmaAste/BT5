@@ -90,6 +90,8 @@ drop sequence if exists coco_seq;
 drop sequence if exists decc_seq;
 drop sequence if exists prov_seq;
 drop sequence if exists tipp_seq;
+drop sequence if exists reco_seq;
+drop sequence if exists derc_seq;
 
 
 \q

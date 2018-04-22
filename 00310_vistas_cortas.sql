@@ -90,6 +90,8 @@ create or replace view coco as select * from cotizaciones_compras;
 create or replace view decc as select * from detalles_cotizaciones_compras;
 create or replace view prov as select * from proveedores;
 create or replace view tipp as select * from tipos_proveedores;
+create or replace view reco as select * from recepciones_compras;
+create or replace view derc as select * from detalles_recepciones_compras;
 
 
 \q

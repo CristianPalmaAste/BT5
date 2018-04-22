@@ -96,6 +96,15 @@ psql -d $DBNAME -U $USUARIO_DB < 02000_f_registrar_precio_bitacora.sql > 02010_f
 echo "  02100_f_rebajar_stock"
 psql -d $DBNAME -U $USUARIO_DB < 02100_f_rebajar_stock.sql > 02110_f_rebajar_stock.txt
 
+echo "  02200_f_valor_parametro"
+psql -d $DBNAME -U $USUARIO_DB < 02200_f_valor_parametro.sql > 02210_f_valor_parametro.txt
+
+echo "  02300_f_validar_requ_ins"
+psql -d $DBNAME -U $USUARIO_DB < 02300_f_validar_requ_ins.sql > 02310_f_validar_requ_ins.txt
+
+echo "  02400_f_validar_requ"
+psql -d $DBNAME -U $USUARIO_DB < 02400_f_validar_requ.sql > 02410_f_validar_requ.txt
+
 cd ..
 
 cd 01600_triggers
@@ -143,6 +152,12 @@ psql -d $DBNAME -U $USUARIO_DB < 01300_trg_after_ins_upd_delp.sql > 01310_trg_af
 
 echo "  01400_trg_after_upd_vent"
 psql -d $DBNAME -U $USUARIO_DB < 01400_trg_after_upd_vent.sql > 01410_trg_after_upd_vent.txt
+
+echo "  01500_trg_before_upd_requ"
+psql -d $DBNAME -U $USUARIO_DB < 01500_trg_before_upd_requ.sql > 01510_trg_before_upd_requ.txt
+
+echo "  01600_trg_before_ins_requ"
+psql -d $DBNAME -U $USUARIO_DB < 01600_trg_before_ins_requ.sql > 01610_trg_before_ins_requ.txt
 
 cd ..
 

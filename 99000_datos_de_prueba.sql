@@ -728,7 +728,7 @@ insert into proveedores values (10, 3, 1,  4709176, '4', 1, null                
 insert into proveedores values (11, 4, 1, 21878885, '8', 2, 'COMERCIAL NAPM EIRL' , 'NAPM'  , null      , null              , null   , null      , 1, current_timestamp, null, null, null, null);
 insert into proveedores values (12, 4, 1, 91144000, '8', 2, 'EMBOTELLADORA ANDINA', 'ANDINA', null      , null              , null   , null      , 1, current_timestamp, null, null, null, null);
 
-insert into requisiciones values (1, 1, 1, 1, 3, null, null, null, null, null, 5, 1, current_timestamp, null, null, null, null);
+insert into requisiciones values (1, 1, 1, 1, 3, null, null, null, null, null, 1, 1, current_timestamp, null, null, null, null);
 
 insert into detalles_requisiciones values (1, 1, 1, 1 , 9, null, null, null, 10);
 insert into detalles_requisiciones values (2, 1, 2, 2 , 9, null, null, null, 20);
@@ -773,5 +773,20 @@ insert into detalles_cotizaciones_compras values (10, 5, 'cotizacion_10.docx', '
 insert into detalles_cotizaciones_compras values (11, 5, 'cotizacion_11.docx', 'coco_11.docx');
 insert into detalles_cotizaciones_compras values (12, 6, 'cotizacion_12.docx', 'coco_12.docx');
 insert into detalles_cotizaciones_compras values (13, 6, 'cotizacion_13.docx', 'coco_13.docx');
+
+update requisiciones
+set    idereq = 2
+where  id     = 1
+;
+
+update requisiciones
+set    idereq = 4
+where  id     = 1
+;
+
+update requisiciones
+set    idereq = 5
+where  id     = 1
+;
 
 \q

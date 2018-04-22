@@ -716,7 +716,7 @@ insert into estados_requisiciones values (5, 'REQUISICION RECIBIDA POR DEPARTAME
 insert into estados_requisiciones values (6, 'RECHAZADA POR DEPARTAMENTO DE COMPRAS, DEVUELTA A SUPERIOR JERÁRQUICO DEL CREADOR DE LA REQUISICIÓN');
 insert into estados_requisiciones values (7, 'ACEPTADA POR DEPARTAMENTO COMPRAS, ORDEN DE COMPRA CREADA'                                          );
 
-insert into tipos_requisiciones values (1, 'URGENTE'   , 1);
+insert into tipos_requisiciones values (1, 'URGENTE'   , 0);
 insert into tipos_requisiciones values (2, 'NORMAL'    , 3);
 insert into tipos_requisiciones values (3, 'LICITACIÓN', 5);
 

@@ -35,9 +35,7 @@ insert into tablas_secuencias values ('estados_ordenes_servs_hono'      , 'eosh_
 insert into tablas_secuencias values ('pagos_ordenes_servs_hono'        , 'posh_seq');
 insert into tablas_secuencias values ('estados_pagos_ords_servs_hono'   , 'epos_seq');
 insert into tablas_secuencias values ('tipos_formas_pagos'              , 'tifp_seq');
-insert into tablas_secuencias values ('unidades_territoriales_1'        , 'unt1_seq');
-insert into tablas_secuencias values ('unidades_territoriales_2'        , 'unt2_seq');
-insert into tablas_secuencias values ('unidades_territoriales_3'        , 'unt3_seq');
+insert into tablas_secuencias values ('unidades_territoriales'          , 'unte_seq');
 insert into tablas_secuencias values ('tipos_clientes'                  , 'ticl_seq');
 insert into tablas_secuencias values ('tipos_cotizaciones_vtas'         , 'ticv_seq');
 insert into tablas_secuencias values ('estados_cotizaciones_vtas'       , 'escv_seq');

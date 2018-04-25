@@ -105,6 +105,9 @@ psql -d $DBNAME -U $USUARIO_DB < 02300_f_validar_requ_ins.sql > 02310_f_validar_
 echo "  02400_f_validar_requ"
 psql -d $DBNAME -U $USUARIO_DB < 02400_f_validar_requ.sql > 02410_f_validar_requ.txt
 
+echo "  02500_f_profundidad_unte"
+psql -d $DBNAME -U $USUARIO_DB < 02500_f_profundidad_unte.sql > 02510_f_profundidad_unte.txt
+
 cd ..
 
 cd 01600_triggers

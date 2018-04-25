@@ -53,9 +53,7 @@ insert into programas values ( 2140,  2000, 'Mant. tipos cotizaciones vtas.'    
 insert into programas values ( 2150,  2000, 'Mant. tipos productos'                , 'tipos-productos'                 , 'Mantención tipos productos'                , 15 );
 insert into programas values ( 2160,  2000, 'Mant. tipos productos impuestos'      , 'tipos-productos-impuestos'       , 'Mantención tipos productos impuestos'      , 16 );
 insert into programas values ( 2170,  2000, 'Mant. tipos servicios'                , 'tipos-servicios'                 , 'Mantención tipos servicios'                , 17 );
-insert into programas values ( 2180,  2000, 'Mant. unidades territoriales 1'       , 'unidades-territoriales-1'        , 'Mantención unidades territoriales 1'       , 18 );
-insert into programas values ( 2190,  2000, 'Mant. unidades territoriales 2'       , 'unidades-territoriales-2'        , 'Mantención unidades territoriales 2'       , 19 );
-insert into programas values ( 2200,  2000, 'Mant. unidades territoriales 3'       , 'unidades-territoriales-3'        , 'Mantención unidades territoriales 3'       , 20 );
+insert into programas values ( 2180,  2000, 'Mant. unidades territoriales'         , 'unidades-territoriales'          , 'Mantención unidades territoriales'         , 18 );
 insert into programas values ( 2210,  2000, 'Mant. estados ventas'                 , 'estados-ventas'                  , 'Mantención estados ventas'                 , 21 );
 insert into programas values ( 2220,  2000, 'Mant. origenes productos'             , 'origenes-productos'              , 'Mantención origenes productos'             , 22 );
 insert into programas values ( 2230,  2000, 'Mant. tipos doctos. ventas'           , 'tipos-doctos-ventas'             , 'Mantención tipos doctos. ventas'           , 23 );
@@ -159,8 +157,6 @@ insert into perfiles_programas values (nextval('pepr_seq'), 1 ,  2150, 1, curren
 insert into perfiles_programas values (nextval('pepr_seq'), 1 ,  2160, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 1 ,  2170, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 1 ,  2180, 1, current_timestamp, null, null, null, null);
-insert into perfiles_programas values (nextval('pepr_seq'), 1 ,  2190, 1, current_timestamp, null, null, null, null);
-insert into perfiles_programas values (nextval('pepr_seq'), 1 ,  2200, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 1 ,  2210, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 1 ,  2220, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 1 ,  2230, 1, current_timestamp, null, null, null, null);

@@ -942,7 +942,7 @@ alter table formas_pagos_ventas add constraint fpve_uk_01 unique (idvent, idtifp
 create table unidades_territoriales (
    id                       numeric(20,0)   not null
   ,idpais                   numeric(20,0)   not null
-  ,idunte                   numeric(20,0)       null
+  ,iduntepadre              numeric(20,0)       null
   ,nombre                   varchar(100)    not null
   ,orden                    numeric(20,0)       null
 )
@@ -954,10 +954,10 @@ create table unidades_territoriales (
 alter table unidades_territoriales add constraint unte_pk primary key (id)
 ;
 
-alter table unidades_territoriales add constraint unte_uk_01 unique (idpais, idunte, nombre)
+alter table unidades_territoriales add constraint unte_uk_01 unique (idpais, iduntepadre, nombre)
 ;
 
-alter table unidades_territoriales add constraint unte_uk_02 unique (idunte, orden)
+alter table unidades_territoriales add constraint unte_uk_02 unique (iduntepadre, orden)
 ;
 
 /*************************************************************************************************************************/
@@ -2515,7 +2515,7 @@ alter table centros_costos                add constraint ceco_fk_empr  foreign k
 alter table tareas                        add constraint tare_fk_empr  foreign key (idempr)                references empresas                         (id);
 
 alter table unidades_territoriales        add constraint unte_fk_pais  foreign key (idpais)                references paises                           (id);
-alter table unidades_territoriales        add constraint unte_fk_unte  foreign key (idunte)                references unidades_territoriales           (id);
+alter table unidades_territoriales        add constraint unte_fk_unte  foreign key (iduntepadre)           references unidades_territoriales           (id);
 
 alter table impuestos                     add constraint impu_fk_pais  foreign key (idpais)                references paises                           (id);
 

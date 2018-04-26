@@ -6,7 +6,12 @@ CREATE FUNCTION
 
  f_profundidad_unte 
 --------------------
-                  1
+                  2
+(1 fila)
+
+ f_profundidad_unte 
+--------------------
+                  3
 (1 fila)
 
  f_profundidad_unte 

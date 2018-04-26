@@ -1,21 +1,33 @@
 CREATE FUNCTION
  f_profundidad_unte 
 --------------------
-                  1
+                  0
 (1 fila)
 
  f_profundidad_unte 
 --------------------
-                  2
+                  0
 (1 fila)
 
  f_profundidad_unte 
 --------------------
-                  3
+                  0
 (1 fila)
 
  f_profundidad_unte 
 --------------------
-                  1
+                  0
 (1 fila)
+
+ id | idpais | iduntepadre | nombre | orden | profundidad 
+----+--------+-------------+--------+-------+-------------
+(0 filas)
+
+ id | idpais | iduntepadre | nombre | orden | profundidad 
+----+--------+-------------+--------+-------+-------------
+(0 filas)
+
+ id | idpais | iduntepadre | nombre | orden | profundidad 
+----+--------+-------------+--------+-------+-------------
+(0 filas)
 

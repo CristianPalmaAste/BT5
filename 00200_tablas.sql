@@ -945,6 +945,7 @@ create table unidades_territoriales (
   ,iduntepadre              numeric(20,0)       null
   ,nombre                   varchar(100)    not null
   ,orden                    numeric(20,0)       null
+  ,profundidad              numeric(20,0)   not null default 0
 )
 ;
 

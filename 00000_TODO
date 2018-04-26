@@ -108,6 +108,9 @@ psql -d $DBNAME -U $USUARIO_DB < 02400_f_validar_requ.sql > 02410_f_validar_requ
 echo "  02500_f_profundidad_unte"
 psql -d $DBNAME -U $USUARIO_DB < 02500_f_profundidad_unte.sql > 02510_f_profundidad_unte.txt
 
+echo "  02600_f_poblar_unte_profundidad"
+psql -d $DBNAME -U $USUARIO_DB < 02600_f_poblar_unte_profundidad.sql > 02610_f_poblar_unte_profundidad.txt
+
 cd ..
 
 cd 01600_triggers
@@ -161,6 +164,9 @@ psql -d $DBNAME -U $USUARIO_DB < 01500_trg_before_upd_requ.sql > 01510_trg_befor
 
 echo "  01600_trg_before_ins_requ"
 psql -d $DBNAME -U $USUARIO_DB < 01600_trg_before_ins_requ.sql > 01610_trg_before_ins_requ.txt
+
+echo "  01700_trg_after_ins_unte"
+psql -d $DBNAME -U $USUARIO_DB < 01700_trg_after_ins_unte.sql > 01710_trg_after_ins_unte.txt
 
 cd ..
 

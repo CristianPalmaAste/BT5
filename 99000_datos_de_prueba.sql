@@ -789,4 +789,9 @@ set    idereq = 5
 where  id     = 1
 ;
 
+/* parche para que quede bien poblado el campo profundidad de unte */
+
+update unidades_territoriales
+set    profundidad = f_profundidad_unte(id);
+
 \q

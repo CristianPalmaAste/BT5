@@ -217,17 +217,17 @@ select clie.id               id
       ,clie.identificador1   identificador1
       ,clie.identificador2   identificador2
       ,clie.idticl           idticl
-      ,ticl.descripcion      tipo_cliente
+      ,ticl.descripcion      tipoproveedor
       ,clie.razonsocial      razonsocial
       ,clie.nombrefantasia   nombrefantasia
       ,clie.primernombre     primernombre
       ,clie.segundonombre    segundonombre
       ,clie.apellidopaterno  apellidopaterno
       ,clie.apellidomaterno  apellidomaterno
-from                   clientes             clie
+from                   proveedor             clie
        left outer join grupos_empresariales grem on clie.idgrem = grem.id
        left outer join paises               pais on clie.idpais = pais.id
-       left outer join tipos_clientes       ticl on clie.idticl = ticl.id
+       left outer join tipos_proveedores    ticl on clie.idticl = ticl.id
 where  clie.idusuaborraregistro is null
 and    grem.idusuaborraregistro is null
 ;
@@ -645,8 +645,92 @@ from   desuv
 order  by 1
 ;
 
+/*************************************************************************************************************************/
+
+drop view if exists requv
+;
+
+create or replace view requv as
+select requ.id                                    id
+      ,requ.idempr                                idempr
+      ,empr.nombrefantasia                        nombrefantasia
+      ,requ.idtire                                idtire
+      ,tire.descripcion                           tiporequisicion
+      ,requ.correlativo                           correlativo
+      ,requ.idusuasolicitareq                     idusuasolicitareq
+      ,usua.username                              username
+      ,requ.idgere                                idgere
+      ,gere.nombre                                gerencia
+      ,requ.idproy                                idproy
+      ,proy.nombre                                proyecto
+      ,requ.idline                                idline
+      ,line.nombre                                linea_negocio
+      ,requ.idceco                                idceco
+      ,ceco.nombre                                centro_costo
+      ,requ.idtare                                idtare
+      ,tare.nombre                                tarea
+      ,requ.idereq                                idereq
+      ,ereq.descripcion                           estadorequisicion
+from                   requisiciones              requ
+       left outer join empresas                   empr on requ.idempr            = empr.id
+       left outer join tipos_requisiciones        tire on requ.idtire            = tire.id
+       left outer join usuarios                   usua on requ.idusuasolicitareq = usua.id
+       left outer join gerencias                  gere on requ.idgere            = gere.id
+       left outer join proyectos                  proy on requ.idproy            = proy.id
+       left outer join lineas_negocios            line on requ.idline            = line.id
+       left outer join centros_costos             ceco on requ.idceco            = ceco.id
+       left outer join tareas                     tare on requ.idtare            = tare.id
+       left outer join estados_requisiciones      ereq on requ.idereq            = ereq.id
+where  requ.idusuaborraregistro is null
+;
+
+select *
+from   requv
+order  by 1
+;
+
+/*************************************************************************************************************************/
+
+drop view if exists provv
+;
+
+create or replace view provv as
+select prov.id               id
+      ,prov.idgrem           idgrem
+      ,grem.alias            holding
+      ,prov.idpais           idpais
+      ,pais.nombre           pais
+      ,prov.identificador1   identificador1
+      ,prov.identificador2   identificador2
+      ,prov.idtipp           idtipp
+      ,tipp.descripcion      tipoproveedor
+      ,prov.razonsocial      razonsocial
+      ,prov.nombrefantasia   nombrefantasia
+      ,prov.primernombre     primernombre
+      ,prov.segundonombre    segundonombre
+      ,prov.apellidopaterno  apellidopaterno
+      ,prov.apellidomaterno  apellidomaterno
+from                   proveedores          prov
+       left outer join grupos_empresariales grem on prov.idgrem = grem.id
+       left outer join paises               pais on prov.idpais = pais.id
+       left outer join tipos_proveedores    tipp on prov.idtipp = tipp.id
+where  prov.idusuaborraregistro is null
+and    grem.idusuaborraregistro is null
+;
+
+select *
+from   provv
+;
+
+/*************************************************************************************************************************/
+
 \q
 
+
+autorizadores_requisiciones
+ordenes_compras
+cotizaciones_compras
+recepciones_compras
 
 
 Más adelante:
@@ -667,6 +751,8 @@ select *
 from   XXXXv
 order  by 1
 ;
+
+/*************************************************************************************************************************/
 
 soshv
 idsov

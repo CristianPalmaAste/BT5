@@ -749,6 +749,53 @@ order  by 1
 
 /*************************************************************************************************************************/
 
+drop view if exists orcov
+;
+
+create or replace view orcov as
+select orco.id               id
+
+
+      ,orco.idempr
+      ,empr.
+      ,orco.correlativo
+      ,orco.idrequ
+      ,requ
+
+      ,orco.idgere                                idgere
+      ,gere.nombre                                gerencia
+      ,orco.idproy                                idproy
+      ,proy.nombre                                proyecto
+      ,orco.idline                                idline
+      ,line.nombre                                linea_negocio
+      ,orco.idceco                                idceco
+      ,ceco.nombre                                centro_costo
+      ,orco.idtare                                idtare
+      ,tare.nombre                                tarea
+      ,orco.idesoc
+      ,esoc
+
+
+
+from                   ordenes_compras            orco
+       left outer join empresas                   empr on orco.idempr = empr.id
+       left outer join requisiciones              requ on orco.idrequ = requ.id
+       left outer join gerencias                  gere on orco.idgere = gere.id
+       left outer join proyectos                  proy on orco.idproy = proy.id
+       left outer join lineas_negocios            line on orco.idline = line.id
+       left outer join centros_costos             ceco on orco.idceco = ceco.id
+       left outer join tareas                     tare on orco.idtare = tare.id
+       left outer join estados_ordenes_compras    esoc on orco.idesoc = esoc.id
+where  orco.idusuaborraregistro is null
+;
+
+select *
+from   orcov
+order  by 1
+;
+
+/*************************************************************************************************************************/
+
 \q
 
 

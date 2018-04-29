@@ -816,10 +816,29 @@ order  by 1
 
 /*************************************************************************************************************************/
 
+drop view if exists recov
+;
+
+create or replace view recov as
+select reco.id               id
+      ,reco.idorco           idorco
+      ,orco.correlativo      ordencompra
+      ,reco.correlativo      correlativo
+from                   recepciones_compras     reco
+       left outer join ordenes_compras         orco on reco.idorco = orco.id
+where  reco.idusuaborraregistro is null
+;
+
+select *
+from   recov
+order  by 1
+;
+
+/*************************************************************************************************************************/
+
 \q
 
 
-recepciones_compras
 
 
 Más adelante:

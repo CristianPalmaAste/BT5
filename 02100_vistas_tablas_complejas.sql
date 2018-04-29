@@ -724,10 +724,34 @@ from   provv
 
 /*************************************************************************************************************************/
 
+drop view if exists aurev
+;
+
+create or replace view aurev as
+select aure.id                    id
+      ,aure.idempr                idempr
+      ,empr.nombrefantasia        empresa                       
+      ,aure.idperfautorizador     idperfautorizador
+      ,perf1.descripcion          autorizador
+      ,aure.idperfautorizado      idperfautorizado
+      ,perf2.descripcion          autorizado
+from                   autorizadores_requisiciones aure
+       left outer join empresas                    empr  on aure.idempr            = empr.id
+       left outer join perfiles                    perf1 on aure.idperfautorizador = perf1.id
+       left outer join perfiles                    perf2 on aure.idperfautorizado  = perf2.id
+where  aure.idusuaborraregistro is null
+;
+
+select *
+from   aurev
+order  by 1
+;
+
+/*************************************************************************************************************************/
+
 \q
 
 
-autorizadores_requisiciones
 ordenes_compras
 cotizaciones_compras
 recepciones_compras

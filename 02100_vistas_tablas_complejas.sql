@@ -753,15 +753,12 @@ drop view if exists orcov
 ;
 
 create or replace view orcov as
-select orco.id               id
-
-
-      ,orco.idempr
-      ,empr.
-      ,orco.correlativo
-      ,orco.idrequ
-      ,requ
-
+select orco.id                                    id
+      ,orco.idempr                                idempr
+      ,empr.nombrefantasia                        empresa
+      ,orco.correlativo                           correlativo
+      ,orco.idrequ                                idrequ
+      ,requ.correlativo                           requisicion
       ,orco.idgere                                idgere
       ,gere.nombre                                gerencia
       ,orco.idproy                                idproy
@@ -772,11 +769,8 @@ select orco.id               id
       ,ceco.nombre                                centro_costo
       ,orco.idtare                                idtare
       ,tare.nombre                                tarea
-      ,orco.idesoc
-      ,esoc
-
-
-
+      ,orco.idesoc                                idesoc
+      ,esoc.descripcion                           estadoordencompra
 from                   ordenes_compras            orco
        left outer join empresas                   empr on orco.idempr = empr.id
        left outer join requisiciones              requ on orco.idrequ = requ.id
@@ -796,11 +790,35 @@ order  by 1
 
 /*************************************************************************************************************************/
 
+drop view if exists cocov
+;
+
+create or replace view cocov as
+select coco.id                                                                                                                     id
+      ,coco.idrequ                                                                                                                 idrequ
+      ,requ.correlativo                                                                                                            requisicion
+      ,coco.idorco                                                                                                                 idorco
+      ,orco.correlativo                                                                                                            ordencompra
+      ,coco.idprov                                                                                                                 idprov
+      ,coalesce(prov.nombrefantasia,' ') || ' ' || coalesce(prov.primernombre,' ') || ' ' || coalesce(prov.apellidopaterno,' ')    proveedor
+      ,coco.observaciones                                                                                                          observaciones
+from                   cotizaciones_compras    coco
+       left outer join requisiciones           requ on coco.idrequ = requ.id
+       left outer join ordenes_compras         orco on coco.idorco = orco.id
+       left outer join proveedores             prov on coco.idprov = prov.id
+where  coco.idusuaborraregistro is null
+;
+
+select *
+from   cocov
+order  by 1
+;
+
+/*************************************************************************************************************************/
+
 \q
 
 
-ordenes_compras
-cotizaciones_compras
 recepciones_compras
 
 

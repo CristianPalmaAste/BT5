@@ -2,7 +2,6 @@ create or replace function f_copiar_requ_a_orco() returns trigger as
 $body$
 declare
   Vidorco                   numeric(20,0);
-  Vcorrelativo              numeric(20,0);
   Vid                       numeric(20,0);
   Vidrequ                   numeric(20,0);
   Vcorrelativo              numeric(20,0);
@@ -11,7 +10,6 @@ declare
   Vidserv                   numeric(20,0);
   Vidunms                   numeric(20,0);
   Votroinsumo               varchar(1000);
-  Vcantidad                 numeric(20,0);
   Vcantidad                 numeric(20,0);
   Viddeoc                   numeric(20,0);
   C_dere cursor for
@@ -94,8 +92,29 @@ begin
       into   Viddeoc
       ;
 
-
-
+      insert into detalles_ordenes_compras (id                       -- numeric(20,0)   not null
+                                           ,idorco                   -- numeric(20,0)   not null
+                                           ,correlativo              -- numeric(20,0)   not null
+                                           ,idedoc                   -- numeric(20,0)   not null
+                                           ,idprod                   -- numeric(20,0)       null
+                                           ,idunmp                   -- numeric(20,0)       null
+                                           ,idserv                   -- numeric(20,0)       null
+                                           ,idunms                   -- numeric(20,0)       null
+                                           ,otroinsumo               -- varchar(1000)       null
+                                           ,cantidad                 -- numeric(20,0)   not null
+                                           )
+      values (Viddeoc                             -- id                       numeric(20,0)   not null
+             ,Vidorco                             -- idorco                   numeric(20,0)   not null
+             ,Vcorrelativo                        -- correlativo              numeric(20,0)   not null
+             ,1                                   -- idedoc                   numeric(20,0)   not null
+             ,Vidprod                             -- idprod                   numeric(20,0)       null
+             ,Vidunmp                             -- idunmp                   numeric(20,0)       null
+             ,Vidserv                             -- idserv                   numeric(20,0)       null
+             ,Vidunms                             -- idunms                   numeric(20,0)       null
+             ,Votroinsumo                         -- otroinsumo               varchar(1000)       null
+             ,Vcantidad                           -- cantidad                 numeric(20,0)   not null
+             )
+      ;
     end loop;
     close C_dere;
   end if;

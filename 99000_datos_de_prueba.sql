@@ -790,4 +790,8 @@ set    idereq = 5
 where  id     = 1
 ;
 
+update requisiciones
+set    idereq = 7
+where  id     = 1
+;
 \q

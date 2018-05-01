@@ -421,12 +421,12 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence orco_seq start with 1
+ create sequence orco_seq start with 2
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence deoc_seq start with 1
+ create sequence deoc_seq start with 4
 (1 fila)
 
                ?column?                

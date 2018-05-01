@@ -188,3 +188,9 @@ CREATE VIEW
 ----+--------+-------------+-------------
 (0 filas)
 
+DROP VIEW
+CREATE VIEW
+ id | idbode | bodega | idprod | producto | stock 
+----+--------+--------+--------+----------+-------
+(0 filas)
+

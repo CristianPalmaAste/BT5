@@ -111,6 +111,9 @@ psql -d $DBNAME -U $USUARIO_DB < 02500_f_profundidad_unte.sql > 02510_f_profundi
 echo "  02600_f_poblar_unte_profundidad"
 psql -d $DBNAME -U $USUARIO_DB < 02600_f_poblar_unte_profundidad.sql > 02610_f_poblar_unte_profundidad.txt
 
+echo "  02700_f_copiar_requ_a_orco"
+psql -d $DBNAME -U $USUARIO_DB < 02700_f_copiar_requ_a_orco.sql > 02710_f_copiar_requ_a_orco.txt
+
 cd ..
 
 cd 01600_triggers
@@ -167,6 +170,9 @@ psql -d $DBNAME -U $USUARIO_DB < 01600_trg_before_ins_requ.sql > 01610_trg_befor
 
 echo "  01700_trg_after_ins_unte"
 psql -d $DBNAME -U $USUARIO_DB < 01700_trg_after_ins_unte.sql > 01710_trg_after_ins_unte.txt
+
+echo "  01800_trg_after_upd_requ"
+psql -d $DBNAME -U $USUARIO_DB < 01800_trg_after_upd_requ.sql > 01810_trg_after_upd_requ.txt
 
 cd ..
 

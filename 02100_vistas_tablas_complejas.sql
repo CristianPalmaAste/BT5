@@ -217,17 +217,17 @@ select clie.id               id
       ,clie.identificador1   identificador1
       ,clie.identificador2   identificador2
       ,clie.idticl           idticl
-      ,ticl.descripcion      tipoproveedor
+      ,ticl.descripcion      tipocliente
       ,clie.razonsocial      razonsocial
       ,clie.nombrefantasia   nombrefantasia
       ,clie.primernombre     primernombre
       ,clie.segundonombre    segundonombre
       ,clie.apellidopaterno  apellidopaterno
       ,clie.apellidomaterno  apellidomaterno
-from                   proveedor             clie
+from                   clientes             clie
        left outer join grupos_empresariales grem on clie.idgrem = grem.id
        left outer join paises               pais on clie.idpais = pais.id
-       left outer join tipos_proveedores    ticl on clie.idticl = ticl.id
+       left outer join tipos_clientes       ticl on clie.idticl = ticl.id
 where  clie.idusuaborraregistro is null
 and    grem.idusuaborraregistro is null
 ;
@@ -831,6 +831,29 @@ where  reco.idusuaborraregistro is null
 
 select *
 from   recov
+order  by 1
+;
+
+/*************************************************************************************************************************/
+
+drop view if exists boprv
+;
+
+create or replace view boprv as
+select bopr.id                        id
+      ,bopr.idbode                    idbode
+      ,bode.nombre                    bodega
+      ,bopr.idprod                    idprod
+      ,prod.nombre                    producto
+      ,bopr.stock                     stock
+from                   bodegas_productos   bopr
+       left outer join bodegas             bode on bopr.idbode = bode.id
+       left outer join productos           prod on bopr.idprod = prod.id
+where  bopr.idusuaborraregistro is null
+;
+
+select *
+from   boprv
 order  by 1
 ;
 

@@ -538,6 +538,7 @@ begin
   ;
   insert into cotizaciones_ventas values (Vidcove                    -- id                       numeric(20,0)   not null
                                          ,1                          -- idempr                   numeric(20,0)   not null
+                                         ,1                          -- idbode                   numeric(20,0)   not null
                                          ,1                          -- numero                   numeric(20,0)   not null
                                          ,1                          -- idclie                   numeric(20,0)   not null
                                          ,'PRUEBA'                   -- descripcioncotizacion    varchar(1000)   not null

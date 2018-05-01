@@ -1400,6 +1400,7 @@ alter table detalles_notas_vtas add constraint denv_chk_01 check (
 create table cotizaciones_ventas (
    id                       numeric(20,0)   not null
   ,idempr                   numeric(20,0)   not null
+  ,idbode                   numeric(20,0)   not null
   ,numero                   numeric(20,0)   not null
   ,idclie                   numeric(20,0)   not null
   ,descripcioncotizacion    varchar(1000)   not null
@@ -2531,6 +2532,7 @@ alter table clientes                      add constraint clie_fk2_usua foreign k
 alter table clientes                      add constraint clie_fk3_usua foreign key (idusuaborraregistro)   references usuarios                         (id);
 
 alter table cotizaciones_ventas           add constraint cove_fk_empr  foreign key (idempr)                references empresas                         (id);
+alter table cotizaciones_ventas           add constraint cove_fk_bode  foreign key (idbode)                references bodegas                          (id);
 alter table cotizaciones_ventas           add constraint cove_fk_clie  foreign key (idclie)                references clientes                         (id);
 alter table cotizaciones_ventas           add constraint cove_fk_gere  foreign key (idgere)                references gerencias                        (id);
 alter table cotizaciones_ventas           add constraint cove_fk_proy  foreign key (idproy)                references proyectos                        (id);

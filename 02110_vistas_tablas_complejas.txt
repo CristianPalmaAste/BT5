@@ -57,8 +57,8 @@ CREATE VIEW
 
 DROP VIEW
 CREATE VIEW
- id | idgrem | holding | idpais | pais | identificador1 | identificador2 | idticl | tipo_cliente | razonsocial | nombrefantasia | primernombre | segundonombre | apellidopaterno | apellidomaterno 
-----+--------+---------+--------+------+----------------+----------------+--------+--------------+-------------+----------------+--------------+---------------+-----------------+-----------------
+ id | idgrem | holding | idpais | pais | identificador1 | identificador2 | idticl | tipocliente | razonsocial | nombrefantasia | primernombre | segundonombre | apellidopaterno | apellidomaterno 
+----+--------+---------+--------+------+----------------+----------------+--------+-------------+-------------+----------------+--------------+---------------+-----------------+-----------------
 (0 filas)
 
 DROP VIEW
@@ -134,5 +134,57 @@ DROP VIEW
 CREATE VIEW
  id | idfapr | cod_familia | familia | idsfpr | cod_sub_familia | sub_familia | idprod | producto | porcentajedescuento | idesre | estado_regsitro 
 ----+--------+-------------+---------+--------+-----------------+-------------+--------+----------+---------------------+--------+-----------------
+(0 filas)
+
+DROP VIEW
+CREATE VIEW
+ id | idempr | nombrefantasia | idtire | tiporequisicion | correlativo | idusuasolicitareq | username | idgere | gerencia | idproy | proyecto | idline | linea_negocio | idceco | centro_costo | idtare | tarea | idereq | estadorequisicion 
+----+--------+----------------+--------+-----------------+-------------+-------------------+----------+--------+----------+--------+----------+--------+---------------+--------+--------------+--------+-------+--------+-------------------
+(0 filas)
+
+DROP VIEW
+CREATE VIEW
+ id | idgrem | holding | idpais | pais | identificador1 | identificador2 | idtipp | tipoproveedor | razonsocial | nombrefantasia | primernombre | segundonombre | apellidopaterno | apellidomaterno 
+----+--------+---------+--------+------+----------------+----------------+--------+---------------+-------------+----------------+--------------+---------------+-----------------+-----------------
+(0 filas)
+
+DROP VIEW
+CREATE VIEW
+ id | idempr | empresa | idperfautorizador | autorizador | idperfautorizado | autorizado 
+----+--------+---------+-------------------+-------------+------------------+------------
+  1 |      1 | BT5     |                 5 |             |                5 | 
+  2 |      1 | BT5     |                 5 |             |                6 | 
+  3 |      1 | BT5     |                 7 |             |                7 | 
+  4 |      1 | BT5     |                 7 |             |                8 | 
+  5 |      1 | BT5     |                 7 |             |                9 | 
+  6 |      1 | BT5     |                 7 |             |               13 | 
+  7 |      1 | BT5     |                 7 |             |               16 | 
+  8 |      1 | BT5     |                 7 |             |               18 | 
+  9 |      1 | BT5     |                 9 |             |               10 | 
+ 10 |      1 | BT5     |                 9 |             |               11 | 
+ 11 |      1 | BT5     |                13 |             |               12 | 
+ 12 |      1 | BT5     |                13 |             |               14 | 
+ 13 |      1 | BT5     |                13 |             |               15 | 
+ 14 |      1 | BT5     |                16 |             |               17 | 
+ 15 |      1 | BT5     |                18 |             |               19 | 
+ 16 |      1 | BT5     |                18 |             |               20 | 
+(16 filas)
+
+DROP VIEW
+CREATE VIEW
+ id | idempr | empresa | correlativo | idrequ | requisicion | idgere | gerencia | idproy | proyecto | idline | linea_negocio | idceco | centro_costo | idtare | tarea | idesoc | estadoordencompra 
+----+--------+---------+-------------+--------+-------------+--------+----------+--------+----------+--------+---------------+--------+--------------+--------+-------+--------+-------------------
+(0 filas)
+
+DROP VIEW
+CREATE VIEW
+ id | idrequ | requisicion | idorco | ordencompra | idprov | proveedor | observaciones 
+----+--------+-------------+--------+-------------+--------+-----------+---------------
+(0 filas)
+
+DROP VIEW
+CREATE VIEW
+ id | idorco | ordencompra | correlativo 
+----+--------+-------------+-------------
 (0 filas)
 

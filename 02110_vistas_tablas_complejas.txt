@@ -172,8 +172,8 @@ CREATE VIEW
 
 DROP VIEW
 CREATE VIEW
- id | idempr | empresa | correlativo | idrequ | requisicion | idgere | gerencia | idproy | proyecto | idline | linea_negocio | idceco | centro_costo | idtare | tarea | idesoc | estadoordencompra 
-----+--------+---------+-------------+--------+-------------+--------+----------+--------+----------+--------+---------------+--------+--------------+--------+-------+--------+-------------------
+ id | idempr | empresa | correlativo | idrequ | requisicion | idgere | gerencia | idproy | proyecto | idline | linea_negocio | idceco | centro_costo | idtare | tarea | idesoc | estadoordencompra | situacionorconum | situacionorcotxt 
+----+--------+---------+-------------+--------+-------------+--------+----------+--------+----------+--------+---------------+--------+--------------+--------+-------+--------+-------------------+------------------+------------------
 (0 filas)
 
 DROP VIEW

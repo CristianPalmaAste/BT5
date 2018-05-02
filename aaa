@@ -1,0 +1,1 @@
+insert into estados_detalles_ordenes_compras values (2, 'PARCIALMENTE SATISFECHA');

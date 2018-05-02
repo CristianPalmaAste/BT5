@@ -117,6 +117,9 @@ psql -d $DBNAME -U $USUARIO_DB < 02700_f_copiar_requ_a_orco.sql > 02710_f_copiar
 echo "  02800_f_validar_orco"
 psql -d $DBNAME -U $USUARIO_DB < 02800_f_validar_orco.sql > 02810_f_validar_orco.txt
 
+echo "  02900_f_situacion_orco"
+psql -d $DBNAME -U $USUARIO_DB < 02900_f_situacion_orco.sql > 02910_f_situacion_orco.txt
+
 cd ..
 
 cd 01600_triggers

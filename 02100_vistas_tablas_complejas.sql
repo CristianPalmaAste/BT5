@@ -771,6 +771,8 @@ select orco.id                                    id
       ,tare.nombre                                tarea
       ,orco.idesoc                                idesoc
       ,esoc.descripcion                           estadoordencompra
+      ,f_situacion_orco(orco.id,1)                situacionorconum
+      ,f_situacion_orco(orco.id,2)                situacionorcotxt
 from                   ordenes_compras            orco
        left outer join empresas                   empr on orco.idempr = empr.id
        left outer join requisiciones              requ on orco.idrequ = requ.id

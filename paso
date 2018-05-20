@@ -111,7 +111,7 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence pepr_seq start with 246
+ create sequence pepr_seq start with 293
 (1 fila)
 
                 ?column?                 
@@ -401,7 +401,7 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence aure_seq start with 177
+ create sequence aure_seq start with 161
 (1 fila)
 
                 ?column?                

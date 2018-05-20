@@ -120,6 +120,9 @@ psql -d $DBNAME -U $USUARIO_DB < 02800_f_validar_orco.sql > 02810_f_validar_orco
 echo "  02900_f_situacion_orco"
 psql -d $DBNAME -U $USUARIO_DB < 02900_f_situacion_orco.sql > 02910_f_situacion_orco.txt
 
+echo "  03000_f_validar_reco"
+psql -d $DBNAME -U $USUARIO_DB < 03000_f_validar_reco.sql > 03010_f_validar_reco.txt
+
 cd ..
 
 cd 01600_triggers
@@ -182,6 +185,9 @@ psql -d $DBNAME -U $USUARIO_DB < 01800_trg_after_upd_requ.sql > 01810_trg_after_
 
 echo "  01900_trg_before_upd_orco"
 psql -d $DBNAME -U $USUARIO_DB < 01900_trg_before_upd_orco.sql > 01910_trg_before_upd_orco.txt
+
+echo "  02000_trg_before_ins_reco"
+psql -d $DBNAME -U $USUARIO_DB < 02000_trg_before_ins_reco.sql > 02010_trg_before_ins_reco.txt
 
 cd ..
 

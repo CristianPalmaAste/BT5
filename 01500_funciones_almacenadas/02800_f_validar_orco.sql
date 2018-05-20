@@ -19,12 +19,12 @@ begin
   -- 3 -> 4
   -- y nada más; todo otro posible cambio de estado es error
   --
-  if (old.idereq = 1 and new.idereq = 2) or
-     (old.idereq = 2 and new.idereq = 3) or
-     (old.idereq = 3 and new.idereq = 4) then
+  if (old.idesoc = 1 and new.idesoc = 2) or
+     (old.idesoc = 2 and new.idesoc = 3) or
+     (old.idesoc = 3 and new.idesoc = 4) then
     aux := 1; /* estos son los cambios válidos */
   else
-    Vmensaje := 'Orden de compra no puede pasar de estado ' || old.idereq || ' a ' || new.idereq;
+    Vmensaje := 'Orden de compra no puede pasar de estado ' || old.idesoc || ' a ' || new.idesoc;
     raise exception 'Cambio de estado inválido'
     using hint = Vmensaje;
   end if;

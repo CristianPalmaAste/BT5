@@ -451,11 +451,11 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence reco_seq start with 1
+ create sequence reco_seq start with 3
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence derc_seq start with 1
+ create sequence derc_seq start with 7
 (1 fila)
 

@@ -1308,6 +1308,12 @@ alter table detalles_ventas add constraint deve_chk_01 check (
                                                              )
 ;
 
+alter table detalles_ventas add constraint deve_chk_02 check (preciounitario > 0)
+;
+
+alter table detalles_ventas add constraint deve_chk_03 check (cantidad > 0)
+;
+
 /*************************************************************************************************************************/
 
 create table notas_ventas (
@@ -1395,6 +1401,12 @@ alter table detalles_notas_vtas add constraint denv_chk_01 check (
                                                                   )
 ;
 
+alter table detalles_notas_vtas add constraint denv_chk_02 check (preciounitario > 0)
+;
+
+alter table detalles_notas_vtas add constraint denv_chk_03 check (cantidad > 0)
+;
+
 /*************************************************************************************************************************/
 
 create table cotizaciones_ventas (
@@ -1477,6 +1489,12 @@ alter table detalles_cotizs_vtas add constraint decv_chk_01 check (
                                                                   )
 ;
 
+alter table detalles_cotizs_vtas add constraint decv_chk_02 check (preciounitario > 0)
+;
+
+alter table detalles_cotizs_vtas add constraint decv_chk_03 check (cantidad > 0)
+;
+
 /*************************************************************************************************************************/
 
 create table productos (
@@ -1534,6 +1552,9 @@ alter table servicios add constraint serv_pk primary key (id)
 ;
 
 alter table servicios add constraint serv_uk_01 unique (idempr, nombre)
+;
+
+alter table servicios add constraint serv_chk_02 check (preciounitario > 0)
 ;
 
 /*************************************************************************************************************************/
@@ -1676,6 +1697,9 @@ alter table detalles_listas_precios add constraint delp_pk primary key (id)
 alter table detalles_listas_precios add constraint delp_uk_01 unique (idlipr, idprod)
 ;
 
+alter table detalles_listas_precios add constraint delp_chk_02 check (preciounitario > 0)
+;
+
 /*************************************************************************************************************************/
 
 create table familias_productos (
@@ -1793,6 +1817,9 @@ alter table detalles_movtos_bodegas add constraint demb_uk_01 unique (idmobo, co
 ;
 
 alter table detalles_movtos_bodegas add constraint demb_uk_02 unique (idmobo, idprod)
+;
+
+alter table detalles_movtos_bodegas add constraint demb_chk_03 check (cantidad > 0)
 ;
 
 /*************************************************************************************************************************/
@@ -1941,6 +1968,9 @@ alter table detalles_requisiciones add constraint dere_chk_02 check (
                                                                     )
 ;
 
+alter table detalles_requisiciones add constraint dere_chk_03 check (cantidad > 0)
+;
+
 /*************************************************************************************************************************/
 
 create table autorizadores_requisiciones (
@@ -2078,6 +2108,9 @@ alter table detalles_ordenes_compras add constraint deoc_chk_02 check (
                                                                        or
                                                                        (idserv is not null and idunms is not null)
                                                                       )
+;
+
+alter table detalles_ordenes_compras add constraint deoc_chk_03 check (cantidad > 0)
 ;
 
 /*************************************************************************************************************************/
@@ -2233,6 +2266,9 @@ alter table detalles_recepciones_compras add constraint derc_chk_02 check (
                                                                            or
                                                                            (idserv is not null and idunms is not null)
                                                                           )
+;
+
+alter table detalles_recepciones_compras add constraint derc_chk_03 check (cantidad > 0)
 ;
 
 /*************************************************************************************************************************/

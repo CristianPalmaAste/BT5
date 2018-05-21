@@ -93,7 +93,6 @@ insert into programas values ( 4050,  4000, 'Mantención tareas'                
 insert into programas values ( 4060,  4000, 'Mantención productos'                 , 'productos'                       , 'Mantención productos'                      , 6  );
 insert into programas values ( 4070,  4000, 'Mantención servicios'                 , 'servicios'                       , 'Mantención servicios'                      , 7  );
 insert into programas values ( 4080,  4000, 'Mantención listas precios'            , 'listas-precios'                  , 'Mantención listas precios'                 , 8  );
-insert into programas values ( 4090,  4000, 'Mantención detalles listas precios'   , 'detalles-listas-precios'         , 'Mantención detalles listas precios'        , 9  );
 insert into programas values ( 4100,  4000, 'Mantención descuentos'                , 'descuentos'                      , 'Mantención descuentos'                     , 10 );
 insert into programas values ( 4110,  4000, 'Bitácoras cambios precios'            , 'bitacoras-cambios-precios'       , 'Bitácoras cambios precios'                 , 11 );
 insert into programas values ( 4120,  4000, 'Mantención parámetros empresas'       , 'parametros_empresas'             , 'Mantención parámetros empresas'            , 12 );
@@ -117,9 +116,9 @@ insert into programas values ( 7040,  7000, 'Rendiciones 4'                     
 insert into programas values ( 7050,  7000, 'Rendiciones 5'                        , 'principales/en-construccion'     , 'Rendiciones 5'                             , 5  );
 
 insert into programas values ( 8000, null , 'Compras'                              , null                              , 'Compras'                                   , 8  );
-insert into programas values ( 8010,  8000, 'Registro requisiciones'               , 'RegistroRequisiciones'           , 'Registro requisiciones'                    , 1  );
+insert into programas values ( 8010,  8000, 'Registro requisiciones'               , 'RegistrosRequisiciones'          , 'Registro requisiciones'                    , 1  );
 insert into programas values ( 8020,  8000, 'Aceptación/rechazo requisiciones'     , 'AceptRechRequisiciones'          , 'Aceptación/rechazo requisiciones'          , 2  );
-insert into programas values ( 8030,  8000, 'Recepción requisiciones'              , 'RecepcionRequisiciones'          , 'Recepción requisiciones'                   , 3  );
+insert into programas values ( 8030,  8000, 'Recepción requisiciones'              , 'RecepcionesRequisiciones'        , 'Recepción requisiciones'                   , 3  );
 insert into programas values ( 8040,  8000, 'Aprobac./rech. reqs. dpto. compras'   , 'AprobacRechReqsDptoCompras'      , 'Aprobac./rech. reqs. dpto. compras'        , 4  );
 insert into programas values ( 8050,  8000, 'Órdenes de compras'                   , 'OrdenesCompras'                  , 'Órdenes de compras'                        , 5  );
 insert into programas values ( 8060,  8000, 'Recepciones compras/servicios'        , 'RecepcionesComprasServicios'     , 'Recepciones compras/servicios'             , 6  );
@@ -210,7 +209,6 @@ insert into perfiles_programas values (nextval('pepr_seq'), 3 ,  4050, 1, curren
 insert into perfiles_programas values (nextval('pepr_seq'), 3 ,  4060, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 3 ,  4070, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 3 ,  4080, 1, current_timestamp, null, null, null, null);
-insert into perfiles_programas values (nextval('pepr_seq'), 3 ,  4090, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 3 ,  4100, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 3 ,  4110, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 3 ,  4120, 1, current_timestamp, null, null, null, null);
@@ -237,7 +235,6 @@ insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  4050, 1, curren
 insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  4060, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  4070, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  4080, 1, current_timestamp, null, null, null, null);
-insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  4090, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  4100, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  4110, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  4120, 1, current_timestamp, null, null, null, null);

@@ -126,6 +126,9 @@ psql -d $DBNAME -U $USUARIO_DB < 03000_f_validar_reco.sql > 03010_f_validar_reco
 echo "  03100_f_impedir_upd_y_del_en_derc"
 psql -d $DBNAME -U $USUARIO_DB < 03100_f_impedir_upd_y_del_en_derc.sql > 03110_f_impedir_upd_y_del_en_derc.txt
 
+echo "  03200_f_impedir_upd_y_del_en_deve"
+psql -d $DBNAME -U $USUARIO_DB < 03200_f_impedir_upd_y_del_en_deve.sql > 03210_f_impedir_upd_y_del_en_deve.txt
+
 cd ..
 
 cd 01600_triggers
@@ -194,6 +197,9 @@ psql -d $DBNAME -U $USUARIO_DB < 02000_trg_before_ins_reco.sql > 02010_trg_befor
 
 echo "  02100_trg_before_upd_y_del_derc"
 psql -d $DBNAME -U $USUARIO_DB < 02100_trg_before_upd_y_del_derc.sql > 02110_trg_before_upd_y_del_derc.txt
+
+echo "  02200_trg_before_upd_y_del_deve"
+psql -d $DBNAME -U $USUARIO_DB < 02200_trg_before_upd_y_del_deve.sql > 02210_trg_before_upd_y_del_deve.txt
 
 cd ..
 

@@ -68,7 +68,7 @@ insert into programas values ( 2250,  2000, 'Mant. unidades medidas servicios'  
 insert into programas values ( 2260,  2000, 'Mant. tipos movimientos bodegas'      , 'tipos-movimientos-bodegas'       , 'Mantención tipos movimientos bodegas'      , 26 );
 insert into programas values ( 2270,  2000, 'Mant. estados requisiciones'          , 'EstadosRequisiciones'            , 'Mantención estados requisiciones'          , 27 );
 insert into programas values ( 2280,  2000, 'Mant. tipos requisiciones'            , 'TiposRequisiciones'              , 'Mantención tipos requisiciones'            , 28 );
-insert into programas values ( 2290,  2000, 'Mant. estados órdenes compas'         , 'EstadosOrdenesCompas'            , 'Mantención estados órdenes compas'         , 29 );
+insert into programas values ( 2290,  2000, 'Mant. estados órdenes compras'        , 'EstadosOrdenesCompras'           , 'Mantención estados órdenes compras'        , 29 );
 insert into programas values ( 2300,  2000, 'Mant. estados detalles OC'            , 'EstadosDetallesOrdenesCompras'   , 'Mantención estados detalles OC'            , 30 );
 insert into programas values ( 2310,  2000, 'Mant. tipos proveedores'              , 'TiposProveedores'                , 'Mantención tipos proveedores'              , 31 );
 insert into programas values ( 2320,  2000, 'Mant. autorizadores requisiciones'    , 'AutorizadoresRequisiciones'      , 'Mantención autorizadores requisiciones'    , 32 );
@@ -121,7 +121,7 @@ insert into programas values ( 8020,  8000, 'Aceptación/rechazo requisiciones' 
 insert into programas values ( 8030,  8000, 'Recepción requisiciones'              , 'RecepcionesRequisiciones'        , 'Recepción requisiciones'                   , 3  );
 insert into programas values ( 8040,  8000, 'Aprobac./rech. reqs. dpto. compras'   , 'AprobacRechReqsDptoCompras'      , 'Aprobac./rech. reqs. dpto. compras'        , 4  );
 insert into programas values ( 8050,  8000, 'Órdenes de compras'                   , 'OrdenesCompras'                  , 'Órdenes de compras'                        , 5  );
-insert into programas values ( 8060,  8000, 'Recepciones compras/servicios'        , 'RecepcionesComprasServicios'     , 'Recepciones compras/servicios'             , 6  );
+insert into programas values ( 8060,  8000, 'Recepciones compras/servicios'        , 'RecepcionesCompras'              , 'Recepciones compras/servicios'             , 6  );
 
 insert into programas values ( 9000, null , 'Ventas'                               , null                              , 'Ventas'                                    , 9  );
 insert into programas values ( 9010,  9000, 'Cotizaciones ventas'                  , 'CotizacionesVentas'              , 'Cotizaciones ventas'                       , 1  );

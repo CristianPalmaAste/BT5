@@ -2215,6 +2215,7 @@ alter table tipos_proveedores add constraint tipp_uk_01 unique (descripcion)
 create table recepciones_compras (
    id                       numeric(20,0)   not null
   ,idorco                   numeric(20,0)   not null
+  ,idbode                   numeric(20,0)   not null
   ,correlativo              numeric(20,0)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
@@ -2292,14 +2293,15 @@ alter table cotizaciones_compras          add constraint coco_fk3_usua foreign k
 
 alter table detalles_cotizaciones_compras add constraint decc_fk_coco  foreign key (idcoco)                references cotizaciones_compras             (id);
 
-alter table proveedores                   add constraint prov_fk_grem  foreign key (idgrem)                references grupos_empresariales                            (id);
+alter table proveedores                   add constraint prov_fk_grem  foreign key (idgrem)                references grupos_empresariales             (id);
 alter table proveedores                   add constraint prov_fk_pais  foreign key (idpais)                references paises                           (id);
 alter table proveedores                   add constraint prov_fk_tipp  foreign key (idtipp)                references tipos_proveedores                (id);
 alter table proveedores                   add constraint prov_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table proveedores                   add constraint prov_fk2_usua foreign key (idusuamodifregistro)   references usuarios                         (id);
 alter table proveedores                   add constraint prov_fk3_usua foreign key (idusuaborraregistro)   references usuarios                         (id);
 
-alter table recepciones_compras           add constraint reco_fk_orco  foreign key (idorco)                references ordenes_compras                            (id);
+alter table recepciones_compras           add constraint reco_fk_orco  foreign key (idorco)                references ordenes_compras                  (id);
+alter table recepciones_compras           add constraint reco_fk_bode  foreign key (idbode)                references bodegas                          (id);
 alter table recepciones_compras           add constraint reco_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table recepciones_compras           add constraint reco_fk2_usua foreign key (idusuamodifregistro)   references usuarios                         (id);
 alter table recepciones_compras           add constraint reco_fk3_usua foreign key (idusuaborraregistro)   references usuarios                         (id);

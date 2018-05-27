@@ -803,13 +803,13 @@ update ordenes_compras
 set    idesoc = 3
 ;
 
-insert into recepciones_compras values (1, 1, 1, 1, current_timestamp, null, null, null, null);
+insert into recepciones_compras values (1, 1, 1, 1, 1, current_timestamp, null, null, null, null);
 
 insert into detalles_recepciones_compras values (1, 1, 1, 1, 9, null, null, null, 2);
 insert into detalles_recepciones_compras values (2, 1, 2, 2, 9, null, null, null, 1);
 insert into detalles_recepciones_compras values (3, 1, 3, 3, 9, null, null, null, 5);
 
-insert into recepciones_compras values (2, 1, 2, 1, current_timestamp, null, null, null, null);
+insert into recepciones_compras values (2, 1, 1, 2, 1, current_timestamp, null, null, null, null);
 
 insert into detalles_recepciones_compras values (4, 2, 1, 1, 9, null, null, null, 5);
 insert into detalles_recepciones_compras values (5, 2, 2, 2, 9, null, null, null, 2);

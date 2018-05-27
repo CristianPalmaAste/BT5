@@ -1,16 +1,19 @@
 create or replace function f_aumentar_stock() returns trigger as
 $body$
 declare
-  Vidbode        numeric(20,0);
-  Vidmobo        numeric(20,0);
-  Vcorrelativo   numeric(20,0);
+  Vidbode             numeric(20,0);
+  Vidmobo             numeric(20,0);
+  Vcorrelativo        numeric(20,0);
+  Vidusuacrearegistro numeric(20,0);
 begin
   if new.idprod is not null then
     select nextval('mobo_seq')
     into   Vidmobo
     ;
     select idbode
+          ,idusuacrearegistro
     into   Vidbode
+          ,Vidusuacrearegistro
     from   recepciones_compras
     where  id = new.idreco
     ;
@@ -43,7 +46,7 @@ begin
           ,1                        -- idtimb                   numeric(20,0)   not null
           ,current_date             -- fechamovto               date            not null
           ,'COMPRA'                 -- descripcion              varchar(100)    not null
-          ,new.idusuamodifregistro  -- idusuacrearegistro       numeric(20,0)   not null
+          ,Vidusuacrearegistro      -- idusuacrearegistro       numeric(20,0)   not null
           ,current_timestamp        -- fechacrearegistro        timestamp       not null
           ,null                     -- idusuamodifregistro      numeric(20,0)       null
           ,null                     -- fechamodifregistro       timestamp           null
@@ -70,7 +73,7 @@ begin
           ,new.idprod               -- idprod                   numeric(20,0)   not null
           ,new.cantidad             -- cantidad                 numeric(20,0)   not null
           ,new.idunmp               -- idunmp                   numeric(20,0)   not null
-          ,new.idusuamodifregistro  -- idusuacrearegistro       numeric(20,0)   not null
+          ,Vidusuacrearegistro      -- idusuacrearegistro       numeric(20,0)   not null
           ,current_timestamp        -- fechacrearegistro        timestamp       not null
           ,null                     -- idusuamodifregistro      numeric(20,0)       null
           ,null                     -- fechamodifregistro       timestamp           null

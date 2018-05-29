@@ -326,12 +326,12 @@ SET
 
                 ?column?                
 ----------------------------------------
- create sequence bode_seq start with 12
+ create sequence bode_seq start with 16
 (1 fila)
 
                 ?column?                
 ----------------------------------------
- create sequence bopr_seq start with 18
+ create sequence bopr_seq start with 44
 (1 fila)
 
                ?column?                

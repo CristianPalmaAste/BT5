@@ -622,23 +622,57 @@ drop function tmp_datos_de_prueba_vtas()
 
 -- bodegas_productos
 
-insert into bodegas_productos values ( 1, 1,  1, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values ( 2, 1,  2, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values ( 3, 1,  3, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values ( 4, 1,  4, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values ( 5, 1,  5, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values ( 6, 1,  6, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values ( 7, 1,  7, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values ( 8, 1,  8, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values ( 9, 1,  9, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values (10, 1, 10, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values (11, 1, 11, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values (12, 1, 12, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values (13, 1, 13, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values (14, 1, 14, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values (15, 1, 15, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values (16, 1, 16, 100, 1, current_timestamp, null, null, null, null);
-insert into bodegas_productos values (17, 1, 17, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 1,  1, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 1,  2, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 1,  3, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 1,  4, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 1,  5, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 1,  6, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 1,  7, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 1,  8, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 1,  9, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 1, 10, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 1, 11, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 1, 12, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 1, 13, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 1, 14, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 1, 15, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 1, 16, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 1, 17, 100, 1, current_timestamp, null, null, null, null);
+
+insert into bodegas values (nextval('bode_seq'), 1, 'BODEGA SAN PABLO'       , 1, current_timestamp, null, null, null, null);
+insert into bodegas values (nextval('bode_seq'), 1, 'BODEGA ALTO LAS CONDES' , 1, current_timestamp, null, null, null, null);
+insert into bodegas values (nextval('bode_seq'), 1, 'BODEGA PLAZA VESPUCIO 1', 1, current_timestamp, null, null, null, null);
+insert into bodegas values (nextval('bode_seq'), 1, 'BODEGA PLAZA VESPUCIO 2', 1, current_timestamp, null, null, null, null);
+
+insert into bodegas_productos values (nextval('bopr_seq'), 2,  1,   0, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 2,  2,  15, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 2,  3,   0, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 2,  4,   0, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 2,  5, 843, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 2,  7,   0, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 2,  8,   0, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 2, 10, 450, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 2, 11,   0, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 2, 12,   0, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 2, 14,  48, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 2, 15,   0, 1, current_timestamp, null, null, null, null);
+
+insert into bodegas_productos values (nextval('bopr_seq'), 4,  2,   0, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 4,  4, 148, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 4,  6, 100, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 4,  8,   0, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 4, 10, 183, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 4, 11, 125, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 4, 13,   0, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 4, 16, 800, 1, current_timestamp, null, null, null, null);
+
+insert into bodegas_productos values (nextval('bopr_seq'), 5,  2, 125, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 5,  3,   0, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 5,  5, 180, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 5, 13, 920, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 5, 15,   0, 1, current_timestamp, null, null, null, null);
+insert into bodegas_productos values (nextval('bopr_seq'), 5, 17, 493, 1, current_timestamp, null, null, null, null);
 
 update cotizaciones_ventas
 set    idescv = 2
@@ -814,5 +848,14 @@ insert into recepciones_compras values (2, 1, 1, 2, 1, current_timestamp, null, 
 insert into detalles_recepciones_compras values (4, 2, 1, 1, 9, null, null, null, 5);
 insert into detalles_recepciones_compras values (5, 2, 2, 2, 9, null, null, null, 2);
 insert into detalles_recepciones_compras values (6, 2, 3, 3, 9, null, null, null, 3);
+ 
+insert into usuarios_perfiles values (nextval('uspe_seq'),  3, 20, null, 1, 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios_perfiles values (nextval('uspe_seq'),  4, 20, null, 1, 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios_perfiles values (nextval('uspe_seq'),  5, 20, null, 1, 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios_perfiles values (nextval('uspe_seq'),  6, 20, null, 1, 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios_perfiles values (nextval('uspe_seq'),  7, 20, null, 1, 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios_perfiles values (nextval('uspe_seq'),  8, 20, null, 1, 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios_perfiles values (nextval('uspe_seq'),  9, 20, null, 1, 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios_perfiles values (nextval('uspe_seq'), 10, 20, null, 1, 1, 1, current_timestamp, null, null, null, null);
 
 \q

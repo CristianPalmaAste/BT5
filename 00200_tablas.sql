@@ -2274,6 +2274,66 @@ alter table detalles_recepciones_compras add constraint derc_chk_03 check (canti
 
 /*************************************************************************************************************************/
 
+create table estados_rendiciones_gastos (
+   id                       numeric(20,0)   not null
+  ,descripcion              varchar(100)    not null
+)
+;
+
+alter table estados_rendiciones_gastos add constraint esrg_pk primary key (id)
+;
+
+alter table estados_rendiciones_gastos add constraint esrg_uk_01 unique (descripcion)
+;
+
+/*************************************************************************************************************************/
+
+create table tipos_rendiciones_gastos (
+   id                       numeric(20,0)   not null
+  ,descripcion              varchar(100)    not null
+)
+;
+
+alter table tipos_rendiciones_gastos add constraint tirg_pk primary key (id)
+;
+
+alter table tipos_rendiciones_gastos add constraint tirg_uk_01 unique (descripcion)
+;
+
+/*************************************************************************************************************************/
+
+create table rendiciones_gastos (
+   id                       numeric(20,0)   not null
+  ,idempr                   numeric(20,0)   not null
+  ,correlativo              numeric(20,0)   not null
+  ,idtirg                   numeric(20,0)   not null
+  ,idfore                   numeric(20,0)       null
+  ,idesrg                   numeric(20,0)   not null
+  ,idgere                   numeric(20,0)       null
+  ,idproy                   numeric(20,0)       null
+  ,idline                   numeric(20,0)       null
+  ,idceco                   numeric(20,0)       null
+  ,idtare                   numeric(20,0)       null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table rendiciones_gastos add constraint rega_pk primary key (id)
+;
+
+alter table rendiciones_gastos add constraint rega_uk_01 unique (idempr, correlativo)
+;
+
+aqui voy
+faltan las fk de rega
+
+/*************************************************************************************************************************/
+
 
 
 

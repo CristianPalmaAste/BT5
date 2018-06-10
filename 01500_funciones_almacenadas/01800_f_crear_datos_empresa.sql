@@ -32,6 +32,23 @@ begin
   insert into autorizadores_requisiciones values (nextval('aure_seq'), Vidfapr, 18, 19, 1, current_timestamp, null, null, null, null);
   insert into autorizadores_requisiciones values (nextval('aure_seq'), Vidfapr, 18, 20, 1, current_timestamp, null, null, null, null);
 
+  insert into autorizadores_rendiciones values (nextval('aurn_seq'), Vidfapr, 5 , 5 , 1, current_timestamp, null, null, null, null);
+  insert into autorizadores_rendiciones values (nextval('aurn_seq'), Vidfapr, 5 , 6 , 1, current_timestamp, null, null, null, null);
+  insert into autorizadores_rendiciones values (nextval('aurn_seq'), Vidfapr, 7 , 7 , 1, current_timestamp, null, null, null, null);
+  insert into autorizadores_rendiciones values (nextval('aurn_seq'), Vidfapr, 7 , 8 , 1, current_timestamp, null, null, null, null);
+  insert into autorizadores_rendiciones values (nextval('aurn_seq'), Vidfapr, 7 , 9 , 1, current_timestamp, null, null, null, null);
+  insert into autorizadores_rendiciones values (nextval('aurn_seq'), Vidfapr, 7 , 13, 1, current_timestamp, null, null, null, null);
+  insert into autorizadores_rendiciones values (nextval('aurn_seq'), Vidfapr, 7 , 16, 1, current_timestamp, null, null, null, null);
+  insert into autorizadores_rendiciones values (nextval('aurn_seq'), Vidfapr, 7 , 18, 1, current_timestamp, null, null, null, null);
+  insert into autorizadores_rendiciones values (nextval('aurn_seq'), Vidfapr, 9 , 10, 1, current_timestamp, null, null, null, null);
+  insert into autorizadores_rendiciones values (nextval('aurn_seq'), Vidfapr, 9 , 11, 1, current_timestamp, null, null, null, null);
+  insert into autorizadores_rendiciones values (nextval('aurn_seq'), Vidfapr, 13, 12, 1, current_timestamp, null, null, null, null);
+  insert into autorizadores_rendiciones values (nextval('aurn_seq'), Vidfapr, 13, 14, 1, current_timestamp, null, null, null, null);
+  insert into autorizadores_rendiciones values (nextval('aurn_seq'), Vidfapr, 13, 15, 1, current_timestamp, null, null, null, null);
+  insert into autorizadores_rendiciones values (nextval('aurn_seq'), Vidfapr, 16, 17, 1, current_timestamp, null, null, null, null);
+  insert into autorizadores_rendiciones values (nextval('aurn_seq'), Vidfapr, 18, 19, 1, current_timestamp, null, null, null, null);
+  insert into autorizadores_rendiciones values (nextval('aurn_seq'), Vidfapr, 18, 20, 1, current_timestamp, null, null, null, null);
+
   return new;
 end;
 $body$ LANGUAGE plpgsql;

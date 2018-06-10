@@ -49,10 +49,18 @@ insert into estados_civiles values (4, 'E', 'SEPARADO');
 insert into sexos values (1, 'M', 'MASCULINO');
 insert into sexos values (2, 'F', 'FEMENINO' );
 
-insert into tipos_doctos_ventas values (1, 1, 'NO DEFINIDO'                 , 'NODE',  0);
-insert into tipos_doctos_ventas values (2, 1, 'FACTURA ELECTRÓNICA'         , 'FAEA', 33);
-insert into tipos_doctos_ventas values (3, 1, 'NOTA DE CRÉDITO ELECTRÓNICA' , 'NCEL', 61);
-insert into tipos_doctos_ventas values (4, 1, 'GUÍA DE DESPACHO ELECTRÓNICA', 'GDEL', 52);
+insert into tipos_doctos_ventas values ( 1, 1, 'NO DEFINIDO'                   , 'NODE',  0);
+insert into tipos_doctos_ventas values ( 2, 1, 'FACTURA ELECTRÓNICA'           , 'FAEA', 33);
+insert into tipos_doctos_ventas values ( 3, 1, 'NOTA DE CRÉDITO ELECTRÓNICA'   , 'NCEL', 61);
+insert into tipos_doctos_ventas values ( 4, 1, 'GUÍA DE DESPACHO ELECTRÓNICA'  , 'GDEL', 52);
+insert into tipos_doctos_ventas values ( 5, 3, 'FACTURA'                       , 'FACT',  1);
+insert into tipos_doctos_ventas values ( 6, 3, 'BOLETA DE VENTA'               , 'BOLE',  3);
+insert into tipos_doctos_ventas values ( 7, 3, 'NOTA DE DÉBITO'                , 'NDEB',  7);
+insert into tipos_doctos_ventas values ( 8, 3, 'NOTA DE CRÉDITO'               , 'NCRE',  8);
+insert into tipos_doctos_ventas values ( 9, 3, 'GUÍA DE REMISIÓN REMITENTE'    , 'GRRE',  9);
+insert into tipos_doctos_ventas values (10, 3, 'TICKET DE MÁQUINA REGISTRADORA', 'TIMR', 12);
+insert into tipos_doctos_ventas values (11, 3, 'GUÍA DE REMISIÓN TRANSPORTISTA', 'GRTR', 31);
+insert into tipos_doctos_ventas values (12, 3, 'COMPROBANTE DE PAGO SEAE'      , 'SEAE', 56);
 
 insert into grupos_empresariales values (1, 'BUSINESS & TECHNOLOGY 5 CONSULTING', 'BT5', 'bt5.jpg', 1, 1, 1, current_timestamp, null, null, null, null);
 
@@ -731,5 +739,15 @@ insert into estados_detalles_ordenes_compras values (3, 'SATISFECHA'            
 
 insert into tipos_proveedores values (1, 'PERSONA NATURAL');
 insert into tipos_proveedores values (2, 'EMPRESA'        );
+
+insert into estados_rendiciones_gastos values (1, 'INGRESADA'                                            );
+insert into estados_rendiciones_gastos values (2, 'SOLICITA APROBACIÓN SUPERIOR JERÁRQUICO'              );
+insert into estados_rendiciones_gastos values (3, 'APROBADA POR SUPERIOR JERÁRQUICO, PASA A CONTABILIDAD');
+insert into estados_rendiciones_gastos values (4, 'APROBADA POR CONTABILIDAD'                            );
+insert into estados_rendiciones_gastos values (5, 'CONTABILIZADA'                                        );
+insert into estados_rendiciones_gastos values (6, 'ANULADA'                                              );
+
+insert into tipos_rendiciones_gastos values (1, 'SOLICITUD DE REEMBOLSO');
+insert into tipos_rendiciones_gastos values (2, 'FONDO A RENDIR'        );
 
 \q

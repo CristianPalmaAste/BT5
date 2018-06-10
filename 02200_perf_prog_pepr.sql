@@ -72,6 +72,7 @@ insert into programas values ( 2290,  2000, 'Mant. estados órdenes compras'    
 insert into programas values ( 2300,  2000, 'Mant. estados detalles OC'            , 'EstadosDetallesOrdenesCompras'   , 'Mantención estados detalles OC'            , 30 );
 insert into programas values ( 2310,  2000, 'Mant. tipos proveedores'              , 'TiposProveedores'                , 'Mantención tipos proveedores'              , 31 );
 insert into programas values ( 2320,  2000, 'Mant. autorizadores requisiciones'    , 'AutorizadoresRequisiciones'      , 'Mantención autorizadores requisiciones'    , 32 );
+insert into programas values ( 2330,  2000, 'Mant. perfiles'                       , 'perfiles'                        , 'Mantención perfiles y sus programas'       , 33 );
 
 insert into programas values ( 3000, null , 'Adm. holding'                         , null                              , 'Administracion holding'                    , 3  );
 insert into programas values ( 3010,  3000, 'Mantención empresas'                  , 'empresas'                        , 'Mantención empresas'                       , 1  );
@@ -181,6 +182,7 @@ insert into perfiles_programas values (nextval('pepr_seq'), 1 ,  2290, 1, curren
 insert into perfiles_programas values (nextval('pepr_seq'), 1 ,  2300, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 1 ,  2310, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 1 ,  2320, 1, current_timestamp, null, null, null, null);
+insert into perfiles_programas values (nextval('pepr_seq'), 1 ,  2330, 1, current_timestamp, null, null, null, null);
 
 insert into perfiles_programas values (nextval('pepr_seq'), 2 ,  1000, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 2 ,  1010, 1, current_timestamp, null, null, null, null);

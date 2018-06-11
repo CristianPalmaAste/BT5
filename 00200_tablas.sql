@@ -1150,6 +1150,7 @@ create table tipos_doctos_ventas (
   ,descripcion              varchar(100)    not null
   ,descripcioncorta         varchar(10)     not null
   ,codigooficial            varchar(10)     not null
+  ,textoimpreso             varchar(10)     not null
 )
 ;
 
@@ -2274,6 +2275,33 @@ alter table detalles_recepciones_compras add constraint derc_chk_03 check (canti
 
 /*************************************************************************************************************************/
 
+create table fondos_a_rendir (
+   id                       numeric(20,0)   not null
+  ,idempr                   numeric(20,0)   not null
+  ,correlativo              numeric(20,0)   not null
+  ,monto                    numeric(20,0)   not null
+  ,idgere                   numeric(20,0)       null
+  ,idproy                   numeric(20,0)       null
+  ,idline                   numeric(20,0)       null
+  ,idceco                   numeric(20,0)       null
+  ,idtare                   numeric(20,0)       null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table fondos_a_rendir add constraint fore_pk primary key (id)
+;
+
+alter table fondos_a_rendir add constraint fore_uk_01 unique (idempr, correlativo)
+;
+
+/*************************************************************************************************************************/
+
 create table estados_rendiciones_gastos (
    id                       numeric(20,0)   not null
   ,descripcion              varchar(100)    not null
@@ -2329,8 +2357,28 @@ alter table rendiciones_gastos add constraint rega_pk primary key (id)
 alter table rendiciones_gastos add constraint rega_uk_01 unique (idempr, correlativo)
 ;
 
-aqui voy
-faltan las fk de rega
+/*************************************************************************************************************************/
+
+create table detalles_rendiciones_gastos (
+   id                       numeric(20,0)   not null
+  ,idrega                   numeric(20,0)   not null
+  ,correlativo              numeric(20,0)   not null
+  ,idtidv                   numeric(20,0)   not null
+  ,numero                   numeric(20,0)   not null
+  ,fecha_docto              timestamp       not null
+  ,monto                    numeric(20,0)   not null
+  ,idcorg                   numeric(20,0)   not null
+)
+;
+
+alter table detalles_rendiciones_gastos add constraint derg_pk primary key (id)
+;
+
+alter table detalles_rendiciones_gastos add constraint derg_uk_01 unique (idrega, correlativo)
+;
+
+alter table detalles_rendiciones_gastos add constraint derg_uk_01 unique (idrega, idtidv, numero)
+;
 
 /*************************************************************************************************************************/
 
@@ -2343,6 +2391,33 @@ faltan las fk de rega
 
 
 -- Sección foreign keys
+
+alter table detalles_rendiciones_gastos   add constraint derg_fk_rega  foreign key (idrega)                references rendiciones_gastos               (id);
+alter table detalles_rendiciones_gastos   add constraint derg_fk_tidv  foreign key (idtidv)                references tipos_doctos_ventas              (id);
+alter table detalles_rendiciones_gastos   add constraint derg_fk_corg  foreign key (idcorg)                references conceptos_rendiciones_gastos     (id);
+
+alter table fondos_a_rendir               add constraint fore_fk_empr  foreign key (idempr)                references empresas                         (id);
+alter table fondos_a_rendir               add constraint fore_fk_gere  foreign key (idgere)                references gerencias                        (id);
+alter table fondos_a_rendir               add constraint fore_fk_proy  foreign key (idproy)                references proyectos                        (id);
+alter table fondos_a_rendir               add constraint fore_fk_line  foreign key (idline)                references lineas_negocios                  (id);
+alter table fondos_a_rendir               add constraint fore_fk_ceco  foreign key (idceco)                references centros_costos                   (id);
+alter table fondos_a_rendir               add constraint fore_fk_tare  foreign key (idtare)                references tareas                           (id);
+alter table fondos_a_rendir               add constraint fore_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
+alter table fondos_a_rendir               add constraint fore_fk2_usua foreign key (idusuamodifregistro)   references usuarios                         (id);
+alter table fondos_a_rendir               add constraint fore_fk3_usua foreign key (idusuaborraregistro)   references usuarios                         (id);
+
+alter table rendiciones_gastos            add constraint rega_fk_empr  foreign key (idempr)                references empresas                         (id);
+alter table rendiciones_gastos            add constraint rega_fk_tirg  foreign key (idtirg)                references tipos_rendiciones_gastos         (id);
+alter table rendiciones_gastos            add constraint rega_fk_fore  foreign key (idfore)                references fondos_a_rendir                  (id);
+alter table rendiciones_gastos            add constraint rega_fk_esrg  foreign key (idesrg)                references estados_rendiciones_gastos       (id);
+alter table rendiciones_gastos            add constraint rega_fk_gere  foreign key (idgere)                references gerencias                        (id);
+alter table rendiciones_gastos            add constraint rega_fk_proy  foreign key (idproy)                references proyectos                        (id);
+alter table rendiciones_gastos            add constraint rega_fk_line  foreign key (idline)                references lineas_negocios                  (id);
+alter table rendiciones_gastos            add constraint rega_fk_ceco  foreign key (idceco)                references centros_costos                   (id);
+alter table rendiciones_gastos            add constraint rega_fk_tare  foreign key (idtare)                references tareas                           (id);
+alter table rendiciones_gastos            add constraint rega_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
+alter table rendiciones_gastos            add constraint rega_fk2_usua foreign key (idusuamodifregistro)   references usuarios                         (id);
+alter table rendiciones_gastos            add constraint rega_fk3_usua foreign key (idusuaborraregistro)   references usuarios                         (id);
 
 alter table cotizaciones_compras          add constraint coco_fk_requ  foreign key (idrequ)                references requisiciones                    (id);
 alter table cotizaciones_compras          add constraint coco_fk_orco  foreign key (idorco)                references ordenes_compras                  (id);

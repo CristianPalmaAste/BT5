@@ -20,7 +20,7 @@ insert into tablas_secuencias values ('programas'                       , 'prog_
 insert into tablas_secuencias values ('usuarios'                        , 'usua_seq');
 insert into tablas_secuencias values ('usuarios_perfiles'               , 'uspe_seq');
 insert into tablas_secuencias values ('perfiles_programas'              , 'pepr_seq');
-insert into tablas_secuencias values ('planes_cuentas'                  , 'plcu_seq');
+insert into tablas_secuencias values ('cuentas_contables'               , 'cuco_seq');
 insert into tablas_secuencias values ('documentos_legales'              , 'dole_seq');
 insert into tablas_secuencias values ('tipos_documentos_legales'        , 'tidl_seq');
 insert into tablas_secuencias values ('estados_documentos_legales'      , 'esdl_seq');

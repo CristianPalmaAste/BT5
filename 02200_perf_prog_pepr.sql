@@ -354,4 +354,7 @@ insert into perfiles_programas values (nextval('pepr_seq'), 21,  8010, 1, curren
 alter table autorizadores_requisiciones  add constraint aure_fk1_perf foreign key (idperfautorizador) references perfiles (id);
 alter table autorizadores_requisiciones  add constraint aure_fk2_perf foreign key (idperfautorizado)  references perfiles (id);
 
+alter table autorizadores_rendiciones    add constraint aurn_fk1_perf foreign key (idperfautorizador) references perfiles (id);
+alter table autorizadores_rendiciones    add constraint aurn_fk2_perf foreign key (idperfautorizado)  references perfiles (id);
+
 \q

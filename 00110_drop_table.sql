@@ -23,7 +23,7 @@ drop table if exists programas                      cascade;
 drop table if exists usuarios                       cascade;
 drop table if exists usuarios_perfiles              cascade;
 drop table if exists perfiles_programas             cascade;
-drop table if exists planes_cuentas                 cascade;
+drop table if exists cuentas_contables              cascade;
 drop table if exists documentos_legales             cascade;
 drop table if exists tipos_documentos_legales       cascade;
 drop table if exists estados_documentos_legales     cascade;
@@ -92,6 +92,13 @@ drop table if exists proveedores                    cascade;
 drop table if exists tipos_proveedores              cascade;
 drop table if exists recepciones_compras            cascade;
 drop table if exists detalles_recepciones_compras   cascade;
+drop table if exists fondos_a_rendir                cascade;
+drop table if exists estados_rendiciones_gastos     cascade;
+drop table if exists tipos_rendiciones_gastos       cascade;
+drop table if exists rendiciones_gastos             cascade;
+drop table if exists detalles_rendiciones_gastos    cascade;
+drop table if exists conceptos_rendiciones_gastos   cascade;
+drop table if exists autorizadores_rendiciones      cascade;
 
 
 \q

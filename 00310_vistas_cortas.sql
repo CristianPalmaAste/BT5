@@ -23,7 +23,7 @@ create or replace view prog as select * from programas;
 create or replace view usua as select * from usuarios;
 create or replace view uspe as select * from usuarios_perfiles;
 create or replace view pepr as select * from perfiles_programas;
-create or replace view plcu as select * from planes_cuentas;
+create or replace view cuco as select * from cuentas_contables;
 create or replace view dole as select * from documentos_legales;
 create or replace view tidl as select * from tipos_documentos_legales;
 create or replace view esdl as select * from estados_documentos_legales;
@@ -92,6 +92,13 @@ create or replace view prov as select * from proveedores;
 create or replace view tipp as select * from tipos_proveedores;
 create or replace view reco as select * from recepciones_compras;
 create or replace view derc as select * from detalles_recepciones_compras;
+create or replace view fore as select * from fondos_a_rendir;
+create or replace view esrg as select * from estados_rendiciones_gastos;
+create or replace view tirg as select * from tipos_rendiciones_gastos;
+create or replace view rega as select * from rendiciones_gastos;
+create or replace view derg as select * from detalles_rendiciones_gastos;
+create or replace view corg as select * from conceptos_rendiciones_gastos;
+create or replace view aurn as select * from autorizadores_rendiciones;
 
 
 \q

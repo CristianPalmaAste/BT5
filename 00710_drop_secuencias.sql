@@ -23,7 +23,7 @@ drop sequence if exists prog_seq;
 drop sequence if exists usua_seq;
 drop sequence if exists uspe_seq;
 drop sequence if exists pepr_seq;
-drop sequence if exists plcu_seq;
+drop sequence if exists cuco_seq;
 drop sequence if exists dole_seq;
 drop sequence if exists tidl_seq;
 drop sequence if exists esdl_seq;
@@ -92,6 +92,13 @@ drop sequence if exists prov_seq;
 drop sequence if exists tipp_seq;
 drop sequence if exists reco_seq;
 drop sequence if exists derc_seq;
+drop sequence if exists fore_seq;
+drop sequence if exists esrg_seq;
+drop sequence if exists tirg_seq;
+drop sequence if exists rega_seq;
+drop sequence if exists derg_seq;
+drop sequence if exists corg_seq;
+drop sequence if exists aurn_seq;
 
 
 \q

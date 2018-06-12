@@ -23,7 +23,7 @@ select 'create sequence prog_seq start with ' || (case when MAX(ID) is null then
 select 'create sequence usua_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from usuarios;
 select 'create sequence uspe_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from usuarios_perfiles;
 select 'create sequence pepr_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from perfiles_programas;
-select 'create sequence plcu_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from planes_cuentas;
+select 'create sequence cuco_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from cuentas_contables;
 select 'create sequence dole_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from documentos_legales;
 select 'create sequence tidl_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_documentos_legales;
 select 'create sequence esdl_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from estados_documentos_legales;
@@ -92,6 +92,13 @@ select 'create sequence prov_seq start with ' || (case when MAX(ID) is null then
 select 'create sequence tipp_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_proveedores;
 select 'create sequence reco_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from recepciones_compras;
 select 'create sequence derc_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from detalles_recepciones_compras;
+select 'create sequence fore_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from fondos_a_rendir;
+select 'create sequence esrg_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from estados_rendiciones_gastos;
+select 'create sequence tirg_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_rendiciones_gastos;
+select 'create sequence rega_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from rendiciones_gastos;
+select 'create sequence derg_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from detalles_rendiciones_gastos;
+select 'create sequence corg_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from conceptos_rendiciones_gastos;
+select 'create sequence aurn_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from autorizadores_rendiciones;
 
 
 \q

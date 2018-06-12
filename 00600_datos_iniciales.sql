@@ -26,13 +26,14 @@ insert into paises values (9 , 'VENEZUELA', 9 , 'VENEZOLANA' );
 insert into paises values (10, 'COLOMBIA' , 10, 'COLOMBIANA' );
 
 /* Deshabilito algunas constraints para poder insertar datos iniciales */
-alter table usuarios                   disable trigger all;
-alter table personas                   disable trigger all;
-alter table grupos_empresariales       drop constraint grem_fk1_usua;
-alter table parametros                 drop constraint para_fk1_usua;
-alter table planes_cuentas             drop constraint plcu_fk1_usua;
-alter table tipos_documentos_legales   drop constraint tidl_fk1_usua;
-alter table estados_documentos_legales drop constraint esdl_fk1_usua;
+alter table usuarios                     disable trigger all;
+alter table personas                     disable trigger all;
+alter table grupos_empresariales         drop constraint grem_fk1_usua;
+alter table parametros                   drop constraint para_fk1_usua;
+alter table cuentas_contables            drop constraint cuco_fk1_usua;
+alter table conceptos_rendiciones_gastos drop constraint corg_fk1_usua;
+alter table tipos_documentos_legales     drop constraint tidl_fk1_usua;
+alter table estados_documentos_legales   drop constraint esdl_fk1_usua;
 
 insert into estados_registros values (1, 'ACTIVO'  );
 insert into estados_registros values (2, 'INACTIVO');
@@ -84,13 +85,14 @@ insert into usuarios values (1, 'ADMIN', '12345', 1, 1, 1, current_timestamp, nu
 alter table usuarios add constraint usua_fk_pers foreign key (idpers) references personas (id);
 
 /* Rehabilito constraints deshabilitadas */
-alter table usuarios                   enable trigger all;
-alter table personas                   enable trigger all;
-alter table grupos_empresariales       add constraint grem_fk1_usua foreign key (idusuacrearegistro) references usuarios(id);
-alter table parametros                 add constraint para_fk1_usua foreign key (idusuacrearegistro) references usuarios(id);
-alter table planes_cuentas             add constraint plcu_fk1_usua foreign key (idusuacrearegistro) references usuarios(id);
-alter table tipos_documentos_legales   add constraint tidl_fk1_usua foreign key (idusuacrearegistro) references usuarios(id);
-alter table estados_documentos_legales add constraint esdl_fk1_usua foreign key (idusuacrearegistro) references usuarios(id);
+alter table usuarios                     enable trigger all;
+alter table personas                     enable trigger all;
+alter table grupos_empresariales         add constraint grem_fk1_usua foreign key (idusuacrearegistro) references usuarios(id);
+alter table parametros                   add constraint para_fk1_usua foreign key (idusuacrearegistro) references usuarios(id);
+alter table cuentas_contables            add constraint cuco_fk1_usua foreign key (idusuacrearegistro) references usuarios(id);
+alter table conceptos_rendiciones_gastos add constraint corg_fk1_usua foreign key (idusuacrearegistro) references usuarios(id);
+alter table tipos_documentos_legales     add constraint tidl_fk1_usua foreign key (idusuacrearegistro) references usuarios(id);
+alter table estados_documentos_legales   add constraint esdl_fk1_usua foreign key (idusuacrearegistro) references usuarios(id);
 
 insert into personas values (2 , 1, 2       , '7', 'ROLANDO'    , null      , 'SILVA'    , '-'        ,  ''                            , null        , 2   , 1, 1, 1, current_timestamp, null, null, null, null);
 insert into personas values (3 , 1, 3       , '5', 'SERGIO'     , null      , 'AGUIRRE'  , '-'        ,  'sergio.aguirre@bt5.cl'       , null        , 1   , 1, 1, 1, current_timestamp, null, null, null, null);
@@ -114,6 +116,9 @@ insert into usuarios values (10, 'CPALMAA'    , '12345', 10, 1, 1, current_times
 
 alter table autorizadores_requisiciones drop constraint aure_fk1_perf;
 alter table autorizadores_requisiciones drop constraint aure_fk2_perf;
+alter table autorizadores_rendiciones   drop constraint aurn_fk1_perf;
+alter table autorizadores_rendiciones   drop constraint aurn_fk2_perf;
+
 insert into empresas values (1 , 1, 1, 1, 1, '1', '9', 'BUSINESS & TECHNOLOGY 5 CONSULTING', 'BT5', 'bt5.jpg', 1, current_timestamp, null, null, null, null, null);
 
 insert into valores_paises values (nextval('vapa_seq'), 1 , 'IDENTP1', 'ETIQUETA IDENTIFICADOR 1 TABLA PERSONAS', 'ETIQUETA IDENTIFICADOR 1 TABLA PERSONAS'                , 'RUT'       ,  1, current_timestamp, null, null, null, null);

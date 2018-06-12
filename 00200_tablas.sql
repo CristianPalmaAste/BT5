@@ -520,7 +520,7 @@ alter table perfiles_programas add constraint pepr_uk_01 unique (idperf, idprog)
 
 /*************************************************************************************************************************/
 
-create table planes_cuentas (
+create table cuentas_contables (
    id                       numeric(20,0)     not null
   ,idgrem                   numeric(20,0)     not null
   ,segmento1                varchar(100)      not null
@@ -541,10 +541,10 @@ create table planes_cuentas (
 )
 ;
 
-alter table planes_cuentas add constraint plcu_pk primary key (id)
+alter table cuentas_contables add constraint cuco_pk primary key (id)
 ;
 
-alter table planes_cuentas add constraint plcu_uk_01 unique (idgrem, segmento1, segmento2, segmento3, segmento4, segmento5, segmento6, segmento7, segmento8)
+alter table cuentas_contables add constraint cuco_uk_01 unique (idgrem, segmento1, segmento2, segmento3, segmento4, segmento5, segmento6, segmento7, segmento8)
 ;
 
 /*************************************************************************************************************************/
@@ -1150,7 +1150,7 @@ create table tipos_doctos_ventas (
   ,descripcion              varchar(100)    not null
   ,descripcioncorta         varchar(10)     not null
   ,codigooficial            varchar(10)     not null
-  ,textoimpreso             varchar(10)     not null
+  ,textoimpreso             varchar(50)     not null
 )
 ;
 
@@ -2342,6 +2342,7 @@ create table rendiciones_gastos (
   ,idline                   numeric(20,0)       null
   ,idceco                   numeric(20,0)       null
   ,idtare                   numeric(20,0)       null
+  ,observaciones            varchar(500)        null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
   ,idusuamodifregistro      numeric(20,0)       null
@@ -2355,6 +2356,12 @@ alter table rendiciones_gastos add constraint rega_pk primary key (id)
 ;
 
 alter table rendiciones_gastos add constraint rega_uk_01 unique (idempr, correlativo)
+;
+
+alter table rendiciones_gastos add constraint rega_chk_01 check (idtirg = 1 and idfore is     null
+                                                                 or
+                                                                 idtirg = 2 and idfore is not null
+                                                                )
 ;
 
 /*************************************************************************************************************************/
@@ -2377,7 +2384,51 @@ alter table detalles_rendiciones_gastos add constraint derg_pk primary key (id)
 alter table detalles_rendiciones_gastos add constraint derg_uk_01 unique (idrega, correlativo)
 ;
 
-alter table detalles_rendiciones_gastos add constraint derg_uk_01 unique (idrega, idtidv, numero)
+alter table detalles_rendiciones_gastos add constraint derg_uk_02 unique (idrega, idtidv, numero)
+;
+
+/*************************************************************************************************************************/
+
+create table conceptos_rendiciones_gastos (
+   id                       numeric(20,0)   not null
+  ,idgrem                   numeric(20,0)   not null
+  ,descripcion              varchar(500)    not null
+  ,idcuco                   numeric(20,0)   not null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table conceptos_rendiciones_gastos add constraint corg_pk primary key (id)
+;
+
+alter table conceptos_rendiciones_gastos add constraint corg_uk_01 unique (idgrem, descripcion)
+;
+
+/*************************************************************************************************************************/
+
+create table autorizadores_rendiciones (
+   id                       numeric(20,0)   not null
+  ,idempr                   numeric(20,0)   not null
+  ,idperfautorizador        numeric(20,0)   not null
+  ,idperfautorizado         numeric(20,0)   not null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table autorizadores_rendiciones add constraint aurn_pk primary key (id)
+;
+
+alter table autorizadores_rendiciones add constraint aurn_uk_01 unique (idempr, idperfautorizador, idperfautorizado)
 ;
 
 /*************************************************************************************************************************/
@@ -2387,10 +2438,13 @@ alter table detalles_rendiciones_gastos add constraint derg_uk_01 unique (idrega
 
 
 
-
-
-
 -- Sección foreign keys
+
+alter table conceptos_rendiciones_gastos  add constraint corg_fk_grem  foreign key (idgrem)                references grupos_empresariales             (id);
+alter table conceptos_rendiciones_gastos  add constraint corg_fk_cuco  foreign key (idcuco)                references cuentas_contables                (id);
+alter table conceptos_rendiciones_gastos  add constraint corg_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
+alter table conceptos_rendiciones_gastos  add constraint corg_fk2_usua foreign key (idusuamodifregistro)   references usuarios                         (id);
+alter table conceptos_rendiciones_gastos  add constraint corg_fk3_usua foreign key (idusuaborraregistro)   references usuarios                         (id);
 
 alter table detalles_rendiciones_gastos   add constraint derg_fk_rega  foreign key (idrega)                references rendiciones_gastos               (id);
 alter table detalles_rendiciones_gastos   add constraint derg_fk_tidv  foreign key (idtidv)                references tipos_doctos_ventas              (id);
@@ -2475,6 +2529,12 @@ alter table autorizadores_requisiciones   add constraint aure_fk2_perf foreign k
 alter table autorizadores_requisiciones   add constraint aure_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table autorizadores_requisiciones   add constraint aure_fk2_usua foreign key (idusuamodifregistro)   references usuarios                         (id);
 alter table autorizadores_requisiciones   add constraint aure_fk3_usua foreign key (idusuaborraregistro)   references usuarios                         (id);
+
+alter table autorizadores_rendiciones     add constraint aurn_fk1_perf foreign key (idperfautorizador)     references perfiles                         (id);
+alter table autorizadores_rendiciones     add constraint aurn_fk2_perf foreign key (idperfautorizado)      references perfiles                         (id);
+alter table autorizadores_rendiciones     add constraint aurn_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
+alter table autorizadores_rendiciones     add constraint aurn_fk2_usua foreign key (idusuamodifregistro)   references usuarios                         (id);
+alter table autorizadores_rendiciones     add constraint aurn_fk3_usua foreign key (idusuaborraregistro)   references usuarios                         (id);
 
 alter table requisiciones                 add constraint requ_fk_empr  foreign key (idempr)                references empresas                         (id);
 alter table requisiciones                 add constraint requ_fk_tire  foreign key (idtire)                references tipos_requisiciones              (id);
@@ -2617,10 +2677,10 @@ alter table tipos_documentos_legales      add constraint tidl_fk1_usua foreign k
 alter table tipos_documentos_legales      add constraint tidl_fk2_usua foreign key (idusuamodifregistro)   references usuarios                         (id);
 alter table tipos_documentos_legales      add constraint tidl_fk3_usua foreign key (idusuaborraregistro)   references usuarios                         (id);
 
-alter table planes_cuentas                add constraint plcu_fk_grem  foreign key (idgrem)                references grupos_empresariales             (id);
-alter table planes_cuentas                add constraint plcu_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
-alter table planes_cuentas                add constraint plcu_fk2_usua foreign key (idusuamodifregistro)   references usuarios                         (id);
-alter table planes_cuentas                add constraint plcu_fk3_usua foreign key (idusuaborraregistro)   references usuarios                         (id);
+alter table cuentas_contables             add constraint cuco_fk_grem  foreign key (idgrem)                references grupos_empresariales             (id);
+alter table cuentas_contables             add constraint cuco_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
+alter table cuentas_contables             add constraint cuco_fk2_usua foreign key (idusuamodifregistro)   references usuarios                         (id);
+alter table cuentas_contables             add constraint cuco_fk3_usua foreign key (idusuaborraregistro)   references usuarios                         (id);
 
 alter table perfiles_programas            add constraint pepr_fk_perf  foreign key (idperf)                references perfiles                         (id);
 alter table perfiles_programas            add constraint pepr_fk_prog  foreign key (idprog)                references programas                        (id);

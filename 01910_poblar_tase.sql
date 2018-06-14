@@ -92,4 +92,10 @@ insert into tablas_secuencias values ('proveedores'                     , 'prov_
 insert into tablas_secuencias values ('tipos_proveedores'               , 'tipp_seq');
 insert into tablas_secuencias values ('recepciones_compras'             , 'reco_seq');
 insert into tablas_secuencias values ('detalles_recepciones_compras'    , 'derc_seq');
-
+insert into tablas_secuencias values ('fondos_a_rendir'                 , 'fore_seq');
+insert into tablas_secuencias values ('estados_rendiciones_gastos'      , 'esrg_seq');
+insert into tablas_secuencias values ('tipos_rendiciones_gastos'        , 'tirg_seq');
+insert into tablas_secuencias values ('rendiciones_gastos'              , 'rega_seq');
+insert into tablas_secuencias values ('detalles_rendiciones_gastos'     , 'derg_seq');
+insert into tablas_secuencias values ('conceptos_rendiciones_gastos'    , 'corg_seq');
+insert into tablas_secuencias values ('autorizadores_rendiciones'       , 'aurn_seq');

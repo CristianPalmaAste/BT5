@@ -1,0 +1,20 @@
+1) Mantenedor conceptos_rendiciones_gastos
+2) Mantenedor estados_rendiciones_gastos 
+3) Mantenedor tipos_rendiciones_gastos 
+4) Mantenedor conceptos_rendiciones_gastos 
+5) Mantenedor autorizadores_rendiciones 
+
+6) Creacion fondo a rendir
+
+7) Registro de rendicion de gasto, traspaso a superior jerárquico 
+   (es un maestro detalle entre rendiciones_gastos y
+   detalles_rendiciones_gastos)
+
+   Don Osci: "generas" genera tb. programas de estos?
+
+8) Programa para aprobación* por parte del superior jerárquico,
+   traspaso a contabilidad (*: o rechazo)
+
+9) Aprobación o rechazo por parte de contabilidad
+
+10) Contabilización rendiciones aprobadas

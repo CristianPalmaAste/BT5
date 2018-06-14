@@ -1151,6 +1151,8 @@ create table tipos_doctos_ventas (
   ,descripcioncorta         varchar(10)     not null
   ,codigooficial            varchar(10)     not null
   ,textoimpreso             varchar(50)     not null
+  ,usable_en_rendicion      varchar(1)      not null
+  ,obliga_proveedor         varchar(1)      not null
 )
 ;
 
@@ -1164,6 +1166,12 @@ alter table tipos_doctos_ventas add constraint tidv_uk_02 unique (idpais, descri
 ;
 
 alter table tipos_doctos_ventas add constraint tidv_uk_03 unique (idpais, codigooficial)
+;
+
+alter table tipos_doctos_ventas add constraint tidv_chk_01 check (usable_en_rendicion in ('S', 'N'))
+;
+
+alter table tipos_doctos_ventas add constraint tidv_chk_02 check (obliga_proveedor in ('S', 'N'))
 ;
 
 /*************************************************************************************************************************/
@@ -2370,11 +2378,12 @@ create table detalles_rendiciones_gastos (
    id                       numeric(20,0)   not null
   ,idrega                   numeric(20,0)   not null
   ,correlativo              numeric(20,0)   not null
+  ,idprov                   numeric(20,0)   not null
   ,idtidv                   numeric(20,0)   not null
   ,numero                   numeric(20,0)   not null
   ,fecha_docto              timestamp       not null
-  ,monto                    numeric(20,0)   not null
   ,idcorg                   numeric(20,0)   not null
+  ,monto                    numeric(20,0)   not null
 )
 ;
 

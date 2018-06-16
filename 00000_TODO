@@ -244,4 +244,7 @@ psql -d $DBNAME -U $USUARIO_DB < 99000_datos_de_prueba.sql > 99010_datos_de_prue
 echo "Poniendo secuencias al dia"
 ./00700_secuencias.sh
 
+echo "Buscando problemas en fks"
+psql -d $DBNAME -U $USUARIO_DB < 89900_p_buscar_fks_faltan.sql
+
 echo

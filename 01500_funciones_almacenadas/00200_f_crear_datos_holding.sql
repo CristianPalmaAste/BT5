@@ -9,19 +9,19 @@ begin
   insert into parametros values (nextval('para_seq'), new.id, 'CADUCNV'      , 'CADUCIDAD NOTAS DE VENTA'                 , 'TIEMPO TRAS EL CUAL CADUCA UNA NOTA DE VENTA (1 DÍA, 2 HORAS, ETC.)', '1' , 1, current_timestamp, null, null, null, null);     
   insert into parametros values (nextval('para_seq'), new.id, 'VALIDEZCOTI'  , 'DEFAULT DÍAS VALIDEZ COTIZACIÓN'          , 'DÍAS DE VALIDEZ POR DEFECTO DE UNA COTIZACIÓN'                      , '5' , 1, current_timestamp, null, null, null, null);     
 
-  insert into rubros values (nextval('rubr_seq'), new.id, 'OTRO'        );
-  insert into rubros values (nextval('rubr_seq'), new.id, 'CONSULTORÍA' );
-  insert into rubros values (nextval('rubr_seq'), new.id, 'AUTOMOTRIZ'  );
-  insert into rubros values (nextval('rubr_seq'), new.id, 'INDUSTRIAL'  );
-  insert into rubros values (nextval('rubr_seq'), new.id, 'INVERSIONES' );
-  insert into rubros values (nextval('rubr_seq'), new.id, 'AGRÍCOLA'    );
-  insert into rubros values (nextval('rubr_seq'), new.id, 'FARMACÉUTICO');
-  insert into rubros values (nextval('rubr_seq'), new.id, 'LOGÍSTICA'   );
-  insert into rubros values (nextval('rubr_seq'), new.id, 'AMASANDERÍA' );
+  insert into rubros values (nextval('rubr_seq'), new.id, 'OTRO'        , 1, current_timestamp, null, null, null, null);
+  insert into rubros values (nextval('rubr_seq'), new.id, 'CONSULTORÍA' , 1, current_timestamp, null, null, null, null);
+  insert into rubros values (nextval('rubr_seq'), new.id, 'AUTOMOTRIZ'  , 1, current_timestamp, null, null, null, null);
+  insert into rubros values (nextval('rubr_seq'), new.id, 'INDUSTRIAL'  , 1, current_timestamp, null, null, null, null);
+  insert into rubros values (nextval('rubr_seq'), new.id, 'INVERSIONES' , 1, current_timestamp, null, null, null, null);
+  insert into rubros values (nextval('rubr_seq'), new.id, 'AGRÍCOLA'    , 1, current_timestamp, null, null, null, null);
+  insert into rubros values (nextval('rubr_seq'), new.id, 'FARMACÉUTICO', 1, current_timestamp, null, null, null, null);
+  insert into rubros values (nextval('rubr_seq'), new.id, 'LOGÍSTICA'   , 1, current_timestamp, null, null, null, null);
+  insert into rubros values (nextval('rubr_seq'), new.id, 'AMASANDERÍA' , 1, current_timestamp, null, null, null, null);
 
-  insert into tipos_documentos_legales values (nextval('tidl_seq'), new.id, 'CONSTITUCIÓN DE SOCIEDAD', 'CONST. SOC.', '#FF0000'  , 1, current_timestamp, null, null, null, null);
-  insert into tipos_documentos_legales values (nextval('tidl_seq'), new.id, 'ACTA DE DIRECTORIO'      , 'ACTA DIR.'  , '#00FF00'  , 1, current_timestamp, null, null, null, null);
-  insert into tipos_documentos_legales values (nextval('tidl_seq'), new.id, 'SESIÓN DE DIRECTORIO'    , 'SES. DIR.'  , '#0000FF'  , 1, current_timestamp, null, null, null, null);
+  insert into tipos_documentos_legales values (nextval('tidl_seq'), new.id, 'CONSTITUCIÓN DE SOCIEDAD', 'CONST. SOC.', '#FF0000', 1, current_timestamp, null, null, null, null);
+  insert into tipos_documentos_legales values (nextval('tidl_seq'), new.id, 'ACTA DE DIRECTORIO'      , 'ACTA DIR.'  , '#00FF00', 1, current_timestamp, null, null, null, null);
+  insert into tipos_documentos_legales values (nextval('tidl_seq'), new.id, 'SESIÓN DE DIRECTORIO'    , 'SES. DIR.'  , '#0000FF', 1, current_timestamp, null, null, null, null);
   insert into tipos_documentos_legales values (nextval('tidl_seq'), new.id, 'CONTRATO DE ARRIENDO'    , 'CONT. ARR.' , '#FFFFFF', 1, current_timestamp, null, null, null, null);
 
   insert into estados_documentos_legales values (nextval('esdl_seq'), new.id, 'VÁLIDO'  , 1, current_timestamp, null, null, null, null);

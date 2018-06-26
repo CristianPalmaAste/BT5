@@ -352,7 +352,7 @@ begin
   insert into usuarios values (Vidusua, 'UAT', '12345', Vidpers, 1, 1, current_timestamp, null, null, null, null);
   select nextval('perf_seq')+250 into Vidperf;
   
-  insert into perfiles values (Vidperf, 'PERFIL DE PRUEBA CON ACCESO A TODO');
+  insert into perfiles values (Vidperf, 'PERFIL DE PRUEBA CON ACCESO A TODO', 1, current_timestamp, null, null, null, null);
   select nextval('uspe_seq')+500 into Viduspe;
   insert into usuarios_perfiles values (Viduspe, Vidusua, Vidperf, null, 1, 1, 1, current_timestamp, null, null, null, null);
   select nextval('uspe_seq')+500 into Viduspe;
@@ -442,7 +442,7 @@ begin
   select nextval('usua_seq') into Vidusua;
   insert into usuarios values (Vidusua, 'ULEGALES', '12345', Vidpers, 1, 1, current_timestamp, null, null, null, null);
   select nextval('perf_seq')+2000 into Vidperf;
-  insert into perfiles values (Vidperf, 'PERFIL DE PRUEBA LEGALES');
+  insert into perfiles values (Vidperf, 'PERFIL DE PRUEBA LEGALES', 1, current_timestamp, null, null, null, null);
   select nextval('uspe_seq')+1000 into Viduspe;
   insert into usuarios_perfiles values (Viduspe, Vidusua, Vidperf, null, 1   , 1, 1, current_timestamp, null, null, null, null);
   insert into perfiles_programas values (nextval('pepr_seq'), Vidperf, 1000, 1, current_timestamp, null, null, null, null);
@@ -746,9 +746,9 @@ insert into descuentos values (5, null, null, 3   , 10 , 1, 1, current_timestamp
 insert into descuentos values (6, null, null, 4   , 15 , 1, 1, current_timestamp, null, null, null, null);
 insert into descuentos values (7, null, null, 5   , 5  , 1, 1, current_timestamp, null, null, null, null);
 
-insert into impuestos values (4, 1, 'IMPUESTO FICTICIO A LOS LIBROS (PRUEBA)', 'IFL' , 'N', 5);
+insert into impuestos values (4, 1, 'IMPUESTO FICTICIO A LOS LIBROS (PRUEBA)', 'IFL' , 'N', 5, 1, current_timestamp, null, null, null, null);
 
-insert into tipos_productos_impuestos values (nextval('tipi_seq'), 15, 4);
+insert into tipos_productos_impuestos values (nextval('tipi_seq'), 15, 4, 1, current_timestamp, null, null, null, null);
 
 insert into proveedores values (1 , 1, 1, 21878885, '8', 2, 'COMERCIAL NAPM EIRL' , 'NAPM'  , null      , null              , null   , null      , 1, current_timestamp, null, null, null, null);
 insert into proveedores values (2 , 1, 1, 13047104, '8', 1, null                  , null    , 'ALVARO'  , 'VÍCTOR ALEJANDRO', 'PALMA', 'ASTE'    , 1, current_timestamp, null, null, null, null);
@@ -765,9 +765,9 @@ insert into proveedores values (12, 4, 1, 91144000, '8', 2, 'EMBOTELLADORA ANDIN
 
 insert into requisiciones values (1, 1, 1, 1, 3, null, null, null, null, null, 1, 1, current_timestamp, null, null, null, null);
 
-insert into detalles_requisiciones values (1, 1, 1, 1 , 9, null, null, null, 10);
-insert into detalles_requisiciones values (2, 1, 2, 2 , 9, null, null, null, 20);
-insert into detalles_requisiciones values (3, 1, 3, 3 , 9, null, null, null, 30);
+insert into detalles_requisiciones values (1, 1, 1, 1 , 9, null, null, null, 10, 1, current_timestamp, null, null, null, null);
+insert into detalles_requisiciones values (2, 1, 2, 2 , 9, null, null, null, 20, 1, current_timestamp, null, null, null, null);
+insert into detalles_requisiciones values (3, 1, 3, 3 , 9, null, null, null, 30, 1, current_timestamp, null, null, null, null);
 
 insert into historiales_requisiciones values (1 , 1, 1, 3, null                        , current_timestamp);
 insert into historiales_requisiciones values (2 , 1, 2, 3, null                        , current_timestamp);
@@ -782,9 +782,9 @@ insert into historiales_requisiciones values (10, 1, 5, 6, null                 
 
 insert into requisiciones values (2, 1, 2, 2, 3, null, null, null, null, null, 1, 1, current_timestamp, null, null, null, null);
 
-insert into detalles_requisiciones values (4, 2, 1, 13, 3, null, null, null, 5 );
-insert into detalles_requisiciones values (5, 2, 2, 14, 3, null, null, null, 5 );
-insert into detalles_requisiciones values (6, 2, 3, 15, 3, null, null, null, 10);
+insert into detalles_requisiciones values (4, 2, 1, 13, 3, null, null, null, 5 , 1, current_timestamp, null, null, null, null);
+insert into detalles_requisiciones values (5, 2, 2, 14, 3, null, null, null, 5 , 1, current_timestamp, null, null, null, null);
+insert into detalles_requisiciones values (6, 2, 3, 15, 3, null, null, null, 10, 1, current_timestamp, null, null, null, null);
 
 insert into historiales_requisiciones values (11, 2, 1, 3, null                        , current_timestamp);
 
@@ -795,19 +795,19 @@ insert into cotizaciones_compras values (4, 2, null, 4, 'DESPACHOS GRATIS A TODO
 insert into cotizaciones_compras values (5, 2, null, 3, 'SE EXIGE PAGO A MÁXIMO 120 DÍAS' , 1, current_timestamp, null, null, null, null);
 insert into cotizaciones_compras values (6, 2, null, 2, 'PAGO AL CONTADO CONTRA ENTREGA'  , 1, current_timestamp, null, null, null, null);
 
-insert into detalles_cotizaciones_compras values (1 , 1, 'cotizacion_1.docx' , 'coco_1.docx' );
-insert into detalles_cotizaciones_compras values (2 , 2, 'cotizacion_2.docx' , 'coco_2.docx' );
-insert into detalles_cotizaciones_compras values (3 , 3, 'cotizacion_3.docx' , 'coco_3.docx' );
-insert into detalles_cotizaciones_compras values (4 , 3, 'cotizacion_4.docx' , 'coco_4.docx' );
-insert into detalles_cotizaciones_compras values (5 , 4, 'cotizacion_5.docx' , 'coco_5.docx' );
-insert into detalles_cotizaciones_compras values (6 , 4, 'cotizacion_6.docx' , 'coco_6.docx' );
-insert into detalles_cotizaciones_compras values (7 , 4, 'cotizacion_7.docx' , 'coco_7.docx' );
-insert into detalles_cotizaciones_compras values (8 , 5, 'cotizacion_8.docx' , 'coco_8.docx' );
-insert into detalles_cotizaciones_compras values (9 , 5, 'cotizacion_9.docx' , 'coco_9.docx' );
-insert into detalles_cotizaciones_compras values (10, 5, 'cotizacion_10.docx', 'coco_10.docx');
-insert into detalles_cotizaciones_compras values (11, 5, 'cotizacion_11.docx', 'coco_11.docx');
-insert into detalles_cotizaciones_compras values (12, 6, 'cotizacion_12.docx', 'coco_12.docx');
-insert into detalles_cotizaciones_compras values (13, 6, 'cotizacion_13.docx', 'coco_13.docx');
+insert into detalles_cotizaciones_compras values (1 , 1, 'cotizacion_1.docx' , 'coco_1.docx' , 1, current_timestamp, null, null, null, null);
+insert into detalles_cotizaciones_compras values (2 , 2, 'cotizacion_2.docx' , 'coco_2.docx' , 1, current_timestamp, null, null, null, null);
+insert into detalles_cotizaciones_compras values (3 , 3, 'cotizacion_3.docx' , 'coco_3.docx' , 1, current_timestamp, null, null, null, null);
+insert into detalles_cotizaciones_compras values (4 , 3, 'cotizacion_4.docx' , 'coco_4.docx' , 1, current_timestamp, null, null, null, null);
+insert into detalles_cotizaciones_compras values (5 , 4, 'cotizacion_5.docx' , 'coco_5.docx' , 1, current_timestamp, null, null, null, null);
+insert into detalles_cotizaciones_compras values (6 , 4, 'cotizacion_6.docx' , 'coco_6.docx' , 1, current_timestamp, null, null, null, null);
+insert into detalles_cotizaciones_compras values (7 , 4, 'cotizacion_7.docx' , 'coco_7.docx' , 1, current_timestamp, null, null, null, null);
+insert into detalles_cotizaciones_compras values (8 , 5, 'cotizacion_8.docx' , 'coco_8.docx' , 1, current_timestamp, null, null, null, null);
+insert into detalles_cotizaciones_compras values (9 , 5, 'cotizacion_9.docx' , 'coco_9.docx' , 1, current_timestamp, null, null, null, null);
+insert into detalles_cotizaciones_compras values (10, 5, 'cotizacion_10.docx', 'coco_10.docx', 1, current_timestamp, null, null, null, null);
+insert into detalles_cotizaciones_compras values (11, 5, 'cotizacion_11.docx', 'coco_11.docx', 1, current_timestamp, null, null, null, null);
+insert into detalles_cotizaciones_compras values (12, 6, 'cotizacion_12.docx', 'coco_12.docx', 1, current_timestamp, null, null, null, null);
+insert into detalles_cotizaciones_compras values (13, 6, 'cotizacion_13.docx', 'coco_13.docx', 1, current_timestamp, null, null, null, null);
 
 update requisiciones
 set    idereq = 2
@@ -839,15 +839,15 @@ set    idesoc = 3
 
 insert into recepciones_compras values (1, 1, 1, 1, 1, current_timestamp, null, null, null, null);
 
-insert into detalles_recepciones_compras values (1, 1, 1, 1, 9, null, null, null, 2);
-insert into detalles_recepciones_compras values (2, 1, 2, 2, 9, null, null, null, 1);
-insert into detalles_recepciones_compras values (3, 1, 3, 3, 9, null, null, null, 5);
+insert into detalles_recepciones_compras values (1, 1, 1, 1, 9, null, null, null, 2, 1, current_timestamp, null, null, null, null);
+insert into detalles_recepciones_compras values (2, 1, 2, 2, 9, null, null, null, 1, 1, current_timestamp, null, null, null, null);
+insert into detalles_recepciones_compras values (3, 1, 3, 3, 9, null, null, null, 5, 1, current_timestamp, null, null, null, null);
 
 insert into recepciones_compras values (2, 1, 1, 2, 1, current_timestamp, null, null, null, null);
 
-insert into detalles_recepciones_compras values (4, 2, 1, 1, 9, null, null, null, 5);
-insert into detalles_recepciones_compras values (5, 2, 2, 2, 9, null, null, null, 2);
-insert into detalles_recepciones_compras values (6, 2, 3, 3, 9, null, null, null, 3);
+insert into detalles_recepciones_compras values (4, 2, 1, 1, 9, null, null, null, 5, 1, current_timestamp, null, null, null, null);
+insert into detalles_recepciones_compras values (5, 2, 2, 2, 9, null, null, null, 2, 1, current_timestamp, null, null, null, null);
+insert into detalles_recepciones_compras values (6, 2, 3, 3, 9, null, null, null, 3, 1, current_timestamp, null, null, null, null);
  
 insert into usuarios_perfiles values (nextval('uspe_seq'),  3, 20, null, 1, 1, 1, current_timestamp, null, null, null, null);
 insert into usuarios_perfiles values (nextval('uspe_seq'),  4, 20, null, 1, 1, 1, current_timestamp, null, null, null, null);

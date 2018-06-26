@@ -859,11 +859,53 @@ from   boprv
 order  by 1
 ;
 
+\q
+
+/*************************************************************************************************************************/
+
+drop view if exists forev
+;
+
+create or replace view forev as
+select fore.id               id
+      ,fore.idempr
+      ,fore.correlativo
+      ,fore.monto
+      ,fore.idgere                                                                                                                 idgere
+      ,gere.nombre                                                                                                                 gerencia
+      ,fore.idproy                                                                                                                 idproy
+      ,proy.nombre                                                                                                                 proyecto
+      ,fore.idline                                                                                                                 idline
+      ,line.nombre                                                                                                                 linea_negocio
+      ,fore.idceco                                                                                                                 idceco
+      ,ceco.nombre                                                                                                                 centro_costo
+      ,fore.idtare                                                                                                                 idtare
+      ,tare.nombre                                                                                                                 tarea
+from                   fondos_a_rendir                   fore
+       left outer join ZZZZZ                   zzzz on fore.idzzzz = zzzz.id
+where  fore.idusuaborraregistro is null
+       left outer join gerencias                  gere on cove.idgere = gere.id
+       left outer join proyectos                  proy on cove.idproy = proy.id
+       left outer join lineas_negocios            line on cove.idline = line.id
+       left outer join centros_costos             ceco on cove.idceco = ceco.id
+       left outer join tareas                     tare on cove.idtare = tare.id
+;
+
+select *
+from   forev
+order  by 1
+;
+
 /*************************************************************************************************************************/
 
 \q
 
 
+forev fondos_a_rendir
+regav rendiciones_gastos
+dergv detalles_rendiciones_gastos
+corgv conceptos_rendiciones_gastos
+aurnv autorizadores_rendiciones
 
 
 Más adelante:
@@ -886,6 +928,10 @@ order  by 1
 ;
 
 /*************************************************************************************************************************/
+
+
+
+
 
 soshv
 idsov

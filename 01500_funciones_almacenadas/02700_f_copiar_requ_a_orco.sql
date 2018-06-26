@@ -102,6 +102,8 @@ begin
                                            ,idunms                   -- numeric(20,0)       null
                                            ,otroinsumo               -- varchar(1000)       null
                                            ,cantidad                 -- numeric(20,0)   not null
+                                           ,idusuacrearegistro       -- numeric(20,0)   not null
+                                           ,fechacrearegistro        -- timestamp       not null
                                            )
       values (Viddeoc                             -- id                       numeric(20,0)   not null
              ,Vidorco                             -- idorco                   numeric(20,0)   not null
@@ -113,6 +115,8 @@ begin
              ,Vidunms                             -- idunms                   numeric(20,0)       null
              ,Votroinsumo                         -- otroinsumo               varchar(1000)       null
              ,Vcantidad                           -- cantidad                 numeric(20,0)   not null
+             ,new.idusuacrearegistro              -- idusuacrearegistro       numeric(20,0)   not null
+             ,current_timestamp                   -- fechacrearegistro        timestamp       not null
              )
       ;
     end loop;

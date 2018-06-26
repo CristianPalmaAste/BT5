@@ -235,6 +235,9 @@ psql -d $DBNAME -U $USUARIO_DB < 02200_perf_prog_pepr.sql > 02210_perf_prog_pepr
 echo "Vista perfilamiento"
 psql -d $DBNAME -U $USUARIO_DB < 02300_vista_perfilamiento.sql > 02310_vista_perfilamiento.txt
 
+echo "Creando fks idusuacrearegistro"
+psql -d $DBNAME -U $USUARIO_DB < 02400_crea_fks_idusuacrearegistro.sql > 02410_crea_fks_idusuacrearegistro.txt
+
 echo "Poniendo secuencias al dia"
 ./00700_secuencias.sh
 

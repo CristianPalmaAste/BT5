@@ -858,4 +858,13 @@ insert into usuarios_perfiles values (nextval('uspe_seq'),  8, 20, null, 1, 1, 1
 insert into usuarios_perfiles values (nextval('uspe_seq'),  9, 20, null, 1, 1, 1, current_timestamp, null, null, null, null);
 insert into usuarios_perfiles values (nextval('uspe_seq'), 10, 20, null, 1, 1, 1, current_timestamp, null, null, null, null);
 
+insert into fondos_a_rendir values (nextval('fore_seq'), 1, 1,  50000, null, null, null, null, null, 1, current_timestamp, null, null, null, null);
+insert into fondos_a_rendir values (nextval('fore_seq'), 1, 2, 100000, null, null, null, null, null, 1, current_timestamp, null, null, null, null);
+insert into fondos_a_rendir values (nextval('fore_seq'), 1, 3,  30000, null, null, null, null, null, 1, current_timestamp, null, null, null, null);
+insert into fondos_a_rendir values (nextval('fore_seq'), 1, 4,  80000, null, null, null, null, null, 1, current_timestamp, null, null, null, null);
+insert into fondos_a_rendir values (nextval('fore_seq'), 1, 5, 200000, null, null, null, null, null, 1, current_timestamp, null, null, null, null);
+
+insert into rendiciones_gastos values (nextval('rega_seq'), 1, 1, 1, null, 1, null, null, null, null, null, 'EJEMPLO 1', 1, current_timestamp, null, null, null, null);
+insert into rendiciones_gastos values (nextval('rega_seq'), 1, 2, 2, 1   , 1, null, null, null, null, null, 'EJEMPLO 2', 1, current_timestamp, null, null, null, null);
+
 \q

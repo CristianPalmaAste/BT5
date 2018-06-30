@@ -111,7 +111,7 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence pepr_seq start with 292
+ create sequence pepr_seq start with 301
 (1 fila)
 
                 ?column?                 
@@ -461,12 +461,12 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence fore_seq start with 1
+ create sequence fore_seq start with 6
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence esrg_seq start with 7
+ create sequence esrg_seq start with 9
 (1 fila)
 
                ?column?                
@@ -476,7 +476,7 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence rega_seq start with 1
+ create sequence rega_seq start with 3
 (1 fila)
 
                ?column?                

@@ -867,28 +867,29 @@ drop view if exists forev
 ;
 
 create or replace view forev as
-select fore.id               id
-      ,fore.idempr
-      ,fore.correlativo
-      ,fore.monto
-      ,fore.idgere                                                                                                                 idgere
-      ,gere.nombre                                                                                                                 gerencia
-      ,fore.idproy                                                                                                                 idproy
-      ,proy.nombre                                                                                                                 proyecto
-      ,fore.idline                                                                                                                 idline
-      ,line.nombre                                                                                                                 linea_negocio
-      ,fore.idceco                                                                                                                 idceco
-      ,ceco.nombre                                                                                                                 centro_costo
-      ,fore.idtare                                                                                                                 idtare
-      ,tare.nombre                                                                                                                 tarea
-from                   fondos_a_rendir                   fore
-       left outer join ZZZZZ                   zzzz on fore.idzzzz = zzzz.id
+select fore.id                        id
+      ,fore.idempr                    idempr
+      ,empr.nombrefantasia            empresa
+      ,fore.correlativo               correlativo
+      ,fore.monto                     monto
+      ,fore.idgere                    idgere
+      ,gere.nombre                    gerencia
+      ,fore.idproy                    idproy
+      ,proy.nombre                    proyecto
+      ,fore.idline                    idline
+      ,line.nombre                    linea_negocio
+      ,fore.idceco                    idceco
+      ,ceco.nombre                    centro_costo
+      ,fore.idtare                    idtare
+      ,tare.nombre                    tarea
+from                   fondos_a_rendir            fore
+       left outer join empresas                   empr on fore.idempr = empr.id
+       left outer join gerencias                  gere on fore.idgere = gere.id
+       left outer join proyectos                  proy on fore.idproy = proy.id
+       left outer join lineas_negocios            line on fore.idline = line.id
+       left outer join centros_costos             ceco on fore.idceco = ceco.id
+       left outer join tareas                     tare on fore.idtare = tare.id
 where  fore.idusuaborraregistro is null
-       left outer join gerencias                  gere on cove.idgere = gere.id
-       left outer join proyectos                  proy on cove.idproy = proy.id
-       left outer join lineas_negocios            line on cove.idline = line.id
-       left outer join centros_costos             ceco on cove.idceco = ceco.id
-       left outer join tareas                     tare on cove.idtare = tare.id
 ;
 
 select *
@@ -898,11 +899,54 @@ order  by 1
 
 /*************************************************************************************************************************/
 
+drop view if exists regav
+;
+
+create or replace view regav as
+select rega.id                        id
+      ,rega.idempr                    idempr
+      ,empr.nombrefantasia            empresa
+      ,rega.correlativo               correlativo
+      ,rega.idtirg                    idtirg
+      ,tirg.descripcion               tipo_rendicion_gasto
+      ,rega.idfore                    idfore
+      ,fore.correlativo               fondo_a_rendir
+      ,rega.idesrg                    idesrg
+      ,esrg.descripcion               estado_rendicion_gasto
+      ,rega.idgere                    idgere
+      ,gere.nombre                    gerencia
+      ,rega.idproy                    idproy
+      ,proy.nombre                    proyecto
+      ,rega.idline                    idline
+      ,line.nombre                    linea_negocio
+      ,rega.idceco                    idceco
+      ,ceco.nombre                    centro_costo
+      ,rega.idtare                    idtare
+      ,tare.nombre                    tarea
+      ,rega.observaciones             observaciones
+from                   rendiciones_gastos          rega
+       left outer join empresas                    empr on rega.idempr = empr.id
+       left outer join tipos_rendiciones_gastos    tirg on rega.idtirg = tirg.id
+       left outer join fondos_a_rendir             fore on rega.idfore = fore.id
+       left outer join estados_rendiciones_gastos  esrg on rega.idesrg = esrg.id
+       left outer join gerencias                   gere on rega.idgere = gere.id
+       left outer join proyectos                   proy on rega.idproy = proy.id
+       left outer join lineas_negocios             line on rega.idline = line.id
+       left outer join centros_costos              ceco on rega.idceco = ceco.id
+       left outer join tareas                      tare on rega.idtare = tare.id
+where  rega.idusuaborraregistro is null
+;
+
+select *
+from   regav
+order  by 1
+;
+
+/*************************************************************************************************************************/
+
 \q
 
 
-forev fondos_a_rendir
-regav rendiciones_gastos
 dergv detalles_rendiciones_gastos
 corgv conceptos_rendiciones_gastos
 aurnv autorizadores_rendiciones

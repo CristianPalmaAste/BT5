@@ -744,14 +744,16 @@ insert into estados_detalles_ordenes_compras values (3, 'SATISFECHA'            
 insert into tipos_proveedores values (1, 'PERSONA NATURAL', 1, current_timestamp, null, null, null, null);
 insert into tipos_proveedores values (2, 'EMPRESA'        , 1, current_timestamp, null, null, null, null);
 
-insert into estados_rendiciones_gastos values (1, 'INGRESADA'                                            , 1, current_timestamp, null, null, null, null);
-insert into estados_rendiciones_gastos values (2, 'SOLICITA APROBACIÓN SUPERIOR JERÁRQUICO'              , 1, current_timestamp, null, null, null, null);
-insert into estados_rendiciones_gastos values (3, 'APROBADA POR SUPERIOR JERÁRQUICO, PASA A CONTABILIDAD', 1, current_timestamp, null, null, null, null);
-insert into estados_rendiciones_gastos values (4, 'APROBADA POR CONTABILIDAD'                            , 1, current_timestamp, null, null, null, null);
-insert into estados_rendiciones_gastos values (5, 'CONTABILIZADA'                                        , 1, current_timestamp, null, null, null, null);
-insert into estados_rendiciones_gastos values (6, 'ANULADA'                                              , 1, current_timestamp, null, null, null, null);
+insert into estados_rendiciones_gastos values (1, 'CREADA'                                                                                                , 1, current_timestamp, null, null, null, null);
+insert into estados_rendiciones_gastos values (2, 'CERRADA, TRASPASADA A SUPERIOR JERÁRQUICO (ENVIADA A AUTORIZAR)'                                       , 1, current_timestamp, null, null, null, null);
+insert into estados_rendiciones_gastos values (3, 'RECHAZADA POR SUPERIOR JERÁRQUICO, DEVUELTA A CREADOR DE LA RENDICIÓN'                                 , 1, current_timestamp, null, null, null, null);
+insert into estados_rendiciones_gastos values (4, 'APROBADA POR SUPERIOR JERÁRQUICO, PASA A DEPARTAMENTO DE CONTABILIDAD'                                 , 1, current_timestamp, null, null, null, null);
+insert into estados_rendiciones_gastos values (5, 'RECHAZADA POR DEPARTAMENTO DE CONTABILIDAD, DEVUELTA A SUPERIOR JERÁRQUICO DEL CREADOR DE LA RENDICIÓN', 1, current_timestamp, null, null, null, null);
+insert into estados_rendiciones_gastos values (6, 'APROBADA POR CONTABILIDAD'                                                                             , 1, current_timestamp, null, null, null, null);
+insert into estados_rendiciones_gastos values (7, 'CONTABILIZADA'                                                                                         , 1, current_timestamp, null, null, null, null);
+insert into estados_rendiciones_gastos values (8, 'ANULADA'                                                                                               , 1, current_timestamp, null, null, null, null);
 
 insert into tipos_rendiciones_gastos values (1, 'SOLICITUD DE REEMBOLSO', 1, current_timestamp, null, null, null, null);
-insert into tipos_rendiciones_gastos values (2, 'FONDO A RENDIR'        , 1, current_timestamp, null, null, null, null);
+insert into tipos_rendiciones_gastos values (2, 'RENDICIÓN DE FONDOS'   , 1, current_timestamp, null, null, null, null);
 
 \q

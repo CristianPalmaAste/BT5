@@ -73,7 +73,6 @@ alter table parametros                       add constraint para_fk1_usua foreig
 alter table parametros_empresas              add constraint paem_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table personas                         add constraint pers_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table programas                        add constraint prog_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
-alter table usuarios                         add constraint usua_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table usuarios_perfiles                add constraint uspe_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table valores_paises                   add constraint vapa_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table gerencias                        add constraint gere_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
@@ -98,5 +97,8 @@ alter table productos                        add constraint prod_fk1_usua foreig
 alter table servicios                        add constraint serv_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table dominios                         add constraint domi_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table valores_dominios                 add constraint vado_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
+
+alter table usuarios                         add constraint usua_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
+alter table usuarios                         add constraint usua_fk_pers  foreign key (idpers)                references personas                         (id);
 
 \q

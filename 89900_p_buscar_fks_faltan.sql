@@ -1,5 +1,3 @@
-drop function p_buscar_fks_faltan();
-
 create or replace function p_buscar_fks_faltan() returns varchar(1) as
 $$
 declare

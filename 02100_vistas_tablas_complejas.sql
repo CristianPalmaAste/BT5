@@ -968,6 +968,31 @@ order  by 1
 
 /*************************************************************************************************************************/
 
+drop view if exists aurnv
+;
+
+create or replace view aurnv as
+select aurn.id                           id
+      ,aurn.idempr                       idempr
+      ,empr.nombrefantasia               empresa
+      ,aurn.idperfautorizador            idperfautorizador
+      ,perf1.descripcion                 autorizador
+      ,aurn.idperfautorizado             idperfautorizado
+      ,perf2.descripcion                 autorizado
+from                   autorizadores_rendiciones   aurn
+       left outer join empresas                    empr  on aurn.idempr = empr.id
+       left outer join perfiles                    perf1 on aurn.idperfautorizador = perf1.id
+       left outer join perfiles                    perf2 on aurn.idperfautorizado  = perf2.id
+where  aurn.idusuaborraregistro is null
+;
+
+select *
+from   aurnv
+order  by 1
+;
+
+/*************************************************************************************************************************/
+
 \q
 
 

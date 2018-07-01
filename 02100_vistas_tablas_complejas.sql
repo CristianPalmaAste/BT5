@@ -944,11 +944,34 @@ order  by 1
 
 /*************************************************************************************************************************/
 
+drop view if exists corgv
+;
+
+create or replace view corgv as
+select corg.id                                                                                                                                      id
+      ,corg.idgrem                                                                                                                                  idgrem
+      ,grem.nombre                                                                                                                                  grupo_empresarial
+      ,corg.descripcion                                                                                                                             descripcion_concepto_rendicion_gasto
+      ,corg.idcuco                                                                                                                                  idcuco
+      ,cuco.segmento1 || cuco.segmento2 || cuco.segmento3 || cuco.segmento4 || cuco.segmento5 || cuco.segmento6 || cuco.segmento7 || cuco.segmento8 cuenta_contable
+      ,cuco.descripcion                                                                                                                             descripcion_cuenta_contable
+from                   conceptos_rendiciones_gastos corg
+       left outer join grupos_empresariales         grem on corg.idgrem = grem.id
+       left outer join cuentas_contables            cuco on corg.idcuco = cuco.id
+where  corg.idusuaborraregistro is null
+;
+
+select *
+from   corgv
+order  by 1
+;
+
+/*************************************************************************************************************************/
+
 \q
 
 
 dergv detalles_rendiciones_gastos
-corgv conceptos_rendiciones_gastos
 aurnv autorizadores_rendiciones
 
 

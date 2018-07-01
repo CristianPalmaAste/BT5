@@ -1,4 +1,4 @@
-create or replace function p_buscar_fks_faltan() returns varchar(1) as
+create or replace function p_buscar_fks_faltan() returns varchar(100) as
 $$
 declare
   C_campos_id cursor for
@@ -37,7 +37,7 @@ begin
     end if;
   end loop;
   close C_campos_id;
-  return('1');
+  return('fin exitoso');
 end;
 $$ LANGUAGE plpgsql;
 

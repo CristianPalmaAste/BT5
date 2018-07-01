@@ -232,11 +232,11 @@ begin
   insert into cuentas_contables values (nextval('cuco_seq'), new.id, '5', '00', '00', '0000', null, null, null, null, 'CUENTAS DE ORDEN Y TRASPASOS'                                      , 1, current_timestamp, null, null, null, null);
 
   insert into conceptos_rendiciones_gastos values (nextval('corg_seq'), new.id,'ALOJAMIENTO'                  , aux + 149, 1, current_timestamp, null, null, null, null);
-  insert into conceptos_rendiciones_gastos values (nextval('corg_seq'), new.id,'ARTICULO ASEO Y LIMPIEZA'     , aux + 165, 1, current_timestamp, null, null, null, null);
-  insert into conceptos_rendiciones_gastos values (nextval('corg_seq'), new.id,'ARTICULOS ESCRITORIO'         , aux + 165, 1, current_timestamp, null, null, null, null);
-  insert into conceptos_rendiciones_gastos values (nextval('corg_seq'), new.id,'ATENCION A CLIENTES'          , aux + 149, 1, current_timestamp, null, null, null, null);
+  insert into conceptos_rendiciones_gastos values (nextval('corg_seq'), new.id,'ARTÍCULOS ASEO Y LIMPIEZA'    , aux + 165, 1, current_timestamp, null, null, null, null);
+  insert into conceptos_rendiciones_gastos values (nextval('corg_seq'), new.id,'ARTÍCULOS ESCRITORIO'         , aux + 165, 1, current_timestamp, null, null, null, null);
+  insert into conceptos_rendiciones_gastos values (nextval('corg_seq'), new.id,'ATENCIÓN A CLIENTES'          , aux + 149, 1, current_timestamp, null, null, null, null);
   insert into conceptos_rendiciones_gastos values (nextval('corg_seq'), new.id,'BENCINA AUTO PRESIDENCIA'     , aux + 160, 1, current_timestamp, null, null, null, null);
-  insert into conceptos_rendiciones_gastos values (nextval('corg_seq'), new.id,'COLACION'                     , aux + 175, 1, current_timestamp, null, null, null, null);
+  insert into conceptos_rendiciones_gastos values (nextval('corg_seq'), new.id,'COLACIÓN'                     , aux + 175, 1, current_timestamp, null, null, null, null);
   insert into conceptos_rendiciones_gastos values (nextval('corg_seq'), new.id,'COMBUSTIBLES Y LUBRICANTES'   , aux + 160, 1, current_timestamp, null, null, null, null);
   insert into conceptos_rendiciones_gastos values (nextval('corg_seq'), new.id,'ELEMENTOS TRABAJO Y SEGURIDAD', aux + 185, 1, current_timestamp, null, null, null, null);
   insert into conceptos_rendiciones_gastos values (nextval('corg_seq'), new.id,'ESTACIONAMIENTO'              , aux + 149, 1, current_timestamp, null, null, null, null);
@@ -249,9 +249,9 @@ begin
   insert into conceptos_rendiciones_gastos values (nextval('corg_seq'), new.id,'GASTOS DE REPRESENTACION'     , aux + 160, 1, current_timestamp, null, null, null, null);
   insert into conceptos_rendiciones_gastos values (nextval('corg_seq'), new.id,'GASTOS VARIOS'                , aux + 185, 1, current_timestamp, null, null, null, null);
   insert into conceptos_rendiciones_gastos values (nextval('corg_seq'), new.id,'HERRAMIENTAS MENORES'         , aux + 185, 1, current_timestamp, null, null, null, null);
-  insert into conceptos_rendiciones_gastos values (nextval('corg_seq'), new.id,'MOVILIZACION'                 , aux + 149, 1, current_timestamp, null, null, null, null);
+  insert into conceptos_rendiciones_gastos values (nextval('corg_seq'), new.id,'MOVILIZACIÓN'                 , aux + 149, 1, current_timestamp, null, null, null, null);
   insert into conceptos_rendiciones_gastos values (nextval('corg_seq'), new.id,'PAGO PROVEEDORES'             , aux + 85 , 1, current_timestamp, null, null, null, null);
-  insert into conceptos_rendiciones_gastos values (nextval('corg_seq'), new.id,'PASAJES AEREOS'               , aux + 161, 1, current_timestamp, null, null, null, null);
+  insert into conceptos_rendiciones_gastos values (nextval('corg_seq'), new.id,'PASAJES AÉREOS'               , aux + 161, 1, current_timestamp, null, null, null, null);
   insert into conceptos_rendiciones_gastos values (nextval('corg_seq'), new.id,'PEAJES'                       , aux + 149, 1, current_timestamp, null, null, null, null);
 
   return new;

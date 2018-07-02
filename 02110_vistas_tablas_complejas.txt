@@ -194,3 +194,71 @@ CREATE VIEW
 ----+--------+--------+--------+----------+-------
 (0 filas)
 
+DROP VIEW
+CREATE VIEW
+ id | idempr | empresa | correlativo | monto | idgere | gerencia | idproy | proyecto | idline | linea_negocio | idceco | centro_costo | idtare | tarea 
+----+--------+---------+-------------+-------+--------+----------+--------+----------+--------+---------------+--------+--------------+--------+-------
+(0 filas)
+
+DROP VIEW
+CREATE VIEW
+ id | idempr | empresa | correlativo | idtirg | tipo_rendicion_gasto | idfore | fondo_a_rendir | idesrg | estado_rendicion_gasto | idgere | gerencia | idproy | proyecto | idline | linea_negocio | idceco | centro_costo | idtare | tarea | observaciones 
+----+--------+---------+-------------+--------+----------------------+--------+----------------+--------+------------------------+--------+----------+--------+----------+--------+---------------+--------+--------------+--------+-------+---------------
+(0 filas)
+
+DROP VIEW
+CREATE VIEW
+ id | idgrem |         grupo_empresarial          | descripcion_concepto_rendicion_gasto | idcuco | cuenta_contable |   descripcion_cuenta_contable    
+----+--------+------------------------------------+--------------------------------------+--------+-----------------+----------------------------------
+  1 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ALOJAMIENTO                          |    150 |                 | GASTOS DE ADMINISTRACION Y VENTA
+  2 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ARTÍCULOS ASEO Y LIMPIEZA            |    166 |                 | GASTOS DE OFICINA
+  3 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ARTÍCULOS ESCRITORIO                 |    166 |                 | GASTOS DE OFICINA
+  4 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ATENCIÓN A CLIENTES                  |    150 |                 | GASTOS DE ADMINISTRACION Y VENTA
+  5 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | BENCINA AUTO PRESIDENCIA             |    161 |                 | GASTOS DE REPRESENTACION
+  6 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | COLACIÓN                             |    176 |                 | COLACION
+  7 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | COMBUSTIBLES Y LUBRICANTES           |    161 |                 | GASTOS DE REPRESENTACION
+  8 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ELEMENTOS TRABAJO Y SEGURIDAD        |    186 |                 | OTROS GASTOS
+  9 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ESTACIONAMIENTO                      |    150 |                 | GASTOS DE ADMINISTRACION Y VENTA
+ 10 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | FLETES                               |    184 |                 | FLETES
+ 11 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | FLORES PRESIDENCIA                   |    161 |                 | GASTOS DE REPRESENTACION
+ 12 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | FOTOCOPIAS                           |    166 |                 | GASTOS DE OFICINA
+ 13 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS CASINO                        |    186 |                 | OTROS GASTOS
+ 14 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS COMPUTACIONALES               |    154 |                 | ASESORIA INFORMATICA
+ 15 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS COMUNES                       |    186 |                 | OTROS GASTOS
+ 16 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS DE REPRESENTACION             |    161 |                 | GASTOS DE REPRESENTACION
+ 17 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS VARIOS                        |    186 |                 | OTROS GASTOS
+ 18 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | HERRAMIENTAS MENORES                 |    186 |                 | OTROS GASTOS
+ 19 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | MOVILIZACIÓN                         |    150 |                 | GASTOS DE ADMINISTRACION Y VENTA
+ 20 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | PAGO PROVEEDORES                     |     86 |                 | PROVEEDORES NACIONALES
+ 21 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | PASAJES AÉREOS                       |    162 |                 | VIAJES Y ESTADIAS
+ 22 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | PEAJES                               |    150 |                 | GASTOS DE ADMINISTRACION Y VENTA
+(22 filas)
+
+DROP VIEW
+CREATE VIEW
+ id | idempr | empresa | idperfautorizador | autorizador | idperfautorizado | autorizado 
+----+--------+---------+-------------------+-------------+------------------+------------
+  1 |      1 | BT5     |                 5 |             |                5 | 
+  2 |      1 | BT5     |                 5 |             |                6 | 
+  3 |      1 | BT5     |                 7 |             |                7 | 
+  4 |      1 | BT5     |                 7 |             |                8 | 
+  5 |      1 | BT5     |                 7 |             |                9 | 
+  6 |      1 | BT5     |                 7 |             |               13 | 
+  7 |      1 | BT5     |                 7 |             |               16 | 
+  8 |      1 | BT5     |                 7 |             |               18 | 
+  9 |      1 | BT5     |                 9 |             |               10 | 
+ 10 |      1 | BT5     |                 9 |             |               11 | 
+ 11 |      1 | BT5     |                13 |             |               12 | 
+ 12 |      1 | BT5     |                13 |             |               14 | 
+ 13 |      1 | BT5     |                13 |             |               15 | 
+ 14 |      1 | BT5     |                16 |             |               17 | 
+ 15 |      1 | BT5     |                18 |             |               19 | 
+ 16 |      1 | BT5     |                18 |             |               20 | 
+(16 filas)
+
+DROP VIEW
+CREATE VIEW
+ id | idrega | rendicion_gasto | correlativo | idprov | proveedor | idtidv | tipo_docto_venta | numero | fecha_docto | idcorg | concepto_rendicion_gasto | monto 
+----+--------+-----------------+-------------+--------+-----------+--------+------------------+--------+-------------+--------+--------------------------+-------
+(0 filas)
+

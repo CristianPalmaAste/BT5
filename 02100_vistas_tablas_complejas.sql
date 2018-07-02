@@ -859,8 +859,6 @@ from   boprv
 order  by 1
 ;
 
-\q
-
 /*************************************************************************************************************************/
 
 drop view if exists forev
@@ -993,11 +991,41 @@ order  by 1
 
 /*************************************************************************************************************************/
 
+drop view if exists dergv
+;
+
+create or replace view dergv as
+select derg.id                                                                                                                     id
+      ,derg.idrega                                                                                                                 idrega
+      ,rega.correlativo                                                                                                            rendicion_gasto
+      ,derg.correlativo                                                                                                            correlativo
+      ,derg.idprov                                                                                                                 idprov
+      ,coalesce(prov.nombrefantasia,' ') || ' ' || coalesce(prov.primernombre,' ') || ' ' || coalesce(prov.apellidopaterno,' ')    proveedor
+      ,derg.idtidv                                                                                                                 idtidv
+      ,tidv.descripcion                                                                                                            tipo_docto_venta
+      ,derg.numero                                                                                                                 numero
+      ,derg.fecha_docto                                                                                                            fecha_docto
+      ,derg.idcorg                                                                                                                 idcorg
+      ,corg.descripcion                                                                                                            concepto_rendicion_gasto
+      ,derg.monto                                                                                                                  monto
+from                   detalles_rendiciones_gastos   derg
+       left outer join rendiciones_gastos            rega on derg.idrega = rega.id
+       left outer join proveedores                   prov on derg.idprov = prov.id
+       left outer join tipos_doctos_ventas           tidv on derg.idtidv = tidv.id
+       left outer join conceptos_rendiciones_gastos  corg on derg.idcorg = corg.id
+where  derg.idusuaborraregistro is null
+;
+
+select *
+from   dergv
+order  by 1
+;
+
+/*************************************************************************************************************************/
+
+
 \q
 
-
-dergv detalles_rendiciones_gastos
-aurnv autorizadores_rendiciones
 
 
 Más adelante:

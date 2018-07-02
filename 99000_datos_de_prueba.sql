@@ -867,4 +867,14 @@ insert into fondos_a_rendir values (nextval('fore_seq'), 1, 5, 200000, null, nul
 insert into rendiciones_gastos values (nextval('rega_seq'), 1, 1, 1, null, 1, null, null, null, null, null, 'EJEMPLO 1', 1, current_timestamp, null, null, null, null);
 insert into rendiciones_gastos values (nextval('rega_seq'), 1, 2, 2, 1   , 1, null, null, null, null, null, 'EJEMPLO 2', 1, current_timestamp, null, null, null, null);
 
+insert into detalles_rendiciones_gastos values (nextval('derg_seq'), 1, 1, 1, 2, 100, current_timestamp, 1, 10000, 1, current_timestamp, null, null, null, null);
+insert into detalles_rendiciones_gastos values (nextval('derg_seq'), 1, 2, 2, 4, 101, current_timestamp, 2, 15000, 1, current_timestamp, null, null, null, null);
+insert into detalles_rendiciones_gastos values (nextval('derg_seq'), 1, 3, 3, 2, 102, current_timestamp, 3, 20000, 1, current_timestamp, null, null, null, null);
+insert into detalles_rendiciones_gastos values (nextval('derg_seq'), 1, 4, 4, 4, 103, current_timestamp, 4, 30000, 1, current_timestamp, null, null, null, null);
+insert into detalles_rendiciones_gastos values (nextval('derg_seq'), 1, 5, 1, 2, 104, current_timestamp, 5, 12000, 1, current_timestamp, null, null, null, null);
+insert into detalles_rendiciones_gastos values (nextval('derg_seq'), 2, 1, 1, 2, 105, current_timestamp, 6,  5000, 1, current_timestamp, null, null, null, null);
+insert into detalles_rendiciones_gastos values (nextval('derg_seq'), 2, 2, 2, 4, 106, current_timestamp, 7, 53000, 1, current_timestamp, null, null, null, null);
+insert into detalles_rendiciones_gastos values (nextval('derg_seq'), 2, 3, 3, 2, 107, current_timestamp, 8, 30000, 1, current_timestamp, null, null, null, null);
+insert into detalles_rendiciones_gastos values (nextval('derg_seq'), 2, 4, 4, 4, 108, current_timestamp, 9,  7000, 1, current_timestamp, null, null, null, null);
+
 \q

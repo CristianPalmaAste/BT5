@@ -94,7 +94,7 @@ create sequence fore_seq start with 6;
 create sequence esrg_seq start with 9;
 create sequence tirg_seq start with 3;
 create sequence rega_seq start with 3;
-create sequence derg_seq start with 1;
+create sequence derg_seq start with 10;
 create sequence corg_seq start with 89;
 create sequence aurn_seq start with 177;
 

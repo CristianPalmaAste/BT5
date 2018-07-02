@@ -479,9 +479,9 @@ SET
  create sequence rega_seq start with 3
 (1 fila)
 
-               ?column?                
----------------------------------------
- create sequence derg_seq start with 1
+                ?column?                
+----------------------------------------
+ create sequence derg_seq start with 10
 (1 fila)
 
                 ?column?                

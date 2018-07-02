@@ -37,7 +37,7 @@ declare
     where  idcove = new.id
     ;
 begin
-  if old.idescv = 2 and new.idescv = 3 then
+  if old.idescv in (1, 2) and new.idescv = 3 then
     select nextval('nove_seq')
     into   Vidnove
     ;

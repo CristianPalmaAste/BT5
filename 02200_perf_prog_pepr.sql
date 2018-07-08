@@ -71,7 +71,7 @@ insert into programas values ( 2280,  2000, 'Mant. tipos requisiciones'         
 insert into programas values ( 2290,  2000, 'Mant. estados órdenes compras'        , 'EstadosOrdenesCompras'           , 'Mantención estados órdenes compras'        , 29 , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 2300,  2000, 'Mant. estados detalles OC'            , 'EstadosDetallesOrdenesCompras'   , 'Mantención estados detalles OC'            , 30 , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 2310,  2000, 'Mant. tipos proveedores'              , 'TiposProveedores'                , 'Mantención tipos proveedores'              , 31 , 1, current_timestamp, null, null, null, null);
-insert into programas values ( 2330,  2000, 'Mant. perfiles'                       , 'perfiles'                        , 'Mantención perfiles y sus programas'       , 33 , 1, current_timestamp, null, null, null, null);
+insert into programas values ( 2330,  2000, 'Mant. perfiles'                       , 'Perfiles'                        , 'Mantención perfiles y sus programas'       , 33 , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 2340,  2000, 'Mant. tipos rendiciones gastos'       , 'TiposRendicionesGastos'          , 'Mantención tipos rendiciones gastos'       , 34 , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 2350,  2000, 'Mant. estados rendiciones gastos'     , 'principales/en-construccion'     , 'Mantención estados rendiciones gastos'     , 35 , 1, current_timestamp, null, null, null, null);
 
@@ -130,8 +130,9 @@ insert into programas values ( 8060,  8000, 'Recepciones compras/servicios'     
 
 insert into programas values ( 9000, null , 'Ventas'                               , null                              , 'Ventas'                                    , 9  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 9010,  9000, 'Cotizaciones ventas'                  , 'CotizacionesVentas'              , 'Cotizaciones ventas'                       , 1  , 1, current_timestamp, null, null, null, null);
-insert into programas values ( 9020,  9000, 'Notas ventas'                         , 'NotasVentas'                     , 'Notas ventas'                              , 2  , 1, current_timestamp, null, null, null, null);
-insert into programas values ( 9030,  9000, 'Ventas'                               , 'Ventas'                          , 'Ventas'                                    , 3  , 1, current_timestamp, null, null, null, null);
+insert into programas values ( 9020,  9000, 'Selecciona cotizaciones ventas'       , 'CotizacionesVentas/selCotizs'    , 'Selecciona cotizaciones ventas'            , 2  , 1, current_timestamp, null, null, null, null);
+insert into programas values ( 9030,  9000, 'Notas ventas'                         , 'NotasVentas'                     , 'Notas ventas'                              , 3  , 1, current_timestamp, null, null, null, null);
+insert into programas values ( 9040,  9000, 'Ventas'                               , 'Ventas'                          , 'Ventas'                                    , 4  , 1, current_timestamp, null, null, null, null);
 
 insert into programas values (10000, null , 'Contabilidad'                         , null                              , 'Contabilidad'                              , 10 , 1, current_timestamp, null, null, null, null);
 insert into programas values (10010, 10000, 'Contabilidad 1'                       , 'principales/en-construccion'     , 'Contabilidad 1'                            , 1  , 1, current_timestamp, null, null, null, null);
@@ -384,6 +385,7 @@ insert into perfiles_programas values (nextval('pepr_seq'), 18,  9000, 1, curren
 insert into perfiles_programas values (nextval('pepr_seq'), 18,  9010, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 18,  9020, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 18,  9030, 1, current_timestamp, null, null, null, null);
+insert into perfiles_programas values (nextval('pepr_seq'), 18,  9040, 1, current_timestamp, null, null, null, null);
 
 insert into perfiles_programas values (nextval('pepr_seq'), 19,  1000, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 19,  1010, 1, current_timestamp, null, null, null, null);
@@ -396,6 +398,7 @@ insert into perfiles_programas values (nextval('pepr_seq'), 19,  9000, 1, curren
 insert into perfiles_programas values (nextval('pepr_seq'), 19,  9010, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 19,  9020, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 19,  9030, 1, current_timestamp, null, null, null, null);
+insert into perfiles_programas values (nextval('pepr_seq'), 19,  9040, 1, current_timestamp, null, null, null, null);
 
 insert into perfiles_programas values (nextval('pepr_seq'), 20,  1000, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 20,  1010, 1, current_timestamp, null, null, null, null);
@@ -408,6 +411,7 @@ insert into perfiles_programas values (nextval('pepr_seq'), 20,  9000, 1, curren
 insert into perfiles_programas values (nextval('pepr_seq'), 20,  9010, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 20,  9020, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 20,  9030, 1, current_timestamp, null, null, null, null);
+insert into perfiles_programas values (nextval('pepr_seq'), 20,  9040, 1, current_timestamp, null, null, null, null);
 
 insert into perfiles_programas values (nextval('pepr_seq'), 21,  1000, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 21,  1010, 1, current_timestamp, null, null, null, null);

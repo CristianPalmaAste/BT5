@@ -46,27 +46,27 @@ SET
 
                 ?column?                
 ----------------------------------------
- create sequence gere_seq start with 46
+ create sequence gere_seq start with 48
 (1 fila)
 
                 ?column?                
 ----------------------------------------
- create sequence proy_seq start with 55
+ create sequence proy_seq start with 57
 (1 fila)
 
                 ?column?                
 ----------------------------------------
- create sequence line_seq start with 64
+ create sequence line_seq start with 66
 (1 fila)
 
                 ?column?                
 ----------------------------------------
- create sequence ceco_seq start with 46
+ create sequence ceco_seq start with 48
 (1 fila)
 
                 ?column?                
 ----------------------------------------
- create sequence tare_seq start with 37
+ create sequence tare_seq start with 39
 (1 fila)
 
                 ?column?                

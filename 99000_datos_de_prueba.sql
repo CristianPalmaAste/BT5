@@ -877,4 +877,15 @@ insert into detalles_rendiciones_gastos values (nextval('derg_seq'), 2, 2, 2, 4,
 insert into detalles_rendiciones_gastos values (nextval('derg_seq'), 2, 3, 3, 2, 107, current_timestamp, 8, 30000, 1, current_timestamp, null, null, null, null);
 insert into detalles_rendiciones_gastos values (nextval('derg_seq'), 2, 4, 4, 4, 108, current_timestamp, 9,  7000, 1, current_timestamp, null, null, null, null);
 
+insert into gerencias       values (nextval('gere_seq'), 1, 'GERENCIA EJEMPLO'     , 1, current_timestamp, null, null, null, null);
+insert into gerencias       values (nextval('gere_seq'), 1, 'OTRA GERENCIA'        , 1, current_timestamp, null, null, null, null);
+insert into tareas          values (nextval('tare_seq'), 1, 'TAREA EJEMPLO'        , 1, current_timestamp, null, null, null, null);
+insert into tareas          values (nextval('tare_seq'), 1, 'OTRA TAREA'           , 1, current_timestamp, null, null, null, null);
+insert into lineas_negocios values (nextval('line_seq'), 1, 'LINEA NEGOCIO EJEMPLO', 1, current_timestamp, null, null, null, null);
+insert into lineas_negocios values (nextval('line_seq'), 1, 'OTRA LINEA NEGOCIO'   , 1, current_timestamp, null, null, null, null);
+insert into proyectos       values (nextval('proy_seq'), 1, 'PROYECTO EJEMPLO'     , 1, current_timestamp, null, null, null, null);
+insert into proyectos       values (nextval('proy_seq'), 1, 'OTRO PROYECTO'        , 1, current_timestamp, null, null, null, null);
+insert into centros_costos  values (nextval('ceco_seq'), 1, 'CENTRO COSTO EJEMPLO' , 1, current_timestamp, null, null, null, null);
+insert into centros_costos  values (nextval('ceco_seq'), 1, 'OTRO CENTRO COSTO'    , 1, current_timestamp, null, null, null, null);
+
 \q

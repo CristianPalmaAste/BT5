@@ -6,7 +6,7 @@ create table grupos_empresariales (
    id                       numeric(20,0)   not null
   ,nombre                   varchar(100)    not null
   ,alias                    varchar(10)     not null
-  ,icono                    varchar(100)    not null
+  ,icono                    varchar(100)        null
   ,idpais                   numeric(20,0)   not null
   ,idesge                   numeric(20,0)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
@@ -39,7 +39,7 @@ create table empresas (
   ,identificador2           varchar(50)     not null
   ,razonsocial              varchar(100)    not null
   ,nombrefantasia           varchar(100)    not null
-  ,icono                    varchar(100)    not null
+  ,icono                    varchar(100)        null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
   ,idusuamodifregistro      numeric(20,0)       null

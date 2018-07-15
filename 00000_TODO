@@ -132,6 +132,12 @@ psql -d $DBNAME -U $USUARIO_DB < 03200_f_impedir_upd_y_del_en_deve.sql > 03210_f
 echo "  03300_f_aumentar_stock"
 psql -d $DBNAME -U $USUARIO_DB < 03300_f_aumentar_stock.sql > 03310_f_aumentar_stock.txt
 
+echo "  03400_f_validar_rega_ins"
+psql -d $DBNAME -U $USUARIO_DB < 03400_f_validar_rega_ins.sql > 03410_f_validar_rega_ins.txt
+
+echo "  03500_f_validar_rega_upd"
+psql -d $DBNAME -U $USUARIO_DB < 03500_f_validar_rega_upd.sql > 03510_f_validar_rega_upd.txt
+
 cd ..
 
 cd 01600_triggers
@@ -206,6 +212,12 @@ psql -d $DBNAME -U $USUARIO_DB < 02200_trg_before_upd_y_del_deve.sql > 02210_trg
 
 echo "  02300_trg_after_ins_derc"
 psql -d $DBNAME -U $USUARIO_DB < 02300_trg_after_ins_derc.sql > 02310_trg_after_ins_derc.txt
+
+echo "  02400_trg_before_ins_rega"
+psql -d $DBNAME -U $USUARIO_DB < 02400_trg_before_ins_rega.sql > 02410_trg_before_ins_rega.txt
+
+echo "  02500_trg_before_upd_rega"
+psql -d $DBNAME -U $USUARIO_DB < 02500_trg_before_upd_rega.sql > 02510_trg_before_upd_rega.txt
 
 cd ..
 

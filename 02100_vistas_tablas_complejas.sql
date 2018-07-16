@@ -1023,12 +1023,123 @@ order  by 1
 
 /*************************************************************************************************************************/
 
+drop view if exists soshv
+;
+
+create or replace view soshv as
+select sosh.id                                           id
+      ,sosh.idempr                                       idempr
+      ,empr.nombrefantasia                               empresa
+      ,sosh.correlativo                                  correlativo
+      ,sosh.idpers                                       idpers
+      ,pers.primernombre || ' ' || pers.apellidopaterno  persona
+      ,sosh.descripcionsolicserv                         descripcionsolicserv
+      ,sosh.idgere                                       idgere
+      ,gere.nombre                                       gerencia
+      ,sosh.idproy                                       idproy
+      ,proy.nombre                                       proyecto
+      ,sosh.idline                                       idline
+      ,line.nombre                                       linea_negocio
+      ,sosh.idceco                                       idceco
+      ,ceco.nombre                                       centro_costo
+      ,sosh.idtare                                       idtare
+      ,tare.nombre                                       tarea
+from                   solicitudes_servs_hono  sosh
+       left outer join empresas                empr on sosh.idempr = empr.id
+       left outer join personas                pers on sosh.idpers = pers.id
+       left outer join gerencias               gere on sosh.idgere = gere.id
+       left outer join proyectos               proy on sosh.idproy = proy.id
+       left outer join lineas_negocios         line on sosh.idline = line.id
+       left outer join centros_costos          ceco on sosh.idceco = ceco.id
+       left outer join tareas                  tare on sosh.idtare = tare.id
+where  sosh.idusuaborraregistro is null
+;
+
+select *
+from   soshv
+order  by 1
+;
+
+/*************************************************************************************************************************/
+
+drop view if exists orshv
+;
+
+create or replace view orshv as
+select orsh.id                                           id
+      ,orsh.idempr                                       idempr
+      ,empr.nombrefantasia                               empresa
+      ,orsh.idsosh                                       idsosh
+      ,sosh.correlativo                                  solicitud_serv_honorario
+      ,orsh.correlativo                                  correlativo
+      ,orsh.codigocompra                                 codigocompra
+      ,orsh.idpers                                       idpers
+      ,pers.primernombre || ' ' || pers.apellidopaterno  persona
+      ,orsh.descripcionordenserv                         descripcionordenserv
+      ,orsh.resultadofinal                               resultadofinal
+      ,orsh.ideosh                                       ideosh
+      ,eosh.descripcion                                  estado_orden_serv_honorario
+      ,orsh.idgere                                       idgere
+      ,gere.nombre                                       gerencia
+      ,orsh.idproy                                       idproy
+      ,proy.nombre                                       proyecto
+      ,orsh.idline                                       idline
+      ,line.nombre                                       linea_negocio
+      ,orsh.idceco                                       idceco
+      ,ceco.nombre                                       centro_costo
+      ,orsh.idtare                                       idtare
+      ,tare.nombre                                       tarea
+from                   ordenes_servicios_hono     orsh
+       left outer join empresas                   empr on orsh.idempr = empr.id
+       left outer join solicitudes_servs_hono     sosh on orsh.idsosh = sosh.id
+       left outer join personas                   pers on orsh.idpers = pers.id
+       left outer join estados_ordenes_servs_hono eosh on orsh.ideosh = eosh.id
+       left outer join gerencias                  gere on orsh.idgere = gere.id
+       left outer join proyectos                  proy on orsh.idproy = proy.id
+       left outer join lineas_negocios            line on orsh.idline = line.id
+       left outer join centros_costos             ceco on orsh.idceco = ceco.id
+       left outer join tareas                     tare on orsh.idtare = tare.id
+where  orsh.idusuaborraregistro is null
+;
+
+select *
+from   orshv
+order  by 1
+;
+
+/*************************************************************************************************************************/
+
+drop view if exists poshv
+;
+
+create or replace view poshv as
+select posh.id                               id
+      ,posh.idorsh                           idorsh
+      ,posh.fechapago                        fechapago
+      ,posh.monto                            monto
+      ,posh.idtifp                           idtifp
+      ,posh.idepos                           idepos
+
+from                   pagos_ordenes_servs_hono  posh
+       left outer join ordenes_servicios_hono    zzzz on posh.idzzzz = zzzz.id
+       left outer join tipos_formas_pagos        zzzz on posh.idzzzz = zzzz.id
+       left outer join ordenes_servicios_hono    zzzz on posh.idzzzz = zzzz.id
+where  posh.idusuaborraregistro is null
+;
+
+select *
+from   poshv
+order  by 1
+;
+
+/*************************************************************************************************************************/
+
 
 \q
 
 
 
-Más adelante:
+Plantilla:
 
 /*************************************************************************************************************************/
 
@@ -1048,13 +1159,4 @@ order  by 1
 ;
 
 /*************************************************************************************************************************/
-
-
-
-
-
-soshv
-idsov
-orshv
-poshv
 

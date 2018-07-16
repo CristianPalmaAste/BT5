@@ -262,3 +262,21 @@ CREATE VIEW
 ----+--------+-----------------+-------------+--------+-----------+--------+------------------+--------+-------------+--------+--------------------------+-------
 (0 filas)
 
+DROP VIEW
+CREATE VIEW
+ id | idempr | empresa | correlativo | idpers | persona | descripcionsolicserv | idgere | gerencia | idproy | proyecto | idline | linea_negocio | idceco | centro_costo | idtare | tarea 
+----+--------+---------+-------------+--------+---------+----------------------+--------+----------+--------+----------+--------+---------------+--------+--------------+--------+-------
+(0 filas)
+
+DROP VIEW
+CREATE VIEW
+ id | idempr | empresa | idsosh | solicitud_serv_honorario | correlativo | codigocompra | idpers | persona | descripcionordenserv | resultadofinal | ideosh | estado_orden_serv_honorario | idgere | gerencia | idproy | proyecto | idline | linea_negocio | idceco | centro_costo | idtare | tarea 
+----+--------+---------+--------+--------------------------+-------------+--------------+--------+---------+----------------------+----------------+--------+-----------------------------+--------+----------+--------+----------+--------+---------------+--------+--------------+--------+-------
+(0 filas)
+
+DROP VIEW
+CREATE VIEW
+ id | idorsh | orden_servicio_honorario | fechapago | monto | idtifp | tipo_forma_pago | idepos | estado_pago_ord_serv_hono 
+----+--------+--------------------------+-----------+-------+--------+-----------------+--------+---------------------------
+(0 filas)
+

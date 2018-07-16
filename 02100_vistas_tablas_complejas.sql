@@ -1115,15 +1115,17 @@ drop view if exists poshv
 create or replace view poshv as
 select posh.id                               id
       ,posh.idorsh                           idorsh
+      ,orsh.correlativo                      orden_servicio_honorario
       ,posh.fechapago                        fechapago
       ,posh.monto                            monto
       ,posh.idtifp                           idtifp
+      ,tifp.descripcion                      tipo_forma_pago
       ,posh.idepos                           idepos
-
-from                   pagos_ordenes_servs_hono  posh
-       left outer join ordenes_servicios_hono    zzzz on posh.idzzzz = zzzz.id
-       left outer join tipos_formas_pagos        zzzz on posh.idzzzz = zzzz.id
-       left outer join ordenes_servicios_hono    zzzz on posh.idzzzz = zzzz.id
+      ,epos.descripcion                      estado_pago_ord_serv_hono
+from                   pagos_ordenes_servs_hono      posh
+       left outer join ordenes_servicios_hono        orsh on posh.idorsh = orsh.id
+       left outer join tipos_formas_pagos            tifp on posh.idtifp = tifp.id
+       left outer join estados_pagos_ords_servs_hono epos on posh.idepos = epos.id
 where  posh.idusuaborraregistro is null
 ;
 
@@ -1133,7 +1135,6 @@ order  by 1
 ;
 
 /*************************************************************************************************************************/
-
 
 \q
 

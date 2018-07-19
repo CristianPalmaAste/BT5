@@ -888,4 +888,16 @@ insert into proyectos       values (nextval('proy_seq'), 1, 'OTRO PROYECTO'     
 insert into centros_costos  values (nextval('ceco_seq'), 1, 'CENTRO COSTO EJEMPLO' , 1, current_timestamp, null, null, null, null);
 insert into centros_costos  values (nextval('ceco_seq'), 1, 'OTRO CENTRO COSTO'    , 1, current_timestamp, null, null, null, null);
 
+insert into solicitudes_servs_hono values (nextval('sosh_seq'), 1, 1, 3, 'ASEO Y PINTURA OFICINA'        , null, null, null, null, null, 1, current_timestamp, null, null, null, null);
+insert into solicitudes_servs_hono values (nextval('sosh_seq'), 1, 2, 4, 'REPARACIONES ELÉCTRICAS VARIAS', null, null, null, null, null, 1, current_timestamp, null, null, null, null);
+
+insert into cotizaciones_servs_hono values (nextval('cosh_seq'), 1, 5, 200000, 'TRABAJO A REALIZAR EN 2 DÍAS, TRABJO GARANTIZADO'    , 'COTIZACIÓN ACEPTABLE, BIEN PRESENTADA, PLAZOS ESTABLECISOS, CUMPLE ESTÁNDRES'                              , 2, 1, current_timestamp, null, null, null, null);
+insert into cotizaciones_servs_hono values (nextval('cosh_seq'), 1, 6, 250000, 'TRABAJO A REALIZAR ENTRE 4 Y 6 DÍAS'                 , null                                                                                                        , 1, 1, current_timestamp, null, null, null, null);
+insert into cotizaciones_servs_hono values (nextval('cosh_seq'), 2, 5, 500000, 'TRABAJO A REALIZAR EN 15 DÍAS, TRABJO NO GARANTIZADO', 'COTIZACIÓN INACEPTABLE, BIEN PRESENTADA, PLAZOS ESTABLECISOS PERO EXCESIVOS, MUY CARA, NO CUMPLE ESTÁNDRES', 3, 1, current_timestamp, null, null, null, null);
+
+insert into doctos_cotizacs_servs_hono values (nextval('dcsh_seq'), 1, 'cotizacion1.pdf', 'abcde_12341.pdf', 1, current_timestamp, null, null, null, null);
+insert into doctos_cotizacs_servs_hono values (nextval('dcsh_seq'), 1, 'cotizacion2.pdf', 'abcde_12342.pdf', 1, current_timestamp, null, null, null, null);
+insert into doctos_cotizacs_servs_hono values (nextval('dcsh_seq'), 1, 'cotizacion3.pdf', 'abcde_12343.pdf', 1, current_timestamp, null, null, null, null);
+insert into doctos_cotizacs_servs_hono values (nextval('dcsh_seq'), 1, 'cotizacion4.pdf', 'abcde_12344.pdf', 1, current_timestamp, null, null, null, null);
+
 \q

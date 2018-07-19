@@ -136,7 +136,7 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence sosh_seq start with 1
+ create sequence sosh_seq start with 3
 (1 fila)
 
                ?column?                
@@ -146,12 +146,12 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence cosh_seq start with 1
+ create sequence cosh_seq start with 4
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence dcsh_seq start with 1
+ create sequence dcsh_seq start with 5
 (1 fila)
 
                ?column?                

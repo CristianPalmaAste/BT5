@@ -1843,10 +1843,7 @@ alter table listas_precios add constraint lipr_pk primary key (id)
 alter table listas_precios add constraint lipr_uk_01 unique (idempr, correlativo)
 ;
 
-alter table listas_precios add constraint lipr_chk_01 check ((idesre = 1 and fechafin is     null)
-                                                             or
-                                                             (idesre = 2 and fechafin is not null)
-                                                            )
+alter table listas_precios add constraint lipr_chk_01 check (fechainicio <= fechafin)
 ;
 
 create unique index lipr_idx_01 on listas_precios (idempr, idesre) where (idesre = 1)

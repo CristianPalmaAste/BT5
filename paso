@@ -161,12 +161,12 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence orsh_seq start with 1
+ create sequence orsh_seq start with 6
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence dosh_seq start with 1
+ create sequence dosh_seq start with 2
 (1 fila)
 
                ?column?                

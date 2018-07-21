@@ -906,4 +906,6 @@ insert into ordenes_servicios_hono values (nextval('orsh_seq'), 1, 1, 3, 'CODIGO
 insert into ordenes_servicios_hono values (nextval('orsh_seq'), 1, 2, 4, 'SIN CODIGO'    , 5, 'S/D'             , 'REGULAR', 3, null, null, null, null, null, 1, current_timestamp, null, null, null, null);
 insert into ordenes_servicios_hono values (nextval('orsh_seq'), 1, 1, 5, 'ZX-15-QTY-KK'  , 6, 'NADA'            , null     , 2, null, null, null, null, null, 1, current_timestamp, null, null, null, null);
 
+insert into doctos_ordenes_servs_hono values (nextval('dosh_seq'), 1, 'archivo1.txt', 'abcde_12341.txt', 1, current_timestamp, null, null, null, null);
+
 \q

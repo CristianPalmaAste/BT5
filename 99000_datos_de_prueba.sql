@@ -738,13 +738,13 @@ insert into detalles_listas_precios values (34, 2, 17, 4100, 1, current_timestam
 
 -- descuentos
 
-insert into descuentos values (1, 1   , null, null, 5  , 1, 1, current_timestamp, null, null, null, null);
-insert into descuentos values (2, null, 1   , null, 10 , 1, 1, current_timestamp, null, null, null, null);
-insert into descuentos values (3, null, null, 1   , 15 , 1, 1, current_timestamp, null, null, null, null);
-insert into descuentos values (4, null, null, 2   , 20 , 1, 1, current_timestamp, null, null, null, null);
-insert into descuentos values (5, null, null, 3   , 10 , 1, 1, current_timestamp, null, null, null, null);
-insert into descuentos values (6, null, null, 4   , 15 , 1, 1, current_timestamp, null, null, null, null);
-insert into descuentos values (7, null, null, 5   , 5  , 1, 1, current_timestamp, null, null, null, null);
+insert into descuentos values (1, 1, null, null, 5  , 1, 1, current_timestamp, null, null, null, null);
+insert into descuentos values (2, 1, 1   , null, 10 , 1, 1, current_timestamp, null, null, null, null);
+insert into descuentos values (3, 1, 1   , 1   , 15 , 1, 1, current_timestamp, null, null, null, null);
+insert into descuentos values (4, 1, 1   , 2   , 20 , 1, 1, current_timestamp, null, null, null, null);
+insert into descuentos values (5, 1, 1   , 3   , 10 , 1, 1, current_timestamp, null, null, null, null);
+insert into descuentos values (6, 1, 1   , 4   , 15 , 1, 1, current_timestamp, null, null, null, null);
+insert into descuentos values (7, 1, 1   , 5   , 5  , 1, 1, current_timestamp, null, null, null, null);
 
 insert into impuestos values (4, 1, 'IMPUESTO FICTICIO A LOS LIBROS (PRUEBA)', 'IFL' , 'N', 5, 1, current_timestamp, null, null, null, null);
 

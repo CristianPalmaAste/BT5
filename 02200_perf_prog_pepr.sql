@@ -77,7 +77,7 @@ insert into programas values ( 2350,  2200, 'Mant. perfiles'                    
 
 insert into programas values ( 2400, null , 'Adm. sistema 3'                       , null                              , 'Administracion sistema grupo 3'            , 4  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 2410,  2400, 'Mant. tipos rendiciones gastos'       , 'TiposRendicionesGastos'          , 'Mantención tipos rendiciones gastos'       , 1  , 1, current_timestamp, null, null, null, null);
-insert into programas values ( 2420,  2400, 'Mant. estados rendiciones gastos'     , 'principales/en-construccion'     , 'Mantención estados rendiciones gastos'     , 2  , 1, current_timestamp, null, null, null, null);
+insert into programas values ( 2420,  2400, 'Mant. estados rendiciones gastos'     , 'EstadosRendicionesGastos'        , 'Mantención estados rendiciones gastos'     , 2  , 1, current_timestamp, null, null, null, null);
 
 insert into programas values ( 3000, null , 'Adm. holding'                         , null                              , 'Administracion holding'                    , 5  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 3010,  3000, 'Mant. empresas'                       , 'empresas'                        , 'Mantención empresas'                       , 1  , 1, current_timestamp, null, null, null, null);
@@ -89,7 +89,7 @@ insert into programas values ( 3060,  3000, 'Mant. rubros'                      
 insert into programas values ( 3070,  3000, 'Mant. tipos documentos legales'       , 'TiposDocumentosLegales'          , 'Mantención tipos documentos legales'       , 7  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 3080,  3000, 'Mant. estados documentos legales'     , 'estados-documentos-legales'      , 'Mantención estados documentos legales'     , 8  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 3090,  3000, 'Mant. clientes'                       , 'clientes'                        , 'Mantención clientes'                       , 9  , 1, current_timestamp, null, null, null, null);
-insert into programas values ( 3100,  3000, 'Mant. conceptos rendiciones gastos'   , 'principales/en-construccion'     , 'Mantención conceptos rendiciones gastos'   , 10 , 1, current_timestamp, null, null, null, null);
+insert into programas values ( 3100,  3000, 'Mant. conceptos rendiciones gastos'   , 'ConceptosRendicionesGastos'      , 'Mantención conceptos rendiciones gastos'   , 10 , 1, current_timestamp, null, null, null, null);
 
 insert into programas values ( 4000, null , 'Adm. empresa'                         , null                              , 'Administracion empresa'                    , 6  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 4010,  4000, 'Mant. gerencias'                      , 'gerencias'                       , 'Mantención gerencias'                      , 1  , 1, current_timestamp, null, null, null, null);
@@ -103,8 +103,9 @@ insert into programas values ( 4080,  4000, 'Mant. listas precios'              
 insert into programas values ( 4100,  4000, 'Mant. descuentos'                     , 'descuentos'                      , 'Mantención descuentos'                     , 10 , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 4110,  4000, 'Bitácoras cambios precios'            , 'bitacoras-cambios-precios'       , 'Bitácoras cambios precios'                 , 11 , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 4120,  4000, 'Mant. parámetros empresas'            , 'ParametrosEmpresas'              , 'Mantención parámetros empresas'            , 12 , 1, current_timestamp, null, null, null, null);
-insert into programas values ( 4130,  4000, 'Mant. autorizadores rendiciones'      , 'principales/en-construccion'     , 'Mantención autorizadores rendiciones'      , 13 , 1, current_timestamp, null, null, null, null);
+insert into programas values ( 4130,  4000, 'Mant. autorizadores rendiciones'      , 'AutorizadoresRendiciones'        , 'Mantención autorizadores rendiciones'      , 13 , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 4140,  4000, 'Mant. autorizadores requisiciones'    , 'AutorizadoresRequisiciones'      , 'Mantención autorizadores requisiciones'    , 14 , 1, current_timestamp, null, null, null, null);
+insert into programas values ( 4150,  4000, 'Mant. fondos a rendir'                , 'FondosARendir'                   , 'Mantención fondos a rendir'                , 15 , 1, current_timestamp, null, null, null, null);
 
 insert into programas values ( 5000, null , 'Legales'                              , null                              , 'Legales'                                   , 7  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 5010,  5000, 'Documentos legales'                   , 'DocumentosLegales'               , 'Documentos legales'                        , 1  , 1, current_timestamp, null, null, null, null);
@@ -205,6 +206,7 @@ insert into perfiles_programas values (nextval('pepr_seq'), 2 ,  3060, 1, curren
 insert into perfiles_programas values (nextval('pepr_seq'), 2 ,  3070, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 2 ,  3080, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 2 ,  3090, 1, current_timestamp, null, null, null, null);
+insert into perfiles_programas values (nextval('pepr_seq'), 2 ,  3100, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 2 ,  8000, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 2 ,  8010, 1, current_timestamp, null, null, null, null);
 
@@ -225,6 +227,7 @@ insert into perfiles_programas values (nextval('pepr_seq'), 3 ,  4110, 1, curren
 insert into perfiles_programas values (nextval('pepr_seq'), 3 ,  4120, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 3 ,  4130, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 3 ,  4140, 1, current_timestamp, null, null, null, null);
+insert into perfiles_programas values (nextval('pepr_seq'), 3 ,  4150, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 3 ,  8000, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 3 ,  8010, 1, current_timestamp, null, null, null, null);
 
@@ -240,6 +243,7 @@ insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  3060, 1, curren
 insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  3070, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  3080, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  3090, 1, current_timestamp, null, null, null, null);
+insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  3100, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  4000, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  4010, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  4020, 1, current_timestamp, null, null, null, null);
@@ -254,6 +258,7 @@ insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  4110, 1, curren
 insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  4120, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  4130, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  4140, 1, current_timestamp, null, null, null, null);
+insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  4150, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  8000, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  8010, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 4 , 11000, 1, current_timestamp, null, null, null, null);

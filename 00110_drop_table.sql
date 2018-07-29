@@ -99,6 +99,7 @@ drop table if exists rendiciones_gastos             cascade;
 drop table if exists detalles_rendiciones_gastos    cascade;
 drop table if exists conceptos_rendiciones_gastos   cascade;
 drop table if exists autorizadores_rendiciones      cascade;
+drop table if exists historiales_rendiciones        cascade;
 
 
 \q

@@ -20,7 +20,7 @@ create sequence sexo_seq start with 3;
 create sequence prog_seq start with 11061;
 create sequence usua_seq start with 14;
 create sequence uspe_seq start with 1062;
-create sequence pepr_seq start with 371;
+create sequence pepr_seq start with 376;
 create sequence cuco_seq start with 797;
 create sequence dole_seq start with 25;
 create sequence tidl_seq start with 17;
@@ -97,5 +97,6 @@ create sequence rega_seq start with 3;
 create sequence derg_seq start with 10;
 create sequence corg_seq start with 89;
 create sequence aurn_seq start with 177;
+create sequence hirn_seq start with 1;
 
 \q

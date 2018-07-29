@@ -99,6 +99,7 @@ select 'create sequence rega_seq start with ' || (case when MAX(ID) is null then
 select 'create sequence derg_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from detalles_rendiciones_gastos;
 select 'create sequence corg_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from conceptos_rendiciones_gastos;
 select 'create sequence aurn_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from autorizadores_rendiciones;
+select 'create sequence hirn_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from historiales_rendiciones;
 
 
 \q

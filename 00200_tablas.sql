@@ -2685,6 +2685,29 @@ alter table autorizadores_rendiciones add constraint aurn_uk_01 unique (idempr, 
 
 /*************************************************************************************************************************/
 
+create table historiales_rendiciones (
+   id                       numeric(20,0)   not null
+  ,idrega                   numeric(20,0)   not null
+  ,idesrg                   numeric(20,0)   not null
+  ,idusuacambiaestado       numeric(20,0)   not null
+  ,razonrechazo             varchar(500)        null /* este campo solo se debe poblar cuando se produzca un rechazo, ya
+                                                        sea del superior jerárquico o bien de contabilidad */
+  ,fechacrearegistro        timestamp       not null
+)
+;
+
+alter table historiales_rendiciones add constraint hirn_pk primary key (id)
+;
+
+alter table historiales_rendiciones add constraint hirn_chk_01 check (
+                                                                      (idesrg     in (3,5) and razonrechazo is not null)
+                                                                      or
+                                                                      (idesrg not in (3,5) and razonrechazo is     null)
+                                                                     )
+;
+
+/*************************************************************************************************************************/
+
 
 
 
@@ -2724,6 +2747,10 @@ alter table rendiciones_gastos               add constraint rega_fk_ceco  foreig
 alter table rendiciones_gastos               add constraint rega_fk_tare  foreign key (idtare)                references tareas                           (id);
 alter table rendiciones_gastos               add constraint rega_fk2_usua foreign key (idusuamodifregistro)   references usuarios                         (id);
 alter table rendiciones_gastos               add constraint rega_fk3_usua foreign key (idusuaborraregistro)   references usuarios                         (id);
+
+alter table historiales_rendiciones          add constraint hirn_fk_rega  foreign key (idrega)                references rendiciones_gastos               (id);
+alter table historiales_rendiciones          add constraint hirn_fk_esrg  foreign key (idesrg)                references estados_rendiciones_gastos       (id);
+alter table historiales_rendiciones          add constraint hirn_fk_usua  foreign key (idusuacambiaestado)    references usuarios                         (id);
 
 alter table cotizaciones_compras             add constraint coco_fk_requ  foreign key (idrequ)                references requisiciones                    (id);
 alter table cotizaciones_compras             add constraint coco_fk_orco  foreign key (idorco)                references ordenes_compras                  (id);

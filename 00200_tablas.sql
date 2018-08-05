@@ -2025,10 +2025,10 @@ create table descuentos (
 alter table descuentos add constraint desu_pk primary key (id)
 ;
 
-alter table descuentos add constraint desu_uk_01 unique (idfapr, idsfpr, idprod)
+alter table descuentos add constraint desu_chk_01 check (porcentajedescuento > 0)
 ;
 
-alter table descuentos add constraint desu_chk_01 check (   (idfapr is not null and idsfpr is     null and idprod is     null)
+alter table descuentos add constraint desu_chk_02 check (   (idfapr is not null and idsfpr is     null and idprod is     null)
                                                          or
                                                             (idfapr is not null and idsfpr is not null and idprod is     null)
                                                          or

@@ -28,9 +28,11 @@ begin
        5    nombre
        6    precio
        7    descuento (expresado como %)
+       8    sumatoria de impuestos obligatorios a los que está afecto el producto
+       9    sumatoria de impuestos específicos a los que está afecto el producto
 
   */
-  if Pdato_deseado not between 1 and 7 then
+  if Pdato_deseado not between 1 and 9 then
     return(null);
   end if;
   if    Pdato_deseado between 1 and 5 then
@@ -117,19 +119,25 @@ begin
         end if;
       end if;
     end if;
+  elsif Pdato_deseado = 8 then
+return(19);
+  elsif Pdato_deseado = 9 then
+return(0);
   else
     return('-----');
   end if;
 end;
 $$ LANGUAGE plpgsql;
 
-select f_datos_producto(1,0);
-select f_datos_producto(1,1);
-select f_datos_producto(1,2);
-select f_datos_producto(1,3);
-select f_datos_producto(1,4);
-select f_datos_producto(1,5);
-select f_datos_producto(1,6);
-select f_datos_producto(1,7);
-select f_datos_producto(1,8);
+select f_datos_producto(1,0 );
+select f_datos_producto(1,1 );
+select f_datos_producto(1,2 );
+select f_datos_producto(1,3 );
+select f_datos_producto(1,4 );
+select f_datos_producto(1,5 );
+select f_datos_producto(1,6 );
+select f_datos_producto(1,7 );
+select f_datos_producto(1,8 );
+select f_datos_producto(1,9 );
+select f_datos_producto(1,10);
 

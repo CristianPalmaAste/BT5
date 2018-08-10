@@ -14,6 +14,11 @@ declare
   Vporcentajedescuento       numeric;
   Vidfapr                    numeric;
   Vidsfpr                    numeric;
+  Vidpais                    numeric;
+  Vidtipr                    numeric;
+  Vestaexento                varchar(1);
+  Vimptos_obligat            numeric;
+  Vimptos_especif            numeric;
 begin
   /*
 
@@ -120,9 +125,45 @@ begin
       end if;
     end if;
   elsif Pdato_deseado = 8 then
-return(19);
+    select tipr.estaexento
+    into   Vestaexento
+    from   productos       prod
+          ,tipos_productos tipr
+    where  prod.idtipr = tipr.id
+    and    prod.id     = Pidprod
+    ;
+    if Vestaexento = 'S' then
+      return(0);
+    else
+      select empr.idpais
+      into   Vidpais
+      from   productos prod
+            ,empresas  empr
+      where  prod.idempr = empr.id
+      and    prod.id     = Pidprod
+      ;
+      select coalesce(sum(valor),0)
+      into   Vimptos_obligat
+      from   impuestos
+      where  idpais      = Vidpais
+      and    obligatorio = 'S'
+      ;
+      return(Vimptos_obligat);
+    end if;
   elsif Pdato_deseado = 9 then
-return(0);
+    select idtipr
+    into   Vidtipr
+    from   productos
+    where  id = Pidprod
+    ;
+    select coalesce(sum(impu.valor),0)
+    into   Vimptos_especif
+    from   tipos_productos_impuestos tipi
+          ,impuestos                 impu
+    where  tipi.idimpu = impu.id
+    and    tipi.idtipr = Vidtipr
+    ;
+    return(Vimptos_especif);
   else
     return('-----');
   end if;

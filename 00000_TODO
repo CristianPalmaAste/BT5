@@ -138,6 +138,9 @@ psql -d $DBNAME -U $USUARIO_DB < 03400_f_validar_rega_ins.sql > 03410_f_validar_
 echo "  03500_f_validar_rega_upd"
 psql -d $DBNAME -U $USUARIO_DB < 03500_f_validar_rega_upd.sql > 03510_f_validar_rega_upd.txt
 
+echo "  03600_f_puede_borrar_registro"
+psql -d $DBNAME -U $USUARIO_DB < 03600_f_puede_borrar_registro.sql > 03610_f_puede_borrar_registro.txt
+
 cd ..
 
 cd 01600_triggers

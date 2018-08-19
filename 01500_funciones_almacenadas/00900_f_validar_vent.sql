@@ -22,6 +22,37 @@ begin
     raise exception 'Cambio de estado inválido'
     using hint = Vmensaje;
   end if;
+  --
+  -- Además, se debe validar que solo sobre una venta abierta se pueden hacer modificaciones
+  -- Sobre ventas en estado != 1 no se puede modificar nada
+  --
+  if old.idesve != 1 and (   old.idempr              != new.idempr
+                          or old.idbode              != new.idbode
+                          or old.idnove              != new.idnove
+                          or old.idtidv              != new.idtidv
+                          or old.numero              != new.numero
+                          or old.idclie              != new.idclie
+                          or old.descripcionventa    != new.descripcionventa
+                          or old.fechaventa          != new.fechaventa
+                          or old.idgere              != new.idgere
+                          or old.idproy              != new.idproy
+                          or old.idline              != new.idline
+                          or old.idceco              != new.idceco
+                          or old.idtare              != new.idtare
+                          or old.exento              != new.exento
+                          or old.afecto              != new.afecto
+                          or old.impuestosobligats   != new.impuestosobligats
+                          or old.impuestosespecifs   != new.impuestosespecifs
+                          or old.porcentajedescuento != new.porcentajedescuento
+                          or old.montodescuento      != new.montodescuento
+                          or old.total               != new.total
+                          or old.idusuavendedor      != new.idusuavendedor
+                         )
+  then
+    Vmensaje := 'Venta no está abierta, no se le puede modificar nada';
+    raise exception 'Modificaciones no permitidas'
+    using hint = Vmensaje;
+  end if;
   return new;
 end;
 $body$ LANGUAGE plpgsql;

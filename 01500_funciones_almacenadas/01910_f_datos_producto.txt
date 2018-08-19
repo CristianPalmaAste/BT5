@@ -41,7 +41,7 @@ CREATE FUNCTION
 
  f_datos_producto 
 ------------------
- 19
+ 0
 (1 fila)
 
  f_datos_producto 

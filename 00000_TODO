@@ -141,6 +141,15 @@ psql -d $DBNAME -U $USUARIO_DB < 03500_f_validar_rega_upd.sql > 03510_f_validar_
 echo "  03600_f_puede_borrar_registro"
 psql -d $DBNAME -U $USUARIO_DB < 03600_f_puede_borrar_registro.sql > 03610_f_puede_borrar_registro.txt
 
+echo "  03700_f_validar_decv"
+psql -d $DBNAME -U $USUARIO_DB < 03700_f_validar_decv.sql > 03710_f_validar_decv.txt
+
+echo "  03800_f_validar_denv"
+psql -d $DBNAME -U $USUARIO_DB < 03800_f_validar_denv.sql > 03810_f_validar_denv.txt
+
+echo "  03900_f_validar_deve"
+psql -d $DBNAME -U $USUARIO_DB < 03900_f_validar_deve.sql > 03910_f_validar_deve.txt
+
 cd ..
 
 cd 01600_triggers
@@ -221,6 +230,15 @@ psql -d $DBNAME -U $USUARIO_DB < 02400_trg_before_ins_rega.sql > 02410_trg_befor
 
 echo "  02500_trg_before_upd_rega"
 psql -d $DBNAME -U $USUARIO_DB < 02500_trg_before_upd_rega.sql > 02510_trg_before_upd_rega.txt
+
+echo "  02600_trg_before_ins_upd_del_decv"
+psql -d $DBNAME -U $USUARIO_DB < 02600_trg_before_ins_upd_del_decv.sql > 02610_trg_before_ins_upd_del_decv.txt
+
+echo "  02700_trg_before_ins_upd_del_denv"
+psql -d $DBNAME -U $USUARIO_DB < 02700_trg_before_ins_upd_del_denv.sql > 02710_trg_before_ins_upd_del_denv.txt
+
+echo "  02800_trg_before_ins_upd_del_deve"
+psql -d $DBNAME -U $USUARIO_DB < 02800_trg_before_ins_upd_del_deve.sql > 02810_trg_before_ins_upd_del_deve.txt
 
 cd ..
 

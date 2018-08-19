@@ -34,7 +34,7 @@ begin
        3) reservado (por una nota de venta o una venta): 5
 
      Nota: más adelante habrá que incluir solicitudes de traspaso entre bodegas, esto es, si hay una solicitud de
-           traspaso entre bodegas creada o cerrada, entonces los prpductos involucrados en esa solicitud están
+           traspaso entre bodegas creada o cerrada, entonces los productos involucrados en esa solicitud están
            "reservados". Se deberían sumar al caso c) antes señalado
 
   */

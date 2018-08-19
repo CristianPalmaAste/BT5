@@ -29,6 +29,36 @@ begin
     raise exception 'Cambio de estado inválido'
     using hint = Vmensaje;
   end if;
+  --
+  -- Además, se debe validar que solo sobre una cotización abierta se pueden hacer modificaciones
+  -- Sobre cotizaciones en estado != 1 no se puede modificar nada
+  --
+  if old.idescv != 1 and (   old.idempr                 != new.idempr
+                          or old.idbode                 != new.idbode
+                          or old.numero                 != new.numero
+                          or old.idclie                 != new.idclie
+                          or old.descripcioncotizacion  != new.descripcioncotizacion
+                          or old.fechacotizacion        != new.fechacotizacion
+                          or old.idgere                 != new.idgere
+                          or old.idproy                 != new.idproy
+                          or old.idline                 != new.idline
+                          or old.idceco                 != new.idceco
+                          or old.idtare                 != new.idtare
+                          or old.exento                 != new.exento
+                          or old.afecto                 != new.afecto
+                          or old.impuestosobligats      != new.impuestosobligats
+                          or old.impuestosespecifs      != new.impuestosespecifs
+                          or old.porcentajedescuento    != new.porcentajedescuento
+                          or old.montodescuento         != new.montodescuento
+                          or old.total                  != new.total
+                          or old.diasvalidez            != new.diasvalidez
+                          or old.idusuavendedor         != new.idusuavendedor
+                         )
+  then
+    Vmensaje := 'Cotización no está abierta, no se le puede modificar nada';
+    raise exception 'Modificaciones no permitidas'
+    using hint = Vmensaje;
+  end if;
   return new;
 end;
 $body$ LANGUAGE plpgsql;

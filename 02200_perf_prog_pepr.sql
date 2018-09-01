@@ -133,9 +133,9 @@ insert into programas values ( 8040,  8000, 'Aprobac./rech. reqs. dpto. compras'
 insert into programas values ( 8050,  8000, 'Órdenes de compras'                   , 'OrdenesCompras'                  , 'Órdenes de compras'                        , 5  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 8060,  8000, 'Recepciones compras/servicios'        , 'RecepcionesCompras'              , 'Recepciones compras/servicios'             , 6  , 1, current_timestamp, null, null, null, null);
 
-insert into programas values ( 9000, null , 'Ventas'                               , null                              , 'Ventas'                                    , 11  , 1, current_timestamp, null, null, null, null);
+insert into programas values ( 9000, null , 'Ventas'                               , null                              , 'Ventas'                                    , 11 , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 9010,  9000, 'Cotizaciones ventas'                  , 'CotizacionesVentas'              , 'Cotizaciones ventas'                       , 1  , 1, current_timestamp, null, null, null, null);
-insert into programas values ( 9020,  9000, 'Selecciona cotizaciones ventas'       , 'CotizacionesVentas/selCotizs'    , 'Selecciona cotizaciones ventas'            , 2  , 1, current_timestamp, null, null, null, null);
+insert into programas values ( 9020,  9000, 'Aprobación de cotizaciones'           , 'CotizacionesVentas/selCotizs'    , 'Aprobación de cotizaciones'                , 2  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 9030,  9000, 'Notas ventas'                         , 'NotasVentas'                     , 'Notas ventas'                              , 3  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 9040,  9000, 'Ventas'                               , 'Ventas'                          , 'Ventas'                                    , 4  , 1, current_timestamp, null, null, null, null);
 

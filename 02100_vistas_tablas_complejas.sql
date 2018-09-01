@@ -730,7 +730,7 @@ drop view if exists aurev
 create or replace view aurev as
 select aure.id                    id
       ,aure.idempr                idempr
-      ,empr.nombrefantasia        empresa                       
+      ,empr.nombrefantasia        empresa
       ,aure.idperfautorizador     idperfautorizador
       ,perf1.descripcion          autorizador
       ,aure.idperfautorizado      idperfautorizado
@@ -1131,6 +1131,34 @@ where  posh.idusuaborraregistro is null
 
 select *
 from   poshv
+order  by 1
+;
+
+/*************************************************************************************************************************/
+
+drop view if exists usuav
+;
+
+create or replace view usuav as
+select usua.id                                           id
+      ,usua.username                                     username
+      ,usua.idpers                                       idpers
+      ,pers.apellidopaterno              || ' '  ||
+       coalesce(pers.apellidomaterno,'') || ', ' ||
+       pers.primernombre                 || ' '  ||
+       coalesce(pers.segundonombre,'')                   nombre_persona
+      ,pers.identificador1 || '-' ||
+       pers.identificador2                               doc_ident
+      ,usua.idesre                                       idesre
+      ,esre.descripcion                                  estado_registro
+from                   usuarios          usua
+       left outer join personas          pers on usua.idpers = pers.id
+       left outer join estados_registros esre on usua.idesre = esre.id
+where  usua.idusuaborraregistro is null
+;
+
+select *
+from   usuav
 order  by 1
 ;
 

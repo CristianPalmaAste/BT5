@@ -1143,6 +1143,7 @@ create or replace view usuav as
 select usua.id                                           id
       ,usua.username                                     username
       ,usua.idpers                                       idpers
+      ,pers.idgrem                                       idgrem
       ,pers.apellidopaterno              || ' '  ||
        coalesce(pers.apellidomaterno,'') || ', ' ||
        pers.primernombre                 || ' '  ||

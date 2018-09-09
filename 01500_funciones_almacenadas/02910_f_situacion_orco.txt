@@ -1,0 +1,21 @@
+CREATE FUNCTION
+ f_situacion_orco 
+------------------
+ 0
+(1 fila)
+
+ f_situacion_orco 
+------------------
+ SIN INFORMACIÓN
+(1 fila)
+
+ f_situacion_orco 
+------------------
+ 0
+(1 fila)
+
+ f_situacion_orco 
+------------------
+ SIN INFORMACIÓN
+(1 fila)
+

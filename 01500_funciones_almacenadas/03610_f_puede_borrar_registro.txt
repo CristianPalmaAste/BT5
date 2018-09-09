@@ -1,0 +1,26 @@
+CREATE FUNCTION
+ f_puede_borrar_registro 
+-------------------------
+ S
+(1 fila)
+
+ f_puede_borrar_registro 
+-------------------------
+ S
+(1 fila)
+
+ f_puede_borrar_registro 
+-------------------------
+ S
+(1 fila)
+
+ f_puede_borrar_registro 
+-------------------------
+ S
+(1 fila)
+
+ f_puede_borrar_registro 
+-------------------------
+ S
+(1 fila)
+

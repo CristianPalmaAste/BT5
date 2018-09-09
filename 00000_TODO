@@ -126,9 +126,6 @@ psql -d $DBNAME -U $USUARIO_DB < 03000_f_validar_reco.sql > 03010_f_validar_reco
 echo "  03100_f_impedir_upd_y_del_en_derc"
 psql -d $DBNAME -U $USUARIO_DB < 03100_f_impedir_upd_y_del_en_derc.sql > 03110_f_impedir_upd_y_del_en_derc.txt
 
-echo "  03200_f_impedir_upd_y_del_en_deve"
-psql -d $DBNAME -U $USUARIO_DB < 03200_f_impedir_upd_y_del_en_deve.sql > 03210_f_impedir_upd_y_del_en_deve.txt
-
 echo "  03300_f_aumentar_stock"
 psql -d $DBNAME -U $USUARIO_DB < 03300_f_aumentar_stock.sql > 03310_f_aumentar_stock.txt
 
@@ -146,9 +143,6 @@ psql -d $DBNAME -U $USUARIO_DB < 03700_f_validar_decv.sql > 03710_f_validar_decv
 
 echo "  03800_f_validar_denv"
 psql -d $DBNAME -U $USUARIO_DB < 03800_f_validar_denv.sql > 03810_f_validar_denv.txt
-
-echo "  03900_f_validar_deve"
-psql -d $DBNAME -U $USUARIO_DB < 03900_f_validar_deve.sql > 03910_f_validar_deve.txt
 
 cd ..
 
@@ -219,9 +213,6 @@ psql -d $DBNAME -U $USUARIO_DB < 02000_trg_before_ins_reco.sql > 02010_trg_befor
 echo "  02100_trg_before_upd_y_del_derc"
 psql -d $DBNAME -U $USUARIO_DB < 02100_trg_before_upd_y_del_derc.sql > 02110_trg_before_upd_y_del_derc.txt
 
-echo "  02200_trg_before_upd_y_del_deve"
-psql -d $DBNAME -U $USUARIO_DB < 02200_trg_before_upd_y_del_deve.sql > 02210_trg_before_upd_y_del_deve.txt
-
 echo "  02300_trg_after_ins_derc"
 psql -d $DBNAME -U $USUARIO_DB < 02300_trg_after_ins_derc.sql > 02310_trg_after_ins_derc.txt
 
@@ -236,9 +227,6 @@ psql -d $DBNAME -U $USUARIO_DB < 02600_trg_before_ins_upd_del_decv.sql > 02610_t
 
 echo "  02700_trg_before_ins_upd_del_denv"
 psql -d $DBNAME -U $USUARIO_DB < 02700_trg_before_ins_upd_del_denv.sql > 02710_trg_before_ins_upd_del_denv.txt
-
-echo "  02800_trg_before_ins_upd_del_deve"
-psql -d $DBNAME -U $USUARIO_DB < 02800_trg_before_ins_upd_del_deve.sql > 02810_trg_before_ins_upd_del_deve.txt
 
 cd ..
 

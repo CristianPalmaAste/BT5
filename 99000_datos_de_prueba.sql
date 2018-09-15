@@ -765,9 +765,9 @@ insert into proveedores values (12, 4, 1, 91144000, '8', 2, 'EMBOTELLADORA ANDIN
 
 insert into requisiciones values (1, 1, 1, 1, 3, null, null, null, null, null, 1, 1, current_timestamp, null, null, null, null);
 
-insert into detalles_requisiciones values (1, 1, 1, 1 , 9, null, null, null, 10, 1, current_timestamp, null, null, null, null);
-insert into detalles_requisiciones values (2, 1, 2, 2 , 9, null, null, null, 20, 1, current_timestamp, null, null, null, null);
-insert into detalles_requisiciones values (3, 1, 3, 3 , 9, null, null, null, 30, 1, current_timestamp, null, null, null, null);
+insert into detalles_requisiciones values (1, 1, 1, 1 , null, null, 10, 1, current_timestamp, null, null, null, null);
+insert into detalles_requisiciones values (2, 1, 2, 2 , null, null, 20, 1, current_timestamp, null, null, null, null);
+insert into detalles_requisiciones values (3, 1, 3, 3 , null, null, 30, 1, current_timestamp, null, null, null, null);
 
 insert into historiales_requisiciones values (1 , 1, 1, 3, null                        , current_timestamp);
 insert into historiales_requisiciones values (2 , 1, 2, 3, null                        , current_timestamp);
@@ -782,9 +782,9 @@ insert into historiales_requisiciones values (10, 1, 5, 6, null                 
 
 insert into requisiciones values (2, 1, 2, 2, 3, null, null, null, null, null, 1, 1, current_timestamp, null, null, null, null);
 
-insert into detalles_requisiciones values (4, 2, 1, 13, 3, null, null, null, 5 , 1, current_timestamp, null, null, null, null);
-insert into detalles_requisiciones values (5, 2, 2, 14, 3, null, null, null, 5 , 1, current_timestamp, null, null, null, null);
-insert into detalles_requisiciones values (6, 2, 3, 15, 3, null, null, null, 10, 1, current_timestamp, null, null, null, null);
+insert into detalles_requisiciones values (4, 2, 1, 13, null, null, 5 , 1, current_timestamp, null, null, null, null);
+insert into detalles_requisiciones values (5, 2, 2, 14, null, null, 5 , 1, current_timestamp, null, null, null, null);
+insert into detalles_requisiciones values (6, 2, 3, 15, null, null, 10, 1, current_timestamp, null, null, null, null);
 
 insert into historiales_requisiciones values (11, 2, 1, 3, null                        , current_timestamp);
 

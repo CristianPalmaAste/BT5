@@ -78,7 +78,7 @@ create sequence ereq_seq start with 8;
 create sequence tire_seq start with 4;
 create sequence requ_seq start with 3;
 create sequence dere_seq start with 7;
-create sequence aure_seq start with 161;
+create sequence aure_seq start with 177;
 create sequence hire_seq start with 12;
 create sequence esoc_seq start with 5;
 create sequence edoc_seq start with 4;

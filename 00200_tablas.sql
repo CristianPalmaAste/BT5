@@ -2130,9 +2130,7 @@ create table detalles_requisiciones (
   ,idrequ                   numeric(20,0)   not null
   ,correlativo              numeric(20,0)   not null
   ,idprod                   numeric(20,0)       null
-  ,idunmp                   numeric(20,0)       null
   ,idserv                   numeric(20,0)       null
-  ,idunms                   numeric(20,0)       null
   ,otroinsumo               varchar(1000)       null
   ,cantidad                 numeric(20,0)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
@@ -2156,13 +2154,6 @@ alter table detalles_requisiciones add constraint dere_chk_01 check (
                                                                      (idprod is     null and idserv is not null and otroinsumo is     null)
                                                                      or
                                                                      (idprod is     null and idserv is     null and otroinsumo is not null)
-                                                                    )
-;
-
-alter table detalles_requisiciones add constraint dere_chk_02 check (
-                                                                     (idprod is not null and idunmp is not null)
-                                                                     or
-                                                                     (idserv is not null and idunms is not null)
                                                                     )
 ;
 
@@ -2290,9 +2281,7 @@ create table detalles_ordenes_compras (
   ,correlativo              numeric(20,0)   not null
   ,idedoc                   numeric(20,0)   not null
   ,idprod                   numeric(20,0)       null
-  ,idunmp                   numeric(20,0)       null
   ,idserv                   numeric(20,0)       null
-  ,idunms                   numeric(20,0)       null
   ,otroinsumo               varchar(1000)       null
   ,cantidad                 numeric(20,0)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
@@ -2316,13 +2305,6 @@ alter table detalles_ordenes_compras add constraint deoc_chk_01 check (
                                                                        (idprod is     null and idserv is not null and otroinsumo is     null)
                                                                        or
                                                                        (idprod is     null and idserv is     null and otroinsumo is not null)
-                                                                      )
-;
-
-alter table detalles_ordenes_compras add constraint deoc_chk_02 check (
-                                                                       (idprod is not null and idunmp is not null)
-                                                                       or
-                                                                       (idserv is not null and idunms is not null)
                                                                       )
 ;
 
@@ -2784,9 +2766,7 @@ alter table detalles_recepciones_compras     add constraint derc_fk3_usua foreig
 alter table detalles_ordenes_compras         add constraint deoc_fk_orco  foreign key (idorco)                references ordenes_compras                  (id);
 alter table detalles_ordenes_compras         add constraint deoc_fk_edoc  foreign key (idedoc)                references estados_detalles_ordenes_compras (id);
 alter table detalles_ordenes_compras         add constraint deoc_fk_prod  foreign key (idprod)                references productos                        (id);
-alter table detalles_ordenes_compras         add constraint deoc_fk_unmp  foreign key (idunmp)                references unidades_medidas_productos       (id);
 alter table detalles_ordenes_compras         add constraint deoc_fk_serv  foreign key (idserv)                references servicios                        (id);
-alter table detalles_ordenes_compras         add constraint deoc_fk_unms  foreign key (idunms)                references unidades_medidas_servicios       (id);
 alter table detalles_ordenes_compras         add constraint deoc_fk2_usua foreign key (idusuamodifregistro)   references usuarios                         (id);
 alter table detalles_ordenes_compras         add constraint deoc_fk3_usua foreign key (idusuaborraregistro)   references usuarios                         (id);
 
@@ -2831,9 +2811,7 @@ alter table requisiciones                    add constraint requ_fk3_usua foreig
 
 alter table detalles_requisiciones           add constraint dere_fk_requ  foreign key (idrequ)                references requisiciones                    (id);
 alter table detalles_requisiciones           add constraint dere_fk_prod  foreign key (idprod)                references productos                        (id);
-alter table detalles_requisiciones           add constraint dere_fk_unmp  foreign key (idunmp)                references unidades_medidas_productos       (id);
 alter table detalles_requisiciones           add constraint dere_fk_serv  foreign key (idserv)                references servicios                        (id);
-alter table detalles_requisiciones           add constraint dere_fk_unms  foreign key (idunms)                references unidades_medidas_servicios       (id);
 alter table detalles_requisiciones           add constraint dere_fk2_usua foreign key (idusuamodifregistro)   references usuarios                         (id);
 alter table detalles_requisiciones           add constraint dere_fk3_usua foreign key (idusuaborraregistro)   references usuarios                         (id);
 

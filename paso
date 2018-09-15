@@ -401,7 +401,7 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence aure_seq start with 161
+ create sequence aure_seq start with 177
 (1 fila)
 
                 ?column?                

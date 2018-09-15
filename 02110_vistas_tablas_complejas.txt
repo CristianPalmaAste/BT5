@@ -282,17 +282,17 @@ CREATE VIEW
 
 DROP VIEW
 CREATE VIEW
- id |  username   | idpers |          nombre_persona           | doc_ident  | idesre | estado_registro 
-----+-------------+--------+-----------------------------------+------------+--------+-----------------
-  1 | ADMIN       |      1 | SISTEMA AS, ADMINISTRADOR         | 1-9        |      1 | ACTIVO
-  2 | ROSILVA     |      2 | SILVA -, ROLANDO                  | 2-7        |      1 | ACTIVO
-  3 | SEAGUIRRE   |      3 | AGUIRRE -, SERGIO                 | 3-5        |      1 | ACTIVO
-  4 | JJMONSALVE  |      4 | MONSALVE -, JUAN JOSE             | 4-3        |      1 | ACTIVO
-  5 | JABORZONE   |      5 | BORZONE -, JUAN ANDRES            | 5-1        |      1 | ACTIVO
-  6 | ROCIFUENTES |      6 | CIFUENTES -, RODRIGO              | 6-K        |      1 | ACTIVO
-  7 | RQUEZADAA   |      7 | QUEZADA ASTE, ROBERTO DANIEL      | 7695503-4  |      2 | INACTIVO
-  8 | OSOLARM     |      8 | SOLAR MALDONADO, OSCIEL SEGUNDO   | 8965445-9  |      1 | ACTIVO
-  9 | NSALAZARG   |      9 | SALAZAR GONZALEZ, NILTON PATRICIO | 13254825-0 |      1 | ACTIVO
- 10 | CPALMAA     |     10 | PALMA ASTE, G. CRISTIAN           | 10917721-0 |      1 | ACTIVO
+ id |  username   | idpers | idgrem |          nombre_persona           | doc_ident  | idesre | estado_registro 
+----+-------------+--------+--------+-----------------------------------+------------+--------+-----------------
+  1 | ADMIN       |      1 |      1 | SISTEMA AS, ADMINISTRADOR         | 1-9        |      1 | ACTIVO
+  2 | ROSILVA     |      2 |      1 | SILVA -, ROLANDO                  | 2-7        |      1 | ACTIVO
+  3 | SEAGUIRRE   |      3 |      1 | AGUIRRE -, SERGIO                 | 3-5        |      1 | ACTIVO
+  4 | JJMONSALVE  |      4 |      1 | MONSALVE -, JUAN JOSE             | 4-3        |      1 | ACTIVO
+  5 | JABORZONE   |      5 |      1 | BORZONE -, JUAN ANDRES            | 5-1        |      1 | ACTIVO
+  6 | ROCIFUENTES |      6 |      1 | CIFUENTES -, RODRIGO              | 6-K        |      1 | ACTIVO
+  7 | RQUEZADAA   |      7 |      1 | QUEZADA ASTE, ROBERTO DANIEL      | 7695503-4  |      2 | INACTIVO
+  8 | OSOLARM     |      8 |      1 | SOLAR MALDONADO, OSCIEL SEGUNDO   | 8965445-9  |      1 | ACTIVO
+  9 | NSALAZARG   |      9 |      1 | SALAZAR GONZALEZ, NILTON PATRICIO | 13254825-0 |      1 | ACTIVO
+ 10 | CPALMAA     |     10 |      1 | PALMA ASTE, G. CRISTIAN           | 10917721-0 |      1 | ACTIVO
 (10 filas)
 

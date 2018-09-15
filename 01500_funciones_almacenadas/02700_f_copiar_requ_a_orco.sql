@@ -6,9 +6,7 @@ declare
   Vidrequ                   numeric(20,0);
   Vcorrelativo              numeric(20,0);
   Vidprod                   numeric(20,0);
-  Vidunmp                   numeric(20,0);
   Vidserv                   numeric(20,0);
-  Vidunms                   numeric(20,0);
   Votroinsumo               varchar(1000);
   Vcantidad                 numeric(20,0);
   Viddeoc                   numeric(20,0);
@@ -17,9 +15,7 @@ declare
           ,idrequ
           ,correlativo
           ,idprod
-          ,idunmp
           ,idserv
-          ,idunms
           ,otroinsumo
           ,cantidad
     from   detalles_requisiciones
@@ -81,9 +77,7 @@ begin
                        ,Vidrequ
                        ,Vcorrelativo
                        ,Vidprod
-                       ,Vidunmp
                        ,Vidserv
-                       ,Vidunms
                        ,Votroinsumo
                        ,Vcantidad
                        ;
@@ -97,9 +91,7 @@ begin
                                            ,correlativo              -- numeric(20,0)   not null
                                            ,idedoc                   -- numeric(20,0)   not null
                                            ,idprod                   -- numeric(20,0)       null
-                                           ,idunmp                   -- numeric(20,0)       null
                                            ,idserv                   -- numeric(20,0)       null
-                                           ,idunms                   -- numeric(20,0)       null
                                            ,otroinsumo               -- varchar(1000)       null
                                            ,cantidad                 -- numeric(20,0)   not null
                                            ,idusuacrearegistro       -- numeric(20,0)   not null
@@ -110,9 +102,7 @@ begin
              ,Vcorrelativo                        -- correlativo              numeric(20,0)   not null
              ,1                                   -- idedoc                   numeric(20,0)   not null
              ,Vidprod                             -- idprod                   numeric(20,0)       null
-             ,Vidunmp                             -- idunmp                   numeric(20,0)       null
              ,Vidserv                             -- idserv                   numeric(20,0)       null
-             ,Vidunms                             -- idunms                   numeric(20,0)       null
              ,Votroinsumo                         -- otroinsumo               varchar(1000)       null
              ,Vcantidad                           -- cantidad                 numeric(20,0)   not null
              ,new.idusuacrearegistro              -- idusuacrearegistro       numeric(20,0)   not null

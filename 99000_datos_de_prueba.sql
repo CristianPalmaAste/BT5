@@ -908,4 +908,21 @@ insert into ordenes_servicios_hono values (nextval('orsh_seq'), 1, 1, 5, 'ZX-15-
 
 insert into doctos_ordenes_servs_hono values (nextval('dosh_seq'), 1, 'archivo1.txt', 'abcde_12341.txt', 1, current_timestamp, null, null, null, null);
 
+insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 5 , 5 , 1, current_timestamp, null, null, null, null);
+insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 5 , 6 , 1, current_timestamp, null, null, null, null);
+insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 7 , 7 , 1, current_timestamp, null, null, null, null);
+insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 7 , 8 , 1, current_timestamp, null, null, null, null);
+insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 7 , 9 , 1, current_timestamp, null, null, null, null);
+insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 7 , 13, 1, current_timestamp, null, null, null, null);
+insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 7 , 16, 1, current_timestamp, null, null, null, null);
+insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 7 , 18, 1, current_timestamp, null, null, null, null);
+insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 9 , 10, 1, current_timestamp, null, null, null, null);
+insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 9 , 11, 1, current_timestamp, null, null, null, null);
+insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 13, 12, 1, current_timestamp, null, null, null, null);
+insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 13, 14, 1, current_timestamp, null, null, null, null);
+insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 13, 15, 1, current_timestamp, null, null, null, null);
+insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 16, 17, 1, current_timestamp, null, null, null, null);
+insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 18, 19, 1, current_timestamp, null, null, null, null);
+insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 18, 20, 1, current_timestamp, null, null, null, null);
+
 \q

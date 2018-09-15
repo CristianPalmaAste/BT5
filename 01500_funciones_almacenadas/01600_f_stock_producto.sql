@@ -58,6 +58,9 @@ begin
   where  idbode = Pidbode
   and    idprod = Pidprod
   ;
+  if Vstock is null then
+    Vstock := 0;
+  end if;
   if Pdato_deseado = 1 then
     return(Vstock);
   end if;

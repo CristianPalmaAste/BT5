@@ -111,12 +111,12 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence pepr_seq start with 378
+ create sequence pepr_seq start with 384
 (1 fila)
 
                 ?column?                 
 -----------------------------------------
- create sequence cuco_seq start with 797
+ create sequence cuco_seq start with 801
 (1 fila)
 
                 ?column?                

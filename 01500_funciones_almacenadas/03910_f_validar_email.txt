@@ -1,0 +1,16 @@
+CREATE FUNCTION
+ f_validar_email 
+-----------------
+ S
+(1 fila)
+
+ f_validar_email 
+-----------------
+ N
+(1 fila)
+
+ f_validar_email 
+-----------------
+ N
+(1 fila)
+

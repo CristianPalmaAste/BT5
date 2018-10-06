@@ -144,6 +144,9 @@ psql -d $DBNAME -U $USUARIO_DB < 03700_f_validar_decv.sql > 03710_f_validar_decv
 echo "  03800_f_validar_denv"
 psql -d $DBNAME -U $USUARIO_DB < 03800_f_validar_denv.sql > 03810_f_validar_denv.txt
 
+echo "  03900_f_validar_email"
+psql -d $DBNAME -U $USUARIO_DB < 03900_f_validar_email.sql > 03910_f_validar_email.txt
+
 cd ..
 
 cd 01600_triggers

@@ -63,8 +63,8 @@ CREATE VIEW
 
 DROP VIEW
 CREATE VIEW
- id | idempr | empresa | idsfpr | sub_familia | nombre_sub_familia | idfapr | familia | nombre_familia | idtipr | tipo_producto | idunmp | unidad_de_medida | alias_unidad_de_medida | idorpr | origen | alias_origen | nombre | producto | sku | ean13 | qr | pesounitariokg | idesre | estado_regsitro 
-----+--------+---------+--------+-------------+--------------------+--------+---------+----------------+--------+---------------+--------+------------------+------------------------+--------+--------+--------------+--------+----------+-----+-------+----+----------------+--------+-----------------
+ id | idempr | empresa | idsfpr | sub_familia | nombre_sub_familia | idfapr | familia | nombre_familia | idtipr | tipo_producto | idunmp | unidad_de_medida | alias_unidad_de_medida | idorpr | origen | alias_origen | nombre | producto | sku | ean13 | qr | pesounitariokg | idesre | estado_regsitro | cod_prod_alfanum 
+----+--------+---------+--------+-------------+--------------------+--------+---------+----------------+--------+---------------+--------+------------------+------------------------+--------+--------+--------------+--------+----------+-----+-------+----+----------------+--------+-----------------+------------------
 (0 filas)
 
 DROP VIEW
@@ -208,30 +208,30 @@ CREATE VIEW
 
 DROP VIEW
 CREATE VIEW
- id | idgrem |         grupo_empresarial          | descripcion_concepto_rendicion_gasto | idcuco | cuenta_contable |   descripcion_cuenta_contable    
-----+--------+------------------------------------+--------------------------------------+--------+-----------------+----------------------------------
-  1 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ALOJAMIENTO                          |    150 |                 | GASTOS DE ADMINISTRACION Y VENTA
-  2 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ARTÍCULOS ASEO Y LIMPIEZA            |    166 |                 | GASTOS DE OFICINA
-  3 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ARTÍCULOS ESCRITORIO                 |    166 |                 | GASTOS DE OFICINA
-  4 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ATENCIÓN A CLIENTES                  |    150 |                 | GASTOS DE ADMINISTRACION Y VENTA
-  5 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | BENCINA AUTO PRESIDENCIA             |    161 |                 | GASTOS DE REPRESENTACION
-  6 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | COLACIÓN                             |    176 |                 | COLACION
-  7 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | COMBUSTIBLES Y LUBRICANTES           |    161 |                 | GASTOS DE REPRESENTACION
-  8 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ELEMENTOS TRABAJO Y SEGURIDAD        |    186 |                 | OTROS GASTOS
-  9 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ESTACIONAMIENTO                      |    150 |                 | GASTOS DE ADMINISTRACION Y VENTA
- 10 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | FLETES                               |    184 |                 | FLETES
- 11 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | FLORES PRESIDENCIA                   |    161 |                 | GASTOS DE REPRESENTACION
- 12 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | FOTOCOPIAS                           |    166 |                 | GASTOS DE OFICINA
- 13 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS CASINO                        |    186 |                 | OTROS GASTOS
- 14 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS COMPUTACIONALES               |    154 |                 | ASESORIA INFORMATICA
- 15 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS COMUNES                       |    186 |                 | OTROS GASTOS
- 16 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS DE REPRESENTACION             |    161 |                 | GASTOS DE REPRESENTACION
- 17 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS VARIOS                        |    186 |                 | OTROS GASTOS
- 18 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | HERRAMIENTAS MENORES                 |    186 |                 | OTROS GASTOS
- 19 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | MOVILIZACIÓN                         |    150 |                 | GASTOS DE ADMINISTRACION Y VENTA
+ id | idgrem |         grupo_empresarial          | descripcion_concepto_rendicion_gasto | idcuco | cuenta_contable | descripcion_cuenta_contable 
+----+--------+------------------------------------+--------------------------------------+--------+-----------------+-----------------------------
+  1 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ALOJAMIENTO                          |    150 |                 | OTROS COSTOS DE EXPLOTACION
+  2 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ARTÍCULOS ASEO Y LIMPIEZA            |    166 |                 | COMBUSTIBLE
+  3 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ARTÍCULOS ESCRITORIO                 |    166 |                 | COMBUSTIBLE
+  4 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ATENCIÓN A CLIENTES                  |    150 |                 | OTROS COSTOS DE EXPLOTACION
+  5 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | BENCINA AUTO PRESIDENCIA             |    161 |                 | GASTOS DE PUBLICIDAD
+  6 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | COLACIÓN                             |    176 |                 | SEGUROS
+  7 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | COMBUSTIBLES Y LUBRICANTES           |    161 |                 | GASTOS DE PUBLICIDAD
+  8 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ELEMENTOS TRABAJO Y SEGURIDAD        |    186 |                 | GPS
+  9 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ESTACIONAMIENTO                      |    150 |                 | OTROS COSTOS DE EXPLOTACION
+ 10 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | FLETES                               |    184 |                 | GASTOS DE DOMINIO
+ 11 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | FLORES PRESIDENCIA                   |    161 |                 | GASTOS DE PUBLICIDAD
+ 12 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | FOTOCOPIAS                           |    166 |                 | COMBUSTIBLE
+ 13 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS CASINO                        |    186 |                 | GPS
+ 14 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS COMPUTACIONALES               |    154 |                 | FINIQUITOS
+ 15 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS COMUNES                       |    186 |                 | GPS
+ 16 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS DE REPRESENTACION             |    161 |                 | GASTOS DE PUBLICIDAD
+ 17 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS VARIOS                        |    186 |                 | GPS
+ 18 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | HERRAMIENTAS MENORES                 |    186 |                 | GPS
+ 19 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | MOVILIZACIÓN                         |    150 |                 | OTROS COSTOS DE EXPLOTACION
  20 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | PAGO PROVEEDORES                     |     86 |                 | PROVEEDORES NACIONALES
- 21 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | PASAJES AÉREOS                       |    162 |                 | VIAJES Y ESTADIAS
- 22 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | PEAJES                               |    150 |                 | GASTOS DE ADMINISTRACION Y VENTA
+ 21 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | PASAJES AÉREOS                       |    162 |                 | GASTOS DE REPRESENTACION
+ 22 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | PEAJES                               |    150 |                 | OTROS COSTOS DE EXPLOTACION
 (22 filas)
 
 DROP VIEW
@@ -295,4 +295,22 @@ CREATE VIEW
   9 | NSALAZARG   |      9 |      1 | SALAZAR GONZALEZ, NILTON PATRICIO | 13254825-0 |      1 | ACTIVO
  10 | CPALMAA     |     10 |      1 | PALMA ASTE, G. CRISTIAN           | 10917721-0 |      1 | ACTIVO
 (10 filas)
+
+DROP VIEW
+CREATE VIEW
+ id | idempr | empresa | idprod | cod_prod_alfanum | producto | preciounitario | idusua | username | persona | fecha_cambio 
+----+--------+---------+--------+------------------+----------+----------------+--------+----------+---------+--------------
+(0 filas)
+
+DROP VIEW
+CREATE VIEW
+ id | idbode | bodega | idempr | empresa | nro_movto_bodega | idtimb | tipo_movto_bodega | fecha_movto | movto_bodega 
+----+--------+--------+--------+---------+------------------+--------+-------------------+-------------+--------------
+(0 filas)
+
+DROP VIEW
+CREATE VIEW
+ id | idmobo | correlativo_movto_bodega | descripcion | correlativo_detalle_movto_bodega | idprod | cod_prod_alfanum | producto | cantidad | idunmp | unidad_medida 
+----+--------+--------------------------+-------------+----------------------------------+--------+------------------+----------+----------+--------+---------------
+(0 filas)
 

@@ -91,7 +91,7 @@ insert into programas values ( 3080,  3000, 'Mant. estados documentos legales'  
 insert into programas values ( 3090,  3000, 'Mant. clientes'                       , 'clientes'                        , 'Mantención clientes'                       , 9  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 3100,  3000, 'Mant. conceptos rendiciones gastos'   , 'ConceptosRendicionesGastos'      , 'Mantención conceptos rendiciones gastos'   , 10 , 1, current_timestamp, null, null, null, null);
 
-insert into programas values ( 4000, null , 'Adm. empresa'                         , null                              , 'Administracion empresa'                    , 6  , 1, current_timestamp, null, null, null, null);
+insert into programas values ( 4000, null , 'Adm. empresa 1'                       , null                              , 'Administracion empresa 1'                  , 6  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 4010,  4000, 'Mant. gerencias'                      , 'gerencias'                       , 'Mantención gerencias'                      , 1  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 4020,  4000, 'Mant. proyectos'                      , 'proyectos'                       , 'Mantención proyectos'                      , 2  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 4030,  4000, 'Mant. líneas de negocios'             , 'lineas-negocios'                 , 'Mantención líneas de negocios'             , 3  , 1, current_timestamp, null, null, null, null);
@@ -107,25 +107,28 @@ insert into programas values ( 4130,  4000, 'Mant. autorizadores rendiciones'   
 insert into programas values ( 4140,  4000, 'Mant. autorizadores requisiciones'    , 'AutorizadoresRequisiciones'      , 'Mantención autorizadores requisiciones'    , 14 , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 4150,  4000, 'Mant. fondos a rendir'                , 'FondosARendir'                   , 'Mantención fondos a rendir'                , 15 , 1, current_timestamp, null, null, null, null);
 
-insert into programas values ( 5000, null , 'Legales'                              , null                              , 'Legales'                                   , 7  , 1, current_timestamp, null, null, null, null);
+insert into programas values ( 4500, null , 'Adm. empresa 2'                       , null                              , 'Administracion empresa 2'                  , 7  , 1, current_timestamp, null, null, null, null);
+insert into programas values ( 4510,  4500, 'Mant. proveedores'                    , 'proveedores'                     , 'Mantención proveedores'                    , 1  , 1, current_timestamp, null, null, null, null);
+
+insert into programas values ( 5000, null , 'Legales'                              , null                              , 'Legales'                                   , 8  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 5010,  5000, 'Documentos legales'                   , 'DocumentosLegales'               , 'Documentos legales'                        , 1  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 5020,  5000, 'Gráfica legales'                      , 'DocumentosLegales/estadisticas'  , 'Gráfica legales'                           , 2  , 1, current_timestamp, null, null, null, null);
 
-insert into programas values ( 6000, null , 'Honorarios'                           , null                              , 'Honorarios'                                , 8  , 1, current_timestamp, null, null, null, null);
+insert into programas values ( 6000, null , 'Honorarios'                           , null                              , 'Honorarios'                                , 9  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 6010,  6000, 'Honorarios 1'                         , 'principales/en-construccion'     , 'Honorarios 1'                              , 1  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 6020,  6000, 'Honorarios 2'                         , 'principales/en-construccion'     , 'Honorarios 2'                              , 2  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 6030,  6000, 'Honorarios 3'                         , 'principales/en-construccion'     , 'Honorarios 3'                              , 3  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 6040,  6000, 'Honorarios 4'                         , 'principales/en-construccion'     , 'Honorarios 4'                              , 4  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 6050,  6000, 'Honorarios 5'                         , 'principales/en-construccion'     , 'Honorarios 5'                              , 5  , 1, current_timestamp, null, null, null, null);
 
-insert into programas values ( 7000, null , 'Rendiciones'                          , null                              , 'Rendiciones'                               , 9  , 1, current_timestamp, null, null, null, null);
+insert into programas values ( 7000, null , 'Rendiciones'                          , null                              , 'Rendiciones'                               , 10 , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 7010,  7000, 'Fondos a rendir'                      , 'principales/en-construccion'     , 'Fondos a rendir'                           , 1  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 7020,  7000, 'Ingreso rendiciones'                  , 'principales/en-construccion'     , 'Ingreso rendiciones'                       , 2  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 7030,  7000, 'Aceptación/rechazo rendiciones'       , 'principales/en-construccion'     , 'Aceptación/rechazo rendiciones'            , 3  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 7040,  7000, 'Aprobac./rech. rends. dpto. contab.'  , 'principales/en-construccion'     , 'Aprobac./rech. rends. dpto. contab.'       , 4  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 7050,  7000, 'Contabilización rendiciones'          , 'principales/en-construccion'     , 'Contabilización rendiciones'               , 5  , 1, current_timestamp, null, null, null, null);
 
-insert into programas values ( 8000, null , 'Compras'                              , null                              , 'Compras'                                   , 10 , 1, current_timestamp, null, null, null, null);
+insert into programas values ( 8000, null , 'Compras'                              , null                              , 'Compras'                                   , 11 , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 8010,  8000, 'Registro requisiciones'               , 'RegistrosRequisiciones'          , 'Registro requisiciones'                    , 1  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 8020,  8000, 'Aceptación/rechazo requisiciones'     , 'AceptRechRequisiciones'          , 'Aceptación/rechazo requisiciones'          , 2  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 8030,  8000, 'Recepción requisiciones'              , 'RecepcionesRequisiciones'        , 'Recepción requisiciones'                   , 3  , 1, current_timestamp, null, null, null, null);
@@ -133,20 +136,20 @@ insert into programas values ( 8040,  8000, 'Aprobac./rech. reqs. dpto. compras'
 insert into programas values ( 8050,  8000, 'Órdenes de compras'                   , 'OrdenesCompras'                  , 'Órdenes de compras'                        , 5  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 8060,  8000, 'Recepciones compras/servicios'        , 'RecepcionesCompras'              , 'Recepciones compras/servicios'             , 6  , 1, current_timestamp, null, null, null, null);
 
-insert into programas values ( 9000, null , 'Ventas'                               , null                              , 'Ventas'                                    , 11 , 1, current_timestamp, null, null, null, null);
+insert into programas values ( 9000, null , 'Ventas'                               , null                              , 'Ventas'                                    , 12 , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 9010,  9000, 'Cotizaciones ventas'                  , 'CotizacionesVentas'              , 'Cotizaciones ventas'                       , 1  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 9020,  9000, 'Aprobación de cotizaciones'           , 'CotizacionesVentas/selCotizs'    , 'Aprobación de cotizaciones'                , 2  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 9030,  9000, 'Notas ventas'                         , 'NotasVentas'                     , 'Notas ventas'                              , 3  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 9040,  9000, 'Ventas'                               , 'Ventas'                          , 'Ventas'                                    , 4  , 1, current_timestamp, null, null, null, null);
 
-insert into programas values (10000, null , 'Contabilidad'                         , null                              , 'Contabilidad'                              , 12 , 1, current_timestamp, null, null, null, null);
+insert into programas values (10000, null , 'Contabilidad'                         , null                              , 'Contabilidad'                              , 13 , 1, current_timestamp, null, null, null, null);
 insert into programas values (10010, 10000, 'Contabilidad 1'                       , 'principales/en-construccion'     , 'Contabilidad 1'                            , 1  , 1, current_timestamp, null, null, null, null);
 insert into programas values (10020, 10000, 'Contabilidad 2'                       , 'principales/en-construccion'     , 'Contabilidad 2'                            , 2  , 1, current_timestamp, null, null, null, null);
 insert into programas values (10030, 10000, 'Contabilidad 3'                       , 'principales/en-construccion'     , 'Contabilidad 3'                            , 3  , 1, current_timestamp, null, null, null, null);
 insert into programas values (10040, 10000, 'Contabilidad 4'                       , 'principales/en-construccion'     , 'Contabilidad 4'                            , 4  , 1, current_timestamp, null, null, null, null);
 insert into programas values (10050, 10000, 'Contabilidad 5'                       , 'principales/en-construccion'     , 'Contabilidad 5'                            , 5  , 1, current_timestamp, null, null, null, null);
 
-insert into programas values (11000, null , 'Existencias'                          , null                              , 'Existencias'                               , 13 , 1, current_timestamp, null, null, null, null);
+insert into programas values (11000, null , 'Existencias'                          , null                              , 'Existencias'                               , 14 , 1, current_timestamp, null, null, null, null);
 insert into programas values (11010, 11000, 'Mantención bodegas'                   , 'bodegas'                         , 'Mantención bodegas'                        , 1  , 1, current_timestamp, null, null, null, null);
 insert into programas values (11020, 11000, 'Mantención familias productos'        , 'familias-productos'              , 'Mantención familias productos'             , 2  , 1, current_timestamp, null, null, null, null);
 insert into programas values (11030, 11000, 'Mantención sub familias productos'    , 'sub-familias-productos'          , 'Mantención sub familias productos'         , 3  , 1, current_timestamp, null, null, null, null);
@@ -228,6 +231,8 @@ insert into perfiles_programas values (nextval('pepr_seq'), 3 ,  4120, 1, curren
 insert into perfiles_programas values (nextval('pepr_seq'), 3 ,  4130, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 3 ,  4140, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 3 ,  4150, 1, current_timestamp, null, null, null, null);
+insert into perfiles_programas values (nextval('pepr_seq'), 3 ,  4500, 1, current_timestamp, null, null, null, null);
+insert into perfiles_programas values (nextval('pepr_seq'), 3 ,  4510, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 3 ,  8000, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 3 ,  8010, 1, current_timestamp, null, null, null, null);
 
@@ -259,6 +264,8 @@ insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  4120, 1, curren
 insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  4130, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  4140, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  4150, 1, current_timestamp, null, null, null, null);
+insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  4500, 1, current_timestamp, null, null, null, null);
+insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  4510, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  8000, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 4 ,  8010, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 4 , 11000, 1, current_timestamp, null, null, null, null);

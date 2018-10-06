@@ -19,6 +19,7 @@ declare
   Vestaexento                varchar(1);
   Vimptos_obligat            numeric;
   Vimptos_especif            numeric;
+  Vcod_alfanumerico_prod     varchar(100);
 begin
   /*
 
@@ -35,9 +36,10 @@ begin
        7    descuento (expresado como %)
        8    sumatoria de impuestos obligatorios a los que está afecto el producto
        9    sumatoria de impuestos específicos a los que está afecto el producto
+       10   "código alfanumérico" del producto, esto es: familia + sub familia + correlativo en 4 dígitos
 
   */
-  if Pdato_deseado not between 1 and 9 then
+  if Pdato_deseado not between 1 and 10 then
     return(null);
   end if;
   if    Pdato_deseado between 1 and 5 then
@@ -164,21 +166,25 @@ begin
     and    tipi.idtipr = Vidtipr
     ;
     return(Vimptos_especif);
+  elsif Pdato_deseado = 10 then
+    select    fapr.cod_familia
+           || sfpr.cod_sub_familia
+           || prod.correlativoflia
+    into   Vcod_alfanumerico_prod
+    from   productos                  prod
+          ,sub_familias_productos     sfpr
+          ,familias_productos         fapr
+    where  prod.idsfpr = sfpr.id
+    and    sfpr.idfapr = fapr.id
+    and    prod.id     = Pidprod
+    ;
+    return(Vcod_alfanumerico_prod);
   else
     return('-----');
   end if;
 end;
 $$ LANGUAGE plpgsql;
 
-select f_datos_producto(1,0 );
-select f_datos_producto(1,1 );
-select f_datos_producto(1,2 );
-select f_datos_producto(1,3 );
-select f_datos_producto(1,4 );
-select f_datos_producto(1,5 );
-select f_datos_producto(1,6 );
-select f_datos_producto(1,7 );
-select f_datos_producto(1,8 );
-select f_datos_producto(1,9 );
 select f_datos_producto(1,10);
+select f_datos_producto(2,10);
 

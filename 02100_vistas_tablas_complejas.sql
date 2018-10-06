@@ -267,6 +267,7 @@ select prod.id                        id
       ,prod.pesounitariokg            pesounitariokg
       ,prod.idesre                    idesre
       ,esre.descripcion               estado_regsitro
+      ,f_datos_producto(prod.id,10)   cod_prod_alfanum
 from                   productos                  prod
        left outer join empresas                   empr on prod.idempr = empr.id
        left outer join sub_familias_productos     sfpr on prod.idsfpr = sfpr.id
@@ -1160,6 +1161,92 @@ where  usua.idusuaborraregistro is null
 
 select *
 from   usuav
+order  by 1
+;
+
+/*************************************************************************************************************************/
+
+drop view if exists bicpv
+;
+
+create or replace view bicpv as
+select bicp.id                                                      id
+      ,empr.id                                                      idempr
+      ,empr.nombrefantasia                                          empresa
+      ,prod.id                                                      idprod
+      ,f_datos_producto(prod.id,10)                                 cod_prod_alfanum
+      ,prod.nombre                                                  producto
+      ,bicp.preciounitario                                          preciounitario
+      ,bicp.idusuacrearegistro                                      idusua
+      ,usua.username                                                username
+      ,pers.primernombre || ' ' || pers.apellidopaterno             persona
+      ,to_char(bicp.fechacrearegistro,'DD-MM-YYYY HH24:mi:ss')      fecha_cambio
+from                   bitacoras_cambios_precios  bicp
+       left outer join productos                  prod on bicp.idprod             = prod.id
+       left outer join empresas                   empr on prod.idempr             = empr.id
+       left outer join usuarios                   usua on bicp.idusuacrearegistro = usua.id
+       left outer join personas                   pers on usua.idpers             = pers.id
+;
+
+select *
+from   bicpv
+order  by 1
+;
+
+/*************************************************************************************************************************/
+
+drop view if exists mobov
+;
+
+create or replace view mobov as
+select mobo.id                                               id
+      ,bode.id                                               idbode
+      ,bode.nombre                                           bodega
+      ,empr.id                                               idempr
+      ,empr.nombrefantasia                                   empresa
+      ,mobo.correlativo                                      nro_movto_bodega
+      ,timb.id                                               idtimb
+      ,timb.descripcion                                      tipo_movto_bodega
+      ,to_char(mobo.fechamovto,'DD-MM-YYYY HH24:mi:ss')      fecha_movto
+      ,mobo.descripcion                                      movto_bodega
+from                   movimientos_bodegas        mobo
+       left outer join bodegas                    bode on mobo.idbode = bode.id
+       left outer join empresas                   empr on bode.idempr = empr.id
+       left outer join tipos_movimientos_bodegas  timb on mobo.idtimb = timb.id
+where  mobo.idusuaborraregistro is null
+;
+
+select *
+from   mobov
+order  by 1
+;
+
+/*************************************************************************************************************************/
+
+drop view if exists dembv
+;
+
+create or replace view dembv as
+select demb.id                       id
+      ,demb.idmobo                   idmobo
+      ,mobo.correlativo              correlativo_movto_bodega
+      ,mobo.descripcion              descripcion
+      ,demb.correlativo              correlativo_detalle_movto_bodega
+      ,demb.idprod                   idprod
+      ,f_datos_producto(prod.id,10)  cod_prod_alfanum
+      ,prod.nombre                   producto
+      ,demb.cantidad                 cantidad
+      ,demb.idunmp                   idunmp
+      ,unmp.descripcion              unidad_medida
+from                   detalles_movtos_bodegas     demb
+       left outer join movimientos_bodegas         mobo on demb.idmobo = mobo.id
+       left outer join productos                   prod on demb.idprod = prod.id
+       left outer join unidades_medidas_productos  unmp on demb.idunmp = unmp.id
+where  demb.idusuaborraregistro is null
+;
+
+select *
+from   dembv
 order  by 1
 ;
 

@@ -12,13 +12,15 @@ begin
                                                  )
     ;
   else
-    insert into bitacoras_cambios_precios values (nextval('bicp_seq')       -- id                       numeric(20,0)   not null
-                                                 ,new.idprod                -- idprod                   numeric(20,0)   not null
-                                                 ,new.preciounitario        -- preciounitario           numeric(20,0)   not null
-                                                 ,new.idusuamodifregistro   -- idusuacrearegistro       numeric(20,0)   not null
-                                                 ,current_timestamp         -- fechacrearegistro        timestamp       not null
-                                                 )
-    ;
+    if old.preciounitario != new.preciounitario then
+      insert into bitacoras_cambios_precios values (nextval('bicp_seq')       -- id                       numeric(20,0)   not null
+                                                   ,new.idprod                -- idprod                   numeric(20,0)   not null
+                                                   ,new.preciounitario        -- preciounitario           numeric(20,0)   not null
+                                                   ,new.idusuamodifregistro   -- idusuacrearegistro       numeric(20,0)   not null
+                                                   ,current_timestamp         -- fechacrearegistro        timestamp       not null
+                                                   )
+      ;
+    end if;
   end if;
 
   return new;

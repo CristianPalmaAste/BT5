@@ -1,5 +1,30 @@
 --set client_min_messages to warning;
 
+
+
+
+estos van en este archivo
+tipos_comprobantes_contables: 1 ingreso
+                              2 egreso
+                              3 traspaso
+
+
+insert into tipos_contabilizaciones values (1, 'VENTAS'     );
+insert into tipos_contabilizaciones values (2, 'COMPRAS'    );
+insert into tipos_contabilizaciones values (3, 'RENDICIONES');
+insert into tipos_contabilizaciones values (4, 'HONORARIOS' );
+
+estos van en el trigger de creacion de empresas
+insert into enlaces_contables values (nextval('enco_seq'), 1, 'valor neto venta'      , 'ventas', 'exento+afecto+montodescuento'
+insert into enlaces_contables values (nextval('enco_seq'), 1, 'impuestos obligatorios', 'ventas', 'impuestosobligats'
+insert into enlaces_contables values (nextval('enco_seq'), 1, 'impuestos específicos' , 'ventas', 'impuestosespecifs'
+insert into enlaces_contables values (nextval('enco_seq'), 1, 'total'                 , 'ventas', 'total'
+
+
+
+
+
+
 insert into monedas values (1  , 'PESO CHILENO'             , 'CLP', 1, current_timestamp, null, null, null, null);
 insert into monedas values (2  , 'PESO ARGENTINO'           , 'ARS', 1, current_timestamp, null, null, null, null);
 insert into monedas values (3  , 'NUEVO SOL'                , 'PEN', 1, current_timestamp, null, null, null, null);

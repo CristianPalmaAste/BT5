@@ -63,7 +63,7 @@ from             documentos_legales         dole
        left join empresas                   empr on dole.idempr = empr.id
        left join tipos_documentos_legales   tidl on dole.idtidl = tidl.id
        left join estados_documentos_legales esdl on dole.idesdl = esdl.id
-where  empr.idusuaborraregistro is null
+where  dole.idusuaborraregistro is null
 ;
 
 select *

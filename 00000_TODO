@@ -147,6 +147,16 @@ psql -d $DBNAME -U $USUARIO_DB < 03800_f_validar_denv.sql > 03810_f_validar_denv
 echo "  03900_f_validar_email"
 psql -d $DBNAME -U $USUARIO_DB < 03900_f_validar_email.sql > 03910_f_validar_email.txt
 
+echo "  04000_f_perfil_padre_requ"
+psql -d $DBNAME -U $USUARIO_DB < 04000_f_perfil_padre_requ.sql > 04010_f_perfil_padre_requ.txt
+
+echo "  04100_f_perfiles_hijo_requ"
+psql -d $DBNAME -U $USUARIO_DB < 04100_f_perfiles_hijo_requ.sql > 04110_f_perfiles_hijo_requ.txt
+
+echo "  04200_f_perfil_puede_crear_requ"
+psql -d $DBNAME -U $USUARIO_DB < 04200_f_perfil_puede_crear_requ.sql > 04210_f_perfil_puede_crear_requ.txt
+
+
 cd ..
 
 cd 01600_triggers

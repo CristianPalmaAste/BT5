@@ -1,0 +1,11 @@
+CREATE FUNCTION
+ f_perfil_padre_requ 
+---------------------
+                   0
+(1 fila)
+
+ f_perfil_padre_requ 
+---------------------
+                   0
+(1 fila)
+

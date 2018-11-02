@@ -1,0 +1,16 @@
+CREATE FUNCTION
+ f_perfiles_hijo_requ 
+----------------------
+ 1
+(1 fila)
+
+ f_perfiles_hijo_requ 
+----------------------
+ 6
+(1 fila)
+
+ f_perfiles_hijo_requ 
+----------------------
+ 7
+(1 fila)
+

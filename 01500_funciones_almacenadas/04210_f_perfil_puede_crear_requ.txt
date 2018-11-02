@@ -1,0 +1,11 @@
+CREATE FUNCTION
+ f_perfil_puede_crear_requ 
+---------------------------
+ N
+(1 fila)
+
+ f_perfil_puede_crear_requ 
+---------------------------
+ N
+(1 fila)
+

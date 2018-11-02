@@ -925,4 +925,13 @@ insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 16, 17, 
 insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 18, 19, 1, current_timestamp, null, null, null, null);
 insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 18, 20, 1, current_timestamp, null, null, null, null);
 
+-- creo perfiles a 3 usuarios para poder probar creación requ, aprobación por parte de su superior y aprobación por parte de jefe de compras
+-- cpalma: cajero                -- crea requ
+-- osolar: jefe de contabilidad  -- autoriza requ anterior
+-- jj    : jefe de compras       -- aprueba requ anterior
+
+insert into usuarios_perfiles values (nextval('uspe_seq'), 10, 12, null, 1, 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios_perfiles values (nextval('uspe_seq'),  8, 13, null, 1, 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios_perfiles values (nextval('uspe_seq'),  4, 16, null, 1, 1, 1, current_timestamp, null, null, null, null);
+
 \q

@@ -3,6 +3,7 @@
 
 
 
+/*
 estos van en este archivo
 tipos_comprobantes_contables: 1 ingreso
                               2 egreso
@@ -19,7 +20,7 @@ insert into enlaces_contables values (nextval('enco_seq'), 1, 'valor neto venta'
 insert into enlaces_contables values (nextval('enco_seq'), 1, 'impuestos obligatorios', 'ventas', 'impuestosobligats'
 insert into enlaces_contables values (nextval('enco_seq'), 1, 'impuestos específicos' , 'ventas', 'impuestosespecifs'
 insert into enlaces_contables values (nextval('enco_seq'), 1, 'total'                 , 'ventas', 'total'
-
+*/
 
 
 
@@ -754,8 +755,8 @@ insert into estados_requisiciones values (6, 'RECHAZADA POR DEPARTAMENTO DE COMP
 insert into estados_requisiciones values (7, 'ACEPTADA POR DEPARTAMENTO COMPRAS, ORDEN DE COMPRA CREADA'                                          , 1, current_timestamp, null, null, null, null);
 
 insert into tipos_requisiciones values (1, 'URGENTE'   , 0, 1, current_timestamp, null, null, null, null);
-insert into tipos_requisiciones values (2, 'NORMAL'    , 3, 1, current_timestamp, null, null, null, null);
-insert into tipos_requisiciones values (3, 'LICITACIÓN', 5, 1, current_timestamp, null, null, null, null);
+insert into tipos_requisiciones values (2, 'NORMAL'    , 0, 1, current_timestamp, null, null, null, null);
+insert into tipos_requisiciones values (3, 'LICITACIÓN', 0, 1, current_timestamp, null, null, null, null);
 
 insert into estados_ordenes_compras values (1, 'CREADA'                       , 1, current_timestamp, null, null, null, null);
 insert into estados_ordenes_compras values (2, 'CERRADA'                      , 1, current_timestamp, null, null, null, null);

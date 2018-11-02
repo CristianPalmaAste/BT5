@@ -314,3 +314,9 @@ CREATE VIEW
 ----+--------+--------------------------+-------------+----------------------------------+--------+------------------+----------+----------+--------+---------------
 (0 filas)
 
+DROP VIEW
+CREATE VIEW
+ idmobo | idbode | bodega | idempr | empresa | nro_movto_bodega | idtimb | tipo_movto_bodega | fecha_movto | movto_bodega | iddemb | correlativo_movto_bodega | descripcion | correlativo_detalle_movto_bodega | idprod | cod_prod_alfanum | producto | cantidad | idunmp | unidad_medida 
+--------+--------+--------+--------+---------+------------------+--------+-------------------+-------------+--------------+--------+--------------------------+-------------+----------------------------------+--------+------------------+----------+----------+--------+---------------
+(0 filas)
+

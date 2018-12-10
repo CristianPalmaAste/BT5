@@ -129,10 +129,10 @@ insert into programas values ( 7040,  7000, 'Aprobac./rech. rends. dpto. contab.
 insert into programas values ( 7050,  7000, 'Contabilización rendiciones'          , 'principales/en-construccion'     , 'Contabilización rendiciones'               , 5  , 1, current_timestamp, null, null, null, null);
 
 insert into programas values ( 8000, null , 'Compras'                              , null                              , 'Compras'                                   , 11 , 1, current_timestamp, null, null, null, null);
-insert into programas values ( 8010,  8000, 'Registro requisiciones'               , 'RegistrosRequisiciones'          , 'Registro requisiciones'                    , 1  , 1, current_timestamp, null, null, null, null);
-insert into programas values ( 8020,  8000, 'Aceptación/rechazo requisiciones'     , 'AceptRechRequisiciones'          , 'Aceptación/rechazo requisiciones'          , 2  , 1, current_timestamp, null, null, null, null);
-insert into programas values ( 8030,  8000, 'Recepción requisiciones'              , 'RecepcionesRequisiciones'        , 'Recepción requisiciones'                   , 3  , 1, current_timestamp, null, null, null, null);
-insert into programas values ( 8040,  8000, 'Aprobac./rech. reqs. dpto. compras'   , 'AprobacRechReqsDptoCompras'      , 'Aprobac./rech. reqs. dpto. compras'        , 4  , 1, current_timestamp, null, null, null, null);
+insert into programas values ( 8010,  8000, 'Registro requisiciones'               , 'Requisiciones'                   , 'Registro requisiciones'                    , 1  , 1, current_timestamp, null, null, null, null);
+insert into programas values ( 8020,  8000, 'Aceptación/rechazo requisiciones'     , 'RequisicionesAutorizador'        , 'Aceptación/rechazo requisiciones'          , 2  , 1, current_timestamp, null, null, null, null);
+insert into programas values ( 8030,  8000, 'Recepción requisiciones'              , 'principales/en-construccion'     , 'Recepción requisiciones'                   , 3  , 1, current_timestamp, null, null, null, null);
+insert into programas values ( 8040,  8000, 'Aprobac./rech. reqs. dpto. compras'   , 'RequisicionesCompras'            , 'Aprobac./rech. reqs. dpto. compras'        , 4  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 8050,  8000, 'Órdenes de compras'                   , 'OrdenesCompras'                  , 'Órdenes de compras'                        , 5  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 8060,  8000, 'Recepciones compras/servicios'        , 'RecepcionesCompras'              , 'Recepciones compras/servicios'             , 6  , 1, current_timestamp, null, null, null, null);
 

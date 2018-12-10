@@ -41,19 +41,24 @@ begin
   -- 2 -> 3
   -- 3 -> 2
   -- 2 -> 4
+  -- 4 -> 7
   -- 4 -> 5
   -- 5 -> 6
   -- 5 -> 7
   -- 6 -> 4
   -- y nada más; todo otro posible cambio de estado es error
   --
-  if (old.idereq = 1 and new.idereq = 2) or
+  if (old.idereq = 1 and new.idereq = 1) or
+     (old.idereq = 1 and new.idereq = 2) or
      (old.idereq = 2 and new.idereq = 3) or
-     (old.idereq = 3 and new.idereq = 2) or
      (old.idereq = 2 and new.idereq = 4) or
+     (old.idereq = 3 and new.idereq = 2) or
      (old.idereq = 4 and new.idereq = 5) or
+     (old.idereq = 4 and new.idereq = 6) or
+     (old.idereq = 4 and new.idereq = 7) or
      (old.idereq = 5 and new.idereq = 6) or
      (old.idereq = 5 and new.idereq = 7) or
+     (old.idereq = 6 and new.idereq = 3) or
      (old.idereq = 6 and new.idereq = 4) then
     aux := 1; /* estos son los cambios válidos */
   else

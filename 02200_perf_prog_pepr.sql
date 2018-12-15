@@ -400,6 +400,7 @@ insert into perfiles_programas values (nextval('pepr_seq'), 18,  7000, 1, curren
 insert into perfiles_programas values (nextval('pepr_seq'), 18,  7020, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 18,  8000, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 18,  8010, 1, current_timestamp, null, null, null, null);
+insert into perfiles_programas values (nextval('pepr_seq'), 18,  8020, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 18,  9000, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 18,  9010, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 18,  9020, 1, current_timestamp, null, null, null, null);

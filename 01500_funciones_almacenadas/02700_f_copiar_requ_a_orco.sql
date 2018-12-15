@@ -22,7 +22,7 @@ declare
     where  idrequ = new.id
     ;
 begin
-  if old.idereq = 5 and new.idereq = 7 then
+  if old.idereq in (4,5) and new.idereq = 7 then
     select nextval('orco_seq')
     into   Vidorco
     ;

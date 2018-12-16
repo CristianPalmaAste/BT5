@@ -53,6 +53,7 @@ begin
      (old.idereq = 2 and new.idereq = 3) or
      (old.idereq = 2 and new.idereq = 4) or
      (old.idereq = 3 and new.idereq = 2) or
+     (old.idereq = 3 and new.idereq = 3) or
      (old.idereq = 4 and new.idereq = 5) or
      (old.idereq = 4 and new.idereq = 6) or
      (old.idereq = 4 and new.idereq = 7) or

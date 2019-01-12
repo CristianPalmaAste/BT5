@@ -2258,6 +2258,7 @@ create table ordenes_compras (
   ,idceco                   numeric(20,0)       null
   ,idtare                   numeric(20,0)       null
   ,idesoc                   numeric(20,0)       null
+  ,idprov                   numeric(20,0)       null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
   ,idusuamodifregistro      numeric(20,0)       null
@@ -2778,6 +2779,7 @@ alter table ordenes_compras                  add constraint orco_fk_line  foreig
 alter table ordenes_compras                  add constraint orco_fk_ceco  foreign key (idceco)                references centros_costos                   (id);
 alter table ordenes_compras                  add constraint orco_fk_tare  foreign key (idtare)                references tareas                           (id);
 alter table ordenes_compras                  add constraint orco_fk_esoc  foreign key (idesoc)                references estados_ordenes_compras          (id);
+alter table ordenes_compras                  add constraint orco_fk_prov  foreign key (idprov)                references proveedores                      (id);
 alter table ordenes_compras                  add constraint orco_fk2_usua foreign key (idusuamodifregistro)   references usuarios                         (id);
 alter table ordenes_compras                  add constraint orco_fk3_usua foreign key (idusuaborraregistro)   references usuarios                         (id);
 

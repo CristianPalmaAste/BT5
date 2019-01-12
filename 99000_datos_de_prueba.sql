@@ -933,5 +933,6 @@ insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 18, 20, 
 insert into usuarios_perfiles values (nextval('uspe_seq'), 10, 12, null, 1, 1, 1, current_timestamp, null, null, null, null);
 insert into usuarios_perfiles values (nextval('uspe_seq'),  8, 13, null, 1, 1, 1, current_timestamp, null, null, null, null);
 insert into usuarios_perfiles values (nextval('uspe_seq'),  4, 16, null, 1, 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios_perfiles values (nextval('uspe_seq'),  7, 16, null, 1, 1, 1, current_timestamp, null, null, null, null);
 
 \q

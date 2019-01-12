@@ -14,12 +14,14 @@ begin
   -- 4 | FINIQUITADA
 
   -- los cambios de estado válidos son
+  -- 1 -> 1
   -- 1 -> 2
   -- 2 -> 3
   -- 3 -> 4
   -- y nada más; todo otro posible cambio de estado es error
   --
-  if (old.idesoc = 1 and new.idesoc = 2) or
+  if (old.idesoc = 1 and new.idesoc = 1) or
+     (old.idesoc = 1 and new.idesoc = 2) or
      (old.idesoc = 2 and new.idesoc = 3) or
      (old.idesoc = 3 and new.idesoc = 4) then
     aux := 1; /* estos son los cambios válidos */

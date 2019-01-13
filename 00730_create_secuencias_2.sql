@@ -1,6 +1,6 @@
 create sequence grem_seq start with 5;
 create sequence empr_seq start with 12;
-create sequence para_seq start with 21;
+create sequence para_seq start with 53;
 create sequence paem_seq start with 12;
 create sequence esge_seq start with 4;
 create sequence rubr_seq start with 38;

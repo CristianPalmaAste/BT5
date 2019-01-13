@@ -37,6 +37,7 @@ begin
   -- 7 | ACEPTADA POR DEPARTAMENTO COMPRAS, ORDEN DE COMPRA CREADA
   --
   -- los cambios de estado válidos son
+  -- 1 -> 1
   -- 1 -> 2
   -- 2 -> 3
   -- 3 -> 2

@@ -11,7 +11,7 @@ SET
 
                 ?column?                
 ----------------------------------------
- create sequence para_seq start with 21
+ create sequence para_seq start with 53
 (1 fila)
 
                 ?column?                

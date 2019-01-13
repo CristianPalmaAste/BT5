@@ -4,10 +4,18 @@ declare
   aux numeric;
 begin
   insert into parametros values (nextval('para_seq'), new.id, 'LARGOMINCLAVE', 'LARGO MÍNIMO CLAVES USUARIOS'             , 'LARGO MINIMO EXIGIDO PARA LAS CLAVES DE LOS USUARIOS'               , '5' , 1, current_timestamp, null, null, null, null);
-  insert into parametros values (nextval('para_seq'), new.id, 'NROSEGMScuco' , 'NUMERO DE SEGMENTOS EN EL PLAN DE CUENTAS', 'NUMERO DE SEGMENTOS QUE COMPONEN EL PLAN DE CUENTAS DE ESTE HOLDING', '4' , 1, current_timestamp, null, null, null, null);
+  insert into parametros values (nextval('para_seq'), new.id, 'NROSEGMSCUCO' , 'NUMERO DE SEGMENTOS EN EL PLAN DE CUENTAS', 'NUMERO DE SEGMENTOS QUE COMPONEN EL PLAN DE CUENTAS DE ESTE HOLDING', '4' , 1, current_timestamp, null, null, null, null);
   insert into parametros values (nextval('para_seq'), new.id, 'UMVALNOTVE'   , 'UNIDAD DE MEDIDA VALIDEZ NOTA VENTA'      , 'H = HORAS; D = DÍAS'                                                , 'D' , 1, current_timestamp, null, null, null, null);     
   insert into parametros values (nextval('para_seq'), new.id, 'CADUCNV'      , 'CADUCIDAD NOTAS DE VENTA'                 , 'TIEMPO TRAS EL CUAL CADUCA UNA NOTA DE VENTA (1 DÍA, 2 HORAS, ETC.)', '1' , 1, current_timestamp, null, null, null, null);     
   insert into parametros values (nextval('para_seq'), new.id, 'VALIDEZCOTI'  , 'DEFAULT DÍAS VALIDEZ COTIZACIÓN'          , 'DÍAS DE VALIDEZ POR DEFECTO DE UNA COTIZACIÓN'                      , '5' , 1, current_timestamp, null, null, null, null);     
+  insert into parametros values (nextval('para_seq'), new.id, 'LARGOSEGM1'   , 'LARGO DEL SEGMENTO 1'                     , 'LARGO DEL SEGMENTO 1 DE LAS CUENTAS CONTABLES DE ESTE HOLDING'      , '1' , 1, current_timestamp, null, null, null, null);     
+  insert into parametros values (nextval('para_seq'), new.id, 'LARGOSEGM2'   , 'LARGO DEL SEGMENTO 2'                     , 'LARGO DEL SEGMENTO 2 DE LAS CUENTAS CONTABLES DE ESTE HOLDING'      , '2' , 1, current_timestamp, null, null, null, null);     
+  insert into parametros values (nextval('para_seq'), new.id, 'LARGOSEGM3'   , 'LARGO DEL SEGMENTO 3'                     , 'LARGO DEL SEGMENTO 3 DE LAS CUENTAS CONTABLES DE ESTE HOLDING'      , '2' , 1, current_timestamp, null, null, null, null);     
+  insert into parametros values (nextval('para_seq'), new.id, 'LARGOSEGM4'   , 'LARGO DEL SEGMENTO 4'                     , 'LARGO DEL SEGMENTO 4 DE LAS CUENTAS CONTABLES DE ESTE HOLDING'      , '4' , 1, current_timestamp, null, null, null, null);     
+  insert into parametros values (nextval('para_seq'), new.id, 'LARGOSEGM5'   , 'LARGO DEL SEGMENTO 5'                     , 'LARGO DEL SEGMENTO 5 DE LAS CUENTAS CONTABLES DE ESTE HOLDING'      , '0' , 1, current_timestamp, null, null, null, null);     
+  insert into parametros values (nextval('para_seq'), new.id, 'LARGOSEGM6'   , 'LARGO DEL SEGMENTO 6'                     , 'LARGO DEL SEGMENTO 6 DE LAS CUENTAS CONTABLES DE ESTE HOLDING'      , '0' , 1, current_timestamp, null, null, null, null);     
+  insert into parametros values (nextval('para_seq'), new.id, 'LARGOSEGM7'   , 'LARGO DEL SEGMENTO 7'                     , 'LARGO DEL SEGMENTO 7 DE LAS CUENTAS CONTABLES DE ESTE HOLDING'      , '0' , 1, current_timestamp, null, null, null, null);     
+  insert into parametros values (nextval('para_seq'), new.id, 'LARGOSEGM8'   , 'LARGO DEL SEGMENTO 8'                     , 'LARGO DEL SEGMENTO 8 DE LAS CUENTAS CONTABLES DE ESTE HOLDING'      , '0' , 1, current_timestamp, null, null, null, null);     
 
   insert into rubros values (nextval('rubr_seq'), new.id, 'OTRO'        , 1, current_timestamp, null, null, null, null);
   insert into rubros values (nextval('rubr_seq'), new.id, 'CONSULTORÍA' , 1, current_timestamp, null, null, null, null);

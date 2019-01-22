@@ -100,6 +100,8 @@ drop sequence if exists derg_seq;
 drop sequence if exists corg_seq;
 drop sequence if exists aurn_seq;
 drop sequence if exists hirn_seq;
+drop sequence if exists doco_seq;
+drop sequence if exists dedc_seq;
 
 
 \q

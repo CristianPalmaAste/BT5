@@ -100,6 +100,8 @@ create or replace view derg as select * from detalles_rendiciones_gastos;
 create or replace view corg as select * from conceptos_rendiciones_gastos;
 create or replace view aurn as select * from autorizadores_rendiciones;
 create or replace view hirn as select * from historiales_rendiciones;
+create or replace view doco as select * from documentos_compras;
+create or replace view dedc as select * from detalles_doctos_compras;
 
 
 \q

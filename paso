@@ -499,3 +499,13 @@ SET
  create sequence hirn_seq start with 1
 (1 fila)
 
+               ?column?                
+---------------------------------------
+ create sequence doco_seq start with 1
+(1 fila)
+
+               ?column?                
+---------------------------------------
+ create sequence dedc_seq start with 1
+(1 fila)
+

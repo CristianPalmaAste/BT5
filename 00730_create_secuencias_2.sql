@@ -98,5 +98,7 @@ create sequence derg_seq start with 10;
 create sequence corg_seq start with 89;
 create sequence aurn_seq start with 177;
 create sequence hirn_seq start with 1;
+create sequence doco_seq start with 1;
+create sequence dedc_seq start with 1;
 
 \q

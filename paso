@@ -431,12 +431,12 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence coco_seq start with 7
+ create sequence coco_seq start with 1
 (1 fila)
 
-                ?column?                
-----------------------------------------
- create sequence decc_seq start with 14
+               ?column?                
+---------------------------------------
+ create sequence decc_seq start with 1
 (1 fila)
 
                 ?column?                

@@ -788,27 +788,6 @@ insert into detalles_requisiciones values (6, 2, 3, 15, null, null, 10, 1, curre
 
 insert into historiales_requisiciones values (11, 2, 1, 3, null                        , current_timestamp);
 
-insert into cotizaciones_compras values (1, 1, null, 1, 'DESPACHOS GRATIS DENTRO DE STGO.', 1, current_timestamp, null, null, null, null);
-insert into cotizaciones_compras values (2, 1, null, 2, 'SE EXIGE PAGO A 30 DÍAS'         , 1, current_timestamp, null, null, null, null);
-insert into cotizaciones_compras values (3, 1, null, 3, null                              , 1, current_timestamp, null, null, null, null);
-insert into cotizaciones_compras values (4, 2, null, 4, 'DESPACHOS GRATIS A TODO EL PAÍS.', 1, current_timestamp, null, null, null, null);
-insert into cotizaciones_compras values (5, 2, null, 3, 'SE EXIGE PAGO A MÁXIMO 120 DÍAS' , 1, current_timestamp, null, null, null, null);
-insert into cotizaciones_compras values (6, 2, null, 2, 'PAGO AL CONTADO CONTRA ENTREGA'  , 1, current_timestamp, null, null, null, null);
-
-insert into detalles_cotizaciones_compras values (1 , 1, 'cotizacion_1.docx' , 'coco_1.docx' , 1, current_timestamp, null, null, null, null);
-insert into detalles_cotizaciones_compras values (2 , 2, 'cotizacion_2.docx' , 'coco_2.docx' , 1, current_timestamp, null, null, null, null);
-insert into detalles_cotizaciones_compras values (3 , 3, 'cotizacion_3.docx' , 'coco_3.docx' , 1, current_timestamp, null, null, null, null);
-insert into detalles_cotizaciones_compras values (4 , 3, 'cotizacion_4.docx' , 'coco_4.docx' , 1, current_timestamp, null, null, null, null);
-insert into detalles_cotizaciones_compras values (5 , 4, 'cotizacion_5.docx' , 'coco_5.docx' , 1, current_timestamp, null, null, null, null);
-insert into detalles_cotizaciones_compras values (6 , 4, 'cotizacion_6.docx' , 'coco_6.docx' , 1, current_timestamp, null, null, null, null);
-insert into detalles_cotizaciones_compras values (7 , 4, 'cotizacion_7.docx' , 'coco_7.docx' , 1, current_timestamp, null, null, null, null);
-insert into detalles_cotizaciones_compras values (8 , 5, 'cotizacion_8.docx' , 'coco_8.docx' , 1, current_timestamp, null, null, null, null);
-insert into detalles_cotizaciones_compras values (9 , 5, 'cotizacion_9.docx' , 'coco_9.docx' , 1, current_timestamp, null, null, null, null);
-insert into detalles_cotizaciones_compras values (10, 5, 'cotizacion_10.docx', 'coco_10.docx', 1, current_timestamp, null, null, null, null);
-insert into detalles_cotizaciones_compras values (11, 5, 'cotizacion_11.docx', 'coco_11.docx', 1, current_timestamp, null, null, null, null);
-insert into detalles_cotizaciones_compras values (12, 6, 'cotizacion_12.docx', 'coco_12.docx', 1, current_timestamp, null, null, null, null);
-insert into detalles_cotizaciones_compras values (13, 6, 'cotizacion_13.docx', 'coco_13.docx', 1, current_timestamp, null, null, null, null);
-
 update requisiciones
 set    idereq = 2
 where  id     = 1

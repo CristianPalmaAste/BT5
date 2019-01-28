@@ -2319,6 +2319,8 @@ create table cotizaciones_compras (
   ,idrequ                   numeric(20,0)       null
   ,idorco                   numeric(20,0)       null
   ,idprov                   numeric(20,0)   not null
+  ,nombreoriginal           varchar(500)    not null
+  ,nombresistema            varchar(100)    not null
   ,observaciones            varchar(1000)       null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
@@ -2335,6 +2337,9 @@ alter table cotizaciones_compras add constraint coco_pk primary key (id)
 alter table cotizaciones_compras add constraint coco_uk_01 unique (idrequ, idorco, idprov)
 ;
 
+alter table cotizaciones_compras add constraint coco_uk_02 unique (idrequ, idorco, nombresistema)
+;
+
 alter table cotizaciones_compras add constraint coco_chk_01 check (
                                                                    (idrequ is     null and idorco is not null)
                                                                    or
@@ -2347,8 +2352,11 @@ alter table cotizaciones_compras add constraint coco_chk_01 check (
 create table detalles_cotizaciones_compras (
    id                       numeric(20,0)   not null
   ,idcoco                   numeric(20,0)       null
-  ,nombreoriginal           varchar(500)    not null
-  ,nombresistema            varchar(100)    not null
+  ,idprod                   numeric(20,0)       null
+  ,idserv                   numeric(20,0)       null
+  ,otroinsumo               varchar(1000)       null
+  ,cantidad                 numeric(20,0)   not null
+  ,preciounitario           numeric(20,0)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
   ,idusuamodifregistro      numeric(20,0)       null
@@ -2361,7 +2369,16 @@ create table detalles_cotizaciones_compras (
 alter table detalles_cotizaciones_compras add constraint decc_pk primary key (id)
 ;
 
-alter table detalles_cotizaciones_compras add constraint decc_uk_01 unique (idcoco, nombresistema)
+alter table detalles_cotizaciones_compras add constraint decc_uk_01 unique (idcoco, idprod, idserv, otroinsumo)
+;
+
+alter table detalles_cotizaciones_compras add constraint decc_chk_01 check (
+                                                                            (idprod is not null and idserv is     null and otroinsumo is     null)
+                                                                            or
+                                                                            (idprod is     null and idserv is not null and otroinsumo is     null)
+                                                                            or
+                                                                            (idprod is     null and idserv is     null and otroinsumo is not null)
+                                                                           )
 ;
 
 /*************************************************************************************************************************/

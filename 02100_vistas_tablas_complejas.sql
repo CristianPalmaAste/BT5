@@ -1236,12 +1236,9 @@ select demb.id                       id
       ,f_datos_producto(prod.id,10)  cod_prod_alfanum
       ,prod.nombre                   producto
       ,demb.cantidad                 cantidad
-      ,demb.idunmp                   idunmp
-      ,unmp.descripcion              unidad_medida
 from                   detalles_movtos_bodegas     demb
        left outer join movimientos_bodegas         mobo on demb.idmobo = mobo.id
        left outer join productos                   prod on demb.idprod = prod.id
-       left outer join unidades_medidas_productos  unmp on demb.idunmp = unmp.id
 where  demb.idusuaborraregistro is null
 ;
 
@@ -1274,15 +1271,12 @@ select mobo.id                                               idmobo
       ,f_datos_producto(prod.id,10)                          cod_prod_alfanum
       ,prod.nombre                                           producto
       ,demb.cantidad                                         cantidad
-      ,demb.idunmp                                           idunmp
-      ,unmp.descripcion                                      unidad_medida
 from                   detalles_movtos_bodegas     demb
        left outer join movimientos_bodegas         mobo on demb.idmobo = mobo.id
        left outer join bodegas                     bode on mobo.idbode = bode.id
        left outer join empresas                    empr on bode.idempr = empr.id
        left outer join tipos_movimientos_bodegas   timb on mobo.idtimb = timb.id
        left outer join productos                   prod on demb.idprod = prod.id
-       left outer join unidades_medidas_productos  unmp on demb.idunmp = unmp.id
 where  mobo.idusuaborraregistro is null
 and    demb.idusuaborraregistro is null
 ;

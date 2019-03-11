@@ -59,7 +59,6 @@ begin
                                         ,correlativo              -- numeric(20,0)   not null
                                         ,idprod                   -- numeric(20,0)   not null
                                         ,cantidad                 -- numeric(20,0)   not null
-                                        ,idunmp                   -- numeric(20,0)   not null
                                         ,idusuacrearegistro       -- numeric(20,0)   not null
                                         ,fechacrearegistro        -- timestamp       not null
                                         ,idusuamodifregistro      -- numeric(20,0)       null
@@ -72,7 +71,6 @@ begin
           ,1                        -- correlativo              numeric(20,0)   not null
           ,new.idprod               -- idprod                   numeric(20,0)   not null
           ,new.cantidad             -- cantidad                 numeric(20,0)   not null
-          ,new.idunmp               -- idunmp                   numeric(20,0)   not null
           ,Vidusuacrearegistro      -- idusuacrearegistro       numeric(20,0)   not null
           ,current_timestamp        -- fechacrearegistro        timestamp       not null
           ,null                     -- idusuamodifregistro      numeric(20,0)       null

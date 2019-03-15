@@ -156,6 +156,8 @@ psql -d $DBNAME -U $USUARIO_DB < 04100_f_perfiles_hijo_requ.sql > 04110_f_perfil
 echo "  04200_f_perfil_puede_crear_requ"
 psql -d $DBNAME -U $USUARIO_DB < 04200_f_perfil_puede_crear_requ.sql > 04210_f_perfil_puede_crear_requ.txt
 
+echo "  04300_f_validar_uspe_ins_upd"
+psql -d $DBNAME -U $USUARIO_DB < 04300_f_validar_uspe_ins_upd.sql > 04310_f_validar_uspe_ins_upd.txt
 
 cd ..
 
@@ -240,6 +242,9 @@ psql -d $DBNAME -U $USUARIO_DB < 02600_trg_before_ins_upd_del_decv.sql > 02610_t
 
 echo "  02700_trg_before_ins_upd_del_denv"
 psql -d $DBNAME -U $USUARIO_DB < 02700_trg_before_ins_upd_del_denv.sql > 02710_trg_before_ins_upd_del_denv.txt
+
+echo "  02900_trg_before_ins_upd_uspe"
+psql -d $DBNAME -U $USUARIO_DB < 02900_trg_before_ins_upd_uspe.sql > 02910_trg_before_ins_upd_uspe.txt
 
 cd ..
 

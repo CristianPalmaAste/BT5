@@ -429,12 +429,12 @@ begin
   insert into productos values (16, 1, 1, 15, 9, 1, 'LIBRO DE RECETAS MASTER CHEF'     , '0016', 'a', 'a', 'a', 1, 1, 1, current_timestamp, null, null, null, null);
   insert into productos values (17, 1, 1, 5 , 9, 1, 'PISCO CAPEL 35°'                  , '0017', 'a', 'a', 'a', 1, 1, 1, current_timestamp, null, null, null, null);
 
-  insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'CONSULTOR JUNIOR'    , 0.5   , 501, 1, current_timestamp, null, null, null, null);
-  insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'CONSULTOR SENIOR'    , 1     , 501, 1, current_timestamp, null, null, null, null);
-  insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'JEFE DE PROYECTO'    , 1.5   , 501, 1, current_timestamp, null, null, null, null);
-  insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'GERENTE DE PROYECTO' , 3     , 501, 1, current_timestamp, null, null, null, null);
-  insert into servicios values (nextval('serv_seq'), 1 , 2 , 1, 'ASEO'                , 5000  , 1  , 1, current_timestamp, null, null, null, null);
-  insert into servicios values (nextval('serv_seq'), 1 , 2 , 1, 'GUARDIA DE SEGURIDAD', 10000 , 1  , 1, current_timestamp, null, null, null, null);
+  insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'CONSULTOR JUNIOR'    , 0.5   , 12, 1, current_timestamp, null, null, null, null);
+  insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'CONSULTOR SENIOR'    , 1     , 12, 1, current_timestamp, null, null, null, null);
+  insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'JEFE DE PROYECTO'    , 1.5   , 12, 1, current_timestamp, null, null, null, null);
+  insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'GERENTE DE PROYECTO' , 3     , 12, 1, current_timestamp, null, null, null, null);
+  insert into servicios values (nextval('serv_seq'), 1 , 2 , 1, 'ASEO'                , 5000  , 1 , 1, current_timestamp, null, null, null, null);
+  insert into servicios values (nextval('serv_seq'), 1 , 2 , 1, 'GUARDIA DE SEGURIDAD', 10000 , 1 , 1, current_timestamp, null, null, null, null);
 
   -- petición JJM: usuario con perfil de "legales"
   select nextval('pers_seq') into Vidpers;
@@ -464,49 +464,6 @@ select tmp_usuario_acc_total()
 drop function tmp_usuario_acc_total()
 ;
 
--- Lo sgte. le crea muchos perfiles a OS, NS y CP (adm. del sistema y en holding FCV)
-
-delete from usuarios_perfiles
-where  idusua in (8,9,10)
-;
-
---                                                         usua perf grem  empr
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 8  , 1  , null, null, 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 8  , 2  , 3   , null, 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 8  , 4  , null, 7   , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 8  , 4  , null, 9   , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 8  , 4  , null, 10  , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 8  , 12 , null, 6   , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 8  , 12 , null, 7   , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 8  , 12 , null, 10  , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 8  , 19 , null, 6   , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 8  , 19 , null, 8   , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 8  , 19 , null, 9   , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 8  , 19 , null, 10  , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 9  , 1  , null, null, 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 9  , 2  , 3   , null, 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 9  , 4  , null, 7   , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 9  , 4  , null, 9   , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 9  , 4  , null, 10  , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 9  , 12 , null, 6   , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 9  , 12 , null, 7   , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 9  , 12 , null, 10  , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 9  , 19 , null, 6   , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 9  , 19 , null, 8   , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 9  , 19 , null, 9   , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 9  , 19 , null, 10  , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 10 , 1  , null, null, 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 10 , 2  , 3   , null, 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 10 , 4  , null, 7   , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 10 , 4  , null, 9   , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 10 , 4  , null, 10  , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 10 , 12 , null, 6   , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 10 , 12 , null, 7   , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 10 , 12 , null, 10  , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 10 , 19 , null, 6   , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 10 , 19 , null, 8   , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 10 , 19 , null, 9   , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq')+1000, 10 , 19 , null, 10  , 1, 1, current_timestamp, null, null, null, null);
 
 create or replace function tmp_datos_de_prueba_vtas () returns varchar(100) as
 $$
@@ -818,15 +775,15 @@ set    idesoc = 3
 
 insert into recepciones_compras values (1, 1, 1, 1, 1, current_timestamp, null, null, null, null);
 
-insert into detalles_recepciones_compras values (1, 1, 1, 1, 9, null, null, null, 2, 1, current_timestamp, null, null, null, null);
-insert into detalles_recepciones_compras values (2, 1, 2, 2, 9, null, null, null, 1, 1, current_timestamp, null, null, null, null);
-insert into detalles_recepciones_compras values (3, 1, 3, 3, 9, null, null, null, 5, 1, current_timestamp, null, null, null, null);
+insert into detalles_recepciones_compras values (1, 1, 1, 1, null, null, 2, 1, current_timestamp, null, null, null, null);
+insert into detalles_recepciones_compras values (2, 1, 2, 2, null, null, 1, 1, current_timestamp, null, null, null, null);
+insert into detalles_recepciones_compras values (3, 1, 3, 3, null, null, 5, 1, current_timestamp, null, null, null, null);
 
 insert into recepciones_compras values (2, 1, 1, 2, 1, current_timestamp, null, null, null, null);
 
-insert into detalles_recepciones_compras values (4, 2, 1, 1, 9, null, null, null, 5, 1, current_timestamp, null, null, null, null);
-insert into detalles_recepciones_compras values (5, 2, 2, 2, 9, null, null, null, 2, 1, current_timestamp, null, null, null, null);
-insert into detalles_recepciones_compras values (6, 2, 3, 3, 9, null, null, null, 3, 1, current_timestamp, null, null, null, null);
+insert into detalles_recepciones_compras values (4, 2, 1, 1, null, null, 5, 1, current_timestamp, null, null, null, null);
+insert into detalles_recepciones_compras values (5, 2, 2, 2, null, null, 2, 1, current_timestamp, null, null, null, null);
+insert into detalles_recepciones_compras values (6, 2, 3, 3, null, null, 3, 1, current_timestamp, null, null, null, null);
  
 insert into usuarios_perfiles values (nextval('uspe_seq'),  3, 20, null, 1, 1, 1, current_timestamp, null, null, null, null);
 insert into usuarios_perfiles values (nextval('uspe_seq'),  4, 20, null, 1, 1, 1, current_timestamp, null, null, null, null);
@@ -903,15 +860,5 @@ insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 13, 15, 
 insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 16, 17, 1, current_timestamp, null, null, null, null);
 insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 18, 19, 1, current_timestamp, null, null, null, null);
 insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 18, 20, 1, current_timestamp, null, null, null, null);
-
--- creo perfiles a 3 usuarios para poder probar creación requ, aprobación por parte de su superior y aprobación por parte de jefe de compras
--- cpalma: cajero                -- crea requ
--- osolar: jefe de contabilidad  -- autoriza requ anterior
--- jj    : jefe de compras       -- aprueba requ anterior
-
-insert into usuarios_perfiles values (nextval('uspe_seq'), 10, 12, null, 1, 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq'),  8, 13, null, 1, 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq'),  4, 16, null, 1, 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (nextval('uspe_seq'),  7, 16, null, 1, 1, 1, current_timestamp, null, null, null, null);
 
 \q

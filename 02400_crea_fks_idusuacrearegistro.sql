@@ -97,6 +97,8 @@ alter table productos                        add constraint prod_fk1_usua foreig
 alter table servicios                        add constraint serv_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table dominios                         add constraint domi_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table valores_dominios                 add constraint vado_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
+alter table detalles_doctos_compras          add constraint dedc_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
+alter table documentos_compras               add constraint doco_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 
 alter table usuarios                         add constraint usua_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table usuarios                         add constraint usua_fk_pers  foreign key (idpers)                references personas                         (id);

@@ -29,28 +29,33 @@ begin
   --
   -- (uspe referencia a grem/empr vía un arco, es decir, a una de las 2)
   --
-  select pers.idgrem
-  into   Vidgrem_via_usua
-  from   personas pers
-        ,usuarios usua
-  where  pers.id = usua.idpers
-  and    usua.id = new.idusua
-  ;
-  if new.idgrem is not null then
-    Vidgrem_via_uspe := new.idgrem;
+  if new.idgrem is null and new.idempr is null then
+    aux := null; /* se esta insertando un administrador del sistema */
   else
-    select idgrem
-    into   Vidgrem_via_uspe
-    from   empresas
-    where  id = new.idempr
+    select pers.idgrem
+    into   Vidgrem_via_usua
+    from   personas pers
+          ,usuarios usua
+    where  pers.id = usua.idpers
+    and    usua.id = new.idusua
     ;
-  end if;
-  if Vidgrem_via_usua = Vidgrem_via_uspe then
-    aux := 1; /* esta es la situacion esperada, que el grem sea el mismo */
-  else
-    Vmensaje := 'Error: se esta registrando un usuario_perfil con un usuario de un holding hacia otro holding o empresa de otro holding';
-    raise exception 'registro inválido'
-    using hint = Vmensaje;
+    if new.idgrem is not null then
+      Vidgrem_via_uspe := new.idgrem;
+    else
+      select idgrem
+      into   Vidgrem_via_uspe
+      from   empresas
+      where  id = new.idempr
+      ;
+    end if;
+    if Vidgrem_via_usua = Vidgrem_via_uspe then
+      aux := 1; /* esta es la situacion esperada, que el grem sea el mismo */
+    else
+      Vmensaje := 'Error: se esta registrando un usuario_perfil con un usuario de un holding (' || coalesce(Vidgrem_via_usua,0) ||
+                  ') hacia otro holding o empresa de otro holding (' || Vidgrem_via_uspe || ')';
+      raise exception 'registro inválido'
+      using hint = Vmensaje;
+    end if;
   end if;
   return new;
 end;

@@ -1,8 +1,9 @@
+delete from autorizadores_rendiciones  ;
 delete from autorizadores_requisiciones;
-delete from perfiles_programas;
-delete from usuarios_perfiles ;
-delete from perfiles          ;
-delete from programas         ;
+delete from perfiles_programas         ;
+delete from usuarios_perfiles          ;
+delete from perfiles                   ;
+delete from programas                  ;
 
 insert into perfiles values ( 1, 'CONFIGURADOR'                                   , 1, current_timestamp, null, null, null, null);
 insert into perfiles values ( 2, 'ADMINISTRADOR DEL CLIENTE'                      , 1, current_timestamp, null, null, null, null);

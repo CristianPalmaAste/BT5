@@ -26,19 +26,19 @@ insert into enlaces_contables values (nextval('enco_seq'), 1, 'total'           
 
 
 
-insert into monedas values (1  , 'PESO CHILENO'             , 'CLP', 1, current_timestamp, null, null, null, null);
-insert into monedas values (2  , 'PESO ARGENTINO'           , 'ARS', 1, current_timestamp, null, null, null, null);
-insert into monedas values (3  , 'NUEVO SOL'                , 'PEN', 1, current_timestamp, null, null, null, null);
-insert into monedas values (4  , 'BOLIVIANO'                , 'BOB', 1, current_timestamp, null, null, null, null);
-insert into monedas values (5  , 'GUARANÍ'                  , 'PYG', 1, current_timestamp, null, null, null, null);
-insert into monedas values (6  , 'PESO URUGUAYO'            , 'UYU', 1, current_timestamp, null, null, null, null);
-insert into monedas values (7  , 'REAL'                     , 'BRL', 1, current_timestamp, null, null, null, null);
-insert into monedas values (8  , 'SUCRE'                    , 'ECS', 1, current_timestamp, null, null, null, null);
-insert into monedas values (9  , 'BOLIVAR'                  , 'VEB', 1, current_timestamp, null, null, null, null);
-insert into monedas values (10 , 'PESO COLOMBIANO'          , 'COP', 1, current_timestamp, null, null, null, null);
-insert into monedas values (11 , 'DÓLAR'                    , 'USD', 1, current_timestamp, null, null, null, null);
-insert into monedas values (501, 'UNIDAD DE FOMENTO'        , 'UF' , 1, current_timestamp, null, null, null, null);
-insert into monedas values (502, 'UNIDAD TRIBUTARIA MENSUAL', 'UTM', 1, current_timestamp, null, null, null, null);
+insert into monedas values (1 , 'PESO CHILENO'             , 'CLP', 1, current_timestamp, null, null, null, null);
+insert into monedas values (2 , 'PESO ARGENTINO'           , 'ARS', 1, current_timestamp, null, null, null, null);
+insert into monedas values (3 , 'NUEVO SOL'                , 'PEN', 1, current_timestamp, null, null, null, null);
+insert into monedas values (4 , 'BOLIVIANO'                , 'BOB', 1, current_timestamp, null, null, null, null);
+insert into monedas values (5 , 'GUARANÍ'                  , 'PYG', 1, current_timestamp, null, null, null, null);
+insert into monedas values (6 , 'PESO URUGUAYO'            , 'UYU', 1, current_timestamp, null, null, null, null);
+insert into monedas values (7 , 'REAL'                     , 'BRL', 1, current_timestamp, null, null, null, null);
+insert into monedas values (8 , 'SUCRE'                    , 'ECS', 1, current_timestamp, null, null, null, null);
+insert into monedas values (9 , 'BOLIVAR'                  , 'VEB', 1, current_timestamp, null, null, null, null);
+insert into monedas values (10, 'PESO COLOMBIANO'          , 'COP', 1, current_timestamp, null, null, null, null);
+insert into monedas values (11, 'DÓLAR'                    , 'USD', 1, current_timestamp, null, null, null, null);
+insert into monedas values (12, 'UNIDAD DE FOMENTO'        , 'UF' , 1, current_timestamp, null, null, null, null);
+insert into monedas values (13, 'UNIDAD TRIBUTARIA MENSUAL', 'UTM', 1, current_timestamp, null, null, null, null);
 
 insert into paises values (1 , 'CHILE'    , 1 , 'CHILENA'    , 1, current_timestamp, null, null, null, null);
 insert into paises values (2 , 'ARGENTINA', 2 , 'ARGENTINA'  , 1, current_timestamp, null, null, null, null);

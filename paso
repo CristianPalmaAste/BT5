@@ -39,9 +39,9 @@ SET
  create sequence vapa_seq start with 91
 (1 fila)
 
-                ?column?                 
------------------------------------------
- create sequence mone_seq start with 503
+                ?column?                
+----------------------------------------
+ create sequence mone_seq start with 14
 (1 fila)
 
                 ?column?                
@@ -106,7 +106,7 @@ SET
 
                  ?column?                 
 ------------------------------------------
- create sequence uspe_seq start with 1062
+ create sequence uspe_seq start with 1026
 (1 fila)
 
                 ?column?                 
@@ -491,7 +491,7 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence aurn_seq start with 177
+ create sequence aurn_seq start with 161
 (1 fila)
 
                ?column?                

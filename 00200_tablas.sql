@@ -1980,7 +1980,6 @@ create table detalles_movtos_bodegas (
   ,correlativo              numeric(20,0)   not null
   ,idprod                   numeric(20,0)   not null
   ,cantidad                 numeric(20,0)   not null
-  ,idunmp                   numeric(20,0)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
   ,idusuamodifregistro      numeric(20,0)       null
@@ -2467,9 +2466,7 @@ create table detalles_recepciones_compras (
   ,idreco                   numeric(20,0)   not null
   ,correlativo              numeric(20,0)   not null
   ,idprod                   numeric(20,0)       null
-  ,idunmp                   numeric(20,0)       null
   ,idserv                   numeric(20,0)       null
-  ,idunms                   numeric(20,0)       null
   ,otroinsumo               varchar(1000)       null
   ,cantidad                 numeric(20,0)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
@@ -2496,14 +2493,7 @@ alter table detalles_recepciones_compras add constraint derc_chk_01 check (
                                                                           )
 ;
 
-alter table detalles_recepciones_compras add constraint derc_chk_02 check (
-                                                                           (idprod is not null and idunmp is not null)
-                                                                           or
-                                                                           (idserv is not null and idunms is not null)
-                                                                          )
-;
-
-alter table detalles_recepciones_compras add constraint derc_chk_03 check (cantidad > 0)
+alter table detalles_recepciones_compras add constraint derc_chk_02 check (cantidad > 0)
 ;
 
 /*************************************************************************************************************************/
@@ -2823,6 +2813,8 @@ alter table cotizaciones_compras             add constraint coco_fk3_usua foreig
 alter table detalles_cotizaciones_compras    add constraint decc_fk_coco  foreign key (idcoco)                references cotizaciones_compras             (id);
 alter table detalles_cotizaciones_compras    add constraint decc_fk2_usua foreign key (idusuamodifregistro)   references usuarios                         (id);
 alter table detalles_cotizaciones_compras    add constraint decc_fk3_usua foreign key (idusuaborraregistro)   references usuarios                         (id);
+alter table detalles_cotizaciones_compras    add constraint decc_fk_prod  foreign key (idprod)                references productos                        (id);
+alter table detalles_cotizaciones_compras    add constraint decc_fk_serv  foreign key (idserv)                references servicios                        (id);
 
 alter table proveedores                      add constraint prov_fk_grem  foreign key (idgrem)                references grupos_empresariales             (id);
 alter table proveedores                      add constraint prov_fk_pais  foreign key (idpais)                references paises                           (id);
@@ -2837,9 +2829,7 @@ alter table recepciones_compras              add constraint reco_fk3_usua foreig
 
 alter table detalles_recepciones_compras     add constraint derc_fk_reco  foreign key (idreco)                references recepciones_compras              (id);
 alter table detalles_recepciones_compras     add constraint derc_fk_prod  foreign key (idprod)                references productos                        (id);
-alter table detalles_recepciones_compras     add constraint derc_fk_unmp  foreign key (idunmp)                references unidades_medidas_productos       (id);
 alter table detalles_recepciones_compras     add constraint derc_fk_serv  foreign key (idserv)                references servicios                        (id);
-alter table detalles_recepciones_compras     add constraint derc_fk_unms  foreign key (idunms)                references unidades_medidas_servicios       (id);
 alter table detalles_recepciones_compras     add constraint derc_fk2_usua foreign key (idusuamodifregistro)   references usuarios                         (id);
 alter table detalles_recepciones_compras     add constraint derc_fk3_usua foreign key (idusuaborraregistro)   references usuarios                         (id);
 
@@ -2912,7 +2902,6 @@ alter table movimientos_bodegas              add constraint mobo_fk3_usua foreig
 
 alter table detalles_movtos_bodegas          add constraint demb_fk_mobo  foreign key (idmobo)                references movimientos_bodegas              (id);
 alter table detalles_movtos_bodegas          add constraint demb_fk_prod  foreign key (idprod)                references productos                        (id);
-alter table detalles_movtos_bodegas          add constraint demb_fk_unmp  foreign key (idunmp)                references unidades_medidas_productos       (id);
 alter table detalles_movtos_bodegas          add constraint demb_fk2_usua foreign key (idusuamodifregistro)   references usuarios                         (id);
 alter table detalles_movtos_bodegas          add constraint demb_fk3_usua foreign key (idusuaborraregistro)   references usuarios                         (id);
 

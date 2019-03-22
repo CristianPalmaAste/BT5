@@ -542,6 +542,8 @@ drop view if exists boprv
 
 create or replace view boprv as
 select bopr.id               id
+      ,grem.id               idgrem
+      ,grem.alias            grupo_empresarial
       ,bode.idempr           idempr
       ,empr.nombrefantasia   empresa
       ,bopr.idbode           idbode
@@ -554,6 +556,7 @@ select bopr.id               id
 from                   bodegas_productos          bopr
        left outer join bodegas                    bode on bopr.idbode = bode.id
        left outer join empresas                   empr on bode.idempr = empr.id
+       left outer join grupos_empresariales       grem on empr.idgrem = grem.id
        left outer join productos                  prod on bopr.idprod = prod.id
        left outer join unidades_medidas_productos unmp on prod.idunmp = unmp.id
 where  bopr.idusuaborraregistro is null

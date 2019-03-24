@@ -1,30 +1,38 @@
 --set client_min_messages to warning;
 
-
-
+insert into tipos_asocs_ctas_ctbles values (1, 'ACTIVO'  , 1, current_timestamp, null, null, null, null);
+insert into tipos_asocs_ctas_ctbles values (2, 'PASIVO'  , 1, current_timestamp, null, null, null, null);
+insert into tipos_asocs_ctas_ctbles values (3, 'INGRESO' , 1, current_timestamp, null, null, null, null);
+insert into tipos_asocs_ctas_ctbles values (4, 'EGRESO'  , 1, current_timestamp, null, null, null, null);
+insert into tipos_asocs_ctas_ctbles values (5, 'DE ORDEN', 1, current_timestamp, null, null, null, null);
 
 /*
-estos van en este archivo
-tipos_comprobantes_contables: 1 ingreso
-                              2 egreso
-                              3 traspaso
+insert into tipos_comprobantes_contables values (1, 'INGRESO' , 1, current_timestamp, null, null, null, null);
+insert into tipos_comprobantes_contables values (2, 'EGRESO'  , 1, current_timestamp, null, null, null, null);
+insert into tipos_comprobantes_contables values (3, 'TRASPASO', 1, current_timestamp, null, null, null, null);
 
-
-insert into tipos_contabilizaciones values (1, 'VENTAS'     );
-insert into tipos_contabilizaciones values (2, 'COMPRAS'    );
-insert into tipos_contabilizaciones values (3, 'RENDICIONES');
-insert into tipos_contabilizaciones values (4, 'HONORARIOS' );
-
-estos van en el trigger de creacion de empresas
-insert into enlaces_contables values (nextval('enco_seq'), 1, 'valor neto venta'      , 'ventas', 'exento+afecto+montodescuento'
-insert into enlaces_contables values (nextval('enco_seq'), 1, 'impuestos obligatorios', 'ventas', 'impuestosobligats'
-insert into enlaces_contables values (nextval('enco_seq'), 1, 'impuestos específicos' , 'ventas', 'impuestosespecifs'
-insert into enlaces_contables values (nextval('enco_seq'), 1, 'total'                 , 'ventas', 'total'
+insert into tipos_contabilizaciones values (1, 'VENTAS'     , 1, current_timestamp, null, null, null, null);
+insert into tipos_contabilizaciones values (2, 'COMPRAS'    , 1, current_timestamp, null, null, null, null);
+insert into tipos_contabilizaciones values (3, 'RENDICIONES', 1, current_timestamp, null, null, null, null);
+insert into tipos_contabilizaciones values (4, 'HONORARIOS' , 1, current_timestamp, null, null, null, null);
 */
 
+insert into tipos_cuentas_contables values (1, 1, '-'          , 1, current_timestamp, null, null, null, null);
+insert into tipos_cuentas_contables values (2, 2, 'EXIGIBLE'   , 1, current_timestamp, null, null, null, null);
+insert into tipos_cuentas_contables values (3, 2, 'NO EXIGIBLE', 1, current_timestamp, null, null, null, null);
+insert into tipos_cuentas_contables values (4, 3, '-'          , 1, current_timestamp, null, null, null, null);
+insert into tipos_cuentas_contables values (5, 4, '-'          , 1, current_timestamp, null, null, null, null);
+insert into tipos_cuentas_contables values (6, 5, '-'          , 1, current_timestamp, null, null, null, null);
 
+insert into tipos_entradas_contables values (1, 'DEBE' , 'D', 1, current_timestamp, null, null, null, null);
+insert into tipos_entradas_contables values (2, 'HABER', 'H', 1, current_timestamp, null, null, null, null);
 
+insert into estados_asientos_contables values (1, 'CREADO'    , 1, current_timestamp, null, null, null, null);
+insert into estados_asientos_contables values (2, 'AUTORIZADO', 1, current_timestamp, null, null, null, null);
+insert into estados_asientos_contables values (3, 'ANULADO'   , 1, current_timestamp, null, null, null, null);
 
+insert into estados_periodos_contables values (1, 'ABIERTO', 1, current_timestamp, null, null, null, null);
+insert into estados_periodos_contables values (2, 'CERRADO', 1, current_timestamp, null, null, null, null);
 
 insert into monedas values (1 , 'PESO CHILENO'             , 'CLP', 1, current_timestamp, null, null, null, null);
 insert into monedas values (2 , 'PESO ARGENTINO'           , 'ARS', 1, current_timestamp, null, null, null, null);

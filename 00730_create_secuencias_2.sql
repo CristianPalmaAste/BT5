@@ -21,7 +21,7 @@ create sequence prog_seq start with 11061;
 create sequence usua_seq start with 14;
 create sequence uspe_seq start with 1026;
 create sequence pepr_seq start with 382;
-create sequence cuco_seq start with 801;
+create sequence cuco_seq start with 761;
 create sequence dole_seq start with 25;
 create sequence tidl_seq start with 17;
 create sequence esdl_seq start with 13;
@@ -100,5 +100,13 @@ create sequence aurn_seq start with 161;
 create sequence hirn_seq start with 1;
 create sequence doco_seq start with 1;
 create sequence dedc_seq start with 1;
+create sequence tacc_seq start with 6;
+create sequence ticc_seq start with 7;
+create sequence tiec_seq start with 3;
+create sequence espc_seq start with 3;
+create sequence esac_seq start with 4;
+create sequence peco_seq start with 1;
+create sequence asco_seq start with 1;
+create sequence deac_seq start with 1;
 
 \q

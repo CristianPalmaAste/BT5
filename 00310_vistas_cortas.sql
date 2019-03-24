@@ -102,6 +102,14 @@ create or replace view aurn as select * from autorizadores_rendiciones;
 create or replace view hirn as select * from historiales_rendiciones;
 create or replace view doco as select * from documentos_compras;
 create or replace view dedc as select * from detalles_doctos_compras;
+create or replace view tacc as select * from tipos_asocs_ctas_ctbles;
+create or replace view ticc as select * from tipos_cuentas_contables;
+create or replace view tiec as select * from tipos_entradas_contables;
+create or replace view espc as select * from estados_periodos_contables;
+create or replace view esac as select * from estados_asientos_contables;
+create or replace view peco as select * from periodos_contables;
+create or replace view asco as select * from asientos_contables;
+create or replace view deac as select * from detalles_asientos_contables;
 
 
 \q

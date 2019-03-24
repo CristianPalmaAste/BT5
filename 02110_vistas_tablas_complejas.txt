@@ -114,8 +114,8 @@ CREATE VIEW
 
 DROP VIEW
 CREATE VIEW
- id | idempr | empresa | idbode | bodega | idprod | producto | stock | idunmp | unidad_medida 
-----+--------+---------+--------+--------+--------+----------+-------+--------+---------------
+ id | idgrem | grupo_empresarial | idempr | empresa | idbode | bodega | idprod | producto | stock | idunmp | unidad_medida 
+----+--------+-------------------+--------+---------+--------+--------+--------+----------+-------+--------+---------------
 (0 filas)
 
 DROP VIEW
@@ -208,30 +208,30 @@ CREATE VIEW
 
 DROP VIEW
 CREATE VIEW
- id | idgrem |         grupo_empresarial          | descripcion_concepto_rendicion_gasto | idcuco | cuenta_contable | descripcion_cuenta_contable 
-----+--------+------------------------------------+--------------------------------------+--------+-----------------+-----------------------------
-  1 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ALOJAMIENTO                          |    150 |                 | OTROS COSTOS DE EXPLOTACION
-  2 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ARTÍCULOS ASEO Y LIMPIEZA            |    166 |                 | COMBUSTIBLE
-  3 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ARTÍCULOS ESCRITORIO                 |    166 |                 | COMBUSTIBLE
-  4 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ATENCIÓN A CLIENTES                  |    150 |                 | OTROS COSTOS DE EXPLOTACION
-  5 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | BENCINA AUTO PRESIDENCIA             |    161 |                 | GASTOS DE PUBLICIDAD
-  6 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | COLACIÓN                             |    176 |                 | SEGUROS
-  7 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | COMBUSTIBLES Y LUBRICANTES           |    161 |                 | GASTOS DE PUBLICIDAD
-  8 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ELEMENTOS TRABAJO Y SEGURIDAD        |    186 |                 | GPS
-  9 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ESTACIONAMIENTO                      |    150 |                 | OTROS COSTOS DE EXPLOTACION
- 10 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | FLETES                               |    184 |                 | GASTOS DE DOMINIO
- 11 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | FLORES PRESIDENCIA                   |    161 |                 | GASTOS DE PUBLICIDAD
- 12 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | FOTOCOPIAS                           |    166 |                 | COMBUSTIBLE
- 13 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS CASINO                        |    186 |                 | GPS
- 14 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS COMPUTACIONALES               |    154 |                 | FINIQUITOS
- 15 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS COMUNES                       |    186 |                 | GPS
- 16 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS DE REPRESENTACION             |    161 |                 | GASTOS DE PUBLICIDAD
- 17 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS VARIOS                        |    186 |                 | GPS
- 18 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | HERRAMIENTAS MENORES                 |    186 |                 | GPS
- 19 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | MOVILIZACIÓN                         |    150 |                 | OTROS COSTOS DE EXPLOTACION
- 20 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | PAGO PROVEEDORES                     |     86 |                 | PROVEEDORES NACIONALES
- 21 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | PASAJES AÉREOS                       |    162 |                 | GASTOS DE REPRESENTACION
- 22 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | PEAJES                               |    150 |                 | OTROS COSTOS DE EXPLOTACION
+ id | idgrem |         grupo_empresarial          | descripcion_concepto_rendicion_gasto | idcuco | cuenta_contable |        descripcion_cuenta_contable         
+----+--------+------------------------------------+--------------------------------------+--------+-----------------+--------------------------------------------
+  1 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ALOJAMIENTO                          |    150 |                 | ASESORIA CONTABLE
+  2 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ARTÍCULOS ASEO Y LIMPIEZA            |    166 |                 | SEGUROS DE CHEQUES
+  3 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ARTÍCULOS ESCRITORIO                 |    166 |                 | SEGUROS DE CHEQUES
+  4 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ATENCIÓN A CLIENTES                  |    150 |                 | ASESORIA CONTABLE
+  5 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | BENCINA AUTO PRESIDENCIA             |    161 |                 | AGUA
+  6 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | COLACIÓN                             |    176 |                 | FLETES
+  7 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | COMBUSTIBLES Y LUBRICANTES           |    161 |                 | AGUA
+  8 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ELEMENTOS TRABAJO Y SEGURIDAD        |    186 |                 | RESULTADO POR UNIDADES DE REAJUSTES
+  9 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ESTACIONAMIENTO                      |    150 |                 | ASESORIA CONTABLE
+ 10 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | FLETES                               |    184 |                 | PARTICIPACION EN RESULTADO POR INVERSIONES
+ 11 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | FLORES PRESIDENCIA                   |    161 |                 | AGUA
+ 12 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | FOTOCOPIAS                           |    166 |                 | SEGUROS DE CHEQUES
+ 13 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS CASINO                        |    186 |                 | RESULTADO POR UNIDADES DE REAJUSTES
+ 14 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS COMPUTACIONALES               |    154 |                 | VIAJES Y ESTADIAS
+ 15 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS COMUNES                       |    186 |                 | RESULTADO POR UNIDADES DE REAJUSTES
+ 16 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS DE REPRESENTACION             |    161 |                 | AGUA
+ 17 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS VARIOS                        |    186 |                 | RESULTADO POR UNIDADES DE REAJUSTES
+ 18 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | HERRAMIENTAS MENORES                 |    186 |                 | RESULTADO POR UNIDADES DE REAJUSTES
+ 19 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | MOVILIZACIÓN                         |    150 |                 | ASESORIA CONTABLE
+ 20 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | PAGO PROVEEDORES                     |     86 |                 | ANTICIPOS DE CLIENTES
+ 21 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | PASAJES AÉREOS                       |    162 |                 | ELECTRICIDAD
+ 22 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | PEAJES                               |    150 |                 | ASESORIA CONTABLE
 (22 filas)
 
 DROP VIEW

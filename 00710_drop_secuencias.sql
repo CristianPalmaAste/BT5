@@ -102,6 +102,14 @@ drop sequence if exists aurn_seq;
 drop sequence if exists hirn_seq;
 drop sequence if exists doco_seq;
 drop sequence if exists dedc_seq;
+drop sequence if exists tacc_seq;
+drop sequence if exists ticc_seq;
+drop sequence if exists tiec_seq;
+drop sequence if exists espc_seq;
+drop sequence if exists esac_seq;
+drop sequence if exists peco_seq;
+drop sequence if exists asco_seq;
+drop sequence if exists deac_seq;
 
 
 \q

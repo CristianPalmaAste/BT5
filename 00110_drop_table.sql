@@ -102,6 +102,14 @@ drop table if exists autorizadores_rendiciones      cascade;
 drop table if exists historiales_rendiciones        cascade;
 drop table if exists documentos_compras             cascade;
 drop table if exists detalles_doctos_compras        cascade;
+drop table if exists tipos_asocs_ctas_ctbles        cascade;
+drop table if exists tipos_cuentas_contables        cascade;
+drop table if exists tipos_entradas_contables       cascade;
+drop table if exists estados_periodos_contables     cascade;
+drop table if exists estados_asientos_contables     cascade;
+drop table if exists periodos_contables             cascade;
+drop table if exists asientos_contables             cascade;
+drop table if exists detalles_asientos_contables    cascade;
 
 
 \q

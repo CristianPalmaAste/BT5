@@ -586,6 +586,7 @@ create table cuentas_contables (
   ,segmento7                varchar(100)          null
   ,segmento8                varchar(100)          null
   ,descripcion              varchar(100)      not null
+  ,idticc                   numeric(20,0)     not null
   ,idusuacrearegistro       numeric(20,0)     not null
   ,fechacrearegistro        timestamp         not null
   ,idusuamodifregistro      numeric(20,0)         null
@@ -599,6 +600,9 @@ alter table cuentas_contables add constraint cuco_pk primary key (id)
 ;
 
 alter table cuentas_contables add constraint cuco_uk_01 unique (idgrem, segmento1, segmento2, segmento3, segmento4, segmento5, segmento6, segmento7, segmento8)
+;
+
+alter table cuentas_contables add constraint cuco_uk_02 unique (idgrem, descripcion, idticc)
 ;
 
 /*************************************************************************************************************************/
@@ -2761,6 +2765,181 @@ alter table detalles_doctos_compras add constraint dedc_chk_01 check (
 
 /*************************************************************************************************************************/
 
+create table tipos_asocs_ctas_ctbles (
+   id                       numeric(20,0)     not null
+  ,descripcion              varchar(100)      not null
+  ,idusuacrearegistro       numeric(20,0)     not null
+  ,fechacrearegistro        timestamp         not null
+  ,idusuamodifregistro      numeric(20,0)         null
+  ,fechamodifregistro       timestamp             null
+  ,idusuaborraregistro      numeric(20,0)         null
+  ,fechaborraregistro       timestamp             null
+)
+;
+
+alter table tipos_asocs_ctas_ctbles add constraint tacc_pk primary key (id)
+;
+alter table tipos_asocs_ctas_ctbles add constraint tacc_uk unique (descripcion)
+;
+
+/*************************************************************************************************************************/
+
+create table tipos_cuentas_contables (
+   id                       numeric(20,0)     not null
+  ,idtacc                   numeric(20,0)     not null
+  ,descripcion              varchar(100)      not null
+  ,idusuacrearegistro       numeric(20,0)     not null
+  ,fechacrearegistro        timestamp         not null
+  ,idusuamodifregistro      numeric(20,0)         null
+  ,fechamodifregistro       timestamp             null
+  ,idusuaborraregistro      numeric(20,0)         null
+  ,fechaborraregistro       timestamp             null
+)
+;
+
+alter table tipos_cuentas_contables add constraint ticc_pk primary key (id)
+;
+alter table tipos_cuentas_contables add constraint ticc_uk unique (idtacc, descripcion)
+;
+
+/*************************************************************************************************************************/
+
+create table tipos_entradas_contables (
+   id                       numeric(20,0)     not null
+  ,descripcion              varchar(100)      not null
+  ,descripcion_corta        varchar(100)      not null
+  ,idusuacrearegistro       numeric(20,0)     not null
+  ,fechacrearegistro        timestamp         not null
+  ,idusuamodifregistro      numeric(20,0)         null
+  ,fechamodifregistro       timestamp             null
+  ,idusuaborraregistro      numeric(20,0)         null
+  ,fechaborraregistro       timestamp             null
+)
+;
+
+alter table tipos_entradas_contables add constraint tiec_pk primary key (id)
+;
+alter table tipos_entradas_contables add constraint tiec_uk_01 unique (descripcion)
+;
+alter table tipos_entradas_contables add constraint tiec_uk_02 unique (descripcion_corta)
+;
+
+/*************************************************************************************************************************/
+
+create table estados_periodos_contables (
+   id                       numeric(20,0)     not null
+  ,descripcion              varchar(100)      not null
+  ,idusuacrearegistro       numeric(20,0)     not null
+  ,fechacrearegistro        timestamp         not null
+  ,idusuamodifregistro      numeric(20,0)         null
+  ,fechamodifregistro       timestamp             null
+  ,idusuaborraregistro      numeric(20,0)         null
+  ,fechaborraregistro       timestamp             null
+)
+;
+
+alter table estados_periodos_contables add constraint espc_pk primary key (id)
+;
+alter table estados_periodos_contables add constraint espc_uk unique (descripcion)
+;
+
+/*************************************************************************************************************************/
+
+create table estados_asientos_contables (
+   id                       numeric(20,0)     not null
+  ,descripcion              varchar(100)      not null
+  ,idusuacrearegistro       numeric(20,0)     not null
+  ,fechacrearegistro        timestamp         not null
+  ,idusuamodifregistro      numeric(20,0)         null
+  ,fechamodifregistro       timestamp             null
+  ,idusuaborraregistro      numeric(20,0)         null
+  ,fechaborraregistro       timestamp             null
+)
+;
+
+alter table estados_asientos_contables add constraint esac_pk primary key (id)
+;
+alter table estados_asientos_contables add constraint esac_uk unique (descripcion)
+;
+
+/*************************************************************************************************************************/
+
+create table periodos_contables (
+   id                       numeric(20,0)     not null
+  ,idempr                   numeric(20,0)     not null
+  ,mes                      numeric(2,0)      not null
+  ,anno                     numeric(4,0)      not null
+  ,idespc                   numeric(20,0)     not null
+  ,idusuacrearegistro       numeric(20,0)     not null
+  ,fechacrearegistro        timestamp         not null
+  ,idusuamodifregistro      numeric(20,0)         null
+  ,fechamodifregistro       timestamp             null
+  ,idusuaborraregistro      numeric(20,0)         null
+  ,fechaborraregistro       timestamp             null
+)
+;
+
+alter table periodos_contables add constraint peco_pk primary key (id)
+;
+alter table periodos_contables add constraint peco_uk unique (idempr, mes, anno)
+;
+alter table periodos_contables add constraint peco_chk_01 check (mes between 1 and 12)
+;
+alter table periodos_contables add constraint peco_chk_02 check (anno > 2019)
+;
+
+/*************************************************************************************************************************/
+
+create table asientos_contables (
+   id                       numeric(20,0)     not null
+  ,idpeco                   numeric(20,0)     not null
+  ,idtiac                   numeric(20,0)     not null
+  ,idesac                   numeric(20,0)     not null
+  ,numero_asiento           numeric(20,0)     not null
+  ,fecha_asiento            date              not null
+  ,idusuacreaasiento        numeric(20,0)     not null
+  ,idusuaautorizaasiento    numeric(20,0)         null
+  ,idusuacrearegistro       numeric(20,0)     not null
+  ,fechacrearegistro        timestamp         not null
+  ,idusuamodifregistro      numeric(20,0)         null
+  ,fechamodifregistro       timestamp             null
+  ,idusuaborraregistro      numeric(20,0)         null
+  ,fechaborraregistro       timestamp             null
+)
+;
+
+alter table asientos_contables add constraint asco_pk primary key (id)
+;
+alter table asientos_contables add constraint asco_uk unique (idpeco, idtiac, numero_asiento)
+;
+
+/*************************************************************************************************************************/
+
+create table detalles_asientos_contables (
+   id                       numeric(20,0)     not null
+  ,idasco                   numeric(20,0)     not null
+  ,numero_linea             numeric(20,0)     not null
+  ,idcuco                   numeric(20,0)     not null
+  ,idtiec                   numeric(20,0)     not null
+  ,monto                    numeric(20,0)     not null
+  ,idusuacrearegistro       numeric(20,0)     not null
+  ,fechacrearegistro        timestamp         not null
+  ,idusuamodifregistro      numeric(20,0)         null
+  ,fechamodifregistro       timestamp             null
+  ,idusuaborraregistro      numeric(20,0)         null
+  ,fechaborraregistro       timestamp             null
+)
+;
+
+alter table detalles_asientos_contables add constraint deac_pk primary key (id)
+;
+alter table detalles_asientos_contables add constraint deac_uk_01 unique (idasco, numero_linea)
+;
+alter table detalles_asientos_contables add constraint deac_uk_02 unique (idasco, idcuco)
+;
+
+/*************************************************************************************************************************/
+
 
 
 
@@ -2989,6 +3168,7 @@ alter table tipos_documentos_legales         add constraint tidl_fk2_usua foreig
 alter table tipos_documentos_legales         add constraint tidl_fk3_usua foreign key (idusuaborraregistro)   references usuarios                         (id);
 
 alter table cuentas_contables                add constraint cuco_fk_grem  foreign key (idgrem)                references grupos_empresariales             (id);
+alter table cuentas_contables                add constraint cuco_fk_ticc  foreign key (idticc)                references tipos_cuentas_contables          (id);
 alter table cuentas_contables                add constraint cuco_fk2_usua foreign key (idusuamodifregistro)   references usuarios                         (id);
 alter table cuentas_contables                add constraint cuco_fk3_usua foreign key (idusuaborraregistro)   references usuarios                         (id);
 
@@ -3287,5 +3467,36 @@ alter table detalles_doctos_compras          add constraint dedc_fk_prod  foreig
 alter table detalles_doctos_compras          add constraint dedc_fk_serv  foreign key (idserv)                 references servicios                        (id);
 alter table detalles_doctos_compras          add constraint dedc_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table detalles_doctos_compras          add constraint dedc_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
+
+alter table detalles_asientos_contables      add constraint deac_fk_asco  foreign key (idasco)                 references asientos_contables               (id);
+alter table detalles_asientos_contables      add constraint deac_fk_cuco  foreign key (idcuco)                 references cuentas_contables                (id);
+alter table detalles_asientos_contables      add constraint deac_fk_tiec  foreign key (idtiec)                 references tipos_entradas_contables         (id);
+alter table detalles_asientos_contables      add constraint deac_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
+alter table detalles_asientos_contables      add constraint deac_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
+
+alter table tipos_cuentas_contables          add constraint ticc_fk_tacc  foreign key (idtacc)                 references tipos_asocs_ctas_ctbles          (id);
+alter table tipos_cuentas_contables          add constraint ticc_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
+alter table tipos_cuentas_contables          add constraint ticc_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
+
+alter table asientos_contables               add constraint asco_fk_peco  foreign key (idpeco)                 references periodos_contables               (id);
+alter table asientos_contables               add constraint asco_fk_esac  foreign key (idesac)                 references estados_asientos_contables       (id);
+alter table asientos_contables               add constraint asco_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
+alter table asientos_contables               add constraint asco_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
+alter table asientos_contables               add constraint asco_fk4_usua foreign key (idusuacreaasiento)      references usuarios                         (id);
+alter table asientos_contables               add constraint asco_fk5_usua foreign key (idusuaautorizaasiento)  references usuarios                         (id);
+
+alter table periodos_contables               add constraint peco_fk_espc  foreign key (idespc)                 references estados_periodos_contables       (id);
+alter table periodos_contables               add constraint peco_fk_empr  foreign key (idempr)                 references empresas                         (id);
+alter table periodos_contables               add constraint peco_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
+alter table periodos_contables               add constraint peco_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
+
+alter table tipos_entradas_contables         add constraint tiec_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
+alter table tipos_entradas_contables         add constraint tiec_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
+
+alter table estados_periodos_contables       add constraint espc_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
+alter table estados_periodos_contables       add constraint espc_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
+
+alter table estados_asientos_contables       add constraint esac_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
+alter table estados_asientos_contables       add constraint esac_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 
 \q

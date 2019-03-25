@@ -99,6 +99,15 @@ alter table dominios                         add constraint domi_fk1_usua foreig
 alter table valores_dominios                 add constraint vado_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table detalles_doctos_compras          add constraint dedc_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table documentos_compras               add constraint doco_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
+alter table asientos_contables               add constraint asco_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
+alter table detalles_asientos_contables      add constraint deac_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
+alter table estados_asientos_contables       add constraint esac_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
+alter table estados_periodos_contables       add constraint espc_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
+alter table periodos_contables               add constraint peco_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
+alter table tipos_asocs_ctas_ctbles          add constraint tacc_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
+alter table tipos_cuentas_contables          add constraint ticc_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
+alter table tipos_entradas_contables         add constraint tiec_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
+alter table tipos_asientos_contables         add constraint tiac_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 
 alter table usuarios                         add constraint usua_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table usuarios                         add constraint usua_fk_pers  foreign key (idpers)                references personas                         (id);

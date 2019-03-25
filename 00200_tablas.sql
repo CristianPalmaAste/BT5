@@ -2845,6 +2845,25 @@ alter table estados_periodos_contables add constraint espc_uk unique (descripcio
 
 /*************************************************************************************************************************/
 
+create table tipos_asientos_contables (
+   id                       numeric(20,0)     not null
+  ,descripcion              varchar(100)      not null
+  ,idusuacrearegistro       numeric(20,0)     not null
+  ,fechacrearegistro        timestamp         not null
+  ,idusuamodifregistro      numeric(20,0)         null
+  ,fechamodifregistro       timestamp             null
+  ,idusuaborraregistro      numeric(20,0)         null
+  ,fechaborraregistro       timestamp             null
+)
+;
+
+alter table tipos_asientos_contables add constraint tiac_pk primary key (id)
+;
+alter table tipos_asientos_contables add constraint tiac_uk unique (descripcion)
+;
+
+/*************************************************************************************************************************/
+
 create table estados_asientos_contables (
    id                       numeric(20,0)     not null
   ,descripcion              varchar(100)      not null
@@ -3474,12 +3493,16 @@ alter table detalles_asientos_contables      add constraint deac_fk_tiec  foreig
 alter table detalles_asientos_contables      add constraint deac_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table detalles_asientos_contables      add constraint deac_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 
+alter table tipos_asocs_ctas_ctbles          add constraint tacc_fk2_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
+alter table tipos_asocs_ctas_ctbles          add constraint tacc_fk3_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
+
 alter table tipos_cuentas_contables          add constraint ticc_fk_tacc  foreign key (idtacc)                 references tipos_asocs_ctas_ctbles          (id);
 alter table tipos_cuentas_contables          add constraint ticc_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table tipos_cuentas_contables          add constraint ticc_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 
 alter table asientos_contables               add constraint asco_fk_peco  foreign key (idpeco)                 references periodos_contables               (id);
 alter table asientos_contables               add constraint asco_fk_esac  foreign key (idesac)                 references estados_asientos_contables       (id);
+alter table asientos_contables               add constraint asco_fk_tiac  foreign key (idtiac)                 references tipos_asientos_contables         (id);
 alter table asientos_contables               add constraint asco_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table asientos_contables               add constraint asco_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 alter table asientos_contables               add constraint asco_fk4_usua foreign key (idusuacreaasiento)      references usuarios                         (id);
@@ -3498,5 +3521,8 @@ alter table estados_periodos_contables       add constraint espc_fk3_usua foreig
 
 alter table estados_asientos_contables       add constraint esac_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table estados_asientos_contables       add constraint esac_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
+
+alter table tipos_asientos_contables         add constraint tipo_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
+alter table tipos_asientos_contables         add constraint tipo_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 
 \q

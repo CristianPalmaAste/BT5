@@ -5,7 +5,7 @@ declare
     select table_name
           ,column_name
     from   information_schema.columns
-    where  table_catalog      = 'erp_bt5_test1'
+    where  table_catalog      = 'erp_bt5_js'
     and    column_name        like 'id%'
     and    column_name        not like 'identificador%'
     and    ordinal_position   != 1

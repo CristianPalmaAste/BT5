@@ -106,6 +106,7 @@ create or replace view tacc as select * from tipos_asocs_ctas_ctbles;
 create or replace view ticc as select * from tipos_cuentas_contables;
 create or replace view tiec as select * from tipos_entradas_contables;
 create or replace view espc as select * from estados_periodos_contables;
+create or replace view tiac as select * from tipos_asientos_contables;
 create or replace view esac as select * from estados_asientos_contables;
 create or replace view peco as select * from periodos_contables;
 create or replace view asco as select * from asientos_contables;

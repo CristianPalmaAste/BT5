@@ -106,6 +106,7 @@ select 'create sequence tacc_seq start with ' || (case when MAX(ID) is null then
 select 'create sequence ticc_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_cuentas_contables;
 select 'create sequence tiec_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_entradas_contables;
 select 'create sequence espc_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from estados_periodos_contables;
+select 'create sequence tiac_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_asientos_contables;
 select 'create sequence esac_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from estados_asientos_contables;
 select 'create sequence peco_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from periodos_contables;
 select 'create sequence asco_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from asientos_contables;

@@ -531,6 +531,11 @@ SET
 
                ?column?                
 ---------------------------------------
+ create sequence tiac_seq start with 1
+(1 fila)
+
+               ?column?                
+---------------------------------------
  create sequence esac_seq start with 4
 (1 fila)
 

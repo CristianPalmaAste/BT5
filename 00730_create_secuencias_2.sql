@@ -104,6 +104,7 @@ create sequence tacc_seq start with 6;
 create sequence ticc_seq start with 7;
 create sequence tiec_seq start with 3;
 create sequence espc_seq start with 3;
+create sequence tiac_seq start with 1;
 create sequence esac_seq start with 4;
 create sequence peco_seq start with 1;
 create sequence asco_seq start with 1;

@@ -30,6 +30,12 @@ begin
     raise exception 'Cambio de estado inválido'
     using hint = Vmensaje;
   end if;
+  -- Una OC no puede ser cerrada si no se ha registrado proveedor
+  if new.idesoc = 2 and new.idprov is null then
+    Vmensaje := 'Orden de compra no puede ser cerrada sin haberle registrado un proveedor';
+    raise exception 'Cierre de OC no permitido'
+    using hint = Vmensaje;
+  end if;
   return new;
 end;
 $body$ LANGUAGE plpgsql;

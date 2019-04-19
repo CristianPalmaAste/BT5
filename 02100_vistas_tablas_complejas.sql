@@ -1289,6 +1289,40 @@ from   mobov_dembv
 order  by 1
 ;
 
+/*************************************************************************************************************************/
+
+drop view if exists cucov
+;
+
+create or replace view cucov as
+select cuco.id                                     id
+      ,cuco.idgrem                                 idgrem
+      ,grem.alias                                  grupo_empresarial
+      ,cuco.segmento1                              segmento1
+      ,cuco.segmento2                              segmento2
+      ,cuco.segmento3                              segmento3
+      ,cuco.segmento4                              segmento4
+      ,cuco.segmento5                              segmento5
+      ,cuco.segmento6                              segmento6
+      ,cuco.segmento7                              segmento7
+      ,cuco.segmento8                              segmento8
+      ,cuco.descripcion                            descripcion
+      ,cuco.idticc                                 idticc
+      ,tacc.descripcion || ' ' || ticc.descripcion tipo_cuenta_contable
+from                   cuentas_contables       cuco
+       left outer join grupos_empresariales    grem on cuco.idgrem = grem.id
+       left outer join tipos_cuentas_contables ticc on cuco.idticc = ticc.id
+       left outer join tipos_asocs_ctas_ctbles tacc on ticc.idtacc = tacc.id
+where  cuco.idusuaborraregistro is null
+;
+
+select *
+from   cucov
+order  by 1
+;
+
+/*************************************************************************************************************************/
+
 \q
 
 

@@ -31,6 +31,12 @@ insert into estados_asientos_contables values (1, 'CREADO'    , 1, current_times
 insert into estados_asientos_contables values (2, 'AUTORIZADO', 1, current_timestamp, null, null, null, null);
 insert into estados_asientos_contables values (3, 'ANULADO'   , 1, current_timestamp, null, null, null, null);
 
+insert into tipos_asientos_contables values (1, 'INGRESO'   , 1, current_timestamp, null, null, null, null);
+insert into tipos_asientos_contables values (2, 'EGRESO'    , 1, current_timestamp, null, null, null, null);
+insert into tipos_asientos_contables values (3, 'TRASPASO'  , 1, current_timestamp, null, null, null, null);
+insert into tipos_asientos_contables values (4, 'COMPRAS'   , 1, current_timestamp, null, null, null, null);
+insert into tipos_asientos_contables values (5, 'HONORARIOS', 1, current_timestamp, null, null, null, null);
+
 insert into estados_periodos_contables values (1, 'ABIERTO', 1, current_timestamp, null, null, null, null);
 insert into estados_periodos_contables values (2, 'CERRADO', 1, current_timestamp, null, null, null, null);
 

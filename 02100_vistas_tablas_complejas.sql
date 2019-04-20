@@ -1323,6 +1323,102 @@ order  by 1
 
 /*************************************************************************************************************************/
 
+drop view if exists libro_ventas_v
+;
+
+create or replace view libro_ventas_v as
+select vent.idempr                                                                                                                 idempr
+      ,empr.razonsocial                                                                                                            empresa
+      ,vent.idbode                                                                                                                 idbode
+      ,bode.nombre                                                                                                                 bodega
+      ,vent.fechaventa                                                                                                             fechaventa
+      ,vent.idtidv                                                                                                                 idtidv
+      ,tidv.descripcion                                                                                                            tipo_docto_venta
+      ,vent.numero                                                                                                                 folio_docto
+      ,vent.idclie                                                                                                                 idclie
+      ,coalesce(clie.nombrefantasia,' ') || ' ' || coalesce(clie.primernombre,' ') || ' ' || coalesce(clie.apellidopaterno,' ')    cliente
+      ,vent.idgere                                                                                                                 idgere
+      ,gere.nombre                                                                                                                 gerencia
+      ,vent.idproy                                                                                                                 idproy
+      ,proy .nombre                                                                                                                proyecto
+      ,vent.idline                                                                                                                 idline
+      ,line .nombre                                                                                                                linea_negocio
+      ,vent.idceco                                                                                                                 idceco
+      ,ceco .nombre                                                                                                                centro_costo
+      ,vent.idtare                                                                                                                 idtare
+      ,tare .nombre                                                                                                                tarea
+      ,vent.exento                                                                                                                 exento
+      ,vent.afecto                                                                                                                 afecto
+      ,vent.impuestosobligats                                                                                                      impuestos_obligats
+      ,vent.impuestosespecifs                                                                                                      impuestos_especifs
+      ,vent.montodescuento                                                                                                         monto_descuento
+      ,vent.total                                                                                                                  total
+from                   ventas               vent
+       left       join empresas             empr on vent.idempr = empr.id
+       left       join bodegas              bode on vent.idbode = bode.id
+       left       join tipos_doctos_ventas  tidv on vent.idtidv = tidv.id
+       left       join clientes             clie on vent.idclie = clie.id
+       left outer join gerencias            gere on vent.idgere = gere.id
+       left outer join proyectos            proy on vent.idproy = proy.id
+       left outer join lineas_negocios      line on vent.idline = line.id
+       left outer join centros_costos       ceco on vent.idceco = ceco.id
+       left outer join tareas               tare on vent.idtare = tare.id
+where  vent.idusuaborraregistro is null
+and    vent.idesve              = 2
+;
+
+select *
+from   libro_ventas_v
+;
+
+/*************************************************************************************************************************/
+
+drop view if exists libro_compras_v
+;
+
+create or replace view libro_compras_v as
+select orco.idempr                                                                                                                 idempr
+      ,empr.razonsocial                                                                                                            empresa
+      ,doco.fecha                                                                                                                  fechadocto
+      ,doco.idtidv                                                                                                                 idtidv
+      ,tidv.descripcion                                                                                                            tipo_docto_venta
+      ,doco.numero                                                                                                                 folio_docto
+      ,orco.idprov                                                                                                                 idprov
+      ,coalesce(prov.nombrefantasia,' ') || ' ' || coalesce(prov.primernombre,' ') || ' ' || coalesce(prov.apellidopaterno,' ')    proveedor
+      ,orco.idgere                                                                                                                 idgere
+      ,gere.nombre                                                                                                                 gerencia
+      ,orco.idproy                                                                                                                 idproy
+      ,proy .nombre                                                                                                                proyecto
+      ,orco.idline                                                                                                                 idline
+      ,line .nombre                                                                                                                linea_negocio
+      ,orco.idceco                                                                                                                 idceco
+      ,ceco .nombre                                                                                                                centro_costo
+      ,orco.idtare                                                                                                                 idtare
+      ,tare .nombre                                                                                                                tarea
+      ,doco.exento                                                                                                                 exento
+      ,doco.afecto                                                                                                                 afecto
+      ,doco.impuesto                                                                                                               impuesto
+      ,doco.total                                                                                                                  total
+from                   documentos_compras   doco
+       left       join recepciones_compras  reco on doco.idreco = reco.id
+       left       join ordenes_compras      orco on reco.idorco = orco.id
+       left       join empresas             empr on orco.idempr = empr.id
+       left       join tipos_doctos_ventas  tidv on doco.idtidv = tidv.id
+       left       join proveedores          prov on orco.idprov = prov.id
+       left outer join gerencias            gere on orco.idgere = gere.id
+       left outer join proyectos            proy on orco.idproy = proy.id
+       left outer join lineas_negocios      line on orco.idline = line.id
+       left outer join centros_costos       ceco on orco.idceco = ceco.id
+       left outer join tareas               tare on orco.idtare = tare.id
+where  doco.idusuaborraregistro is null
+;
+
+select *
+from   libro_compras_v
+;
+
+/*************************************************************************************************************************/
+
 \q
 
 

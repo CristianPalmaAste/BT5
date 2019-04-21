@@ -111,6 +111,9 @@ create or replace view esac as select * from estados_asientos_contables;
 create or replace view peco as select * from periodos_contables;
 create or replace view asco as select * from asientos_contables;
 create or replace view deac as select * from detalles_asientos_contables;
+create or replace view prco as select * from procesos_contables;
+create or replace view prce as select * from procesos_contables_empresas;
+create or replace view prcr as select * from procesos_ctbles_realizados;
 
 
 \q

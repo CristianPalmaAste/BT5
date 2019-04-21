@@ -766,11 +766,18 @@ where  id     = 1
 ;
 
 update ordenes_compras
-set    idesoc = 2
+set     idprov = 1
+where   id     = 1
 ;
 
 update ordenes_compras
-set    idesoc = 3
+set     idesoc = 2
+where   id     = 1
+;
+
+update ordenes_compras
+set     idesoc = 3
+where   id     = 1
 ;
 
 insert into recepciones_compras values (1, 1, 1, 1, 1, current_timestamp, null, null, null, null);

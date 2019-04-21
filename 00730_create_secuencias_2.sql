@@ -1,6 +1,6 @@
 create sequence grem_seq start with 5;
 create sequence empr_seq start with 12;
-create sequence para_seq start with 53;
+create sequence para_seq start with 61;
 create sequence paem_seq start with 12;
 create sequence esge_seq start with 4;
 create sequence rubr_seq start with 38;
@@ -104,10 +104,13 @@ create sequence tacc_seq start with 6;
 create sequence ticc_seq start with 7;
 create sequence tiec_seq start with 3;
 create sequence espc_seq start with 3;
-create sequence tiac_seq start with 1;
+create sequence tiac_seq start with 6;
 create sequence esac_seq start with 4;
 create sequence peco_seq start with 1;
 create sequence asco_seq start with 1;
 create sequence deac_seq start with 1;
+create sequence prco_seq start with 5;
+create sequence prce_seq start with 1;
+create sequence prcr_seq start with 1;
 
 \q

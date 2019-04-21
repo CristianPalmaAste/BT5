@@ -108,6 +108,9 @@ alter table tipos_asocs_ctas_ctbles          add constraint tacc_fk1_usua foreig
 alter table tipos_cuentas_contables          add constraint ticc_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table tipos_entradas_contables         add constraint tiec_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table tipos_asientos_contables         add constraint tiac_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
+alter table procesos_contables               add constraint prco_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
+alter table procesos_contables_empresas      add constraint prce_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
+alter table procesos_ctbles_realizados       add constraint prcr_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 
 alter table usuarios                         add constraint usua_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table usuarios                         add constraint usua_fk_pers  foreign key (idpers)                references personas                         (id);

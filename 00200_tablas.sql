@@ -2959,6 +2959,66 @@ alter table detalles_asientos_contables add constraint deac_uk_02 unique (idasco
 
 /*************************************************************************************************************************/
 
+create table procesos_contables (
+   id                       numeric(20,0)     not null
+  ,descripcion              varchar(100)      not null
+  ,idusuacrearegistro       numeric(20,0)     not null
+  ,fechacrearegistro        timestamp         not null
+  ,idusuamodifregistro      numeric(20,0)         null
+  ,fechamodifregistro       timestamp             null
+  ,idusuaborraregistro      numeric(20,0)         null
+  ,fechaborraregistro       timestamp             null
+)
+;
+
+alter table procesos_contables add constraint prco_pk primary key (id)
+;
+alter table procesos_contables add constraint prco_uk_01 unique (descripcion)
+;
+
+/*************************************************************************************************************************/
+
+create table procesos_contables_empresas (
+   id                       numeric(20,0)     not null
+  ,idempr                   numeric(20,0)     not null
+  ,idprco                   numeric(20,0)     not null
+  ,idusuacrearegistro       numeric(20,0)     not null
+  ,fechacrearegistro        timestamp         not null
+  ,idusuamodifregistro      numeric(20,0)         null
+  ,fechamodifregistro       timestamp             null
+  ,idusuaborraregistro      numeric(20,0)         null
+  ,fechaborraregistro       timestamp             null
+)
+;
+
+alter table procesos_contables_empresas add constraint prce_pk primary key (id)
+;
+alter table procesos_contables_empresas add constraint prce_uk_01 unique (idempr, idprco)
+;
+
+/*************************************************************************************************************************/
+
+create table procesos_ctbles_realizados (
+   id                       numeric(20,0)     not null
+  ,idpeco                   numeric(20,0)     not null
+  ,idprco                   numeric(20,0)     not null
+  ,idusuacrearegistro       numeric(20,0)     not null
+  ,fechacrearegistro        timestamp         not null
+  ,idusuamodifregistro      numeric(20,0)         null
+  ,fechamodifregistro       timestamp             null
+  ,idusuaborraregistro      numeric(20,0)         null
+  ,fechaborraregistro       timestamp             null
+)
+;
+
+alter table procesos_ctbles_realizados add constraint prcr_pk primary key (id)
+;
+alter table procesos_ctbles_realizados add constraint prcr_uk_01 unique (idpeco, idprco)
+;
+
+/*************************************************************************************************************************/
+
+
 
 
 
@@ -3524,5 +3584,18 @@ alter table estados_asientos_contables       add constraint esac_fk3_usua foreig
 
 alter table tipos_asientos_contables         add constraint tipo_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table tipos_asientos_contables         add constraint tipo_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
+
+alter table procesos_contables               add constraint prco_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
+alter table procesos_contables               add constraint prco_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
+
+alter table procesos_contables_empresas      add constraint prce_fk_empr  foreign key (idempr)                 references empresas                         (id);
+alter table procesos_contables_empresas      add constraint prce_fk_prco  foreign key (idprco)                 references procesos_contables               (id);
+alter table procesos_contables_empresas      add constraint prce_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
+alter table procesos_contables_empresas      add constraint prce_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
+
+alter table procesos_ctbles_realizados       add constraint prcr_fk_peco  foreign key (idpeco)                 references periodos_contables               (id);
+alter table procesos_ctbles_realizados       add constraint prcr_fk_prco  foreign key (idprco)                 references procesos_contables               (id);
+alter table procesos_ctbles_realizados       add constraint prcr_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
+alter table procesos_ctbles_realizados       add constraint prcr_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 
 \q

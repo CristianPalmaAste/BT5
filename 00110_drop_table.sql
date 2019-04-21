@@ -111,6 +111,9 @@ drop table if exists estados_asientos_contables     cascade;
 drop table if exists periodos_contables             cascade;
 drop table if exists asientos_contables             cascade;
 drop table if exists detalles_asientos_contables    cascade;
+drop table if exists procesos_contables             cascade;
+drop table if exists procesos_contables_empresas    cascade;
+drop table if exists procesos_ctbles_realizados     cascade;
 
 
 \q

@@ -11,7 +11,7 @@ SET
 
                 ?column?                
 ----------------------------------------
- create sequence para_seq start with 53
+ create sequence para_seq start with 61
 (1 fila)
 
                 ?column?                
@@ -531,7 +531,7 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence tiac_seq start with 1
+ create sequence tiac_seq start with 6
 (1 fila)
 
                ?column?                
@@ -552,5 +552,20 @@ SET
                ?column?                
 ---------------------------------------
  create sequence deac_seq start with 1
+(1 fila)
+
+               ?column?                
+---------------------------------------
+ create sequence prco_seq start with 5
+(1 fila)
+
+               ?column?                
+---------------------------------------
+ create sequence prce_seq start with 1
+(1 fila)
+
+               ?column?                
+---------------------------------------
+ create sequence prcr_seq start with 1
 (1 fila)
 

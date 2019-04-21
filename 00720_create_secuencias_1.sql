@@ -111,6 +111,9 @@ select 'create sequence esac_seq start with ' || (case when MAX(ID) is null then
 select 'create sequence peco_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from periodos_contables;
 select 'create sequence asco_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from asientos_contables;
 select 'create sequence deac_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from detalles_asientos_contables;
+select 'create sequence prco_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from procesos_contables;
+select 'create sequence prce_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from procesos_contables_empresas;
+select 'create sequence prcr_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from procesos_ctbles_realizados;
 
 
 \q

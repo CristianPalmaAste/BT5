@@ -111,6 +111,9 @@ drop sequence if exists esac_seq;
 drop sequence if exists peco_seq;
 drop sequence if exists asco_seq;
 drop sequence if exists deac_seq;
+drop sequence if exists prco_seq;
+drop sequence if exists prce_seq;
+drop sequence if exists prcr_seq;
 
 
 \q

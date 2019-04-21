@@ -501,7 +501,7 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence doco_seq start with 1
+ create sequence doco_seq start with 3
 (1 fila)
 
                ?column?                

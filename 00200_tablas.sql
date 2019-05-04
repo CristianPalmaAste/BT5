@@ -1910,6 +1910,7 @@ create table sub_familias_productos (
   ,idfapr                   numeric(20,0)   not null
   ,cod_sub_familia          varchar(2)      not null
   ,descripcion              varchar(100)    not null
+  ,idcuco                   numeric(20,0)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
   ,idusuamodifregistro      numeric(20,0)       null
@@ -3164,6 +3165,7 @@ alter table detalles_movtos_bodegas          add constraint demb_fk2_usua foreig
 alter table detalles_movtos_bodegas          add constraint demb_fk3_usua foreign key (idusuaborraregistro)   references usuarios                         (id);
 
 alter table sub_familias_productos           add constraint sfpr_fk_fapr  foreign key (idfapr)                references familias_productos               (id);
+alter table sub_familias_productos           add constraint sfpr_fk_cuco  foreign key (idcuco)                references cuentas_contables                (id);
 alter table sub_familias_productos           add constraint sfpr_fk2_usua foreign key (idusuamodifregistro)   references usuarios                         (id);
 alter table sub_familias_productos           add constraint sfpr_fk3_usua foreign key (idusuaborraregistro)   references usuarios                         (id);
 

@@ -3023,6 +3023,26 @@ alter table procesos_ctbles_realizados add constraint prcr_uk_01 unique (idpeco,
 
 
 
+-- Tablas temporales: usadas para obtener informes
+
+/*************************************************************************************************************************/
+
+create table tmp_balance (
+   idsesion                 varchar(100)      not null
+  ,correlativo              numeric(20,0)     not null
+  ,cuenta_contable          varchar(100)      not null
+  ,descrpcion_cuenta        varchar(1000)     not null
+  ,debe_o_haber             varchar(1)        not null
+  ,valor                    numeric(20,0)     not null
+  ,fechacrearegistro        timestamp         not null
+)
+;
+
+/*************************************************************************************************************************/
+
+
+
+
 
 -- Sección foreign keys
 

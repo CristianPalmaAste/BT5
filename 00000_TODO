@@ -159,6 +159,9 @@ psql -d $DBNAME -U $USUARIO_DB < 04200_f_perfil_puede_crear_requ.sql > 04210_f_p
 echo "  04300_f_validar_uspe_ins_upd"
 psql -d $DBNAME -U $USUARIO_DB < 04300_f_validar_uspe_ins_upd.sql > 04310_f_validar_uspe_ins_upd.txt
 
+echo "  04400_f_generar_balance"
+psql -d $DBNAME -U $USUARIO_DB < 04400_f_generar_balance.sql > 04410_f_generar_balance.txt
+
 cd ..
 
 cd 01600_triggers

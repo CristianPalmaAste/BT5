@@ -26,6 +26,9 @@ begin
 
   insert into sub_familias_productos values (nextval('sfpr_seq'), Vidfapr, '01', 'SUB FAMILIA GENÉRICA', Vidcuco, 1, current_timestamp, null, null, null, null);
 
+  insert into procesos_contables_empresas values (nextval('prce_seq'), new.id, 1, 1, current_timestamp, null, null, null, null);
+  insert into procesos_contables_empresas values (nextval('prce_seq'), new.id, 2, 1, current_timestamp, null, null, null, null);
+
   insert into autorizadores_requisiciones values (nextval('aure_seq'), new.id, 5 , 5 , 1, current_timestamp, null, null, null, null);
   insert into autorizadores_requisiciones values (nextval('aure_seq'), new.id, 5 , 6 , 1, current_timestamp, null, null, null, null);
   insert into autorizadores_requisiciones values (nextval('aure_seq'), new.id, 7 , 7 , 1, current_timestamp, null, null, null, null);

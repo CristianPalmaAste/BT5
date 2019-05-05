@@ -556,12 +556,12 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence prco_seq start with 5
+ create sequence prco_seq start with 6
 (1 fila)
 
-               ?column?                
----------------------------------------
- create sequence prce_seq start with 1
+                ?column?                
+----------------------------------------
+ create sequence prce_seq start with 23
 (1 fila)
 
                ?column?                

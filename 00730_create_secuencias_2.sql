@@ -109,8 +109,8 @@ create sequence esac_seq start with 4;
 create sequence peco_seq start with 1;
 create sequence asco_seq start with 1;
 create sequence deac_seq start with 1;
-create sequence prco_seq start with 5;
-create sequence prce_seq start with 1;
+create sequence prco_seq start with 6;
+create sequence prce_seq start with 23;
 create sequence prcr_seq start with 1;
 
 \q

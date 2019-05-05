@@ -114,6 +114,7 @@ drop table if exists detalles_asientos_contables    cascade;
 drop table if exists procesos_contables             cascade;
 drop table if exists procesos_contables_empresas    cascade;
 drop table if exists procesos_ctbles_realizados     cascade;
+drop table if exists tmp_balance                    cascade;
 
 
 \q

@@ -1,10 +1,18 @@
-drop function f_generar_balance (Pidsesion varchar(100)
-                                ,Pidempr   numeric
-                                )
+drop function if exists f_generar_balance (Pidsesion varchar(100)
+                                          ,Pidempr   numeric
+                                          ,Pmes_ini  numeric
+                                          ,Panno_ini numeric
+                                          ,Pmes_fin  numeric
+                                          ,Panno_fin numeric
+                                          )
 ;
 
 create or replace function f_generar_balance (Pidsesion varchar(100)
                                              ,Pidempr   numeric
+                                             ,Pmes_ini  numeric
+                                             ,Panno_ini numeric
+                                             ,Pmes_fin  numeric
+                                             ,Panno_fin numeric
                                              ) returns numeric as
 $$
 declare
@@ -26,6 +34,8 @@ declare
   Vtotal              numeric;
   Vdebe_o_haber       varchar(1);
   i                   numeric;
+  Vanno_mes_ini       numeric;
+  Vanno_mes_fin       numeric;
   C_cuco cursor for
     select id
           ,segmento1
@@ -55,6 +65,8 @@ begin
   from   empresas
   where  id = Pidempr
   ;
+  Vanno_mes_ini := cast(trim(to_char(Panno_ini,'0009')) || trim(to_char(Pmes_ini,'09')) as integer);
+  Vanno_mes_fin := cast(trim(to_char(Panno_fin,'0009')) || trim(to_char(Pmes_fin,'09')) as integer);
   open C_cuco;
   loop
     fetch C_cuco into Vidcuco
@@ -109,10 +121,11 @@ begin
     from   periodos_contables          peco
           ,asientos_contables          asco
           ,detalles_asientos_contables deac
-    where  peco.id     = asco.idpeco
-    and    asco.id     = deac.idasco
-    and    peco.idempr = Pidempr
-    and    deac.idcuco = Vidcuco
+    where  peco.id                                                                          = asco.idpeco
+    and    asco.id                                                                          = deac.idasco
+    and    cast(trim(to_char(peco.anno,'0009')) || trim(to_char(peco.mes,'09')) as integer) between Vanno_mes_ini and Vanno_mes_fin
+    and    peco.idempr                                                                      = Pidempr
+    and    deac.idcuco                                                                      = Vidcuco
     ;
     if aux is null then
       aux := 0;
@@ -125,34 +138,36 @@ begin
       Vtotal        := Vtotal + aux;
       Vdebe_o_haber := 'H';
     end if;
-    insert into tmp_balance (idsesion                 -- varchar(100)      not null
-                            ,correlativo              -- numeric(20,0)     not null
-                            ,cuenta_contable          -- varchar(100)      not null
-                            ,descrpcion_cuenta        -- varchar(1000)     not null
-                            ,debe_o_haber             -- varchar(1)        not null
-                            ,valor                    -- numeric(20,0)     not null
-                            ,fechacrearegistro        -- timestamp         not null
-                            )
-    values (Pidsesion                    -- idsesion                 varchar(100)      not null
-           ,i                            -- correlativo              numeric(20,0)     not null
-           ,Vcuenta_contable             -- cuenta_contable          varchar(100)      not null
-           ,Vdescripcion                 -- descrpcion_cuenta        varchar(1000)     not null
-           ,Vdebe_o_haber                -- debe_o_haber             varchar(1)        not null
-           ,aux                          -- valor                    numeric(20,0)     not null
-           ,current_timestamp            -- fechacrearegistro        timestamp         not null
-           )
-    ;
+    if aux != 0 then
+      insert into tmp_balance (idsesion                 -- varchar(100)      not null
+                              ,correlativo              -- numeric(20,0)     not null
+                              ,cuenta_contable          -- varchar(100)      not null
+                              ,descrpcion_cuenta        -- varchar(1000)     not null
+                              ,debe_o_haber             -- varchar(1)        not null
+                              ,valor                    -- numeric(20,0)     not null
+                              ,fechacrearegistro        -- timestamp         not null
+                              )
+      values (Pidsesion                    -- idsesion                 varchar(100)      not null
+             ,i                            -- correlativo              numeric(20,0)     not null
+             ,Vcuenta_contable             -- cuenta_contable          varchar(100)      not null
+             ,Vdescripcion                 -- descrpcion_cuenta        varchar(1000)     not null
+             ,Vdebe_o_haber                -- debe_o_haber             varchar(1)        not null
+             ,aux                          -- valor                    numeric(20,0)     not null
+             ,current_timestamp            -- fechacrearegistro        timestamp         not null
+             )
+      ;
+    end if;
   end loop;
   return(Vtotal);
 end;
 $$ LANGUAGE plpgsql;
 
-
-\q
 delete from tmp_balance
 ;
 
-select f_generar_balance ('12345', 1);
+select f_generar_balance ('12345', 1, 1, 2018, 12,2019);
+
+\q
 
 select *
 from   tmp_balance

@@ -1252,10 +1252,10 @@ order  by 1
 
 /*************************************************************************************************************************/
 
-drop view if exists mobov_dembv
+drop view if exists kardexv
 ;
 
-create or replace view mobov_dembv as
+create or replace view kardexv as
 select mobo.id                                               idmobo
       ,bode.id                                               idbode
       ,bode.nombre                                           bodega
@@ -1285,7 +1285,7 @@ and    demb.idusuaborraregistro is null
 ;
 
 select *
-from   mobov_dembv
+from   kardexv
 order  by 1
 ;
 

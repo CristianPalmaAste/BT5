@@ -5,7 +5,7 @@ declare
     select table_name
           ,column_name
     from   information_schema.columns
-    where  table_catalog      = 'erp_bt5_js'
+    where  table_catalog      = 'erp_bt5_test2'
     and    column_name        like 'id%'
     and    column_name        not like 'identificador%'
     and    ordinal_position   != 1
@@ -37,7 +37,7 @@ begin
     end if;
   end loop;
   close C_campos_id;
-  return('fin exitoso');
+  return('Fin exitoso');
 end;
 $$ LANGUAGE plpgsql;
 

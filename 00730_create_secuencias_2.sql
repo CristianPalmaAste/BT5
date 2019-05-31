@@ -17,10 +17,10 @@ create sequence pers_seq start with 14;
 create sequence perf_seq start with 2024;
 create sequence esci_seq start with 5;
 create sequence sexo_seq start with 3;
-create sequence prog_seq start with 11061;
+create sequence prog_seq start with 11051;
 create sequence usua_seq start with 14;
 create sequence uspe_seq start with 1026;
-create sequence pepr_seq start with 382;
+create sequence pepr_seq start with 380;
 create sequence cuco_seq start with 761;
 create sequence dole_seq start with 25;
 create sequence tidl_seq start with 17;
@@ -110,7 +110,8 @@ create sequence peco_seq start with 1;
 create sequence asco_seq start with 1;
 create sequence deac_seq start with 1;
 create sequence prco_seq start with 6;
-create sequence prce_seq start with 23;
-create sequence prcr_seq start with 1;
+create sequence prce_seq start with 1;
+create sequence coca_seq start with 6;
+create sequence dpce_seq start with 1;
 
 \q

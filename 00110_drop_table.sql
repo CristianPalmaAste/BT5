@@ -113,7 +113,8 @@ drop table if exists asientos_contables             cascade;
 drop table if exists detalles_asientos_contables    cascade;
 drop table if exists procesos_contables             cascade;
 drop table if exists procesos_contables_empresas    cascade;
-drop table if exists procesos_ctbles_realizados     cascade;
+drop table if exists conceptos_contabilizacs_automats cascade;
+drop table if exists detalles_procesos_ctbles_empresas cascade;
 drop table if exists tmp_balance                    cascade;
 
 

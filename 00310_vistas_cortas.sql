@@ -113,7 +113,8 @@ create or replace view asco as select * from asientos_contables;
 create or replace view deac as select * from detalles_asientos_contables;
 create or replace view prco as select * from procesos_contables;
 create or replace view prce as select * from procesos_contables_empresas;
-create or replace view prcr as select * from procesos_ctbles_realizados;
+create or replace view coca as select * from conceptos_contabilizacs_automats;
+create or replace view dpce as select * from detalles_procesos_ctbles_empresas;
 
 
 \q

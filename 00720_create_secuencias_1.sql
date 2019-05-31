@@ -113,7 +113,8 @@ select 'create sequence asco_seq start with ' || (case when MAX(ID) is null then
 select 'create sequence deac_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from detalles_asientos_contables;
 select 'create sequence prco_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from procesos_contables;
 select 'create sequence prce_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from procesos_contables_empresas;
-select 'create sequence prcr_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from procesos_ctbles_realizados;
+select 'create sequence coca_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from conceptos_contabilizacs_automats;
+select 'create sequence dpce_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from detalles_procesos_ctbles_empresas;
 
 
 \q

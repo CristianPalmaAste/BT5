@@ -113,7 +113,8 @@ drop sequence if exists asco_seq;
 drop sequence if exists deac_seq;
 drop sequence if exists prco_seq;
 drop sequence if exists prce_seq;
-drop sequence if exists prcr_seq;
+drop sequence if exists coca_seq;
+drop sequence if exists dpce_seq;
 
 
 \q

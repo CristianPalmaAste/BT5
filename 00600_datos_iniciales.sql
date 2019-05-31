@@ -12,11 +12,11 @@ insert into tipos_asocs_ctas_ctbles values (3, 'INGRESO' , 1, current_timestamp,
 insert into tipos_asocs_ctas_ctbles values (4, 'EGRESO'  , 1, current_timestamp, null, null, null, null);
 insert into tipos_asocs_ctas_ctbles values (5, 'DE ORDEN', 1, current_timestamp, null, null, null, null);
 
-insert into tipos_contabilizacs_automats values (1, 'CONTABILIZACIÓN VENTAS'        , 1, current_timestamp, null, null, null, null);
-insert into tipos_contabilizacs_automats values (2, 'CONTABILIZACIÓN COMPRAS'       , 1, current_timestamp, null, null, null, null);
-insert into tipos_contabilizacs_automats values (3, 'CONTABILIZACIÓN RENDICIONES'   , 1, current_timestamp, null, null, null, null);
-insert into tipos_contabilizacs_automats values (4, 'CONTABILIZACIÓN HONORARIOS'    , 1, current_timestamp, null, null, null, null);
-insert into tipos_contabilizacs_automats values (5, 'CONTABILIZACIÓN REMUNERACIONES', 1, current_timestamp, null, null, null, null);
+insert into procesos_contables values (1, 'CONTABILIZACIÓN VENTAS'        , 1, current_timestamp, null, null, null, null);
+insert into procesos_contables values (2, 'CONTABILIZACIÓN COMPRAS'       , 1, current_timestamp, null, null, null, null);
+insert into procesos_contables values (3, 'CONTABILIZACIÓN RENDICIONES'   , 1, current_timestamp, null, null, null, null);
+insert into procesos_contables values (4, 'CONTABILIZACIÓN HONORARIOS'    , 1, current_timestamp, null, null, null, null);
+insert into procesos_contables values (5, 'CONTABILIZACIÓN REMUNERACIONES', 1, current_timestamp, null, null, null, null);
 
 insert into tipos_cuentas_contables values (1, 1, '-'          , 1, current_timestamp, null, null, null, null);
 insert into tipos_cuentas_contables values (2, 2, 'EXIGIBLE'   , 1, current_timestamp, null, null, null, null);

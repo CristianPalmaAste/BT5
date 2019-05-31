@@ -96,7 +96,7 @@ SET
 
                  ?column?                  
 -------------------------------------------
- create sequence prog_seq start with 11061
+ create sequence prog_seq start with 11051
 (1 fila)
 
                 ?column?                
@@ -111,7 +111,7 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence pepr_seq start with 382
+ create sequence pepr_seq start with 380
 (1 fila)
 
                 ?column?                 
@@ -559,13 +559,18 @@ SET
  create sequence prco_seq start with 6
 (1 fila)
 
-                ?column?                
-----------------------------------------
- create sequence prce_seq start with 23
+               ?column?                
+---------------------------------------
+ create sequence prce_seq start with 1
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence prcr_seq start with 1
+ create sequence coca_seq start with 6
+(1 fila)
+
+               ?column?                
+---------------------------------------
+ create sequence dpce_seq start with 1
 (1 fila)
 

@@ -208,30 +208,30 @@ CREATE VIEW
 
 DROP VIEW
 CREATE VIEW
- id | idgrem |         grupo_empresarial          | descripcion_concepto_rendicion_gasto | idcuco | cuenta_contable |        descripcion_cuenta_contable         
-----+--------+------------------------------------+--------------------------------------+--------+-----------------+--------------------------------------------
-  1 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ALOJAMIENTO                          |    150 |                 | ASESORIA CONTABLE
-  2 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ARTÍCULOS ASEO Y LIMPIEZA            |    166 |                 | SEGUROS DE CHEQUES
-  3 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ARTÍCULOS ESCRITORIO                 |    166 |                 | SEGUROS DE CHEQUES
-  4 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ATENCIÓN A CLIENTES                  |    150 |                 | ASESORIA CONTABLE
-  5 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | BENCINA AUTO PRESIDENCIA             |    161 |                 | AGUA
-  6 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | COLACIÓN                             |    176 |                 | FLETES
-  7 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | COMBUSTIBLES Y LUBRICANTES           |    161 |                 | AGUA
-  8 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ELEMENTOS TRABAJO Y SEGURIDAD        |    186 |                 | RESULTADO POR UNIDADES DE REAJUSTES
-  9 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ESTACIONAMIENTO                      |    150 |                 | ASESORIA CONTABLE
- 10 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | FLETES                               |    184 |                 | PARTICIPACION EN RESULTADO POR INVERSIONES
- 11 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | FLORES PRESIDENCIA                   |    161 |                 | AGUA
- 12 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | FOTOCOPIAS                           |    166 |                 | SEGUROS DE CHEQUES
- 13 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS CASINO                        |    186 |                 | RESULTADO POR UNIDADES DE REAJUSTES
- 14 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS COMPUTACIONALES               |    154 |                 | VIAJES Y ESTADIAS
- 15 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS COMUNES                       |    186 |                 | RESULTADO POR UNIDADES DE REAJUSTES
- 16 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS DE REPRESENTACION             |    161 |                 | AGUA
- 17 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS VARIOS                        |    186 |                 | RESULTADO POR UNIDADES DE REAJUSTES
- 18 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | HERRAMIENTAS MENORES                 |    186 |                 | RESULTADO POR UNIDADES DE REAJUSTES
- 19 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | MOVILIZACIÓN                         |    150 |                 | ASESORIA CONTABLE
+ id | idgrem |         grupo_empresarial          | descripcion_concepto_rendicion_gasto | idcuco | cuenta_contable | descripcion_cuenta_contable 
+----+--------+------------------------------------+--------------------------------------+--------+-----------------+-----------------------------
+  1 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ALOJAMIENTO                          |    150 |                 | ASESORIA LEGAL
+  2 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ARTÍCULOS ASEO Y LIMPIEZA            |    166 |                 | SERVICIO DE VIGILANCIA
+  3 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ARTÍCULOS ESCRITORIO                 |    166 |                 | SERVICIO DE VIGILANCIA
+  4 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ATENCIÓN A CLIENTES                  |    150 |                 | ASESORIA LEGAL
+  5 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | BENCINA AUTO PRESIDENCIA             |    161 |                 | TELEFONOS
+  6 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | COLACIÓN                             |    176 |                 | GASTOS DE DOMINIO
+  7 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | COMBUSTIBLES Y LUBRICANTES           |    161 |                 | TELEFONOS
+  8 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ELEMENTOS TRABAJO Y SEGURIDAD        |    186 |                 | DIFERENCIA DE CAMBIO
+  9 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | ESTACIONAMIENTO                      |    150 |                 | ASESORIA LEGAL
+ 10 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | FLETES                               |    184 |                 | INTERESES BANCARIOS
+ 11 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | FLORES PRESIDENCIA                   |    161 |                 | TELEFONOS
+ 12 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | FOTOCOPIAS                           |    166 |                 | SERVICIO DE VIGILANCIA
+ 13 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS CASINO                        |    186 |                 | DIFERENCIA DE CAMBIO
+ 14 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS COMPUTACIONALES               |    154 |                 | GASTOS DE REPRESENTACION
+ 15 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS COMUNES                       |    186 |                 | DIFERENCIA DE CAMBIO
+ 16 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS DE REPRESENTACION             |    161 |                 | TELEFONOS
+ 17 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | GASTOS VARIOS                        |    186 |                 | DIFERENCIA DE CAMBIO
+ 18 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | HERRAMIENTAS MENORES                 |    186 |                 | DIFERENCIA DE CAMBIO
+ 19 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | MOVILIZACIÓN                         |    150 |                 | ASESORIA LEGAL
  20 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | PAGO PROVEEDORES                     |     86 |                 | ANTICIPOS DE CLIENTES
- 21 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | PASAJES AÉREOS                       |    162 |                 | ELECTRICIDAD
- 22 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | PEAJES                               |    150 |                 | ASESORIA CONTABLE
+ 21 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | PASAJES AÉREOS                       |    162 |                 | AGUA
+ 22 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING | PEAJES                               |    150 |                 | ASESORIA LEGAL
 (22 filas)
 
 DROP VIEW
@@ -425,95 +425,96 @@ CREATE VIEW
  100 |      1 | BT5               | 2         | 10        | 14        | 2001      |           |           |           |           | PROVISION IMPUESTO A LA RENTA                                      |      2 | PASIVO EXIGIBLE
  101 |      1 | BT5               | 2         | 10        | 15        | 0000      |           |           |           |           | PROVISIONES POR BENEFICIOS A EMPLEADOS                             |      2 | PASIVO EXIGIBLE
  102 |      1 | BT5               | 2         | 10        | 16        | 0000      |           |           |           |           | OTROS PASIVOS NO FINANCIEROS                                       |      2 | PASIVO EXIGIBLE
- 103 |      1 | BT5               | 2         | 10        | 17        | 2001      |           |           |           |           | OTROS IMPUESTOS POR PAGAR                                          |      2 | PASIVO EXIGIBLE
- 104 |      1 | BT5               | 2         | 10        | 18        | 0000      |           |           |           |           | PASIVOS CLASIFICADOS COMO MANTENIDOS PARA LA VENTA                 |      2 | PASIVO EXIGIBLE
- 105 |      1 | BT5               | 2         | 20        | 00        | 0000      |           |           |           |           | PASIVOS NO CORRIENTES                                              |      2 | PASIVO EXIGIBLE
- 106 |      1 | BT5               | 2         | 20        | 11        | 0000      |           |           |           |           | OTRAS CUENTAS POR PAGAR                                            |      2 | PASIVO EXIGIBLE
- 107 |      1 | BT5               | 2         | 20        | 14        | 0000      |           |           |           |           | PASIVOS POR IMPUESTOS DIFERIDOS                                    |      2 | PASIVO EXIGIBLE
- 108 |      1 | BT5               | 2         | 20        | 15        | 0000      |           |           |           |           | PROVISIONES POR BENEFICIOS A LOS EMPLEADOS                         |      2 | PASIVO EXIGIBLE
- 109 |      1 | BT5               | 2         | 30        | 00        | 0000      |           |           |           |           | PATRIMONIO                                                         |      2 | PASIVO EXIGIBLE
- 110 |      1 | BT5               | 2         | 30        | 10        | 0000      |           |           |           |           | CAPITAL EMITIDO                                                    |      2 | PASIVO EXIGIBLE
- 111 |      1 | BT5               | 2         | 30        | 10        | 0001      |           |           |           |           | CAPITAL                                                            |      2 | PASIVO EXIGIBLE
- 112 |      1 | BT5               | 2         | 30        | 11        | 0000      |           |           |           |           | GANANCIAS (PERDIDAS) ACUMULADAS                                    |      2 | PASIVO EXIGIBLE
- 113 |      1 | BT5               | 2         | 30        | 11        | 0001      |           |           |           |           | RESULTADO ACUMULADO                                                |      2 | PASIVO EXIGIBLE
- 114 |      1 | BT5               | 2         | 30        | 12        | 0000      |           |           |           |           | PRIMAS DE EMISION                                                  |      2 | PASIVO EXIGIBLE
- 115 |      1 | BT5               | 2         | 30        | 13        | 0000      |           |           |           |           | ACCIONES PROPIAS EN CARTERA                                        |      2 | PASIVO EXIGIBLE
- 116 |      1 | BT5               | 2         | 30        | 14        | 0000      |           |           |           |           | OTRAS PARTICIPACIONES EN EL PATRIMONIO                             |      2 | PASIVO EXIGIBLE
- 117 |      1 | BT5               | 2         | 30        | 15        | 0000      |           |           |           |           | OTRAS RESERVAS                                                     |      2 | PASIVO EXIGIBLE
- 118 |      1 | BT5               | 2         | 30        | 16        | 0000      |           |           |           |           | PATRIMONIO ATRIBUIBLE A PROPIETARIOS DE LA CONTROLADORA            |      2 | PASIVO EXIGIBLE
- 119 |      1 | BT5               | 2         | 30        | 17        | 0000      |           |           |           |           | PARTICIPACIONES NO CONTROLADORAS                                   |      2 | PASIVO EXIGIBLE
- 120 |      1 | BT5               | 3         | 00        | 00        | 0000      |           |           |           |           | INGRESOS                                                           |      4 | INGRESO -
- 121 |      1 | BT5               | 3         | 10        | 10        | 0000      |           |           |           |           | INGRESOS DE ACTIVIDADES ORDINARIAS                                 |      4 | INGRESO -
- 122 |      1 | BT5               | 3         | 10        | 10        | 1001      |           |           |           |           | VENTA DE GRUAS                                                     |      4 | INGRESO -
- 123 |      1 | BT5               | 3         | 10        | 10        | 1002      |           |           |           |           | VENTA DE ACCESORIAS DE GRUAS                                       |      4 | INGRESO -
- 124 |      1 | BT5               | 3         | 10        | 10        | 1003      |           |           |           |           | VENTA DE PLATAFORMAS                                               |      4 | INGRESO -
- 125 |      1 | BT5               | 3         | 10        | 10        | 1004      |           |           |           |           | VENTA DE REPUESTOS                                                 |      4 | INGRESO -
- 126 |      1 | BT5               | 3         | 10        | 10        | 1005      |           |           |           |           | VENTA DE SERVICIO TECNICO                                          |      4 | INGRESO -
- 127 |      1 | BT5               | 3         | 10        | 10        | 1006      |           |           |           |           | VENTA DE LEASING                                                   |      4 | INGRESO -
- 128 |      1 | BT5               | 3         | 10        | 10        | 2001      |           |           |           |           | ARRIENDOS                                                          |      4 | INGRESO -
- 129 |      1 | BT5               | 3         | 20        | 10        | 0000      |           |           |           |           | OTROS INGRESOS                                                     |      4 | INGRESO -
- 130 |      1 | BT5               | 3         | 20        | 11        | 0000      |           |           |           |           | OTRAS GANANCIAS                                                    |      4 | INGRESO -
- 131 |      1 | BT5               | 3         | 20        | 12        | 0000      |           |           |           |           | INGRESOS FINANCIEROS                                               |      4 | INGRESO -
- 132 |      1 | BT5               | 4         | 00        | 00        | 0000      |           |           |           |           | EGRESOS                                                            |      5 | EGRESO -
- 133 |      1 | BT5               | 4         | 10        | 00        | 0000      |           |           |           |           | COSTO DE VENTA                                                     |      5 | EGRESO -
- 134 |      1 | BT5               | 4         | 10        | 10        | 1001      |           |           |           |           | COSTO DE GRUAS                                                     |      5 | EGRESO -
- 135 |      1 | BT5               | 4         | 10        | 10        | 1002      |           |           |           |           | COSTO DE ACCESORIAS DE GRUAS                                       |      5 | EGRESO -
- 136 |      1 | BT5               | 4         | 10        | 10        | 1003      |           |           |           |           | COSTO DE PLATAFORMAS                                               |      5 | EGRESO -
- 137 |      1 | BT5               | 4         | 10        | 10        | 1004      |           |           |           |           | COSTO DE REPUESTOS                                                 |      5 | EGRESO -
- 138 |      1 | BT5               | 4         | 10        | 10        | 1005      |           |           |           |           | COSTO DE SERVICIO TECNICO                                          |      5 | EGRESO -
- 139 |      1 | BT5               | 4         | 10        | 10        | 1006      |           |           |           |           | COSTO DE LEASING                                                   |      5 | EGRESO -
- 140 |      1 | BT5               | 4         | 10        | 10        | 2001      |           |           |           |           | COSTO DE ARRIENDO                                                  |      5 | EGRESO -
- 141 |      1 | BT5               | 4         | 20        | 10        | 0000      |           |           |           |           | OTROS COSTOS DE EXPLOTACION                                        |      5 | EGRESO -
- 142 |      1 | BT5               | 4         | 20        | 11        | 0000      |           |           |           |           | GASTOS DE ADMINISTRACION Y VENTA                                   |      5 | EGRESO -
- 143 |      1 | BT5               | 4         | 20        | 11        | 1001      |           |           |           |           | REMUNERACIONES                                                     |      5 | EGRESO -
- 144 |      1 | BT5               | 4         | 20        | 11        | 1002      |           |           |           |           | COMISIONES POR VENTA                                               |      5 | EGRESO -
- 145 |      1 | BT5               | 4         | 20        | 11        | 1003      |           |           |           |           | FINIQUITOS                                                         |      5 | EGRESO -
- 146 |      1 | BT5               | 4         | 20        | 11        | 2001      |           |           |           |           | ASESORIA INFORMATICA                                               |      5 | EGRESO -
- 147 |      1 | BT5               | 4         | 20        | 11        | 2002      |           |           |           |           | ASESORIA COMEX                                                     |      5 | EGRESO -
- 148 |      1 | BT5               | 4         | 20        | 11        | 2003      |           |           |           |           | ASESORIA DE MARKETING                                              |      5 | EGRESO -
- 149 |      1 | BT5               | 4         | 20        | 11        | 2004      |           |           |           |           | ASESORIA LEGAL                                                     |      5 | EGRESO -
- 150 |      1 | BT5               | 4         | 20        | 11        | 2005      |           |           |           |           | ASESORIA CONTABLE                                                  |      5 | EGRESO -
- 151 |      1 | BT5               | 4         | 20        | 11        | 2006      |           |           |           |           | ASESORIA TECNICA                                                   |      5 | EGRESO -
- 152 |      1 | BT5               | 4         | 20        | 11        | 3001      |           |           |           |           | GASTOS DE PUBLICIDAD                                               |      5 | EGRESO -
- 153 |      1 | BT5               | 4         | 20        | 11        | 3002      |           |           |           |           | GASTOS DE REPRESENTACION                                           |      5 | EGRESO -
- 154 |      1 | BT5               | 4         | 20        | 11        | 3003      |           |           |           |           | VIAJES Y ESTADIAS                                                  |      5 | EGRESO -
- 155 |      1 | BT5               | 4         | 20        | 11        | 3004      |           |           |           |           | FERIAS Y STAND                                                     |      5 | EGRESO -
- 156 |      1 | BT5               | 4         | 20        | 11        | 4001      |           |           |           |           | ARRIENDO DE OFICINAS                                               |      5 | EGRESO -
- 157 |      1 | BT5               | 4         | 20        | 11        | 4002      |           |           |           |           | COMBUSTIBLE                                                        |      5 | EGRESO -
- 158 |      1 | BT5               | 4         | 20        | 11        | 4003      |           |           |           |           | GASTOS DE OFICINA                                                  |      5 | EGRESO -
- 159 |      1 | BT5               | 4         | 20        | 11        | 4004      |           |           |           |           | MANTENCION DE VEHICULOS                                            |      5 | EGRESO -
- 160 |      1 | BT5               | 4         | 20        | 11        | 4005      |           |           |           |           | TELEFONOS                                                          |      5 | EGRESO -
- 161 |      1 | BT5               | 4         | 20        | 11        | 4006      |           |           |           |           | AGUA                                                               |      5 | EGRESO -
- 162 |      1 | BT5               | 4         | 20        | 11        | 4007      |           |           |           |           | ELECTRICIDAD                                                       |      5 | EGRESO -
- 163 |      1 | BT5               | 4         | 20        | 11        | 4008      |           |           |           |           | GASTOS DE IMPRENTA                                                 |      5 | EGRESO -
- 164 |      1 | BT5               | 4         | 20        | 11        | 5001      |           |           |           |           | SERVICIO DE ASEO                                                   |      5 | EGRESO -
- 165 |      1 | BT5               | 4         | 20        | 11        | 5002      |           |           |           |           | SERVICIO DE VIGILANCIA                                             |      5 | EGRESO -
- 166 |      1 | BT5               | 4         | 20        | 11        | 6001      |           |           |           |           | SEGUROS DE CHEQUES                                                 |      5 | EGRESO -
- 167 |      1 | BT5               | 4         | 20        | 11        | 6002      |           |           |           |           | SEGUROS                                                            |      5 | EGRESO -
- 168 |      1 | BT5               | 4         | 20        | 11        | 7001      |           |           |           |           | COLACION                                                           |      5 | EGRESO -
- 169 |      1 | BT5               | 4         | 20        | 11        | 7002      |           |           |           |           | CORRESPONDENCIA                                                    |      5 | EGRESO -
- 170 |      1 | BT5               | 4         | 20        | 11        | 7003      |           |           |           |           | ALARMA DE SEGURIDAD                                                |      5 | EGRESO -
- 171 |      1 | BT5               | 4         | 20        | 11        | 7004      |           |           |           |           | TAG                                                                |      5 | EGRESO -
- 172 |      1 | BT5               | 4         | 20        | 11        | 7005      |           |           |           |           | ROPA DE TRABAJO                                                    |      5 | EGRESO -
- 173 |      1 | BT5               | 4         | 20        | 11        | 7006      |           |           |           |           | GASTOS DE TV CABLE                                                 |      5 | EGRESO -
- 174 |      1 | BT5               | 4         | 20        | 11        | 7007      |           |           |           |           | GASTOS DE DICOM                                                    |      5 | EGRESO -
- 175 |      1 | BT5               | 4         | 20        | 11        | 7008      |           |           |           |           | GASTOS DE DOMINIO                                                  |      5 | EGRESO -
- 176 |      1 | BT5               | 4         | 20        | 11        | 7009      |           |           |           |           | FLETES                                                             |      5 | EGRESO -
- 177 |      1 | BT5               | 4         | 20        | 11        | 7010      |           |           |           |           | GPS                                                                |      5 | EGRESO -
- 178 |      1 | BT5               | 4         | 20        | 12        | 0000      |           |           |           |           | OTROS GASTOS                                                       |      5 | EGRESO -
- 179 |      1 | BT5               | 4         | 20        | 13        | 0000      |           |           |           |           | COSTOS FINANCIEROS                                                 |      5 | EGRESO -
- 180 |      1 | BT5               | 4         | 20        | 13        | 1001      |           |           |           |           | GASTOS POR LEASING                                                 |      5 | EGRESO -
- 181 |      1 | BT5               | 4         | 20        | 13        | 1002      |           |           |           |           | GASTOS BANCARIOS                                                   |      5 | EGRESO -
- 182 |      1 | BT5               | 4         | 20        | 13        | 1003      |           |           |           |           | GASTOS POR PROTESTOS                                               |      5 | EGRESO -
- 183 |      1 | BT5               | 4         | 20        | 13        | 2001      |           |           |           |           | INTERESES BANCARIOS                                                |      5 | EGRESO -
- 184 |      1 | BT5               | 4         | 20        | 14        | 0000      |           |           |           |           | PARTICIPACION EN RESULTADO POR INVERSIONES                         |      5 | EGRESO -
- 185 |      1 | BT5               | 4         | 20        | 15        | 0000      |           |           |           |           | DIFERENCIA DE CAMBIO                                               |      5 | EGRESO -
- 186 |      1 | BT5               | 4         | 20        | 16        | 0000      |           |           |           |           | RESULTADO POR UNIDADES DE REAJUSTES                                |      5 | EGRESO -
- 187 |      1 | BT5               | 4         | 20        | 16        | 1001      |           |           |           |           | REAJUSTES                                                          |      5 | EGRESO -
- 188 |      1 | BT5               | 4         | 20        | 17        | 0000      |           |           |           |           | GASTOS POR IMPUESTO A LA RENTA                                     |      5 | EGRESO -
- 189 |      1 | BT5               | 4         | 20        | 17        | 1001      |           |           |           |           | IMPUESTO A LA RENTA                                                |      5 | EGRESO -
- 190 |      1 | BT5               | 5         | 00        | 00        | 0000      |           |           |           |           | CUENTAS DE ORDEN Y TRASPASOS                                       |      6 | DE ORDEN -
-(189 filas)
+ 103 |      1 | BT5               | 2         | 10        | 17        | 2001      |           |           |           |           | IMPUESTOS POR PAGAR                                                |      2 | PASIVO EXIGIBLE
+ 104 |      1 | BT5               | 2         | 10        | 17        | 2002      |           |           |           |           | OTROS IMPUESTOS POR PAGAR                                          |      2 | PASIVO EXIGIBLE
+ 105 |      1 | BT5               | 2         | 10        | 18        | 0000      |           |           |           |           | PASIVOS CLASIFICADOS COMO MANTENIDOS PARA LA VENTA                 |      2 | PASIVO EXIGIBLE
+ 106 |      1 | BT5               | 2         | 20        | 00        | 0000      |           |           |           |           | PASIVOS NO CORRIENTES                                              |      2 | PASIVO EXIGIBLE
+ 107 |      1 | BT5               | 2         | 20        | 11        | 0000      |           |           |           |           | OTRAS CUENTAS POR PAGAR                                            |      2 | PASIVO EXIGIBLE
+ 108 |      1 | BT5               | 2         | 20        | 14        | 0000      |           |           |           |           | PASIVOS POR IMPUESTOS DIFERIDOS                                    |      2 | PASIVO EXIGIBLE
+ 109 |      1 | BT5               | 2         | 20        | 15        | 0000      |           |           |           |           | PROVISIONES POR BENEFICIOS A LOS EMPLEADOS                         |      2 | PASIVO EXIGIBLE
+ 110 |      1 | BT5               | 2         | 30        | 00        | 0000      |           |           |           |           | PATRIMONIO                                                         |      2 | PASIVO EXIGIBLE
+ 111 |      1 | BT5               | 2         | 30        | 10        | 0000      |           |           |           |           | CAPITAL EMITIDO                                                    |      2 | PASIVO EXIGIBLE
+ 112 |      1 | BT5               | 2         | 30        | 10        | 0001      |           |           |           |           | CAPITAL                                                            |      2 | PASIVO EXIGIBLE
+ 113 |      1 | BT5               | 2         | 30        | 11        | 0000      |           |           |           |           | GANANCIAS (PERDIDAS) ACUMULADAS                                    |      2 | PASIVO EXIGIBLE
+ 114 |      1 | BT5               | 2         | 30        | 11        | 0001      |           |           |           |           | RESULTADO ACUMULADO                                                |      2 | PASIVO EXIGIBLE
+ 115 |      1 | BT5               | 2         | 30        | 12        | 0000      |           |           |           |           | PRIMAS DE EMISION                                                  |      2 | PASIVO EXIGIBLE
+ 116 |      1 | BT5               | 2         | 30        | 13        | 0000      |           |           |           |           | ACCIONES PROPIAS EN CARTERA                                        |      2 | PASIVO EXIGIBLE
+ 117 |      1 | BT5               | 2         | 30        | 14        | 0000      |           |           |           |           | OTRAS PARTICIPACIONES EN EL PATRIMONIO                             |      2 | PASIVO EXIGIBLE
+ 118 |      1 | BT5               | 2         | 30        | 15        | 0000      |           |           |           |           | OTRAS RESERVAS                                                     |      2 | PASIVO EXIGIBLE
+ 119 |      1 | BT5               | 2         | 30        | 16        | 0000      |           |           |           |           | PATRIMONIO ATRIBUIBLE A PROPIETARIOS DE LA CONTROLADORA            |      2 | PASIVO EXIGIBLE
+ 120 |      1 | BT5               | 2         | 30        | 17        | 0000      |           |           |           |           | PARTICIPACIONES NO CONTROLADORAS                                   |      2 | PASIVO EXIGIBLE
+ 121 |      1 | BT5               | 3         | 00        | 00        | 0000      |           |           |           |           | INGRESOS                                                           |      4 | INGRESO -
+ 122 |      1 | BT5               | 3         | 10        | 10        | 0000      |           |           |           |           | INGRESOS DE ACTIVIDADES ORDINARIAS                                 |      4 | INGRESO -
+ 123 |      1 | BT5               | 3         | 10        | 10        | 1001      |           |           |           |           | VENTA DE GRUAS                                                     |      4 | INGRESO -
+ 124 |      1 | BT5               | 3         | 10        | 10        | 1002      |           |           |           |           | VENTA DE ACCESORIAS DE GRUAS                                       |      4 | INGRESO -
+ 125 |      1 | BT5               | 3         | 10        | 10        | 1003      |           |           |           |           | VENTA DE PLATAFORMAS                                               |      4 | INGRESO -
+ 126 |      1 | BT5               | 3         | 10        | 10        | 1004      |           |           |           |           | VENTA DE REPUESTOS                                                 |      4 | INGRESO -
+ 127 |      1 | BT5               | 3         | 10        | 10        | 1005      |           |           |           |           | VENTA DE SERVICIO TECNICO                                          |      4 | INGRESO -
+ 128 |      1 | BT5               | 3         | 10        | 10        | 1006      |           |           |           |           | VENTA DE LEASING                                                   |      4 | INGRESO -
+ 129 |      1 | BT5               | 3         | 10        | 10        | 2001      |           |           |           |           | ARRIENDOS                                                          |      4 | INGRESO -
+ 130 |      1 | BT5               | 3         | 20        | 10        | 0000      |           |           |           |           | OTROS INGRESOS                                                     |      4 | INGRESO -
+ 131 |      1 | BT5               | 3         | 20        | 11        | 0000      |           |           |           |           | OTRAS GANANCIAS                                                    |      4 | INGRESO -
+ 132 |      1 | BT5               | 3         | 20        | 12        | 0000      |           |           |           |           | INGRESOS FINANCIEROS                                               |      4 | INGRESO -
+ 133 |      1 | BT5               | 4         | 00        | 00        | 0000      |           |           |           |           | EGRESOS                                                            |      5 | EGRESO -
+ 134 |      1 | BT5               | 4         | 10        | 00        | 0000      |           |           |           |           | COSTO DE VENTA                                                     |      5 | EGRESO -
+ 135 |      1 | BT5               | 4         | 10        | 10        | 1001      |           |           |           |           | COSTO DE GRUAS                                                     |      5 | EGRESO -
+ 136 |      1 | BT5               | 4         | 10        | 10        | 1002      |           |           |           |           | COSTO DE ACCESORIAS DE GRUAS                                       |      5 | EGRESO -
+ 137 |      1 | BT5               | 4         | 10        | 10        | 1003      |           |           |           |           | COSTO DE PLATAFORMAS                                               |      5 | EGRESO -
+ 138 |      1 | BT5               | 4         | 10        | 10        | 1004      |           |           |           |           | COSTO DE REPUESTOS                                                 |      5 | EGRESO -
+ 139 |      1 | BT5               | 4         | 10        | 10        | 1005      |           |           |           |           | COSTO DE SERVICIO TECNICO                                          |      5 | EGRESO -
+ 140 |      1 | BT5               | 4         | 10        | 10        | 1006      |           |           |           |           | COSTO DE LEASING                                                   |      5 | EGRESO -
+ 141 |      1 | BT5               | 4         | 10        | 10        | 2001      |           |           |           |           | COSTO DE ARRIENDO                                                  |      5 | EGRESO -
+ 142 |      1 | BT5               | 4         | 20        | 10        | 0000      |           |           |           |           | OTROS COSTOS DE EXPLOTACION                                        |      5 | EGRESO -
+ 143 |      1 | BT5               | 4         | 20        | 11        | 0000      |           |           |           |           | GASTOS DE ADMINISTRACION Y VENTA                                   |      5 | EGRESO -
+ 144 |      1 | BT5               | 4         | 20        | 11        | 1001      |           |           |           |           | REMUNERACIONES                                                     |      5 | EGRESO -
+ 145 |      1 | BT5               | 4         | 20        | 11        | 1002      |           |           |           |           | COMISIONES POR VENTA                                               |      5 | EGRESO -
+ 146 |      1 | BT5               | 4         | 20        | 11        | 1003      |           |           |           |           | FINIQUITOS                                                         |      5 | EGRESO -
+ 147 |      1 | BT5               | 4         | 20        | 11        | 2001      |           |           |           |           | ASESORIA INFORMATICA                                               |      5 | EGRESO -
+ 148 |      1 | BT5               | 4         | 20        | 11        | 2002      |           |           |           |           | ASESORIA COMEX                                                     |      5 | EGRESO -
+ 149 |      1 | BT5               | 4         | 20        | 11        | 2003      |           |           |           |           | ASESORIA DE MARKETING                                              |      5 | EGRESO -
+ 150 |      1 | BT5               | 4         | 20        | 11        | 2004      |           |           |           |           | ASESORIA LEGAL                                                     |      5 | EGRESO -
+ 151 |      1 | BT5               | 4         | 20        | 11        | 2005      |           |           |           |           | ASESORIA CONTABLE                                                  |      5 | EGRESO -
+ 152 |      1 | BT5               | 4         | 20        | 11        | 2006      |           |           |           |           | ASESORIA TECNICA                                                   |      5 | EGRESO -
+ 153 |      1 | BT5               | 4         | 20        | 11        | 3001      |           |           |           |           | GASTOS DE PUBLICIDAD                                               |      5 | EGRESO -
+ 154 |      1 | BT5               | 4         | 20        | 11        | 3002      |           |           |           |           | GASTOS DE REPRESENTACION                                           |      5 | EGRESO -
+ 155 |      1 | BT5               | 4         | 20        | 11        | 3003      |           |           |           |           | VIAJES Y ESTADIAS                                                  |      5 | EGRESO -
+ 156 |      1 | BT5               | 4         | 20        | 11        | 3004      |           |           |           |           | FERIAS Y STAND                                                     |      5 | EGRESO -
+ 157 |      1 | BT5               | 4         | 20        | 11        | 4001      |           |           |           |           | ARRIENDO DE OFICINAS                                               |      5 | EGRESO -
+ 158 |      1 | BT5               | 4         | 20        | 11        | 4002      |           |           |           |           | COMBUSTIBLE                                                        |      5 | EGRESO -
+ 159 |      1 | BT5               | 4         | 20        | 11        | 4003      |           |           |           |           | GASTOS DE OFICINA                                                  |      5 | EGRESO -
+ 160 |      1 | BT5               | 4         | 20        | 11        | 4004      |           |           |           |           | MANTENCION DE VEHICULOS                                            |      5 | EGRESO -
+ 161 |      1 | BT5               | 4         | 20        | 11        | 4005      |           |           |           |           | TELEFONOS                                                          |      5 | EGRESO -
+ 162 |      1 | BT5               | 4         | 20        | 11        | 4006      |           |           |           |           | AGUA                                                               |      5 | EGRESO -
+ 163 |      1 | BT5               | 4         | 20        | 11        | 4007      |           |           |           |           | ELECTRICIDAD                                                       |      5 | EGRESO -
+ 164 |      1 | BT5               | 4         | 20        | 11        | 4008      |           |           |           |           | GASTOS DE IMPRENTA                                                 |      5 | EGRESO -
+ 165 |      1 | BT5               | 4         | 20        | 11        | 5001      |           |           |           |           | SERVICIO DE ASEO                                                   |      5 | EGRESO -
+ 166 |      1 | BT5               | 4         | 20        | 11        | 5002      |           |           |           |           | SERVICIO DE VIGILANCIA                                             |      5 | EGRESO -
+ 167 |      1 | BT5               | 4         | 20        | 11        | 6001      |           |           |           |           | SEGUROS DE CHEQUES                                                 |      5 | EGRESO -
+ 168 |      1 | BT5               | 4         | 20        | 11        | 6002      |           |           |           |           | SEGUROS                                                            |      5 | EGRESO -
+ 169 |      1 | BT5               | 4         | 20        | 11        | 7001      |           |           |           |           | COLACION                                                           |      5 | EGRESO -
+ 170 |      1 | BT5               | 4         | 20        | 11        | 7002      |           |           |           |           | CORRESPONDENCIA                                                    |      5 | EGRESO -
+ 171 |      1 | BT5               | 4         | 20        | 11        | 7003      |           |           |           |           | ALARMA DE SEGURIDAD                                                |      5 | EGRESO -
+ 172 |      1 | BT5               | 4         | 20        | 11        | 7004      |           |           |           |           | TAG                                                                |      5 | EGRESO -
+ 173 |      1 | BT5               | 4         | 20        | 11        | 7005      |           |           |           |           | ROPA DE TRABAJO                                                    |      5 | EGRESO -
+ 174 |      1 | BT5               | 4         | 20        | 11        | 7006      |           |           |           |           | GASTOS DE TV CABLE                                                 |      5 | EGRESO -
+ 175 |      1 | BT5               | 4         | 20        | 11        | 7007      |           |           |           |           | GASTOS DE DICOM                                                    |      5 | EGRESO -
+ 176 |      1 | BT5               | 4         | 20        | 11        | 7008      |           |           |           |           | GASTOS DE DOMINIO                                                  |      5 | EGRESO -
+ 177 |      1 | BT5               | 4         | 20        | 11        | 7009      |           |           |           |           | FLETES                                                             |      5 | EGRESO -
+ 178 |      1 | BT5               | 4         | 20        | 11        | 7010      |           |           |           |           | GPS                                                                |      5 | EGRESO -
+ 179 |      1 | BT5               | 4         | 20        | 12        | 0000      |           |           |           |           | OTROS GASTOS                                                       |      5 | EGRESO -
+ 180 |      1 | BT5               | 4         | 20        | 13        | 0000      |           |           |           |           | COSTOS FINANCIEROS                                                 |      5 | EGRESO -
+ 181 |      1 | BT5               | 4         | 20        | 13        | 1001      |           |           |           |           | GASTOS POR LEASING                                                 |      5 | EGRESO -
+ 182 |      1 | BT5               | 4         | 20        | 13        | 1002      |           |           |           |           | GASTOS BANCARIOS                                                   |      5 | EGRESO -
+ 183 |      1 | BT5               | 4         | 20        | 13        | 1003      |           |           |           |           | GASTOS POR PROTESTOS                                               |      5 | EGRESO -
+ 184 |      1 | BT5               | 4         | 20        | 13        | 2001      |           |           |           |           | INTERESES BANCARIOS                                                |      5 | EGRESO -
+ 185 |      1 | BT5               | 4         | 20        | 14        | 0000      |           |           |           |           | PARTICIPACION EN RESULTADO POR INVERSIONES                         |      5 | EGRESO -
+ 186 |      1 | BT5               | 4         | 20        | 15        | 0000      |           |           |           |           | DIFERENCIA DE CAMBIO                                               |      5 | EGRESO -
+ 187 |      1 | BT5               | 4         | 20        | 16        | 0000      |           |           |           |           | RESULTADO POR UNIDADES DE REAJUSTES                                |      5 | EGRESO -
+ 188 |      1 | BT5               | 4         | 20        | 16        | 1001      |           |           |           |           | REAJUSTES                                                          |      5 | EGRESO -
+ 189 |      1 | BT5               | 4         | 20        | 17        | 0000      |           |           |           |           | GASTOS POR IMPUESTO A LA RENTA                                     |      5 | EGRESO -
+ 190 |      1 | BT5               | 4         | 20        | 17        | 1001      |           |           |           |           | IMPUESTO A LA RENTA                                                |      5 | EGRESO -
+ 191 |      1 | BT5               | 5         | 00        | 00        | 0000      |           |           |           |           | CUENTAS DE ORDEN Y TRASPASOS                                       |      6 | DE ORDEN -
+(190 filas)
 
 DROP VIEW
 CREATE VIEW

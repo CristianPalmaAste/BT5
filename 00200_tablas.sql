@@ -1431,6 +1431,7 @@ create table ventas (
   ,montodescuento           numeric(20,0)   not null
   ,total                    numeric(20,0)   not null
   ,idesve                   numeric(20,0)   not null
+  ,idasco                   numeric(20,0)       null
   ,idusuavendedor           numeric(20,0)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
@@ -3455,6 +3456,7 @@ alter table ventas                            add constraint vent_fk_line  forei
 alter table ventas                            add constraint vent_fk_ceco  foreign key (idceco)                 references centros_costos                   (id);
 alter table ventas                            add constraint vent_fk_tare  foreign key (idtare)                 references tareas                           (id);
 alter table ventas                            add constraint vent_fk_esve  foreign key (idesve)                 references estados_ventas                   (id);
+alter table ventas                            add constraint vent_fk_asco  foreign key (idasco)                 references asientos_contables               (id);
 alter table ventas                            add constraint vent_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table ventas                            add constraint vent_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 alter table ventas                            add constraint vent_fk4_usua foreign key (idusuavendedor)         references usuarios                         (id);

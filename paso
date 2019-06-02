@@ -116,7 +116,7 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence cuco_seq start with 765
+ create sequence cuco_seq start with 769
 (1 fila)
 
                 ?column?                
@@ -539,9 +539,9 @@ SET
  create sequence esac_seq start with 4
 (1 fila)
 
-               ?column?                
----------------------------------------
- create sequence peco_seq start with 1
+                ?column?                
+----------------------------------------
+ create sequence peco_seq start with 12
 (1 fila)
 
                ?column?                
@@ -566,11 +566,11 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence coca_seq start with 6
+ create sequence coca_seq start with 7
 (1 fila)
 
                 ?column?                
 ----------------------------------------
- create sequence dpce_seq start with 67
+ create sequence dpce_seq start with 89
 (1 fila)
 

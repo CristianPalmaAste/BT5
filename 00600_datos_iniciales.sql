@@ -5,6 +5,7 @@ insert into conceptos_contabilizacs_automats values (2, 'IMPUESTOS ESPECÍFICOS'
 insert into conceptos_contabilizacs_automats values (3, 'INGRESOS (CAJA)'       , 1, current_timestamp, null, null, null, null);
 insert into conceptos_contabilizacs_automats values (4, 'SERVICIOS'             , 1, current_timestamp, null, null, null, null);
 insert into conceptos_contabilizacs_automats values (5, 'OTRAS VENTAS'          , 1, current_timestamp, null, null, null, null);
+insert into conceptos_contabilizacs_automats values (6, 'DESCUENTOS'            , 1, current_timestamp, null, null, null, null);
 
 insert into tipos_asocs_ctas_ctbles values (1, 'ACTIVO'  , 1, current_timestamp, null, null, null, null);
 insert into tipos_asocs_ctas_ctbles values (2, 'PASIVO'  , 1, current_timestamp, null, null, null, null);

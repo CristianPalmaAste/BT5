@@ -7,6 +7,8 @@ declare
   Vidcuco_otros_imptos  int;
   Vidcuco_caja          int;
   Vidprce               int;
+  Vmes_actual           int;
+  Vanno_actual          int;
 begin
   insert into parametros_empresas values (nextval('paem_seq'), new.id, 'MAXDSCTOPERM', 'MÁXIMO DESCUENTO PERMITIDO (%)', 'MÁXIMO DESCUENTO PERMITIDO (EXPRESADO EN PORCENTAJE) EN UNA VENTA DE ESTA EMPRESA', '10' , 1, current_timestamp, null, null, null, null);
 
@@ -29,6 +31,13 @@ begin
   ;
 
   insert into sub_familias_productos values (nextval('sfpr_seq'), Vidfapr, '01', 'SUB FAMILIA GENÉRICA', Vidcuco, 1, current_timestamp, null, null, null, null);
+
+  select cast(trim(to_char(current_timestamp,'mm'  )) as integer)
+        ,cast(trim(to_char(current_timestamp,'yyyy')) as integer)
+  into   Vmes_actual
+        ,Vanno_actual
+  ;
+  insert into periodos_contables values (nextval('peco_seq'), new.id, Vmes_actual, Vanno_actual, 1, 1, current_timestamp, null, null, null, null);
 
   select id
   into   Vidcuco_impto_oblig
@@ -68,6 +77,7 @@ begin
       insert into detalles_procesos_ctbles_empresas values (nextval('dpce_seq'), Vidprce, 1, Vidcuco_impto_oblig , 2, 1, current_timestamp, null, null, null, null);
       insert into detalles_procesos_ctbles_empresas values (nextval('dpce_seq'), Vidprce, 2, Vidcuco_otros_imptos, 2, 1, current_timestamp, null, null, null, null);
       insert into detalles_procesos_ctbles_empresas values (nextval('dpce_seq'), Vidprce, 3, Vidcuco_caja        , 1, 1, current_timestamp, null, null, null, null);
+      insert into detalles_procesos_ctbles_empresas values (nextval('dpce_seq'), Vidprce, 6, Vidcuco_caja        , 1, 1, current_timestamp, null, null, null, null);
 
     -- Proceso contable compras
     Vidprce := nextval('prce_seq');
@@ -78,6 +88,7 @@ begin
       insert into detalles_procesos_ctbles_empresas values (nextval('dpce_seq'), Vidprce, 1, Vidcuco_impto_oblig , 1, 1, current_timestamp, null, null, null, null);
       insert into detalles_procesos_ctbles_empresas values (nextval('dpce_seq'), Vidprce, 2, Vidcuco_otros_imptos, 1, 1, current_timestamp, null, null, null, null);
       insert into detalles_procesos_ctbles_empresas values (nextval('dpce_seq'), Vidprce, 3, Vidcuco_caja        , 2, 1, current_timestamp, null, null, null, null);
+      insert into detalles_procesos_ctbles_empresas values (nextval('dpce_seq'), Vidprce, 6, Vidcuco_caja        , 2, 1, current_timestamp, null, null, null, null);
 
   insert into autorizadores_requisiciones values (nextval('aure_seq'), new.id, 5 , 5 , 1, current_timestamp, null, null, null, null);
   insert into autorizadores_requisiciones values (nextval('aure_seq'), new.id, 5 , 6 , 1, current_timestamp, null, null, null, null);

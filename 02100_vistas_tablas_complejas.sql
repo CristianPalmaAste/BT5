@@ -1309,6 +1309,8 @@ select cuco.id                                     id
       ,cuco.descripcion                            descripcion
       ,cuco.idticc                                 idticc
       ,tacc.descripcion || ' ' || ticc.descripcion tipo_cuenta_contable
+      ,cuco.imputable                              imputable
+      ,cuco.cuenta_desplegable                     cuenta_desplegable
 from                   cuentas_contables       cuco
        left outer join grupos_empresariales    grem on cuco.idgrem = grem.id
        left outer join tipos_cuentas_contables ticc on cuco.idticc = ticc.id

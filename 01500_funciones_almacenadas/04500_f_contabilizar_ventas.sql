@@ -28,16 +28,16 @@ declare
   Vidline                     int;
   Vidceco                     int;
   Vidtare                     int;
-  Vneto                       int;
-  Vdescuentos                 int;
-  Vimpuestosobligats          int;
-  Vimpuestosespecifs          int;
-  Vtotal                      int;
+  Vneto                       numeric;
+  Vdescuentos                 numeric;
+  Vimpuestosobligats          numeric;
+  Vimpuestosespecifs          numeric;
+  Vtotal                      numeric;
   Vidpeco                     int;
   Vnumero_asiento             int;
   Vidasco                     int;
   Vidcuco                     int;
-  Vsum_totallinea             int;
+  Vsum_totallinea             numeric;
   i                           int;
   C_ventas_pdtes cursor for
     select id                 idvent
@@ -74,6 +74,18 @@ declare
     and    prod.idsfpr = sfpr.id
     and    deve.idvent = Vidvent
     group  by sfpr.idcuco
+    union
+
+servicios
+otras ventas
+
++
+
+imptos oblig
+otros imptos
+caja
+descuentos
+
     ;
 begin
   /* Validaciones a la invocación a esta función */
@@ -118,7 +130,6 @@ begin
     Vmensaje := 'Si Ptodas_S_N = S entonces Pfecha_ini y Pfecha_fin deben ser 0';
     return(Vmensaje);
   end if;
-raise notice 'm2';
   open C_ventas_pdtes;
   loop
     fetch C_ventas_pdtes into Vidvent

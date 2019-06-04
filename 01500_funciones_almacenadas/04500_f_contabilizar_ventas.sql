@@ -20,25 +20,30 @@ $body$
    Retorna "exito" si todo el proceso fue exitoso; de lo contrario, retorna un mensaje de error
 */
 declare
-  Vmensaje                    varchar(1000);
-  aux                         int;
-  Vidvent                     int;
-  Vidgere                     int;
-  Vidproy                     int;
-  Vidline                     int;
-  Vidceco                     int;
-  Vidtare                     int;
-  Vneto                       numeric;
-  Vdescuentos                 numeric;
-  Vimpuestosobligats          numeric;
-  Vimpuestosespecifs          numeric;
-  Vtotal                      numeric;
-  Vidpeco                     int;
-  Vnumero_asiento             int;
-  Vidasco                     int;
-  Vidcuco                     int;
-  Vsum_totallinea             numeric;
-  i                           int;
+  Vmensaje                        varchar(1000);
+  aux                             int;
+  Vidvent                         int;
+  Vidgere                         int;
+  Vidproy                         int;
+  Vidline                         int;
+  Vidceco                         int;
+  Vidtare                         int;
+  Vneto                           numeric;
+  Vdescuentos                     numeric;
+  Vimpuestosobligats              numeric;
+  Vimpuestosespecifs              numeric;
+  Vtotal                          numeric;
+  Vidpeco                         int;
+  Vnumero_asiento                 int;
+  Vidasco                         int;
+  Vidcuco                         int;
+  Vsum_totallinea                 numeric;
+  i                               int;
+  Vidcoca                         int;
+  Vidcuco_otros_conceptos         int;
+  Vvalor_linea                    numeric;
+  Vservicios                      numeric;
+  Votras_ventas                   numeric;
   C_ventas_pdtes cursor for
     select id                 idvent
           ,afecto+exento      neto
@@ -74,18 +79,15 @@ declare
     and    prod.idsfpr = sfpr.id
     and    deve.idvent = Vidvent
     group  by sfpr.idcuco
-    union
-
-servicios
-otras ventas
-
-+
-
-imptos oblig
-otros imptos
-caja
-descuentos
-
+    ;
+  C_ctas_ctbles_otros_conceptos cursor for
+    select dpce.idcoca
+          ,dpce.idcuco
+    from   procesos_contables_empresas       prce
+          ,detalles_procesos_ctbles_empresas dpce
+    where  prce.id     = dpce.idprce
+    and    prce.idempr = Pidempr
+    and    prce.idprco = 1
     ;
 begin
   /* Validaciones a la invocación a esta función */
@@ -200,14 +202,6 @@ begin
            ,null                              -- fechaborraregistro       timestamp             null
            )
     ;
-    update ventas
-    set    idasco = Vidasco
-    where  id     = Vidvent
-    ;
-
-
-
-
     i := 0;
     open C_detalles_ventas;
     loop
@@ -255,6 +249,73 @@ begin
       ;
     end loop;
     close C_detalles_ventas;
+    update ventas
+    set    idasco = Vidasco
+    where  id     = Vidvent
+    ;
+    open C_ctas_ctbles_otros_conceptos;
+    loop
+      fetch C_ctas_ctbles_otros_conceptos into Vidcoca
+                                              ,Vidcuco_otros_conceptos
+                                              ;
+      exit when not found;
+      if    Vidcoca = 1 and Vimpuestosobligats != 0 then
+        Vvalor_linea := Vimpuestosobligats;
+      elsif Vidcoca = 2 and Vimpuestosespecifs != 0 then
+        Vvalor_linea := Vimpuestosespecifs;
+      elsif Vidcoca = 3 and Vtotal != 0             then
+        Vvalor_linea := Vtotal;
+      elsif Vidcoca = 4 and Vservicios != 0         then
+        Vvalor_linea := Vservicios;
+      elsif Vidcoca = 5 and Votras_ventas != 0      then
+        Vvalor_linea := Votras_ventas;
+      elsif Vidcoca = 6 and Vdescuentos != 0        then
+        Vvalor_linea := Vdescuentos;
+      else
+        Vvalor_linea := 0;
+      end if;
+      if Vvalor_linea != 0 then
+        i := i + 1;
+        insert into detalles_asientos_contables (id                       -- numeric(20,0)     not null
+                                                ,idasco                   -- numeric(20,0)     not null
+                                                ,numero_linea             -- numeric(20,0)     not null
+                                                ,idcuco                   -- numeric(20,0)     not null
+                                                ,idtiec                   -- numeric(20,0)     not null
+                                                ,idgere                   -- numeric(20,0)         null
+                                                ,idproy                   -- numeric(20,0)         null
+                                                ,idline                   -- numeric(20,0)         null
+                                                ,idceco                   -- numeric(20,0)         null
+                                                ,idtare                   -- numeric(20,0)         null
+                                                ,monto                    -- numeric(20,0)     not null
+                                                ,idusuacrearegistro       -- numeric(20,0)     not null
+                                                ,fechacrearegistro        -- timestamp         not null
+                                                ,idusuamodifregistro      -- numeric(20,0)         null
+                                                ,fechamodifregistro       -- timestamp             null
+                                                ,idusuaborraregistro      -- numeric(20,0)         null
+                                                ,fechaborraregistro       -- timestamp             null
+                                                )
+        values (nextval('deac_seq')                   -- id                       numeric(20,0)     not null
+               ,Vidasco                               -- idasco                   numeric(20,0)     not null
+               ,i                                     -- numero_linea             numeric(20,0)     not null
+               ,Vidcuco_otros_conceptos               -- idcuco                   numeric(20,0)     not null
+               ,2                                     -- idtiec                   numeric(20,0)     not null
+               ,Vidgere                               -- idgere                   numeric(20,0)         null
+               ,Vidproy                               -- idproy                   numeric(20,0)         null
+               ,Vidline                               -- idline                   numeric(20,0)         null
+               ,Vidceco                               -- idceco                   numeric(20,0)         null
+               ,Vidtare                               -- idtare                   numeric(20,0)         null
+               ,Vvalor_linea                          -- monto                    numeric(20,0)     not null
+               ,Pidusuacreaasiento                    -- idusuacrearegistro       numeric(20,0)     not null
+               ,current_timestamp                     -- fechacrearegistro        timestamp         not null
+               ,null                                  -- idusuamodifregistro      numeric(20,0)         null
+               ,null                                  -- fechamodifregistro       timestamp             null
+               ,null                                  -- idusuaborraregistro      numeric(20,0)         null
+               ,null                                  -- fechaborraregistro       timestamp             null
+               )
+        ;
+      end if;
+    end loop;
+    close C_ventas_pdtes;
   end loop;
   close C_ventas_pdtes;
   return 'exito';

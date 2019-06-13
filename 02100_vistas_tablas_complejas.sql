@@ -1421,6 +1421,31 @@ from   libro_compras_v
 
 /*************************************************************************************************************************/
 
+drop view if exists bicpv
+;
+
+create or replace view bicpv as
+select bicp.id                                             id
+      ,bicp.idprod                                         idprod
+      ,prod.nombre                                         producto
+      ,bicp.preciounitario                                 preciounitario
+      ,bicp.idusuacrearegistro                             idusuacrearegistro
+      ,pers.primernombre || ' ' || pers.apellidopaterno    usuario
+      ,bicp.fechacrearegistro                              fechaevento
+from                   bitacoras_cambios_precios  bicp
+       left outer join productos                  prod on bicp.idprod             = prod.id
+       left outer join usuarios                   usua on bicp.idusuacrearegistro = usua.id
+       left outer join personas                   pers on usua.idpers             = pers.id
+;
+
+select *
+from   bicpv
+order  by 1
+;
+
+/*************************************************************************************************************************/
+
+
 \q
 
 

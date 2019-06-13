@@ -28,6 +28,7 @@ declare
   Vidline                         int;
   Vidceco                         int;
   Vidtare                         int;
+  Vidtiec                         int;
   Vneto                           numeric;
   Vdescuentos                     numeric;
   Vimpuestosobligats              numeric;
@@ -70,8 +71,8 @@ declare
     and    idasco                                                  is null
     ;
   C_detalles_ventas cursor for
-    select sfpr.idcuco                 idcuco
-          ,sum(deve.totallinea)        sum_totallinea
+    select sfpr.idcuco                    idcuco
+          ,sum(deve.afecto + deve.exento) sum_totallinea
     from   detalles_ventas        deve
           ,productos              prod
           ,sub_familias_productos sfpr
@@ -261,18 +262,25 @@ begin
       exit when not found;
       if    Vidcoca = 1 and Vimpuestosobligats != 0 then
         Vvalor_linea := Vimpuestosobligats;
+        Vidtiec      := 2;
       elsif Vidcoca = 2 and Vimpuestosespecifs != 0 then
         Vvalor_linea := Vimpuestosespecifs;
-      elsif Vidcoca = 3 and Vtotal != 0             then
+        Vidtiec      := 2;
+      elsif Vidcoca = 3 and Vtotal             != 0 then
         Vvalor_linea := Vtotal;
-      elsif Vidcoca = 4 and Vservicios != 0         then
+        Vidtiec      := 1;
+      elsif Vidcoca = 4 and Vservicios         != 0 then
         Vvalor_linea := Vservicios;
-      elsif Vidcoca = 5 and Votras_ventas != 0      then
+        Vidtiec      := 2;
+      elsif Vidcoca = 5 and Votras_ventas      != 0 then
         Vvalor_linea := Votras_ventas;
-      elsif Vidcoca = 6 and Vdescuentos != 0        then
+        Vidtiec      := 2;
+      elsif Vidcoca = 6 and Vdescuentos        != 0 then
         Vvalor_linea := Vdescuentos;
+        Vidtiec      := 2;
       else
         Vvalor_linea := 0;
+        Vidtiec      := 2;
       end if;
       if Vvalor_linea != 0 then
         i := i + 1;
@@ -298,7 +306,7 @@ begin
                ,Vidasco                               -- idasco                   numeric(20,0)     not null
                ,i                                     -- numero_linea             numeric(20,0)     not null
                ,Vidcuco_otros_conceptos               -- idcuco                   numeric(20,0)     not null
-               ,2                                     -- idtiec                   numeric(20,0)     not null
+               ,Vidtiec                               -- idtiec                   numeric(20,0)     not null
                ,Vidgere                               -- idgere                   numeric(20,0)         null
                ,Vidproy                               -- idproy                   numeric(20,0)         null
                ,Vidline                               -- idline                   numeric(20,0)         null
@@ -315,7 +323,7 @@ begin
         ;
       end if;
     end loop;
-    close C_ventas_pdtes;
+    close C_ctas_ctbles_otros_conceptos;
   end loop;
   close C_ventas_pdtes;
   return 'exito';
@@ -343,6 +351,19 @@ from   asco
 
 select *
 from   deac
+;
+
+select cuco.cuenta_desplegable
+      ,cuco.descripcion
+      ,tiec.descripcion
+      ,deac.monto
+from   asco
+      ,deac
+      ,cuco
+      ,tiec
+where  asco.id     = deac.idasco
+and    deac.idcuco = cuco.id
+and    deac.idtiec = tiec.id
 ;
 
 \q

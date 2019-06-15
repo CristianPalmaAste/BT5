@@ -162,7 +162,7 @@ begin
     into   Vnumero_asiento
     from   asientos_contables
     where  idpeco = Vidpeco
-    and    idtiac = 1
+    and    idtiac = 3
     ;
     if Vnumero_asiento is null then
       Vnumero_asiento := 1;
@@ -188,7 +188,7 @@ begin
                                    )
     values (Vidasco                           -- id                       numeric(20,0)     not null
            ,Vidpeco                           -- idpeco                   numeric(20,0)     not null
-           ,1                                 -- idtiac                   numeric(20,0)     not null
+           ,3                                 -- idtiac                   numeric(20,0)     not null
            ,1                                 -- idesac                   numeric(20,0)     not null
            ,Vnumero_asiento                   -- numero_asiento           numeric(20,0)     not null
            ,current_timestamp                 -- fecha_asiento            date              not null
@@ -329,9 +329,6 @@ begin
   return 'exito';
 end;
 $body$ LANGUAGE plpgsql;
-
-drop trigger if exists trg_before_upd_vent on ventas cascade
-;
 
 update ventas
 set    idasco = null

@@ -43,7 +43,7 @@ begin
     values(Vidmobo                  -- id                       numeric(20,0)   not null
           ,Vidbode                  -- idbode                   numeric(20,0)   not null
           ,Vcorrelativo             -- correlativo              numeric(20,0)   not null
-          ,1                        -- idtimb                   numeric(20,0)   not null
+          ,2                        -- idtimb                   numeric(20,0)   not null
           ,current_date             -- fechamovto               date            not null
           ,'COMPRA'                 -- descripcion              varchar(100)    not null
           ,Vidusuacrearegistro      -- idusuacrearegistro       numeric(20,0)   not null

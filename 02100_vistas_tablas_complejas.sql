@@ -1264,7 +1264,7 @@ select mobo.id                                               idmobo
       ,mobo.correlativo                                      nro_movto_bodega
       ,timb.id                                               idtimb
       ,timb.descripcion                                      tipo_movto_bodega
-      ,to_char(mobo.fechamovto,'DD-MM-YYYY HH24:mi:ss')      fecha_movto
+      ,to_char(mobo.fechamovto,'YYYY-MM-DD'::text)           fecha_movto
       ,mobo.descripcion                                      movto_bodega
       ,demb.id                                               iddemb
       ,mobo.correlativo                                      correlativo_movto_bodega

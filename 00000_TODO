@@ -162,6 +162,9 @@ psql -d $DBNAME -U $USUARIO_DB < 04300_f_validar_uspe_ins_upd.sql > 04310_f_vali
 echo "  04400_f_generar_balance"
 psql -d $DBNAME -U $USUARIO_DB < 04400_f_generar_balance.sql > 04410_f_generar_balance.txt
 
+echo "  04500_f_contabilizar_ventas"
+psql -d $DBNAME -U $USUARIO_DB < 04500_f_contabilizar_ventas.sql > 04510_f_contabilizar_ventas.txt
+
 cd ..
 
 cd 01600_triggers

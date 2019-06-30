@@ -1252,10 +1252,10 @@ order  by 1
 
 /*************************************************************************************************************************/
 
-drop view if exists kardexv
+drop view if exists mobov_dembv
 ;
 
-create or replace view kardexv as
+create or replace view mobov_dembv as
 select mobo.id                                               idmobo
       ,bode.id                                               idbode
       ,bode.nombre                                           bodega
@@ -1285,7 +1285,7 @@ and    demb.idusuaborraregistro is null
 ;
 
 select *
-from   kardexv
+from   mobov_dembv
 order  by 1
 ;
 
@@ -1445,6 +1445,82 @@ order  by 1
 
 /*************************************************************************************************************************/
 
+drop view if exists libro_diario_v
+;
+
+create or replace view libro_diario_v as
+select asco.id                                               idasco
+      ,asco.idpeco                                           idpeco
+      ,peco.mes || '-' || peco.anno                          periodo_contable
+      ,asco.idtiac                                           idtiac
+      ,tiac.descripcion                                      tipo_asiento_contable
+      ,asco.idesac                                           idesac
+      ,esac.descripcion                                      estado_asiento_contable
+      ,asco.numero_asiento                                   numero_asiento
+      ,asco.fecha_asiento                                    fecha_asiento
+      ,asco.reversible                                       reversible
+      ,asco.idusuacreaasiento                                idusuacreaasiento
+      ,usua1.username                                        usuario_crea_asiento
+      ,pers1.primernombre || ' ' || pers1.apellidopaterno    persona_crea_asiento
+      ,asco.idusuaautorizaasiento                            idusuaautorizaasiento
+      ,usua2.username                                        usuario_autoriza_asiento
+      ,pers2.primernombre || ' ' || pers2.apellidopaterno    persona_autoriza_asiento
+      ,asco.idusuacrearegistro                               idusuacrearegistroasco
+      ,usua3.username                                        usuario_crea_registro_asco
+      ,pers3.primernombre || ' ' || pers3.apellidopaterno    persona_crea_registro_asco
+      ,asco.fechacrearegistro                                fechacrearegistroasco
+      ,deac.id                                               iddeac
+      ,deac.numero_linea                                     numero_linea
+      ,deac.idcuco                                           idcuco
+      ,cuco.cuenta_desplegable                               cuenta_contable
+      ,cuco.descripcion                                      nombre_cuenta_contable
+      ,deac.idtiec                                           idtiec
+      ,tiec.descripcion                                      tipo_entrada_contable
+      ,deac.idgere                                           idgere
+      ,gere.nombre                                           gerencia
+      ,deac.idproy                                           idproy
+      ,proy.nombre                                           proyecto
+      ,deac.idline                                           idline
+      ,line.nombre                                           linea_negocio
+      ,deac.idceco                                           idceco
+      ,ceco.nombre                                           centro_costo
+      ,deac.idtare                                           idtare
+      ,tare.nombre                                           tarea
+      ,deac.monto                                            monto
+      ,deac.idusuacrearegistro                               idusuacrearegistrodeac
+      ,usua4.username                                        usuario_crea_registro_deac
+      ,pers4.primernombre || ' ' || pers4.apellidopaterno    persona_crea_registro_deac
+      ,deac.fechacrearegistro                                fechacrearegistrodeac
+from                   asientos_contables          asco
+       left outer join detalles_asientos_contables deac  on deac.idasco                 = asco.id
+       left outer join periodos_contables          peco  on asco.idpeco                 = peco.id
+       left outer join tipos_asientos_contables    tiac  on asco.idtiac                 = tiac.id
+       left outer join estados_asientos_contables  esac  on asco.idesac                 = esac.id
+       left outer join usuarios                    usua1 on asco.idusuacreaasiento      = usua1.id
+       left outer join personas                    pers1 on usua1.idpers                = pers1.id
+       left outer join usuarios                    usua2 on asco.idusuaautorizaasiento  = usua2.id
+       left outer join personas                    pers2 on usua2.idpers                = pers2.id
+       left outer join usuarios                    usua3 on asco.idusuacrearegistro     = usua3.id
+       left outer join personas                    pers3 on usua3.idpers                = pers3.id
+       left outer join cuentas_contables           cuco  on deac.idcuco                 = cuco.id
+       left outer join tipos_entradas_contables    tiec  on deac.idasco                 = tiec.id
+       left outer join gerencias                   gere  on deac.idgere                 = gere.id
+       left outer join proyectos                   proy  on deac.idproy                 = proy.id
+       left outer join lineas_negocios             line  on deac.idline                 = line.id
+       left outer join centros_costos              ceco  on deac.idceco                 = ceco.id
+       left outer join tareas                      tare  on deac.idtare                 = tare.id
+       left outer join usuarios                    usua4 on deac.idusuacrearegistro     = usua4.id
+       left outer join personas                    pers4 on usua4.idpers                = pers4.id
+where  asco.idusuaborraregistro is null
+and    deac.idusuaborraregistro is null
+;
+
+select *
+from   libro_diario_v
+order  by 1
+;
+
+/*************************************************************************************************************************/
 
 \q
 

@@ -601,7 +601,7 @@ create table cuentas_contables (
 alter table cuentas_contables add constraint cuco_pk primary key (id)
 ;
 
-alter table cuentas_contables add constraint cuco_uk_01 unique (idgrem, segmento1, segmento2, segmento3, segmento4, segmento5, segmento6, segmento7, segmento8)
+alter table cuentas_contables add constraint cuco_uk_01 unique (idgrem, cuenta_desplegable)
 ;
 
 alter table cuentas_contables add constraint cuco_uk_02 unique (idgrem, descripcion, idticc)

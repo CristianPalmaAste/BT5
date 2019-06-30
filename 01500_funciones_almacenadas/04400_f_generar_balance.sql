@@ -1,16 +1,5 @@
-drop function if exists f_generar_balance (Pidsesion varchar(100)
-                                          ,Pidempr   numeric
-                                          ,Pmes_ini  numeric
-                                          ,Panno_ini numeric
-                                          ,Pmes_fin  numeric
-                                          ,Panno_fin numeric
-                                          )
-;
-
 create or replace function f_generar_balance (Pidsesion varchar(100)
                                              ,Pidempr   numeric
-                                             ,Pmes_ini  numeric
-                                             ,Panno_ini numeric
                                              ,Pmes_fin  numeric
                                              ,Panno_fin numeric
                                              ) returns numeric as
@@ -65,7 +54,7 @@ begin
   from   empresas
   where  id = Pidempr
   ;
-  Vanno_mes_ini := cast(trim(to_char(Panno_ini,'0009')) || trim(to_char(Pmes_ini,'09')) as integer);
+  Vanno_mes_ini := cast(trim(to_char(Panno_fin,'0009')) || trim(to_char(1,'09'))        as integer);
   Vanno_mes_fin := cast(trim(to_char(Panno_fin,'0009')) || trim(to_char(Pmes_fin,'09')) as integer);
   open C_cuco;
   loop
@@ -165,7 +154,7 @@ $$ LANGUAGE plpgsql;
 delete from tmp_balance
 ;
 
-select f_generar_balance ('12345', 1, 1, 2018, 12,2019);
+select f_generar_balance ('12345', 1, 12, 2019);
 
 \q
 

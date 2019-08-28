@@ -82,12 +82,5 @@ begin
 end;
 $$ LANGUAGE plpgsql;
 
-select f_valida_usuario('jsoto'    , '12345');
-select f_valida_usuario('cpalmaa'  , 'aaaaa');
-select f_valida_usuario('RQUEZADAA', '12345');
-select f_valida_usuario('jperez'   , '12345');
-select f_valida_usuario('iapino'   , '12345');
-select f_valida_usuario('uat'      , '12345');
-
 \q
 

@@ -154,12 +154,12 @@ $$ LANGUAGE plpgsql;
 delete from tmp_balance
 ;
 
-select f_generar_balance ('12345', 1, 12, 2019);
-
-\q
+select f_generar_balance ('zzzzz', 1, 12, 2019);
 
 select *
 from   tmp_balance
-where  idsesion = '12345'
+where  idsesion = 'zzzzz'
 ;
+
+\q
 

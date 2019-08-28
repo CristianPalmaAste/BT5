@@ -1909,6 +1909,13 @@ alter table familias_productos add constraint fapr_uk_01 unique (idempr, cod_fam
 alter table familias_productos add constraint fapr_uk_02 unique (idempr, descripcion)
 ;
 
+alter table familias_productos add constraint fapr_chk_01 check (
+                                                                 substr(cod_familia,1,1) in ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
+                                                                 and
+                                                                 substr(cod_familia,2,1) in ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
+                                                                )
+;
+
 /*************************************************************************************************************************/
 
 create table sub_familias_productos (
@@ -1933,6 +1940,17 @@ alter table sub_familias_productos add constraint sfpr_uk_01 unique (idfapr, cod
 ;
 
 alter table sub_familias_productos add constraint sfpr_uk_02 unique (idfapr, descripcion)
+;
+
+alter table sub_familias_productos add constraint sfpr_chk_01 check (
+                                                                     substr(cod_sub_familia,1,1) in ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
+                                                                     and
+                                                                     substr(cod_sub_familia,2,1) in ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
+                                                                     and
+                                                                     substr(cod_sub_familia,3,1) in ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
+                                                                     and
+                                                                     substr(cod_sub_familia,4,1) in ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
+                                                                    )
 ;
 
 /*************************************************************************************************************************/

@@ -190,12 +190,6 @@ CREATE VIEW
 
 DROP VIEW
 CREATE VIEW
- id | idbode | bodega | idprod | producto | stock 
-----+--------+--------+--------+----------+-------
-(0 filas)
-
-DROP VIEW
-CREATE VIEW
  id | idempr | empresa | correlativo | monto | idgere | gerencia | idproy | proyecto | idline | linea_negocio | idceco | centro_costo | idtare | tarea 
 ----+--------+---------+-------------+-------+--------+----------+--------+----------+--------+---------------+--------+--------------+--------+-------
 (0 filas)
@@ -531,7 +525,7 @@ CREATE VIEW
 
 DROP VIEW
 CREATE VIEW
- id | idprod | producto | preciounitario | idusuacrearegistro | usuario | fechaevento 
-----+--------+----------+----------------+--------------------+---------+-------------
+ idasco | idpeco | periodo_contable | idtiac | tipo_asiento_contable | idesac | estado_asiento_contable | numero_asiento | fecha_asiento | reversible | idusuacreaasiento | usuario_crea_asiento | persona_crea_asiento | idusuaautorizaasiento | usuario_autoriza_asiento | persona_autoriza_asiento | idusuacrearegistroasco | usuario_crea_registro_asco | persona_crea_registro_asco | fechacrearegistroasco | iddeac | numero_linea | idcuco | cuenta_contable | nombre_cuenta_contable | idtiec | tipo_entrada_contable | idgere | gerencia | idproy | proyecto | idline | linea_negocio | idceco | centro_costo | idtare | tarea | monto | idusuacrearegistrodeac | usuario_crea_registro_deac | persona_crea_registro_deac | fechacrearegistrodeac 
+--------+--------+------------------+--------+-----------------------+--------+-------------------------+----------------+---------------+------------+-------------------+----------------------+----------------------+-----------------------+--------------------------+--------------------------+------------------------+----------------------------+----------------------------+-----------------------+--------+--------------+--------+-----------------+------------------------+--------+-----------------------+--------+----------+--------+----------+--------+---------------+--------+--------------+--------+-------+-------+------------------------+----------------------------+----------------------------+-----------------------
 (0 filas)
 

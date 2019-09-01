@@ -842,29 +842,6 @@ order  by 1
 
 /*************************************************************************************************************************/
 
-drop view if exists boprv
-;
-
-create or replace view boprv as
-select bopr.id                        id
-      ,bopr.idbode                    idbode
-      ,bode.nombre                    bodega
-      ,bopr.idprod                    idprod
-      ,prod.nombre                    producto
-      ,bopr.stock                     stock
-from                   bodegas_productos   bopr
-       left outer join bodegas             bode on bopr.idbode = bode.id
-       left outer join productos           prod on bopr.idprod = prod.id
-where  bopr.idusuaborraregistro is null
-;
-
-select *
-from   boprv
-order  by 1
-;
-
-/*************************************************************************************************************************/
-
 drop view if exists forev
 ;
 
@@ -1417,30 +1394,6 @@ where  doco.idusuaborraregistro is null
 
 select *
 from   libro_compras_v
-;
-
-/*************************************************************************************************************************/
-
-drop view if exists bicpv
-;
-
-create or replace view bicpv as
-select bicp.id                                             id
-      ,bicp.idprod                                         idprod
-      ,prod.nombre                                         producto
-      ,bicp.preciounitario                                 preciounitario
-      ,bicp.idusuacrearegistro                             idusuacrearegistro
-      ,pers.primernombre || ' ' || pers.apellidopaterno    usuario
-      ,bicp.fechacrearegistro                              fechaevento
-from                   bitacoras_cambios_precios  bicp
-       left outer join productos                  prod on bicp.idprod             = prod.id
-       left outer join usuarios                   usua on bicp.idusuacrearegistro = usua.id
-       left outer join personas                   pers on usua.idpers             = pers.id
-;
-
-select *
-from   bicpv
-order  by 1
 ;
 
 /*************************************************************************************************************************/

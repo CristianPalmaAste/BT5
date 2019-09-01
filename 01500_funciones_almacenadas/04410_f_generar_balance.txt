@@ -1,8 +1,11 @@
-DROP FUNCTION
 CREATE FUNCTION
 DELETE 0
  f_generar_balance 
 -------------------
                  0
 (1 fila)
+
+ idsesion | correlativo | cuenta_contable | descrpcion_cuenta | debe_o_haber | valor | fechacrearegistro 
+----------+-------------+-----------------+-------------------+--------------+-------+-------------------
+(0 filas)
 

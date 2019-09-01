@@ -601,10 +601,10 @@ create table cuentas_contables (
 alter table cuentas_contables add constraint cuco_pk primary key (id)
 ;
 
-alter table cuentas_contables add constraint cuco_uk_01 unique (idgrem, cuenta_desplegable)
+alter table cuentas_contables add constraint cuco_uk_01 unique (idgrem, descripcion, idticc)
 ;
 
-alter table cuentas_contables add constraint cuco_uk_02 unique (idgrem, descripcion, idticc)
+alter table cuentas_contables add constraint cuco_uk_02 unique (idgrem, cuenta_desplegable)
 ;
 
 alter table cuentas_contables add constraint cuco_chk_03 check (imputable in ('S','N'))
@@ -1946,10 +1946,6 @@ alter table sub_familias_productos add constraint sfpr_chk_01 check (
                                                                      substr(cod_sub_familia,1,1) in ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
                                                                      and
                                                                      substr(cod_sub_familia,2,1) in ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
-                                                                     and
-                                                                     substr(cod_sub_familia,3,1) in ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
-                                                                     and
-                                                                     substr(cod_sub_familia,4,1) in ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
                                                                     )
 ;
 

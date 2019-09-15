@@ -116,7 +116,7 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence cuco_seq start with 769
+ create sequence cuco_seq start with 773
 (1 fila)
 
                 ?column?                

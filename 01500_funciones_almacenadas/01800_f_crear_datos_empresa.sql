@@ -25,9 +25,9 @@ begin
   from   cuentas_contables
   where  idgrem    = new.idgrem
   and    segmento1 = '1'
-  and    segmento2 = '10'
-  and    segmento3 = '15'
-  and    segmento4 = '2001'
+  and    segmento2 = '01'
+  and    segmento3 = '05'
+  and    segmento4 = '0003'
   ;
 
   insert into sub_familias_productos values (nextval('sfpr_seq'), Vidfapr, '01', 'SUB FAMILIA GENÉRICA', Vidcuco, 1, current_timestamp, null, null, null, null);
@@ -44,27 +44,27 @@ begin
   from   cuentas_contables
   where  idgrem    = new.idgrem
   and    segmento1 = '2'
-  and    segmento2 = '10'
-  and    segmento3 = '17'
-  and    segmento4 = '2001'
+  and    segmento2 = '01'
+  and    segmento3 = '06'
+  and    segmento4 = '0001'
   ;
   select id
   into   Vidcuco_otros_imptos
   from   cuentas_contables
   where  idgrem    = new.idgrem
   and    segmento1 = '2'
-  and    segmento2 = '10'
-  and    segmento3 = '17'
-  and    segmento4 = '2002'
+  and    segmento2 = '01'
+  and    segmento3 = '06'
+  and    segmento4 = '0002'
   ;
   select id
   into   Vidcuco_caja
   from   cuentas_contables
   where  idgrem    = new.idgrem
   and    segmento1 = '1'
-  and    segmento2 = '10'
-  and    segmento3 = '10'
-  and    segmento4 = '1001'
+  and    segmento2 = '01'
+  and    segmento3 = '01'
+  and    segmento4 = '0001'
   ;
   -- Procesos contables: ventas y compras
 

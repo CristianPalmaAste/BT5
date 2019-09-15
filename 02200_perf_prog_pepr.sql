@@ -155,7 +155,7 @@ insert into programas values (11010, 11000, 'Mantención bodegas'               
 insert into programas values (11020, 11000, 'Mantención familias productos'        , 'familias-productos'              , 'Mantención familias productos'             , 2  , 1, current_timestamp, null, null, null, null);
 insert into programas values (11030, 11000, 'Mantención sub familias productos'    , 'sub-familias-productos'          , 'Mantención sub familias productos'         , 3  , 1, current_timestamp, null, null, null, null);
 insert into programas values (11040, 11000, 'Productos por bodega'                 , 'bodegas-productos'               , 'Productos por bodega'                      , 4  , 1, current_timestamp, null, null, null, null);
-insert into programas values (11050, 11000, 'Consulta kardex por producto'         , 'cons-kardex-x-prod'              , 'Consulta kardex por producto'              , 5  , 1, current_timestamp, null, null, null, null);
+insert into programas values (11050, 11000, 'Consulta kardex por producto'         , 'movimientos-bodegas'             , 'Consulta kardex por producto'              , 5  , 1, current_timestamp, null, null, null, null);
 
 insert into perfiles_programas values (nextval('pepr_seq'), 1 ,  1000, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 1 ,  1010, 1, current_timestamp, null, null, null, null);

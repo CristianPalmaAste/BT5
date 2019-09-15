@@ -116,7 +116,7 @@ insert into grupos_empresariales values (1, 'BUSINESS & TECHNOLOGY 5 CONSULTING'
 
 insert into personas values (1, 1, 1, '9', 'ADMINISTRADOR', null, 'SISTEMA', 'AS', null, null, null, null, null, 1, current_timestamp, null, null, null, null);
 
-insert into usuarios values (1, 'ADMIN', 'abc12', 1, 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios values (1, 'ADMIN', 'ABC12', 1, 1, 1, current_timestamp, null, null, null, null);
 
 /* Rehabilito constraints deshabilitadas */
 alter table usuarios enable trigger all;
@@ -132,15 +132,15 @@ insert into personas values (8 , 1, 8965445 , '9', 'OSCIEL'     , 'SEGUNDO' , 'S
 insert into personas values (9 , 1, 13254825, '0', 'NILTON'     , 'PATRICIO', 'SALAZAR'  , 'GONZALEZ' ,  'nilton.salazar@gmail.com'    , null        , 1   , 1, 1, 1, current_timestamp, null, null, null, null);
 insert into personas values (10, 1, 10917721, '0', 'G. CRISTIAN', null      , 'PALMA'    , 'ASTE'     ,  'gerardo.palma.aste@gmail.com', '12-11-1968', 1   , 1, 1, 1, current_timestamp, null, null, null, null);
 
-insert into usuarios values (2 , 'ROSILVA'    , 'abc12', 2 , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios values (3 , 'SEAGUIRRE'  , 'abc12', 3 , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios values (4 , 'JJMONSALVE' , 'abc12', 4 , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios values (5 , 'JABORZONE'  , 'abc12', 5 , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios values (6 , 'ROCIFUENTES', 'abc12', 6 , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios values (7 , 'RQUEZADAA'  , 'abc12', 7 , 2, 1, current_timestamp, null, null, null, null);
-insert into usuarios values (8 , 'OSOLARM'    , 'abc12', 8 , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios values (9 , 'NSALAZARG'  , 'abc12', 9 , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios values (10, 'CPALMAA'    , 'abc12', 10, 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios values (2 , 'ROSILVA'    , 'ABC12', 2 , 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios values (3 , 'SEAGUIRRE'  , 'ABC12', 3 , 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios values (4 , 'JJMONSALVE' , 'ABC12', 4 , 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios values (5 , 'JABORZONE'  , 'ABC12', 5 , 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios values (6 , 'ROCIFUENTES', 'ABC12', 6 , 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios values (7 , 'RQUEZADAA'  , 'ABC12', 7 , 2, 1, current_timestamp, null, null, null, null);
+insert into usuarios values (8 , 'OSOLARM'    , 'ABC12', 8 , 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios values (9 , 'NSALAZARG'  , 'ABC12', 9 , 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios values (10, 'CPALMAA'    , 'ABC12', 10, 1, 1, current_timestamp, null, null, null, null);
 
 alter table autorizadores_requisiciones drop constraint aure_fk1_perf;
 alter table autorizadores_requisiciones drop constraint aure_fk2_perf;

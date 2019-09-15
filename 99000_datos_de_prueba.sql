@@ -16,7 +16,7 @@ begin
   select nextval('pers_seq') into Vidpers;
   insert into personas values (Vidpers, Vidgrem, 13047104, '8', 'JUAN', null, 'CISTERNA', 'FUENTES', null, null, null, null, null, 1, current_timestamp, null, null, null, null);
   select nextval('usua_seq') into Vidusua;
-  insert into usuarios values (Vidusua, 'JCISTERNAF', 'abc12', Vidpers, 1, 1, current_timestamp, null, null, null, null);
+  insert into usuarios values (Vidusua, 'JCISTERNAF', 'ABC12', Vidpers, 1, 1, current_timestamp, null, null, null, null);
   select nextval('rubr_seq') into Vidrubr;
     -- empresas
     select max(id)
@@ -349,7 +349,7 @@ begin
           null,               null,               null);
   --
   select nextval('usua_seq') into Vidusua;
-  insert into usuarios values (Vidusua, 'UAT', 'abc12', Vidpers, 1, 1, current_timestamp, null, null, null, null);
+  insert into usuarios values (Vidusua, 'UAT', 'ABC12', Vidpers, 1, 1, current_timestamp, null, null, null, null);
   select nextval('perf_seq')+250 into Vidperf;
   
   insert into perfiles values (Vidperf, 'PERFIL DE PRUEBA CON ACCESO A TODO', 1, current_timestamp, null, null, null, null);
@@ -440,7 +440,7 @@ begin
   select nextval('pers_seq') into Vidpers;
   insert into personas values (Vidpers, 1,'99', 'K', 'UBALDO', null, 'LEGALES', null, null, null, null, null, null, 1, current_timestamp, null, null, null, null);
   select nextval('usua_seq') into Vidusua;
-  insert into usuarios values (Vidusua, 'ULEGALES', 'abc12', Vidpers, 1, 1, current_timestamp, null, null, null, null);
+  insert into usuarios values (Vidusua, 'ULEGALES', 'ABC12', Vidpers, 1, 1, current_timestamp, null, null, null, null);
   select nextval('perf_seq')+2000 into Vidperf;
   insert into perfiles values (Vidperf, 'PERFIL DE PRUEBA LEGALES', 1, current_timestamp, null, null, null, null);
   select nextval('uspe_seq')+1000 into Viduspe;

@@ -165,6 +165,9 @@ psql -d $DBNAME -U $USUARIO_DB < 04400_f_generar_balance.sql > 04410_f_generar_b
 echo "  04500_f_contabilizar_ventas"
 psql -d $DBNAME -U $USUARIO_DB < 04500_f_contabilizar_ventas.sql > 04510_f_contabilizar_ventas.txt
 
+echo "  04600_f_validar_estructura_username"
+psql -d $DBNAME -U $USUARIO_DB < 04600_f_validar_estructura_username.sql > 04610_f_validar_estructura_username.txt
+
 cd ..
 
 cd 01600_triggers
@@ -251,6 +254,9 @@ psql -d $DBNAME -U $USUARIO_DB < 02700_trg_before_ins_upd_del_denv.sql > 02710_t
 
 echo "  02900_trg_before_ins_upd_uspe"
 psql -d $DBNAME -U $USUARIO_DB < 02900_trg_before_ins_upd_uspe.sql > 02910_trg_before_ins_upd_uspe.txt
+
+echo "  03000_trg_before_ins_upd_usua"
+psql -d $DBNAME -U $USUARIO_DB < 03000_trg_before_ins_upd_usua.sql > 03010_trg_before_ins_upd_usua.txt
 
 cd ..
 

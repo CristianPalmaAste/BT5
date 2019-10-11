@@ -32,16 +32,6 @@ insert into enlaces_contables values (nextval('enco_seq'), 1, 'total'           
   insert into parametros values (nextval('para_seq'), new.id, 'CECO_OBLIGATORIO', 'CENTRO COSTO OBLIGATORIO EN DETALLE_ASIENTO_CONTABLE?' , 'EL CAMPO IDCECO ES OBLIGATORIO EN DETALLE_ASIENTO_CONTABLE CUANDO LA CUENTA SEA DE TIPO INGRESO (3) O EGRESO (4)', 'S'           , 1, current_timestamp, null, null, null, null);
   insert into parametros values (nextval('para_seq'), new.id, 'TARE_OBLIGATORIO', 'TAREA OBLIGATORIO EN DETALLE_ASIENTO_CONTABLE?'        , 'EL CAMPO IDTARE ES OBLIGATORIO EN DETALLE_ASIENTO_CONTABLE CUANDO LA CUENTA SEA DE TIPO INGRESO (3) O EGRESO (4)', 'N'           , 1, current_timestamp, null, null, null, null);
 
-  insert into rubros values (nextval('rubr_seq'), new.id, 'OTRO'        , 1, current_timestamp, null, null, null, null);
-  insert into rubros values (nextval('rubr_seq'), new.id, 'CONSULTORÍA' , 1, current_timestamp, null, null, null, null);
-  insert into rubros values (nextval('rubr_seq'), new.id, 'AUTOMOTRIZ'  , 1, current_timestamp, null, null, null, null);
-  insert into rubros values (nextval('rubr_seq'), new.id, 'INDUSTRIAL'  , 1, current_timestamp, null, null, null, null);
-  insert into rubros values (nextval('rubr_seq'), new.id, 'INVERSIONES' , 1, current_timestamp, null, null, null, null);
-  insert into rubros values (nextval('rubr_seq'), new.id, 'AGRÍCOLA'    , 1, current_timestamp, null, null, null, null);
-  insert into rubros values (nextval('rubr_seq'), new.id, 'FARMACÉUTICO', 1, current_timestamp, null, null, null, null);
-  insert into rubros values (nextval('rubr_seq'), new.id, 'LOGÍSTICA'   , 1, current_timestamp, null, null, null, null);
-  insert into rubros values (nextval('rubr_seq'), new.id, 'AMASANDERÍA' , 1, current_timestamp, null, null, null, null);
-
   insert into tipos_documentos_legales values (nextval('tidl_seq'), new.id, 'CONSTITUCIÓN DE SOCIEDAD', 'CONST. SOC.', '#FF0000', 1, current_timestamp, null, null, null, null);
   insert into tipos_documentos_legales values (nextval('tidl_seq'), new.id, 'ACTA DE DIRECTORIO'      , 'ACTA DIR.'  , '#00FF00', 1, current_timestamp, null, null, null, null);
   insert into tipos_documentos_legales values (nextval('tidl_seq'), new.id, 'SESIÓN DE DIRECTORIO'    , 'SES. DIR.'  , '#0000FF', 1, current_timestamp, null, null, null, null);

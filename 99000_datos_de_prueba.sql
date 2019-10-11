@@ -19,11 +19,7 @@ begin
   insert into usuarios values (Vidusua, 'JCISTERNAF', 'ABC12', Vidpers, 1, 1, current_timestamp, null, null, null, null);
   select nextval('rubr_seq') into Vidrubr;
     -- empresas
-    select max(id)
-    into   Vidrubr
-    from   rubros
-    where  idgrem = Vidgrem
-    ;
+    Vidrubr := 675;
     select nextval('empr_seq') into Vidempr;
     insert into empresas values (Vidempr, Vidgrem, 1, Vidrubr-6, 1, '96550820', '1', 'METALPAR S.A.'                     , 'METALPAR S.A.'            , 'emp_metalpar.jpg', 1, current_timestamp, null, null, null, null, '');
     insert into gerencias values (nextval('gere_seq'), Vidempr, 'GERENCIA GENERAL'        , 1, current_timestamp, null, null, null, null);
@@ -153,11 +149,7 @@ begin
   select nextval('grem_seq') into Vidgrem;
   insert into grupos_empresariales values (Vidgrem, 'CRUZ VERDE'        , 'CV'  , 'hold_cruz_verde.jpg'      , 1, 1, 1, current_timestamp, null, null, null, null);
     -- empresas
-    select max(id)
-    into   Vidrubr
-    from   rubros
-    where  idgrem = Vidgrem
-    ;
+    Vidrubr := 675;
     select nextval('empr_seq') into Vidempr;
     insert into empresas values (Vidempr, Vidgrem, 1, Vidrubr-2, 1, '89807200', '2', 'FARMACIAS CRUZ VERDE'              , 'FCV'                      , 'emp_cruz_verde.jpg'        , 1, current_timestamp, null, null, null, null, '');
     insert into gerencias values (nextval('gere_seq'), Vidempr, 'GERENCIA GENERAL'        , 1, current_timestamp, null, null, null, null);
@@ -307,11 +299,7 @@ begin
   select nextval('grem_seq') into Vidgrem;
   insert into grupos_empresariales values (Vidgrem, 'AMASANDERIA TRIGAL', 'AT'  , 'hold_trigal.jpg'      , 1, 1, 1, current_timestamp, null, null, null, null);
     -- empresas
-    select max(id)
-    into   Vidrubr
-    from   rubros
-    where  idgrem = Vidgrem
-    ;
+    Vidrubr := 675;
     select nextval('empr_seq') into Vidempr;
     insert into empresas values (Vidempr, Vidgrem, 1, Vidrubr-0, 1, '76765660', '2', 'AMASANDERIA TRIGAL'                , 'TRIGAL'                   , 'emp_trigal.jpg' , 1, current_timestamp, null, null, null, null, '')
     ;

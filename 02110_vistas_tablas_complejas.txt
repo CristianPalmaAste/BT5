@@ -30,9 +30,9 @@ CREATE VIEW
 
 DROP VIEW
 CREATE VIEW
- id | idgrem |              holding               | idpais | pais  | idrubr | rubro | idesre | estadoregistro | identificador1 | identificador2 |            razonsocial             | nombrefantasia |  icono  
-----+--------+------------------------------------+--------+-------+--------+-------+--------+----------------+----------------+----------------+------------------------------------+----------------+---------
-  1 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING |      1 | CHILE |      1 | OTRO  |      1 | ACTIVO         | 1              | 9              | BUSINESS & TECHNOLOGY 5 CONSULTING | BT5            | bt5.jpg
+ id | idgrem |              holding               | idpais | pais  | idrubr |      rubro       | idesre | estadoregistro | identificador1 | identificador2 |            razonsocial             | nombrefantasia |  icono  
+----+--------+------------------------------------+--------+-------+--------+------------------+--------+----------------+----------------+----------------+------------------------------------+----------------+---------
+  1 |      1 | BUSINESS & TECHNOLOGY 5 CONSULTING |      1 | CHILE |      1 | CULTIVO DE TRIGO |      1 | ACTIVO         | 1              | 9              | BUSINESS & TECHNOLOGY 5 CONSULTING | BT5            | bt5.jpg
 (1 fila)
 
 DROP VIEW

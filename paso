@@ -24,9 +24,9 @@ SET
  create sequence esge_seq start with 4
 (1 fila)
 
-                ?column?                
-----------------------------------------
- create sequence rubr_seq start with 38
+                ?column?                 
+-----------------------------------------
+ create sequence rubr_seq start with 676
 (1 fila)
 
                ?column?                

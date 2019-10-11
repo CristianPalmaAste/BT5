@@ -140,7 +140,7 @@ alter table estados_grem add constraint esge_uk_01 unique (descripcion)
 
 create table rubros (
    id                       numeric(20,0)   not null
-  ,idgrem                   numeric(20,0)   not null
+  ,codigoalfanum            varchar(50)     not null
   ,descripcion              varchar(100)    not null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
@@ -154,7 +154,10 @@ create table rubros (
 alter table rubros add constraint rubr_pk primary key (id)
 ;
 
-alter table rubros add constraint rubr_uk_01 unique (idgrem, descripcion)
+alter table rubros add constraint rubr_uk_01 unique (codigoalfanum)
+;
+
+alter table rubros add constraint rubr_uk_02 unique (descripcion)
 ;
 
 /*************************************************************************************************************************/
@@ -3347,7 +3350,6 @@ alter table grupos_empresariales              add constraint grem_fk_esge  forei
 alter table grupos_empresariales              add constraint grem_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table grupos_empresariales              add constraint grem_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 
-alter table rubros                            add constraint rubr_fk_grem  foreign key (idgrem)                 references grupos_empresariales             (id);
 alter table rubros                            add constraint rubr_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table rubros                            add constraint rubr_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 

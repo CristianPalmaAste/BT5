@@ -1466,6 +1466,7 @@ from                   asientos_contables          asco
        left outer join personas                    pers4 on usua4.idpers                = pers4.id
 where  asco.idusuaborraregistro is null
 and    deac.idusuaborraregistro is null
+and    asco.idesac              = 2
 ;
 
 select *
@@ -1474,6 +1475,36 @@ order  by 1
 ;
 
 /*************************************************************************************************************************/
+
+drop view if exists ascov
+;
+
+create or replace view ascov as
+select asco.id                                  id
+      ,asco.idpeco                              idpeco
+      ,peco.mes || '-' || peco.anno             periodo_contable
+      ,peco.idempr                              idempr
+      ,empr.nombrefantasia                      empresa
+      ,asco.idtiac                              idtiac
+      ,tiac.descripcion                         tipo_asiento_contable
+      ,asco.idesac                              idesac
+      ,esac.descripcion                         estado_asiento_contable
+      ,asco.numero_asiento                      numero_asiento
+      ,asco.glosa                               glosa
+      ,asco.fecha_asiento                       fecha_asiento
+      ,asco.reversible                          reversible
+from                   asientos_contables         asco
+       left outer join periodos_contables         peco on asco.idpeco = peco.id
+       left outer join empresas                   empr on peco.idempr = empr.id
+       left outer join tipos_asientos_contables   tiac on asco.idtiac = tiac.id
+       left outer join estados_asientos_contables esac on asco.idesac = esac.id
+where  asco.idusuaborraregistro is null
+;
+
+select *
+from   ascov
+order  by 1
+;
 
 \q
 

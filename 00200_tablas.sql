@@ -2948,6 +2948,7 @@ create table asientos_contables (
   ,idtiac                   numeric(20,0)     not null
   ,idesac                   numeric(20,0)     not null
   ,numero_asiento           numeric(20,0)     not null
+  ,glosa                    varchar(100)      not null
   ,fecha_asiento            date              not null
   ,reversible               varchar(1)        not null
   ,idusuacreaasiento        numeric(20,0)     not null
@@ -2984,6 +2985,7 @@ create table detalles_asientos_contables (
   ,idceco                   numeric(20,0)         null
   ,idtare                   numeric(20,0)         null
   ,monto                    numeric(20,0)     not null
+  ,glosadet                 varchar(100)      not null
   ,idusuacrearegistro       numeric(20,0)     not null
   ,fechacrearegistro        timestamp         not null
   ,idusuamodifregistro      numeric(20,0)         null

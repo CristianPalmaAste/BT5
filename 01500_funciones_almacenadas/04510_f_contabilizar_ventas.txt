@@ -7,12 +7,12 @@ DELETE 0
  El parámetro Pidempr no existe en la tabla empresas
 (1 fila)
 
- id | idpeco | idtiac | idesac | numero_asiento | fecha_asiento | reversible | idusuacreaasiento | idusuaautorizaasiento | idusuacrearegistro | fechacrearegistro | idusuamodifregistro | fechamodifregistro | idusuaborraregistro | fechaborraregistro 
-----+--------+--------+--------+----------------+---------------+------------+-------------------+-----------------------+--------------------+-------------------+---------------------+--------------------+---------------------+--------------------
+ id | idpeco | idtiac | idesac | numero_asiento | glosa | fecha_asiento | reversible | idusuacreaasiento | idusuaautorizaasiento | idusuacrearegistro | fechacrearegistro | idusuamodifregistro | fechamodifregistro | idusuaborraregistro | fechaborraregistro 
+----+--------+--------+--------+----------------+-------+---------------+------------+-------------------+-----------------------+--------------------+-------------------+---------------------+--------------------+---------------------+--------------------
 (0 filas)
 
- id | idasco | numero_linea | idcuco | idtiec | idgere | idproy | idline | idceco | idtare | monto | idusuacrearegistro | fechacrearegistro | idusuamodifregistro | fechamodifregistro | idusuaborraregistro | fechaborraregistro 
-----+--------+--------------+--------+--------+--------+--------+--------+--------+--------+-------+--------------------+-------------------+---------------------+--------------------+---------------------+--------------------
+ id | idasco | numero_linea | idcuco | idtiec | idgere | idproy | idline | idceco | idtare | monto | glosadet | idusuacrearegistro | fechacrearegistro | idusuamodifregistro | fechamodifregistro | idusuaborraregistro | fechaborraregistro 
+----+--------+--------------+--------+--------+--------+--------+--------+--------+--------+-------+----------+--------------------+-------------------+---------------------+--------------------+---------------------+--------------------
 (0 filas)
 
  cuenta_desplegable | descripcion | descripcion | monto 

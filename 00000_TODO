@@ -168,6 +168,9 @@ psql -d $DBNAME -U $USUARIO_DB < 04500_f_contabilizar_ventas.sql > 04510_f_conta
 echo "  04600_f_validar_estructura_username"
 psql -d $DBNAME -U $USUARIO_DB < 04600_f_validar_estructura_username.sql > 04610_f_validar_estructura_username.txt
 
+echo "  04700_f_es_posible_cerrar_peco"
+psql -d $DBNAME -U $USUARIO_DB < 04700_f_es_posible_cerrar_peco.sql > 04710_f_es_posible_cerrar_peco.txt
+
 cd ..
 
 cd 01600_triggers

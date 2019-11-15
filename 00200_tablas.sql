@@ -1828,6 +1828,9 @@ alter table bodegas_productos add constraint bopr_pk primary key (id)
 alter table bodegas_productos add constraint bopr_uk_01 unique (idbode, idprod)
 ;
 
+alter table bodegas_productos add constraint bopr_chk_01 check (stock >= 0)
+;
+
 /*************************************************************************************************************************/
 
 create table listas_precios (

@@ -80,7 +80,7 @@ insert into programas values ( 2400, null , 'Adm. sistema 3'                    
 insert into programas values ( 2410,  2400, 'Mant. tipos rendiciones gastos'       , 'TiposRendicionesGastos'          , 'Mantención tipos rendiciones gastos'       , 1  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 2420,  2400, 'Mant. estados rendiciones gastos'     , 'EstadosRendicionesGastos'        , 'Mantención estados rendiciones gastos'     , 2  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 2430,  2400, 'Mant. rubros'                         , 'rubros'                          , 'Mantención rubros'                         , 3  , 1, current_timestamp, null, null, null, null);
-insert into programas values ( 2440,  2400, 'Buscador usuarios'                    , 'XXXXX'                           , 'Buscador de usuarios en holdings o emp.'   , 4  , 1, current_timestamp, null, null, null, null);
+insert into programas values ( 2440,  2400, 'Buscador usuarios'                    , 'BuscadorUsuarios'                , 'Buscador de usuarios en holdings o emp.'   , 4  , 1, current_timestamp, null, null, null, null);
 
 insert into programas values ( 3000, null , 'Adm. holding'                         , null                              , 'Administracion holding'                    , 5  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 3010,  3000, 'Mant. empresas'                       , 'empresas'                        , 'Mantención empresas'                       , 1  , 1, current_timestamp, null, null, null, null);

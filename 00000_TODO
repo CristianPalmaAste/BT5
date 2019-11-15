@@ -171,6 +171,9 @@ psql -d $DBNAME -U $USUARIO_DB < 04600_f_validar_estructura_username.sql > 04610
 echo "  04700_f_es_posible_cerrar_peco"
 psql -d $DBNAME -U $USUARIO_DB < 04700_f_es_posible_cerrar_peco.sql > 04710_f_es_posible_cerrar_peco.txt
 
+echo "  04800_f_cerrar_peco"
+psql -d $DBNAME -U $USUARIO_DB < 04800_f_cerrar_peco.sql > 04810_f_cerrar_peco.txt
+
 cd ..
 
 cd 01600_triggers
@@ -297,6 +300,15 @@ echo "Poniendo secuencias al dia"
 
 echo "Insertando datos de prueba (ficticios)"
 psql -d $DBNAME -U $USUARIO_DB < 99000_datos_de_prueba.sql > 99010_datos_de_prueba.txt
+
+echo "Insertando datos de SA-JJM"
+psql -d $DBNAME -U $USUARIO_DB < 99100_otros_datos_SA_JJM.sql > 99110_otros_datos_SA_JJM.txt
+
+echo "Poniendo secuencias al dia"
+./00700_secuencias.sh
+
+echo "Insertando productos de JJM"
+psql -d $DBNAME -U $USUARIO_DB < 99200_insertar_prods_JJM.sql > 99210_insertar_prods_JJM.txt
 
 echo "Poniendo secuencias al dia"
 ./00700_secuencias.sh

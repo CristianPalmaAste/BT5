@@ -441,7 +441,7 @@ SET
 
                 ?column?                
 ----------------------------------------
- create sequence prov_seq start with 13
+ create sequence prov_seq start with 19
 (1 fila)
 
                ?column?                

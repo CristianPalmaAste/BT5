@@ -148,6 +148,13 @@ begin
   insert into clientes values (3, '8', '1', '76094408', '4', '2', 'CONSTRUCTORA LCM LIMITADA'                             , 'CONSTRUCTORA LCM LIMITADA', null, null, null, null, 16, current_timestamp, null, null, null, null);
   insert into clientes values (4, '8', '1', '76071730', '4', '2', 'JARDIN INFANTIL MONTESSORI RAYHUE III LIMITADA'        , 'JARDIN LOS TRAPENSES'     , null, null, null, null, 16, current_timestamp, null, null, null, null);
 
+  insert into proveedores values (13, 8, 1, '99574860', '6', 2, 'COMERCIAL ANWO S.A.'                                   , 'ANWO'     , null, null, null, null, 1, current_timestamp, null, null, null, null);
+  insert into proveedores values (14, 8, 1, '76479542', '3', 2, 'IMPACON SPA'                                           , 'NOVACLIMA', null, null, null, null, 1, current_timestamp, null, null, null, null);
+  insert into proveedores values (15, 8, 1, '96876330', 'K', 2, 'IMPOVAR S.A.'                                          , 'IMPOVAR'  , null, null, null, null, 1, current_timestamp, null, null, null, null);
+  insert into proveedores values (16, 8, 1, '76360567', '1', 2, 'SERVICIOS DE CLIMATIZACION HVACR CHILE Y CIA. LIMITADA', 'HVACR'    , null, null, null, null, 1, current_timestamp, null, null, null, null);
+  insert into proveedores values (17, 8, 1, '96792430', 'K', 2, 'SODIMAC S.A.'                                          , 'SODIMAC'  , null, null, null, null, 1, current_timestamp, null, null, null, null);
+  insert into proveedores values (18, 8, 1, '76568660', '1', 2, 'EASY RETAIL S.A.'                                      , 'EASY'     , null, null, null, null, 1, current_timestamp, null, null, null, null);
+
   return('S');
 end;
 $$ LANGUAGE plpgsql;

@@ -86,7 +86,7 @@ create sequence orco_seq start with 2;
 create sequence deoc_seq start with 4;
 create sequence coco_seq start with 1;
 create sequence decc_seq start with 1;
-create sequence prov_seq start with 13;
+create sequence prov_seq start with 19;
 create sequence tipp_seq start with 3;
 create sequence reco_seq start with 3;
 create sequence derc_seq start with 7;

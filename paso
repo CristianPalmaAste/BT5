@@ -76,7 +76,7 @@ SET
 
                 ?column?                
 ----------------------------------------
- create sequence pers_seq start with 18
+ create sequence pers_seq start with 24
 (1 fila)
 
                  ?column?                 
@@ -101,7 +101,7 @@ SET
 
                 ?column?                
 ----------------------------------------
- create sequence usua_seq start with 17
+ create sequence usua_seq start with 22
 (1 fila)
 
                  ?column?                 

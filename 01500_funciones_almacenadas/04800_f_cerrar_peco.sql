@@ -33,6 +33,7 @@ begin
     where  id     = Vidpeco
     ;
     insert into periodos_contables values (nextval('peco_seq'), Pidempr, Vmes, Vanno, 1, Pidusua, current_timestamp, null, null, null, null);
+    return('S;Período contable cerrado exitosamente');
   end if;
   return(Ves_posible_cerrar_peco);
 end;

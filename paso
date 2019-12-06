@@ -11,7 +11,7 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence para_seq start with 121
+ create sequence para_seq start with 141
 (1 fila)
 
                 ?column?                
@@ -106,17 +106,17 @@ SET
 
                  ?column?                 
 ------------------------------------------
- create sequence uspe_seq start with 1026
+ create sequence uspe_seq start with 1034
 (1 fila)
 
                 ?column?                 
 -----------------------------------------
- create sequence pepr_seq start with 405
+ create sequence pepr_seq start with 404
 (1 fila)
 
                  ?column?                 
 ------------------------------------------
- create sequence cuco_seq start with 1159
+ create sequence cuco_seq start with 1352
 (1 fila)
 
                 ?column?                
@@ -126,12 +126,12 @@ SET
 
                 ?column?                
 ----------------------------------------
- create sequence tidl_seq start with 25
+ create sequence tidl_seq start with 29
 (1 fila)
 
                 ?column?                
 ----------------------------------------
- create sequence esdl_seq start with 19
+ create sequence esdl_seq start with 22
 (1 fila)
 
                ?column?                
@@ -486,7 +486,7 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence corg_seq start with 133
+ create sequence corg_seq start with 155
 (1 fila)
 
                 ?column?                 

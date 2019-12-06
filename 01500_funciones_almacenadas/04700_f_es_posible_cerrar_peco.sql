@@ -63,7 +63,7 @@ begin
   ;
   --
   if aux1 != 0 or aux2 != 0 or aux3 != 0 then
-    Vmensaje := null;
+    Vmensaje := '';
     if aux1 != 0 then
       Vmensaje := Vmensaje || ';Existen ' || aux1 || ' ventas no contabilizadas';
     end if;

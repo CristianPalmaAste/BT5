@@ -2,20 +2,8 @@ CREATE FUNCTION
 UPDATE 0
 DELETE 0
 DELETE 0
-                f_contabilizar_ventas                
------------------------------------------------------
- El parámetro Pidempr no existe en la tabla empresas
+                 f_contabilizar_ventas                 
+-------------------------------------------------------
+ N;El parámetro Pidempr no existe en la tabla empresas
 (1 fila)
-
- id | idpeco | idtiac | idesac | numero_asiento | glosa | fecha_asiento | reversible | idusuacreaasiento | idusuaautorizaasiento | idusuacrearegistro | fechacrearegistro | idusuamodifregistro | fechamodifregistro | idusuaborraregistro | fechaborraregistro 
-----+--------+--------+--------+----------------+-------+---------------+------------+-------------------+-----------------------+--------------------+-------------------+---------------------+--------------------+---------------------+--------------------
-(0 filas)
-
- id | idasco | numero_linea | idcuco | idtiec | idgere | idproy | idline | idceco | idtare | monto | glosadet | idusuacrearegistro | fechacrearegistro | idusuamodifregistro | fechamodifregistro | idusuaborraregistro | fechaborraregistro 
-----+--------+--------------+--------+--------+--------+--------+--------+--------+--------+-------+----------+--------------------+-------------------+---------------------+--------------------+---------------------+--------------------
-(0 filas)
-
- cuenta_desplegable | descripcion | descripcion | monto 
---------------------+-------------+-------------+-------
-(0 filas)
 

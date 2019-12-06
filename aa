@@ -1,0 +1,19 @@
+select prco.descripcion
+      ,tiec.descripcion
+      ,cuco.cuenta_desplegable
+      ,cuco.descripcion
+      ,coca.descripcion
+from   coca
+      ,dpce
+      ,tiec
+      ,cuco
+      ,prce
+      ,prco
+where  coca.id     = dpce.idcoca
+and    dpce.idtiec = tiec.id
+and    dpce.idcuco = cuco.id
+and    dpce.idprce = prce.id
+and    prce.idprco = prco.id
+and    prce.idempr = 1
+;
+

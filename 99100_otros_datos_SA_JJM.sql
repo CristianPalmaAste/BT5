@@ -99,18 +99,21 @@ $$
 declare
   Vidcuco  int;
 begin
+  insert into grupos_empresariales values (5, 'PRUEBA GCPA'                    , 'PGCPA'     , '', '1', '1', '3', current_timestamp, null, null, null, null);
   insert into grupos_empresariales values (6, 'CECINAS BENGOA'                 , 'CECINAS BE', '', '1', '1', '3', current_timestamp, null, null, null, null);
   insert into grupos_empresariales values (8, 'SAN MARTIN CLIMATIZACIONES LTDA', 'CLIMASAN'  , '', '1', '1', '4', current_timestamp, null, null, null, null);
   
   insert into empresas values (13, 6, '1', '119', '1', '76005457', '7', 'CECINAS BENGOA'                 , 'CECINAS BENGOA', '', 3, current_timestamp, null, null, null, null);
   insert into empresas values (14, 8, '1', '297', '1', '9037091' , 'K', 'SAN MARTIN CLIMATIZACIONES LTDA', 'CLIMASAN'      , '', 4, current_timestamp, null, null, null, null);
 
+  insert into personas values (14, '5', '4709176' , '4', 'VICTORIA'  , 'ELIANA'          , 'ASTE'      , 'MARTINEZ'  , 'GCPA68@HOTMAIL.COM'            , null        , null, null, null, '3', current_timestamp, null, null, null, null);
   insert into personas values (15, '6', '8978854' , '4', 'VICTORIANO', ''                , 'BENGOA'    , 'ARAVENA'   , 'AGUISERR@GMAIL.COM'            , null        , null, null, null, '3', current_timestamp, null, null, null, null);
   insert into personas values (17, '8', '9037091' , 'K', 'JUAN'      , 'JOSE'            , 'MONSALVE'  , 'MARIN '    , 'JUAN.JOSE.MONSALVE.M@GMAIL.COM', null        , null, null, null, '4', current_timestamp, null, null, null, null);
   insert into personas values (19, '8', '17700033', '7', 'JUAN'      , 'JOSE'            , 'MONSALVE'  , 'SAN MARTIN', 'J.MONSALVE.SNM@GMAIL.COM'      , '1991-01-17', '1' , '1' , '1' , '4', current_timestamp, null, null, null, null);
   insert into personas values (21, '8', '17700032', '9', 'CATALINA'  , 'DE LOS ANGELES'  , 'MONSALVE'  , 'SAN MARTIN', 'CATALINA.MONSALVE@GMAIL.COM'   , '1991-01-17', '1' , '2' , '1' , '4', current_timestamp, null, null, null, null);
   insert into personas values (23, '8', '9580625' , '2', 'LUISA'     , 'MARGARITA'       , 'SAN MARTIN', 'CIFUENTES' , 'LUISA.SANMARTIN.C@GMAIL.COM'   , '1963-05-13', '3' , '2' , '1' , '4', current_timestamp, null, null, null, null);
 
+  insert into usuarios values (14, 'GCPA68'     , 'ABC12' , '14', '1', '3' , current_timestamp, null, null, null, null);
   insert into usuarios values (15, 'VBENGOA'    , 'agu123', '15', '1', '3' , current_timestamp, null, null, null, null);
   insert into usuarios values (16, 'ADMCLIMASAN', 'Abc12' , '17', '1', '4' , current_timestamp, null, null, null, null);
   insert into usuarios values (17, 'UVENDEDOR'  , 'ABC12' , '17', '1', '16', current_timestamp, null, null, null, null);
@@ -118,6 +121,14 @@ begin
   insert into usuarios values (19, 'JEFECOMPRAS', 'ABC12' , '21', '1', '16', current_timestamp, null, null, null, null);
   insert into usuarios values (20, 'GTEADMFIN'  , 'ABC12' , '23', '1', '16', current_timestamp, null, null, null, null);
   insert into usuarios values (21, 'UCONTADOR'  , 'ABC12' , '17', '1', '16', current_timestamp, null, null, null, null);
+
+  insert into usuarios_perfiles values (1027, 15, 4 , null, 13, 1, 3 , current_timestamp, null, null, null, null);
+  insert into usuarios_perfiles values (1028, 16, 4 , null, 14, 1, 4 , current_timestamp, null, null, null, null);
+  insert into usuarios_perfiles values (1029, 17, 20, null, 14, 1, 16, current_timestamp, null, null, null, null);
+  insert into usuarios_perfiles values (1030, 18, 18, null, 14, 1, 16, current_timestamp, null, null, null, null);
+  insert into usuarios_perfiles values (1031, 19, 16, null, 14, 1, 16, current_timestamp, null, null, null, null);
+  insert into usuarios_perfiles values (1032, 20, 7 , null, 14, 1, 16, current_timestamp, null, null, null, null);
+  insert into usuarios_perfiles values (1033, 21, 13, null, 14, 1, 16, current_timestamp, null, null, null, null);
 
   insert into familias_productos values (14, 14, '99', 'XXXXX'             , '16', current_timestamp, null, null, null, null);
   insert into familias_productos values (15, 14, '02', 'AIRE ACONDICIONADO', '16', current_timestamp, null, null, null, null);

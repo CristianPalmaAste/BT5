@@ -12,11 +12,13 @@ begin
   -- los cambios de estado válidos son
   -- 1 -> 1
   -- 1 -> 2
+  -- 2 -> 2
   -- 1 -> 3
   -- y nada más; todo otro posible cambio de estado es error
   --
   if (old.idesve = 1 and new.idesve = 1) or
      (old.idesve = 1 and new.idesve = 2) or
+     (old.idesve = 2 and new.idesve = 2) or
      (old.idesve = 1 and new.idesve = 3) then
     aux := 1; /* estos son los cambios válidos */
   else

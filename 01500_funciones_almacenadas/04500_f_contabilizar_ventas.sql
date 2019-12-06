@@ -93,23 +93,23 @@ declare
 begin
   /* Validaciones a la invocación a esta función */
   if Pidempr is null then
-    Vmensaje := 'El parámetro empresa es obligatorio';
+    Vmensaje := 'N;El parámetro empresa es obligatorio';
     return(Vmensaje);
   end if;
   if Ptodas_S_N is null then
-    Vmensaje := 'El parámetro Ptodas_S_N es obligatorio';
+    Vmensaje := 'N;El parámetro Ptodas_S_N es obligatorio';
     return(Vmensaje);
   end if;
   if Pfecha_ini is null then
-    Vmensaje := 'El parámetro Pfecha_ini es obligatorio';
+    Vmensaje := 'N;El parámetro Pfecha_ini es obligatorio';
     return(Vmensaje);
   end if;
   if Pfecha_fin is null then
-    Vmensaje := 'El parámetro Pfecha_fin es obligatorio';
+    Vmensaje := 'N;El parámetro Pfecha_fin es obligatorio';
     return(Vmensaje);
   end if;
   if Pidusuacreaasiento is null then
-    Vmensaje := 'El parámetro Pidusuacreaasiento es obligatorio';
+    Vmensaje := 'N;El parámetro Pidusuacreaasiento es obligatorio';
     return(Vmensaje);
   end if;
   select count(*)
@@ -118,19 +118,19 @@ begin
   where  id = Pidempr
   ;
   if aux = 0 then
-    Vmensaje := 'El parámetro Pidempr no existe en la tabla empresas';
+    Vmensaje := 'N;El parámetro Pidempr no existe en la tabla empresas';
     return(Vmensaje);
   end if;
   if Ptodas_S_N not in ('S', 'N')  then
-    Vmensaje := 'Los valores válidos para el parámetro Ptodas_S_N son S o N: ' || Ptodas_S_N || ' <- error';
+    Vmensaje := 'N;Los valores válidos para el parámetro Ptodas_S_N son S o N: ' || Ptodas_S_N || ' <- error';
     return(Vmensaje);
   end if;
   if Pfecha_ini > Pfecha_fin then
-    Vmensaje := 'Fecha inicial debe ser menor o igual que fecha final';
+    Vmensaje := 'N;Fecha inicial debe ser menor o igual que fecha final';
     return(Vmensaje);
   end if;
   if Ptodas_S_N = 'S' and (Pfecha_ini != 0 or Pfecha_fin != 0) then
-    Vmensaje := 'Si Ptodas_S_N = S entonces Pfecha_ini y Pfecha_fin deben ser 0';
+    Vmensaje := 'N;Si Ptodas_S_N = S entonces Pfecha_ini y Pfecha_fin deben ser 0';
     return(Vmensaje);
   end if;
   open C_ventas_pdtes;
@@ -155,7 +155,7 @@ begin
     and    idespc = 1
     ;
     if Vidpeco is null then
-      Vmensaje := 'No hay un período contable abierto para esta empresa';
+      Vmensaje := 'N;No hay un período contable abierto para esta empresa';
       return(Vmensaje);
     end if;
     select max(numero_asiento)
@@ -175,6 +175,7 @@ begin
                                    ,idtiac                   -- numeric(20,0)     not null
                                    ,idesac                   -- numeric(20,0)     not null
                                    ,numero_asiento           -- numeric(20,0)     not null
+                                   ,glosa                    -- varchar(100)      not null
                                    ,fecha_asiento            -- date              not null
                                    ,reversible               -- varchar(1)        not null
                                    ,idusuacreaasiento        -- numeric(20,0)     not null
@@ -186,21 +187,22 @@ begin
                                    ,idusuaborraregistro      -- numeric(20,0)         null
                                    ,fechaborraregistro       -- timestamp             null
                                    )
-    values (Vidasco                           -- id                       numeric(20,0)     not null
-           ,Vidpeco                           -- idpeco                   numeric(20,0)     not null
-           ,3                                 -- idtiac                   numeric(20,0)     not null
-           ,1                                 -- idesac                   numeric(20,0)     not null
-           ,Vnumero_asiento                   -- numero_asiento           numeric(20,0)     not null
-           ,current_timestamp                 -- fecha_asiento            date              not null
-           ,'N'                               -- reversible               varchar(1)        not null
-           ,Pidusuacreaasiento                -- idusuacreaasiento        numeric(20,0)     not null
-           ,null                              -- idusuaautorizaasiento    numeric(20,0)         null
-           ,Pidusuacreaasiento                -- idusuacrearegistro       numeric(20,0)     not null
-           ,current_timestamp                 -- fechacrearegistro        timestamp         not null
-           ,null                              -- idusuamodifregistro      numeric(20,0)         null
-           ,null                              -- fechamodifregistro       timestamp             null
-           ,null                              -- idusuaborraregistro      numeric(20,0)         null
-           ,null                              -- fechaborraregistro       timestamp             null
+    values (Vidasco                                                                         -- id                       numeric(20,0)     not null
+           ,Vidpeco                                                                         -- idpeco                   numeric(20,0)     not null
+           ,3                                                                               -- idtiac                   numeric(20,0)     not null
+           ,1                                                                               -- idesac                   numeric(20,0)     not null
+           ,Vnumero_asiento                                                                 -- numero_asiento           numeric(20,0)     not null
+           ,'CONTABILIZACIÓN AUTOMÁTICA VENTAS ' || to_char(current_timestamp,'dd-mm-yyyy') -- glosa                    varchar(100)      not null
+           ,current_timestamp                                                               -- fecha_asiento            date              not null
+           ,'N'                                                                             -- reversible               varchar(1)        not null
+           ,Pidusuacreaasiento                                                              -- idusuacreaasiento        numeric(20,0)     not null
+           ,null                                                                            -- idusuaautorizaasiento    numeric(20,0)         null
+           ,Pidusuacreaasiento                                                              -- idusuacrearegistro       numeric(20,0)     not null
+           ,current_timestamp                                                               -- fechacrearegistro        timestamp         not null
+           ,null                                                                            -- idusuamodifregistro      numeric(20,0)         null
+           ,null                                                                            -- fechamodifregistro       timestamp             null
+           ,null                                                                            -- idusuaborraregistro      numeric(20,0)         null
+           ,null                                                                            -- fechaborraregistro       timestamp             null
            )
     ;
     i := 0;
@@ -222,6 +224,7 @@ begin
                                               ,idceco                   -- numeric(20,0)         null
                                               ,idtare                   -- numeric(20,0)         null
                                               ,monto                    -- numeric(20,0)     not null
+                                              ,glosadet                 -- varchar(100)      not null
                                               ,idusuacrearegistro       -- numeric(20,0)     not null
                                               ,fechacrearegistro        -- timestamp         not null
                                               ,idusuamodifregistro      -- numeric(20,0)         null
@@ -229,23 +232,24 @@ begin
                                               ,idusuaborraregistro      -- numeric(20,0)         null
                                               ,fechaborraregistro       -- timestamp             null
                                               )
-      values (nextval('deac_seq')                   -- id                       numeric(20,0)     not null
-             ,Vidasco                               -- idasco                   numeric(20,0)     not null
-             ,i                                     -- numero_linea             numeric(20,0)     not null
-             ,Vidcuco                               -- idcuco                   numeric(20,0)     not null
-             ,2                                     -- idtiec                   numeric(20,0)     not null
-             ,Vidgere                               -- idgere                   numeric(20,0)         null
-             ,Vidproy                               -- idproy                   numeric(20,0)         null
-             ,Vidline                               -- idline                   numeric(20,0)         null
-             ,Vidceco                               -- idceco                   numeric(20,0)         null
-             ,Vidtare                               -- idtare                   numeric(20,0)         null
-             ,Vsum_totallinea                       -- monto                    numeric(20,0)     not null
-             ,Pidusuacreaasiento                    -- idusuacrearegistro       numeric(20,0)     not null
-             ,current_timestamp                     -- fechacrearegistro        timestamp         not null
-             ,null                                  -- idusuamodifregistro      numeric(20,0)         null
-             ,null                                  -- fechamodifregistro       timestamp             null
-             ,null                                  -- idusuaborraregistro      numeric(20,0)         null
-             ,null                                  -- fechaborraregistro       timestamp             null
+      values (nextval('deac_seq')                               -- id                       numeric(20,0)     not null
+             ,Vidasco                                           -- idasco                   numeric(20,0)     not null
+             ,i                                                 -- numero_linea             numeric(20,0)     not null
+             ,Vidcuco                                           -- idcuco                   numeric(20,0)     not null
+             ,2                                                 -- idtiec                   numeric(20,0)     not null
+             ,Vidgere                                           -- idgere                   numeric(20,0)         null
+             ,Vidproy                                           -- idproy                   numeric(20,0)         null
+             ,Vidline                                           -- idline                   numeric(20,0)         null
+             ,Vidceco                                           -- idceco                   numeric(20,0)         null
+             ,Vidtare                                           -- idtare                   numeric(20,0)         null
+             ,Vsum_totallinea                                   -- monto                    numeric(20,0)     not null
+             ,'DETALLA CONTAB. AUT. VENTAS, LÍNEA ' || i        -- glosadet                 varchar(100)      not null
+             ,Pidusuacreaasiento                                -- idusuacrearegistro       numeric(20,0)     not null
+             ,current_timestamp                                 -- fechacrearegistro        timestamp         not null
+             ,null                                              -- idusuamodifregistro      numeric(20,0)         null
+             ,null                                              -- fechamodifregistro       timestamp             null
+             ,null                                              -- idusuaborraregistro      numeric(20,0)         null
+             ,null                                              -- fechaborraregistro       timestamp             null
              )
       ;
     end loop;
@@ -295,6 +299,7 @@ begin
                                                 ,idceco                   -- numeric(20,0)         null
                                                 ,idtare                   -- numeric(20,0)         null
                                                 ,monto                    -- numeric(20,0)     not null
+                                                ,glosadet                 -- varchar(100)      not null
                                                 ,idusuacrearegistro       -- numeric(20,0)     not null
                                                 ,fechacrearegistro        -- timestamp         not null
                                                 ,idusuamodifregistro      -- numeric(20,0)         null
@@ -302,23 +307,24 @@ begin
                                                 ,idusuaborraregistro      -- numeric(20,0)         null
                                                 ,fechaborraregistro       -- timestamp             null
                                                 )
-        values (nextval('deac_seq')                   -- id                       numeric(20,0)     not null
-               ,Vidasco                               -- idasco                   numeric(20,0)     not null
-               ,i                                     -- numero_linea             numeric(20,0)     not null
-               ,Vidcuco_otros_conceptos               -- idcuco                   numeric(20,0)     not null
-               ,Vidtiec                               -- idtiec                   numeric(20,0)     not null
-               ,Vidgere                               -- idgere                   numeric(20,0)         null
-               ,Vidproy                               -- idproy                   numeric(20,0)         null
-               ,Vidline                               -- idline                   numeric(20,0)         null
-               ,Vidceco                               -- idceco                   numeric(20,0)         null
-               ,Vidtare                               -- idtare                   numeric(20,0)         null
-               ,Vvalor_linea                          -- monto                    numeric(20,0)     not null
-               ,Pidusuacreaasiento                    -- idusuacrearegistro       numeric(20,0)     not null
-               ,current_timestamp                     -- fechacrearegistro        timestamp         not null
-               ,null                                  -- idusuamodifregistro      numeric(20,0)         null
-               ,null                                  -- fechamodifregistro       timestamp             null
-               ,null                                  -- idusuaborraregistro      numeric(20,0)         null
-               ,null                                  -- fechaborraregistro       timestamp             null
+        values (nextval('deac_seq')                                -- id                       numeric(20,0)     not null
+               ,Vidasco                                            -- idasco                   numeric(20,0)     not null
+               ,i                                                  -- numero_linea             numeric(20,0)     not null
+               ,Vidcuco_otros_conceptos                            -- idcuco                   numeric(20,0)     not null
+               ,Vidtiec                                            -- idtiec                   numeric(20,0)     not null
+               ,Vidgere                                            -- idgere                   numeric(20,0)         null
+               ,Vidproy                                            -- idproy                   numeric(20,0)         null
+               ,Vidline                                            -- idline                   numeric(20,0)         null
+               ,Vidceco                                            -- idceco                   numeric(20,0)         null
+               ,Vidtare                                            -- idtare                   numeric(20,0)         null
+               ,Vvalor_linea                                       -- monto                    numeric(20,0)     not null
+               ,'DETALLA CONTAB. AUT. VENTAS, LÍNEA ' || i         -- glosadet                 varchar(100)      not null
+               ,Pidusuacreaasiento                                 -- idusuacrearegistro       numeric(20,0)     not null
+               ,current_timestamp                                  -- fechacrearegistro        timestamp         not null
+               ,null                                               -- idusuamodifregistro      numeric(20,0)         null
+               ,null                                               -- fechamodifregistro       timestamp             null
+               ,null                                               -- idusuaborraregistro      numeric(20,0)         null
+               ,null                                               -- fechaborraregistro       timestamp             null
                )
         ;
       end if;
@@ -326,7 +332,7 @@ begin
     close C_ctas_ctbles_otros_conceptos;
   end loop;
   close C_ventas_pdtes;
-  return 'exito';
+  return 'S;Contabilización ejecutada exitosamente';
 end;
 $body$ LANGUAGE plpgsql;
 
@@ -340,7 +346,7 @@ delete from detalles_asientos_contables
 delete from asientos_contables
 ;
 
-select f_contabilizar_ventas(1, 'N' , 20190601, 20190630, 3);
+select f_contabilizar_ventas(1, 'N' , 20191205, 20191205, 3);
 
 select *
 from   asco
@@ -349,6 +355,8 @@ from   asco
 select *
 from   deac
 ;
+
+\q
 
 select cuco.cuenta_desplegable
       ,cuco.descripcion

@@ -2747,6 +2747,7 @@ create table documentos_compras (
   ,exento                   numeric(20,0)   not null
   ,impuesto                 numeric(20,0)   not null
   ,total                    numeric(20,0)   not null
+  ,idasco                   numeric(20,0)       null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
   ,idusuamodifregistro      numeric(20,0)       null
@@ -3628,6 +3629,7 @@ alter table unidades_medidas_servicios        add constraint unms_fk3_usua forei
 alter table documentos_compras                add constraint doco_fk_reco  foreign key (idreco)                 references recepciones_compras              (id);
 alter table documentos_compras                add constraint doco_fk_prov  foreign key (idprov)                 references proveedores                      (id);
 alter table documentos_compras                add constraint doco_fk_tidv  foreign key (idtidv)                 references tipos_doctos_ventas              (id);
+alter table documentos_compras                add constraint doco_fk_asco  foreign key (idasco)                 references asientos_contables               (id);
 alter table documentos_compras                add constraint doco_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table documentos_compras                add constraint doco_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 

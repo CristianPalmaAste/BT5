@@ -1,21 +1,21 @@
-create or replace function f_contabilizar_ventas(Pidempr            int
-                                                ,Ptodas_S_N         varchar(1)
-                                                ,Pfecha_ini         int
-                                                ,Pfecha_fin         int
-                                                ,Pidusuacreaasiento int) returns varchar as
+create or replace function f_contabilizar_compras(Pidempr            int
+                                                 ,Ptodas_S_N         varchar(1)
+                                                 ,Pfecha_ini         int
+                                                 ,Pfecha_fin         int
+                                                 ,Pidusuacreaasiento int) returns varchar as
 $body$
 /*
-   Funcion que contabiliza ventas de una empresa
-   Se puede contabilizar todas las ventas pendientes o no
-   Si es no, se puede contabilizar las ventas dentro de un rango de fechas
-   Se puede crear un asiento contable para todas las ventas involucradas o un asiento por cada venta o uno por dia (para todas las ventas de ese dia)
+   Funcion que contabiliza compras de una empresa
+   Se puede contabilizar todas las compras pendientes o no
+   Si es no, se puede contabilizar las compras dentro de un rango de fechas
+   Se puede crear un asiento contable para todas las compras involucradas o un asiento por cada compra o uno por dia (para todas las compras de ese dia)
    Parametros:
 
    Pidempr           : id de la empresa
-   Ptodas_S_N        : S si se desea contabilizar todas las ventas pendientes, N si no
+   Ptodas_S_N        : S si se desea contabilizar todas las compras pendientes, N si no
    Pfecha_ini        : si Ptodas_S_N = N ==> fecha inicial desde cuando se desea contabillizar
    Pfecha_fin        : fecha final hasta cuando se desea contabillizar
-   Pidusuacreaasiento: id del usuario que ejecuta la contabilización de ventas y con ello crea el asiewnto contable
+   Pidusuacreaasiento: id del usuario que ejecuta la contabilización de compras y con ello crea el asiewnto contable
 
    Retorna "exito" si todo el proceso fue exitoso; de lo contrario, retorna un mensaje de error
 */
@@ -44,8 +44,9 @@ declare
   Vidcuco_otros_conceptos         int;
   Vvalor_linea                    numeric;
   Vservicios                      numeric;
-  Votras_ventas                   numeric;
-  C_ventas_pdtes cursor for
+  Votras_compras                  numeric;
+/*
+  C_compras_pdtes cursor for
     select id                 idvent
           ,afecto+exento      neto
           ,montodescuento     descuentos
@@ -57,23 +58,23 @@ declare
           ,idline             idline
           ,idceco             idceco
           ,idtare             idtare
-    from   ventas
+    from   documentos_compras
     where  idempr                                                  = Pidempr
     and    (Ptodas_S_N                                             = 'S'
             or
             (
              Ptodas_S_N                                            = 'N'
              and
-             cast(trim(to_char(fechaventa,'yyyymmdd')) as integer) between Pfecha_ini and Pfecha_fin
+             cast(trim(to_char(fechacompra,'yyyymmdd')) as integer) between Pfecha_ini and Pfecha_fin
             )
            )
     and    idesve                                                  = 2
     and    idasco                                                  is null
     ;
-  C_detalles_ventas cursor for
+  C_detalles_compras cursor for
     select sfpr.idcuco                    idcuco
           ,sum(deve.afecto + deve.exento) sum_totallinea
-    from   detalles_ventas        deve
+    from   detalles_compras        deve
           ,productos              prod
           ,sub_familias_productos sfpr
     where  deve.idprod = prod.id
@@ -90,6 +91,7 @@ declare
     and    prce.idempr = Pidempr
     and    prce.idprco = 1
     ;
+*/
 begin
   /* Validaciones a la invocación a esta función */
   if Pidempr is null then
@@ -133,9 +135,11 @@ begin
     Vmensaje := 'N;Si Ptodas_S_N = S entonces Pfecha_ini y Pfecha_fin deben ser 0';
     return(Vmensaje);
   end if;
-  open C_ventas_pdtes;
+return('S;Contabilización ejecutada exitosamente');
+/*
+  open C_compras_pdtes;
   loop
-    fetch C_ventas_pdtes into Vidvent
+    fetch C_compras_pdtes into Vidvent
                              ,Vneto
                              ,Vdescuentos
                              ,Vimpuestosobligats
@@ -192,7 +196,7 @@ begin
            ,3                                                                               -- idtiac                   numeric(20,0)     not null
            ,1                                                                               -- idesac                   numeric(20,0)     not null
            ,Vnumero_asiento                                                                 -- numero_asiento           numeric(20,0)     not null
-           ,'CONTABILIZACIÓN AUTOMÁTICA VENTAS ' || to_char(current_timestamp,'dd-mm-yyyy') -- glosa                    varchar(100)      not null
+           ,'CONTABILIZACIÓN AUTOMÁTICA compraS ' || to_char(current_timestamp,'dd-mm-yyyy') -- glosa                    varchar(100)      not null
            ,current_timestamp                                                               -- fecha_asiento            date              not null
            ,'N'                                                                             -- reversible               varchar(1)        not null
            ,Pidusuacreaasiento                                                              -- idusuacreaasiento        numeric(20,0)     not null
@@ -206,9 +210,9 @@ begin
            )
     ;
     i := 0;
-    open C_detalles_ventas;
+    open C_detalles_compras;
     loop
-      fetch C_detalles_ventas into Vidcuco
+      fetch C_detalles_compras into Vidcuco
                                   ,Vsum_totallinea
                                   ;
       exit when not found;
@@ -243,7 +247,7 @@ begin
              ,Vidceco                                                                         -- idceco                   numeric(20,0)         null
              ,Vidtare                                                                         -- idtare                   numeric(20,0)         null
              ,Vsum_totallinea                                                                 -- monto                    numeric(20,0)     not null
-             ,'CONTABILIZACIÓN AUTOMÁTICA VENTAS ' || to_char(current_timestamp,'dd-mm-yyyy') -- glosadet                 varchar(100)      not null
+             ,'CONTABILIZACIÓN AUTOMÁTICA compraS ' || to_char(current_timestamp,'dd-mm-yyyy') -- glosadet                 varchar(100)      not null
              ,Pidusuacreaasiento                                                              -- idusuacrearegistro       numeric(20,0)     not null
              ,current_timestamp                                                               -- fechacrearegistro        timestamp         not null
              ,null                                                                            -- idusuamodifregistro      numeric(20,0)         null
@@ -253,8 +257,8 @@ begin
              )
       ;
     end loop;
-    close C_detalles_ventas;
-    update ventas
+    close C_detalles_compras;
+    update compras
     set    idasco = Vidasco
     where  id     = Vidvent
     ;
@@ -276,8 +280,8 @@ begin
       elsif Vidcoca = 4 and Vservicios         != 0 then
         Vvalor_linea := Vservicios;
         Vidtiec      := 2;
-      elsif Vidcoca = 5 and Votras_ventas      != 0 then
-        Vvalor_linea := Votras_ventas;
+      elsif Vidcoca = 5 and Votras_compras      != 0 then
+        Vvalor_linea := Votras_compras;
         Vidtiec      := 2;
       elsif Vidcoca = 6 and Vdescuentos        != 0 then
         Vvalor_linea := Vdescuentos;
@@ -318,7 +322,7 @@ begin
                ,Vidceco                                            -- idceco                   numeric(20,0)         null
                ,Vidtare                                            -- idtare                   numeric(20,0)         null
                ,Vvalor_linea                                       -- monto                    numeric(20,0)     not null
-               ,'DETALLA CONTAB. AUT. VENTAS, LÍNEA ' || i         -- glosadet                 varchar(100)      not null
+               ,'DETALLA CONTAB. AUT. compraS, LÍNEA ' || i         -- glosadet                 varchar(100)      not null
                ,Pidusuacreaasiento                                 -- idusuacrearegistro       numeric(20,0)     not null
                ,current_timestamp                                  -- fechacrearegistro        timestamp         not null
                ,null                                               -- idusuamodifregistro      numeric(20,0)         null
@@ -331,22 +335,19 @@ begin
     end loop;
     close C_ctas_ctbles_otros_conceptos;
   end loop;
-  close C_ventas_pdtes;
+  close C_compras_pdtes;
   return 'S;Contabilización ejecutada exitosamente';
+*/
 end;
 $body$ LANGUAGE plpgsql;
 
-update ventas
+update documentos_compras
 set    idasco = null
 ;
 
-delete from detalles_asientos_contables
-;
+select f_contabilizar_compras(1, 'N', 20191214, 20191214, 3);
 
-delete from asientos_contables
-;
-
-select f_contabilizar_ventas(1, 'N' , 20191205, 20191205, 3);
+\q
 
 select *
 from   asco
@@ -356,20 +357,4 @@ select *
 from   deac
 ;
 
-\q
-
-select cuco.cuenta_desplegable
-      ,cuco.descripcion
-      ,tiec.descripcion
-      ,deac.monto
-from   asco
-      ,deac
-      ,cuco
-      ,tiec
-where  asco.id     = deac.idasco
-and    deac.idcuco = cuco.id
-and    deac.idtiec = tiec.id
-;
-
-\q
 

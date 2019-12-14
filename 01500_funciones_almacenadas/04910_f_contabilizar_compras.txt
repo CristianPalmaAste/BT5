@@ -1,0 +1,7 @@
+CREATE FUNCTION
+UPDATE 0
+                f_contabilizar_compras                 
+-------------------------------------------------------
+ N;El parámetro Pidempr no existe en la tabla empresas
+(1 fila)
+

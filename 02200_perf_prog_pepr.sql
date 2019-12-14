@@ -202,6 +202,7 @@ insert into perfiles_programas values (nextval('pepr_seq'), 1 ,  2410, 1, curren
 insert into perfiles_programas values (nextval('pepr_seq'), 1 ,  2420, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 1 ,  2430, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 1 ,  2440, 1, current_timestamp, null, null, null, null);
+insert into perfiles_programas values (nextval('pepr_seq'), 1 ,  2450, 1, current_timestamp, null, null, null, null);
 
 insert into perfiles_programas values (nextval('pepr_seq'), 2 ,  1000, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 2 ,  1010, 1, current_timestamp, null, null, null, null);

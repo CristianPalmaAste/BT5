@@ -1,11 +1,61 @@
 CREATE FUNCTION
- f_datos_producto 
+ malo 
+------
+ 
+(1 fila)
+
+ familia 
+---------
+ 
+(1 fila)
+
+ sub familia 
+-------------
+ 
+(1 fila)
+
+ unidad de medida 
 ------------------
  
 (1 fila)
 
- f_datos_producto 
-------------------
+ origen 
+--------
+ 
+(1 fila)
+
+ nombre 
+--------
+ 
+(1 fila)
+
+ precio 
+--------
+ 
+(1 fila)
+
+ descuento 
+-----------
+ 0
+(1 fila)
+
+ impuestos obligatorios 
+------------------------
+ 0
+(1 fila)
+
+ impuestos específicos 
+-----------------------
+ 0
+(1 fila)
+
+ código alfanumérico 
+---------------------
+ 
+(1 fila)
+
+ malo 
+------
  
 (1 fila)
 

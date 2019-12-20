@@ -99,7 +99,7 @@ create sequence corg_seq start with 155;
 create sequence aurn_seq start with 193;
 create sequence hirn_seq start with 1;
 create sequence doco_seq start with 3;
-create sequence dedc_seq start with 1;
+create sequence dedc_seq start with 7;
 create sequence tacc_seq start with 6;
 create sequence ticc_seq start with 7;
 create sequence tiec_seq start with 3;

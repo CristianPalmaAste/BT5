@@ -506,7 +506,7 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence dedc_seq start with 1
+ create sequence dedc_seq start with 7
 (1 fila)
 
                ?column?                

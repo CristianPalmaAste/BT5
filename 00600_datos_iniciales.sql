@@ -1386,9 +1386,10 @@ insert into estados_notas_vtas values (2, 'CERRADA' , 1, current_timestamp, null
 insert into estados_notas_vtas values (3, 'EMITIDA' , 1, current_timestamp, null, null, null, null);
 insert into estados_notas_vtas values (4, 'CADUCADA', 1, current_timestamp, null, null, null, null);
 
-insert into estados_ventas values (1, 'CREADA' , 1, current_timestamp, null, null, null, null);
-insert into estados_ventas values (2, 'CERRADA', 1, current_timestamp, null, null, null, null);
-insert into estados_ventas values (3, 'ANULADA', 1, current_timestamp, null, null, null, null);
+insert into estados_ventas values (1, 'CREADA'      , 1, current_timestamp, null, null, null, null);
+insert into estados_ventas values (2, 'CERRADA'     , 1, current_timestamp, null, null, null, null);
+insert into estados_ventas values (3, 'ANULADA'     , 1, current_timestamp, null, null, null, null);
+insert into estados_ventas values (4, 'DTE GENERADO', 1, current_timestamp, null, null, null, null);
 
 insert into origenes_productos values (1, 'NACIONAL' , 'NAC', 1, current_timestamp, null, null, null, null);
 insert into origenes_productos values (2, 'IMPORTADO', 'IMP', 1, current_timestamp, null, null, null, null);

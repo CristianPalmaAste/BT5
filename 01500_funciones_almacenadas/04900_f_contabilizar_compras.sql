@@ -45,7 +45,6 @@ declare
   Vvalor_linea                    numeric;
   Vservicios                      numeric;
   Votras_compras                  numeric;
-/*
   C_compras_pdtes cursor for
     select id                 idvent
           ,afecto+exento      neto
@@ -58,7 +57,7 @@ declare
           ,idline             idline
           ,idceco             idceco
           ,idtare             idtare
-    from   documentos_compras
+    from   compras
     where  idempr                                                  = Pidempr
     and    (Ptodas_S_N                                             = 'S'
             or
@@ -71,6 +70,7 @@ declare
     and    idesve                                                  = 2
     and    idasco                                                  is null
     ;
+/*
   C_detalles_compras cursor for
     select sfpr.idcuco                    idcuco
           ,sum(deve.afecto + deve.exento) sum_totallinea
@@ -135,6 +135,29 @@ begin
     Vmensaje := 'N;Si Ptodas_S_N = S entonces Pfecha_ini y Pfecha_fin deben ser 0';
     return(Vmensaje);
   end if;
+  select count(*)
+  into   aux
+  from   ordenes_compras     orco
+        ,recepciones_compras reco
+        ,compras             comp
+  where  orco.id                                                 = reco.idorco
+  and    reco.id                                                 = comp.idreco
+  and    orco.idempr                                             = Pidempr
+  and    (Ptodas_S_N                                             = 'S'
+          or
+          (
+           Ptodas_S_N                                            = 'N'
+           and
+           cast(trim(to_char(comp.fecha,'yyyymmdd')) as integer) between Pfecha_ini and Pfecha_fin
+          )
+         )
+  and    comp.idasco                                             is null
+  ;
+  if aux = 0 then
+    Vmensaje := 'N;No hay compras pendientes de contabilizar para los parámetros indicados';
+    return(Vmensaje);
+  end if;
+
 return('S;Contabilización ejecutada exitosamente');
 /*
   open C_compras_pdtes;

@@ -226,7 +226,7 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence esve_seq start with 4
+ create sequence esve_seq start with 5
 (1 fila)
 
                ?column?                
@@ -501,12 +501,12 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence doco_seq start with 3
+ create sequence comp_seq start with 3
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence dedc_seq start with 7
+ create sequence deco_seq start with 7
 (1 fila)
 
                ?column?                

@@ -2735,7 +2735,7 @@ alter table historiales_rendiciones add constraint hirn_chk_01 check (
 
 /*************************************************************************************************************************/
 
-create table documentos_compras (
+create table compras (
    id                       numeric(20,0)   not null
   ,idreco                   numeric(20,0)       null
   ,idprov                   numeric(20,0)   not null
@@ -2757,17 +2757,17 @@ create table documentos_compras (
 )
 ;
 
-alter table documentos_compras add constraint doco_pk primary key (id)
+alter table compras add constraint comp_pk primary key (id)
 ;
 
-alter table documentos_compras add constraint doco_uk_01 unique (idreco, idtidv, numero)
+alter table compras add constraint comp_uk_01 unique (idreco, idtidv, numero)
 ;
 
 /*************************************************************************************************************************/
 
-create table detalles_doctos_compras (
+create table detalles_compras (
    id                       numeric(20,0)   not null
-  ,iddoco                   numeric(20,0)   not null
+  ,idcomp                   numeric(20,0)   not null
   ,correlativo              numeric(20,0)   not null
   ,idprod                   numeric(20,0)       null
   ,idserv                   numeric(20,0)       null
@@ -2782,19 +2782,19 @@ create table detalles_doctos_compras (
 )
 ;
 
-alter table detalles_doctos_compras add constraint dedc_pk primary key (id)
+alter table detalles_compras add constraint deco_pk primary key (id)
 ;
 
-alter table detalles_doctos_compras add constraint dedc_uk_01 unique (iddoco, correlativo)
+alter table detalles_compras add constraint deco_uk_01 unique (idcomp, correlativo)
 ;
 
-alter table detalles_doctos_compras add constraint dedc_chk_01 check (
-                                                                      (idprod is not null and idserv is     null and otroinsumo is     null)
-                                                                      or
-                                                                      (idprod is     null and idserv is not null and otroinsumo is     null)
-                                                                      or
-                                                                      (idprod is     null and idserv is     null and otroinsumo is not null)
-                                                                     )
+alter table detalles_compras add constraint deco_chk_01 check (
+                                                               (idprod is not null and idserv is     null and otroinsumo is     null)
+                                                               or
+                                                               (idprod is     null and idserv is not null and otroinsumo is     null)
+                                                               or
+                                                               (idprod is     null and idserv is     null and otroinsumo is not null)
+                                                              )
 ;
 
 /*************************************************************************************************************************/
@@ -3626,18 +3626,18 @@ alter table unidades_medidas_productos        add constraint unmp_fk3_usua forei
 alter table unidades_medidas_servicios        add constraint unms_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table unidades_medidas_servicios        add constraint unms_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 
-alter table documentos_compras                add constraint doco_fk_reco  foreign key (idreco)                 references recepciones_compras              (id);
-alter table documentos_compras                add constraint doco_fk_prov  foreign key (idprov)                 references proveedores                      (id);
-alter table documentos_compras                add constraint doco_fk_tidv  foreign key (idtidv)                 references tipos_doctos_ventas              (id);
-alter table documentos_compras                add constraint doco_fk_asco  foreign key (idasco)                 references asientos_contables               (id);
-alter table documentos_compras                add constraint doco_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
-alter table documentos_compras                add constraint doco_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
+alter table compras                           add constraint comp_fk_reco  foreign key (idreco)                 references recepciones_compras              (id);
+alter table compras                           add constraint comp_fk_prov  foreign key (idprov)                 references proveedores                      (id);
+alter table compras                           add constraint comp_fk_tidv  foreign key (idtidv)                 references tipos_doctos_ventas              (id);
+alter table compras                           add constraint comp_fk_asco  foreign key (idasco)                 references asientos_contables               (id);
+alter table compras                           add constraint comp_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
+alter table compras                           add constraint comp_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 
-alter table detalles_doctos_compras           add constraint dedc_fk_doco  foreign key (iddoco)                 references documentos_compras               (id);
-alter table detalles_doctos_compras           add constraint dedc_fk_prod  foreign key (idprod)                 references productos                        (id);
-alter table detalles_doctos_compras           add constraint dedc_fk_serv  foreign key (idserv)                 references servicios                        (id);
-alter table detalles_doctos_compras           add constraint dedc_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
-alter table detalles_doctos_compras           add constraint dedc_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
+alter table detalles_compras                  add constraint deco_fk_comp  foreign key (idcomp)                 references compras                          (id);
+alter table detalles_compras                  add constraint deco_fk_prod  foreign key (idprod)                 references productos                        (id);
+alter table detalles_compras                  add constraint deco_fk_serv  foreign key (idserv)                 references servicios                        (id);
+alter table detalles_compras                  add constraint deco_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
+alter table detalles_compras                  add constraint deco_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 
 alter table detalles_asientos_contables       add constraint deac_fk_asco  foreign key (idasco)                 references asientos_contables               (id);
 alter table detalles_asientos_contables       add constraint deac_fk_cuco  foreign key (idcuco)                 references cuentas_contables                (id);

@@ -520,9 +520,11 @@ CREATE VIEW
 
 DROP VIEW
 CREATE VIEW
- idempr | empresa | fechadocto | idtidv | tipo_docto_venta | folio_docto | idprov | proveedor | idgere | gerencia | idproy | proyecto | idline | linea_negocio | idceco | centro_costo | idtare | tarea | exento | afecto | impuesto | total 
---------+---------+------------+--------+------------------+-------------+--------+-----------+--------+----------+--------+----------+--------+---------------+--------+--------------+--------+-------+--------+--------+----------+-------
-(0 filas)
+ idempr | empresa | fechadocto | idtidv |  tipo_docto_venta   | folio_docto | idprov | proveedor | idgere | gerencia | idproy | proyecto | idline | linea_negocio | idceco | centro_costo | idtare | tarea | exento | afecto | impuesto | total 
+--------+---------+------------+--------+---------------------+-------------+--------+-----------+--------+----------+--------+----------+--------+---------------+--------+--------------+--------+-------+--------+--------+----------+-------
+        |         | 2019-12-19 |      2 | FACTURA ELECTRÓNICA |           1 |        |           |        |          |        |          |        |               |        |              |        |       |    100 |    100 |       19 |   219
+        |         | 2019-12-19 |      2 | FACTURA ELECTRÓNICA |           1 |        |           |        |          |        |          |        |               |        |              |        |       |      0 |    200 |       38 |   238
+(2 filas)
 
 DROP VIEW
 CREATE VIEW

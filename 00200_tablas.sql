@@ -2773,6 +2773,7 @@ create table detalles_compras (
   ,idserv                   numeric(20,0)       null
   ,otroinsumo               varchar(1000)       null
   ,cantidad                 numeric(20,0)   not null
+  ,preciounitario           numeric(20,0)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
   ,idusuamodifregistro      numeric(20,0)       null

@@ -1,3 +1,7 @@
+\q
+
+Borrado pq a don Osci le arrojaba un error "de bajo nivel" (tipo "tabla está mutando")
+
 create or replace function f_validar_decv() returns trigger as
 $body$
 declare

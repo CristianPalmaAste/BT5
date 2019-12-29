@@ -67,7 +67,7 @@ declare
              cast(trim(to_char(fechaventa,'yyyymmdd')) as integer) between Pfecha_ini and Pfecha_fin
             )
            )
-    and    idesve                                                  = 2
+    and    idesve                                                  in (2,4)
     and    idasco                                                  is null
     ;
   C_detalles_ventas cursor for

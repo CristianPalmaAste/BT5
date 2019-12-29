@@ -1,3 +1,7 @@
+\q
+
+Borrado
+
 create or replace function f_validar_denv() returns trigger as
 $body$
 declare

@@ -11,13 +11,15 @@ begin
   -- 4 | CADUCADA
   --
   -- los cambios de estado válidos son
+  -- 1 -> 1
   -- 1 -> 2
   -- 1 -> 4
   -- 2 -> 3
   -- 2 -> 4
   -- y nada más; todo otro posible cambio de estado es error
   --
-  if (old.idesnv = 1 and new.idesnv = 2) or
+  if (old.idesnv = 1 and new.idesnv = 1) or
+     (old.idesnv = 1 and new.idesnv = 2) or
      (old.idesnv = 1 and new.idesnv = 4) or
      (old.idesnv = 2 and new.idesnv = 3) or
      (old.idesnv = 2 and new.idesnv = 4) then

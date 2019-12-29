@@ -1358,10 +1358,10 @@ drop view if exists libro_compras_v
 create or replace view libro_compras_v as
 select orco.idempr                                                                                                                 idempr
       ,empr.razonsocial                                                                                                            empresa
-      ,doco.fecha                                                                                                                  fechadocto
-      ,doco.idtidv                                                                                                                 idtidv
+      ,comp.fecha                                                                                                                  fechadocto
+      ,comp.idtidv                                                                                                                 idtidv
       ,tidv.descripcion                                                                                                            tipo_docto_venta
-      ,doco.numero                                                                                                                 folio_docto
+      ,comp.numero                                                                                                                 folio_docto
       ,orco.idprov                                                                                                                 idprov
       ,coalesce(prov.nombrefantasia,' ') || ' ' || coalesce(prov.primernombre,' ') || ' ' || coalesce(prov.apellidopaterno,' ')    proveedor
       ,orco.idgere                                                                                                                 idgere
@@ -1374,22 +1374,22 @@ select orco.idempr                                                              
       ,ceco .nombre                                                                                                                centro_costo
       ,orco.idtare                                                                                                                 idtare
       ,tare .nombre                                                                                                                tarea
-      ,doco.exento                                                                                                                 exento
-      ,doco.afecto                                                                                                                 afecto
-      ,doco.impuesto                                                                                                               impuesto
-      ,doco.total                                                                                                                  total
-from                   documentos_compras   doco
-       left       join recepciones_compras  reco on doco.idreco = reco.id
+      ,comp.exento                                                                                                                 exento
+      ,comp.afecto                                                                                                                 afecto
+      ,comp.impuesto                                                                                                               impuesto
+      ,comp.total                                                                                                                  total
+from                   compras              comp
+       left       join recepciones_compras  reco on comp.idreco = reco.id
        left       join ordenes_compras      orco on reco.idorco = orco.id
        left       join empresas             empr on orco.idempr = empr.id
-       left       join tipos_doctos_ventas  tidv on doco.idtidv = tidv.id
+       left       join tipos_doctos_ventas  tidv on comp.idtidv = tidv.id
        left       join proveedores          prov on orco.idprov = prov.id
        left outer join gerencias            gere on orco.idgere = gere.id
        left outer join proyectos            proy on orco.idproy = proy.id
        left outer join lineas_negocios      line on orco.idline = line.id
        left outer join centros_costos       ceco on orco.idceco = ceco.id
        left outer join tareas               tare on orco.idtare = tare.id
-where  doco.idusuaborraregistro is null
+where  comp.idusuaborraregistro is null
 ;
 
 select *

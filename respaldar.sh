@@ -1,6 +1,6 @@
 clear
 
-git add *
+git add --all .
 
 git commit -m "cpalma" *
 

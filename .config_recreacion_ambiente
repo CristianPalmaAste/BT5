@@ -1,0 +1,6 @@
+#export DBNAME=erp_bt5
+#export DBNAME=erp_bt5_test1
+export DBNAME=erp_bt5_test2
+#export DBNAME=erp_bt5_js
+
+export USUARIO_DB=admin

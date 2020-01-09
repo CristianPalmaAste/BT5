@@ -81,7 +81,7 @@ SET
 
                  ?column?                 
 ------------------------------------------
- create sequence perf_seq start with 2024
+ create sequence perf_seq start with 2023
 (1 fila)
 
                ?column?                
@@ -111,7 +111,7 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence pepr_seq start with 405
+ create sequence pepr_seq start with 296
 (1 fila)
 
                  ?column?                 
@@ -276,32 +276,32 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence vent_seq start with 2
+ create sequence vent_seq start with 3
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence deve_seq start with 3
+ create sequence deve_seq start with 5
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence nove_seq start with 2
+ create sequence nove_seq start with 3
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence denv_seq start with 3
+ create sequence denv_seq start with 5
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence cove_seq start with 2
+ create sequence cove_seq start with 3
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence decv_seq start with 3
+ create sequence decv_seq start with 5
 (1 fila)
 
                 ?column?                 
@@ -361,12 +361,12 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence mobo_seq start with 8
+ create sequence mobo_seq start with 9
 (1 fila)
 
-               ?column?                
----------------------------------------
- create sequence demb_seq start with 9
+                ?column?                
+----------------------------------------
+ create sequence demb_seq start with 11
 (1 fila)
 
                ?column?                

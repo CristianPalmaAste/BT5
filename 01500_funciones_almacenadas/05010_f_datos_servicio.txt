@@ -1,9 +1,4 @@
 CREATE FUNCTION
- malo 
-------
- 
-(1 fila)
-
  familia 
 ---------
  
@@ -34,28 +29,23 @@ CREATE FUNCTION
  
 (1 fila)
 
- descuento 
------------
+ descuento (expresado como %) 
+------------------------------
  0
 (1 fila)
 
- impuestos obligatorios 
-------------------------
+ sumatoria de impuestos obligatorios 
+-------------------------------------
  0
 (1 fila)
 
- impuestos específicos 
------------------------
+ sumatoria de impuestos específicos 
+------------------------------------
  0
 (1 fila)
 
- código alfanumérico 
----------------------
- 
-(1 fila)
-
- malo 
-------
+ código alfanumérico del servicio 
+----------------------------------
  
 (1 fila)
 

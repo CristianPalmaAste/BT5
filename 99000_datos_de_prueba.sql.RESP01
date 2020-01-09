@@ -330,56 +330,49 @@ declare
     from   programas
     order  by 1
     ;
-  Vcatalog_name varchar(100);
 begin
-  select catalog_name
-  into   Vcatalog_name
-  from   information_schema.information_schema_catalog_name
-  ;
-  if Vcatalog_name != 'erp_bt5' then
-    select nextval('pers_seq') into Vidpers;
-    --
-    insert into personas values (Vidpers   , 1,     '999',         '7',           'USUARIO'  , null,         'ACCESO'      , 'TOTAL',        null, null    , null,  null,  null, 1,                 current_timestamp, null,    
-            null,               null,               null);
-    --
-    select nextval('usua_seq') into Vidusua;
-    insert into usuarios values (Vidusua, 'UAT', 'ABC12', Vidpers, 1, 1, current_timestamp, null, null, null, null);
-    select nextval('perf_seq')+250 into Vidperf;
-    insert into perfiles values (Vidperf, 'PERFIL DE PRUEBA CON ACCESO A TODO', 1, current_timestamp, null, null, null, null);
+  select nextval('pers_seq') into Vidpers;
+  --
+  insert into personas values (Vidpers   , 1,     '999',         '7',           'USUARIO'  , null,         'ACCESO'      , 'TOTAL',        null, null    , null,  null,  null, 1,                 current_timestamp, null,    
+          null,               null,               null);
+  --
+  select nextval('usua_seq') into Vidusua;
+  insert into usuarios values (Vidusua, 'UAT', 'ABC12', Vidpers, 1, 1, current_timestamp, null, null, null, null);
+  select nextval('perf_seq')+250 into Vidperf;
   
-    select nextval('uspe_seq')+500 into Viduspe;
-    insert into usuarios_perfiles values (Viduspe, Vidusua, Vidperf, null, 1, 1, 1, current_timestamp, null, null, null, null);
-    select nextval('uspe_seq')+500 into Viduspe;
-    /* le doy acceso total a todos los usuarios del 2 al 10 */
-    insert into usuarios_perfiles values (Viduspe, 2      , Vidperf, null, 1, 1, 1, current_timestamp, null, null, null, null);
-    select nextval('uspe_seq')+500 into Viduspe;
-    insert into usuarios_perfiles values (Viduspe, 3      , Vidperf, null, 1, 1, 1, current_timestamp, null, null, null, null);
-    select nextval('uspe_seq')+500 into Viduspe;
-    insert into usuarios_perfiles values (Viduspe, 4      , Vidperf, null, 1, 1, 1, current_timestamp, null, null, null, null);
-    select nextval('uspe_seq')+500 into Viduspe;
-    insert into usuarios_perfiles values (Viduspe, 5      , Vidperf, null, 1, 1, 1, current_timestamp, null, null, null, null);
-    select nextval('uspe_seq')+500 into Viduspe;
-    insert into usuarios_perfiles values (Viduspe, 6      , Vidperf, null, 1, 1, 1, current_timestamp, null, null, null, null);
-    select nextval('uspe_seq')+500 into Viduspe;
-    insert into usuarios_perfiles values (Viduspe, 7      , Vidperf, null, 1, 1, 1, current_timestamp, null, null, null, null);
-    select nextval('uspe_seq')+500 into Viduspe;
-    insert into usuarios_perfiles values (Viduspe, 8      , Vidperf, null, 1, 1, 1, current_timestamp, null, null, null, null);
-    select nextval('uspe_seq')+500 into Viduspe;
-    insert into usuarios_perfiles values (Viduspe, 9      , Vidperf, null, 1, 1, 1, current_timestamp, null, null, null, null);
-    select nextval('uspe_seq')+500 into Viduspe;
-    insert into usuarios_perfiles values (Viduspe, 10     , Vidperf, null, 1, 1, 1, current_timestamp, null, null, null, null);
-    --
-    -- le doy acceso a todos los programas al perfil PERFIL DE PRUEBA CON ACCESO A TODO
-    open C_programas;
-    loop
-      fetch C_programas into Vidprog
-                             ;
-      exit when not found;
-      select nextval('pepr_seq') into Vidpepr;
-      insert into perfiles_programas values (Vidpepr, Vidperf, Vidprog, 1, current_timestamp, null, null, null, null);
-    end loop;
-    close C_programas;
-  end if;
+  insert into perfiles values (Vidperf, 'PERFIL DE PRUEBA CON ACCESO A TODO', 1, current_timestamp, null, null, null, null);
+  select nextval('uspe_seq')+500 into Viduspe;
+  insert into usuarios_perfiles values (Viduspe, Vidusua, Vidperf, null, 1, 1, 1, current_timestamp, null, null, null, null);
+  select nextval('uspe_seq')+500 into Viduspe;
+  /* le doy acceso total a todos los usuarios del 2 al 10 */
+  insert into usuarios_perfiles values (Viduspe, 2      , Vidperf, null, 1, 1, 1, current_timestamp, null, null, null, null);
+  select nextval('uspe_seq')+500 into Viduspe;
+  insert into usuarios_perfiles values (Viduspe, 3      , Vidperf, null, 1, 1, 1, current_timestamp, null, null, null, null);
+  select nextval('uspe_seq')+500 into Viduspe;
+  insert into usuarios_perfiles values (Viduspe, 4      , Vidperf, null, 1, 1, 1, current_timestamp, null, null, null, null);
+  select nextval('uspe_seq')+500 into Viduspe;
+  insert into usuarios_perfiles values (Viduspe, 5      , Vidperf, null, 1, 1, 1, current_timestamp, null, null, null, null);
+  select nextval('uspe_seq')+500 into Viduspe;
+  insert into usuarios_perfiles values (Viduspe, 6      , Vidperf, null, 1, 1, 1, current_timestamp, null, null, null, null);
+  select nextval('uspe_seq')+500 into Viduspe;
+  insert into usuarios_perfiles values (Viduspe, 7      , Vidperf, null, 1, 1, 1, current_timestamp, null, null, null, null);
+  select nextval('uspe_seq')+500 into Viduspe;
+  insert into usuarios_perfiles values (Viduspe, 8      , Vidperf, null, 1, 1, 1, current_timestamp, null, null, null, null);
+  select nextval('uspe_seq')+500 into Viduspe;
+  insert into usuarios_perfiles values (Viduspe, 9      , Vidperf, null, 1, 1, 1, current_timestamp, null, null, null, null);
+  select nextval('uspe_seq')+500 into Viduspe;
+  insert into usuarios_perfiles values (Viduspe, 10     , Vidperf, null, 1, 1, 1, current_timestamp, null, null, null, null);
+  --
+  -- le doy acceso a todos los programas al perfil PERFIL DE PRUEBA CON ACCESO A TODO
+  open C_programas;
+  loop
+    fetch C_programas into Vidprog
+                           ;
+    exit when not found;
+    select nextval('pepr_seq') into Vidpepr;
+    insert into perfiles_programas values (Vidpepr, Vidperf, Vidprog, 1, current_timestamp, null, null, null, null);
+  end loop;
+  close C_programas;
   --
   insert into documentos_legales values (1 , 1, 1, 'prueba_1.txt'       , 'prueba_1.txt'       , 1, cast(current_timestamp as date) - cast('1 days' as interval), 'LA UNICA'                    , 'F1' , 'PEDRO PIEDRA'    , 'NINGUNO'          , cast(current_timestamp as date) + cast('11 days' as interval), 'GERARDO.PALMA.ASTE@GMAIL.COM', 'N', 1, current_timestamp, null, null, null, null, null);
   insert into documentos_legales values (2 , 1, 2, 'prueba_2.txt'       , 'prueba_2.txt'       , 1, cast(current_timestamp as date) - cast('2 days' as interval), 'LA CUCHUFLETA'               , '100', 'JUAN SOTO'       , 'NADA'             , cast(current_timestamp as date) + cast('12 days' as interval), 'GERARDO.PALMA.ASTE@GMAIL.COM', 'N', 1, current_timestamp, null, null, null, null, null);

@@ -113,6 +113,19 @@ begin
 end;
 $$ LANGUAGE plpgsql;
 
+select f_datos_servicio(7,1)  "familia"                            ;
+select f_datos_servicio(7,2)  "sub familia"                        ;
+select f_datos_servicio(7,3)  "unidad de medida"                   ;
+select f_datos_servicio(7,4)  "origen"                             ;
+select f_datos_servicio(7,5)  "nombre"                             ;
+select f_datos_servicio(7,6)  "precio"                             ;
+select f_datos_servicio(7,7)  "descuento (expresado como %)"       ;
+select f_datos_servicio(7,8)  "sumatoria de impuestos obligatorios";
+select f_datos_servicio(7,9)  "sumatoria de impuestos específicos" ;
+select f_datos_servicio(7,10) "código alfanumérico del servicio"   ;
+
+\q
+
 select f_datos_servicio(1,0)  "malo"                  ;
 select f_datos_servicio(1,1)  "familia"               ;
 select f_datos_servicio(1,2)  "sub familia"           ;

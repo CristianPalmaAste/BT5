@@ -316,6 +316,9 @@ echo "Poniendo secuencias al dia"
 echo "Insertando productos de JJM"
 psql -d $DBNAME -U $USUARIO_DB < 99200_insertar_prods_JJM.sql > 99210_insertar_prods_JJM.txt
 
+echo "Insertando asientos de prueba"
+psql -d $DBNAME -U $USUARIO_DB < 99300_datos_de_prueba_contab.sql > 99310_datos_de_prueba_contab.txt
+
 echo "Poniendo secuencias al dia"
 ./00700_secuencias.sh
 

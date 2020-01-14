@@ -510,6 +510,9 @@ alter table usuarios add constraint usua_pk primary key (id)
 alter table usuarios add constraint usua_uk_01 unique (username)
 ;
 
+alter table usuarios add constraint usua_uk_02 unique (idpers)
+;
+
 /*************************************************************************************************************************/
 
 create table usuarios_perfiles (

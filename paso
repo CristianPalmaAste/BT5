@@ -81,7 +81,7 @@ SET
 
                  ?column?                 
 ------------------------------------------
- create sequence perf_seq start with 2023
+ create sequence perf_seq start with 2024
 (1 fila)
 
                ?column?                
@@ -111,7 +111,7 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence pepr_seq start with 296
+ create sequence pepr_seq start with 405
 (1 fila)
 
                  ?column?                 
@@ -541,17 +541,17 @@ SET
 
                 ?column?                
 ----------------------------------------
- create sequence peco_seq start with 14
+ create sequence peco_seq start with 25
 (1 fila)
 
-               ?column?                
----------------------------------------
- create sequence asco_seq start with 1
+                ?column?                
+----------------------------------------
+ create sequence asco_seq start with 27
 (1 fila)
 
-               ?column?                
----------------------------------------
- create sequence deac_seq start with 1
+                ?column?                
+----------------------------------------
+ create sequence deac_seq start with 55
 (1 fila)
 
                ?column?                

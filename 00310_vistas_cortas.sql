@@ -55,6 +55,7 @@ create or replace view tipi as select * from tipos_productos_impuestos;
 create or replace view tidv as select * from tipos_doctos_ventas;
 create or replace view tise as select * from tipos_servicios;
 create or replace view clie as select * from clientes;
+create or replace view dicl as select * from direcciones_clientes;
 create or replace view vent as select * from ventas;
 create or replace view deve as select * from detalles_ventas;
 create or replace view nove as select * from notas_ventas;

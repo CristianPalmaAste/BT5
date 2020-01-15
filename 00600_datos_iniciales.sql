@@ -1292,7 +1292,7 @@ insert into unidades_territoriales values (344, 1, 60  , 'LO BARNECHEA'         
 insert into unidades_territoriales values (345, 1, 60  , 'LO ESPEJO'                                          , null, 3, 1, current_timestamp, null, null, null, null);
 insert into unidades_territoriales values (346, 1, 60  , 'LO PRADO'                                           , null, 3, 1, current_timestamp, null, null, null, null);
 insert into unidades_territoriales values (347, 1, 60  , 'MACUL'                                              , null, 3, 1, current_timestamp, null, null, null, null);
-insert into unidades_territoriales values (348, 1, 60  , 'MAIPU'                                              , null, 3, 1, current_timestamp, null, null, null, null);
+insert into unidades_territoriales values (348, 1, 60  , 'MAIPÚ'                                              , null, 3, 1, current_timestamp, null, null, null, null);
 insert into unidades_territoriales values (349, 1, 60  , 'ÑUÑOA'                                              , null, 3, 1, current_timestamp, null, null, null, null);
 insert into unidades_territoriales values (350, 1, 60  , 'PEDRO AGUIRRE CERDA'                                , null, 3, 1, current_timestamp, null, null, null, null);
 insert into unidades_territoriales values (351, 1, 60  , 'PEÑALOLÉN'                                          , null, 3, 1, current_timestamp, null, null, null, null);

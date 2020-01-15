@@ -53,6 +53,7 @@ create sequence tipi_seq start with 4;
 create sequence tidv_seq start with 26;
 create sequence tise_seq start with 3;
 create sequence clie_seq start with 5;
+create sequence dicl_seq start with 10;
 create sequence vent_seq start with 3;
 create sequence deve_seq start with 5;
 create sequence nove_seq start with 3;

@@ -55,6 +55,7 @@ drop sequence if exists tipi_seq;
 drop sequence if exists tidv_seq;
 drop sequence if exists tise_seq;
 drop sequence if exists clie_seq;
+drop sequence if exists dicl_seq;
 drop sequence if exists vent_seq;
 drop sequence if exists deve_seq;
 drop sequence if exists nove_seq;

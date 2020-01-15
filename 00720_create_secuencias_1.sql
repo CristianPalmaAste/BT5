@@ -55,6 +55,7 @@ select 'create sequence tipi_seq start with ' || (case when MAX(ID) is null then
 select 'create sequence tidv_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_doctos_ventas;
 select 'create sequence tise_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_servicios;
 select 'create sequence clie_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from clientes;
+select 'create sequence dicl_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from direcciones_clientes;
 select 'create sequence vent_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from ventas;
 select 'create sequence deve_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from detalles_ventas;
 select 'create sequence nove_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from notas_ventas;

@@ -274,6 +274,11 @@ SET
  create sequence clie_seq start with 5
 (1 fila)
 
+                ?column?                
+----------------------------------------
+ create sequence dicl_seq start with 10
+(1 fila)
+
                ?column?                
 ---------------------------------------
  create sequence vent_seq start with 3

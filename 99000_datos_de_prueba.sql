@@ -464,8 +464,10 @@ create or replace function tmp_datos_de_prueba_vtas () returns varchar(100) as
 $$
 declare
   Vidcove  int;
+  Vidclie  int;
 begin
-  insert into clientes values (nextval('clie_seq')            -- id                       numeric(20,0)   not null
+  Vidclie := nextval('clie_seq');
+  insert into clientes values (Vidclie                        -- id                       numeric(20,0)   not null
                               ,1                              -- idgrem                   numeric(20,0)   not null
                               ,1                              -- idpais                   numeric(20,0)   not null
                               ,'10917721'                     -- identificador1           varchar(50)     not null
@@ -484,6 +486,10 @@ begin
                               ,null                           -- idusuaborraregistro      numeric(20,0)       null
                               ,null                           -- fechaborraregistro       timestamp           null
                               )
+  ;
+  insert into direcciones_clientes values (nextval('dicl_seq'), Vidclie, 'PLAZA CASTELAR'    , '01160', 338, null     , 1, current_timestamp, null, null, null, null)
+  ;
+  insert into direcciones_clientes values (nextval('dicl_seq'), Vidclie, 'CAMINO A MELIPILLA', '9236' , 348, 223682140, 1, current_timestamp, null, null, null, null)
   ;
   select nextval('cove_seq')
   into   Vidcove

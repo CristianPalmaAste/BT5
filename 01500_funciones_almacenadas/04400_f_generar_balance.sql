@@ -1,8 +1,8 @@
-create or replace function f_generar_balance (Pidsesion varchar(100)
+create or replace function f_generar_balance (Pidsesion numeric
                                              ,Pidempr   numeric
                                              ,Pmes_fin  numeric
                                              ,Panno_fin numeric
-                                             ) returns numeric as
+                                             ) returns varchar as
 $$
 declare
   Vidgrem             numeric;
@@ -47,6 +47,18 @@ begin
   delete from tmp_balance
   where  idsesion = Pidsesion
   ;
+  -- Validaciones previas
+  select count(*)
+  into   aux
+  from   periodos_contables
+  where  idempr = Pidempr
+  and    anno   = Panno_fin
+  and    mes    = Pmes_fin
+  and    idespc = 2
+  ;
+  if aux = 0 then
+    return('N;El año/mes límite para el cual se desea obtener el balance, no está cerrado');
+  end if;
   i      := 0;
   Vtotal := 0;
   select idgrem
@@ -147,18 +159,20 @@ begin
       ;
     end if;
   end loop;
-  return(Vtotal);
+  return('S;Balance ejecutado exitosamente');
 end;
 $$ LANGUAGE plpgsql;
 
 delete from tmp_balance
 ;
 
-select f_generar_balance ('zzzzz', 1, 12, 2019);
+select f_generar_balance (1, 1, 12, 2020);
+
+select f_generar_balance (1, 1,  9, 2020);
 
 select *
 from   tmp_balance
-where  idsesion = 'zzzzz'
+where  idsesion = 1
 ;
 
 \q

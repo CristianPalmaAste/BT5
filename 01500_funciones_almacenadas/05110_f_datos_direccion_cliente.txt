@@ -1,0 +1,51 @@
+CREATE FUNCTION
+ f_datos_direccion_cliente 
+---------------------------
+ 
+(1 fila)
+
+ f_datos_direccion_cliente 
+---------------------------
+ 
+(1 fila)
+
+ f_datos_direccion_cliente 
+---------------------------
+ 
+(1 fila)
+
+ f_datos_direccion_cliente 
+---------------------------
+ 
+(1 fila)
+
+ f_datos_direccion_cliente 
+---------------------------
+ 
+(1 fila)
+
+ f_datos_direccion_cliente 
+---------------------------
+ 
+(1 fila)
+
+ f_datos_direccion_cliente 
+---------------------------
+ 
+(1 fila)
+
+ f_datos_direccion_cliente 
+---------------------------
+ 
+(1 fila)
+
+ f_datos_direccion_cliente 
+---------------------------
+ 
+(1 fila)
+
+ f_datos_direccion_cliente 
+---------------------------
+ 
+(1 fila)
+

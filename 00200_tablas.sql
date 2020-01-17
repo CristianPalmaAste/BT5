@@ -1435,13 +1435,10 @@ alter table direcciones_clientes add constraint dicl_uk_01 unique (idclie, calle
 
 /*************************************************************************************************************************/
 
-
-
-
 create table ventas (
    id                       numeric(20,0)   not null
   ,idempr                   numeric(20,0)   not null
-  ,idbode                   numeric(20,0)   not null
+  ,idbode                   numeric(20,0)       null
   ,idnove                   numeric(20,0)       null
   ,idtidv                   numeric(20,0)   not null
   ,numero                   numeric(20,0)   not null
@@ -1536,7 +1533,7 @@ alter table detalles_ventas add constraint deve_chk_03 check (cantidad > 0)
 create table notas_ventas (
    id                       numeric(20,0)   not null
   ,idempr                   numeric(20,0)   not null
-  ,idbode                   numeric(20,0)   not null
+  ,idbode                   numeric(20,0)       null
   ,idcove                   numeric(20,0)       null
   ,numero                   numeric(20,0)   not null
   ,idclie                   numeric(20,0)   not null
@@ -1629,7 +1626,7 @@ alter table detalles_notas_vtas add constraint denv_chk_03 check (cantidad > 0)
 create table cotizaciones_ventas (
    id                       numeric(20,0)   not null
   ,idempr                   numeric(20,0)   not null
-  ,idbode                   numeric(20,0)   not null
+  ,idbode                   numeric(20,0)       null
   ,numero                   numeric(20,0)   not null
   ,idclie                   numeric(20,0)   not null
   ,descripcioncotizacion    varchar(1000)   not null
@@ -3128,7 +3125,7 @@ alter table detalles_procesos_ctbles_empresas add constraint dpce_uk_01 unique (
 /*************************************************************************************************************************/
 
 create table tmp_balance (
-   idsesion                 varchar(100)      not null
+   idsesion                 numeric(20,0)     not null
   ,correlativo              numeric(20,0)     not null
   ,cuenta_contable          varchar(100)      not null
   ,descrpcion_cuenta        varchar(1000)     not null

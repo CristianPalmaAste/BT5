@@ -1,4 +1,4 @@
-create or replace function f_datos_direccion_cliente (Pidclie          int
+create or replace function f_datos_direccion_cliente (Pidclie          numeric
                                                      ,Pdato_solicitado int
                                                      ) returns varchar(100) as
 $$
@@ -16,10 +16,10 @@ begin
   where  idclie = Pidclie
   ;
   select dicl.calle
-        ,dicl.numero
+        ,coalesce(dicl.numero,'-')
         ,unte1.nombre
         ,unte2.nombre
-        ,dicl.telefono
+        ,coalesce(dicl.telefono,'-')
   into   Vcalle
         ,Vnumero
         ,Vunidade_territorial1

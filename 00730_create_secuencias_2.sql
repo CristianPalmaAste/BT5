@@ -20,7 +20,7 @@ create sequence sexo_seq start with 3;
 create sequence prog_seq start with 11051;
 create sequence usua_seq start with 22;
 create sequence uspe_seq start with 1034;
-create sequence pepr_seq start with 405;
+create sequence pepr_seq start with 407;
 create sequence cuco_seq start with 1352;
 create sequence dole_seq start with 25;
 create sequence tidl_seq start with 29;

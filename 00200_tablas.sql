@@ -1065,6 +1065,26 @@ alter table unidades_territoriales add constraint unte_uk_02 unique (iduntepadre
 
 /*************************************************************************************************************************/
 
+create table tipos_direcciones (
+   id                       numeric(20,0)   not null
+  ,descripcion              varchar(100)    not null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table tipos_direcciones add constraint tidi_pk primary key (id)
+;
+
+alter table tipos_direcciones add constraint tidi_uk_01 unique (descripcion)
+;
+
+/*************************************************************************************************************************/
+
 create table tipos_clientes (
    id                       numeric(20,0)   not null
   ,descripcion              varchar(100)    not null
@@ -1414,6 +1434,7 @@ alter table clientes add constraint clie_chk_01 check (
 create table direcciones_clientes (
    id                       numeric(20,0)   not null
   ,idclie                   numeric(20,0)   not null
+  ,idtidi                   numeric(20,0)   not null
   ,calle                    varchar(100)    not null
   ,numero                   varchar(100)    not null
   ,idunte                   numeric(20,0)   not null
@@ -3470,6 +3491,7 @@ alter table clientes                          add constraint clie_fk2_usua forei
 alter table clientes                          add constraint clie_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 
 alter table direcciones_clientes              add constraint dicl_fk_clie  foreign key (idclie)                 references clientes                         (id);
+alter table direcciones_clientes              add constraint dicl_fk_tidi  foreign key (idtidi)                 references tipos_direcciones                (id);
 alter table direcciones_clientes              add constraint dicl_fk_unte  foreign key (idunte)                 references unidades_territoriales           (id);
 alter table direcciones_clientes              add constraint dicl_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table direcciones_clientes              add constraint dicl_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);

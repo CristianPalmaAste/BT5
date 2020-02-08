@@ -11,6 +11,7 @@ declare
   Vmensaje   varchar(1000);
   Vfecha     varchar(1000);
   Vfechas    varchar(1000);
+  Videspc    int;
   C_vtas_no_contab cursor for
     select distinct to_char(vent.fechaventa,'dd-mm-yyyy') fecha_venta
     from   ventas   vent
@@ -36,6 +37,17 @@ begin
   ;
   if aux = 0 then
     return('N;No existe período contable ' || Pidpeco);
+  end if;
+  select idespc
+  into   Videspc
+  from   periodos_contables
+  where  id = Pidpeco
+  ;
+  if Videspc = 2 then
+    return('N;Período contable ya está cerrado');
+  end if;
+  if Videspc != 1 then
+    return('N;Período contable no está abierto, requisito fundamental para que pueda ser cerrado');
   end if;
   select idempr
         ,mes

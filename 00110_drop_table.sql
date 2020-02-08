@@ -41,6 +41,7 @@ drop table if exists tipos_formas_pagos             cascade;
 drop table if exists formas_pagos_notas_ventas      cascade;
 drop table if exists formas_pagos_ventas            cascade;
 drop table if exists unidades_territoriales         cascade;
+drop table if exists tipos_direcciones              cascade;
 drop table if exists tipos_clientes                 cascade;
 drop table if exists tipos_cotizaciones_vtas        cascade;
 drop table if exists estados_cotizaciones_vtas      cascade;

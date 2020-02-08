@@ -1,4 +1,5 @@
 create or replace function f_datos_direccion_cliente (Pidclie          numeric
+                                                     ,Pidtidi          int
                                                      ,Pdato_solicitado int
                                                      ) returns varchar(100) as
 $$
@@ -14,6 +15,7 @@ begin
   into   Viddicl
   from   direcciones_clientes
   where  idclie = Pidclie
+  and    idtidi = Pidtidi
   ;
   select dicl.calle
         ,coalesce(dicl.numero,'-')
@@ -32,6 +34,11 @@ begin
   and    unte1.iduntepadre = unte2.id
   and    dicl.id           = Viddicl
   ;
+  if Vcalle                is null then Vcalle                 := '-'; end if;
+  if Vnumero               is null then Vnumero                := '-'; end if;
+  if Vunidade_territorial1 is null then Vunidade_territorial1  := '-'; end if;
+  if Vunidade_territorial2 is null then Vunidade_territorial2  := '-'; end if;
+  if Vtelefono             is null then Vtelefono              := '-'; end if;
   if    Pdato_solicitado = 1 then
     return(Vcalle);
   elsif Pdato_solicitado = 2 then
@@ -48,16 +55,19 @@ begin
 end;
 $$ LANGUAGE plpgsql;
 
-select f_datos_direccion_cliente(1, 1);
-select f_datos_direccion_cliente(1, 2);
-select f_datos_direccion_cliente(1, 3);
-select f_datos_direccion_cliente(1, 4);
-select f_datos_direccion_cliente(1, 5);
-select f_datos_direccion_cliente(2, 1);
-select f_datos_direccion_cliente(2, 2);
-select f_datos_direccion_cliente(2, 3);
-select f_datos_direccion_cliente(2, 4);
-select f_datos_direccion_cliente(2, 5);
+\q
+
+select f_datos_direccion_cliente(4 , 1, 1);
+select f_datos_direccion_cliente(4 , 1, 2);
+select f_datos_direccion_cliente(4 , 1, 3);
+select f_datos_direccion_cliente(4 , 1, 4);
+select f_datos_direccion_cliente(4 , 1, 5);
+select f_datos_direccion_cliente(2 , 1, 1);
+select f_datos_direccion_cliente(2 , 1, 2);
+select f_datos_direccion_cliente(2 , 1, 3);
+select f_datos_direccion_cliente(2 , 1, 4);
+select f_datos_direccion_cliente(2 , 1, 5);
+select f_datos_direccion_cliente(15, 9, 8);
 
 \q
 

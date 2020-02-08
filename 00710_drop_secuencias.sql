@@ -41,6 +41,7 @@ drop sequence if exists tifp_seq;
 drop sequence if exists fpnv_seq;
 drop sequence if exists fpve_seq;
 drop sequence if exists unte_seq;
+drop sequence if exists tidi_seq;
 drop sequence if exists ticl_seq;
 drop sequence if exists ticv_seq;
 drop sequence if exists escv_seq;

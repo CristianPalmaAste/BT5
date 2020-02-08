@@ -1,4 +1,9 @@
 SET
+ ?column? 
+----------
+ m0
+(1 fila)
+
 CREATE FUNCTION
  tmp_datos_de_prueba 
 ---------------------
@@ -229,10 +234,8 @@ INSERT 0 1
 INSERT 0 1
 INSERT 0 1
 INSERT 0 1
-INSERT 0 1
-INSERT 0 1
-INSERT 0 1
-INSERT 0 1
-INSERT 0 1
-INSERT 0 1
-INSERT 0 1
+ ?column? 
+----------
+ m99
+(1 fila)
+

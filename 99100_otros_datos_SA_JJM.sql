@@ -169,13 +169,13 @@ begin
   insert into clientes values (3, '8', '1', '76094408', '4', '2', 'CONSTRUCTORA LCM LIMITADA'                             , 'CONSTRUCTORA LCM LIMITADA', null, null, null, null, 16, current_timestamp, null, null, null, null);
   insert into clientes values (4, '8', '1', '76071730', '4', '2', 'JARDIN INFANTIL MONTESSORI RAYHUE III LIMITADA'        , 'JARDIN LOS TRAPENSES'     , null, null, null, null, 16, current_timestamp, null, null, null, null);
 
-  insert into direcciones_clientes values (nextval('dicl_seq'), 2, 'ALAMEDA'         , '1256', 328, null, 1, current_timestamp, null, null, null, null);
-  insert into direcciones_clientes values (nextval('dicl_seq'), 2, 'CAMINO A LONQUEN', '6578', 348, null, 1, current_timestamp, null, null, null, null);
-  insert into direcciones_clientes values (nextval('dicl_seq'), 3, 'FRANKLIN'        , '5429', 350, null, 1, current_timestamp, null, null, null, null);
-  insert into direcciones_clientes values (nextval('dicl_seq'), 3, 'SAN IGNACIO'     , '1276', 340, null, 1, current_timestamp, null, null, null, null);
-  insert into direcciones_clientes values (nextval('dicl_seq'), 4, 'IRARRAZAVAL'     , '6830', 350, null, 1, current_timestamp, null, null, null, null);
-  insert into direcciones_clientes values (nextval('dicl_seq'), 4, 'SUECIA'          , '5394', 360, null, 1, current_timestamp, null, null, null, null);
-  insert into direcciones_clientes values (nextval('dicl_seq'), 4, 'LAS REJAS'       , '9922', 370, null, 1, current_timestamp, null, null, null, null);
+  insert into direcciones_clientes values (nextval('dicl_seq'), 2, 1, 'ALAMEDA'         , '1256', 328, null, 1, current_timestamp, null, null, null, null);
+  insert into direcciones_clientes values (nextval('dicl_seq'), 2, 2, 'CAMINO A LONQUEN', '6578', 348, null, 1, current_timestamp, null, null, null, null);
+  insert into direcciones_clientes values (nextval('dicl_seq'), 3, 1, 'FRANKLIN'        , '5429', 350, null, 1, current_timestamp, null, null, null, null);
+  insert into direcciones_clientes values (nextval('dicl_seq'), 3, 2, 'SAN IGNACIO'     , '1276', 340, null, 1, current_timestamp, null, null, null, null);
+  insert into direcciones_clientes values (nextval('dicl_seq'), 4, 1, 'IRARRAZAVAL'     , '6830', 350, null, 1, current_timestamp, null, null, null, null);
+  insert into direcciones_clientes values (nextval('dicl_seq'), 4, 1, 'SUECIA'          , '5394', 360, null, 1, current_timestamp, null, null, null, null);
+  insert into direcciones_clientes values (nextval('dicl_seq'), 4, 2, 'LAS REJAS'       , '9922', 370, null, 1, current_timestamp, null, null, null, null);
 
   insert into proveedores values (13, 8, 1, '99574860', '6', 2, 'COMERCIAL ANWO S.A.'                                   , 'ANWO'     , null, null, null, null, 1, current_timestamp, null, null, null, null);
   insert into proveedores values (14, 8, 1, '76479542', '3', 2, 'IMPACON SPA'                                           , 'NOVACLIMA', null, null, null, null, 1, current_timestamp, null, null, null, null);

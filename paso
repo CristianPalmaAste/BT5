@@ -79,9 +79,9 @@ SET
  create sequence pers_seq start with 24
 (1 fila)
 
-                 ?column?                 
-------------------------------------------
- create sequence perf_seq start with 2024
+                ?column?                
+----------------------------------------
+ create sequence perf_seq start with 22
 (1 fila)
 
                ?column?                
@@ -111,7 +111,7 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence pepr_seq start with 407
+ create sequence pepr_seq start with 287
 (1 fila)
 
                  ?column?                 
@@ -161,12 +161,12 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence orsh_seq start with 6
+ create sequence orsh_seq start with 1
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence dosh_seq start with 2
+ create sequence dosh_seq start with 1
 (1 fila)
 
                ?column?                
@@ -202,6 +202,11 @@ SET
                 ?column?                 
 -----------------------------------------
  create sequence unte_seq start with 419
+(1 fila)
+
+               ?column?                
+---------------------------------------
+ create sequence tidi_seq start with 5
 (1 fila)
 
                ?column?                
@@ -546,17 +551,17 @@ SET
 
                 ?column?                
 ----------------------------------------
- create sequence peco_seq start with 25
+ create sequence peco_seq start with 24
 (1 fila)
 
                 ?column?                
 ----------------------------------------
- create sequence asco_seq start with 27
+ create sequence asco_seq start with 25
 (1 fila)
 
                 ?column?                
 ----------------------------------------
- create sequence deac_seq start with 55
+ create sequence deac_seq start with 51
 (1 fila)
 
                ?column?                

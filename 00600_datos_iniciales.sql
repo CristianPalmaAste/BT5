@@ -715,8 +715,9 @@ insert into tipos_asientos_contables values (3, 'TRASPASO'  , 1, current_timesta
 insert into tipos_asientos_contables values (4, 'COMPRAS'   , 1, current_timestamp, null, null, null, null);
 insert into tipos_asientos_contables values (5, 'HONORARIOS', 1, current_timestamp, null, null, null, null);
 
-insert into estados_periodos_contables values (1, 'ABIERTO', 1, current_timestamp, null, null, null, null);
-insert into estados_periodos_contables values (2, 'CERRADO', 1, current_timestamp, null, null, null, null);
+insert into estados_periodos_contables values (1, 'ABIERTO'  , 1, current_timestamp, null, null, null, null);
+insert into estados_periodos_contables values (2, 'CERRADO'  , 1, current_timestamp, null, null, null, null);
+insert into estados_periodos_contables values (3, 'PENDIENTE', 1, current_timestamp, null, null, null, null);
 
 insert into monedas values (1 , 'PESO CHILENO'             , 'CLP', 1, current_timestamp, null, null, null, null);
 insert into monedas values (2 , 'PESO ARGENTINO'           , 'ARS', 1, current_timestamp, null, null, null, null);
@@ -798,24 +799,20 @@ insert into usuarios values (1, 'ADMIN', 'ABC12', 1, 1, 1, current_timestamp, nu
 alter table usuarios enable trigger all;
 alter table personas enable trigger all;
 
-insert into personas values (2 , 1, 2       , '7', 'ROLANDO'    , null      , 'SILVA'    , '-'        ,  ''                            , null        , 2   , 1, 1, 1, current_timestamp, null, null, null, null);
 insert into personas values (3 , 1, 3       , '5', 'SERGIO'     , null      , 'AGUIRRE'  , '-'        ,  'sergio.aguirre@bt5.cl'       , null        , 1   , 1, 1, 1, current_timestamp, null, null, null, null);
 insert into personas values (4 , 1, 4       , '3', 'JUAN'       , 'JOSE'    , 'MONSALVE' , '-'        ,  'juan.jose.monsalve@bt5.cl'   , null        , null, 1, 1, 1, current_timestamp, null, null, null, null);
 insert into personas values (5 , 1, 5       , '1', 'JUAN'       , 'ANDRES'  , 'BORZONE'  , '-'        ,  ''                            , null        , null, 1, 1, 1, current_timestamp, null, null, null, null);
 insert into personas values (6 , 1, 6       , 'K', 'RODRIGO'    , null      , 'CIFUENTES', '-'        ,  'rodrigo.cifuentes@bt5.cl'    , null        , 1   , 1, 1, 1, current_timestamp, null, null, null, null);
 insert into personas values (7 , 1, 7695503 , '4', 'ROBERTO'    , 'DANIEL'  , 'QUEZADA'  , 'ASTE'     ,  'roberto.quezada@bt5.cl'      , null        , 2   , 1, 1, 1, current_timestamp, null, null, null, null);
 insert into personas values (8 , 1, 8965445 , '9', 'OSCIEL'     , 'SEGUNDO' , 'SOLAR'    , 'MALDONADO',  'solar2design@gmail.com'      , null        , 2   , 1, 1, 1, current_timestamp, null, null, null, null);
-insert into personas values (9 , 1, 13254825, '0', 'NILTON'     , 'PATRICIO', 'SALAZAR'  , 'GONZALEZ' ,  'nilton.salazar@gmail.com'    , null        , 1   , 1, 1, 1, current_timestamp, null, null, null, null);
 insert into personas values (10, 1, 10917721, '0', 'G. CRISTIAN', null      , 'PALMA'    , 'ASTE'     ,  'gerardo.palma.aste@gmail.com', '12-11-1968', 1   , 1, 1, 1, current_timestamp, null, null, null, null);
 
-insert into usuarios values (2 , 'ROSILVA'    , 'ABC12', 2 , 1, 1, current_timestamp, null, null, null, null);
 insert into usuarios values (3 , 'SEAGUIRRE'  , 'ABC12', 3 , 1, 1, current_timestamp, null, null, null, null);
 insert into usuarios values (4 , 'JJMONSALVE' , 'ABC12', 4 , 1, 1, current_timestamp, null, null, null, null);
 insert into usuarios values (5 , 'JABORZONE'  , 'ABC12', 5 , 1, 1, current_timestamp, null, null, null, null);
 insert into usuarios values (6 , 'ROCIFUENTES', 'ABC12', 6 , 1, 1, current_timestamp, null, null, null, null);
 insert into usuarios values (7 , 'RQUEZADAA'  , 'ABC12', 7 , 2, 1, current_timestamp, null, null, null, null);
 insert into usuarios values (8 , 'OSOLARM'    , 'ABC12', 8 , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios values (9 , 'NSALAZARG'  , 'ABC12', 9 , 1, 1, current_timestamp, null, null, null, null);
 insert into usuarios values (10, 'CPALMAA'    , 'ABC12', 10, 1, 1, current_timestamp, null, null, null, null);
 
 alter table autorizadores_requisiciones drop constraint aure_fk1_perf;
@@ -1474,5 +1471,10 @@ insert into estados_rendiciones_gastos values (8, 'ANULADA'                     
 
 insert into tipos_rendiciones_gastos values (1, 'SOLICITUD DE REEMBOLSO', 1, current_timestamp, null, null, null, null);
 insert into tipos_rendiciones_gastos values (2, 'RENDICIÓN DE FONDOS'   , 1, current_timestamp, null, null, null, null);
+
+insert into tipos_direcciones values (1, 'FACTURACIÓN', 1, current_timestamp, null, null, null, null);
+insert into tipos_direcciones values (2, 'DESPACHO'   , 1, current_timestamp, null, null, null, null);
+insert into tipos_direcciones values (3, 'PARTICULAR' , 1, current_timestamp, null, null, null, null);
+insert into tipos_direcciones values (4, 'COMERCIAL'  , 1, current_timestamp, null, null, null, null);
 
 \q

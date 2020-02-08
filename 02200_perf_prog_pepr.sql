@@ -28,14 +28,12 @@ insert into perfiles values (20, 'VENDEDOR'                                     
 insert into perfiles values (21, 'USUARIO'                                        , 1, current_timestamp, null, null, null, null);
 
 insert into usuarios_perfiles values (1 , 1 , 1, null, null, 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (2 , 2 , 1, null, null, 1, 1, current_timestamp, null, null, null, null);
 insert into usuarios_perfiles values (3 , 3 , 1, null, null, 1, 1, current_timestamp, null, null, null, null);
 insert into usuarios_perfiles values (4 , 4 , 1, null, null, 1, 1, current_timestamp, null, null, null, null);
 insert into usuarios_perfiles values (5 , 5 , 1, null, null, 1, 1, current_timestamp, null, null, null, null);
 insert into usuarios_perfiles values (6 , 6 , 1, null, null, 1, 1, current_timestamp, null, null, null, null);
 insert into usuarios_perfiles values (7 , 7 , 1, null, null, 1, 1, current_timestamp, null, null, null, null);
 insert into usuarios_perfiles values (8 , 8 , 1, null, null, 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (9 , 9 , 1, null, null, 1, 1, current_timestamp, null, null, null, null);
 insert into usuarios_perfiles values (10, 10, 1, null, null, 1, 1, current_timestamp, null, null, null, null);
 
 insert into programas values ( 1000, null , 'Personales'                           , null                              , 'Personales'                                , 1  , 1, current_timestamp, null, null, null, null);

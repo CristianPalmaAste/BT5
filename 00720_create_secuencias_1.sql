@@ -41,6 +41,7 @@ select 'create sequence tifp_seq start with ' || (case when MAX(ID) is null then
 select 'create sequence fpnv_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from formas_pagos_notas_ventas;
 select 'create sequence fpve_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from formas_pagos_ventas;
 select 'create sequence unte_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from unidades_territoriales;
+select 'create sequence tidi_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_direcciones;
 select 'create sequence ticl_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_clientes;
 select 'create sequence ticv_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_cotizaciones_vtas;
 select 'create sequence escv_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from estados_cotizaciones_vtas;

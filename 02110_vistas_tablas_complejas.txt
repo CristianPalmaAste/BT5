@@ -534,7 +534,3 @@ CREATE VIEW
 
 DROP VIEW
 CREATE VIEW
- nombre_holding | alias_holding | razon_social | nombre_fantasia | rut | nombre_persona | email | username | perfil 
-----------------+---------------+--------------+-----------------+-----+----------------+-------+----------+--------
-(0 filas)
-

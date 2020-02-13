@@ -536,7 +536,7 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence espc_seq start with 3
+ create sequence espc_seq start with 4
 (1 fila)
 
                ?column?                
@@ -551,7 +551,7 @@ SET
 
                 ?column?                
 ----------------------------------------
- create sequence peco_seq start with 24
+ create sequence peco_seq start with 26
 (1 fila)
 
                 ?column?                

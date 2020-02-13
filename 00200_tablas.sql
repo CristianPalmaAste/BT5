@@ -3484,6 +3484,9 @@ alter table tipos_productos_impuestos         add constraint tipi_fk_impu  forei
 alter table tipos_productos_impuestos         add constraint tipi_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table tipos_productos_impuestos         add constraint tipi_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 
+alter table tipos_direcciones                 add constraint tidi_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
+alter table tipos_direcciones                 add constraint tidi_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
+
 alter table clientes                          add constraint clie_fk_grem  foreign key (idgrem)                 references grupos_empresariales             (id);
 alter table clientes                          add constraint clie_fk_pais  foreign key (idpais)                 references paises                           (id);
 alter table clientes                          add constraint clie_fk_ticl  foreign key (idticl)                 references tipos_clientes                   (id);

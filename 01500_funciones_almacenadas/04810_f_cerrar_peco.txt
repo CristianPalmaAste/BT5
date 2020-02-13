@@ -1,1 +1,6 @@
 CREATE FUNCTION
+                                   f_cerrar_peco                                    
+------------------------------------------------------------------------------------
+ N;No existe período contable para los parámetros empresa = 2, mes = 10, año = 2020
+(1 fila)
+

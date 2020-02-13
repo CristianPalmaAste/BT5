@@ -18,18 +18,13 @@ begin
         ,Vanno_actual
   ;
   for i in Vmes_actual .. 12 loop
-    if i <= Vlimite+1 then
-      select id
-      into   Vidpeco
-      from   peco
-      where  idempr = 1
-      and    mes    = i
-      and    anno   = Vanno_actual
-      ;
-    else
-      Vidpeco := nextval('peco_seq');
-      insert into periodos_contables values (Vidpeco, 1, i, Vanno_actual, 1, 1, current_timestamp, null, null, null, null);
-    end if;
+    select id
+    into   Vidpeco
+    from   peco
+    where  idempr = 1
+    and    mes    = i
+    and    anno   = Vanno_actual
+    ;
     select id
     into   Vidcuco_caja
     from   cuentas_contables
@@ -66,14 +61,12 @@ begin
     insert into asientos_contables values (Vidasco, Vidpeco, 3, 1, 2, 'PRUEBA 2', current_timestamp, 'N', 3, null, 3, current_timestamp, null, null, null, null);
     insert into detalles_asientos_contables values (nextval('deac_seq'), Vidasco, 1, Vidcuco_caja    , 1, null, null, null, null, null, 2*i*100, 'PRUEBA 2', 3, current_timestamp, null, null, null, null);
     insert into detalles_asientos_contables values (nextval('deac_seq'), Vidasco, 2, Vidcuco_terrenos, 2, null, null, null, null, null, 2*i*100, 'PRUEBA 2', 3, current_timestamp, null, null, null, null);
-    if i <= Vlimite then
-      aux  := f_contabilizar_ventas(1, 'S', 0, 0, 3);
-      update asientos_contables
-      set    idesac = 2
-      where  idesac = 1
-      ;
-      aux  := f_cerrar_peco(1, i, 2020, 3);
-    end if;
+    aux  := f_contabilizar_ventas(1, 'S', 0, 0, 3);
+    update asientos_contables
+    set    idesac = 2
+    where  idesac = 1
+    ;
+    aux  := f_cerrar_peco(1, i, 2020, 3);
   end loop;
   return(0);
 end;

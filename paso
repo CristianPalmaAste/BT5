@@ -111,12 +111,12 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence pepr_seq start with 287
+ create sequence pepr_seq start with 288
 (1 fila)
 
                  ?column?                 
 ------------------------------------------
- create sequence cuco_seq start with 1352
+ create sequence cuco_seq start with 1373
 (1 fila)
 
                 ?column?                
@@ -276,7 +276,7 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence clie_seq start with 5
+ create sequence clie_seq start with 6
 (1 fila)
 
                 ?column?                
@@ -284,14 +284,14 @@ SET
  create sequence dicl_seq start with 10
 (1 fila)
 
-               ?column?                
----------------------------------------
- create sequence vent_seq start with 3
+                ?column?                
+----------------------------------------
+ create sequence vent_seq start with 11
 (1 fila)
 
-               ?column?                
----------------------------------------
- create sequence deve_seq start with 5
+                ?column?                
+----------------------------------------
+ create sequence deve_seq start with 15
 (1 fila)
 
                ?column?                
@@ -316,12 +316,12 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence prod_seq start with 235
+ create sequence prod_seq start with 455
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence serv_seq start with 7
+ create sequence serv_seq start with 9
 (1 fila)
 
                ?column?                
@@ -336,12 +336,12 @@ SET
 
                 ?column?                
 ----------------------------------------
- create sequence bode_seq start with 18
+ create sequence bode_seq start with 19
 (1 fila)
 
                 ?column?                
 ----------------------------------------
- create sequence bopr_seq start with 44
+ create sequence bopr_seq start with 49
 (1 fila)
 
                ?column?                
@@ -361,7 +361,7 @@ SET
 
                 ?column?                
 ----------------------------------------
- create sequence sfpr_seq start with 27
+ create sequence sfpr_seq start with 34
 (1 fila)
 
                ?column?                
@@ -369,14 +369,14 @@ SET
  create sequence timb_seq start with 6
 (1 fila)
 
-               ?column?                
----------------------------------------
- create sequence mobo_seq start with 9
+                ?column?                
+----------------------------------------
+ create sequence mobo_seq start with 12
 (1 fila)
 
                 ?column?                
 ----------------------------------------
- create sequence demb_seq start with 11
+ create sequence demb_seq start with 14
 (1 fila)
 
                ?column?                
@@ -581,6 +581,6 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence dpce_seq start with 105
+ create sequence dpce_seq start with 131
 (1 fila)
 

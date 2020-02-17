@@ -184,6 +184,16 @@ begin
   insert into proveedores values (17, 8, 1, '96792430', 'K', 2, 'SODIMAC S.A.'                                          , 'SODIMAC'  , null, null, null, null, 1, current_timestamp, null, null, null, null);
   insert into proveedores values (18, 8, 1, '76568660', '1', 2, 'EASY RETAIL S.A.'                                      , 'EASY'     , null, null, null, null, 1, current_timestamp, null, null, null, null);
 
+  select id
+  into   Vidcuco
+  from   cuco
+  where  idgrem      = 8
+  and    descripcion = 'VENTA DE SERVICIOS GENERALES'
+  ;
+
+  insert into servicios values (nextval('serv_seq'), 14, 1 , 1, 'INSTALACIÓN AIRE ACONDICIONADO', 85000, 1, Vidcuco, 16, current_timestamp, null, null, null, null);
+  insert into servicios values (nextval('serv_seq'), 14, 1 , 1, 'MANTENCIÓN CALDERA'            , 60000, 1, Vidcuco, 16, current_timestamp, null, null, null, null);
+
   return('S');
 end;
 $$ LANGUAGE plpgsql;
@@ -210,5 +220,67 @@ where  id          = 14
 ;
 
 drop function f_otros_datos_SA_JJM ();
+
+
+
+
+
+create or replace function f_otros_datos_SA_JJM2 () returns varchar(1) as
+$$
+declare
+  Vidcuco  int;
+begin
+  select id
+  into   Vidcuco
+  from   cuco
+  where  idgrem      = 8
+  and    descripcion = 'EXISTENCIAS'
+  ;
+
+  insert into clientes values (5, 8, 1, 1, '9', 1, null, null, 'CLIENTE', '.', 'GENERICO', '.', 16, current_timestamp, 16, current_timestamp, null, null);
+
+  insert into bodegas values (18, 14, 'BODEGA M3STORAGE TOBALABA', 1, current_timestamp, 16, current_timestamp, null, null);
+
+  insert into sub_familias_productos values (27, 14, '01', 'CALDERAS TRADICIONALES', Vidcuco,  1, current_timestamp, null, null, null, null);
+  insert into sub_familias_productos values (32, 15, '01', 'SPLIT MURO INVERTER'   , Vidcuco, 16, current_timestamp, null, null, null, null);
+  insert into sub_familias_productos values (33, 15, '03', 'SPLIT MURO ON-OFF'     , Vidcuco, 16, current_timestamp, null, null, null, null);
+
+  insert into productos values (235, 14, 27, 20, 9, 2, 'CALDERA KD NAVIEN 40/42'     , '0001', 'SKU', 'EAN13', 'QR', 24  , 1, 16, current_timestamp, null, null, null, null);
+  insert into productos values (236, 14, 17, 20, 9, 2, 'CODO 16 "'                   , '0055', 'SKU', 'EAN13', 'QR', 0.10, 1, 16, current_timestamp, null, null, null, null);
+  insert into productos values (237, 14, 17, 20, 9, 1, 'CODO 20 "'                   , '0056', 'SKU', 'EAN13', 'QR', 0.10, 1, 16, current_timestamp, null, null, null, null);
+  insert into productos values (238, 14, 32, 18, 9, 2, 'SPLIT MURO INVERTER 9000 BTU', '0001', 'SKU', 'EAN13', 'QR', 24  , 1, 16, current_timestamp, null, null, null, null);
+  insert into productos values (239, 14, 33, 18, 9, 2, 'SPLIT MURO ON-OFF 9000 BTU'  , '0001', 'SKU', 'EAN13', 'QR', 24  , 1, 16, current_timestamp, null, null, null, null);
+
+  insert into bodegas_productos values (44, 18, 235, 998 , 16, current_timestamp, null, null, null, null);
+  insert into bodegas_productos values (45, 18, 236, 1000, 16, current_timestamp, null, null, null, null);
+  insert into bodegas_productos values (46, 18, 237, 1000, 16, current_timestamp, null, null, null, null);
+  insert into bodegas_productos values (47, 18, 238, 1996, 16, current_timestamp, null, null, null, null);
+  insert into bodegas_productos values (48, 18, 239, 1000, 16, current_timestamp, null, null, null, null);
+
+  insert into ventas values (4 , 14, 18, null, 2, 2, 5, 'VENTA CALDERA'                         , current_timestamp, null, null, null, null, null, 0     , 1500000, 285000, 0, 0 , 0, 1785000, 1, null, 16, 16, current_timestamp, 16, current_timestamp, null, null);
+  insert into ventas values (6 , 14, 18, null, 2, 4, 5, 'INSTALACION AIRE ACONDICIONADO'        , current_timestamp, null, null, null, null, null, 255000, 0      , 0     , 0, 0 , 0, 255000 , 1, null, 16, 16, current_timestamp, 16, current_timestamp, null, null);
+  insert into ventas values (8 , 14, 18, null, 2, 6, 5, 'VENTA E INSTALACION AIRE ACONDICIONADO', current_timestamp, null, null, null, null, null, 340000, 1400000, 266000, 0, 0 , 0, 2006000, 1, null, 16, 16, current_timestamp, 16, current_timestamp, null, null);
+  insert into ventas values (10, 14, 18, null, 2, 8, 5, 'VENTA DE CALDERA'                      , current_timestamp, null, null, null, null, null, 0     , 607500 , 115425, 0, 10, 0, 722925 , 1, null, 16, 16, current_timestamp, 16, current_timestamp, null, null);
+
+  insert into detalles_ventas values (6 , 4 , 1, 235 , null, 750000, 2, 0, 0, 0, 0, 0     , 1500000, 285000, 0, 1785000, 16, current_timestamp, null, null, null, null);
+  insert into detalles_ventas values (8 , 6 , 1, null, 7   , 85000 , 3, 0, 0, 0, 0, 255000, 0      , 0     , 0, 255000 , 16, current_timestamp, null, null, null, null);
+  insert into detalles_ventas values (11, 8 , 1, null, 7   , 85000 , 4, 0, 0, 0, 0, 340000, 0      , 0     , 0, 340000 , 16, current_timestamp, null, null, null, null);
+  insert into detalles_ventas values (12, 8 , 2, 238 , null, 350000, 4, 0, 0, 0, 0, 0     , 1400000, 266000, 0, 1666000, 16, current_timestamp, null, null, null, null);
+  insert into detalles_ventas values (14, 10, 1, 235 , null, 750000, 1, 0, 0, 0, 0, 0     , 607500 , 115425, 0, 722925 , 16, current_timestamp, null, null, null, null);
+
+  update ventas
+  set    idesve = 2
+  where  idempr = 14
+  and    idesve = 1
+  ;
+
+  return('S');
+end;
+$$ LANGUAGE plpgsql;
+
+select f_otros_datos_SA_JJM2();
+
+drop function f_otros_datos_SA_JJM2 ();
+
 
 \q

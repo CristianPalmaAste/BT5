@@ -1508,10 +1508,10 @@ order  by 1
 
 /*************************************************************************************************************************/
 
-drop view if exists buscador_usuarios_v
+drop view if exists buscador_usuarios
 ;
 
-create or replace view buscador_usuarios_v as
+create or replace view buscador_usuarios as
 select grem.id                                                                                                                                  id
       ,grem.nombre                                                                                                                              nombre_grupo_empresarial
       ,grem.alias                                                                                                                               alias_grupo_empresarial

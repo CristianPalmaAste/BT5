@@ -13,7 +13,6 @@ declare
   Viduspe  int;
   Vidpepr  int;
 begin
-raise notice 'm1';
   select nextval('grem_seq') into Vidgrem;
   insert into grupos_empresariales values (Vidgrem, 'METALPAR'          , 'MPAR', 'hold_metalpar.jpg', 1, 1, 1, current_timestamp, null, null, null, null);
   select nextval('pers_seq') into Vidpers;
@@ -21,7 +20,6 @@ raise notice 'm1';
   select nextval('usua_seq') into Vidusua;
   insert into usuarios values (Vidusua, 'JCISTERNAF', 'ABC12', Vidpers, 1, 1, current_timestamp, null, null, null, null);
   select nextval('rubr_seq') into Vidrubr;
-raise notice 'm2';
     -- empresas
     Vidrubr := 675;
     select nextval('empr_seq') into Vidempr;
@@ -150,7 +148,6 @@ raise notice 'm2';
 --    insert into usuarios_perfiles values (Viduspe, Vidusua, 17, null, Vidempr, 1, 1, current_timestamp, null, null, null, null);
     select nextval('pepr_seq') into Vidpepr;
 
-raise notice 'm3';
   select nextval('grem_seq') into Vidgrem;
   insert into grupos_empresariales values (Vidgrem, 'CRUZ VERDE'        , 'CV'  , 'hold_cruz_verde.jpg'      , 1, 1, 1, current_timestamp, null, null, null, null);
     -- empresas
@@ -301,7 +298,6 @@ raise notice 'm3';
     insert into tareas values (nextval('tare_seq'), Vidempr, 'OTRA TAREA'      , 1, current_timestamp, null, null, null, null);
     insert into tareas values (nextval('tare_seq'), Vidempr, 'ULTIMA TAREA'    , 1, current_timestamp, null, null, null, null);
 
-raise notice 'm4';
   select nextval('grem_seq') into Vidgrem;
   insert into grupos_empresariales values (Vidgrem, 'AMASANDERIA TRIGAL', 'AT'  , 'hold_trigal.jpg'      , 1, 1, 1, current_timestamp, null, null, null, null);
     -- empresas
@@ -310,7 +306,6 @@ raise notice 'm4';
     insert into empresas values (Vidempr, Vidgrem, 1, Vidrubr-0, 1, '76765660', '2', 'AMASANDERIA TRIGAL'                , 'TRIGAL'                   , 'emp_trigal.jpg' , 1, current_timestamp, null, null, null, null, '')
     ;
 
-raise notice 'm5';
   return('S');
 end;
 $$ LANGUAGE plpgsql;
@@ -332,6 +327,7 @@ declare
   Vidperf  int;
   Vidpepr  int;
   Vidprog  int;
+  Vidcuco  int;
   C_programas cursor for
     select id
     from   programas
@@ -339,12 +335,11 @@ declare
     ;
   Vcatalog_name varchar(100);
 begin
-raise notice 'm6';
   select catalog_name
   into   Vcatalog_name
   from   information_schema.information_schema_catalog_name
   ;
-  if Vcatalog_name = 'XXXXX' then
+  if Vcatalog_name in ('test1', 'test3') then
     select nextval('pers_seq') into Vidpers;
     --
     insert into personas values (Vidpers   , 1,     '999',         '7',           'USUARIO'  , null,         'ACCESO'      , 'TOTAL',        null, null    , null,  null,  null, 1,                 current_timestamp, null,    
@@ -384,7 +379,6 @@ raise notice 'm6';
     end loop;
     close C_programas;
   end if;
-raise notice 'm6';
   --
   insert into documentos_legales values (1 , 1, 1, 'prueba_1.txt'       , 'prueba_1.txt'       , 1, cast(current_timestamp as date) - cast('1 days' as interval), 'LA UNICA'                    , 'F1' , 'PEDRO PIEDRA'    , 'NINGUNO'          , cast(current_timestamp as date) + cast('11 days' as interval), 'GERARDO.PALMA.ASTE@GMAIL.COM', 'N', 1, current_timestamp, null, null, null, null, null);
   insert into documentos_legales values (2 , 1, 2, 'prueba_2.txt'       , 'prueba_2.txt'       , 1, cast(current_timestamp as date) - cast('2 days' as interval), 'LA CUCHUFLETA'               , '100', 'JUAN SOTO'       , 'NADA'             , cast(current_timestamp as date) + cast('12 days' as interval), 'GERARDO.PALMA.ASTE@GMAIL.COM', 'N', 1, current_timestamp, null, null, null, null, null);
@@ -429,14 +423,20 @@ raise notice 'm6';
   insert into productos values (16, 1, 1, 15, 9, 1, 'LIBRO DE RECETAS MASTER CHEF'     , '0016', 'a', 'a', 'a', 1, 1, 1, current_timestamp, null, null, null, null);
   insert into productos values (17, 1, 1, 5 , 9, 1, 'PISCO CAPEL 35°'                  , '0017', 'a', 'a', 'a', 1, 1, 1, current_timestamp, null, null, null, null);
 
-  insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'CONSULTOR JUNIOR'    , 0.5   , 12, 1, current_timestamp, null, null, null, null);
-  insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'CONSULTOR SENIOR'    , 1     , 12, 1, current_timestamp, null, null, null, null);
-  insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'JEFE DE PROYECTO'    , 1.5   , 12, 1, current_timestamp, null, null, null, null);
-  insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'GERENTE DE PROYECTO' , 3     , 12, 1, current_timestamp, null, null, null, null);
-  insert into servicios values (nextval('serv_seq'), 1 , 2 , 1, 'ASEO'                , 5000  , 1 , 1, current_timestamp, null, null, null, null);
-  insert into servicios values (nextval('serv_seq'), 1 , 2 , 1, 'GUARDIA DE SEGURIDAD', 10000 , 1 , 1, current_timestamp, null, null, null, null);
+  select id
+  into   Vidcuco
+  from   cuco
+  where  idgrem      = 1
+  and    descripcion = 'VENTA DE SERVICIOS GENERALES'
+  ;
 
-raise notice 'm7';
+  insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'CONSULTOR JUNIOR'    , 0.5   , 12, Vidcuco, 1, current_timestamp, null, null, null, null);
+  insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'CONSULTOR SENIOR'    , 1     , 12, Vidcuco, 1, current_timestamp, null, null, null, null);
+  insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'JEFE DE PROYECTO'    , 1.5   , 12, Vidcuco, 1, current_timestamp, null, null, null, null);
+  insert into servicios values (nextval('serv_seq'), 1 , 1 , 1, 'GERENTE DE PROYECTO' , 3     , 12, Vidcuco, 1, current_timestamp, null, null, null, null);
+  insert into servicios values (nextval('serv_seq'), 1 , 2 , 1, 'ASEO'                , 5000  , 1 , Vidcuco, 1, current_timestamp, null, null, null, null);
+  insert into servicios values (nextval('serv_seq'), 1 , 2 , 1, 'GUARDIA DE SEGURIDAD', 10000 , 1 , Vidcuco, 1, current_timestamp, null, null, null, null);
+
   -- petición JJM: usuario con perfil de "legales"
   /*
   select nextval('pers_seq') into Vidpers;
@@ -474,7 +474,6 @@ declare
   Vidcove  int;
   Vidclie  int;
 begin
-raise notice 'm8';
   Vidclie := nextval('clie_seq');
   insert into clientes values (Vidclie                        -- id                       numeric(20,0)   not null
                               ,1                              -- idgrem                   numeric(20,0)   not null
@@ -496,7 +495,6 @@ raise notice 'm8';
                               ,null                           -- fechaborraregistro       timestamp           null
                               )
   ;
-raise notice 'm9';
   insert into direcciones_clientes values (nextval('dicl_seq'), Vidclie, 3, 'PLAZA CASTELAR'    , '01160', 338, null     , 1, current_timestamp, null, null, null, null)
   ;
   insert into direcciones_clientes values (nextval('dicl_seq'), Vidclie, 4, 'CAMINO A MELIPILLA', '9236' , 348, 223682140, 1, current_timestamp, null, null, null, null)
@@ -504,7 +502,6 @@ raise notice 'm9';
   select nextval('cove_seq')
   into   Vidcove
   ;
-raise notice 'm10';
   insert into cotizaciones_ventas values (Vidcove                    -- id                       numeric(20,0)   not null
                                          ,1                          -- idempr                   numeric(20,0)   not null
                                          ,1                          -- idbode                   numeric(20,0)   not null
@@ -656,7 +653,6 @@ raise notice 'm10';
                                           ,null                                      -- fechaborraregistro       timestamp           null
                                           )
   ;
-raise notice 'm11';
   return('S');
 end;
 $$ LANGUAGE plpgsql;
@@ -943,16 +939,6 @@ insert into doctos_cotizacs_servs_hono values (nextval('dcsh_seq'), 1, 'cotizaci
 insert into doctos_cotizacs_servs_hono values (nextval('dcsh_seq'), 1, 'cotizacion2.pdf', 'abcde_12342.pdf', 1, current_timestamp, null, null, null, null);
 insert into doctos_cotizacs_servs_hono values (nextval('dcsh_seq'), 1, 'cotizacion3.pdf', 'abcde_12343.pdf', 1, current_timestamp, null, null, null, null);
 insert into doctos_cotizacs_servs_hono values (nextval('dcsh_seq'), 1, 'cotizacion4.pdf', 'abcde_12344.pdf', 1, current_timestamp, null, null, null, null);
-
-/*
-insert into ordenes_servicios_hono values (nextval('orsh_seq'), 1, 1, 1, 'CODIGO ALFA'   , 7, 'SERVICIO URGENTE', 'BUENO'  , 3, null, null, null, null, null, 1, current_timestamp, null, null, null, null);
-insert into ordenes_servicios_hono values (nextval('orsh_seq'), 1, 2, 2, 'CODIGO BRAVO'  , 8, 'SERVICIO NORMAL' , null     , 2, null, null, null, null, null, 1, current_timestamp, null, null, null, null);
-insert into ordenes_servicios_hono values (nextval('orsh_seq'), 1, 1, 3, 'CODIGO CHARLIE', 9, 'SERVICIO BASICO' , null     , 1, null, null, null, null, null, 1, current_timestamp, null, null, null, null);
-insert into ordenes_servicios_hono values (nextval('orsh_seq'), 1, 2, 4, 'SIN CODIGO'    , 5, 'S/D'             , 'REGULAR', 3, null, null, null, null, null, 1, current_timestamp, null, null, null, null);
-insert into ordenes_servicios_hono values (nextval('orsh_seq'), 1, 1, 5, 'ZX-15-QTY-KK'  , 6, 'NADA'            , null     , 2, null, null, null, null, null, 1, current_timestamp, null, null, null, null);
-
-insert into doctos_ordenes_servs_hono values (nextval('dosh_seq'), 1, 'archivo1.txt', 'abcde_12341.txt', 1, current_timestamp, null, null, null, null);
-*/
 
 insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 5 , 5 , 1, current_timestamp, null, null, null, null);
 insert into autorizadores_requisiciones values (nextval('aure_seq'), 1, 5 , 6 , 1, current_timestamp, null, null, null, null);

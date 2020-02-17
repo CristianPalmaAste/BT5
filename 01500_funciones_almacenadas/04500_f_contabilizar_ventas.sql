@@ -81,6 +81,14 @@ declare
     and    prod.idsfpr = sfpr.id
     and    deve.idvent = Vidvent
     group  by sfpr.idcuco
+    union
+    select serv.idcuco
+          ,sum(deve.afecto + deve.exento)
+    from   detalles_ventas deve
+          ,servicios       serv
+    where  deve.idserv = serv.id
+    and    deve.idvent = Vidvent
+    group  by serv.idcuco
     ;
   C_ctas_ctbles_otros_conceptos cursor for
     select dpce.idcoca
@@ -119,7 +127,7 @@ begin
   where  id = Pidempr
   ;
   if aux = 0 then
-    Vmensaje := 'N;El parámetro Pidempr no existe en la tabla empresas';
+    Vmensaje := 'N;El parámetro ' || Pidempr || ' no existe en la tabla empresas';
     return(Vmensaje);
   end if;
   if Ptodas_S_N not in ('S', 'N')  then
@@ -361,9 +369,45 @@ begin
 end;
 $body$ LANGUAGE plpgsql;
 
+
+
+
+
+
+
 update ventas
 set    idasco = null
+where  id     = 8
 ;
+
+select exento, afecto, impuestosobligats, impuestosespecifs, montodescuento, total from vent where id = 8;
+
+select correlativo, montodescuento1, montodescuento2, exento, afecto, impuestosobligats, impuestosespecifs, totallinea from deve where idvent = 8 order by 1;
+
+select f_contabilizar_ventas(15, 'N' , 20200201, 20200201, 3);
+
+select *
+from   asco
+where  id = (select max(id)
+             from   asco
+            )
+;
+
+select *
+from   deac
+where  idasco = (select max(id)
+                 from   asco
+                )
+;
+
+
+
+
+
+
+
+
+\q
 
 delete from detalles_asientos_contables
 ;

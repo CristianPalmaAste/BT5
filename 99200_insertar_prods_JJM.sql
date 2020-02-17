@@ -1,3 +1,5 @@
+set client_min_messages to error;
+
 drop table if exists tmp_prods_JJM 
 ;
 

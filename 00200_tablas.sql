@@ -1774,6 +1774,7 @@ create table servicios (
   ,nombre                   varchar(1000)   not null
   ,preciounitario           numeric(20,2)   not null
   ,idmone                   numeric(20,0)   not null
+  ,idcuco                   numeric(20,0)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
   ,idusuamodifregistro      numeric(20,0)       null
@@ -3587,6 +3588,7 @@ alter table servicios                         add constraint serv_fk_empr  forei
 alter table servicios                         add constraint serv_fk_tise  foreign key (idtise)                 references tipos_servicios                  (id);
 alter table servicios                         add constraint serv_fk_unms  foreign key (idunms)                 references unidades_medidas_servicios       (id);
 alter table servicios                         add constraint serv_fk_mone  foreign key (idmone)                 references monedas                          (id);
+alter table servicios                         add constraint serv_fk_cuco  foreign key (idcuco)                 references cuentas_contables                (id);
 alter table servicios                         add constraint serv_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table servicios                         add constraint serv_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 

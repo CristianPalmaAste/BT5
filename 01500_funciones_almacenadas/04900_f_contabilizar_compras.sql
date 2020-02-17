@@ -289,16 +289,16 @@ begin
                                               ,Vidcuco_otros_conceptos
                                               ;
       exit when not found;
-      if    Vidcoca = 1 and Vimpuesto != 0 then
+      if    Vidcoca = 1 and Vimpuesto      != 0 then
         Vvalor_linea := Vimpuesto;
         Vidtiec      := 2;
-      elsif Vidcoca = 3 and Vtotal             != 0 then
+      elsif Vidcoca = 3 and Vtotal         != 0 then
         Vvalor_linea := Vtotal;
         Vidtiec      := 1;
-      elsif Vidcoca = 4 and Vservicios         != 0 then
+      elsif Vidcoca = 4 and Vservicios     != 0 then
         Vvalor_linea := Vservicios;
         Vidtiec      := 2;
-      elsif Vidcoca = 5 and Votras_compras      != 0 then
+      elsif Vidcoca = 5 and Votras_compras != 0 then
         Vvalor_linea := Votras_compras;
         Vidtiec      := 2;
       else

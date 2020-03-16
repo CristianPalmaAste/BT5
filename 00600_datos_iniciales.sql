@@ -680,7 +680,7 @@ insert into conceptos_contabilizacs_automats values (1, 'IMPUESTOS OBLIGATORIOS'
 insert into conceptos_contabilizacs_automats values (2, 'IMPUESTOS ESPECÍFICOS' , 1, current_timestamp, null, null, null, null);
 insert into conceptos_contabilizacs_automats values (3, 'INGRESOS (CAJA)'       , 1, current_timestamp, null, null, null, null);
 insert into conceptos_contabilizacs_automats values (4, 'SERVICIOS'             , 1, current_timestamp, null, null, null, null);
-insert into conceptos_contabilizacs_automats values (5, 'OTRAS VENTAS'          , 1, current_timestamp, null, null, null, null);
+insert into conceptos_contabilizacs_automats values (5, 'OTROS'                 , 1, current_timestamp, null, null, null, null);
 insert into conceptos_contabilizacs_automats values (6, 'DESCUENTOS'            , 1, current_timestamp, null, null, null, null);
 
 insert into tipos_asocs_ctas_ctbles values (1, 'ACTIVO'  , 1, current_timestamp, null, null, null, null);

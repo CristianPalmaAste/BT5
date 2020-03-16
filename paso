@@ -404,9 +404,9 @@ SET
  create sequence requ_seq start with 3
 (1 fila)
 
-               ?column?                
----------------------------------------
- create sequence dere_seq start with 7
+                ?column?                
+----------------------------------------
+ create sequence dere_seq start with 11
 (1 fila)
 
                 ?column?                 
@@ -436,7 +436,7 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence deoc_seq start with 4
+ create sequence deoc_seq start with 6
 (1 fila)
 
                ?column?                
@@ -551,17 +551,17 @@ SET
 
                 ?column?                
 ----------------------------------------
- create sequence peco_seq start with 26
+ create sequence peco_seq start with 25
 (1 fila)
 
                 ?column?                
 ----------------------------------------
- create sequence asco_seq start with 25
+ create sequence asco_seq start with 23
 (1 fila)
 
                 ?column?                
 ----------------------------------------
- create sequence deac_seq start with 51
+ create sequence deac_seq start with 47
 (1 fila)
 
                ?column?                

@@ -155,6 +155,16 @@ begin
     Vmensaje := 'N;No hay compras pendientes de contabilizar para los parámetros indicados';
     return(Vmensaje);
   end if;
+  select id
+  into   Vidpeco
+  from   periodos_contables
+  where  idempr = Pidempr
+  and    idespc = 1
+  ;
+  if Vidpeco is null then
+    Vmensaje := 'N;No hay un período contable abierto para esta empresa';
+    return(Vmensaje);
+  end if;
   --
   -- Si se llegó hasta aquí, quiere decir que se pasaron todas las validaciones -> se procede con la generación del asiento contable
   --
@@ -173,16 +183,6 @@ begin
                               ,Vidtare
                               ;
     exit when not found;
-    select id
-    into   Vidpeco
-    from   periodos_contables
-    where  idempr = Pidempr
-    and    idespc = 1
-    ;
-    if Vidpeco is null then
-      Vmensaje := 'N;No hay un período contable abierto para esta empresa';
-      return(Vmensaje);
-    end if;
     select max(numero_asiento)
     into   Vnumero_asiento
     from   asientos_contables

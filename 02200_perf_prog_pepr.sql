@@ -141,8 +141,8 @@ insert into programas values ( 9000, null , 'Ventas'                            
 insert into programas values ( 9010,  9000, 'Cotizaciones ventas'                  , 'CotizacionesVentas'              , 'Cotizaciones ventas'                       , 1  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 9020,  9000, 'Aprobación de cotizaciones'           , 'CotizacionesVentas/selCotizs'    , 'Aprobación de cotizaciones'                , 2  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 9030,  9000, 'Notas ventas'                         , 'NotasVentas'                     , 'Notas ventas'                              , 3  , 1, current_timestamp, null, null, null, null);
-insert into programas values ( 9040,  9000, 'Ventas'                               , 'Ventas'                          , 'Ventas'                                    , 4  , 1, current_timestamp, null, null, null, null);
-insert into programas values ( 9050,  9000, 'Mant. clientes'                       , 'clientes'                        , 'Mantención clientes'                       , 5  , 1, current_timestamp, null, null, null, null);
+insert into programas values ( 9040,  9000, 'Registro de ventas'                   , 'Ventas'                          , 'Registro de ventas'                        , 4  , 1, current_timestamp, null, null, null, null);
+insert into programas values ( 9050,  9000, 'Mant. clientes 2'                     , 'clientes'                        , 'Mantención clientes 2'                     , 5  , 1, current_timestamp, null, null, null, null);
 
 insert into programas values (10000, null , 'Contabilidad'                         , null                              , 'Contabilidad'                              , 13 , 1, current_timestamp, null, null, null, null);
 insert into programas values (10010, 10000, 'Mantención cuentas contables'         , 'CuentasContables'                , 'Mantención cuentas contables'              , 1  , 1, current_timestamp, null, null, null, null);

@@ -9,6 +9,7 @@ declare
   Vidserv                   numeric(20,0);
   Votroinsumo               varchar(1000);
   Vcantidad                 numeric(20,0);
+  Vpreciounitario           numeric(20,0);
   Viddeoc                   numeric(20,0);
   C_dere cursor for
     select id
@@ -18,6 +19,7 @@ declare
           ,idserv
           ,otroinsumo
           ,cantidad
+          ,preciounitario
     from   detalles_requisiciones
     where  idrequ = new.id
     ;
@@ -80,6 +82,7 @@ begin
                        ,Vidserv
                        ,Votroinsumo
                        ,Vcantidad
+                       ,Vpreciounitario
                        ;
       exit when not found;
       select nextval('deoc_seq')
@@ -94,6 +97,7 @@ begin
                                            ,idserv                   -- numeric(20,0)       null
                                            ,otroinsumo               -- varchar(1000)       null
                                            ,cantidad                 -- numeric(20,0)   not null
+                                           ,preciounitario           -- numeric(20,0)   not null
                                            ,idusuacrearegistro       -- numeric(20,0)   not null
                                            ,fechacrearegistro        -- timestamp       not null
                                            )
@@ -105,6 +109,7 @@ begin
              ,Vidserv                             -- idserv                   numeric(20,0)       null
              ,Votroinsumo                         -- otroinsumo               varchar(1000)       null
              ,Vcantidad                           -- cantidad                 numeric(20,0)   not null
+             ,Vpreciounitario                     -- preciounitario           numeric(20,0)   not null
              ,new.idusuacrearegistro              -- idusuacrearegistro       numeric(20,0)   not null
              ,current_timestamp                   -- fechacrearegistro        timestamp       not null
              )

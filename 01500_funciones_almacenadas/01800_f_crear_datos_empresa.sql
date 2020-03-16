@@ -120,7 +120,7 @@ begin
       insert into detalles_procesos_ctbles_empresas values (nextval('dpce_seq'), Vidprce, 3, Vidcuco_caja         , 2, 1, current_timestamp, null, null, null, null);
       insert into detalles_procesos_ctbles_empresas values (nextval('dpce_seq'), Vidprce, 4, Vidcuco_servicios    , 2, 1, current_timestamp, null, null, null, null);
       insert into detalles_procesos_ctbles_empresas values (nextval('dpce_seq'), Vidprce, 5, Vidcuco_otras_compras, 2, 1, current_timestamp, null, null, null, null);
-      insert into detalles_procesos_ctbles_empresas values (nextval('dpce_seq'), Vidprce, 6, Vidcuco_caja         , 2, 1, current_timestamp, null, null, null, null);
+      insert into detalles_procesos_ctbles_empresas values (nextval('dpce_seq'), Vidprce, 6, Vidcuco_descuentos   , 2, 1, current_timestamp, null, null, null, null);
 
   insert into autorizadores_requisiciones values (nextval('aure_seq'), new.id, 5 , 5 , 1, current_timestamp, null, null, null, null);
   insert into autorizadores_requisiciones values (nextval('aure_seq'), new.id, 5 , 6 , 1, current_timestamp, null, null, null, null);

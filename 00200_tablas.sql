@@ -487,6 +487,12 @@ alter table programas add constraint prog_pk primary key (id)
 alter table programas add constraint prog_uk_01 unique (idprogpadre, peso)
 ;
 
+alter table programas add constraint prog_uk_02 unique (titulo)
+;
+
+alter table programas add constraint prog_uk_03 unique (etiqueta)
+;
+
 /*************************************************************************************************************************/
 
 create table usuarios (
@@ -2209,6 +2215,7 @@ create table detalles_requisiciones (
   ,idserv                   numeric(20,0)       null
   ,otroinsumo               varchar(1000)       null
   ,cantidad                 numeric(20,0)   not null
+  ,preciounitario           numeric(20,0)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
   ,idusuamodifregistro      numeric(20,0)       null
@@ -2370,6 +2377,7 @@ create table detalles_ordenes_compras (
   ,idserv                   numeric(20,0)       null
   ,otroinsumo               varchar(1000)       null
   ,cantidad                 numeric(20,0)   not null
+  ,preciounitario           numeric(20,0)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
   ,idusuamodifregistro      numeric(20,0)       null

@@ -43,8 +43,6 @@ declare
   Vidcoca                         int;
   Vidcuco_otros_conceptos         int;
   Vvalor_linea                    numeric;
-  Vservicios                      numeric;
-  Votras_ventas                   numeric;
   Vfecha_ini_txt                  varchar(100);
   C_ventas_pdtes cursor for
     select id                 idvent
@@ -287,10 +285,6 @@ begin
       ;
     end loop;
     close C_detalles_ventas;
-    update ventas
-    set    idasco = Vidasco
-    where  id     = Vidvent
-    ;
     open C_ctas_ctbles_otros_conceptos;
     loop
       fetch C_ctas_ctbles_otros_conceptos into Vidcoca
@@ -306,12 +300,6 @@ begin
       elsif Vidcoca = 3 and Vtotal             != 0 then
         Vvalor_linea := Vtotal;
         Vidtiec      := 1;
-      elsif Vidcoca = 4 and Vservicios         != 0 then
-        Vvalor_linea := Vservicios;
-        Vidtiec      := 2;
-      elsif Vidcoca = 5 and Votras_ventas      != 0 then
-        Vvalor_linea := Votras_ventas;
-        Vidtiec      := 2;
       elsif Vidcoca = 6 and Vdescuentos        != 0 then
         Vvalor_linea := Vdescuentos;
         Vidtiec      := 2;
@@ -363,6 +351,10 @@ begin
       end if;
     end loop;
     close C_ctas_ctbles_otros_conceptos;
+    update ventas
+    set    idasco = Vidasco
+    where  id     = Vidvent
+    ;
   end loop;
   close C_ventas_pdtes;
   return 'S;Contabilización ejecutada exitosamente';

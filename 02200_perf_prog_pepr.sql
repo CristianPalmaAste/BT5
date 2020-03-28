@@ -153,7 +153,7 @@ insert into programas values (10050, 10000, 'Reportes contables'                
 insert into programas values (10060, 10000, 'Contabilización automática de compras', 'ContabAutCompras'                , 'Contabilización automática de compras'     , 6  , 1, current_timestamp, null, null, null, null);
 insert into programas values (10070, 10000, 'Contabilización automática de ventas' , 'ContabAutVentas'                 , 'Contabilización automática de ventas'      , 7  , 1, current_timestamp, null, null, null, null);
 insert into programas values (10080, 10000, 'Cierre período contable'              , 'CierresPeriodosContables'        , 'Cierre período contable'                   , 8  , 1, current_timestamp, null, null, null, null);
-insert into programas values (10090, 10000, 'Balance'                              , 'Balances'                        , 'Balance'                                   , 9  , 1, current_timestamp, null, null, null, null);
+insert into programas values (10090, 10000, 'Resumen cuentas contables'            , 'Balances'                        , 'Resumen cuentas contables'                 , 9  , 1, current_timestamp, null, null, null, null);
 
 insert into programas values (11000, null , 'Existencias'                          , null                              , 'Existencias'                               , 14 , 1, current_timestamp, null, null, null, null);
 insert into programas values (11010, 11000, 'Mantención bodegas'                   , 'bodegas'                         , 'Mantención bodegas'                        , 1  , 1, current_timestamp, null, null, null, null);

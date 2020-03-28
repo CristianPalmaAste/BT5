@@ -1,13 +1,13 @@
 CREATE FUNCTION
 DELETE 0
-                               f_generar_balance                               
--------------------------------------------------------------------------------
- N;El año/mes límite para el cual se desea obtener el balance, no está cerrado
+        f_generar_balance         
+----------------------------------
+ S;Balance ejecutado exitosamente
 (1 fila)
 
-                               f_generar_balance                               
--------------------------------------------------------------------------------
- N;El año/mes límite para el cual se desea obtener el balance, no está cerrado
+        f_generar_balance         
+----------------------------------
+ S;Balance ejecutado exitosamente
 (1 fila)
 
  idsesion | correlativo | cuenta_contable | descrpcion_cuenta | debe_o_haber | valor | fechacrearegistro 

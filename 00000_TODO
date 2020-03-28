@@ -183,6 +183,9 @@ psql -d $DBNAME -U $USUARIO_DB < 05000_f_datos_servicio.sql > 05010_f_datos_serv
 echo "  05100_f_datos_direccion_cliente"
 psql -d $DBNAME -U $USUARIO_DB < 05100_f_datos_direccion_cliente.sql > 05110_f_datos_direccion_cliente.txt
 
+echo "  05200_ultimo_dia"
+psql -d $DBNAME -U $USUARIO_DB < 05200_ultimo_dia.sql > 05210_ultimo_dia.txt
+
 cd ..
 
 cd 01600_triggers

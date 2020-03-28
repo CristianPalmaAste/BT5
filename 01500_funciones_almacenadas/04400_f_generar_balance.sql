@@ -47,18 +47,6 @@ begin
   delete from tmp_balance
   where  idsesion = Pidsesion
   ;
-  -- Validaciones previas
-  select count(*)
-  into   aux
-  from   periodos_contables
-  where  idempr = Pidempr
-  and    anno   = Panno_fin
-  and    mes    = Pmes_fin
-  and    idespc = 2
-  ;
-  if aux = 0 then
-    return('N;El año/mes límite para el cual se desea obtener el balance, no está cerrado');
-  end if;
   i      := 0;
   Vtotal := 0;
   select idgrem

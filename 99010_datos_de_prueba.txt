@@ -239,6 +239,7 @@ INSERT 0 1
 INSERT 0 1
 INSERT 0 1
 INSERT 0 1
+INSERT 0 1
  ?column? 
 ----------
  m99

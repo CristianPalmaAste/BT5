@@ -165,9 +165,9 @@ begin
   insert into productos values (18, '14', '17', '16', '9', '1', 'CODO 16', '0001', 'A', 'B', 'C', '0.10', '1', 16, current_timestamp, null, null, null, null);
   insert into productos values (19, '14', '17', '16', '9', '2', 'CODO 20', '0002', 'A', 'B', 'C', '0.10', '1', 16, current_timestamp, null, null, null, null);
 
-  insert into clientes values (2, '8', '1', '76016770', '3', '2', 'SOC EDUCACIONAL E INMOBILIARIA SANTA TERESITA LIMITADA', 'JARDIN SANTA TERESITA'    , null, null, null, null, 16, current_timestamp, null, null, null, null);
-  insert into clientes values (3, '8', '1', '76094408', '4', '2', 'CONSTRUCTORA LCM LIMITADA'                             , 'CONSTRUCTORA LCM LIMITADA', null, null, null, null, 16, current_timestamp, null, null, null, null);
-  insert into clientes values (4, '8', '1', '76071730', '4', '2', 'JARDIN INFANTIL MONTESSORI RAYHUE III LIMITADA'        , 'JARDIN LOS TRAPENSES'     , null, null, null, null, 16, current_timestamp, null, null, null, null);
+  insert into clientes values (2, '8', '1', '76016770', '3', '2', 'SOC EDUCACIONAL E INMOBILIARIA SANTA TERESITA LIMITADA', 'JARDIN SANTA TERESITA'    , null, null, null, null, null, 16, current_timestamp, null, null, null, null);
+  insert into clientes values (3, '8', '1', '76094408', '4', '2', 'CONSTRUCTORA LCM LIMITADA'                             , 'CONSTRUCTORA LCM LIMITADA', null, null, null, null, null, 16, current_timestamp, null, null, null, null);
+  insert into clientes values (4, '8', '1', '76071730', '4', '2', 'JARDIN INFANTIL MONTESSORI RAYHUE III LIMITADA'        , 'JARDIN LOS TRAPENSES'     , null, null, null, null, null, 16, current_timestamp, null, null, null, null);
 
   insert into direcciones_clientes values (nextval('dicl_seq'), 2, 1, 'ALAMEDA'         , '1256', 328, null, 1, current_timestamp, null, null, null, null);
   insert into direcciones_clientes values (nextval('dicl_seq'), 2, 2, 'CAMINO A LONQUEN', '6578', 348, null, 1, current_timestamp, null, null, null, null);
@@ -237,7 +237,7 @@ begin
   and    descripcion = 'EXISTENCIAS'
   ;
 
-  insert into clientes values (5, 8, 1, 1, '9', 1, null, null, 'CLIENTE', '.', 'GENERICO', '.', 16, current_timestamp, 16, current_timestamp, null, null);
+  insert into clientes values (5, 8, 1, 1, '9', 1, null, null, 'CLIENTE', '.', 'GENERICO', '.', null, 16, current_timestamp, 16, current_timestamp, null, null);
 
   insert into bodegas values (18, 14, 'BODEGA M3STORAGE TOBALABA', 1, current_timestamp, 16, current_timestamp, null, null);
 

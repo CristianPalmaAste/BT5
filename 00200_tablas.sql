@@ -1413,6 +1413,7 @@ create table clientes (
   ,segundonombre            varchar(100)        null
   ,apellidopaterno          varchar(100)        null
   ,apellidomaterno          varchar(100)        null
+  ,email                    varchar(100)        null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
   ,idusuamodifregistro      numeric(20,0)       null
@@ -2794,6 +2795,7 @@ alter table historiales_rendiciones add constraint hirn_chk_01 check (
 
 create table compras (
    id                       numeric(20,0)   not null
+  ,idempr                   numeric(20,0)   not null
   ,idreco                   numeric(20,0)       null
   ,idprov                   numeric(20,0)   not null
   ,idtidv                   numeric(20,0)   not null
@@ -2855,6 +2857,7 @@ alter table detalles_compras add constraint deco_chk_01 check (
                                                               )
 ;
 
+/*************************************************************************************************************************/
 /*************************************************************************************************************************/
 
 create table tipos_asocs_ctas_ctbles (
@@ -3694,6 +3697,7 @@ alter table unidades_medidas_productos        add constraint unmp_fk3_usua forei
 alter table unidades_medidas_servicios        add constraint unms_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table unidades_medidas_servicios        add constraint unms_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 
+alter table compras                           add constraint comp_fk_empr  foreign key (idempr)                 references empresas                         (id);
 alter table compras                           add constraint comp_fk_reco  foreign key (idreco)                 references recepciones_compras              (id);
 alter table compras                           add constraint comp_fk_prov  foreign key (idprov)                 references proveedores                      (id);
 alter table compras                           add constraint comp_fk_tidv  foreign key (idtidv)                 references tipos_doctos_ventas              (id);

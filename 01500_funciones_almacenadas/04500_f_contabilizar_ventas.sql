@@ -44,6 +44,11 @@ declare
   Vidcuco_otros_conceptos         int;
   Vvalor_linea                    numeric;
   Vfecha_ini_txt                  varchar(100);
+  Vmes_peco                       int;
+  Vanno_peco                      int;
+  Vmes_actual                     int;
+  Vanno_actual                    int;
+  Vfecha_asiento                  date;
   C_ventas_pdtes cursor for
     select id                 idvent
           ,afecto+exento      neto
@@ -159,6 +164,30 @@ begin
     Vmensaje := 'N;No hay ventas pendientes de contabilizar para los parámetros indicados';
     return(Vmensaje);
   end if;
+  select id
+  into   Vidpeco
+  from   periodos_contables
+  where  idempr = Pidempr
+  and    idespc = 1
+  ;
+  if Vidpeco is null then
+    Vmensaje := 'N;No hay un período contable abierto para esta empresa';
+    return(Vmensaje);
+  end if;
+  select mes
+        ,anno
+  into   Vmes_peco
+        ,Vanno_peco
+  from   periodos_contables
+  where  id = Vidpeco
+  ;
+  Vmes_actual  := to_char(current_timestamp,'mm');
+  Vanno_actual := to_char(current_timestamp,'yyyy');
+  if Vmes_peco = Vmes_actual and Vanno_peco = Vanno_actual then
+    Vfecha_asiento := current_timestamp;
+  else
+    Vfecha_asiento := ultimo_dia(to_date(Vanno_peco || '-' || Vmes_peco,'yyyy-mm'));
+  end if;
   --
   -- Si se llegó hasta aquí, quiere decir que se pasaron todas las validaciones -> se procede con la generación del asiento contable
   --
@@ -179,16 +208,6 @@ begin
                              ,Vidtare
                              ;
     exit when not found;
-    select id
-    into   Vidpeco
-    from   periodos_contables
-    where  idempr = Pidempr
-    and    idespc = 1
-    ;
-    if Vidpeco is null then
-      Vmensaje := 'N;No hay un período contable abierto para esta empresa';
-      return(Vmensaje);
-    end if;
     select max(numero_asiento)
     into   Vnumero_asiento
     from   asientos_contables
@@ -224,7 +243,7 @@ begin
            ,1                                                          -- idesac                   numeric(20,0)     not null
            ,Vnumero_asiento                                            -- numero_asiento           numeric(20,0)     not null
            ,'CONTABILIZACIÓN AUTOMÁTICA VENTAS ' || Vfecha_ini_txt     -- glosa                    varchar(100)      not null
-           ,current_timestamp                                          -- fecha_asiento            date              not null
+           ,Vfecha_asiento                                             -- fecha_asiento            date              not null
            ,'N'                                                        -- reversible               varchar(1)        not null
            ,Pidusuacreaasiento                                         -- idusuacreaasiento        numeric(20,0)     not null
            ,null                                                       -- idusuaautorizaasiento    numeric(20,0)         null
@@ -360,12 +379,6 @@ begin
   return 'S;Contabilización ejecutada exitosamente';
 end;
 $body$ LANGUAGE plpgsql;
-
-
-
-
-
-
 
 update ventas
 set    idasco = null

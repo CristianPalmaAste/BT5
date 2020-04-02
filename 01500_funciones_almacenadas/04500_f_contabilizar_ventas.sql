@@ -174,6 +174,9 @@ begin
     Vmensaje := 'N;No hay un período contable abierto para esta empresa';
     return(Vmensaje);
   end if;
+  --
+  -- Si se llegó hasta aquí, quiere decir que se pasaron todas las validaciones -> se procede con la generación del asiento contable
+  --
   select mes
         ,anno
   into   Vmes_peco
@@ -181,16 +184,9 @@ begin
   from   periodos_contables
   where  id = Vidpeco
   ;
-  Vmes_actual  := to_char(current_timestamp,'mm');
-  Vanno_actual := to_char(current_timestamp,'yyyy');
-  if Vmes_peco = Vmes_actual and Vanno_peco = Vanno_actual then
-    Vfecha_asiento := current_timestamp;
-  else
-    Vfecha_asiento := ultimo_dia(to_date(Vanno_peco || '-' || Vmes_peco,'yyyy-mm'));
-  end if;
-  --
-  -- Si se llegó hasta aquí, quiere decir que se pasaron todas las validaciones -> se procede con la generación del asiento contable
-  --
+  Vmes_actual    := to_char(current_timestamp,'mm');
+  Vanno_actual   := to_char(current_timestamp,'yyyy');
+  Vfecha_asiento := Pfecha_ini;
   Vfecha_ini_txt := cast(Pfecha_ini as varchar);
   Vfecha_ini_txt := substr(Vfecha_ini_txt,7,2) || '-' || substr(Vfecha_ini_txt,5,2) || '-' || substr(Vfecha_ini_txt,1,4);
   open C_ventas_pdtes;
@@ -382,8 +378,18 @@ $body$ LANGUAGE plpgsql;
 
 update ventas
 set    idasco = null
-where  id     = 8
+where  id     = 46
+and    idasco is not null
 ;
+
+update ventas
+set    idesve = 2
+where  id     = 46
+;
+
+select f_contabilizar_ventas(16, 'N' , 20200329, 20200329, 28);
+
+\q
 
 select exento, afecto, impuestosobligats, impuestosespecifs, montodescuento, total from vent where id = 8;
 

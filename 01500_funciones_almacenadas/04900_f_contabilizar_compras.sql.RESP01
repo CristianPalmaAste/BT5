@@ -69,30 +69,6 @@ declare
             )
            )
     and    comp.idasco                                             is null
-    and    comp.idreco                                             is not null
-    union
-    select id
-          ,afecto+comp.exento
-          ,impuesto
-          ,total
-          ,null
-          ,null
-          ,null
-          ,null
-          ,null
-    from   compras
-    where  idempr                                             = Pidempr
-    and    (Ptodas_S_N                                        = 'S'
-            or
-            (
-             Ptodas_S_N                                       = 'N'
-             and
-             cast(trim(to_char(fecha,'yyyymmdd')) as integer) between Pfecha_ini and Pfecha_fin
-            )
-           )
-    and    idasco                                             is null
-    and    idreco                                             is null
-
     ;
   C_detalles_compras cursor for
     select sfpr.idcuco                            idcuco
@@ -103,25 +79,7 @@ declare
     where  deco.idprod = prod.id
     and    prod.idsfpr = sfpr.id
     and    deco.idcomp = Vidcomp
-    and    deco.idprod is not null
     group  by sfpr.idcuco
-    union
-    select serv.idcuco                            idcuco
-          ,sum(deco.preciounitario*deco.cantidad) sum_totallinea
-    from   detalles_compras       deco
-          ,servicios              serv
-    where  deco.idserv = serv.id
-    and    deco.idcomp = Vidcomp
-    and    deco.idserv is not null
-    group  by sfpr.idcuco
-
-
-esta query sacarla de aqui, ponerla despues de las validacioes
-    select sum(preciounitario*cantidad)
-    into   Vtotal_otroinsumo
-    from   detalles_compras
-    where  idcomp     = Vidcomp
-    and    otroinsumo is not null
     ;
   C_ctas_ctbles_otros_conceptos cursor for
     select dpce.idcoca
@@ -176,7 +134,7 @@ begin
     return(Vmensaje);
   end if;
   select count(*)
-  into   aux1
+  into   aux
   from   ordenes_compras     orco
         ,recepciones_compras reco
         ,compras             comp
@@ -193,8 +151,7 @@ begin
          )
   and    comp.idasco                                             is null
   ;
-aux2 las compras sin OC
-  if (aux1 + aux2) = 0 then
+  if aux = 0 then
     Vmensaje := 'N;No hay compras pendientes de contabilizar para los parámetros indicados';
     return(Vmensaje);
   end if;
@@ -213,9 +170,6 @@ aux2 las compras sin OC
   --
   Vfecha_ini_txt := cast(Pfecha_ini as varchar);
   Vfecha_ini_txt := substr(Vfecha_ini_txt,7,2) || '-' || substr(Vfecha_ini_txt,5,2) || '-' || substr(Vfecha_ini_txt,1,4);
-
-fecha del asiento
-
   open C_compras_pdtes;
   loop
     fetch C_compras_pdtes into Vidcomp

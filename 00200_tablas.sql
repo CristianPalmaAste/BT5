@@ -1472,7 +1472,7 @@ create table ventas (
   ,numero                   numeric(20,0)   not null
   ,idclie                   numeric(20,0)   not null
   ,descripcionventa         varchar(1000)   not null
-  ,fechaventa               timestamp       not null
+  ,fechaventa               date            not null
   ,idgere                   numeric(20,0)       null
   ,idproy                   numeric(20,0)       null
   ,idline                   numeric(20,0)       null
@@ -1566,7 +1566,7 @@ create table notas_ventas (
   ,numero                   numeric(20,0)   not null
   ,idclie                   numeric(20,0)   not null
   ,descripcionnotaventa     varchar(1000)   not null
-  ,fechanotaventa           timestamp       not null
+  ,fechanotaventa           date            not null
   ,idgere                   numeric(20,0)       null
   ,idproy                   numeric(20,0)       null
   ,idline                   numeric(20,0)       null
@@ -1658,7 +1658,7 @@ create table cotizaciones_ventas (
   ,numero                   numeric(20,0)   not null
   ,idclie                   numeric(20,0)   not null
   ,descripcioncotizacion    varchar(1000)   not null
-  ,fechacotizacion          timestamp       not null
+  ,fechacotizacion          date            not null
   ,idgere                   numeric(20,0)       null
   ,idproy                   numeric(20,0)       null
   ,idline                   numeric(20,0)       null
@@ -2703,7 +2703,7 @@ create table detalles_rendiciones_gastos (
   ,idprov                   numeric(20,0)   not null
   ,idtidv                   numeric(20,0)   not null
   ,numero                   numeric(20,0)   not null
-  ,fecha_docto              timestamp       not null
+  ,fecha_docto              date            not null
   ,idcorg                   numeric(20,0)   not null
   ,monto                    numeric(20,0)   not null
   ,idusuacrearegistro       numeric(20,0)   not null

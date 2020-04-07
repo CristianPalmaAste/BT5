@@ -1,20 +1,13 @@
 create or replace function f_contabilizar_ventas(Pidempr            int
-                                                ,Ptodas_S_N         varchar(1)
-                                                ,Pfecha_ini         int
-                                                ,Pfecha_fin         int
+                                                ,Pfecha             int
                                                 ,Pidusuacreaasiento int) returns varchar as
 $body$
 /*
-   Funcion que contabiliza ventas de una empresa
-   Se puede contabilizar todas las ventas pendientes o no
-   Si es no, se puede contabilizar las ventas dentro de un rango de fechas
-   Se puede crear un asiento contable para todas las ventas involucradas o un asiento por cada venta o uno por dia (para todas las ventas de ese dia)
+   Funcion que contabiliza ventas de una empresa para un dia dado
    Parametros:
 
    Pidempr           : id de la empresa
-   Ptodas_S_N        : S si se desea contabilizar todas las ventas pendientes, N si no
-   Pfecha_ini        : si Ptodas_S_N = N ==> fecha inicial desde cuando se desea contabillizar
-   Pfecha_fin        : fecha final hasta cuando se desea contabillizar
+   Pfecha            : fecha que se desea contabillizar
    Pidusuacreaasiento: id del usuario que ejecuta la contabilización de ventas y con ello crea el asiewnto contable
 
    Retorna "exito" si todo el proceso fue exitoso; de lo contrario, retorna un mensaje de error
@@ -43,7 +36,7 @@ declare
   Vidcoca                         int;
   Vidcuco_otros_conceptos         int;
   Vvalor_linea                    numeric;
-  Vfecha_ini_txt                  varchar(100);
+  Vfecha_txt                      varchar(100);
   Vmes_peco                       int;
   Vanno_peco                      int;
   Vmes_actual                     int;
@@ -62,17 +55,10 @@ declare
           ,idceco             idceco
           ,idtare             idtare
     from   ventas
-    where  idempr                                                  = Pidempr
-    and    (Ptodas_S_N                                             = 'S'
-            or
-            (
-             Ptodas_S_N                                            = 'N'
-             and
-             cast(trim(to_char(fechaventa,'yyyymmdd')) as integer) between Pfecha_ini and Pfecha_fin
-            )
-           )
-    and    idesve                                                  in (2,4)
-    and    idasco                                                  is null
+    where  idempr                                                = Pidempr
+    and    cast(trim(to_char(fechaventa,'yyyymmdd')) as integer) = Pfecha
+    and    idesve                                                in (2,4)
+    and    idasco                                                is null
     ;
   C_detalles_ventas cursor for
     select sfpr.idcuco                    idcuco
@@ -108,16 +94,8 @@ begin
     Vmensaje := 'N;El parámetro empresa es obligatorio';
     return(Vmensaje);
   end if;
-  if Ptodas_S_N is null then
-    Vmensaje := 'N;El parámetro Ptodas_S_N es obligatorio';
-    return(Vmensaje);
-  end if;
-  if Pfecha_ini is null then
-    Vmensaje := 'N;El parámetro Pfecha_ini es obligatorio';
-    return(Vmensaje);
-  end if;
-  if Pfecha_fin is null then
-    Vmensaje := 'N;El parámetro Pfecha_fin es obligatorio';
+  if Pfecha is null then
+    Vmensaje := 'N;El parámetro Pfecha es obligatorio';
     return(Vmensaje);
   end if;
   if Pidusuacreaasiento is null then
@@ -133,32 +111,13 @@ begin
     Vmensaje := 'N;El parámetro ' || Pidempr || ' no existe en la tabla empresas';
     return(Vmensaje);
   end if;
-  if Ptodas_S_N not in ('S', 'N')  then
-    Vmensaje := 'N;Los valores válidos para el parámetro Ptodas_S_N son S o N: ' || Ptodas_S_N || ' <- error';
-    return(Vmensaje);
-  end if;
-  if Pfecha_ini > Pfecha_fin then
-    Vmensaje := 'N;Fecha inicial debe ser menor o igual que fecha final';
-    return(Vmensaje);
-  end if;
-  if Ptodas_S_N = 'S' and (Pfecha_ini != 0 or Pfecha_fin != 0) then
-    Vmensaje := 'N;Si Ptodas_S_N = S entonces Pfecha_ini y Pfecha_fin deben ser 0';
-    return(Vmensaje);
-  end if;
   select count(*)
   into   aux
   from   ventas
-  where  idempr                                                  = Pidempr
-  and    (Ptodas_S_N                                             = 'S'
-          or
-          (
-           Ptodas_S_N                                            = 'N'
-           and
-           cast(trim(to_char(fechaventa,'yyyymmdd')) as integer) between Pfecha_ini and Pfecha_fin
-          )
-         )
-  and    idesve                                                  = 2
-  and    idasco                                                  is null
+  where  idempr                                                = Pidempr
+  and    cast(trim(to_char(fechaventa,'yyyymmdd')) as integer) = Pfecha
+  and    idesve                                                in (2,4)
+  and    idasco                                                is null
   ;
   if aux = 0 then
     Vmensaje := 'N;No hay ventas pendientes de contabilizar para los parámetros indicados';
@@ -186,9 +145,9 @@ begin
   ;
   Vmes_actual    := to_char(current_timestamp,'mm');
   Vanno_actual   := to_char(current_timestamp,'yyyy');
-  Vfecha_asiento := Pfecha_ini;
-  Vfecha_ini_txt := cast(Pfecha_ini as varchar);
-  Vfecha_ini_txt := substr(Vfecha_ini_txt,7,2) || '-' || substr(Vfecha_ini_txt,5,2) || '-' || substr(Vfecha_ini_txt,1,4);
+  Vfecha_asiento := date(Pfecha::text);
+  Vfecha_txt     := cast(Pfecha as varchar);
+  Vfecha_txt     := substr(Vfecha_txt,7,2) || '-' || substr(Vfecha_txt,5,2) || '-' || substr(Vfecha_txt,1,4);
   open C_ventas_pdtes;
   loop
     fetch C_ventas_pdtes into Vidvent
@@ -220,6 +179,7 @@ begin
                                    ,idpeco                   -- numeric(20,0)     not null
                                    ,idtiac                   -- numeric(20,0)     not null
                                    ,idesac                   -- numeric(20,0)     not null
+                                   ,idorac                   -- numeric(20,0)     not null
                                    ,numero_asiento           -- numeric(20,0)     not null
                                    ,glosa                    -- varchar(100)      not null
                                    ,fecha_asiento            -- date              not null
@@ -237,8 +197,9 @@ begin
            ,Vidpeco                                                    -- idpeco                   numeric(20,0)     not null
            ,3                                                          -- idtiac                   numeric(20,0)     not null
            ,1                                                          -- idesac                   numeric(20,0)     not null
+           ,2                                                          -- idorac                   numeric(20,0)     not null
            ,Vnumero_asiento                                            -- numero_asiento           numeric(20,0)     not null
-           ,'CONTABILIZACIÓN AUTOMÁTICA VENTAS ' || Vfecha_ini_txt     -- glosa                    varchar(100)      not null
+           ,'CONTABILIZACIÓN AUTOMÁTICA VENTAS ' || Vfecha_txt         -- glosa                    varchar(100)      not null
            ,Vfecha_asiento                                             -- fecha_asiento            date              not null
            ,'N'                                                        -- reversible               varchar(1)        not null
            ,Pidusuacreaasiento                                         -- idusuacreaasiento        numeric(20,0)     not null
@@ -289,7 +250,7 @@ begin
              ,Vidceco                                                    -- idceco                   numeric(20,0)         null
              ,Vidtare                                                    -- idtare                   numeric(20,0)         null
              ,Vsum_totallinea                                            -- monto                    numeric(20,0)     not null
-             ,'CONTABILIZACIÓN AUTOMÁTICA VENTAS ' || Vfecha_ini_txt     -- glosadet                 varchar(100)      not null
+             ,'CONTABILIZACIÓN AUTOMÁTICA VENTAS ' || Vfecha_txt         -- glosadet                 varchar(100)      not null
              ,Pidusuacreaasiento                                         -- idusuacrearegistro       numeric(20,0)     not null
              ,current_timestamp                                          -- fechacrearegistro        timestamp         not null
              ,null                                                       -- idusuamodifregistro      numeric(20,0)         null
@@ -354,7 +315,7 @@ begin
                ,Vidceco                                                  -- idceco                   numeric(20,0)         null
                ,Vidtare                                                  -- idtare                   numeric(20,0)         null
                ,Vvalor_linea                                             -- monto                    numeric(20,0)     not null
-               ,'CONTABILIZACIÓN AUTOMÁTICA VENTAS ' || Vfecha_ini_txt   -- glosadet                 varchar(100)      not null
+               ,'CONTABILIZACIÓN AUTOMÁTICA VENTAS ' || Vfecha_txt       -- glosadet                 varchar(100)      not null
                ,Pidusuacreaasiento                                       -- idusuacrearegistro       numeric(20,0)     not null
                ,current_timestamp                                        -- fechacrearegistro        timestamp         not null
                ,null                                                     -- idusuamodifregistro      numeric(20,0)         null

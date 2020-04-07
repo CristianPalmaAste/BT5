@@ -175,7 +175,7 @@ echo "  04800_f_cerrar_peco"
 psql -d $DBNAME -U $USUARIO_DB < 04800_f_cerrar_peco.sql > 04810_f_cerrar_peco.txt
 
 echo "  04900_f_contabilizar_compras"
-psql -d $DBNAME -U $USUARIO_DB < 04900_f_contabilizar_compras.sql > 04910_f_contabilizar_compras.txt
+#psql -d $DBNAME -U $USUARIO_DB < 04900_f_contabilizar_compras.sql > 04910_f_contabilizar_compras.txt
 
 echo "  05000_f_datos_servicio"
 psql -d $DBNAME -U $USUARIO_DB < 05000_f_datos_servicio.sql > 05010_f_datos_servicio.txt

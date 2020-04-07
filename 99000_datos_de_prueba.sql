@@ -807,6 +807,13 @@ insert into proveedores values (10, 3, 1,  4709176, '4', 1, null                
 insert into proveedores values (11, 4, 1, 21878885, '8', 2, 'COMERCIAL NAPM EIRL' , 'NAPM'  , null      , null              , null   , null      , 1, current_timestamp, null, null, null, null);
 insert into proveedores values (12, 4, 1, 91144000, '8', 2, 'EMBOTELLADORA ANDINA', 'ANDINA', null      , null              , null   , null      , 1, current_timestamp, null, null, null, null);
 
+insert into cuentas_bancarias_proveedores values (1, 1, 1, 1, '20-60-47115', 'S', 1, current_timestamp, null, null, null, null);
+insert into cuentas_bancarias_proveedores values (2, 1, 1, 2, '40-65-576'  , 'N', 1, current_timestamp, null, null, null, null);
+insert into cuentas_bancarias_proveedores values (3, 2, 1, 1, '20-60-47116', 'S', 1, current_timestamp, null, null, null, null);
+
+insert into direcciones_proveedores values (nextval('dipr_seq'), 1, 3, 'PLAZA CASTELAR'    , '01160', 338, null     , 1, current_timestamp, null, null, null, null);
+insert into direcciones_proveedores values (nextval('dipr_seq'), 1, 4, 'CAMINO A MELIPILLA', '9236' , 348, 223682140, 1, current_timestamp, null, null, null, null);
+
 insert into requisiciones values (1, 1, 1, 1, 3, null, null, null, null, null, 1, 1, current_timestamp, null, null, null, null);
 
 insert into detalles_requisiciones values (1, 1, 1, 1   , null, null              , 10,  50, 1, current_timestamp, null, null, null, null);

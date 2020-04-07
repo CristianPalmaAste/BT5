@@ -245,6 +245,7 @@ fecha del asiento
                                    ,idpeco                   -- numeric(20,0)     not null
                                    ,idtiac                   -- numeric(20,0)     not null
                                    ,idesac                   -- numeric(20,0)     not null
+                                   ,idorac                   -- numeric(20,0)     not null
                                    ,numero_asiento           -- numeric(20,0)     not null
                                    ,glosa                    -- varchar(100)      not null
                                    ,fecha_asiento            -- date              not null
@@ -262,6 +263,7 @@ fecha del asiento
            ,Vidpeco                                                       -- idpeco                   numeric(20,0)     not null
            ,3                                                             -- idtiac                   numeric(20,0)     not null
            ,1                                                             -- idesac                   numeric(20,0)     not null
+           ,2                                                             -- idorac                   numeric(20,0)     not null
            ,Vnumero_asiento                                               -- numero_asiento           numeric(20,0)     not null
            ,'CONTABILIZACIÓN AUTOMÁTICA COMPRAS ' || Vfecha_ini_txt       -- glosa                    varchar(100)      not null
            ,current_timestamp                                             -- fecha_asiento            date              not null

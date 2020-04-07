@@ -1463,6 +1463,31 @@ alter table direcciones_clientes add constraint dicl_uk_01 unique (idclie, calle
 
 /*************************************************************************************************************************/
 
+create table direcciones_proveedores (
+   id                       numeric(20,0)   not null
+  ,idprov                   numeric(20,0)   not null
+  ,idtidi                   numeric(20,0)   not null
+  ,calle                    varchar(100)    not null
+  ,numero                   varchar(100)    not null
+  ,idunte                   numeric(20,0)   not null
+  ,telefono                 varchar(100)        null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table direcciones_proveedores add constraint dipr_pk primary key (id)
+;
+
+alter table direcciones_proveedores add constraint dipr_uk_01 unique (idprov, calle, numero, idunte)
+;
+
+/*************************************************************************************************************************/
+
 create table ventas (
    id                       numeric(20,0)   not null
   ,idempr                   numeric(20,0)   not null
@@ -2154,6 +2179,74 @@ alter table estados_requisiciones add constraint ereq_pk primary key (id)
 ;
 
 alter table estados_requisiciones add constraint ereq_uk_01 unique (descripcion)
+;
+
+/*************************************************************************************************************************/
+
+create table tipos_cuentas_bancarias (
+   id                       numeric(20,0)   not null
+  ,descripcion              varchar(100)    not null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table tipos_cuentas_bancarias add constraint ticb_pk primary key (id)
+;
+
+alter table tipos_cuentas_bancarias add constraint ticb_uk_01 unique (descripcion)
+;
+
+/*************************************************************************************************************************/
+
+create table bancos (
+   id                       numeric(20,0)   not null
+  ,idpais                   numeric(20,0)   not null
+  ,nombrebanco              varchar(100)    not null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table bancos add constraint banc_pk primary key (id)
+;
+
+alter table bancos add constraint banc_uk_01 unique (idpais, nombrebanco)
+;
+
+/*************************************************************************************************************************/
+
+create table cuentas_bancarias_proveedores (
+   id                       numeric(20,0)   not null
+  ,idprov                   numeric(20,0)   not null
+  ,idbanc                   numeric(20,0)   not null
+  ,idticb                   numeric(20,0)   not null
+  ,numerocuenta             varchar(100)    not null
+  ,cuentapreferida          varchar(1)      not null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table cuentas_bancarias_proveedores add constraint cubp_pk primary key (id)
+;
+
+alter table cuentas_bancarias_proveedores add constraint cubp_uk_01 unique (idprov, idbanc, idticb, numerocuenta)
+;
+
+alter table cuentas_bancarias_proveedores add constraint cubp_chk_01 check (cuentapreferida in ('S','N'))
 ;
 
 /*************************************************************************************************************************/
@@ -2959,6 +3052,25 @@ alter table tipos_asientos_contables add constraint tiac_uk unique (descripcion)
 
 /*************************************************************************************************************************/
 
+create table origenes_asientos_contables (
+   id                       numeric(20,0)     not null
+  ,descripcion              varchar(100)      not null
+  ,idusuacrearegistro       numeric(20,0)     not null
+  ,fechacrearegistro        timestamp         not null
+  ,idusuamodifregistro      numeric(20,0)         null
+  ,fechamodifregistro       timestamp             null
+  ,idusuaborraregistro      numeric(20,0)         null
+  ,fechaborraregistro       timestamp             null
+)
+;
+
+alter table origenes_asientos_contables add constraint orac_pk primary key (id)
+;
+alter table origenes_asientos_contables add constraint orac_uk unique (descripcion)
+;
+
+/*************************************************************************************************************************/
+
 create table estados_asientos_contables (
    id                       numeric(20,0)     not null
   ,descripcion              varchar(100)      not null
@@ -3012,6 +3124,7 @@ create table asientos_contables (
   ,idpeco                   numeric(20,0)     not null
   ,idtiac                   numeric(20,0)     not null
   ,idesac                   numeric(20,0)     not null
+  ,idorac                   numeric(20,0)     not null
   ,numero_asiento           numeric(20,0)     not null
   ,glosa                    varchar(100)      not null
   ,fecha_asiento            date              not null
@@ -3511,6 +3624,12 @@ alter table direcciones_clientes              add constraint dicl_fk_unte  forei
 alter table direcciones_clientes              add constraint dicl_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table direcciones_clientes              add constraint dicl_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 
+alter table direcciones_proveedores           add constraint dipr_fk_prov  foreign key (idprov)                 references proveedores                      (id);
+alter table direcciones_proveedores           add constraint dipr_fk_tidi  foreign key (idtidi)                 references tipos_direcciones                (id);
+alter table direcciones_proveedores           add constraint dipr_fk_unte  foreign key (idunte)                 references unidades_territoriales           (id);
+alter table direcciones_proveedores           add constraint dipr_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
+alter table direcciones_proveedores           add constraint dipr_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
+
 alter table cotizaciones_ventas               add constraint cove_fk_empr  foreign key (idempr)                 references empresas                         (id);
 alter table cotizaciones_ventas               add constraint cove_fk_bode  foreign key (idbode)                 references bodegas                          (id);
 alter table cotizaciones_ventas               add constraint cove_fk_clie  foreign key (idclie)                 references clientes                         (id);
@@ -3732,6 +3851,7 @@ alter table tipos_cuentas_contables           add constraint ticc_fk3_usua forei
 alter table asientos_contables                add constraint asco_fk_peco  foreign key (idpeco)                 references periodos_contables               (id);
 alter table asientos_contables                add constraint asco_fk_esac  foreign key (idesac)                 references estados_asientos_contables       (id);
 alter table asientos_contables                add constraint asco_fk_tiac  foreign key (idtiac)                 references tipos_asientos_contables         (id);
+alter table asientos_contables                add constraint asco_fk_orac  foreign key (idorac)                 references origenes_asientos_contables      (id);
 alter table asientos_contables                add constraint asco_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table asientos_contables                add constraint asco_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 alter table asientos_contables                add constraint asco_fk4_usua foreign key (idusuacreaasiento)      references usuarios                         (id);
@@ -3750,6 +3870,9 @@ alter table estados_periodos_contables        add constraint espc_fk3_usua forei
 
 alter table estados_asientos_contables        add constraint esac_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table estados_asientos_contables        add constraint esac_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
+
+alter table origenes_asientos_contables       add constraint orac_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
+alter table origenes_asientos_contables       add constraint orac_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 
 alter table tipos_asientos_contables          add constraint tipo_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table tipos_asientos_contables          add constraint tipo_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
@@ -3771,5 +3894,18 @@ alter table detalles_procesos_ctbles_empresas add constraint dpce_fk_prce  forei
 alter table detalles_procesos_ctbles_empresas add constraint dpce_fk_tiec  foreign key (idtiec)                 references tipos_entradas_contables         (id);
 alter table detalles_procesos_ctbles_empresas add constraint dpce_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table detalles_procesos_ctbles_empresas add constraint dpce_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
+
+alter table tipos_cuentas_bancarias           add constraint ticb_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
+alter table tipos_cuentas_bancarias           add constraint ticb_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
+
+alter table bancos                            add constraint banc_fk_pais  foreign key (idpais)                 references paises                           (id);
+alter table bancos                            add constraint banc_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
+alter table bancos                            add constraint banc_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
+
+alter table cuentas_bancarias_proveedores     add constraint cubp_fk_prov  foreign key (idprov             )    references proveedores                      (id);
+alter table cuentas_bancarias_proveedores     add constraint cubp_fk_banc  foreign key (idbanc             )    references bancos                           (id);
+alter table cuentas_bancarias_proveedores     add constraint cubp_fk_ticb  foreign key (idticb             )    references tipos_cuentas_bancarias          (id);
+alter table cuentas_bancarias_proveedores     add constraint cubp_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
+alter table cuentas_bancarias_proveedores     add constraint cubp_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 
 \q

@@ -1,5 +1,9 @@
 --set client_min_messages to warning;
 
+insert into tipos_cuentas_bancarias values (1, 'CUENTA CORRIENTE', 1, current_timestamp, null, null, null, null);
+insert into tipos_cuentas_bancarias values (2, 'CUENTA VISTA'    , 1, current_timestamp, null, null, null, null);
+insert into tipos_cuentas_bancarias values (3, 'CUENTA DE AHORRO', 1, current_timestamp, null, null, null, null);
+
 insert into rubros values (  1, '011101', 'CULTIVO DE TRIGO'                                                                                    , 1, current_timestamp, null, null, null,  null);
 insert into rubros values (  2, '011102', 'CULTIVO DE MAÍZ'                                                                                     , 1, current_timestamp, null, null, null,  null);
 insert into rubros values (  3, '011103', 'CULTIVO DE AVENA'                                                                                    , 1, current_timestamp, null, null, null,  null);
@@ -709,6 +713,10 @@ insert into estados_asientos_contables values (1, 'CREADO'    , 1, current_times
 insert into estados_asientos_contables values (2, 'AUTORIZADO', 1, current_timestamp, null, null, null, null);
 insert into estados_asientos_contables values (3, 'ANULADO'   , 1, current_timestamp, null, null, null, null);
 
+insert into origenes_asientos_contables values (1, 'SIN UN ORIGEN ESPECÍFICO', 1, current_timestamp, null, null, null, null);
+insert into origenes_asientos_contables values (2, 'VENTAS'                  , 1, current_timestamp, null, null, null, null);
+insert into origenes_asientos_contables values (3, 'COMPRAS'                 , 1, current_timestamp, null, null, null, null);
+
 insert into tipos_asientos_contables values (1, 'INGRESO'   , 1, current_timestamp, null, null, null, null);
 insert into tipos_asientos_contables values (2, 'EGRESO'    , 1, current_timestamp, null, null, null, null);
 insert into tipos_asientos_contables values (3, 'TRASPASO'  , 1, current_timestamp, null, null, null, null);
@@ -743,6 +751,28 @@ insert into paises values (7 , 'BRASIL'   , 7 , 'BRASILENA'  , 1, current_timest
 insert into paises values (8 , 'ECUADOR'  , 8 , 'ECUATORIANA', 1, current_timestamp, null, null, null, null);
 insert into paises values (9 , 'VENEZUELA', 9 , 'VENEZOLANA' , 1, current_timestamp, null, null, null, null);
 insert into paises values (10, 'COLOMBIA' , 10, 'COLOMBIANA' , 1, current_timestamp, null, null, null, null);
+
+insert into bancos values (1 , 1, 'BANCO DE CHILE'                , 1, current_timestamp, null, null, null, null);
+insert into bancos values (2 , 1, 'BANCO INTERNACIONAL'           , 1, current_timestamp, null, null, null, null);
+insert into bancos values (3 , 1, 'SCOTIABANK CHILE'              , 1, current_timestamp, null, null, null, null);
+insert into bancos values (4 , 1, 'BANCO DE CREDITO E INVERSIONES', 1, current_timestamp, null, null, null, null);
+insert into bancos values (5 , 1, 'BANCO BICE'                    , 1, current_timestamp, null, null, null, null);
+insert into bancos values (6 , 1, 'HSBC BANK'                     , 1, current_timestamp, null, null, null, null);
+insert into bancos values (7 , 1, 'BANCO SANTANDER-CHILE'         , 1, current_timestamp, null, null, null, null);
+insert into bancos values (8 , 1, 'ITAÚ CORPBANCA'                , 1, current_timestamp, null, null, null, null);
+insert into bancos values (9 , 1, 'BANCO SECURITY'                , 1, current_timestamp, null, null, null, null);
+insert into bancos values (10, 1, 'BANCO FALABELLA'               , 1, current_timestamp, null, null, null, null);
+insert into bancos values (11, 1, 'BANCO RIPLEY'                  , 1, current_timestamp, null, null, null, null);
+insert into bancos values (12, 1, 'BANCO CONSORCIO'               , 1, current_timestamp, null, null, null, null);
+insert into bancos values (13, 1, 'SCOTIABANK'                    , 1, current_timestamp, null, null, null, null);
+insert into bancos values (14, 1, 'BANCO BTG PACTUAL CHILE'       , 1, current_timestamp, null, null, null, null);
+insert into bancos values (15, 1, 'BANCO DEL ESTADO DE CHILE'     , 1, current_timestamp, null, null, null, null);
+insert into bancos values (16, 1, 'BANCO DO BRASIL'               , 1, current_timestamp, null, null, null, null);
+insert into bancos values (17, 1, 'JP MORGAN CHASE BANK N.A.'     , 1, current_timestamp, null, null, null, null);
+insert into bancos values (18, 1, 'BANCO DE LA NACION ARGENTINA'  , 1, current_timestamp, null, null, null, null);
+insert into bancos values (19, 1, 'MUFG BANK'                     , 1, current_timestamp, null, null, null, null);
+insert into bancos values (20, 1, 'CHINA CONSTRUCTION BANK'       , 1, current_timestamp, null, null, null, null);
+insert into bancos values (21, 1, 'BANK OF CHINA'                 , 1, current_timestamp, null, null, null, null);
 
 /* Deshabilito algunas constraints para poder insertar datos iniciales */
 alter table usuarios disable trigger all;

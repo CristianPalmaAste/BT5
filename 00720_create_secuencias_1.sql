@@ -57,6 +57,7 @@ select 'create sequence tidv_seq start with ' || (case when MAX(ID) is null then
 select 'create sequence tise_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_servicios;
 select 'create sequence clie_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from clientes;
 select 'create sequence dicl_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from direcciones_clientes;
+select 'create sequence dipr_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from direcciones_proveedores;
 select 'create sequence vent_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from ventas;
 select 'create sequence deve_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from detalles_ventas;
 select 'create sequence nove_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from notas_ventas;
@@ -79,6 +80,9 @@ select 'create sequence demb_seq start with ' || (case when MAX(ID) is null then
 select 'create sequence desu_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from descuentos;
 select 'create sequence bicp_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from bitacoras_cambios_precios;
 select 'create sequence ereq_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from estados_requisiciones;
+select 'create sequence ticb_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_cuentas_bancarias;
+select 'create sequence banc_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from bancos;
+select 'create sequence cubp_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from cuentas_bancarias_proveedores;
 select 'create sequence tire_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_requisiciones;
 select 'create sequence requ_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from requisiciones;
 select 'create sequence dere_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from detalles_requisiciones;
@@ -109,6 +113,7 @@ select 'create sequence ticc_seq start with ' || (case when MAX(ID) is null then
 select 'create sequence tiec_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_entradas_contables;
 select 'create sequence espc_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from estados_periodos_contables;
 select 'create sequence tiac_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_asientos_contables;
+select 'create sequence orac_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from origenes_asientos_contables;
 select 'create sequence esac_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from estados_asientos_contables;
 select 'create sequence peco_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from periodos_contables;
 select 'create sequence asco_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from asientos_contables;

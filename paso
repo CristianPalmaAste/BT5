@@ -284,6 +284,11 @@ SET
  create sequence dicl_seq start with 10
 (1 fila)
 
+               ?column?                
+---------------------------------------
+ create sequence dipr_seq start with 3
+(1 fila)
+
                 ?column?                
 ----------------------------------------
  create sequence vent_seq start with 11
@@ -392,6 +397,21 @@ SET
                ?column?                
 ---------------------------------------
  create sequence ereq_seq start with 8
+(1 fila)
+
+               ?column?                
+---------------------------------------
+ create sequence ticb_seq start with 4
+(1 fila)
+
+                ?column?                
+----------------------------------------
+ create sequence banc_seq start with 22
+(1 fila)
+
+               ?column?                
+---------------------------------------
+ create sequence cubp_seq start with 4
 (1 fila)
 
                ?column?                
@@ -546,22 +566,27 @@ SET
 
                ?column?                
 ---------------------------------------
+ create sequence orac_seq start with 4
+(1 fila)
+
+               ?column?                
+---------------------------------------
  create sequence esac_seq start with 4
 (1 fila)
 
                 ?column?                
 ----------------------------------------
- create sequence peco_seq start with 25
+ create sequence peco_seq start with 24
 (1 fila)
 
                 ?column?                
 ----------------------------------------
- create sequence asco_seq start with 23
+ create sequence asco_seq start with 21
 (1 fila)
 
                 ?column?                
 ----------------------------------------
- create sequence deac_seq start with 47
+ create sequence deac_seq start with 43
 (1 fila)
 
                ?column?                

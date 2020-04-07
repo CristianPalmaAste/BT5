@@ -9,9 +9,8 @@ declare
   Vidcuco_terrenos      int;
   Vidcuco_vehiculos     int;
   aux                   varchar(1000);
-  Vlimite               int;
+  Vfecha                int;
 begin
-  Vlimite := 9; /* hasta qué mes trabajo con asientos cerrados */
   select cast(trim(to_char(current_timestamp,'mm'  )) as integer)
         ,cast(trim(to_char(current_timestamp,'yyyy')) as integer)
   into   Vmes_actual
@@ -53,20 +52,25 @@ begin
     and    segmento4 = '0004'
     ;
     Vidasco := nextval('asco_seq');
-    insert into asientos_contables values (Vidasco, Vidpeco, 3, 1, 1, 'PRUEBA 1', current_timestamp, 'N', 3, null, 3, current_timestamp, null, null, null, null);
+    insert into asientos_contables values (Vidasco, Vidpeco, 3, 1, 1, 1, 'PRUEBA 1', current_timestamp, 'N', 3, null, 3, current_timestamp, null, null, null, null);
     insert into detalles_asientos_contables values (nextval('deac_seq'), Vidasco, 1, Vidcuco_caja    , 1, null, null, null, null, null, i*100, 'PRUEBA 1', 3, current_timestamp, null, null, null, null);
     insert into detalles_asientos_contables values (nextval('deac_seq'), Vidasco, 2, Vidcuco_terrenos, 2, null, null, null, null, null, i*100, 'PRUEBA 1', 3, current_timestamp, null, null, null, null);
     --
     Vidasco := nextval('asco_seq');
-    insert into asientos_contables values (Vidasco, Vidpeco, 3, 1, 2, 'PRUEBA 2', current_timestamp, 'N', 3, null, 3, current_timestamp, null, null, null, null);
+    insert into asientos_contables values (Vidasco, Vidpeco, 3, 1, 1, 2, 'PRUEBA 2', current_timestamp, 'N', 3, null, 3, current_timestamp, null, null, null, null);
     insert into detalles_asientos_contables values (nextval('deac_seq'), Vidasco, 1, Vidcuco_caja    , 1, null, null, null, null, null, 2*i*100, 'PRUEBA 2', 3, current_timestamp, null, null, null, null);
     insert into detalles_asientos_contables values (nextval('deac_seq'), Vidasco, 2, Vidcuco_terrenos, 2, null, null, null, null, null, 2*i*100, 'PRUEBA 2', 3, current_timestamp, null, null, null, null);
-    aux  := f_contabilizar_ventas(1, 'S', 0, 0, 3);
     update asientos_contables
     set    idesac = 2
     where  idesac = 1
     ;
-    aux  := f_cerrar_peco(1, i, 2020, 3);
+    Vfecha := cast(trim(to_char(current_timestamp,'yyyymmdd')) as integer);
+    aux    := f_contabilizar_ventas(1, Vfecha, 3);
+    update asientos_contables
+    set    idesac = 2
+    where  idesac = 1
+    ;
+    aux    := f_cerrar_peco(1, i, 2020, 3);
   end loop;
   return(0);
 end;

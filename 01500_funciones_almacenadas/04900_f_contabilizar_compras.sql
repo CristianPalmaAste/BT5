@@ -1,20 +1,13 @@
 create or replace function f_contabilizar_compras(Pidempr            int
-                                                 ,Ptodas_S_N         varchar(1)
-                                                 ,Pfecha_ini         int
-                                                 ,Pfecha_fin         int
+                                                 ,Pfecha             int
                                                  ,Pidusuacreaasiento int) returns varchar as
 $body$
 /*
-   Funcion que contabiliza compras de una empresa
-   Se puede contabilizar todas las compras pendientes o no
-   Si es no, se puede contabilizar las compras dentro de un rango de fechas
-   Se puede crear un asiento contable para todas las compras involucradas o un asiento por cada compra o uno por dia (para todas las compras de ese dia)
+   Funcion que contabiliza compras de una empresa para un dia dado
    Parametros:
 
    Pidempr           : id de la empresa
-   Ptodas_S_N        : S si se desea contabilizar todas las compras pendientes, N si no
-   Pfecha_ini        : si Ptodas_S_N = N ==> fecha inicial desde cuando se desea contabillizar
-   Pfecha_fin        : fecha final hasta cuando se desea contabillizar
+   Pfecha            : fecha que se desea contabillizar
    Pidusuacreaasiento: id del usuario que ejecuta la contabilización de compras y con ello crea el asiewnto contable
 
    Retorna "exito" si todo el proceso fue exitoso; de lo contrario, retorna un mensaje de error
@@ -43,56 +36,16 @@ declare
   Vvalor_linea                    numeric;
   Vservicios                      numeric;
   Votras_compras                  numeric;
-  Vfecha_ini_txt                  varchar(100);
+  Vfecha_txt                  varchar(100);
   C_compras_pdtes cursor for
     select comp.id                 idcomp
           ,comp.afecto+comp.exento neto
           ,comp.impuesto           impuesto
           ,comp.total              total
-          ,orco.idgere             idgere
-          ,orco.idproy             idproy
-          ,orco.idline             idline
-          ,orco.idceco             idceco
-          ,orco.idtare             idtare
-    from   ordenes_compras     orco
-          ,recepciones_compras reco
-          ,compras             comp
-    where  orco.id                                                 = reco.idorco
-    and    reco.id                                                 = comp.idreco
-    and    orco.idempr                                             = Pidempr
-    and    (Ptodas_S_N                                             = 'S'
-            or
-            (
-             Ptodas_S_N                                            = 'N'
-             and
-             cast(trim(to_char(comp.fecha,'yyyymmdd')) as integer) between Pfecha_ini and Pfecha_fin
-            )
-           )
-    and    comp.idasco                                             is null
-    and    comp.idreco                                             is not null
-    union
-    select id
-          ,afecto+comp.exento
-          ,impuesto
-          ,total
-          ,null
-          ,null
-          ,null
-          ,null
-          ,null
-    from   compras
-    where  idempr                                             = Pidempr
-    and    (Ptodas_S_N                                        = 'S'
-            or
-            (
-             Ptodas_S_N                                       = 'N'
-             and
-             cast(trim(to_char(fecha,'yyyymmdd')) as integer) between Pfecha_ini and Pfecha_fin
-            )
-           )
-    and    idasco                                             is null
-    and    idreco                                             is null
-
+    from   compras comp
+    where  comp.idempr                                           = Pidempr
+    and    cast(trim(to_char(comp.fecha,'yyyymmdd')) as integer) = Pfecha
+    and    comp.idasco                                           is null
     ;
   C_detalles_compras cursor for
     select sfpr.idcuco                            idcuco
@@ -114,15 +67,6 @@ declare
     and    deco.idcomp = Vidcomp
     and    deco.idserv is not null
     group  by sfpr.idcuco
-
-
-esta query sacarla de aqui, ponerla despues de las validacioes
-    select sum(preciounitario*cantidad)
-    into   Vtotal_otroinsumo
-    from   detalles_compras
-    where  idcomp     = Vidcomp
-    and    otroinsumo is not null
-    ;
   C_ctas_ctbles_otros_conceptos cursor for
     select dpce.idcoca
           ,dpce.idcuco
@@ -138,16 +82,8 @@ begin
     Vmensaje := 'N;El parámetro empresa es obligatorio';
     return(Vmensaje);
   end if;
-  if Ptodas_S_N is null then
-    Vmensaje := 'N;El parámetro Ptodas_S_N es obligatorio';
-    return(Vmensaje);
-  end if;
-  if Pfecha_ini is null then
-    Vmensaje := 'N;El parámetro Pfecha_ini es obligatorio';
-    return(Vmensaje);
-  end if;
-  if Pfecha_fin is null then
-    Vmensaje := 'N;El parámetro Pfecha_fin es obligatorio';
+  if Pfecha is null then
+    Vmensaje := 'N;El parámetro Pfecha es obligatorio';
     return(Vmensaje);
   end if;
   if Pidusuacreaasiento is null then
@@ -167,34 +103,14 @@ begin
     Vmensaje := 'N;Los valores válidos para el parámetro Ptodas_S_N son S o N: ' || Ptodas_S_N || ' <- error';
     return(Vmensaje);
   end if;
-  if Pfecha_ini > Pfecha_fin then
-    Vmensaje := 'N;Fecha inicial debe ser menor o igual que fecha final';
-    return(Vmensaje);
-  end if;
-  if Ptodas_S_N = 'S' and (Pfecha_ini != 0 or Pfecha_fin != 0) then
-    Vmensaje := 'N;Si Ptodas_S_N = S entonces Pfecha_ini y Pfecha_fin deben ser 0';
-    return(Vmensaje);
-  end if;
   select count(*)
-  into   aux1
-  from   ordenes_compras     orco
-        ,recepciones_compras reco
-        ,compras             comp
-  where  orco.id                                                 = reco.idorco
-  and    reco.id                                                 = comp.idreco
-  and    orco.idempr                                             = Pidempr
-  and    (Ptodas_S_N                                             = 'S'
-          or
-          (
-           Ptodas_S_N                                            = 'N'
-           and
-           cast(trim(to_char(comp.fecha,'yyyymmdd')) as integer) between Pfecha_ini and Pfecha_fin
-          )
-         )
-  and    comp.idasco                                             is null
+  into   aux
+  from   compras             comp
+  where  comp.idempr                                           = Pidempr
+  and    cast(trim(to_char(comp.fecha,'yyyymmdd')) as integer) = Pfecha
+  and    comp.idasco                                           is null
   ;
-aux2 las compras sin OC
-  if (aux1 + aux2) = 0 then
+  if aux = 0 then
     Vmensaje := 'N;No hay compras pendientes de contabilizar para los parámetros indicados';
     return(Vmensaje);
   end if;
@@ -211,8 +127,18 @@ aux2 las compras sin OC
   --
   -- Si se llegó hasta aquí, quiere decir que se pasaron todas las validaciones -> se procede con la generación del asiento contable
   --
-  Vfecha_ini_txt := cast(Pfecha_ini as varchar);
-  Vfecha_ini_txt := substr(Vfecha_ini_txt,7,2) || '-' || substr(Vfecha_ini_txt,5,2) || '-' || substr(Vfecha_ini_txt,1,4);
+
+
+aqui voy
+
+  Vfecha_txt := cast(Pfecha as varchar);
+  Vfecha_txt := substr(Vfecha_txt,7,2) || '-' || substr(Vfecha_txt,5,2) || '-' || substr(Vfecha_txt,1,4);
+  select sum(preciounitario*cantidad)
+  into   Vtotal_otroinsumo
+  from   detalles_compras
+  where  idcomp     = Vidcomp
+  and    otroinsumo is not null
+  ;
 
 fecha del asiento
 
@@ -265,7 +191,7 @@ fecha del asiento
            ,1                                                             -- idesac                   numeric(20,0)     not null
            ,2                                                             -- idorac                   numeric(20,0)     not null
            ,Vnumero_asiento                                               -- numero_asiento           numeric(20,0)     not null
-           ,'CONTABILIZACIÓN AUTOMÁTICA COMPRAS ' || Vfecha_ini_txt       -- glosa                    varchar(100)      not null
+           ,'CONTABILIZACIÓN AUTOMÁTICA COMPRAS ' || Vfecha_txt       -- glosa                    varchar(100)      not null
            ,current_timestamp                                             -- fecha_asiento            date              not null
            ,'N'                                                           -- reversible               varchar(1)        not null
            ,Pidusuacreaasiento                                            -- idusuacreaasiento        numeric(20,0)     not null
@@ -316,7 +242,7 @@ fecha del asiento
              ,Vidceco                                                       -- idceco                   numeric(20,0)         null
              ,Vidtare                                                       -- idtare                   numeric(20,0)         null
              ,Vsum_totallinea                                               -- monto                    numeric(20,0)     not null
-             ,'CONTABILIZACIÓN AUTOMÁTICA COMPRAS ' || Vfecha_ini_txt       -- glosadet                 varchar(100)      not null
+             ,'CONTABILIZACIÓN AUTOMÁTICA COMPRAS ' || Vfecha_txt       -- glosadet                 varchar(100)      not null
              ,Pidusuacreaasiento                                            -- idusuacrearegistro       numeric(20,0)     not null
              ,current_timestamp                                             -- fechacrearegistro        timestamp         not null
              ,null                                                          -- idusuamodifregistro      numeric(20,0)         null
@@ -385,7 +311,7 @@ fecha del asiento
                ,Vidceco                                                        -- idceco                   numeric(20,0)         null
                ,Vidtare                                                        -- idtare                   numeric(20,0)         null
                ,Vvalor_linea                                                   -- monto                    numeric(20,0)     not null
-               ,'CONTABILIZACIÓN AUTOMÁTICA COMPRAS ' || Vfecha_ini_txt        -- glosadet                 varchar(100)      not null
+               ,'CONTABILIZACIÓN AUTOMÁTICA COMPRAS ' || Vfecha_txt        -- glosadet                 varchar(100)      not null
                ,Pidusuacreaasiento                                             -- idusuacrearegistro       numeric(20,0)     not null
                ,current_timestamp                                              -- fechacrearegistro        timestamp         not null
                ,null                                                           -- idusuamodifregistro      numeric(20,0)         null

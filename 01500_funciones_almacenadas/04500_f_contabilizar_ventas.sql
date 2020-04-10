@@ -3,12 +3,12 @@ create or replace function f_contabilizar_ventas(Pidempr            int
                                                 ,Pidusuacreaasiento int) returns varchar as
 $body$
 /*
-   Funcion que contabiliza ventas de una empresa para un dia dado
-   Parametros:
+   Función que contabiliza ventas de una empresa para un dia dado
+   Parámetros:
 
    Pidempr           : id de la empresa
    Pfecha            : fecha que se desea contabillizar
-   Pidusuacreaasiento: id del usuario que ejecuta la contabilización de ventas y con ello crea el asiewnto contable
+   Pidusuacreaasiento: id del usuario que ejecuta la contabilización de ventas y con ello crea el asiento contable
 
    Retorna "exito" si todo el proceso fue exitoso; de lo contrario, retorna un mensaje de error
 */
@@ -37,11 +37,13 @@ declare
   Vidcuco_otros_conceptos         int;
   Vvalor_linea                    numeric;
   Vfecha_txt                      varchar(100);
-  Vmes_peco                       int;
-  Vanno_peco                      int;
   Vmes_actual                     int;
   Vanno_actual                    int;
   Vfecha_asiento                  date;
+  Vmes_contab_ventas              int;
+  Vanno_contab_ventas             int;
+  Vmes_peco                       int;
+  Vanno_peco                      int;
   C_ventas_pdtes cursor for
     select id                 idvent
           ,afecto+exento      neto
@@ -124,7 +126,11 @@ begin
     return(Vmensaje);
   end if;
   select id
+        ,mes
+        ,anno
   into   Vidpeco
+        ,Vmes_peco
+        ,Vanno_peco
   from   periodos_contables
   where  idempr = Pidempr
   and    idespc = 1
@@ -133,21 +139,20 @@ begin
     Vmensaje := 'N;No hay un período contable abierto para esta empresa';
     return(Vmensaje);
   end if;
+  Vfecha_txt          := cast(Pfecha as varchar);
+  Vfecha_txt          := substr(Vfecha_txt,7,2) || '-' || substr(Vfecha_txt,5,2) || '-' || substr(Vfecha_txt,1,4);
+  Vmes_contab_ventas  := substr(Vfecha_txt,4,2);
+  Vanno_contab_ventas := substr(Vfecha_txt,7,4);
+  if Vmes_peco != Vmes_contab_ventas or Vanno_peco != Vanno_contab_ventas then
+    Vmensaje := 'N;La fecha a contabiizar no pertenece al período contable abierto';
+    return(Vmensaje);
+  end if;
   --
   -- Si se llegó hasta aquí, quiere decir que se pasaron todas las validaciones -> se procede con la generación del asiento contable
   --
-  select mes
-        ,anno
-  into   Vmes_peco
-        ,Vanno_peco
-  from   periodos_contables
-  where  id = Vidpeco
-  ;
   Vmes_actual    := to_char(current_timestamp,'mm');
   Vanno_actual   := to_char(current_timestamp,'yyyy');
   Vfecha_asiento := date(Pfecha::text);
-  Vfecha_txt     := cast(Pfecha as varchar);
-  Vfecha_txt     := substr(Vfecha_txt,7,2) || '-' || substr(Vfecha_txt,5,2) || '-' || substr(Vfecha_txt,1,4);
   open C_ventas_pdtes;
   loop
     fetch C_ventas_pdtes into Vidvent

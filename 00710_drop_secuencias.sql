@@ -54,6 +54,8 @@ drop sequence if exists tipr_seq;
 drop sequence if exists impu_seq;
 drop sequence if exists tipi_seq;
 drop sequence if exists tidv_seq;
+drop sequence if exists tudv_seq;
+drop sequence if exists usdv_seq;
 drop sequence if exists tise_seq;
 drop sequence if exists clie_seq;
 drop sequence if exists dicl_seq;

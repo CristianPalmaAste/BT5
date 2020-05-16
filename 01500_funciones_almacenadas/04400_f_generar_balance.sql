@@ -131,7 +131,7 @@ begin
       insert into tmp_balance (idsesion                 -- varchar(100)      not null
                               ,correlativo              -- numeric(20,0)     not null
                               ,cuenta_contable          -- varchar(100)      not null
-                              ,descrpcion_cuenta        -- varchar(1000)     not null
+                              ,descripcion_cuenta       -- varchar(1000)     not null
                               ,debe_o_haber             -- varchar(1)        not null
                               ,valor                    -- numeric(20,0)     not null
                               ,fechacrearegistro        -- timestamp         not null
@@ -139,7 +139,7 @@ begin
       values (Pidsesion                    -- idsesion                 varchar(100)      not null
              ,i                            -- correlativo              numeric(20,0)     not null
              ,Vcuenta_contable             -- cuenta_contable          varchar(100)      not null
-             ,Vdescripcion                 -- descrpcion_cuenta        varchar(1000)     not null
+             ,Vdescripcion                 -- descripcion_cuenta       varchar(1000)     not null
              ,Vdebe_o_haber                -- debe_o_haber             varchar(1)        not null
              ,aux                          -- valor                    numeric(20,0)     not null
              ,current_timestamp            -- fechacrearegistro        timestamp         not null

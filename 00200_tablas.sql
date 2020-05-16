@@ -1347,6 +1347,7 @@ create table tipos_doctos_ventas (
   ,textoimpreso             varchar(50)     not null
   ,usable_en_rendicion      varchar(1)      not null
   ,obliga_proveedor         varchar(1)      not null
+  ,es_contabilizable        varchar(1)      not null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
   ,idusuamodifregistro      numeric(20,0)       null
@@ -1372,6 +1373,50 @@ alter table tipos_doctos_ventas add constraint tidv_chk_01 check (usable_en_rend
 ;
 
 alter table tipos_doctos_ventas add constraint tidv_chk_02 check (obliga_proveedor in ('S', 'N'))
+;
+
+alter table tipos_doctos_ventas add constraint tidv_chk_03 check (es_contabilizable in ('S', 'N'))
+;
+
+/*************************************************************************************************************************/
+
+create table tipos_usos_doctos_ventas (
+   id                       numeric(20,0)   not null
+  ,descripcion              varchar(100)    not null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table tipos_usos_doctos_ventas add constraint tudv_pk primary key (id)
+;
+
+alter table tipos_usos_doctos_ventas add constraint tudv_uk_01 unique (descripcion)
+;
+
+/*************************************************************************************************************************/
+
+create table usos_doctos_ventas (
+   id                       numeric(20,0)   not null
+  ,idtudv                   numeric(20,0)   not null
+  ,idtidv                   numeric(20,0)   not null
+  ,idusuacrearegistro       numeric(20,0)   not null
+  ,fechacrearegistro        timestamp       not null
+  ,idusuamodifregistro      numeric(20,0)       null
+  ,fechamodifregistro       timestamp           null
+  ,idusuaborraregistro      numeric(20,0)       null
+  ,fechaborraregistro       timestamp           null
+)
+;
+
+alter table usos_doctos_ventas add constraint usdv_pk primary key (id)
+;
+
+alter table usos_doctos_ventas add constraint usdv_uk_01 unique (idtudv, idtidv)
 ;
 
 /*************************************************************************************************************************/
@@ -2890,6 +2935,7 @@ create table compras (
    id                       numeric(20,0)   not null
   ,idempr                   numeric(20,0)   not null
   ,idreco                   numeric(20,0)       null
+  ,idbode                   numeric(20,0)       null
   ,idprov                   numeric(20,0)   not null
   ,idtidv                   numeric(20,0)   not null
   ,numero                   numeric(20,0)   not null
@@ -2912,7 +2958,7 @@ create table compras (
 alter table compras add constraint comp_pk primary key (id)
 ;
 
-alter table compras add constraint comp_uk_01 unique (idreco, idtidv, numero)
+alter table compras add constraint comp_uk_01 unique (idprov, idtidv, numero)
 ;
 
 /*************************************************************************************************************************/
@@ -2950,7 +2996,6 @@ alter table detalles_compras add constraint deco_chk_01 check (
                                                               )
 ;
 
-/*************************************************************************************************************************/
 /*************************************************************************************************************************/
 
 create table tipos_asocs_ctas_ctbles (
@@ -3274,7 +3319,7 @@ create table tmp_balance (
    idsesion                 numeric(20,0)     not null
   ,correlativo              numeric(20,0)     not null
   ,cuenta_contable          varchar(100)      not null
-  ,descrpcion_cuenta        varchar(1000)     not null
+  ,descripcion_cuenta       varchar(1000)     not null
   ,debe_o_haber             varchar(1)        not null
   ,valor                    numeric(20,0)     not null
   ,fechacrearegistro        timestamp         not null
@@ -3818,6 +3863,7 @@ alter table unidades_medidas_servicios        add constraint unms_fk3_usua forei
 
 alter table compras                           add constraint comp_fk_empr  foreign key (idempr)                 references empresas                         (id);
 alter table compras                           add constraint comp_fk_reco  foreign key (idreco)                 references recepciones_compras              (id);
+alter table compras                           add constraint comp_fk_bode  foreign key (idbode)                 references bodegas                          (id);
 alter table compras                           add constraint comp_fk_prov  foreign key (idprov)                 references proveedores                      (id);
 alter table compras                           add constraint comp_fk_tidv  foreign key (idtidv)                 references tipos_doctos_ventas              (id);
 alter table compras                           add constraint comp_fk_asco  foreign key (idasco)                 references asientos_contables               (id);
@@ -3902,10 +3948,18 @@ alter table bancos                            add constraint banc_fk_pais  forei
 alter table bancos                            add constraint banc_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table bancos                            add constraint banc_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 
-alter table cuentas_bancarias_proveedores     add constraint cubp_fk_prov  foreign key (idprov             )    references proveedores                      (id);
-alter table cuentas_bancarias_proveedores     add constraint cubp_fk_banc  foreign key (idbanc             )    references bancos                           (id);
-alter table cuentas_bancarias_proveedores     add constraint cubp_fk_ticb  foreign key (idticb             )    references tipos_cuentas_bancarias          (id);
+alter table cuentas_bancarias_proveedores     add constraint cubp_fk_prov  foreign key (idprov)                 references proveedores                      (id);
+alter table cuentas_bancarias_proveedores     add constraint cubp_fk_banc  foreign key (idbanc)                 references bancos                           (id);
+alter table cuentas_bancarias_proveedores     add constraint cubp_fk_ticb  foreign key (idticb)                 references tipos_cuentas_bancarias          (id);
 alter table cuentas_bancarias_proveedores     add constraint cubp_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table cuentas_bancarias_proveedores     add constraint cubp_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
+
+alter table tipos_usos_doctos_ventas          add constraint tudv_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
+alter table tipos_usos_doctos_ventas          add constraint tudv_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
+
+alter table usos_doctos_ventas                add constraint usdv_fk_tudv  foreign key (idtudv)                 references tipos_usos_doctos_ventas         (id);
+alter table usos_doctos_ventas                add constraint usdv_fk_tidv  foreign key (idtidv)                 references tipos_doctos_ventas              (id);
+alter table usos_doctos_ventas                add constraint usdv_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
+alter table usos_doctos_ventas                add constraint usdv_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 
 \q

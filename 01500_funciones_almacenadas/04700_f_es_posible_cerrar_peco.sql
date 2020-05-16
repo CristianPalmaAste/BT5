@@ -12,12 +12,20 @@ declare
   Vfecha     varchar(1000);
   Vfechas    varchar(1000);
   Videspc    int;
-  C_vtas_no_contab cursor for
+  C_ventas_no_contab cursor for
     select distinct to_char(vent.fechaventa,'dd-mm-yyyy') fecha_venta
     from   ventas   vent
     where  vent.idempr                       = Vidempr
     and    to_char(vent.fechaventa,'yyyymm') = ltrim(rtrim(to_char(Vanno,'0009'))) || ltrim(rtrim(to_char(Vmes,'09')))
     and    vent.idasco                       is null
+    order  by 1
+    ;
+  C_compras_no_contab cursor for
+    select distinct to_char(comp.fecha,'dd-mm-yyyy') fecha_compra
+    from   compras   comp
+    where  comp.idempr                  = Vidempr
+    and    to_char(comp.fecha,'yyyymm') = ltrim(rtrim(to_char(Vanno,'0009'))) || ltrim(rtrim(to_char(Vmes,'09')))
+    and    comp.idasco                  is null
     order  by 1
     ;
 begin
@@ -69,10 +77,13 @@ begin
   ;
   --
   -- Revisión compras
-  /*
-    falta ver si hay compras no contabilizadas
-  */
-  aux2 := 0;
+  select count(*)
+  into   aux2
+  from   compras comp
+  where  comp.idempr                  = Vidempr
+  and    to_char(comp.fecha,'yyyymm') = ltrim(rtrim(to_char(Vanno,'0009'))) || ltrim(rtrim(to_char(Vmes,'09')))
+  and    comp.idasco                  is null
+  ;
   --
   -- Revisión asientos contables
   select count(*)
@@ -85,20 +96,32 @@ begin
   --
   if aux1 != 0 or aux2 != 0 or aux3 != 0 then
     Vmensaje := '';
+
+
+
     if aux1 != 0 then
       Vfechas := '';
-      open C_vtas_no_contab;
+      open C_ventas_no_contab;
       loop
-        fetch C_vtas_no_contab into Vfecha;
+        fetch C_ventas_no_contab into Vfecha;
         exit when not found;
         Vfechas := Vfechas || ' - ' || Vfecha;
       end loop;
-      close C_vtas_no_contab;
-      Vfechas := substr(Vfechas,4,1000);
+      close C_ventas_no_contab;
+      Vfechas  := substr(Vfechas,4,1000);
       Vmensaje := Vmensaje || ';Existen ' || aux1 || ' ventas no contabilizadas, fechas: ' || Vfechas;
     end if;
     if aux2 != 0 then
-      Vmensaje := Vmensaje || ';Existen ' || aux2 || ' compras no contabilizadas';
+      Vfechas := '';
+      open C_compras_no_contab;
+      loop
+        fetch C_compras_no_contab into Vfecha;
+        exit when not found;
+        Vfechas := Vfechas || ' - ' || Vfecha;
+      end loop;
+      close C_compras_no_contab;
+      Vfechas  := substr(Vfechas,4,1000);
+      Vmensaje := Vmensaje || ';Existen ' || aux2 || ' compras no contabilizadas, fechas: ' || Vfechas;
     end if;
     if aux3 != 0 then
       Vmensaje := Vmensaje || ';Existen ' || aux3 || ' asientos contables pendientes';
@@ -110,6 +133,7 @@ begin
 end;
 $$ LANGUAGE plpgsql;
 
+\q
+
 select f_es_posible_cerrar_peco (1);
 
-\q

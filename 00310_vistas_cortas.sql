@@ -54,6 +54,8 @@ create or replace view tipr as select * from tipos_productos;
 create or replace view impu as select * from impuestos;
 create or replace view tipi as select * from tipos_productos_impuestos;
 create or replace view tidv as select * from tipos_doctos_ventas;
+create or replace view tudv as select * from tipos_usos_doctos_ventas;
+create or replace view usdv as select * from usos_doctos_ventas;
 create or replace view tise as select * from tipos_servicios;
 create or replace view clie as select * from clientes;
 create or replace view dicl as select * from direcciones_clientes;

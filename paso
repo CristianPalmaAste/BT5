@@ -271,6 +271,16 @@ SET
 
                ?column?                
 ---------------------------------------
+ create sequence tudv_seq start with 5
+(1 fila)
+
+                ?column?                
+----------------------------------------
+ create sequence usdv_seq start with 16
+(1 fila)
+
+               ?column?                
+---------------------------------------
  create sequence tise_seq start with 3
 (1 fila)
 
@@ -344,19 +354,19 @@ SET
  create sequence bode_seq start with 19
 (1 fila)
 
-                ?column?                
-----------------------------------------
- create sequence bopr_seq start with 49
+                ?column?                 
+-----------------------------------------
+ create sequence bopr_seq start with 479
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence lipr_seq start with 3
+ create sequence lipr_seq start with 4
 (1 fila)
 
-                ?column?                
-----------------------------------------
- create sequence delp_seq start with 35
+                ?column?                 
+-----------------------------------------
+ create sequence delp_seq start with 250
 (1 fila)
 
                 ?column?                
@@ -389,9 +399,9 @@ SET
  create sequence desu_seq start with 8
 (1 fila)
 
-                ?column?                
-----------------------------------------
- create sequence bicp_seq start with 35
+                ?column?                 
+-----------------------------------------
+ create sequence bicp_seq start with 250
 (1 fila)
 
                ?column?                
@@ -576,17 +586,17 @@ SET
 
                 ?column?                
 ----------------------------------------
- create sequence peco_seq start with 24
+ create sequence peco_seq start with 14
 (1 fila)
 
-                ?column?                
-----------------------------------------
- create sequence asco_seq start with 21
+               ?column?                
+---------------------------------------
+ create sequence asco_seq start with 1
 (1 fila)
 
-                ?column?                
-----------------------------------------
- create sequence deac_seq start with 43
+               ?column?                
+---------------------------------------
+ create sequence deac_seq start with 1
 (1 fila)
 
                ?column?                
@@ -601,11 +611,11 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence coca_seq start with 7
+ create sequence coca_seq start with 9
 (1 fila)
 
-                ?column?                 
------------------------------------------
- create sequence dpce_seq start with 131
+                ?column?                
+----------------------------------------
+ create sequence dpce_seq start with 92
 (1 fila)
 

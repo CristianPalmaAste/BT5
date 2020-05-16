@@ -1,6 +1,1 @@
 CREATE FUNCTION
-    f_es_posible_cerrar_peco    
---------------------------------
- N;No existe período contable 1
-(1 fila)
-

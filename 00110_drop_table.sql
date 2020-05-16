@@ -54,6 +54,8 @@ drop table if exists tipos_productos                cascade;
 drop table if exists impuestos                      cascade;
 drop table if exists tipos_productos_impuestos      cascade;
 drop table if exists tipos_doctos_ventas            cascade;
+drop table if exists tipos_usos_doctos_ventas       cascade;
+drop table if exists usos_doctos_ventas             cascade;
 drop table if exists tipos_servicios                cascade;
 drop table if exists clientes                       cascade;
 drop table if exists direcciones_clientes           cascade;

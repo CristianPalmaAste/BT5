@@ -1,19 +1,219 @@
-select prco.descripcion
-      ,tiec.descripcion
-      ,cuco.cuenta_desplegable
-      ,cuco.descripcion
-      ,coca.descripcion
-from   coca
-      ,dpce
-      ,tiec
-      ,cuco
-      ,prce
-      ,prco
-where  coca.id     = dpce.idcoca
-and    dpce.idtiec = tiec.id
-and    dpce.idcuco = cuco.id
-and    dpce.idprce = prce.id
-and    prce.idprco = prco.id
-and    prce.idempr = 1
-;
+ id  | producto |                    desprod                    | idbode | idempr | unidad_producto | preciounitario 
+-----+----------+-----------------------------------------------+--------+--------+-----------------+----------------
+ 240 | 01100001 | AUTOMATICO LEGRAND 6 AMP                      |     18 |     14 | UN              |            720
+ 241 | 01070001 | BOMBA DAB 35/180                              |     18 |     14 | UN              |            723
+ 242 | 01070002 | BOMBA DAB 55/180                              |     18 |     14 | UN              |            726
+ 243 | 01070003 | BOMBA DAB 65/130                              |     18 |     14 | UN              |            729
+ 244 | 01070004 | BOMBA GRUNDFOS UPS 25-55 180                  |     18 |     14 | UN              |            732
+ 245 | 01090001 | BUSHING 1 1/2 X  1 1/4                        |     18 |     14 | UN              |            735
+ 246 | 01090002 | BUSHING 1 1/2 X 1                             |     18 |     14 | UN              |            738
+ 247 | 01090003 | BUSHING 1 1/2 X 3/4                           |     18 |     14 | UN              |            741
+ 248 | 01090004 | BUSHING 1 1/4 X 1                             |     18 |     14 | UN              |            744
+ 249 | 01090005 | BUSHING 1 1/4 X 1/2                           |     18 |     14 | UN              |            747
+ 250 | 01090006 | BUSHING 1 X 1/2                               |     18 |     14 | UN              |            750
+ 251 | 01090007 | BUSHING 1 X 3/4                               |     18 |     14 | UN              |            753
+ 252 | 01110001 | BUSHING 1 X 3/4 BRONCE                        |     18 |     14 | UN              |            756
+ 253 | 01090008 | BUSHING 1 X 3/8                               |     18 |     14 | UN              |            759
+ 254 | 01090009 | BUSHING 1/2 X 1/4                             |     18 |     14 | UN              |            762
+ 255 | 01090010 | BUSHING 2 X 1                                 |     18 |     14 | UN              |            765
+ 256 | 01090011 | BUSHING 3/4 X 1/2                             |     18 |     14 | UN              |            768
+ 257 | 01110002 | BUSHING BRONCE 1/2 X 3/8                      |     18 |     14 | UN              |            771
+ 258 | 01090012 | BUSHING DE 3/8 X 1/4                          |     18 |     14 | UN              |            774
+ 259 | 01050001 | CODO 1                                        |     18 |     14 | UN              |            777
+ 260 | 01050002 | CODO 1 1/2                                    |     18 |     14 | UN              |            780
+ 261 | 01050003 | CODO 1 1/2 SO 1 1/2 HE                        |     18 |     14 | UN              |            783
+ 262 | 01050004 | CODO 1 1/4                                    |     18 |     14 | UN              |            786
+ 263 | 01050005 | CODO 1 1/4 SO 1 1/4 HE                        |     18 |     14 | UN              |            789
+ 264 | 01050006 | CODO 1 X 3/4                                  |     18 |     14 | UN              |            792
+ 265 | 01050007 | CODO 1/2                                      |     18 |     14 | UN              |            795
+ 266 | 01050008 | CODO 1/2 HE X 3/4 TUERCA MOVIL                |     18 |     14 | UN              |            798
+ 267 | 01050009 | CODO 1/2 HI                                   |     18 |     14 | UN              |            801
+ 268 | 01050010 | CODO 1/2 SO 3/4 HI                            |     18 |     14 | UN              |            804
+ 269 | 01050011 | CODO 1/2 SO 3/8 HE                            |     18 |     14 | UN              |            807
+ 270 | 01050012 | CODO 1/2 SO 3/8 HI                            |     18 |     14 | UN              |            810
+ 271 | 01050013 | CODO 1/2 X 3/8                                |     18 |     14 | UN              |            813
+ 272 | 01040057 | CODO 16 X 1/2 SO                              |     18 |     14 | UN              |            816
+ 273 | 01040058 | CODO 16 X 16                                  |     18 |     14 | UN              |            819
+ 274 | 01050014 | CODO 2                                        |     18 |     14 | UN              |            822
+ 275 | 01040059 | CODO 20 X 20                                  |     18 |     14 | UN              |            825
+ 276 | 01040060 | CODO 25 X 25                                  |     18 |     14 | UN              |            828
+ 277 | 01050015 | CODO 3/4                                      |     18 |     14 | UN              |            831
+ 278 | 01050016 | CODO 3/4 HI X 1 HI                            |     18 |     14 | UN              |            834
+ 279 | 01050017 | CODO 3/4 SO 1/2 HI                            |     18 |     14 | UN              |            837
+ 280 | 01050018 | CODO 3/4 SO X 3/4 HE                          |     18 |     14 | UN              |            840
+ 281 | 01050019 | CODO 3/4 X 1/2                                |     18 |     14 | UN              |            843
+ 282 | 01050020 | CODO 3/8                                      |     18 |     14 | UN              |            846
+ 283 | 01050021 | CODO 3/8 SO 3/8 HE                            |     18 |     14 | UN              |            849
+ 284 | 01050022 | CODO 3/8 SO 3/8 HI                            |     18 |     14 | UN              |            852
+ 285 | 01040061 | CODO 32 X 32                                  |     18 |     14 | UN              |            855
+ 286 | 01040062 | CODO BASE FIJACION 25 X 3/4 HI                |     18 |     14 | UN              |            858
+ 287 | 01080001 | CODO PVC 1 HI X 3/4 HI                        |     18 |     14 | UN              |            861
+ 288 | 01040063 | CODO TERMINAL 16 X 1/2 HE                     |     18 |     14 | UN              |            864
+ 289 | 01040064 | CODO TERMINAL 16 X 1/2 HI                     |     18 |     14 | UN              |            867
+ 290 | 01040065 | CODO TERMINAL 20 X 3/4 HE                     |     18 |     14 | UN              |            870
+ 291 | 01040066 | CODO TERMINAL 25 X 3/4 HI                     |     18 |     14 | UN              |            873
+ 292 | 01040067 | CODO TERMINAL EUROCONO 20 X 3/4 HE            |     18 |     14 | UN              |            876
+ 293 | 01050023 | COLA A MANGUERA 1/2 X 1/2 SO                  |     18 |     14 | UN              |            879
+ 294 | 01050024 | COPLA 1                                       |     18 |     14 | UN              |            882
+ 295 | 01050025 | COPLA 1 1/2                                   |     18 |     14 | UN              |            885
+ 296 | 01050026 | COPLA 1 1/2 X 1                               |     18 |     14 | UN              |            888
+ 297 | 01050027 | COPLA 1 1/2 X 1 1/4                           |     18 |     14 | UN              |            891
+ 298 | 01050028 | COPLA 1 1/2 X 3/4                             |     18 |     14 | UN              |            894
+ 299 | 01050029 | COPLA 1 HI                                    |     18 |     14 | UN              |            897
+ 300 | 01050030 | COPLA 1/2                                     |     18 |     14 | UN              |            900
+ 301 | 01050031 | COPLA 1/2 HI X 3/8 HI                         |     18 |     14 | UN              |            903
+ 302 | 01050032 | COPLA 1/2 X 3/4 HI                            |     18 |     14 | UN              |            906
+ 303 | 01050033 | COPLA 1/2 X 3/8                               |     18 |     14 | UN              |            909
+ 304 | 01050034 | COPLA 2                                       |     18 |     14 | UN              |            912
+ 305 | 01050035 | COPLA 2 1/2 X 2                               |     18 |     14 | UN              |            915
+ 306 | 01050036 | COPLA 2 X 1 1/2                               |     18 |     14 | UN              |            918
+ 307 | 01050037 | COPLA 3/4                                     |     18 |     14 | UN              |            921
+ 308 | 01050038 | COPLA 3/4 X 1/2                               |     18 |     14 | UN              |            924
+ 309 | 01050039 | COPLA 3/8                                     |     18 |     14 | UN              |            927
+ 310 | 01050040 | COPLA 3/8 X 1/4                               |     18 |     14 | UN              |            930
+ 311 | 01050041 | COPLA HI 1 1/4                                |     18 |     14 | UN              |            933
+ 312 | 01050042 | COPLA HI 1/2                                  |     18 |     14 | UN              |            936
+ 313 | 01050043 | COPLA HI 3/4                                  |     18 |     14 | UN              |            939
+ 314 | 01050044 | COPLA SO 1 X 3/4                              |     18 |     14 | UN              |            942
+ 315 | 01060001 | FLEXIBLE 3/4                                  |     18 |     14 | UN              |            945
+ 316 | 01050045 | HILO 1                                        |     18 |     14 | UN              |            948
+ 317 | 01050046 | HILO 1 1/2                                    |     18 |     14 | UN              |            951
+ 318 | 01050047 | HILO 1 1/4                                    |     18 |     14 | UN              |            954
+ 319 | 01050048 | HILO 1/2                                      |     18 |     14 | UN              |            957
+ 320 | 01050049 | HILO 3/4                                      |     18 |     14 | UN              |            960
+ 321 | 01050050 | HILO 3/4 HI 3/4 HE                            |     18 |     14 | UN              |            963
+ 322 | 01050051 | LLAVE 1/2 SO SO                               |     18 |     14 | UN              |            966
+ 323 | 01060002 | LLAVE ANGULAR CALDERA 1/2 HE 1/2 TUERCA MOVIL |     18 |     14 | UN              |            969
+ 324 | 01120001 | LLAVE BOLA 1 HI HI                            |     18 |     14 | UN              |            972
+ 325 | 01120002 | LLAVE BOLA 1/2 HI HI                          |     18 |     14 | UN              |            975
+ 326 | 01120003 | LLAVE DE BOLA 1 1/4 HI                        |     18 |     14 | UN              |            978
+ 327 | 01120004 | LLAVE DE BOLA 3/4 HI                          |     18 |     14 | UN              |            981
+ 328 | 01120005 | LLAVE JARDIN 1/2 HE                           |     18 |     14 | UN              |            984
+ 329 | 01090013 | MACHON 1/2                                    |     18 |     14 | UN              |            987
+ 330 | 01090014 | MACHON 3/4                                    |     18 |     14 | UN              |            990
+ 331 | 01040068 | MANGUITO 16                                   |     18 |     14 | UN              |            993
+ 332 | 01040069 | MANGUITO 20                                   |     18 |     14 | UN              |            996
+ 333 | 01040070 | MANGUITO 20 X 16                              |     18 |     14 | UN              |            999
+ 334 | 01040071 | MANGUITO 25                                   |     18 |     14 | UN              |           1002
+ 335 | 01040072 | MANGUITO 25 X 16                              |     18 |     14 | UN              |           1005
+ 336 | 01040073 | MANGUITO 25 X 20                              |     18 |     14 | UN              |           1008
+ 337 | 01040074 | MANGUITO 32                                   |     18 |     14 | UN              |           1011
+ 338 | 01050052 | NIPLE 1                                       |     18 |     14 | UN              |           1014
+ 339 | 01050053 | NIPLE 1 1/2                                   |     18 |     14 | UN              |           1017
+ 340 | 01050054 | NIPLE 1/2 X 3/8                               |     18 |     14 | UN              |           1020
+ 341 | 01050055 | NIPLE 3/4                                     |     18 |     14 | UN              |           1023
+ 342 | 01060003 | PURGADOR AUTOMATICO 1/4                       |     18 |     14 | UN              |           1026
+ 343 | 01060004 | PURGADOR AUTOMATICO 3/8                       |     18 |     14 | UN              |           1029
+ 344 | 01030001 | PURGADOR AUTOMATICO RINNAI RB                 |     18 |     14 | UN              |           1032
+ 345 | 01110003 | TAPA GORRO BRONCE 3/4                         |     18 |     14 | UN              |           1035
+ 346 | 01090015 | TAPA GORRO FE  1/2                            |     18 |     14 | UN              |           1038
+ 347 | 01090016 | TAPA GORRO FE 1                               |     18 |     14 | UN              |           1041
+ 348 | 01090017 | TAPA GORRO FE 1 1/2                           |     18 |     14 | UN              |           1044
+ 349 | 01080002 | TAPA GORRO PVC 1                              |     18 |     14 | UN              |           1047
+ 350 | 01080003 | TAPA GORRO PVC 1/2                            |     18 |     14 | UN              |           1050
+ 351 | 01080004 | TAPA GORRO PVC 3/4                            |     18 |     14 | UN              |           1053
+ 352 | 01050056 | TAPA GORRO SO 1                               |     18 |     14 | UN              |           1056
+ 353 | 01050057 | TAPA GORRO SO 1/4                             |     18 |     14 | UN              |           1059
+ 354 | 01050058 | TAPA GORRO SO 3/4                             |     18 |     14 | UN              |           1062
+ 355 | 01050059 | TAPA GORRO SO 3/8                             |     18 |     14 | UN              |           1065
+ 356 | 01050060 | TAPA GORRO SOLDAR 1/2                         |     18 |     14 | UN              |           1068
+ 357 | 01050061 | TAPA TORNILLO 1                               |     18 |     14 | UN              |           1071
+ 358 | 01050062 | TAPA TORNILLO 1 1/2 BRONCE                    |     18 |     14 | UN              |           1074
+ 359 | 01050063 | TAPA TORNILLO 1 1/4                           |     18 |     14 | UN              |           1077
+ 360 | 01050064 | TAPA TORNILLO 2                               |     18 |     14 | UN              |           1080
+ 361 | 01050065 | TAPA TORNILLO BRONCE 1/2                      |     18 |     14 | UN              |           1083
+ 362 | 01050066 | TAPA TORNILLO BRONCE 3/4                      |     18 |     14 | UN              |           1086
+ 363 | 01090018 | TAPA TORNILLO FE 1/2                          |     18 |     14 | UN              |           1089
+ 364 | 01080005 | TAPA TORNILLO PVC 3/4                         |     18 |     14 | UN              |           1092
+ 365 | 01080006 | TAPA TORNILO PVC 1/2                          |     18 |     14 | UN              |           1095
+ 366 | 01040075 | TAPON 16                                      |     18 |     14 | UN              |           1098
+ 367 | 01040076 | TAPON 20                                      |     18 |     14 | UN              |           1101
+ 368 | 01050067 | TEE 1                                         |     18 |     14 | UN              |           1104
+ 369 | 01050068 | TEE 1 1/2 X 1/2 X 1 1/2                       |     18 |     14 | UN              |           1107
+ 370 | 01050069 | TEE 1 1/4 X 1 X 1 1/4                         |     18 |     14 | UN              |           1110
+ 371 | 01050070 | TEE 1 1/4 X 1/2 X 1 1/4                       |     18 |     14 | UN              |           1113
+ 372 | 01050071 | TEE 1 1/4 X 3/4 X 1 1/4                       |     18 |     14 | UN              |           1116
+ 373 | 01050072 | TEE 1 X 1/2 X 1                               |     18 |     14 | UN              |           1119
+ 374 | 01050073 | TEE 1 X 3/4 X 1                               |     18 |     14 | UN              |           1122
+ 375 | 01050074 | TEE 1/2                                       |     18 |     14 | UN              |           1125
+ 376 | 01050075 | TEE 1/2 HI                                    |     18 |     14 | UN              |           1128
+ 377 | 01050076 | TEE 1/2 X 3/4 X 1/2                           |     18 |     14 | UN              |           1131
+ 378 | 01050077 | TEE 1/2 X 3/8 X 1/2                           |     18 |     14 | UN              |           1134
+ 379 | 01050078 | TEE 16 X 16 X 16                              |     18 |     14 | UN              |           1137
+ 380 | 01050079 | TEE 2 X 1/2 X 2                               |     18 |     14 | UN              |           1140
+ 381 | 01040077 | TEE 20 X 16 X 16                              |     18 |     14 | UN              |           1143
+ 382 | 01040078 | TEE 20 X 16 X 20                              |     18 |     14 | UN              |           1146
+ 383 | 01040079 | TEE 20 X 25 X 16                              |     18 |     14 | UN              |           1149
+ 384 | 01040080 | TEE 20 X 25 X 20                              |     18 |     14 | UN              |           1152
+ 385 | 01040081 | TEE 25 X 16 X 20                              |     18 |     14 | UN              |           1155
+ 386 | 01040082 | TEE 25 X 16 X 25                              |     18 |     14 | UN              |           1158
+ 387 | 01040083 | TEE 25 X 20 X 25                              |     18 |     14 | UN              |           1161
+ 388 | 01040084 | TEE 25 X 20 X20                               |     18 |     14 | UN              |           1164
+ 389 | 01040085 | TEE 25 X 25 X 16                              |     18 |     14 | UN              |           1167
+ 390 | 01040086 | TEE 25 X 25 X 20                              |     18 |     14 | UN              |           1170
+ 391 | 01040087 | TEE 25 X25 X25                                |     18 |     14 | UN              |           1173
+ 392 | 01050080 | TEE 3/4                                       |     18 |     14 | UN              |           1176
+ 393 | 01050081 | TEE 3/4 X 1 X 3/4                             |     18 |     14 | UN              |           1179
+ 394 | 01050082 | TEE 3/4 X 1/2 X 1/2                           |     18 |     14 | UN              |           1182
+ 395 | 01050083 | TEE 3/4 X 3/4 X 1/2                           |     18 |     14 | UN              |           1185
+ 396 | 01050084 | TEE 3/8                                       |     18 |     14 | UN              |           1188
+ 397 | 01040088 | TEE 32 X 20 X 32                              |     18 |     14 | UN              |           1191
+ 398 | 01040089 | TEE 32 X 32 X 20                              |     18 |     14 | UN              |           1194
+ 399 | 01040090 | TEE 32 X 32 X 32                              |     18 |     14 | UN              |           1197
+ 400 | 01050085 | TEE DE 1/2 X 1/2 X 3/8                        |     18 |     14 | UN              |           1200
+ 401 | 01040091 | TEE DE 20 X 25 X 16                           |     18 |     14 | UN              |           1203
+ 402 | 01040092 | TEE DE 32 X 20 X 20                           |     18 |     14 | UN              |           1206
+ 403 | 01050086 | TERMINAL 1 1/2 HE                             |     18 |     14 | UN              |           1209
+ 404 | 01050087 | TERMINAL 1 1/4 HE                             |     18 |     14 | UN              |           1212
+ 405 | 01050088 | TERMINAL 1 HE                                 |     18 |     14 | UN              |           1215
+ 406 | 01050089 | TERMINAL 1 HI                                 |     18 |     14 | UN              |           1218
+ 407 | 01050090 | TERMINAL 1/2 HE                               |     18 |     14 | UN              |           1221
+ 408 | 01050091 | TERMINAL 1/2 HI                               |     18 |     14 | UN              |           1224
+ 409 | 01050092 | TERMINAL 1/2 SO 3/4 HE                        |     18 |     14 | UN              |           1227
+ 410 | 01050093 | TERMINAL 1/2 SO 3/4 HI                        |     18 |     14 | UN              |           1230
+ 411 | 01050094 | TERMINAL 1/2 SO 3/8 HI                        |     18 |     14 | UN              |           1233
+ 412 | 01040093 | TERMINAL 20 X 1/2 HE                          |     18 |     14 | UN              |           1236
+ 413 | 01040094 | TERMINAL 20 X 1/2 HI                          |     18 |     14 | UN              |           1239
+ 414 | 01040095 | TERMINAL 20 X 3/4 HE                          |     18 |     14 | UN              |           1242
+ 415 | 01040096 | TERMINAL 20X 3/4 HI                           |     18 |     14 | UN              |           1245
+ 416 | 01040097 | TERMINAL 25 X 3/4 HE                          |     18 |     14 | UN              |           1248
+ 417 | 01040098 | TERMINAL 25 X 3/4 HI                          |     18 |     14 | UN              |           1251
+ 418 | 01050095 | TERMINAL 3/4 HE                               |     18 |     14 | UN              |           1254
+ 419 | 01050096 | TERMINAL 3/4 HI                               |     18 |     14 | UN              |           1257
+ 420 | 01050097 | TERMINAL 3/4 SO 1/2 HE                        |     18 |     14 | UN              |           1260
+ 421 | 01050098 | TERMINAL 3/4 SO 1/2 HI                        |     18 |     14 | UN              |           1263
+ 422 | 01050099 | TERMINAL 3/8 HE                               |     18 |     14 | UN              |           1266
+ 423 | 01050100 | TERMINAL 3/8 HI                               |     18 |     14 | UN              |           1269
+ 424 | 01040099 | TERMINAL 32 X 1 1/4 HI                        |     18 |     14 | UN              |           1272
+ 425 | 01040100 | TERMINAL 32 X 1 HE                            |     18 |     14 | UN              |           1275
+ 426 | 01040101 | TERMINAL 32 X 1 HI                            |     18 |     14 | UN              |           1278
+ 427 | 01040102 | TERMINAL EUROCONO 20 X 3/4 HI                 |     18 |     14 | UN              |           1281
+ 428 | 01040103 | TERMINAL EUROCONO 25 X 3/4 HE                 |     18 |     14 | UN              |           1284
+ 429 | 01040104 | TERMINAL TUERCA MOVIL 16 1/2 HI               |     18 |     14 | UN              |           1287
+ 430 | 01040105 | TERMINAL TUERCA MOVIL 20 X 1/2                |     18 |     14 | UN              |           1290
+ 431 | 01040106 | TERMINAL TUERCA MOVIL 25 X 3/4                |     18 |     14 | UN              |           1293
+ 432 | 01040107 | TERMINAL TUERCA MOVIL 32 X 1 1/4              |     18 |     14 | UN              |           1296
+ 433 | 01060005 | TERMOSTATO ATP 1                              |     18 |     14 | UN              |           1299
+ 434 | 01060006 | TERMOSTATO PROGRAMABLE FLORENCIA              |     18 |     14 | UN              |           1302
+ 435 | 01060007 | TERMOSTATO SIMPLE ANWO                        |     18 |     14 | UN              |           1305
+ 436 | 01060008 | TERMOSTATO SPDT HONEYWELL                     |     18 |     14 | UN              |           1308
+ 437 | 01050101 | UNION AMERICANA 1 1/4 HI                      |     18 |     14 | UN              |           1311
+ 438 | 01050102 | UNION AMERICANA 1/2 SO SO                     |     18 |     14 | UN              |           1314
+ 439 | 01050103 | UNION AMERICANA 3/4 SO SO                     |     18 |     14 | UN              |           1317
+ 440 | 01080007 | UNION AMERICANA PVC 32                        |     18 |     14 | UN              |           1320
+ 441 | 01040108 | UNION PEX 16 X 1/2 SO                         |     18 |     14 | UN              |           1323
+ 442 | 01120006 | VALVULA DE RETENCION 1                        |     18 |     14 | UN              |           1326
+ 443 | 01120007 | VALVULA DE RETENCION 1 1/4                    |     18 |     14 | UN              |           1329
+ 444 | 01060009 | VALVULA LLENADO AUTOMATICO 1/2                |     18 |     14 | UN              |           1332
+ 445 | 01120008 | VALVULA MEZCLADORA 3 VIAS 1                   |     18 |     14 | UN              |           1335
+ 446 | 01060010 | VALVULA MOTORIZADA DE RESORTE 3/4             |     18 |     14 | UN              |           1338
+ 447 | 01120009 | VALVULA REGULADORA DE PRESION 1/2             |     18 |     14 | UN              |           1341
+ 448 | 01120010 | VALVULA RETENCION 1 1/2                       |     18 |     14 | UN              |           1344
+ 449 | 01120011 | VALVULA RETENCION 1/2                         |     18 |     14 | UN              |           1347
+ 450 | 01120012 | VALVULA RETENCION 3/4                         |     18 |     14 | UN              |           1350
+ 451 | 01120013 | VALVULA RETENCION HORIZONTAL 1 1/4            |     18 |     14 | UN              |           1353
+ 452 | 01060011 | VALVULA SEGURIDAD 3 BAR 1/2 HI                |     18 |     14 | UN              |           1356
+ 453 | 01060012 | VALVULA SEGURIDAD 3 BAR 3/4 HI                |     18 |     14 | UN              |           1359
+ 454 | 01060013 | VALVULA SEGURIDAD 7 BAR 1/2 HE                |     18 |     14 | UN              |           1362
+(215 filas)
 

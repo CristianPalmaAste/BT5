@@ -27,14 +27,17 @@ insert into perfiles values (19, 'AYUDANTE JEFE DE VENTAS'                      
 insert into perfiles values (20, 'VENDEDOR'                                       , 1, current_timestamp, null, null, null, null);
 insert into perfiles values (21, 'USUARIO'                                        , 1, current_timestamp, null, null, null, null);
 
-insert into usuarios_perfiles values (1 , 1 , 1, null, null, 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (3 , 3 , 1, null, null, 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (4 , 4 , 1, null, null, 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (5 , 5 , 1, null, null, 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (6 , 6 , 1, null, null, 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (7 , 7 , 1, null, null, 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (8 , 8 , 1, null, null, 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios_perfiles values (10, 10, 1, null, null, 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios_perfiles values (1 , 1 , 1 , null, null, 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios_perfiles values (3 , 3 , 1 , null, null, 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios_perfiles values (4 , 4 , 1 , null, null, 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios_perfiles values (5 , 5 , 1 , null, null, 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios_perfiles values (6 , 6 , 1 , null, null, 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios_perfiles values (7 , 7 , 1 , null, null, 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios_perfiles values (8 , 7 , 13, null, 1   , 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios_perfiles values (9 , 7 , 16, null, 1   , 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios_perfiles values (10, 7 , 18, null, 1   , 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios_perfiles values (11, 8 , 1 , null, null, 1, 1, current_timestamp, null, null, null, null);
+insert into usuarios_perfiles values (12, 10, 1 , null, null, 1, 1, current_timestamp, null, null, null, null);
 
 insert into programas values ( 1000, null , 'Personales'                           , null                              , 'Personales'                                , 1  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 1010,  1000, 'Mantención datos personales'          , 'personas/datos-personales'       , 'Mantención datos personales'               , 1  , 1, current_timestamp, null, null, null, null);

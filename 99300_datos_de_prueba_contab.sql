@@ -78,9 +78,10 @@ $body$ LANGUAGE plpgsql;
 
 -- Caso 1: cuando estoy probando junto con la recreacion
 
+\q
+
 select f_tmp_datos_prueba_contab();
 
-\q
 
 
 

@@ -10,7 +10,7 @@ DELETE 0
  S;Balance ejecutado exitosamente
 (1 fila)
 
- idsesion | correlativo | cuenta_contable | descrpcion_cuenta | debe_o_haber | valor | fechacrearegistro 
-----------+-------------+-----------------+-------------------+--------------+-------+-------------------
+ idsesion | correlativo | cuenta_contable | descripcion_cuenta | debe_o_haber | valor | fechacrearegistro 
+----------+-------------+-----------------+--------------------+--------------+-------+-------------------
 (0 filas)
 

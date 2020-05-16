@@ -3,8 +3,8 @@ create or replace function f_contabilizar_compras(Pidempr            int
                                                  ,Pidusuacreaasiento int) returns varchar as
 $body$
 /*
-   Funcion que contabiliza compras de una empresa para un dia dado
-   Parametros:
+   Función que contabiliza compras de una empresa para un dia dado
+   Parámetros:
 
    Pidempr           : id de la empresa
    Pfecha            : fecha que se desea contabillizar
@@ -15,31 +15,30 @@ $body$
 declare
   Vmensaje                        varchar(1000);
   aux                             int;
+  Vidpeco                         int;
+  Vmes_peco                       int;
+  Vanno_peco                      int;
+  Vfecha_txt                      varchar(100);
+  Vmes_contab_compras             int;
+  Vanno_contab_compras            int;
+  Vmes_actual                     int;
+  Vanno_actual                    int;
+  Vfecha_asiento                  date;
+  Vtotal_otroinsumo               numeric;
   Vidcomp                         int;
-  Vidgere                         int;
-  Vidproy                         int;
-  Vidline                         int;
-  Vidceco                         int;
-  Vidtare                         int;
-  Vidtiec                         int;
-  Vneto                           numeric;
   Vimpuesto                       numeric;
   Vtotal                          numeric;
-  Vidpeco                         int;
   Vnumero_asiento                 int;
   Vidasco                         int;
+  i                               int;
   Vidcuco                         int;
   Vsum_totallinea                 numeric;
-  i                               int;
   Vidcoca                         int;
   Vidcuco_otros_conceptos         int;
   Vvalor_linea                    numeric;
-  Vservicios                      numeric;
-  Votras_compras                  numeric;
-  Vfecha_txt                  varchar(100);
+  Vidtiec                         int;
   C_compras_pdtes cursor for
     select comp.id                 idcomp
-          ,comp.afecto+comp.exento neto
           ,comp.impuesto           impuesto
           ,comp.total              total
     from   compras comp
@@ -66,7 +65,8 @@ declare
     where  deco.idserv = serv.id
     and    deco.idcomp = Vidcomp
     and    deco.idserv is not null
-    group  by sfpr.idcuco
+    group  by serv.idcuco
+    ;
   C_ctas_ctbles_otros_conceptos cursor for
     select dpce.idcoca
           ,dpce.idcuco
@@ -99,10 +99,6 @@ begin
     Vmensaje := 'N;El parámetro Pidempr no existe en la tabla empresas';
     return(Vmensaje);
   end if;
-  if Ptodas_S_N not in ('S', 'N')  then
-    Vmensaje := 'N;Los valores válidos para el parámetro Ptodas_S_N son S o N: ' || Ptodas_S_N || ' <- error';
-    return(Vmensaje);
-  end if;
   select count(*)
   into   aux
   from   compras             comp
@@ -115,7 +111,11 @@ begin
     return(Vmensaje);
   end if;
   select id
+        ,mes
+        ,anno
   into   Vidpeco
+        ,Vmes_peco
+        ,Vanno_peco
   from   periodos_contables
   where  idempr = Pidempr
   and    idespc = 1
@@ -124,35 +124,32 @@ begin
     Vmensaje := 'N;No hay un período contable abierto para esta empresa';
     return(Vmensaje);
   end if;
+  Vfecha_txt           := cast(Pfecha as varchar);
+  Vfecha_txt           := substr(Vfecha_txt,7,2) || '-' || substr(Vfecha_txt,5,2) || '-' || substr(Vfecha_txt,1,4);
+  Vmes_contab_compras  := substr(Vfecha_txt,4,2);
+  Vanno_contab_compras := substr(Vfecha_txt,7,4);
+  if Vmes_peco != Vmes_contab_compras or Vanno_peco != Vanno_contab_compras then
+    Vmensaje := 'N;La fecha a contabiizar no pertenece al período contable abierto';
+    return(Vmensaje);
+  end if;
   --
   -- Si se llegó hasta aquí, quiere decir que se pasaron todas las validaciones -> se procede con la generación del asiento contable
   --
+  Vmes_actual    := to_char(current_timestamp,'mm');
+  Vanno_actual   := to_char(current_timestamp,'yyyy');
+  Vfecha_asiento := date(Pfecha::text);
 
-
-aqui voy
-
-  Vfecha_txt := cast(Pfecha as varchar);
-  Vfecha_txt := substr(Vfecha_txt,7,2) || '-' || substr(Vfecha_txt,5,2) || '-' || substr(Vfecha_txt,1,4);
   select sum(preciounitario*cantidad)
   into   Vtotal_otroinsumo
   from   detalles_compras
   where  idcomp     = Vidcomp
   and    otroinsumo is not null
   ;
-
-fecha del asiento
-
   open C_compras_pdtes;
   loop
     fetch C_compras_pdtes into Vidcomp
-                              ,Vneto
                               ,Vimpuesto
                               ,Vtotal
-                              ,Vidgere
-                              ,Vidproy
-                              ,Vidline
-                              ,Vidceco
-                              ,Vidtare
                               ;
     exit when not found;
     select max(numero_asiento)
@@ -189,10 +186,10 @@ fecha del asiento
            ,Vidpeco                                                       -- idpeco                   numeric(20,0)     not null
            ,3                                                             -- idtiac                   numeric(20,0)     not null
            ,1                                                             -- idesac                   numeric(20,0)     not null
-           ,2                                                             -- idorac                   numeric(20,0)     not null
+           ,3                                                             -- idorac                   numeric(20,0)     not null
            ,Vnumero_asiento                                               -- numero_asiento           numeric(20,0)     not null
-           ,'CONTABILIZACIÓN AUTOMÁTICA COMPRAS ' || Vfecha_txt       -- glosa                    varchar(100)      not null
-           ,current_timestamp                                             -- fecha_asiento            date              not null
+           ,'CONTABILIZACIÓN AUTOMÁTICA COMPRAS ' || Vfecha_txt           -- glosa                    varchar(100)      not null
+           ,Vfecha_asiento                                                -- fecha_asiento            date              not null
            ,'N'                                                           -- reversible               varchar(1)        not null
            ,Pidusuacreaasiento                                            -- idusuacreaasiento        numeric(20,0)     not null
            ,null                                                          -- idusuaautorizaasiento    numeric(20,0)         null
@@ -236,13 +233,13 @@ fecha del asiento
              ,i                                                             -- numero_linea             numeric(20,0)     not null
              ,Vidcuco                                                       -- idcuco                   numeric(20,0)     not null
              ,2                                                             -- idtiec                   numeric(20,0)     not null
-             ,Vidgere                                                       -- idgere                   numeric(20,0)         null
-             ,Vidproy                                                       -- idproy                   numeric(20,0)         null
-             ,Vidline                                                       -- idline                   numeric(20,0)         null
-             ,Vidceco                                                       -- idceco                   numeric(20,0)         null
-             ,Vidtare                                                       -- idtare                   numeric(20,0)         null
+             ,null                                                          -- idgere                   numeric(20,0)         null
+             ,null                                                          -- idproy                   numeric(20,0)         null
+             ,null                                                          -- idline                   numeric(20,0)         null
+             ,null                                                          -- idceco                   numeric(20,0)         null
+             ,null                                                          -- idtare                   numeric(20,0)         null
              ,Vsum_totallinea                                               -- monto                    numeric(20,0)     not null
-             ,'CONTABILIZACIÓN AUTOMÁTICA COMPRAS ' || Vfecha_txt       -- glosadet                 varchar(100)      not null
+             ,'CONTABILIZACIÓN AUTOMÁTICA COMPRAS ' || Vfecha_txt           -- glosadet                 varchar(100)      not null
              ,Pidusuacreaasiento                                            -- idusuacrearegistro       numeric(20,0)     not null
              ,current_timestamp                                             -- fechacrearegistro        timestamp         not null
              ,null                                                          -- idusuamodifregistro      numeric(20,0)         null
@@ -253,31 +250,23 @@ fecha del asiento
       ;
     end loop;
     close C_detalles_compras;
-    update compras
-    set    idasco = Vidasco
-    where  id     = Vidcomp
-    ;
     open C_ctas_ctbles_otros_conceptos;
     loop
       fetch C_ctas_ctbles_otros_conceptos into Vidcoca
                                               ,Vidcuco_otros_conceptos
                                               ;
       exit when not found;
-      if    Vidcoca = 1 and Vimpuesto      != 0 then
+      if    Vidcoca = 1 and Vimpuesto         != 0 then
         Vvalor_linea := Vimpuesto;
         Vidtiec      := 2;
-      elsif Vidcoca = 3 and Vtotal         != 0 then
+      elsif Vidcoca = 7 and Vtotal            != 0 then
         Vvalor_linea := Vtotal;
         Vidtiec      := 1;
-      elsif Vidcoca = 4 and Vservicios     != 0 then
-        Vvalor_linea := Vservicios;
-        Vidtiec      := 2;
-      elsif Vidcoca = 5 and Votras_compras != 0 then
-        Vvalor_linea := Votras_compras;
+      elsif Vidcoca = 8 and Vtotal_otroinsumo != 0 then
+        Vvalor_linea := Vtotal_otroinsumo;
         Vidtiec      := 2;
       else
         Vvalor_linea := 0;
-        Vidtiec      := 2;
       end if;
       if Vvalor_linea != 0 then
         i := i + 1;
@@ -305,13 +294,13 @@ fecha del asiento
                ,i                                                              -- numero_linea             numeric(20,0)     not null
                ,Vidcuco_otros_conceptos                                        -- idcuco                   numeric(20,0)     not null
                ,Vidtiec                                                        -- idtiec                   numeric(20,0)     not null
-               ,Vidgere                                                        -- idgere                   numeric(20,0)         null
-               ,Vidproy                                                        -- idproy                   numeric(20,0)         null
-               ,Vidline                                                        -- idline                   numeric(20,0)         null
-               ,Vidceco                                                        -- idceco                   numeric(20,0)         null
-               ,Vidtare                                                        -- idtare                   numeric(20,0)         null
+               ,null                                                           -- idgere                   numeric(20,0)         null
+               ,null                                                           -- idproy                   numeric(20,0)         null
+               ,null                                                           -- idline                   numeric(20,0)         null
+               ,null                                                           -- idceco                   numeric(20,0)         null
+               ,null                                                           -- idtare                   numeric(20,0)         null
                ,Vvalor_linea                                                   -- monto                    numeric(20,0)     not null
-               ,'CONTABILIZACIÓN AUTOMÁTICA COMPRAS ' || Vfecha_txt        -- glosadet                 varchar(100)      not null
+               ,'CONTABILIZACIÓN AUTOMÁTICA COMPRAS ' || Vfecha_txt            -- glosadet                 varchar(100)      not null
                ,Pidusuacreaasiento                                             -- idusuacrearegistro       numeric(20,0)     not null
                ,current_timestamp                                              -- fechacrearegistro        timestamp         not null
                ,null                                                           -- idusuamodifregistro      numeric(20,0)         null
@@ -322,12 +311,18 @@ fecha del asiento
         ;
       end if;
     end loop;
+    update compras
+    set    idasco = Vidasco
+    where  id     = Vidcomp
+    ;
     close C_ctas_ctbles_otros_conceptos;
   end loop;
   close C_compras_pdtes;
   return 'S;Contabilización ejecutada exitosamente';
 end;
 $body$ LANGUAGE plpgsql;
+
+\q
 
 update compras
 set    idasco = null

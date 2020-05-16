@@ -22,7 +22,6 @@ declare
   Vidceco                         int;
   Vidtare                         int;
   Vidtiec                         int;
-  Vneto                           numeric;
   Vdescuentos                     numeric;
   Vimpuestosobligats              numeric;
   Vimpuestosespecifs              numeric;
@@ -46,7 +45,6 @@ declare
   Vanno_peco                      int;
   C_ventas_pdtes cursor for
     select id                 idvent
-          ,afecto+exento      neto
           ,montodescuento     descuentos
           ,impuestosobligats  impuestosobligats
           ,impuestosespecifs  impuestosespecifs
@@ -156,7 +154,6 @@ begin
   open C_ventas_pdtes;
   loop
     fetch C_ventas_pdtes into Vidvent
-                             ,Vneto
                              ,Vdescuentos
                              ,Vimpuestosobligats
                              ,Vimpuestosespecifs
@@ -201,7 +198,7 @@ begin
     values (Vidasco                                                    -- id                       numeric(20,0)     not null
            ,Vidpeco                                                    -- idpeco                   numeric(20,0)     not null
            ,3                                                          -- idtiac                   numeric(20,0)     not null
-           ,1                                                          -- idesac                   numeric(20,0)     not null
+           ,2                                                          -- idesac                   numeric(20,0)     not null
            ,2                                                          -- idorac                   numeric(20,0)     not null
            ,Vnumero_asiento                                            -- numero_asiento           numeric(20,0)     not null
            ,'CONTABILIZACIÓN AUTOMÁTICA VENTAS ' || Vfecha_txt         -- glosa                    varchar(100)      not null
@@ -286,7 +283,6 @@ begin
         Vidtiec      := 2;
       else
         Vvalor_linea := 0;
-        Vidtiec      := 2;
       end if;
       if Vvalor_linea != 0 then
         i := i + 1;
@@ -341,6 +337,8 @@ begin
   return 'S;Contabilización ejecutada exitosamente';
 end;
 $body$ LANGUAGE plpgsql;
+
+\q
 
 update ventas
 set    idasco = null

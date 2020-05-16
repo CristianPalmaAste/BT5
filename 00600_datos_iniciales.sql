@@ -686,6 +686,8 @@ insert into conceptos_contabilizacs_automats values (3, 'INGRESOS (CAJA)'       
 insert into conceptos_contabilizacs_automats values (4, 'SERVICIOS'             , 1, current_timestamp, null, null, null, null);
 insert into conceptos_contabilizacs_automats values (5, 'OTROS'                 , 1, current_timestamp, null, null, null, null);
 insert into conceptos_contabilizacs_automats values (6, 'DESCUENTOS'            , 1, current_timestamp, null, null, null, null);
+insert into conceptos_contabilizacs_automats values (7, 'EGRESOS (CAJA)'        , 1, current_timestamp, null, null, null, null);
+insert into conceptos_contabilizacs_automats values (8, 'OTROS INSUMOS'         , 1, current_timestamp, null, null, null, null);
 
 insert into tipos_asocs_ctas_ctbles values (1, 'ACTIVO'  , 1, current_timestamp, null, null, null, null);
 insert into tipos_asocs_ctas_ctbles values (2, 'PASIVO'  , 1, current_timestamp, null, null, null, null);
@@ -793,31 +795,52 @@ insert into estados_civiles values (4, 'E', 'SEPARADO', 1, current_timestamp, nu
 insert into sexos values (1, 'M', 'MASCULINO', 1, current_timestamp, null, null, null, null);
 insert into sexos values (2, 'F', 'FEMENINO' , 1, current_timestamp, null, null, null, null);
 
-insert into tipos_doctos_ventas values (1 , 1, 'NO DEFINIDO'                           , 'NODE',   0, 'NO DEFINIDO'           , 'N', 'N', 1, current_timestamp, null, null, null, null);
-insert into tipos_doctos_ventas values (2 , 1, 'FACTURA ELECTRÓNICA'                   , 'FAEA',  33, 'CEDIBLE'               , 'S', 'S', 1, current_timestamp, null, null, null, null);
-insert into tipos_doctos_ventas values (3 , 1, 'FACTURA NO AFECTA O EXENTA ELECTRÓNICA', 'FAEE',  34, 'CEDIBLE'               , 'S', 'S', 1, current_timestamp, null, null, null, null);
-insert into tipos_doctos_ventas values (4 , 1, 'BOLETA ELECTRÓNICA'                    , 'BVAF',  39, 'CEDIBLE'               , 'S', 'N', 1, current_timestamp, null, null, null, null);
-insert into tipos_doctos_ventas values (5 , 1, 'LIQUIDACIÓN FACTURA'                   , 'FALI',  40, 'CEDIBLE'               , 'N', 'N', 1, current_timestamp, null, null, null, null);
-insert into tipos_doctos_ventas values (6 , 1, 'LIQUIDACIÓN FACTURA ELECTRÓNICA'       , 'LIFE',  43, 'CEDIBLE'               , 'N', 'N', 1, current_timestamp, null, null, null, null);
-insert into tipos_doctos_ventas values (7 , 1, 'FACTURA DE COMPRA'                     , 'FACC',  45, 'CEDIBLE'               , 'S', 'S', 1, current_timestamp, null, null, null, null);
-insert into tipos_doctos_ventas values (8 , 1, 'FACTURA DE COMPRA ELECTRÓNICA'         , 'FACE',  46, 'CEDIBLE'               , 'S', 'S', 1, current_timestamp, null, null, null, null);
-insert into tipos_doctos_ventas values (9 , 1, 'GUÍA DE DESPACHO ELECTRÓNICA'          , 'GDEL',  52, 'CEDIBLE CON SU FACTURA', 'N', 'N', 1, current_timestamp, null, null, null, null);
-insert into tipos_doctos_ventas values (10, 1, 'NOTA DE DÉBITO'                        , 'NDEB',  55, 'CEDIBLE'               , 'N', 'N', 1, current_timestamp, null, null, null, null);
-insert into tipos_doctos_ventas values (11, 1, 'NOTA DE DÉBITO ELECTRÓNICA'            , 'NDEL',  56, 'CEDIBLE'               , 'N', 'N', 1, current_timestamp, null, null, null, null);
-insert into tipos_doctos_ventas values (12, 1, 'NOTA DE CRÉDITO'                       , 'NCRD',  60, 'CEDIBLE'               , 'S', 'S', 1, current_timestamp, null, null, null, null);
-insert into tipos_doctos_ventas values (13, 1, 'NOTA DE CRÉDITO ELECTRÓNICA'           , 'NCEL',  61, 'CEDIBLE'               , 'S', 'S', 1, current_timestamp, null, null, null, null);
-insert into tipos_doctos_ventas values (14, 1, 'FACTURA DE EXPORTACIÓN'                , 'EXPE', 110, 'CEDIBLE'               , 'N', 'N', 1, current_timestamp, null, null, null, null);
-insert into tipos_doctos_ventas values (15, 1, 'NOTA DE DÉBITO DE EXPORTACIÓN'         , 'NDEX', 111, 'CEDIBLE'               , 'N', 'N', 1, current_timestamp, null, null, null, null);
-insert into tipos_doctos_ventas values (16, 1, 'NOTA DE CRÉDITO DE EXPORTACIÓN'        , 'NCEE', 112, 'CEDIBLE'               , 'N', 'N', 1, current_timestamp, null, null, null, null);
-insert into tipos_doctos_ventas values (17, 3, 'NO DEFINIDO'                           , 'NODE',   0, 'NO DEFINIDO'           , 'N', 'N', 1, current_timestamp, null, null, null, null);
-insert into tipos_doctos_ventas values (18, 3, 'FACTURA'                               , 'FACT',   1, 'CEDIBLE'               , 'S', 'S', 1, current_timestamp, null, null, null, null);
-insert into tipos_doctos_ventas values (19, 3, 'BOLETA DE VENTA'                       , 'BOLE',   3, 'CEDIBLE'               , 'S', 'N', 1, current_timestamp, null, null, null, null);
-insert into tipos_doctos_ventas values (20, 3, 'NOTA DE DÉBITO'                        , 'NDEB',   7, 'CEDIBLE'               , 'N', 'N', 1, current_timestamp, null, null, null, null);
-insert into tipos_doctos_ventas values (21, 3, 'NOTA DE CRÉDITO'                       , 'NCRE',   8, 'CEDIBLE'               , 'S', 'S', 1, current_timestamp, null, null, null, null);
-insert into tipos_doctos_ventas values (22, 3, 'GUÍA DE REMISIÓN REMITENTE'            , 'GRRE',   9, 'CEDIBLE'               , 'N', 'N', 1, current_timestamp, null, null, null, null);
-insert into tipos_doctos_ventas values (23, 3, 'TICKET DE MÁQUINA REGISTRADORA'        , 'TIMR',  12, 'CEDIBLE'               , 'S', 'N', 1, current_timestamp, null, null, null, null);
-insert into tipos_doctos_ventas values (24, 3, 'GUÍA DE REMISIÓN TRANSPORTISTA'        , 'GRTR',  31, 'CEDIBLE'               , 'N', 'N', 1, current_timestamp, null, null, null, null);
-insert into tipos_doctos_ventas values (25, 3, 'COMPROBANTE DE PAGO SEAE'              , 'SEAE',  56, 'CEDIBLE'               , 'S', 'N', 1, current_timestamp, null, null, null, null);
+insert into tipos_usos_doctos_ventas values (1, 'VENTA'  , 1, current_timestamp, null, null, null, null);
+insert into tipos_usos_doctos_ventas values (2, 'COMPRA' , 1, current_timestamp, null, null, null, null);
+insert into tipos_usos_doctos_ventas values (3, 'CRÉDITO', 1, current_timestamp, null, null, null, null);
+insert into tipos_usos_doctos_ventas values (4, 'DÉBITO' , 1, current_timestamp, null, null, null, null);
+
+insert into tipos_doctos_ventas values (1 , 1, 'NO DEFINIDO'                           , 'NODE',   0, 'NO DEFINIDO'           , 'N', 'N', 'N', 1, current_timestamp, null, null, null, null);
+insert into tipos_doctos_ventas values (2 , 1, 'FACTURA ELECTRÓNICA'                   , 'FAEA',  33, 'CEDIBLE'               , 'S', 'S', 'S', 1, current_timestamp, null, null, null, null);
+insert into tipos_doctos_ventas values (3 , 1, 'FACTURA NO AFECTA O EXENTA ELECTRÓNICA', 'FAEE',  34, 'CEDIBLE'               , 'S', 'S', 'S', 1, current_timestamp, null, null, null, null);
+insert into tipos_doctos_ventas values (4 , 1, 'BOLETA ELECTRÓNICA'                    , 'BVAF',  39, 'CEDIBLE'               , 'S', 'N', 'S', 1, current_timestamp, null, null, null, null);
+insert into tipos_doctos_ventas values (5 , 1, 'LIQUIDACIÓN FACTURA'                   , 'FALI',  40, 'CEDIBLE'               , 'N', 'N', 'N', 1, current_timestamp, null, null, null, null);
+insert into tipos_doctos_ventas values (6 , 1, 'LIQUIDACIÓN FACTURA ELECTRÓNICA'       , 'LIFE',  43, 'CEDIBLE'               , 'N', 'N', 'N', 1, current_timestamp, null, null, null, null);
+insert into tipos_doctos_ventas values (7 , 1, 'FACTURA DE COMPRA'                     , 'FACC',  45, 'CEDIBLE'               , 'S', 'S', 'S', 1, current_timestamp, null, null, null, null);
+insert into tipos_doctos_ventas values (8 , 1, 'FACTURA DE COMPRA ELECTRÓNICA'         , 'FACE',  46, 'CEDIBLE'               , 'S', 'S', 'S', 1, current_timestamp, null, null, null, null);
+insert into tipos_doctos_ventas values (9 , 1, 'GUÍA DE DESPACHO ELECTRÓNICA'          , 'GDEL',  52, 'CEDIBLE CON SU FACTURA', 'N', 'N', 'N', 1, current_timestamp, null, null, null, null);
+insert into tipos_doctos_ventas values (10, 1, 'NOTA DE DÉBITO'                        , 'NDEB',  55, 'CEDIBLE'               , 'N', 'N', 'S', 1, current_timestamp, null, null, null, null);
+insert into tipos_doctos_ventas values (11, 1, 'NOTA DE DÉBITO ELECTRÓNICA'            , 'NDEL',  56, 'CEDIBLE'               , 'N', 'N', 'S', 1, current_timestamp, null, null, null, null);
+insert into tipos_doctos_ventas values (12, 1, 'NOTA DE CRÉDITO'                       , 'NCRD',  60, 'CEDIBLE'               , 'S', 'S', 'S', 1, current_timestamp, null, null, null, null);
+insert into tipos_doctos_ventas values (13, 1, 'NOTA DE CRÉDITO ELECTRÓNICA'           , 'NCEL',  61, 'CEDIBLE'               , 'S', 'S', 'S', 1, current_timestamp, null, null, null, null);
+insert into tipos_doctos_ventas values (14, 1, 'FACTURA DE EXPORTACIÓN'                , 'EXPE', 110, 'CEDIBLE'               , 'N', 'N', 'S', 1, current_timestamp, null, null, null, null);
+insert into tipos_doctos_ventas values (15, 1, 'NOTA DE DÉBITO DE EXPORTACIÓN'         , 'NDEX', 111, 'CEDIBLE'               , 'N', 'N', 'S', 1, current_timestamp, null, null, null, null);
+insert into tipos_doctos_ventas values (16, 1, 'NOTA DE CRÉDITO DE EXPORTACIÓN'        , 'NCEE', 112, 'CEDIBLE'               , 'N', 'N', 'S', 1, current_timestamp, null, null, null, null);
+insert into tipos_doctos_ventas values (17, 3, 'NO DEFINIDO'                           , 'NODE',   0, 'NO DEFINIDO'           , 'N', 'N', 'N', 1, current_timestamp, null, null, null, null);
+insert into tipos_doctos_ventas values (18, 3, 'FACTURA'                               , 'FACT',   1, 'CEDIBLE'               , 'S', 'S', 'S', 1, current_timestamp, null, null, null, null);
+insert into tipos_doctos_ventas values (19, 3, 'BOLETA DE VENTA'                       , 'BOLE',   3, 'CEDIBLE'               , 'S', 'N', 'S', 1, current_timestamp, null, null, null, null);
+insert into tipos_doctos_ventas values (20, 3, 'NOTA DE DÉBITO'                        , 'NDEB',   7, 'CEDIBLE'               , 'N', 'N', 'S', 1, current_timestamp, null, null, null, null);
+insert into tipos_doctos_ventas values (21, 3, 'NOTA DE CRÉDITO'                       , 'NCRE',   8, 'CEDIBLE'               , 'S', 'S', 'S', 1, current_timestamp, null, null, null, null);
+insert into tipos_doctos_ventas values (22, 3, 'GUÍA DE REMISIÓN REMITENTE'            , 'GRRE',   9, 'CEDIBLE'               , 'N', 'N', 'N', 1, current_timestamp, null, null, null, null);
+insert into tipos_doctos_ventas values (23, 3, 'TICKET DE MÁQUINA REGISTRADORA'        , 'TIMR',  12, 'CEDIBLE'               , 'S', 'N', 'S', 1, current_timestamp, null, null, null, null);
+insert into tipos_doctos_ventas values (24, 3, 'GUÍA DE REMISIÓN TRANSPORTISTA'        , 'GRTR',  31, 'CEDIBLE'               , 'N', 'N', 'N', 1, current_timestamp, null, null, null, null);
+insert into tipos_doctos_ventas values (25, 3, 'COMPROBANTE DE PAGO SEAE'              , 'SEAE',  56, 'CEDIBLE'               , 'S', 'N', 'N', 1, current_timestamp, null, null, null, null);
+
+insert into usos_doctos_ventas values (1 , 1, 1 , 1, current_timestamp, null, null, null, null);
+insert into usos_doctos_ventas values (2 , 1, 2 , 1, current_timestamp, null, null, null, null);
+insert into usos_doctos_ventas values (3 , 1, 3 , 1, current_timestamp, null, null, null, null);
+insert into usos_doctos_ventas values (4 , 1, 4 , 1, current_timestamp, null, null, null, null);
+insert into usos_doctos_ventas values (5 , 2, 1 , 1, current_timestamp, null, null, null, null);
+insert into usos_doctos_ventas values (6 , 2, 2 , 1, current_timestamp, null, null, null, null);
+insert into usos_doctos_ventas values (7 , 2, 3 , 1, current_timestamp, null, null, null, null);
+insert into usos_doctos_ventas values (8 , 2, 4 , 1, current_timestamp, null, null, null, null);
+insert into usos_doctos_ventas values (9 , 2, 9 , 1, current_timestamp, null, null, null, null);
+insert into usos_doctos_ventas values (10, 3, 1 , 1, current_timestamp, null, null, null, null);
+insert into usos_doctos_ventas values (11, 3, 12, 1, current_timestamp, null, null, null, null);
+insert into usos_doctos_ventas values (12, 3, 13, 1, current_timestamp, null, null, null, null);
+insert into usos_doctos_ventas values (13, 4, 1 , 1, current_timestamp, null, null, null, null);
+insert into usos_doctos_ventas values (14, 4, 10, 1, current_timestamp, null, null, null, null);
+insert into usos_doctos_ventas values (15, 4, 11, 1, current_timestamp, null, null, null, null);
 
 insert into grupos_empresariales values (1, 'BUSINESS & TECHNOLOGY 5 CONSULTING', 'BT5', 'bt5.jpg', 1, 1, 1, current_timestamp, null, null, null, null);
 
@@ -829,8 +852,8 @@ insert into usuarios values (1, 'ADMIN', 'ABC12', 1, 1, 1, current_timestamp, nu
 alter table usuarios enable trigger all;
 alter table personas enable trigger all;
 
-insert into personas values (3 , 1, 3       , '5', 'SERGIO'     , null      , 'AGUIRRE'  , '-'        ,  'sergio.aguirre@bt5.cl'       , null        , 1   , 1, 1, 1, current_timestamp, null, null, null, null);
-insert into personas values (4 , 1, 4       , '3', 'JUAN'       , 'JOSE'    , 'MONSALVE' , '-'        ,  'juan.jose.monsalve@bt5.cl'   , null        , null, 1, 1, 1, current_timestamp, null, null, null, null);
+insert into personas values (3 , 1, 9694836 , '0', 'SERGIO'     , null      , 'AGUIRRE'  , '-'        ,  'sergio.aguirre@bt5.cl'       , null        , 1   , 1, 1, 1, current_timestamp, null, null, null, null);
+insert into personas values (4 , 1, 9037091 , 'K', 'JUAN'       , 'JOSE'    , 'MONSALVE' , '-'        ,  'juan.jose.monsalve@bt5.cl'   , null        , null, 1, 1, 1, current_timestamp, null, null, null, null);
 insert into personas values (5 , 1, 5       , '1', 'JUAN'       , 'ANDRES'  , 'BORZONE'  , '-'        ,  ''                            , null        , null, 1, 1, 1, current_timestamp, null, null, null, null);
 insert into personas values (6 , 1, 6       , 'K', 'RODRIGO'    , null      , 'CIFUENTES', '-'        ,  'rodrigo.cifuentes@bt5.cl'    , null        , 1   , 1, 1, 1, current_timestamp, null, null, null, null);
 insert into personas values (7 , 1, 7695503 , '4', 'ROBERTO'    , 'DANIEL'  , 'QUEZADA'  , 'ASTE'     ,  'roberto.quezada@bt5.cl'      , null        , 2   , 1, 1, 1, current_timestamp, null, null, null, null);
@@ -841,7 +864,7 @@ insert into usuarios values (3 , 'SEAGUIRRE'  , 'ABC12', 3 , 1, 1, current_times
 insert into usuarios values (4 , 'JJMONSALVE' , 'ABC12', 4 , 1, 1, current_timestamp, null, null, null, null);
 insert into usuarios values (5 , 'JABORZONE'  , 'ABC12', 5 , 1, 1, current_timestamp, null, null, null, null);
 insert into usuarios values (6 , 'ROCIFUENTES', 'ABC12', 6 , 1, 1, current_timestamp, null, null, null, null);
-insert into usuarios values (7 , 'RQUEZADAA'  , 'ABC12', 7 , 2, 1, current_timestamp, null, null, null, null);
+insert into usuarios values (7 , 'RQUEZADAA'  , 'ABC12', 7 , 1, 1, current_timestamp, null, null, null, null);
 insert into usuarios values (8 , 'OSOLARM'    , 'ABC12', 8 , 1, 1, current_timestamp, null, null, null, null);
 insert into usuarios values (10, 'CPALMAA'    , 'ABC12', 10, 1, 1, current_timestamp, null, null, null, null);
 

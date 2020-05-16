@@ -256,7 +256,28 @@ declare
   Vcorrelativoflia              int;
   Acorrelativoflia              varchar(1000);
   aux1                          varchar(1000);
+  Vidlipr                       int;
+  Vidprod                       int;
 begin
+  delete from bodegas_productos
+  where  idbode = 17
+  ;
+  Vidlipr := nextval('lipr_seq');
+  insert into listas_precios values (Vidlipr                     -- id                   numeric(20,0)   not null
+                                    ,14                          -- idempr               numeric(20,0)   not null
+                                    ,1                           -- correlativo          numeric(20,0)   not null
+                                    ,'2020-01-01'                -- fechainicio          date            not null
+                                    ,null                        -- fechafin             date                null
+                                    ,'S/O'                       -- observaciones        varchar(1000)   not null
+                                    ,1                           -- idesre               numeric(20,0)   not null
+                                    ,16                          -- idusuacrearegistro   numeric(20,0)
+                                    ,current_timestamp           -- fechacrearegistro    timestamp
+                                    ,null                        -- idusuamodifregistro  numeric(20,0)
+                                    ,null                        -- fechamodifregistro   timestamp
+                                    ,null                        -- idusuaborraregistro  numeric(20,0)
+                                    ,null                        -- fechaborraregistro   timestamp
+                                    )
+  ;
   open C_prods_JJM;
   loop
     fetch C_prods_JJM into Vempresa
@@ -293,7 +314,8 @@ begin
       Vcorrelativoflia := Vcorrelativoflia + 1;
     end if;
     Acorrelativoflia := ltrim(rtrim(to_char(Vcorrelativoflia,'0009')));
-    insert into productos values (nextval('prod_seq')                   --  id                  | numeric(20,0)               |
+    Vidprod          := nextval('prod_seq');
+    insert into productos values (Vidprod                               --  id                  | numeric(20,0)               |
                                  ,14                                    --  idempr              | numeric(20,0)               |
                                  ,Vidsfpr                               --  idsfpr              | numeric(20,0)               |
                                  ,cast(Vtipo_de_producto as integer)    --  idtipr              | numeric(20,0)               |
@@ -313,6 +335,42 @@ begin
                                  ,null                                  --  idusuaborraregistro | numeric(20,0)               |
                                  ,null                                  --  fechaborraregistro  | timestamp without time zone |
                                  )
+    ;
+    insert into detalles_listas_precios values (nextval('delp_seq')      -- id                  numeric(20,0)   not null
+                                               ,Vidlipr                  -- idlipr              numeric(20,0)   not null
+                                               ,Vidprod                  -- idprod              numeric(20,0)   not null
+                                               ,Vidlipr*Vidprod          -- preciounitario      numeric(20,0)   not null
+                                               ,16                       -- idusuacrearegistro  numeric(20,0)
+                                               ,current_timestamp        -- fechacrearegistro   timestamp
+                                               ,null                     -- idusuamodifregistro numeric(20,0)
+                                               ,null                     -- fechamodifregistro  timestamp
+                                               ,null                     -- idusuaborraregistro numeric(20,0)
+                                               ,null                     -- fechaborraregistro  timestamp
+                                               )
+    ;
+    insert into bodegas_productos values (nextval('bopr_seq')      -- id                  numeric(20,0)
+                                         ,17                       -- idbode              numeric(20,0)
+                                         ,Vidprod                  -- idprod              numeric(20,0)
+                                         ,Vidprod                  -- stock               numeric(20,2)
+                                         ,16                       -- idusuacrearegistro  numeric(20,0)
+                                         ,current_timestamp        -- fechacrearegistro   timestamp
+                                         ,null                     -- idusuamodifregistro numeric(20,0)
+                                         ,null                     -- fechamodifregistro  timestamp
+                                         ,null                     -- idusuaborraregistro numeric(20,0)
+                                         ,null                     -- fechaborraregistro  timestamp
+                                         )
+    ;
+    insert into bodegas_productos values (nextval('bopr_seq')      -- id                  numeric(20,0)
+                                         ,18                       -- idbode              numeric(20,0)
+                                         ,Vidprod                  -- idprod              numeric(20,0)
+                                         ,Vidprod                  -- stock               numeric(20,2)
+                                         ,16                       -- idusuacrearegistro  numeric(20,0)
+                                         ,current_timestamp        -- fechacrearegistro   timestamp
+                                         ,null                     -- idusuamodifregistro numeric(20,0)
+                                         ,null                     -- fechamodifregistro  timestamp
+                                         ,null                     -- idusuaborraregistro numeric(20,0)
+                                         ,null                     -- fechaborraregistro  timestamp
+                                         )
     ;
   end loop;
   close C_prods_JJM;

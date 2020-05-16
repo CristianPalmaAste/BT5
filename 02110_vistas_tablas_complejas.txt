@@ -4,8 +4,8 @@ CREATE VIEW
  id | idgrem | holding |   rut    | dv | primernombre  | segundonombre | apellidopaterno | apellidomaterno |            email             |  fechanac  | idesci | estadocivil | idsexo |   sexo    | idpais | nacionalidad 
 ----+--------+---------+----------+----+---------------+---------------+-----------------+-----------------+------------------------------+------------+--------+-------------+--------+-----------+--------+--------------
   1 |      1 | BT5     | 1        | 9  | ADMINISTRADOR |               | SISTEMA         | AS              |                              |            |        |             |        |           |        | 
-  3 |      1 | BT5     | 3        | 5  | SERGIO        |               | AGUIRRE         | -               | sergio.aguirre@bt5.cl        |            |      1 | SOLTERO     |      1 | MASCULINO |      1 | CHILENA
-  4 |      1 | BT5     | 4        | 3  | JUAN          | JOSE          | MONSALVE        | -               | juan.jose.monsalve@bt5.cl    |            |        |             |      1 | MASCULINO |      1 | CHILENA
+  3 |      1 | BT5     | 9694836  | 0  | SERGIO        |               | AGUIRRE         | -               | sergio.aguirre@bt5.cl        |            |      1 | SOLTERO     |      1 | MASCULINO |      1 | CHILENA
+  4 |      1 | BT5     | 9037091  | K  | JUAN          | JOSE          | MONSALVE        | -               | juan.jose.monsalve@bt5.cl    |            |        |             |      1 | MASCULINO |      1 | CHILENA
   5 |      1 | BT5     | 5        | 1  | JUAN          | ANDRES        | BORZONE         | -               |                              |            |        |             |      1 | MASCULINO |      1 | CHILENA
   6 |      1 | BT5     | 6        | K  | RODRIGO       |               | CIFUENTES       | -               | rodrigo.cifuentes@bt5.cl     |            |      1 | SOLTERO     |      1 | MASCULINO |      1 | CHILENA
   7 |      1 | BT5     | 7695503  | 4  | ROBERTO       | DANIEL        | QUEZADA         | ASTE            | roberto.quezada@bt5.cl       |            |      2 | CASADO      |      1 | MASCULINO |      1 | CHILENA
@@ -277,11 +277,11 @@ CREATE VIEW
  id |  username   | idpers | idgrem |         nombre_persona          | doc_ident  | idesre | estado_registro 
 ----+-------------+--------+--------+---------------------------------+------------+--------+-----------------
   1 | ADMIN       |      1 |      1 | SISTEMA AS, ADMINISTRADOR       | 1-9        |      1 | ACTIVO
-  3 | SEAGUIRRE   |      3 |      1 | AGUIRRE -, SERGIO               | 3-5        |      1 | ACTIVO
-  4 | JJMONSALVE  |      4 |      1 | MONSALVE -, JUAN JOSE           | 4-3        |      1 | ACTIVO
+  3 | SEAGUIRRE   |      3 |      1 | AGUIRRE -, SERGIO               | 9694836-0  |      1 | ACTIVO
+  4 | JJMONSALVE  |      4 |      1 | MONSALVE -, JUAN JOSE           | 9037091-K  |      1 | ACTIVO
   5 | JABORZONE   |      5 |      1 | BORZONE -, JUAN ANDRES          | 5-1        |      1 | ACTIVO
   6 | ROCIFUENTES |      6 |      1 | CIFUENTES -, RODRIGO            | 6-K        |      1 | ACTIVO
-  7 | RQUEZADAA   |      7 |      1 | QUEZADA ASTE, ROBERTO DANIEL    | 7695503-4  |      2 | INACTIVO
+  7 | RQUEZADAA   |      7 |      1 | QUEZADA ASTE, ROBERTO DANIEL    | 7695503-4  |      1 | ACTIVO
   8 | OSOLARM     |      8 |      1 | SOLAR MALDONADO, OSCIEL SEGUNDO | 8965445-9  |      1 | ACTIVO
  10 | CPALMAA     |     10 |      1 | PALMA ASTE, G. CRISTIAN         | 10917721-0 |      1 | ACTIVO
 (8 filas)

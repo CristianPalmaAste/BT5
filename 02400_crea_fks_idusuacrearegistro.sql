@@ -119,6 +119,8 @@ alter table cuentas_bancarias_proveedores     add constraint cubp_fk1_usua forei
 alter table bancos                            add constraint banc_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table tipos_cuentas_bancarias           add constraint ticb_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table origenes_asientos_contables       add constraint orac_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
+alter table tipos_usos_doctos_ventas          add constraint tudv_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
+alter table usos_doctos_ventas                add constraint usdv_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 
 alter table usuarios                          add constraint usua_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table usuarios                          add constraint usua_fk_pers  foreign key (idpers)                references personas                         (id);

@@ -880,7 +880,7 @@ where   id     = 1
 
 insert into recepciones_compras values (1, 1, 1, 1, 1, current_timestamp, null, null, null, null);
 
-insert into compras values (1, 1, 1, 1, 2, 1, current_timestamp, current_timestamp, 5000, 0, 950, 5950, null, 1, current_timestamp, null, null, null, null);
+insert into compras values (1, 1, 1, 1, 1, 2, 1, current_timestamp, current_timestamp, 5000, 0, 950, 5950, null, 1, current_timestamp, null, null, null, null);
 
 insert into detalles_compras values (1, 1, 1, 1, null, null, 2, 900, 1, current_timestamp, null, null, null, null);
 insert into detalles_compras values (2, 1, 2, 2, null, null, 1, 700, 1, current_timestamp, null, null, null, null);
@@ -892,7 +892,7 @@ insert into detalles_recepciones_compras values (3, 1, 3, 3, null, null, 5, 1, c
 
 insert into recepciones_compras values (2, 1, 1, 2, 1, current_timestamp, null, null, null, null);
 
-insert into compras values (2, 1, 2, 1, 2, 1, current_timestamp, current_timestamp, 2700, 0, 513, 3213, null, 1, current_timestamp, null, null, null, null);
+insert into compras values (2, 1, 2, 1, 1, 2, 2, current_timestamp, current_timestamp, 2700, 0, 513, 3213, null, 1, current_timestamp, null, null, null, null);
 
 insert into detalles_compras values (4, 2, 1, 1, null, null, 5, 400, 1, current_timestamp, null, null, null, null);
 insert into detalles_compras values (5, 2, 2, 2, null, null, 2, 200, 1, current_timestamp, null, null, null, null);

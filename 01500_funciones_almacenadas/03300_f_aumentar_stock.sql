@@ -45,7 +45,7 @@ begin
           ,Vcorrelativo             -- correlativo              numeric(20,0)   not null
           ,2                        -- idtimb                   numeric(20,0)   not null
           ,current_date             -- fechamovto               date            not null
-          ,'COMPRA'                 -- descripcion              varchar(100)    not null
+          ,'INGRESO DE PRODUCTOS'   -- descripcion              varchar(100)    not null
           ,Vidusuacrearegistro      -- idusuacrearegistro       numeric(20,0)   not null
           ,current_timestamp        -- fechacrearegistro        timestamp       not null
           ,null                     -- idusuamodifregistro      numeric(20,0)       null

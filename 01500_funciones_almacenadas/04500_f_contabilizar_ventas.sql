@@ -43,6 +43,7 @@ declare
   Vanno_contab_ventas             int;
   Vmes_peco                       int;
   Vanno_peco                      int;
+  Videsac_default                 int;
   C_ventas_pdtes cursor for
     select id                 idvent
           ,montodescuento     descuentos
@@ -151,6 +152,15 @@ begin
   Vmes_actual    := to_char(current_timestamp,'mm');
   Vanno_actual   := to_char(current_timestamp,'yyyy');
   Vfecha_asiento := date(Pfecha::text);
+  select valor
+  into   Videsac_default
+  from   parametros_empresas
+  where  idempr      = Pidempr
+  and    nombrecorto = 'ESTINIASTOS'
+  ;
+  if Videsac_default is null then
+    Videsac_default := 2;
+  end if;
   open C_ventas_pdtes;
   loop
     fetch C_ventas_pdtes into Vidvent
@@ -198,7 +208,7 @@ begin
     values (Vidasco                                                    -- id                       numeric(20,0)     not null
            ,Vidpeco                                                    -- idpeco                   numeric(20,0)     not null
            ,3                                                          -- idtiac                   numeric(20,0)     not null
-           ,2                                                          -- idesac                   numeric(20,0)     not null
+           ,Videsac_default                                            -- idesac                   numeric(20,0)     not null
            ,2                                                          -- idorac                   numeric(20,0)     not null
            ,Vnumero_asiento                                            -- numero_asiento           numeric(20,0)     not null
            ,'CONTABILIZACIÓN AUTOMÁTICA VENTAS ' || Vfecha_txt         -- glosa                    varchar(100)      not null

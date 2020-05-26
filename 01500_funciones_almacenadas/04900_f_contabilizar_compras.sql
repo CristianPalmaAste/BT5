@@ -37,6 +37,7 @@ declare
   Vidcuco_otros_conceptos         int;
   Vvalor_linea                    numeric;
   Vidtiec                         int;
+  Videsac_default                 int;
   C_compras_pdtes cursor for
     select comp.id                 idcomp
           ,comp.impuesto           impuesto
@@ -138,7 +139,15 @@ begin
   Vmes_actual    := to_char(current_timestamp,'mm');
   Vanno_actual   := to_char(current_timestamp,'yyyy');
   Vfecha_asiento := date(Pfecha::text);
-
+  select valor
+  into   Videsac_default
+  from   parametros_empresas
+  where  idempr      = Pidempr
+  and    nombrecorto = 'ESTINIASTOS'
+  ;
+  if Videsac_default is null then
+    Videsac_default := 2;
+  end if;
   select sum(preciounitario*cantidad)
   into   Vtotal_otroinsumo
   from   detalles_compras
@@ -185,7 +194,7 @@ begin
     values (Vidasco                                                       -- id                       numeric(20,0)     not null
            ,Vidpeco                                                       -- idpeco                   numeric(20,0)     not null
            ,3                                                             -- idtiac                   numeric(20,0)     not null
-           ,1                                                             -- idesac                   numeric(20,0)     not null
+           ,Videsac_default                                               -- idesac                   numeric(20,0)     not null
            ,3                                                             -- idorac                   numeric(20,0)     not null
            ,Vnumero_asiento                                               -- numero_asiento           numeric(20,0)     not null
            ,'CONTABILIZACIÓN AUTOMÁTICA COMPRAS ' || Vfecha_txt           -- glosa                    varchar(100)      not null
@@ -321,6 +330,8 @@ begin
   return 'S;Contabilización ejecutada exitosamente';
 end;
 $body$ LANGUAGE plpgsql;
+
+select f_contabilizar_compras(1, 20200516, 3);
 
 \q
 

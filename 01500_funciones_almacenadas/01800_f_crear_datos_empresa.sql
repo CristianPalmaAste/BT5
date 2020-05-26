@@ -14,6 +14,7 @@ declare
   Vanno_actual          int;
 begin
   insert into parametros_empresas values (nextval('paem_seq'), new.id, 'MAXDSCTOPERM', 'MÁXIMO DESCUENTO PERMITIDO (%)', 'MÁXIMO DESCUENTO PERMITIDO (EXPRESADO EN PORCENTAJE) EN UNA VENTA DE ESTA EMPRESA', '10' , 1, current_timestamp, null, null, null, null);
+  insert into parametros_empresas values (nextval('paem_seq'), new.id, 'ESTINIASTOS' , 'ESTADO INICIALL ASTOS. AUT.'   , 'ESTADO INICIAL PARA ASIENTOS GENERADOS POR CONTABILIZACIONES AUTOMÁTICAS'         , '2'  , 1, current_timestamp, null, null, null, null);
 
   insert into bodegas values (nextval('bode_seq'), new.id, 'BODEGA CENTRAL', 1, current_timestamp, null, null, null, null);
 

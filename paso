@@ -16,7 +16,7 @@ SET
 
                 ?column?                
 ----------------------------------------
- create sequence paem_seq start with 14
+ create sequence paem_seq start with 27
 (1 fila)
 
                ?column?                

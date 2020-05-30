@@ -1342,8 +1342,19 @@ from                   ventas               vent
        left outer join lineas_negocios      line on vent.idline = line.id
        left outer join centros_costos       ceco on vent.idceco = ceco.id
        left outer join tareas               tare on vent.idtare = tare.id
-where  vent.idusuaborraregistro is null
-and    vent.idesve              = 2
+where  vent.idusuaborraregistro                         is null
+and    vent.idesve                                      = 2
+and    (
+        (
+         vent.idasco                                    is not null
+         and
+         f_valor_parametro(2, empr.id, 'VERCOMPVENTNC') = 'N'
+        )
+        or
+        (
+         f_valor_parametro(2, empr.id, 'VERCOMPVENTNC') = 'S'
+        )
+       )
 ;
 
 select *
@@ -1389,7 +1400,18 @@ from                   compras              comp
        left outer join lineas_negocios      line on orco.idline = line.id
        left outer join centros_costos       ceco on orco.idceco = ceco.id
        left outer join tareas               tare on orco.idtare = tare.id
-where  comp.idusuaborraregistro is null
+where  comp.idusuaborraregistro                         is null
+and    (
+        (
+         comp.idasco                                    is not null
+         and
+         f_valor_parametro(2, empr.id, 'VERCOMPVENTNC') = 'N'
+        )
+        or
+        (
+         f_valor_parametro(2, empr.id, 'VERCOMPVENTNC') = 'S'
+        )
+       )
 ;
 
 select *

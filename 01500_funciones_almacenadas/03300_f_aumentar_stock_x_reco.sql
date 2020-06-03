@@ -1,10 +1,11 @@
-create or replace function f_aumentar_stock() returns trigger as
+create or replace function f_aumentar_stock_x_reco() returns trigger as
 $body$
 declare
   Vidbode             numeric(20,0);
   Vidmobo             numeric(20,0);
   Vcorrelativo        numeric(20,0);
   Vidusuacrearegistro numeric(20,0);
+  aux                 numeric(20,0);
 begin
   if new.idprod is not null then
     select nextval('mobo_seq')
@@ -79,11 +80,43 @@ begin
           ,null                     -- fechaborraregistro       timestamp           null
           )
     ;
-    update bodegas_productos
-    set    stock  = stock + new.cantidad
+    select count(*)
+    into   aux
+    from   bodegas_productos
     where  idbode = Vidbode
     and    idprod = new.idprod
     ;
+    if aux = 0 then
+      insert into bodegas_productos (id                       -- numeric(20,0)   not null
+                                    ,idbode                   -- numeric(20,0)   not null
+                                    ,idprod                   -- numeric(20,0)   not null
+                                    ,stock                    -- numeric(20,2)   not null
+                                    ,idusuacrearegistro       -- numeric(20,0)   not null
+                                    ,fechacrearegistro        -- timestamp       not null
+                                    ,idusuamodifregistro      -- numeric(20,0)       null
+                                    ,fechamodifregistro       -- timestamp           null
+                                    ,idusuaborraregistro      -- numeric(20,0)       null
+                                    ,fechaborraregistro       -- timestamp           null
+                                    )
+      values (nextval('bopr_seq')      -- id                       numeric(20,0)   not null
+             ,Vidbode                  -- idbode                   numeric(20,0)   not null
+             ,new.idprod               -- idprod                   numeric(20,0)   not null
+             ,new.cantidad             -- stock                    numeric(20,2)   not null
+             ,Vidusuacrearegistro      -- idusuacrearegistro       numeric(20,0)   not null
+             ,current_timestamp        -- fechacrearegistro        timestamp       not null
+             ,null                     -- idusuamodifregistro      numeric(20,0)       null
+             ,null                     -- fechamodifregistro       timestamp           null
+             ,null                     -- idusuaborraregistro      numeric(20,0)       null
+             ,null                     -- fechaborraregistro       timestamp           null
+             )
+      ;
+    else
+      update bodegas_productos
+      set    stock  = stock + new.cantidad
+      where  idbode = Vidbode
+      and    idprod = new.idprod
+      ;
+    end if;
   end if;
   return new;
 end;

@@ -44,29 +44,29 @@ SET
  create sequence mone_seq start with 14
 (1 fila)
 
-                ?column?                
-----------------------------------------
- create sequence gere_seq start with 48
+               ?column?                
+---------------------------------------
+ create sequence gere_seq start with 1
 (1 fila)
 
-                ?column?                
-----------------------------------------
- create sequence proy_seq start with 57
+               ?column?                
+---------------------------------------
+ create sequence proy_seq start with 1
 (1 fila)
 
-                ?column?                
-----------------------------------------
- create sequence line_seq start with 66
+               ?column?                
+---------------------------------------
+ create sequence line_seq start with 1
 (1 fila)
 
-                ?column?                
-----------------------------------------
- create sequence ceco_seq start with 48
+               ?column?                
+---------------------------------------
+ create sequence ceco_seq start with 1
 (1 fila)
 
-                ?column?                
-----------------------------------------
- create sequence tare_seq start with 39
+               ?column?                
+---------------------------------------
+ create sequence tare_seq start with 1
 (1 fila)
 
                 ?column?                
@@ -104,9 +104,9 @@ SET
  create sequence usua_seq start with 22
 (1 fila)
 
-                 ?column?                 
-------------------------------------------
- create sequence uspe_seq start with 1034
+                ?column?                
+----------------------------------------
+ create sequence uspe_seq start with 14
 (1 fila)
 
                 ?column?                 
@@ -119,9 +119,9 @@ SET
  create sequence cuco_seq start with 1373
 (1 fila)
 
-                ?column?                
-----------------------------------------
- create sequence dole_seq start with 25
+               ?column?                
+---------------------------------------
+ create sequence dole_seq start with 1
 (1 fila)
 
                 ?column?                
@@ -136,7 +136,7 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence sosh_seq start with 3
+ create sequence sosh_seq start with 1
 (1 fila)
 
                ?column?                
@@ -146,12 +146,12 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence cosh_seq start with 4
+ create sequence cosh_seq start with 1
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence dcsh_seq start with 5
+ create sequence dcsh_seq start with 1
 (1 fila)
 
                ?column?                
@@ -256,12 +256,12 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence impu_seq start with 5
+ create sequence impu_seq start with 4
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence tipi_seq start with 4
+ create sequence tipi_seq start with 3
 (1 fila)
 
                 ?column?                
@@ -289,44 +289,44 @@ SET
  create sequence clie_seq start with 6
 (1 fila)
 
-                ?column?                
-----------------------------------------
- create sequence dicl_seq start with 10
+               ?column?                
+---------------------------------------
+ create sequence dicl_seq start with 1
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence dipr_seq start with 3
-(1 fila)
-
-                ?column?                
-----------------------------------------
- create sequence vent_seq start with 11
-(1 fila)
-
-                ?column?                
-----------------------------------------
- create sequence deve_seq start with 15
+ create sequence dipr_seq start with 1
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence nove_seq start with 3
+ create sequence vent_seq start with 1
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence denv_seq start with 5
+ create sequence deve_seq start with 1
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence cove_seq start with 3
+ create sequence nove_seq start with 1
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence decv_seq start with 5
+ create sequence denv_seq start with 1
+(1 fila)
+
+               ?column?                
+---------------------------------------
+ create sequence cove_seq start with 1
+(1 fila)
+
+               ?column?                
+---------------------------------------
+ create sequence decv_seq start with 1
 (1 fila)
 
                 ?column?                 
@@ -336,7 +336,7 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence serv_seq start with 9
+ create sequence serv_seq start with 1
 (1 fila)
 
                ?column?                
@@ -354,19 +354,19 @@ SET
  create sequence bode_seq start with 19
 (1 fila)
 
-                ?column?                 
------------------------------------------
- create sequence bopr_seq start with 479
+               ?column?                
+---------------------------------------
+ create sequence bopr_seq start with 1
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence lipr_seq start with 4
+ create sequence lipr_seq start with 1
 (1 fila)
 
-                ?column?                 
------------------------------------------
- create sequence delp_seq start with 250
+               ?column?                
+---------------------------------------
+ create sequence delp_seq start with 1
 (1 fila)
 
                 ?column?                
@@ -384,24 +384,24 @@ SET
  create sequence timb_seq start with 6
 (1 fila)
 
-                ?column?                
-----------------------------------------
- create sequence mobo_seq start with 12
-(1 fila)
-
-                ?column?                
-----------------------------------------
- create sequence demb_seq start with 14
+               ?column?                
+---------------------------------------
+ create sequence mobo_seq start with 1
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence desu_seq start with 8
+ create sequence demb_seq start with 1
 (1 fila)
 
-                ?column?                 
------------------------------------------
- create sequence bicp_seq start with 250
+               ?column?                
+---------------------------------------
+ create sequence desu_seq start with 1
+(1 fila)
+
+               ?column?                
+---------------------------------------
+ create sequence bicp_seq start with 1
 (1 fila)
 
                ?column?                
@@ -421,7 +421,7 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence cubp_seq start with 4
+ create sequence cubp_seq start with 1
 (1 fila)
 
                ?column?                
@@ -431,22 +431,22 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence requ_seq start with 3
+ create sequence requ_seq start with 1
 (1 fila)
 
-                ?column?                
-----------------------------------------
- create sequence dere_seq start with 11
+               ?column?                
+---------------------------------------
+ create sequence dere_seq start with 1
 (1 fila)
 
                 ?column?                 
 -----------------------------------------
- create sequence aure_seq start with 209
+ create sequence aure_seq start with 193
 (1 fila)
 
-                ?column?                
-----------------------------------------
- create sequence hire_seq start with 12
+               ?column?                
+---------------------------------------
+ create sequence hire_seq start with 1
 (1 fila)
 
                ?column?                
@@ -461,12 +461,12 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence orco_seq start with 2
+ create sequence orco_seq start with 1
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence deoc_seq start with 6
+ create sequence deoc_seq start with 1
 (1 fila)
 
                ?column?                
@@ -491,17 +491,17 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence reco_seq start with 3
+ create sequence reco_seq start with 1
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence derc_seq start with 7
+ create sequence derc_seq start with 1
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence fore_seq start with 6
+ create sequence fore_seq start with 1
 (1 fila)
 
                ?column?                
@@ -516,12 +516,12 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence rega_seq start with 3
+ create sequence rega_seq start with 1
 (1 fila)
 
-                ?column?                
-----------------------------------------
- create sequence derg_seq start with 10
+               ?column?                
+---------------------------------------
+ create sequence derg_seq start with 1
 (1 fila)
 
                 ?column?                 
@@ -541,12 +541,12 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence comp_seq start with 3
+ create sequence comp_seq start with 1
 (1 fila)
 
                ?column?                
 ---------------------------------------
- create sequence deco_seq start with 7
+ create sequence deco_seq start with 1
 (1 fila)
 
                ?column?                

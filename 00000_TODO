@@ -175,7 +175,7 @@ echo "  04800_f_cerrar_peco"
 psql -d $DBNAME -U $USUARIO_DB < 04800_f_cerrar_peco.sql > 04810_f_cerrar_peco.txt
 
 echo "  04900_f_contabilizar_compras"
-#psql -d $DBNAME -U $USUARIO_DB < 04900_f_contabilizar_compras.sql > 04910_f_contabilizar_compras.txt
+psql -d $DBNAME -U $USUARIO_DB < 04900_f_contabilizar_compras.sql > 04910_f_contabilizar_compras.txt
 
 echo "  05000_f_datos_servicio"
 psql -d $DBNAME -U $USUARIO_DB < 05000_f_datos_servicio.sql > 05010_f_datos_servicio.txt
@@ -316,20 +316,26 @@ psql -d $DBNAME -U $USUARIO_DB < 02400_crea_fks_idusuacrearegistro.sql > 02410_c
 echo "Poniendo secuencias al dia"
 ./00700_secuencias.sh
 
-echo "Insertando datos de prueba (ficticios)"
-psql -d $DBNAME -U $USUARIO_DB < 99000_datos_de_prueba.sql > 99010_datos_de_prueba.txt
-
-echo "Insertando datos de SA-JJM"
-psql -d $DBNAME -U $USUARIO_DB < 99100_otros_datos_SA_JJM.sql > 99110_otros_datos_SA_JJM.txt
+echo "Inserto otros datos válidos"
+psql -d $DBNAME -U $USUARIO_DB < 02500_insertar_otros_datos_validos.sql > 02510_insertar_otros_datos_validos.txt
 
 echo "Poniendo secuencias al dia"
 ./00700_secuencias.sh
 
-echo "Insertando productos de JJM"
-psql -d $DBNAME -U $USUARIO_DB < 99200_insertar_prods_JJM.sql > 99210_insertar_prods_JJM.txt
+#echo "Insertando datos de prueba (ficticios)"
+#psql -d $DBNAME -U $USUARIO_DB < 99000_datos_de_prueba.sql > 99010_datos_de_prueba.txt
 
-echo "Insertando asientos de prueba"
-psql -d $DBNAME -U $USUARIO_DB < 99300_datos_de_prueba_contab.sql > 99310_datos_de_prueba_contab.txt
+#echo "Insertando datos de SA-JJM"
+#psql -d $DBNAME -U $USUARIO_DB < 99100_otros_datos_SA_JJM.sql > 99110_otros_datos_SA_JJM.txt
+
+echo "Poniendo secuencias al dia"
+./00700_secuencias.sh
+
+#echo "Insertando productos de JJM"
+#psql -d $DBNAME -U $USUARIO_DB < 99200_insertar_prods_JJM.sql > 99210_insertar_prods_JJM.txt
+
+#echo "Insertando asientos de prueba"
+#psql -d $DBNAME -U $USUARIO_DB < 99300_datos_de_prueba_contab.sql > 99310_datos_de_prueba_contab.txt
 
 echo "Poniendo secuencias al dia"
 ./00700_secuencias.sh

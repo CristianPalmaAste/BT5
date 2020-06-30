@@ -179,7 +179,6 @@ begin
     into   Vnumero_asiento
     from   asientos_contables
     where  idpeco = Vidpeco
-    and    idtiac = 3
     ;
     if Vnumero_asiento is null then
       Vnumero_asiento := 1;

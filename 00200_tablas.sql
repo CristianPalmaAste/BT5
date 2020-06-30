@@ -3188,7 +3188,7 @@ create table asientos_contables (
 alter table asientos_contables add constraint asco_pk primary key (id)
 ;
 
-alter table asientos_contables add constraint asco_uk unique (idpeco, idtiac, numero_asiento)
+alter table asientos_contables add constraint asco_uk unique (idpeco, numero_asiento)
 ;
 
 alter table asientos_contables add constraint asco_chk_01 check (reversible in ('S','N'))

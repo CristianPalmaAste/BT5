@@ -165,7 +165,6 @@ begin
     into   Vnumero_asiento
     from   asientos_contables
     where  idpeco = Vidpeco
-    and    idtiac = 3
     ;
     if Vnumero_asiento is null then
       Vnumero_asiento := 1;
@@ -330,6 +329,8 @@ begin
   return 'S;Contabilización ejecutada exitosamente';
 end;
 $body$ LANGUAGE plpgsql;
+
+\q
 
 select f_contabilizar_compras(1, 20200516, 3);
 

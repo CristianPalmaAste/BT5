@@ -1525,9 +1525,4 @@ insert into estados_rendiciones_gastos values (8, 'ANULADA'                     
 insert into tipos_rendiciones_gastos values (1, 'SOLICITUD DE REEMBOLSO', 1, current_timestamp, null, null, null, null);
 insert into tipos_rendiciones_gastos values (2, 'RENDICIÓN DE FONDOS'   , 1, current_timestamp, null, null, null, null);
 
-insert into tipos_direcciones values (1, 'FACTURACIÓN', 1, current_timestamp, null, null, null, null);
-insert into tipos_direcciones values (2, 'DESPACHO'   , 1, current_timestamp, null, null, null, null);
-insert into tipos_direcciones values (3, 'PARTICULAR' , 1, current_timestamp, null, null, null, null);
-insert into tipos_direcciones values (4, 'COMERCIAL'  , 1, current_timestamp, null, null, null, null);
-
 \q

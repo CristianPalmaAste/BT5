@@ -41,7 +41,6 @@ select 'create sequence tifp_seq start with ' || (case when MAX(ID) is null then
 select 'create sequence fpnv_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from formas_pagos_notas_ventas;
 select 'create sequence fpve_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from formas_pagos_ventas;
 select 'create sequence unte_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from unidades_territoriales;
-select 'create sequence tidi_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_direcciones;
 select 'create sequence ticl_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_clientes;
 select 'create sequence ticv_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_cotizaciones_vtas;
 select 'create sequence escv_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from estados_cotizaciones_vtas;
@@ -58,8 +57,6 @@ select 'create sequence tudv_seq start with ' || (case when MAX(ID) is null then
 select 'create sequence usdv_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from usos_doctos_ventas;
 select 'create sequence tise_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from tipos_servicios;
 select 'create sequence clie_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from clientes;
-select 'create sequence dicl_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from direcciones_clientes;
-select 'create sequence dipr_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from direcciones_proveedores;
 select 'create sequence vent_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from ventas;
 select 'create sequence deve_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from detalles_ventas;
 select 'create sequence nove_seq start with ' || (case when MAX(ID) is null then 0 else MAX(ID) end)+1 from notas_ventas;

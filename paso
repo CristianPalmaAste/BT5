@@ -11,7 +11,7 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence para_seq start with 141
+ create sequence para_seq start with 148
 (1 fila)
 
                 ?column?                
@@ -206,11 +206,6 @@ SET
 
                ?column?                
 ---------------------------------------
- create sequence tidi_seq start with 5
-(1 fila)
-
-               ?column?                
----------------------------------------
  create sequence ticl_seq start with 3
 (1 fila)
 
@@ -287,16 +282,6 @@ SET
                ?column?                
 ---------------------------------------
  create sequence clie_seq start with 6
-(1 fila)
-
-               ?column?                
----------------------------------------
- create sequence dicl_seq start with 1
-(1 fila)
-
-               ?column?                
----------------------------------------
- create sequence dipr_seq start with 1
 (1 fila)
 
                ?column?                

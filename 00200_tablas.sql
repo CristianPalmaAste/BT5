@@ -1071,26 +1071,6 @@ alter table unidades_territoriales add constraint unte_uk_02 unique (iduntepadre
 
 /*************************************************************************************************************************/
 
-create table tipos_direcciones (
-   id                       numeric(20,0)   not null
-  ,descripcion              varchar(100)    not null
-  ,idusuacrearegistro       numeric(20,0)   not null
-  ,fechacrearegistro        timestamp       not null
-  ,idusuamodifregistro      numeric(20,0)       null
-  ,fechamodifregistro       timestamp           null
-  ,idusuaborraregistro      numeric(20,0)       null
-  ,fechaborraregistro       timestamp           null
-)
-;
-
-alter table tipos_direcciones add constraint tidi_pk primary key (id)
-;
-
-alter table tipos_direcciones add constraint tidi_uk_01 unique (descripcion)
-;
-
-/*************************************************************************************************************************/
-
 create table tipos_clientes (
    id                       numeric(20,0)   not null
   ,descripcion              varchar(100)    not null
@@ -1459,6 +1439,20 @@ create table clientes (
   ,apellidopaterno          varchar(100)        null
   ,apellidomaterno          varchar(100)        null
   ,email                    varchar(100)        null
+  ,contacto                 varchar(100)        null
+  ,telefono                 varchar(100)        null
+  ,calle1                   varchar(100)        null
+  ,numero1                  varchar(100)        null
+  ,casa_o_depto1            varchar(100)        null
+  ,idunte1                  numeric(20,0)       null
+  ,calle2                   varchar(100)        null
+  ,numero2                  varchar(100)        null
+  ,casa_o_depto2            varchar(100)        null
+  ,idunte2                  numeric(20,0)       null
+  ,calle3                   varchar(100)        null
+  ,numero3                  varchar(100)        null
+  ,casa_o_depto3            varchar(100)        null
+  ,idunte3                  numeric(20,0)       null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
   ,idusuamodifregistro      numeric(20,0)       null
@@ -1479,56 +1473,6 @@ alter table clientes add constraint clie_chk_01 check (
                                                        or
                                                        (idticl = 2 and razonsocial is not null and nombrefantasia is not null and primernombre is     null and segundonombre is null and apellidopaterno is     null and apellidomaterno is null)
                                                       )
-;
-
-/*************************************************************************************************************************/
-
-create table direcciones_clientes (
-   id                       numeric(20,0)   not null
-  ,idclie                   numeric(20,0)   not null
-  ,idtidi                   numeric(20,0)   not null
-  ,calle                    varchar(100)    not null
-  ,numero                   varchar(100)    not null
-  ,idunte                   numeric(20,0)   not null
-  ,telefono                 varchar(100)        null
-  ,idusuacrearegistro       numeric(20,0)   not null
-  ,fechacrearegistro        timestamp       not null
-  ,idusuamodifregistro      numeric(20,0)       null
-  ,fechamodifregistro       timestamp           null
-  ,idusuaborraregistro      numeric(20,0)       null
-  ,fechaborraregistro       timestamp           null
-)
-;
-
-alter table direcciones_clientes add constraint dicl_pk primary key (id)
-;
-
-alter table direcciones_clientes add constraint dicl_uk_01 unique (idclie, calle, numero, idunte)
-;
-
-/*************************************************************************************************************************/
-
-create table direcciones_proveedores (
-   id                       numeric(20,0)   not null
-  ,idprov                   numeric(20,0)   not null
-  ,idtidi                   numeric(20,0)   not null
-  ,calle                    varchar(100)    not null
-  ,numero                   varchar(100)    not null
-  ,idunte                   numeric(20,0)   not null
-  ,telefono                 varchar(100)        null
-  ,idusuacrearegistro       numeric(20,0)   not null
-  ,fechacrearegistro        timestamp       not null
-  ,idusuamodifregistro      numeric(20,0)       null
-  ,fechamodifregistro       timestamp           null
-  ,idusuaborraregistro      numeric(20,0)       null
-  ,fechaborraregistro       timestamp           null
-)
-;
-
-alter table direcciones_proveedores add constraint dipr_pk primary key (id)
-;
-
-alter table direcciones_proveedores add constraint dipr_uk_01 unique (idprov, calle, numero, idunte)
 ;
 
 /*************************************************************************************************************************/
@@ -1917,6 +1861,10 @@ create table bodegas (
    id                       numeric(20,0)   not null
   ,idempr                   numeric(20,0)   not null
   ,nombre                   varchar(1000)   not null
+  ,calle                    varchar(100)        null
+  ,numero                   varchar(100)        null
+  ,casa_o_depto             varchar(100)        null
+  ,idunte                   numeric(20,0)       null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
   ,idusuamodifregistro      numeric(20,0)       null
@@ -2628,6 +2576,21 @@ create table proveedores (
   ,segundonombre            varchar(100)        null
   ,apellidopaterno          varchar(100)        null
   ,apellidomaterno          varchar(100)        null
+  ,email                    varchar(100)        null
+  ,contacto                 varchar(100)        null
+  ,telefono                 varchar(100)        null
+  ,calle1                   varchar(100)        null
+  ,numero1                  varchar(100)        null
+  ,casa_o_depto1            varchar(100)        null
+  ,idunte1                  numeric(20,0)       null
+  ,calle2                   varchar(100)        null
+  ,numero2                  varchar(100)        null
+  ,casa_o_depto2            varchar(100)        null
+  ,idunte2                  numeric(20,0)       null
+  ,calle3                   varchar(100)        null
+  ,numero3                  varchar(100)        null
+  ,casa_o_depto3            varchar(100)        null
+  ,idunte3                  numeric(20,0)       null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
   ,idusuamodifregistro      numeric(20,0)       null
@@ -3386,6 +3349,9 @@ alter table detalles_cotizaciones_compras     add constraint decc_fk_serv  forei
 alter table proveedores                       add constraint prov_fk_grem  foreign key (idgrem)                 references grupos_empresariales             (id);
 alter table proveedores                       add constraint prov_fk_pais  foreign key (idpais)                 references paises                           (id);
 alter table proveedores                       add constraint prov_fk_tipp  foreign key (idtipp)                 references tipos_proveedores                (id);
+alter table proveedores                       add constraint prov_fk1_unte foreign key (idunte1)                references unidades_territoriales           (id);
+alter table proveedores                       add constraint prov_fk2_unte foreign key (idunte2)                references unidades_territoriales           (id);
+alter table proveedores                       add constraint prov_fk3_unte foreign key (idunte3)                references unidades_territoriales           (id);
 alter table proveedores                       add constraint prov_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table proveedores                       add constraint prov_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 
@@ -3492,6 +3458,7 @@ alter table listas_precios                    add constraint lipr_fk2_usua forei
 alter table listas_precios                    add constraint lipr_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 
 alter table bodegas                           add constraint bode_fk_empr  foreign key (idempr)                 references empresas                         (id);
+alter table bodegas                           add constraint bode_fk_unte  foreign key (idunte)                 references unidades_territoriales           (id);
 alter table bodegas                           add constraint bode_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table bodegas                           add constraint bode_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 
@@ -3654,26 +3621,14 @@ alter table tipos_productos_impuestos         add constraint tipi_fk_impu  forei
 alter table tipos_productos_impuestos         add constraint tipi_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table tipos_productos_impuestos         add constraint tipi_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 
-alter table tipos_direcciones                 add constraint tidi_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
-alter table tipos_direcciones                 add constraint tidi_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
-
 alter table clientes                          add constraint clie_fk_grem  foreign key (idgrem)                 references grupos_empresariales             (id);
 alter table clientes                          add constraint clie_fk_pais  foreign key (idpais)                 references paises                           (id);
 alter table clientes                          add constraint clie_fk_ticl  foreign key (idticl)                 references tipos_clientes                   (id);
+alter table clientes                          add constraint clie_fk1_unte foreign key (idunte1)                references unidades_territoriales           (id);
+alter table clientes                          add constraint clie_fk2_unte foreign key (idunte2)                references unidades_territoriales           (id);
+alter table clientes                          add constraint clie_fk3_unte foreign key (idunte3)                references unidades_territoriales           (id);
 alter table clientes                          add constraint clie_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
 alter table clientes                          add constraint clie_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
-
-alter table direcciones_clientes              add constraint dicl_fk_clie  foreign key (idclie)                 references clientes                         (id);
-alter table direcciones_clientes              add constraint dicl_fk_tidi  foreign key (idtidi)                 references tipos_direcciones                (id);
-alter table direcciones_clientes              add constraint dicl_fk_unte  foreign key (idunte)                 references unidades_territoriales           (id);
-alter table direcciones_clientes              add constraint dicl_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
-alter table direcciones_clientes              add constraint dicl_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
-
-alter table direcciones_proveedores           add constraint dipr_fk_prov  foreign key (idprov)                 references proveedores                      (id);
-alter table direcciones_proveedores           add constraint dipr_fk_tidi  foreign key (idtidi)                 references tipos_direcciones                (id);
-alter table direcciones_proveedores           add constraint dipr_fk_unte  foreign key (idunte)                 references unidades_territoriales           (id);
-alter table direcciones_proveedores           add constraint dipr_fk2_usua foreign key (idusuamodifregistro)    references usuarios                         (id);
-alter table direcciones_proveedores           add constraint dipr_fk3_usua foreign key (idusuaborraregistro)    references usuarios                         (id);
 
 alter table cotizaciones_ventas               add constraint cove_fk_empr  foreign key (idempr)                 references empresas                         (id);
 alter table cotizaciones_ventas               add constraint cove_fk_bode  foreign key (idbode)                 references bodegas                          (id);

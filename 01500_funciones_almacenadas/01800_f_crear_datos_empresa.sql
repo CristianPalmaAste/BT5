@@ -18,7 +18,7 @@ begin
   insert into parametros_empresas values (nextval('paem_seq'), new.id, 'AGRUPBALGRAL' , 'AGRUPACIÓN BALANCE GENERAL'            , 'TIPO DE FORMA DE AGRUPAR EL BALANCE GENERAL: 1: FORMA CHILENA; 2: FORMA INTERNACIONAL'                            , '2'  , 1, current_timestamp, null, null, null, null);
   insert into parametros_empresas values (nextval('paem_seq'), new.id, 'VERCOMPVENTNC', 'VER COMPRAS O VENTAS NO CONTABILIZADAS', 'PARÁMETRO QUE INDICA SI EN LOS LIBROS DE COMPRA O VENTA SE DEBEN INCLUIR (S=SI, N=NO) REGISTROS NO CONTABILIZADOS', 'S'  , 1, current_timestamp, null, null, null, null);
 
-  insert into bodegas values (nextval('bode_seq'), new.id, 'BODEGA CENTRAL', 1, current_timestamp, null, null, null, null);
+  insert into bodegas values (nextval('bode_seq'), new.id, 'BODEGA CENTRAL', null, null, null, null, 1, current_timestamp, null, null, null, null);
 
   select nextval('fapr_seq')
   into   Vidfapr

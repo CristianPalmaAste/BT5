@@ -83,9 +83,7 @@ alter table tareas                            add constraint tare_fk1_usua forei
 alter table unidades_territoriales            add constraint unte_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table impuestos                         add constraint impu_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table tipos_productos_impuestos         add constraint tipi_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
-alter table tipos_direcciones                 add constraint tidi_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table clientes                          add constraint clie_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
-alter table direcciones_clientes              add constraint dicl_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table cotizaciones_ventas               add constraint cove_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table detalles_cotizs_vtas              add constraint decv_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table tipos_doctos_ventas               add constraint tidv_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
@@ -114,7 +112,6 @@ alter table procesos_contables                add constraint prco_fk1_usua forei
 alter table procesos_contables_empresas       add constraint prce_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table conceptos_contabilizacs_automats  add constraint coca_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table detalles_procesos_ctbles_empresas add constraint dpce_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
-alter table direcciones_proveedores           add constraint dipr_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table cuentas_bancarias_proveedores     add constraint cubp_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table bancos                            add constraint banc_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);
 alter table tipos_cuentas_bancarias           add constraint ticb_fk1_usua foreign key (idusuacrearegistro)    references usuarios                         (id);

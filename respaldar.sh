@@ -8,7 +8,7 @@ git add --all .
 
 git commit -m "cpalma" *
 
-#git pull -rebase
+git pull -rebase 
 
 git push
 

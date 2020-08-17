@@ -1,7 +1,7 @@
 create sequence grem_seq start with 9;
 create sequence empr_seq start with 15;
-create sequence para_seq start with 148;
-create sequence paem_seq start with 53;
+create sequence para_seq start with 141;
+create sequence paem_seq start with 66;
 create sequence esge_seq start with 4;
 create sequence rubr_seq start with 676;
 create sequence esre_seq start with 3;

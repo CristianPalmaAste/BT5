@@ -11,12 +11,12 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence para_seq start with 148
+ create sequence para_seq start with 141
 (1 fila)
 
                 ?column?                
 ----------------------------------------
- create sequence paem_seq start with 53
+ create sequence paem_seq start with 66
 (1 fila)
 
                ?column?                

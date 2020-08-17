@@ -1,0 +1,1 @@
+  insert into parametros_empresas values (nextval('paem_seq'), new.id, 'PROFUNTEPAIS'    , 'PROFUNDIDAD UNIDAD TERRITORIAL EN EL PAIS DEL GREM'    , 'ESTE PARÁMETRO INDICA EN CUANTAS PARTES SE DIVIDE GEOGRAFICAMENTE UN PAIS. POR EJEMPLO, CHILE SE DIVIDE EN 3: REGION, PROVINCIA Y COMUNA', '3'           , 1, current_timestamp, null, null, null, null);

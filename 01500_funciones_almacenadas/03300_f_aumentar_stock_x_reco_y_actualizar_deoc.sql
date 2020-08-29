@@ -1,4 +1,4 @@
-create or replace function f_aumentar_stock_x_reco() returns trigger as
+create or replace function f_aumentar_stock_x_reco_y_actualizar_deoc() returns trigger as
 $body$
 declare
   Vidbode             numeric(20,0);
@@ -6,8 +6,13 @@ declare
   Vcorrelativo        numeric(20,0);
   Vidusuacrearegistro numeric(20,0);
   aux                 numeric(20,0);
+  Vidorco             numeric(20,0);
+  Vcantidad_deoc      numeric(20,5);
+  Vsuma_cantidad_derc numeric(20,5);
+  Vnuevo_estado_deoc  numeric(20,0);
 begin
   if new.idprod is not null then
+    /* Aumento stock y registro movto. */
     select nextval('mobo_seq')
     into   Vidmobo
     ;
@@ -117,6 +122,38 @@ begin
       and    idprod = new.idprod
       ;
     end if;
+    /* Actualizo estado detalle OC */
+    select orco.id
+    into   Vidorco
+    from   recepciones_compras          reco
+          ,detalles_recepciones_compras derc
+    where  reco.id = derc.idreco
+    and    derc.id = new.id
+    ;
+    select cantidad
+    into   Vcantidad_deoc
+    from   detalles_ordenes_compras
+    where  idorco = Vidorco
+    and    idprod = new.idprod
+    ;
+    select sum(cantidad)
+    into   Vsuma_cantidad_derc
+    from   recepciones_compras          reco
+          ,detalles_recepciones_compras derc
+    where  reco.id     = derc.idreco
+    and    reco.idorco = Vidorco
+    and    derc.idprod = new.idprod
+    ;
+    if Vsuma_cantidad_derc >= Vcantidad_deoc then
+      Vnuevo_estado_deoc := 3; -- SATISFECHA
+    else
+      Vnuevo_estado_deoc := 2; -- PARCIALMENTE SATISFECHA
+    end if;
+    update detalles_ordenes_compras
+    set    idedoc = Vnuevo_estado_deoc
+    where  idorco = Vidorco
+    and    idprod = new.idprod
+    ;
   end if;
   return new;
 end;

@@ -139,6 +139,7 @@ insert into programas values ( 8020,  8000, 'Aceptación/rechazo requisiciones' 
 insert into programas values ( 8040,  8000, 'Aprobac./rech. reqs. dpto. compras'   , 'RequisicionesCompras'            , 'Aprobac./rech. reqs. dpto. compras'        , 4  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 8050,  8000, 'Órdenes de compras'                   , 'OrdenesCompras'                  , 'Órdenes de compras'                        , 5  , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 8060,  8000, 'Recepciones compras/servicios'        , 'RecepcionesCompras'              , 'Recepciones compras/servicios'             , 6  , 1, current_timestamp, null, null, null, null);
+insert into programas values ( 8070,  8000, 'Cierre anticipado de OCs'             , 'CierreAnticipadoOCs'             , 'Cierre anticipado de OCs'                  , 7  , 1, current_timestamp, null, null, null, null);
 
 insert into programas values ( 9000, null , 'Ventas'                               , null                              , 'Ventas'                                    , 12 , 1, current_timestamp, null, null, null, null);
 insert into programas values ( 9010,  9000, 'Cotizaciones ventas'                  , 'CotizacionesVentas'              , 'Cotizaciones ventas'                       , 1  , 1, current_timestamp, null, null, null, null);
@@ -410,6 +411,7 @@ insert into perfiles_programas values (nextval('pepr_seq'), 16,  8020, 1, curren
 insert into perfiles_programas values (nextval('pepr_seq'), 16,  8040, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 16,  8050, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 16,  8060, 1, current_timestamp, null, null, null, null);
+insert into perfiles_programas values (nextval('pepr_seq'), 16,  8070, 1, current_timestamp, null, null, null, null);
 
 insert into perfiles_programas values (nextval('pepr_seq'), 17,  1000, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 17,  1010, 1, current_timestamp, null, null, null, null);
@@ -422,6 +424,7 @@ insert into perfiles_programas values (nextval('pepr_seq'), 17,  8010, 1, curren
 insert into perfiles_programas values (nextval('pepr_seq'), 17,  8040, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 17,  8050, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 17,  8060, 1, current_timestamp, null, null, null, null);
+insert into perfiles_programas values (nextval('pepr_seq'), 17,  8070, 1, current_timestamp, null, null, null, null);
 
 insert into perfiles_programas values (nextval('pepr_seq'), 18,  1000, 1, current_timestamp, null, null, null, null);
 insert into perfiles_programas values (nextval('pepr_seq'), 18,  1010, 1, current_timestamp, null, null, null, null);

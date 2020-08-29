@@ -343,6 +343,7 @@ create table paises (
   ,nombre                   varchar(100)    not null
   ,idmone                   numeric(20,0)   not null
   ,nacionalidad             varchar(100)    not null
+  ,profund_unids_territ     numeric(20,0)   not null
   ,idusuacrearegistro       numeric(20,0)   not null
   ,fechacrearegistro        timestamp       not null
   ,idusuamodifregistro      numeric(20,0)       null

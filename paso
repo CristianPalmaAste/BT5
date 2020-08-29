@@ -16,7 +16,7 @@ SET
 
                 ?column?                
 ----------------------------------------
- create sequence paem_seq start with 66
+ create sequence paem_seq start with 53
 (1 fila)
 
                ?column?                
@@ -111,7 +111,7 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence pepr_seq start with 288
+ create sequence pepr_seq start with 290
 (1 fila)
 
                  ?column?                 
@@ -201,7 +201,7 @@ SET
 
                 ?column?                 
 -----------------------------------------
- create sequence unte_seq start with 419
+ create sequence unte_seq start with 439
 (1 fila)
 
                ?column?                

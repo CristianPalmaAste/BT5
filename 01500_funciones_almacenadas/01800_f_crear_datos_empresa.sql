@@ -13,11 +13,10 @@ declare
   Vmes_actual           int;
   Vanno_actual          int;
 begin
-  insert into parametros_empresas values (nextval('paem_seq'), new.id, 'MAXDSCTOPERM' , 'MÁXIMO DESCUENTO PERMITIDO (%)'                    , 'MÁXIMO DESCUENTO PERMITIDO (EXPRESADO EN PORCENTAJE) EN UNA VENTA DE ESTA EMPRESA'                                                       , '10' , 1, current_timestamp, null, null, null, null);
-  insert into parametros_empresas values (nextval('paem_seq'), new.id, 'ESTINIASTOS'  , 'ESTADO INICIALL ASTOS. AUT.'                       , 'ESTADO INICIAL PARA ASIENTOS GENERADOS POR CONTABILIZACIONES AUTOMÁTICAS'                                                                , '2'  , 1, current_timestamp, null, null, null, null);
-  insert into parametros_empresas values (nextval('paem_seq'), new.id, 'AGRUPBALGRAL' , 'AGRUPACIÓN BALANCE GENERAL'                        , 'TIPO DE FORMA DE AGRUPAR EL BALANCE GENERAL: 1: FORMA CHILENA; 2: FORMA INTERNACIONAL'                                                   , '2'  , 1, current_timestamp, null, null, null, null);
-  insert into parametros_empresas values (nextval('paem_seq'), new.id, 'VERCOMPVENTNC', 'VER COMPRAS O VENTAS NO CONTABILIZADAS'            , 'PARÁMETRO QUE INDICA SI EN LOS LIBROS DE COMPRA O VENTA SE DEBEN INCLUIR (S=SI, N=NO) REGISTROS NO CONTABILIZADOS'                       , 'S'  , 1, current_timestamp, null, null, null, null);
-  insert into parametros_empresas values (nextval('paem_seq'), new.id, 'PROFUNTEPAIS' , 'PROFUNDIDAD UNIDAD TERRITORIAL EN EL PAIS DEL GREM', 'ESTE PARÁMETRO INDICA EN CUANTAS PARTES SE DIVIDE GEOGRAFICAMENTE UN PAIS. POR EJEMPLO, CHILE SE DIVIDE EN 3: REGION, PROVINCIA Y COMUNA', '3'  , 1, current_timestamp, null, null, null, null);
+  insert into parametros_empresas values (nextval('paem_seq'), new.id, 'MAXDSCTOPERM' , 'MÁXIMO DESCUENTO PERMITIDO (%)'        , 'MÁXIMO DESCUENTO PERMITIDO (EXPRESADO EN PORCENTAJE) EN UNA VENTA DE ESTA EMPRESA'                                , '10' , 1, current_timestamp, null, null, null, null);
+  insert into parametros_empresas values (nextval('paem_seq'), new.id, 'ESTINIASTOS'  , 'ESTADO INICIALL ASTOS. AUT.'           , 'ESTADO INICIAL PARA ASIENTOS GENERADOS POR CONTABILIZACIONES AUTOMÁTICAS'                                         , '2'  , 1, current_timestamp, null, null, null, null);
+  insert into parametros_empresas values (nextval('paem_seq'), new.id, 'AGRUPBALGRAL' , 'AGRUPACIÓN BALANCE GENERAL'            , 'TIPO DE FORMA DE AGRUPAR EL BALANCE GENERAL: 1: FORMA CHILENA; 2: FORMA INTERNACIONAL'                            , '2'  , 1, current_timestamp, null, null, null, null);
+  insert into parametros_empresas values (nextval('paem_seq'), new.id, 'VERCOMPVENTNC', 'VER COMPRAS O VENTAS NO CONTABILIZADAS', 'PARÁMETRO QUE INDICA SI EN LOS LIBROS DE COMPRA O VENTA SE DEBEN INCLUIR (S=SI, N=NO) REGISTROS NO CONTABILIZADOS', 'S'  , 1, current_timestamp, null, null, null, null);
 
   insert into bodegas values (nextval('bode_seq'), new.id, 'BODEGA CENTRAL', null, null, null, null, 1, current_timestamp, null, null, null, null);
 

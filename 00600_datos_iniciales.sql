@@ -743,16 +743,16 @@ insert into monedas values (11, 'DÓLAR'                    , 'USD', 1, current_
 insert into monedas values (12, 'UNIDAD DE FOMENTO'        , 'UF' , 1, current_timestamp, null, null, null, null);
 insert into monedas values (13, 'UNIDAD TRIBUTARIA MENSUAL', 'UTM', 1, current_timestamp, null, null, null, null);
 
-insert into paises values (1 , 'CHILE'    , 1 , 'CHILENA'    , 1, current_timestamp, null, null, null, null);
-insert into paises values (2 , 'ARGENTINA', 2 , 'ARGENTINA'  , 1, current_timestamp, null, null, null, null);
-insert into paises values (3 , 'PERU'     , 3 , 'PERUANA'    , 1, current_timestamp, null, null, null, null);
-insert into paises values (4 , 'BOLIVIA'  , 4 , 'BOLIVIANA'  , 1, current_timestamp, null, null, null, null);
-insert into paises values (5 , 'PARAGUAY' , 5 , 'PARAGUAYA'  , 1, current_timestamp, null, null, null, null);
-insert into paises values (6 , 'URUGUAY'  , 6 , 'URUGUAYA'   , 1, current_timestamp, null, null, null, null);
-insert into paises values (7 , 'BRASIL'   , 7 , 'BRASILENA'  , 1, current_timestamp, null, null, null, null);
-insert into paises values (8 , 'ECUADOR'  , 8 , 'ECUATORIANA', 1, current_timestamp, null, null, null, null);
-insert into paises values (9 , 'VENEZUELA', 9 , 'VENEZOLANA' , 1, current_timestamp, null, null, null, null);
-insert into paises values (10, 'COLOMBIA' , 10, 'COLOMBIANA' , 1, current_timestamp, null, null, null, null);
+insert into paises values (1 , 'CHILE'    , 1 , 'CHILENA'    , 3, 1, current_timestamp, null, null, null, null);
+insert into paises values (2 , 'ARGENTINA', 2 , 'ARGENTINA'  , 3, 1, current_timestamp, null, null, null, null);
+insert into paises values (3 , 'PERU'     , 3 , 'PERUANA'    , 3, 1, current_timestamp, null, null, null, null);
+insert into paises values (4 , 'BOLIVIA'  , 4 , 'BOLIVIANA'  , 3, 1, current_timestamp, null, null, null, null);
+insert into paises values (5 , 'PARAGUAY' , 5 , 'PARAGUAYA'  , 3, 1, current_timestamp, null, null, null, null);
+insert into paises values (6 , 'URUGUAY'  , 6 , 'URUGUAYA'   , 3, 1, current_timestamp, null, null, null, null);
+insert into paises values (7 , 'BRASIL'   , 7 , 'BRASILENA'  , 3, 1, current_timestamp, null, null, null, null);
+insert into paises values (8 , 'ECUADOR'  , 8 , 'ECUATORIANA', 3, 1, current_timestamp, null, null, null, null);
+insert into paises values (9 , 'VENEZUELA', 9 , 'VENEZOLANA' , 1, 1, current_timestamp, null, null, null, null);
+insert into paises values (10, 'COLOMBIA' , 10, 'COLOMBIANA' , 3, 1, current_timestamp, null, null, null, null);
 
 insert into bancos values (1 , 1, 'BANCO DE CHILE'                , 1, current_timestamp, null, null, null, null);
 insert into bancos values (2 , 1, 'BANCO INTERNACIONAL'           , 1, current_timestamp, null, null, null, null);
@@ -960,8 +960,8 @@ insert into valores_paises values (nextval('vapa_seq'), 9 , 'IDENTP2', 'ETIQUETA
 insert into valores_paises values (nextval('vapa_seq'), 9 , 'IDENTE1', 'ETIQUETA IDENTIFICADOR 1 TABLA EMPRESAS', 'ETIQUETA IDENTIFICADOR 1 TABLA EMPRESAS'                , 'RUC'       ,  1, current_timestamp, null, null, null, null);
 insert into valores_paises values (nextval('vapa_seq'), 9 , 'IDENTE2', 'ETIQUETA IDENTIFICADOR 2 TABLA EMPRESAS', 'ETIQUETA IDENTIFICADOR 2 TABLA EMPRESAS'                , 'DV'        ,  1, current_timestamp, null, null, null, null);
 insert into valores_paises values (nextval('vapa_seq'), 9 , 'RETHON' , 'RETENCIÓN HONORARIOS'                   , '% RETENCIÓN DE HONORARIOS EN ESTE PAIS'                 , '10'        ,  1, current_timestamp, null, null, null, null);
-insert into valores_paises values (nextval('vapa_seq'), 9 , 'NUMUNIT', 'NRO. UNIDADES TERRITORIALES'            , 'NRO. DE UNIDADES TERRITORIALES EN QUE SE DIVIDE EL PAIS', '3'         ,  1, current_timestamp, null, null, null, null);
-insert into valores_paises values (nextval('vapa_seq'), 9 , 'UNITER1', 'UNIDAD TERRITORIAL ORDEN 1'             , 'NOMBRE UNIDAD TERRITORIAL DE ORDEN 1'                   , 'REGIÓN'    ,  1, current_timestamp, null, null, null, null);
+insert into valores_paises values (nextval('vapa_seq'), 9 , 'NUMUNIT', 'NRO. UNIDADES TERRITORIALES'            , 'NRO. DE UNIDADES TERRITORIALES EN QUE SE DIVIDE EL PAIS', '1'         ,  1, current_timestamp, null, null, null, null);
+insert into valores_paises values (nextval('vapa_seq'), 9 , 'UNITER1', 'UNIDAD TERRITORIAL ORDEN 1'             , 'NOMBRE UNIDAD TERRITORIAL DE ORDEN 1'                   , 'ENTIDAD FEDERAL',  1, current_timestamp, null, null, null, null);
 insert into valores_paises values (nextval('vapa_seq'), 9 , 'UNITER2', 'UNIDAD TERRITORIAL ORDEN 2'             , 'NOMBRE UNIDAD TERRITORIAL DE ORDEN 2'                   , 'PROVINCIA' ,  1, current_timestamp, null, null, null, null);
 insert into valores_paises values (nextval('vapa_seq'), 9 , 'UNITER3', 'UNIDAD TERRITORIAL ORDEN 3'             , 'NOMBRE UNIDAD TERRITORIAL DE ORDEN 3'                   , 'COMUNA'    ,  1, current_timestamp, null, null, null, null);
 --
@@ -1413,7 +1413,27 @@ insert into unidades_territoriales values (415, 1, 72  , 'ÑIQUÉN'             
 insert into unidades_territoriales values (416, 1, 72  , 'SAN CARLOS'                                         , null, 3, 1, current_timestamp, null, null, null, null);
 insert into unidades_territoriales values (417, 1, 72  , 'SAN FABIAN'                                         , null, 3, 1, current_timestamp, null, null, null, null);
 insert into unidades_territoriales values (418, 1, 72  , 'SAN NICOLAS'                                        , null, 3, 1, current_timestamp, null, null, null, null);
- 
+insert into unidades_territoriales values (419, 9, null, 'APURE'                                              , 1   , 1, 1, current_timestamp, null, null, null, null);
+insert into unidades_territoriales values (420, 9, null, 'ARAGUA'                                             , 2   , 1, 1, current_timestamp, null, null, null, null);
+insert into unidades_territoriales values (421, 9, null, 'BARCELONA'                                          , 3   , 1, 1, current_timestamp, null, null, null, null);
+insert into unidades_territoriales values (422, 9, null, 'BARINAS'                                            , 4   , 1, 1, current_timestamp, null, null, null, null);
+insert into unidades_territoriales values (423, 9, null, 'BARQUISIMETO'                                       , 5   , 1, 1, current_timestamp, null, null, null, null);
+insert into unidades_territoriales values (424, 9, null, 'CARABOBO'                                           , 6   , 1, 1, current_timestamp, null, null, null, null);
+insert into unidades_territoriales values (425, 9, null, 'CARACAS'                                            , 7   , 1, 1, current_timestamp, null, null, null, null);
+insert into unidades_territoriales values (426, 9, null, 'COJEDES'                                            , 8   , 1, 1, current_timestamp, null, null, null, null);
+insert into unidades_territoriales values (427, 9, null, 'CORO'                                               , 9   , 1, 1, current_timestamp, null, null, null, null);
+insert into unidades_territoriales values (428, 9, null, 'CUMANÁ'                                             , 10  , 1, 1, current_timestamp, null, null, null, null);
+insert into unidades_territoriales values (429, 9, null, 'GUÁRICO'                                            , 11  , 1, 1, current_timestamp, null, null, null, null);
+insert into unidades_territoriales values (430, 9, null, 'GUAYANA'                                            , 12  , 1, 1, current_timestamp, null, null, null, null);
+insert into unidades_territoriales values (431, 9, null, 'MARACAIBO'                                          , 13  , 1, 1, current_timestamp, null, null, null, null);
+insert into unidades_territoriales values (432, 9, null, 'MARGARITA'                                          , 14  , 1, 1, current_timestamp, null, null, null, null);
+insert into unidades_territoriales values (433, 9, null, 'MATURÍN'                                            , 15  , 1, 1, current_timestamp, null, null, null, null);
+insert into unidades_territoriales values (434, 9, null, 'MÉRIDA'                                             , 16  , 1, 1, current_timestamp, null, null, null, null);
+insert into unidades_territoriales values (435, 9, null, 'PORTUGUESA'                                         , 17  , 1, 1, current_timestamp, null, null, null, null);
+insert into unidades_territoriales values (436, 9, null, 'TÁCHIRA'                                            , 18  , 1, 1, current_timestamp, null, null, null, null);
+insert into unidades_territoriales values (437, 9, null, 'TRUJILLO'                                           , 19  , 1, 1, current_timestamp, null, null, null, null);
+insert into unidades_territoriales values (438, 9, null, 'YARACUY'                                            , 20  , 1, 1, current_timestamp, null, null, null, null);
+
 insert into tipos_clientes values (1, 'PERSONA NATURAL', 1, current_timestamp, null, null, null, null);
 insert into tipos_clientes values (2, 'EMPRESA'        , 1, current_timestamp, null, null, null, null);
 

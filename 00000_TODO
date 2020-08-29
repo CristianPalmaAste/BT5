@@ -126,8 +126,8 @@ psql -d $DBNAME -U $USUARIO_DB < 03000_f_validar_reco.sql > 03010_f_validar_reco
 echo "  03100_f_impedir_upd_y_del_en_derc"
 psql -d $DBNAME -U $USUARIO_DB < 03100_f_impedir_upd_y_del_en_derc.sql > 03110_f_impedir_upd_y_del_en_derc.txt
 
-echo "  03300_f_aumentar_stock_x_reco"
-psql -d $DBNAME -U $USUARIO_DB < 03300_f_aumentar_stock_x_reco.sql > 03310_f_aumentar_stock_x_reco.txt
+echo "  03300_f_aumentar_stock_x_reco_y_actualizar_deoc"
+psql -d $DBNAME -U $USUARIO_DB < 03300_f_aumentar_stock_x_reco_y_actualizar_deoc.sql > 03310_f_aumentar_stock_x_reco_y_actualizar_deoc.txt
 
 echo "  03400_f_validar_rega_ins"
 psql -d $DBNAME -U $USUARIO_DB < 03400_f_validar_rega_ins.sql > 03410_f_validar_rega_ins.txt
